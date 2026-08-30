@@ -1,1 +1,0 @@
-# emreyukseltr.github.io
