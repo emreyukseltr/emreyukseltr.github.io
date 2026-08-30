@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeler Gayrimenkul & Yatırım</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: #f9f9f9; color: #333; overflow-x: hidden; }
+        
+        /* Tam Ekran Hero */
+        .hero-section {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero-section h1 { color: #fff; font-size: 3.5rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero-section p { color: #d1d5db; font-size: 1.2rem; max-width: 600px; margin-bottom: 40px; }
+
+        /* Yüzen Arama / İletişim Formu */
+        .floating-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 900px;
+            margin: -80px auto 50px auto;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            gap: 15px;
+        }
+        .floating-form input { flex: 1; padding: 15px; border: 1px solid #e5e7eb; border-radius: 5px; font-size: 1rem; }
+        .floating-form button { padding: 15px 30px; background: #b48600; color: #fff; border: none; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .floating-form button:hover { background: #8c6800; }
+
+        /* Asimetrik İlan Listesi */
+        .properties { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+        .properties h2 { font-size: 2.2rem; margin-bottom: 40px; color: #111; border-left: 5px solid #b48600; padding-left: 15px; }
+        .prop-item { display: flex; background: #fff; margin-bottom: 30px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .prop-item:hover { transform: translateY(-5px); }
+        .prop-image { width: 40%; background: #ddd; min-height: 250px; }
+        .prop-details { padding: 30px; width: 60%; display: flex; flex-direction: column; justify-content: center; }
+        .prop-details h3 { font-size: 1.6rem; margin-bottom: 10px; color: #1f2937; }
+        .prop-details p { color: #6b7280; line-height: 1.6; margin-bottom: 20px; }
+        .prop-price { font-size: 1.5rem; font-weight: bold; color: #b48600; }
+        
+        @media (max-width: 768px) {
+            .floating-form { flex-direction: column; margin-top: -30px; }
+            .prop-item { flex-direction: column; }
+            .prop-image, .prop-details { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1>Efeler Gayrimenkul</h1>
+        <p>Aydın'ın en seçkin lokasyonlarında, yaşam standartlarınızı yükseltecek premium konut ve villa projeleri.</p>
+    </div>
+
+    <form class="floating-form" action="https://formspree.io/f/BURAYA_FORM_LINKI" method="POST">
+        <input type="text" name="İsim" placeholder="Adınız Soyadınız" required>
+        <input type="tel" name="Telefon" placeholder="Telefon Numaranız" required>
+        <button type="submit">Beni Arayın</button>
+    </form>
+
+    <div class="properties">
+        <h2>Özel Portföyümüz</h2>
+        
+        <div class="prop-item">
+            <div class="prop-image" style="background: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80') center/cover;"></div>
+            <div class="prop-details">
+                <h3>Adnan Menderes Bulvarı Lüks Daire</h3>
+                <p>Şehrin merkezinde, yerden ısıtmalı, akıllı ev sistemine sahip 3+1 sıfır daire. Kapalı otopark ve 7/24 güvenlik hizmeti mevcuttur.</p>
+                <div class="prop-price">4.250.000 TL</div>
+            </div>
+        </div>
+
+        <div class="prop-item">
+            <div class="prop-image" style="background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80') center/cover;"></div>
+            <div class="prop-details">
+                <h3>Efeler Müstakil Havuzlu Villa</h3>
+                <p>Doğa ile iç içe, 500m2 arsa içerisinde özel yüzme havuzlu, kış bahçeli ve 4+1 ultra lüks müstakil yaşam alanı.</p>
+                <div class="prop-price">8.900.000 TL</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
