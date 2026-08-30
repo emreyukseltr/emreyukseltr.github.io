@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Op. Dr. Mehmet Demir | Uzman Cerrah Kliniği</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background-color: #f8fafc; color: #334155; line-height: 1.6; }
+        header { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: #0284c7; }
+        .hero { background: linear-gradient(135deg, #e0f2fe, #f0fdf4); padding: 60px 20px; text-align: center; border-bottom: 1px solid #cbd5e1; }
+        .hero h1 { font-size: 2.6rem; color: #0f172a; margin-bottom: 15px; }
+        .hero p { color: #475569; font-size: 1.1rem; max-width: 650px; margin: 0 auto; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 50px 8%; max-width: 1000px; margin: 0 auto; }
+        .medical-card { background: #fff; padding: 25px; border-radius: 10px; border: 1px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .medical-card h3 { color: #0284c7; font-size: 1.2rem; margin-bottom: 8px; }
+        .medical-card p { color: #64748b; font-size: 0.95rem; }
+        .form-section { max-width: 600px; margin: 0 auto 80px auto; background: #fff; padding: 40px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .form-section h2 { text-align: center; color: #0f172a; margin-bottom: 25px; font-size: 1.8rem; }
+        .doc-form { display: flex; flex-direction: column; gap: 15px; }
+        .doc-form input, .doc-form textarea { padding: 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; background: #f8fafc; }
+        .doc-form input:focus, .doc-form textarea:focus { border-color: #0284c7; outline: none; background: #fff; }
+        .doc-form button { padding: 14px; background: #0284c7; color: #fff; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; }
+        .doc-form button:hover { background: #0369a1; }
+        footer { text-align: center; padding: 25px; background: #fff; color: #64748b; border-top: 1px solid #e2e8f0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚕️ OP. DR. MEHMET DEMİR</div>
+        <div style="color: #64748b; font-size: 0.9rem;">Özel Muayenehane / Aydın</div>
+    </header>
+
+    <section class="hero">
+        <h1>Güvenli Cerrahi, Sağlıklı Yarınlar</h1>
+        <p>Aydın'daki kliniğimizde gelişmiş cerrahi yaklaşımlar ve hasta odaklı tedavi süreçleriyle sağlığınız güvence altında.</p>
+    </section>
+
+    <div class="grid-2">
+        <div class="medical-card">
+            <h3>Genel Cerrahi Operasyonları</h3>
+            <p>Laparoskopik (kapalı) ameliyatlar, safra kesesi ve fıtık cerrahisinde modern yaklaşımlar.</p>
+        </div>
+        <div class="medical-card">
+            <h3>Endoskopi İşlemleri</h3>
+            <p>Yüksek çözünürlüklü sistemler ile konforlu ve güvenli sindirim sistemi taramaları.</p>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Muayene Randevusu Alın</h2>
+        <form class="doc-form" action="https://formspree.io/f/BURAYA_FORM_LINKI" method="POST">
+            <input type="text" name="İsim" placeholder="Adınız Soyadınız" required>
+            <input type="tel" name="Telefon" placeholder="Telefon Numaranız" required>
+            <textarea name="Mesaj" placeholder="Şikayetiniz veya talep ettiğiniz tarih..." rows="4" required></textarea>
+            <button type="submit">Randevu Talebi Gönder</button>
+        </form>
+    </div>
+
+    <footer>&copy; 2026 Op. Dr. Mehmet Demir. Tüm hakları saklıdır.</footer>
+</body>
+</html>

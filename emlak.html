@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeler Gayrimenkul | Aydın Emlak</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background-color: #0d1117; color: #c9d1d9; line-height: 1.6; }
+        header { background: #161b22; border-bottom: 1px solid #30363d; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #58a6ff; letter-spacing: 1px; }
+        .hero { padding: 70px 20px; text-align: center; background: linear-gradient(180deg, #161b22 0%, #0d1117 100%); border-bottom: 1px solid #30363d; }
+        .hero h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+        .hero p { color: #8b949e; font-size: 1.1rem; }
+        .listings-title { text-align: center; margin: 50px 0 20px 0; font-size: 1.8rem; color: #fff; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 8% 50px 8%; max-width: 1200px; margin: 0 auto; }
+        .estate-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 25px; transition: 0.3s; }
+        .estate-card:hover { border-color: #58a6ff; }
+        .estate-card h3 { color: #58a6ff; margin-bottom: 10px; font-size: 1.2rem; }
+        .estate-card p { color: #8b949e; font-size: 0.95rem; margin-bottom: 15px; }
+        .estate-price { font-size: 1.3rem; font-weight: bold; color: #3fb950; }
+        .form-container { max-width: 600px; margin: 0 auto 80px auto; background: #161b22; border: 1px solid #30363d; padding: 40px; border-radius: 12px; }
+        .form-container h2 { text-align: center; color: #fff; margin-bottom: 25px; }
+        .estate-form { display: flex; flex-direction: column; gap: 15px; }
+        .estate-form input, .estate-form textarea { padding: 14px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; font-size: 1rem; }
+        .estate-form input:focus, .estate-form textarea:focus { border-color: #58a6ff; outline: none; }
+        .estate-form button { padding: 14px; background: #238636; color: #fff; border: none; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; }
+        .estate-form button:hover { background: #2ea043; }
+        footer { text-align: center; padding: 25px; background: #161b22; color: #8b949e; border-top: 1px solid #30363d; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🏠 EFELER GAYRİMENKUL</div>
+        <div style="color: #8b949e; font-size: 0.9rem;">Aydın / Merkez</div>
+    </header>
+
+    <section class="hero">
+        <h1>Aydın'da Güvenilir Gayrimenkul Yatırımı</h1>
+        <p>Portföyümüzdeki en seçkin satılık ve kiralık ilanları inceleyin.</p>
+    </section>
+
+    <h2 class="listings-title">Öne Çıkan İlanlar</h2>
+    <div class="grid-3">
+        <div class="estate-card">
+            <h3>Adnan Menderes Bulvarı 3+1 Daire</h3>
+            <p>Sıfır bina • Yerden ısıtma • Merkezi konum</p>
+            <div class="estate-price">4.250.000 TL</div>
+        </div>
+        <div class="estate-card">
+            <h3>Efeler'de Havuzlu Müstakil Villa</h3>
+            <p>Özel otoparklı • Geniş bahçeli • 4+1</p>
+            <div class="estate-price">8.900.000 TL</div>
+        </div>
+        <div class="estate-card">
+            <h3>Kıtablılar Mahallesinde Arsa</h3>
+            <p>İmarı aktif • Yatırımlık parsel</p>
+            <div class="estate-price">2.100.000 TL</div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2>Gayrimenkulünüzü Değerlendirelim</h2>
+        <form class="estate-form" action="https://formspree.io/f/BURAYA_FORM_LINKI" method="POST">
+            <input type="text" name="İsim" placeholder="Ad Soyad" required>
+            <input type="tel" name="Telefon" placeholder="Telefon Numarası" required>
+            <textarea name="Mesaj" placeholder="Gayrimenkul detayları..." rows="4" required></textarea>
+            <button type="submit">İletişime Geç</button>
+        </form>
+    </div>
+
+    <footer>&copy; 2026 Efeler Gayrimenkul. Tüm hakları saklıdır.</footer>
+</body>
+</html>
