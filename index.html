@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avukat, Doktor ve Diyetisyen Web Sitesi Tasarımı | EY Studios</title>
+<meta name="description" content="Avukat, doktor, diyetisyen, diş hekimi, restoran ve kuaför için mobil uyumlu, hızlı web sitesi tasarımı. Türkiye genelinde uzaktan hizmet. Teklif alın.">
+<meta name="keywords" content="web sitesi yaptırma, web tasarım, kurumsal web sitesi, avukat web sitesi, doktor web sitesi, diyetisyen web sitesi, diş hekimi web sitesi, restoran web sitesi, kuaför web sitesi, EY Studios">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#2B3DF5">
+<meta name="google-site-verification" content="c4HIWb7nwjMsuN1VyCU3hOdzS-oNmRjyN4XFIVIuv20">
+<link rel="canonical" href="https://emreyukseltr.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://emreyukseltr.github.io/">
+<meta property="og:title" content="Avukat, Doktor ve Diyetisyen Web Sitesi Tasarımı | EY Studios">
+<meta property="og:description" content="Mesleğinize uygun, mobil uyumlu ve hızlı web siteleri. Türkiye genelinde uzaktan hizmet.">
+<meta property="og:locale" content="tr_TR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');try{var _t=localStorage.getItem('ey-theme');if(_t==='dark'||_t==='light'){document.documentElement.setAttribute('data-theme',_t);}}catch(e){}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "EY Studios",
+  "description": "İşletmeler için web tasarım ve geliştirme. Türkiye genelinde uzaktan hizmet.",
+  "url": "https://emreyukseltr.github.io/",
+  "telephone": "+905511187400",
+  "email": "emreyks4209@gmail.com",
+  "areaServed": { "@type": "Country", "name": "Türkiye" },
+  "serviceType": ["Web sitesi tasarımı", "Kurumsal web sitesi", "Avukat web sitesi", "Doktor web sitesi", "Diyetisyen web sitesi", "Diş hekimi web sitesi", "Restoran web sitesi", "Kuaför web sitesi"]
+}
+</script>
+<style>
+  :root {
+    --bg: #F4F5F8;
+    --surface: #FFFFFF;
+    --ink: #0C1020;
+    --muted: #4B546A;
+    --line: #D5D9E3;
+    --accent: #2B3DF5;
+    --on-accent: #FFFFFF;
+    --hero: #2B3DF5;
+    --hero-bg: #2B3DF5;
+    --cta-bg: #2B3DF5;
+    --cta-ink: #FFFFFF;
+    --tick-bg: #0C1020;
+    --tick-ink: #FFFFFF;
+    --tick-dot: #8F9BFF;
+    color-scheme: light;
+    --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+    --body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B0E17; --surface: #131828; --ink: #ECEFF8; --muted: #A3ACC2;
+      --line: #252C42; --accent: #8F9BFF; --on-accent: #0B0E17; --hero: #101745; --hero-bg: radial-gradient(900px circle at 78% 26%, #2B3AD0 0%, #111950 42%, #070A1C 100%); --cta-bg: #8F9BFF; --cta-ink: #0B0E17; --tick-bg: #8F9BFF; --tick-ink: #0B0E17; --tick-dot: #0B0E17; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0B0E17; --surface: #131828; --ink: #ECEFF8; --muted: #A3ACC2;
+    --line: #252C42; --accent: #8F9BFF; --on-accent: #0B0E17; --hero: #101745; --hero-bg: radial-gradient(900px circle at 78% 26%, #2B3AD0 0%, #111950 42%, #070A1C 100%); --cta-bg: #8F9BFF; --cta-ink: #0B0E17; --tick-bg: #8F9BFF; --tick-ink: #0B0E17; --tick-dot: #0B0E17; color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .4s ease, color .4s ease;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  section { scroll-margin-top: 1rem; }
+
+  .skip { position: absolute; left: -999px; top: 8px; background: #fff; color: #0C1020; padding: 10px 14px; border-radius: 8px; z-index: 50; }
+  .skip:focus { left: 8px; }
+  .wrap { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 50px; padding: .7rem 1.4rem; border-radius: 10px;
+    font: 600 1rem/1.2 var(--body); text-decoration: none; cursor: pointer;
+    background: var(--accent); color: var(--on-accent); border: 1.5px solid var(--accent);
+    transition: transform .2s ease, filter .2s ease;
+  }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--bg); filter: none; }
+  .btn.light { background: #fff; color: #1B2BD0; border-color: #fff; }
+  .btn.line { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+  .btn.line:hover { background: #fff; color: #1B2BD0; filter: none; }
+
+  /* ---------- Hero ---------- */
+  .hero-shell { background: var(--hero-bg); color: #fff; overflow: clip; position: relative; }
+  .hero-shell :focus-visible { outline-color: #fff; }
+  .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; }
+  .logo { text-decoration: none; font-family: var(--display); font-size: 1.6rem; letter-spacing: -0.03em; display: flex; align-items: baseline; gap: .35rem; }
+  .logo b { font-weight: 800; }
+  .logo span { font-weight: 500; opacity: .75; }
+  nav ul { display: flex; align-items: center; gap: 1.7rem; list-style: none; margin: 0; padding: 0; }
+  nav a { text-decoration: none; font-weight: 500; }
+  nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
+  nav .btn { min-height: 42px; padding: .45rem 1.1rem; }
+
+  .hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 7rem); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  h1 {
+    font-family: var(--display); font-weight: 800; margin: 0 0 1.5rem;
+    font-size: clamp(2.5rem, 5.6vw, 4.9rem); line-height: 1; letter-spacing: -0.04em; text-wrap: balance;
+  }
+  h1.split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+  h1.split .w > span { display: inline-block; transform: translateY(108%); animation: up .85s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--i) * 70ms + 150ms); }
+  @keyframes up { to { transform: none; } }
+  .lede { font-size: 1.22rem; color: rgba(255,255,255,.88); margin: 0 0 2rem; max-width: 46ch; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  /* Living device stage */
+  .stage {
+    --s-bg: #050505; --s-ink: #E0E0E0; --s-acc: #C5A059; --s-on: #000; --s-card: #131313;
+    position: relative; perspective: 1500px; min-height: 26rem; display: grid; place-items: center; padding: 1.5rem 0 2.5rem;
+  }
+  .device {
+    position: relative; width: 100%; max-width: 540px; transform-style: preserve-3d;
+    transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 6deg)); transition: transform .25s ease-out;
+  }
+  .browser {
+    border-radius: 12px; overflow: hidden; background: var(--surface);
+    box-shadow: 0 40px 80px rgba(4,8,60,.5); aspect-ratio: 16 / 11; display: flex; flex-direction: column;
+  }
+  .chrome { display: flex; align-items: center; gap: .4rem; padding: .55rem .8rem; border-bottom: 1px solid var(--line); background: var(--surface); color: var(--ink); flex: none; }
+  .chrome i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--line); display: block; }
+  .chrome span { margin-left: .6rem; font-size: .78rem; color: var(--muted); min-height: 1.1em; }
+
+  .site {
+    flex: 1; display: flex; flex-direction: column; gap: .8rem; padding: 1.2rem 1.4rem;
+    background: var(--s-bg); color: var(--s-ink); transition: background-color .7s ease, color .7s ease;
+  }
+  .s-nav { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: .8rem; }
+  .s-links i { display: inline-block; width: 1.8rem; height: .28rem; background: currentColor; opacity: .25; border-radius: 2px; margin-left: .5rem; }
+  .s-big { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 2.3vw, 1.9rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 13ch; margin-top: auto; }
+  .s-sub { font-size: .78rem; opacity: .75; }
+  .s-btn { align-self: flex-start; background: var(--s-acc); color: var(--s-on); font-size: .75rem; font-weight: 600; padding: .5rem .9rem; border-radius: 6px; transition: background-color .7s ease, color .7s ease; }
+  .s-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+  .s-cards div { height: 2.4rem; background: var(--s-card); border-radius: 6px; transition: background-color .7s ease; }
+  [data-k] { transition: opacity .25s ease; }
+  [data-k].out { opacity: 0; }
+
+  .phone {
+    position: absolute; right: -5%; bottom: -9%; width: 30%; aspect-ratio: 9 / 19; border-radius: 22px;
+    border: 6px solid #0C1020; background: #0C1020; overflow: hidden; display: flex;
+    transform: translateZ(70px) rotate(3deg); box-shadow: 0 30px 60px rgba(4,8,60,.55);
+  }
+  .phone .site { padding: .8rem .7rem; gap: .5rem; }
+  .phone .s-big { font-size: .95rem; }
+  .phone .s-sub { font-size: .6rem; }
+  .phone .s-btn { font-size: .58rem; padding: .35rem .6rem; }
+  .phone .s-nav { font-size: .62rem; }
+  .phone .s-links { display: none; }
+  .phone .s-cards { grid-template-columns: 1fr; }
+  .phone .s-cards div { height: 1.3rem; }
+  .phone .s-cards div:nth-child(3) { display: none; }
+
+  @media (hover: none) {
+    .device { animation: sway 9s ease-in-out infinite; }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotateY(-16deg) rotateX(6deg); }
+    50% { transform: rotateY(-6deg) rotateX(3deg); }
+  }
+
+
+  /* ---------- Upgrade: spotlight, grid, picker, progress, theme button ---------- */
+  .hero-shell::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(520px circle at var(--mx, 72%) var(--my, 28%), rgba(255,255,255,.18), transparent 62%);
+  }
+  .hero-shell::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%);
+    mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%);
+  }
+  .hero-shell > * { position: relative; z-index: 1; }
+  .right { min-width: 0; }
+  .picker { margin-top: .4rem; }
+  .picker-label { margin: 0 0 .55rem; font-size: .9rem; opacity: .85; }
+  .picker-btns { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .picker-btns button {
+    font: 600 .88rem/1 var(--body); color: #fff; background: transparent;
+    border: 1.5px solid rgba(255,255,255,.55); border-radius: 99px; padding: .6rem 1rem; cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .picker-btns button:hover { background: rgba(255,255,255,.16); }
+  .picker-btns button[aria-pressed="true"] { background: #fff; color: #1B2BD0; border-color: #fff; }
+  .picker-link { display: inline-block; margin-top: .9rem; font-weight: 600; color: #fff; text-underline-offset: 4px; }
+
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; pointer-events: none; }
+  .progress i { display: block; height: 100%; width: 0; background: #FFC940; }
+
+  .tbtn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.7); background: transparent; color: #fff; display: grid; place-items: center; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+  .tbtn:hover { background: #fff; color: #1B2BD0; }
+  .tbtn .i-sun { display: none; }
+  :root[data-theme="dark"] .tbtn .i-sun { display: block; }
+  :root[data-theme="dark"] .tbtn .i-moon { display: none; }
+
+  /* Yatay kayan portföy (yalnızca geniş ekran ve yeterli yükseklikte JS açar) */
+  .hbar { display: none; height: 3px; background: var(--line); margin-top: 1.6rem; border-radius: 2px; overflow: hidden; max-width: 20rem; }
+  .hbar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  #calismalar.hmode { padding-block: 0; }
+  .hmode .hpin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+  .hmode h2 { font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
+  .hmode .sub { margin-bottom: 1.4rem; }
+  .hmode .works { display: flex; flex-wrap: nowrap; width: max-content; gap: 2rem; will-change: transform; }
+  .hmode .work { flex: 0 0 clamp(300px, 27vw, 400px); }
+  .hmode .hbar { display: block; }
+
+  /* ---------- Ticker ---------- */
+  .ticker { background: var(--tick-bg); color: var(--tick-ink); overflow: hidden; white-space: nowrap; }
+  .ticker-track { display: inline-flex; animation: slide 45s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .ticker ul { display: flex; list-style: none; margin: 0; padding: 0; }
+  .ticker li { display: flex; align-items: center; gap: 1.8rem; padding: 1rem 0 1rem 1.8rem; font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+  .ticker li::after { content: ""; width: .5rem; height: .5rem; background: var(--tick-dot); transform: rotate(45deg); }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- Spec strip ---------- */
+  .strip { margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem; padding-block: 2.2rem; }
+  .strip div { border-top: 2px solid var(--ink); padding-top: .8rem; }
+  .strip dt { font-size: .9rem; color: var(--muted); margin-bottom: .2rem; }
+  .strip dd { margin: 0; font-weight: 600; line-height: 1.35; }
+
+  /* ---------- Blocks ---------- */
+  .block { padding-block: clamp(3rem, 7vw, 5.5rem); border-top: 1px solid var(--line); }
+  .eyebrow { font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: .02em; color: var(--accent); margin: 0 0 .7rem; }
+  h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.04; letter-spacing: -0.03em; margin: 0 0 .9rem; max-width: 20ch; text-wrap: balance; }
+  .sub { color: var(--muted); max-width: 58ch; margin: 0 0 2.6rem; }
+
+  /* Work */
+  .works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.6rem, 3.5vw, 2.6rem) clamp(1.2rem, 3vw, 2.2rem); }
+  .work { display: block; text-decoration: none; }
+  .work h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; margin: 1rem 0 .3rem; }
+  .work p { margin: 0 0 .6rem; color: var(--muted); font-size: 1rem; }
+  .tag { font-weight: 600; font-size: .95rem; }
+  .work.live .tag { color: var(--accent); }
+  .work.soon .tag { color: var(--muted); }
+  .frame { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .work.live:hover .frame { transform: perspective(900px) translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); border-color: var(--accent); box-shadow: 0 18px 40px rgba(12,16,32,.16); }
+  .frame .chrome span { font-size: .78rem; }
+  .scr { aspect-ratio: 4 / 3; padding: 1rem 1.1rem; background: var(--s-bg); color: var(--s-ink); display: flex; flex-direction: column; gap: .5rem; overflow: hidden; }
+  .scr .n { display: flex; justify-content: space-between; align-items: center; font-size: .7rem; font-weight: 600; }
+  .scr .n em { font-style: normal; opacity: .7; font-weight: 500; }
+  .scr .big { font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1.05; letter-spacing: -0.02em; margin-top: auto; max-width: 11ch; }
+  .scr .t { font-size: .68rem; opacity: .75; max-width: 24ch; line-height: 1.4; }
+  .scr .b { align-self: flex-start; font-size: .68rem; font-weight: 600; padding: .4rem .75rem; border-radius: 6px; background: var(--s-acc); color: var(--s-on); }
+
+  /* Packages */
+  .packs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+  .pack { padding: 1.6rem 1.6rem 1.8rem 0; }
+  .pack + .pack { padding-left: 1.6rem; border-left: 1px solid var(--line); }
+  .pack h3 { font-family: var(--display); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; margin: 0 0 .3rem; }
+  .pack .for { color: var(--muted); margin: 0 0 1.2rem; }
+  .pack ul { list-style: none; padding: 0; margin: 0 0 1.4rem; display: grid; gap: .6rem; }
+  .pack li { padding-left: 1.4rem; position: relative; }
+  .pack li::before { content: ""; position: absolute; left: 0; top: .6em; width: .6rem; height: 2px; background: var(--accent); }
+  .price { font-weight: 600; margin: 0; }
+
+  /* ---------- Scroll-built story ---------- */
+  .story-pin { display: none; height: 430vh; position: relative; border-top: 1px solid var(--line); }
+  .js .story-pin { display: block; }
+  .js .story-static { display: none; }
+  .pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; }
+  .pin-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .pin h2 { margin-bottom: 0; }
+  .story-steps { list-style: none; margin: 1.8rem 0 0; padding: 0; }
+  .story-steps li { padding: .8rem 0 .8rem 1.2rem; border-left: 3px solid var(--line); opacity: .38; transition: opacity .3s ease, border-color .3s ease; }
+  .story-steps li.on { opacity: 1; border-left-color: var(--accent); }
+  .story-steps h3 { margin: 0; font-family: var(--display); font-size: 1.4rem; letter-spacing: -0.02em; font-weight: 700; }
+  .story-steps p { margin: 0; color: var(--muted); max-height: 0; opacity: 0; overflow: hidden; transition: max-height .4s ease, opacity .3s ease, margin .3s ease; }
+  .story-steps li.on p { max-height: 7rem; opacity: 1; margin-top: .3rem; }
+  .story-bar { height: 3px; background: var(--line); margin-top: 1.4rem; border-radius: 2px; overflow: hidden; }
+  .story-bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+
+  .story-stage { position: relative; padding-bottom: 1.5rem; }
+  .sbrowser { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; box-shadow: 0 30px 70px rgba(12,16,32,.2); }
+  .sbody { position: relative; aspect-ratio: 16 / 11; overflow: hidden; background: var(--bg); }
+  .layer { position: absolute; inset: 0; opacity: 0; transition: opacity .45s ease; pointer-events: none; display: flex; flex-direction: column; }
+  .layer.on { opacity: 1; }
+  .theme-dental { --s-bg: #EAF6F3; --s-ink: #10302B; --s-acc: #0E8F80; --s-on: #fff; --s-card: #D5EDE8; }
+  .layer .site { height: 100%; }
+
+  .chat { padding: 1.1rem; gap: .65rem; justify-content: flex-end; background: var(--bg); }
+  .chat-head { position: absolute; top: 0; left: 0; right: 0; padding: .7rem 1.1rem; background: var(--surface); border-bottom: 1px solid var(--line); font-weight: 600; font-size: .85rem; display: flex; align-items: center; gap: .5rem; }
+  .chat-head::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: #2E9E5B; }
+  .bub { max-width: 78%; padding: .65rem .9rem; border-radius: 14px; font-size: .9rem; line-height: 1.4; opacity: 0; transform: translateY(10px) scale(.98); transition: opacity .35s ease, transform .35s ease; }
+  .bub.on { opacity: 1; transform: none; }
+  .bub.me { align-self: flex-end; background: var(--accent); color: var(--on-accent); border-bottom-right-radius: 4px; }
+  .bub.you { align-self: flex-start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+
+  .draft { background: var(--bg); }
+  .dskel { position: absolute; inset: 0; padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: .8rem; background: var(--bg); }
+  .sk { background: var(--line); border-radius: 6px; }
+  .draft .real { position: absolute; inset: 0; display: flex; clip-path: inset(0 calc((1 - var(--t, 0)) * 100%) 0 0); }
+  .scan { position: absolute; top: 0; bottom: 0; left: calc(var(--t, 0) * 100%); width: 2px; background: var(--accent); box-shadow: 0 0 22px 2px var(--accent); opacity: calc(1 - (var(--t, 0) - .95) * 20); }
+
+  .badge { position: absolute; top: .8rem; right: .8rem; background: #0C1020; color: #fff; font-size: .75rem; font-weight: 600; padding: .35rem .7rem; border-radius: 99px; display: flex; align-items: center; gap: .4rem; opacity: 0; transform: translateY(-8px); transition: opacity .4s ease, transform .4s ease; }
+  .badge::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: #3DDC84; }
+  .badge.on { opacity: 1; transform: none; }
+
+  .sphone { position: absolute; right: 4%; bottom: 0; width: 24%; aspect-ratio: 9 / 19; border-radius: 20px; border: 5px solid #0C1020; background: #0C1020; overflow: hidden; display: flex; box-shadow: 0 24px 50px rgba(12,16,32,.4); opacity: 0; transform: translateY(40px) scale(.92); transition: opacity .5s ease, transform .5s ease; }
+  .sphone.on { opacity: 1; transform: none; }
+  .sphone .site { padding: .7rem .6rem; gap: .4rem; }
+  .sphone .s-big { font-size: .8rem; }
+  .sphone .s-sub { font-size: .5rem; }
+  .sphone .s-btn { font-size: .5rem; padding: .3rem .5rem; }
+  .sphone .s-nav { font-size: .55rem; }
+  .sphone .s-links { display: none; }
+  .sphone .s-cards { grid-template-columns: 1fr; }
+  .sphone .s-cards div { height: 1rem; }
+  .sphone .s-cards div:nth-child(3) { display: none; }
+
+  .notes { padding: 1rem; align-items: flex-end; justify-content: flex-start; gap: .6rem; }
+  .note { width: min(60%, 18rem); background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: .65rem .85rem; font-size: .82rem; line-height: 1.35; box-shadow: 0 10px 30px rgba(12,16,32,.18); opacity: 0; transform: translateX(18px); transition: opacity .4s ease, transform .4s ease; }
+  .note.on { opacity: 1; transform: none; }
+  .note b { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; margin-bottom: .1rem; }
+
+  /* Static steps fallback */
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.8rem; counter-reset: s; }
+  .steps li { counter-increment: s; border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .steps li::before { content: counter(s); display: block; font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--accent); margin-bottom: .6rem; }
+  .steps h3 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .35rem; }
+  .steps p { margin: 0; color: var(--muted); }
+
+  /* FAQ */
+  .faq { border-top: 2px solid var(--ink); max-width: 780px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 1.15rem 2.4rem 1.15rem 0; font-weight: 600; font-size: 1.1rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: .2rem; top: 50%; transform: translateY(-50%); font-size: 1.6rem; font-weight: 500; color: var(--accent); }
+  details[open] summary::after { content: "\2212"; }
+  details p { margin: 0 0 1.2rem; color: var(--muted); max-width: 62ch; }
+
+  /* CTA band */
+  .cta-band { background: var(--cta-bg); color: var(--cta-ink); padding-block: clamp(3.5rem, 9vw, 7rem); }
+  .cta-band .wrap { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+  .cta-band h2 { font-size: clamp(2.6rem, 8vw, 6.8rem); line-height: .95; letter-spacing: -0.045em; font-weight: 800; max-width: 12ch; margin: 0; }
+  .cta-band :focus-visible { outline-color: var(--cta-ink); }
+
+  /* Contact */
+  .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4.5rem); }
+  .contact address { font-style: normal; display: grid; gap: .9rem; margin-top: 1.8rem; }
+  .contact address div { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; }
+  .contact address span { color: var(--muted); }
+  .contact address a { font-weight: 500; }
+  form { display: grid; gap: 1.1rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.7rem; }
+  label { display: grid; gap: .35rem; font-weight: 600; font-size: .98rem; }
+  input, select, textarea { font: 400 1rem/1.4 var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .8rem .9rem; width: 100%; }
+  textarea { min-height: 120px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+  .status { min-height: 1.4rem; margin: 0; font-weight: 500; }
+  .status.err { color: #B3261E; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .status.err { color: #FFB4AB; } }
+  :root[data-theme="dark"] .status.err { color: #FFB4AB; }
+  .hint { margin: 0; color: var(--muted); font-size: .92rem; }
+
+  footer { border-top: 1px solid var(--line); padding-top: 2rem; color: var(--muted); font-size: .95rem; overflow: hidden; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 2rem; }
+  .mega { font-family: var(--display); font-weight: 800; font-size: clamp(4rem, 19vw, 17rem); line-height: .82; letter-spacing: -0.05em; text-align: center; color: var(--line); margin-top: 1.5rem; white-space: nowrap; user-select: none; }
+
+  /* Reveal */
+  .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .hero .wrap, .contact { grid-template-columns: minmax(0, 1fr); }
+    .stage { min-height: 0; }
+    .device { max-width: 460px; margin-inline: auto; }
+    .works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .packs { grid-template-columns: minmax(0, 1fr); }
+    .pack, .pack + .pack { padding: 1.5rem 0; border-left: 0; }
+    .pack + .pack { border-top: 1px solid var(--line); }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .story-pin { height: 380vh; }
+    .pin-grid { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
+    .pin h2 { font-size: 1.7rem; }
+    .story-steps { margin-top: .8rem; }
+    .story-steps li { display: none; padding: .3rem 0 .3rem 1rem; }
+    .story-steps li.on { display: block; }
+    .story-bar { margin-top: .8rem; }
+    .note { width: 70%; }
+  }
+  @media (max-width: 620px) {
+    nav ul li:not(:last-child) { display: none; }
+    nav ul li.keep { display: block; }
+    .works { grid-template-columns: minmax(0, 1fr); }
+    .steps, .strip { grid-template-columns: minmax(0, 1fr); }
+    .row2 { grid-template-columns: minmax(0, 1fr); }
+    .contact address div { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+    .phone { right: 0; }
+  }
+
+  /* Sektör metinleri */
+  .sectors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2.2rem; }
+  .sectors article { border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .sectors h3 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.02em; margin: 0 0 .4rem; }
+  .sectors h3 a { text-decoration: none; }
+  .sectors h3 a:hover { color: var(--accent); }
+  .sectors p { margin: 0; color: var(--muted); }
+  @media (max-width: 960px) { .sectors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .sectors { grid-template-columns: minmax(0, 1fr); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track, .device { animation: none; }
+    .ticker { overflow-x: auto; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .btn, .frame, body { transition: none; }
+    .js .story-pin { display: none; }
+    .js .story-static { display: block; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+
+<div class="hero-shell" id="shell">
+  <header class="site-head">
+    <div class="wrap">
+      <a class="logo" href="#"><b>EY</b><span>Studios</span></a>
+      <nav aria-label="Ana menü">
+        <ul>
+          <li><a href="#calismalar">Çalışmalar</a></li>
+          <li><a href="#paketler">Paketler</a></li>
+          <li><a href="#surec">Süreç</a></li>
+          <li class="keep"><button class="tbtn" id="themeBtn" type="button" aria-label="Açık ya da koyu temayı değiştir"><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></g></svg></button></li>
+          <li><a href="#iletisim" class="btn light">Teklif iste</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="baslik">
+    <div class="wrap">
+      <div>
+        <h1 id="baslik">İşletmenize yakışan, ilk bakışta güven veren web siteleri.</h1>
+        <p class="lede">Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.</p>
+        <div class="cta-row">
+          <a class="btn light" href="#iletisim">Teklif iste</a>
+          <a class="btn line" href="#calismalar">Çalışmalara bak</a>
+        </div>
+      </div>
+
+      <div class="right">
+      <div class="stage" id="stage" aria-hidden="true">
+        <div class="device" id="device">
+          <div class="browser">
+            <div class="chrome"><i></i><i></i><i></i><span id="hUrl">hukukburosu.com</span></div>
+            <div class="site">
+              <div class="s-nav"><b data-k="name">Yılmaz Hukuk</b><span class="s-links"><i></i><i></i><i></i></span></div>
+              <div class="s-big" data-k="big">Adaletin sarsılmaz gücü.</div>
+              <div class="s-sub" data-k="sub">Ceza, ticaret ve icra hukuku.</div>
+              <div class="s-btn" data-k="btn">Görüşme talep et</div>
+              <div class="s-cards"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+          <div class="phone">
+            <div class="site">
+              <div class="s-nav"><b data-k="name">Yılmaz Hukuk</b></div>
+              <div class="s-big" data-k="big">Adaletin sarsılmaz gücü.</div>
+              <div class="s-sub" data-k="sub">Ceza, ticaret ve icra hukuku.</div>
+              <div class="s-btn" data-k="btn">Görüşme talep et</div>
+              <div class="s-cards"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="picker" role="group" aria-label="Sektör seçin">
+        <p class="picker-label">Sektörünüzü seçin, sitenin nasıl görüneceğine bakın:</p>
+        <div class="picker-btns">
+          <button type="button" data-i="0" aria-pressed="true">Avukat</button>
+          <button type="button" data-i="1" aria-pressed="false">Doktor</button>
+          <button type="button" data-i="2" aria-pressed="false">Diyetisyen</button>
+          <button type="button" data-i="3" aria-pressed="false">Diş kliniği</button>
+          <button type="button" data-i="4" aria-pressed="false">Restoran</button>
+          <button type="button" data-i="5" aria-pressed="false">Kuaför</button>
+        </div>
+        <a class="picker-link" id="pLink" href="avukat.html">Örneği aç: Avukat →</a>
+      </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="ticker" aria-label="Hazırlanabilecek sektörlerden bazıları">
+  <div class="ticker-track">
+    <ul>
+      <li>Avukat</li><li>Doktor</li><li>Diş hekimi</li><li>Diyetisyen</li><li>Psikolog</li><li>Veteriner</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Güzellik salonu</li><li>Oto servis</li><li>Emlak</li><li>Otel</li><li>Mali müşavir</li><li>Fotoğrafçı</li>
+    </ul>
+    <ul aria-hidden="true">
+      <li>Avukat</li><li>Doktor</li><li>Diş hekimi</li><li>Diyetisyen</li><li>Psikolog</li><li>Veteriner</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Güzellik salonu</li><li>Oto servis</li><li>Emlak</li><li>Otel</li><li>Mali müşavir</li><li>Fotoğrafçı</li>
+    </ul>
+  </div>
+</div>
+
+<main id="icerik">
+  <div class="wrap">
+    <dl class="strip" aria-label="Her sitede bulunanlar">
+      <div><dt>Çalışma</dt><dd>Uzaktan, Türkiye'nin her yerinden</dd></div>
+      <div><dt>Altyapı</dt><dd>Statik sayfalar, sunucu kirası yok</dd></div>
+      <div><dt>Cihazlar</dt><dd>Telefon, tablet ve bilgisayarda düzgün</dd></div>
+      <div><dt>Arama</dt><dd>Başlık, açıklama ve konum bilgisi hazır</dd></div>
+      <div><dt>Maliyet</dt><dd>Yalnızca alan adı yıllık ücretlidir</dd></div>
+    </dl>
+  </div>
+
+  <!-- Kaydırınca site kendini kurar -->
+  <section class="story-pin" id="story" aria-labelledby="surec-baslik">
+    <div class="pin">
+      <div class="wrap pin-grid">
+        <div class="story-copy">
+          <p class="eyebrow" id="surec">Süreç</p>
+          <h2 id="surec-baslik">Boş sayfadan yayına, dört adım.</h2>
+          <ol class="story-steps">
+            <li class="on"><h3>1. Görüşme</h3><p>İşletmenizi, hedefinizi ve elinizdeki içeriği telefonda ya da WhatsApp'ta konuşuruz.</p></li>
+            <li><h3>2. Taslak</h3><p>Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
+            <li><h3>3. Yayın</h3><p>Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
+            <li><h3>4. Destek</h3><p>Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
+          </ol>
+          <div class="story-bar" aria-hidden="true"><i id="storyBar"></i></div>
+        </div>
+
+        <div class="story-stage" aria-hidden="true">
+          <div class="sbrowser">
+            <div class="chrome"><i></i><i></i><i></i><span id="sUrl">&nbsp;</span></div>
+            <div class="sbody">
+
+              <div class="layer chat on" id="lChat">
+                <div class="chat-head">EY Studios</div>
+                <div class="bub me" data-at="0.08">Merhaba, kliniğim için bir web sitesi istiyorum.</div>
+                <div class="bub you" data-at="0.3">Merhaba! Hangi hizmetleri öne çıkaralım?</div>
+                <div class="bub me" data-at="0.55">Tedaviler, çalışma saatleri ve randevu formu.</div>
+                <div class="bub you" data-at="0.8">Anladım, ilk taslağı hazırlıyorum.</div>
+              </div>
+
+              <div class="layer draft" id="lDraft">
+                <div class="dskel">
+                  <div style="display:flex;justify-content:space-between"><div class="sk" style="width:22%;height:.9rem"></div><div class="sk" style="width:26%;height:.6rem"></div></div>
+                  <div class="sk" style="width:55%;height:2rem;margin-top:auto"></div>
+                  <div class="sk" style="width:38%;height:.8rem"></div>
+                  <div class="sk" style="width:22%;height:1.8rem"></div>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem"><div class="sk" style="height:2.4rem"></div><div class="sk" style="height:2.4rem"></div><div class="sk" style="height:2.4rem"></div></div>
+                </div>
+                <div class="real theme-dental">
+                  <div class="site">
+                    <div class="s-nav"><b>Örnek Diş Kliniği</b><span class="s-links"><i></i><i></i><i></i></span></div>
+                    <div class="s-big">Gülüşünüz için randevu alın.</div>
+                    <div class="s-sub">Tedaviler, saatler ve konum.</div>
+                    <div class="s-btn">Randevu al</div>
+                    <div class="s-cards"><div></div><div></div><div></div></div>
+                  </div>
+                </div>
+                <div class="scan"></div>
+              </div>
+
+              <div class="layer live theme-dental" id="lLive">
+                <div class="site">
+                  <div class="s-nav"><b>Örnek Diş Kliniği</b><span class="s-links"><i></i><i></i><i></i></span></div>
+                  <div class="s-big">Gülüşünüz için randevu alın.</div>
+                  <div class="s-sub">Tedaviler, saatler ve konum.</div>
+                  <div class="s-btn">Randevu al</div>
+                  <div class="s-cards"><div></div><div></div><div></div></div>
+                </div>
+              </div>
+
+              <div class="badge" id="sBadge">Yayında</div>
+
+              <div class="sphone theme-dental" id="sPhone">
+                <div class="site">
+                  <div class="s-nav"><b>Örnek Diş Kliniği</b></div>
+                  <div class="s-big">Gülüşünüz için randevu alın.</div>
+                  <div class="s-sub">Tedaviler, saatler ve konum.</div>
+                  <div class="s-btn">Randevu al</div>
+                  <div class="s-cards"><div></div><div></div><div></div></div>
+                </div>
+              </div>
+
+              <div class="layer notes" id="lNotes">
+                <div class="note" data-at="0.1"><b>Yeni mesaj</b>Cumartesi çalışma saatimizi güncelleyebilir misiniz?</div>
+                <div class="note" data-at="0.45"><b>Güncellendi</b>Değişiklik yayında.</div>
+                <div class="note" data-at="0.75"><b>Teşekkürler</b>Site her zaman güncel kalıyor.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript kapalıysa ya da hareket azaltılmışsa gösterilen sade süreç -->
+  <section class="block story-static" aria-labelledby="surec-baslik-static">
+    <div class="wrap">
+      <p class="eyebrow">Süreç</p>
+      <h2 id="surec-baslik-static">İşler dört adımda ilerler.</h2>
+      <p class="sub">Tüm süreç telefon, WhatsApp ve e-posta üzerinden yürür. Yüz yüze buluşmanız gerekmez.</p>
+      <ol class="steps">
+        <li><h3>Görüşme</h3><p>İşletmenizi, hedefinizi ve elinizdeki içeriği konuşuruz.</p></li>
+        <li><h3>Taslak</h3><p>Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
+        <li><h3>Yayın</h3><p>Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
+        <li><h3>Destek</h3><p>Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="calismalar" aria-labelledby="calisma-baslik">
+    <div class="hgal" id="hgal"><div class="hpin">
+    <div class="wrap">
+      <p class="eyebrow">Çalışmalar</p>
+      <h2 id="calisma-baslik">Sektörünüze göre hazır örnekler.</h2>
+      <p class="sub">Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.</p>
+
+      <div class="works">
+        <a class="work live reveal" href="avukat.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>hukukburosu.com</span></div>
+            <div class="scr" style="--s-bg:#050505;--s-ink:#E0E0E0;--s-acc:#C5A059;--s-on:#000">
+              <div class="n"><span>Yılmaz Hukuk</span><em>Hukuk bürosu</em></div>
+              <div class="big">Adaletin sarsılmaz gücü.</div>
+              <div class="t">Ceza, ticaret ve icra hukuku.</div>
+              <div class="b">Görüşme talep et</div>
+            </div>
+          </div>
+          <h3>Avukat ve hukuk bürosu</h3>
+          <p>Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.</p>
+          <span class="tag">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="doktor.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>doktorklinik.com</span></div>
+            <div class="scr" style="--s-bg:#0A192F;--s-ink:#FFFFFF;--s-acc:#CCA565;--s-on:#0A192F">
+              <div class="n"><span>Dr. Mehmet Demir</span><em>Özel klinik</em></div>
+              <div class="big">Önce dinleriz.</div>
+              <div class="t">Muayene, bilgilendirme ve takip.</div>
+              <div class="b">Randevu talep et</div>
+            </div>
+          </div>
+          <h3>Doktor ve özel klinik</h3>
+          <p>Görsel ve randevu formunun yan yana durduğu yerleşim, muayene bilgileri ve uygulama alanları.</p>
+          <span class="tag">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="diyetisyen.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>diyetisyen.com</span></div>
+            <div class="scr" style="--s-bg:#FAFAF9;--s-ink:#1C1917;--s-acc:#2E7D32;--s-on:#FFFFFF">
+              <div class="n"><span>Dyt. Zeynep Kaya</span><em>Online ve yüz yüze</em></div>
+              <div class="big">Sağlıklı yaşama başla.</div>
+              <div class="t">Kişiye özel beslenme programı.</div>
+              <div class="b">Hemen başvur</div>
+            </div>
+          </div>
+          <h3>Diyetisyen ve danışmanlık</h3>
+          <p>Sıcak yeşil tonlar, ön görüşme formu ve online ile yüz yüze danışmanlık vurgusu.</p>
+          <span class="tag">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="dis-klinigi.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>disklinigi.com</span></div>
+            <div class="scr" style="--s-bg:#EAF6F3;--s-ink:#10302B;--s-acc:#0E8F80;--s-on:#fff">
+              <div class="n"><span>Örnek Diş Kliniği</span><em>Klinik</em></div>
+              <div class="big">Sizi dinleyen diş hekimliği.</div>
+              <div class="t">Tedaviler, saatler ve konum.</div>
+              <div class="b">Randevu al</div>
+            </div>
+          </div>
+          <h3>Diş kliniği</h3>
+          <p>Tedavi listesi, ilk muayene adımları, saatler, sık sorulan sorular ve tek dokunuşla arama.</p>
+          <span class="tag">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="restoran.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>lokanta.com</span></div>
+            <div class="scr" style="--s-bg:#14110F;--s-ink:#F4EFE7;--s-acc:#FF6B3D;--s-on:#14110F">
+              <div class="n"><span>Örnek Lokanta</span><em>Menü</em></div>
+              <div class="big">Sofranız hazır.</div>
+              <div class="t">Yemekler, fiyatlar ve rezervasyon.</div>
+              <div class="b">Rezervasyon</div>
+            </div>
+          </div>
+          <h3>Restoran ve kafe</h3>
+          <p>Kategorilere ayrılmış sabit menü, öne çıkan yemekler ve tek dokunuşla rezervasyon araması.</p>
+          <span class="tag">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="kuafor.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>guzellik.com</span></div>
+            <div class="scr" style="--s-bg:#EFE9F7;--s-ink:#1E1230;--s-acc:#D62E79;--s-on:#fff">
+              <div class="n"><span>Örnek Güzellik Salonu</span><em>Salon</em></div>
+              <div class="big">Bakım zamanı.</div>
+              <div class="t">Hizmet seç, süreyi ve fiyatı gör.</div>
+              <div class="b">Hizmet seç</div>
+            </div>
+          </div>
+          <h3>Kuaför ve güzellik salonu</h3>
+          <p>Hizmet seçtikçe süre ve fiyatı toplayan, WhatsApp ile randevu gönderen panel.</p>
+          <span class="tag">Örneği aç</span>
+        </a>
+      </div>
+      <div class="hbar" aria-hidden="true"><i id="hbarFill"></i></div>
+    </div>
+    </div></div>
+  </section>
+
+  <section class="block" id="sektorler" aria-labelledby="sektor-baslik">
+    <div class="wrap">
+      <p class="eyebrow">Sektörler</p>
+      <h2 id="sektor-baslik">Mesleğinize göre web sitesi.</h2>
+      <p class="sub">Avukat, doktor, diyetisyen, diş hekimi, restoran ya da kuaför için web sitesi yaptırmak istiyorsanız, mesleğinize uygun hazır bir örnekle başlıyorum. İçerik, renk ve logo işletmenize göre uyarlanır.</p>
+      <div class="sectors">
+        <article><h3><a href="avukat.html">Avukat web sitesi</a></h3><p>Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.</p></article>
+        <article><h3><a href="doktor.html">Doktor web sitesi</a></h3><p>Uygulama alanları, muayene saatleri ve randevu bilgileri tek sayfada. Telefondan da rahat okunur.</p></article>
+        <article><h3><a href="diyetisyen.html">Diyetisyen web sitesi</a></h3><p>Online ve yüz yüze danışmanlığı anlatan, ön görüşme formu olan sıcak bir tanıtım sitesi.</p></article>
+        <article><h3><a href="dis-klinigi.html">Diş hekimi web sitesi</a></h3><p>Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.</p></article>
+        <article><h3><a href="restoran.html">Restoran ve kafe web sitesi</a></h3><p>Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.</p></article>
+        <article><h3><a href="kuafor.html">Kuaför ve güzellik salonu web sitesi</a></h3><p>Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="paketler" aria-labelledby="paket-baslik">
+    <div class="wrap">
+      <p class="eyebrow">Paketler</p>
+      <h2 id="paket-baslik">İhtiyacınıza uygun üç paket.</h2>
+      <p class="sub">Kapsam net, teklif yazılı. Ne alacağınızı işe başlamadan bilirsiniz.</p>
+
+      <div class="packs">
+        <div class="pack reveal">
+          <h3>Tek sayfa</h3>
+          <p class="for">Yeni açılan işler, esnaf ve serbest çalışanlar için.</p>
+          <ul>
+            <li>Tanıtım, hizmetler ve iletişim tek sayfada</li>
+            <li>Telefon uyumlu tasarım</li>
+            <li>Arama ve WhatsApp düğmeleri</li>
+            <li>Temel arama motoru ayarları</li>
+          </ul>
+          <!-- Fiyat eklemek için aşağıdaki satırı düzenleyin, örnek: Başlangıç fiyatı 5.000 TL -->
+          <p class="price">Fiyat için görüşelim</p>
+        </div>
+        <div class="pack reveal">
+          <h3>Kurumsal site</h3>
+          <p class="for">Klinik, büro ve firmalar için.</p>
+          <ul>
+            <li>5 sayfaya kadar: ana sayfa, hakkımızda, hizmetler, galeri, iletişim</li>
+            <li>İletişim formu ve Google Harita</li>
+            <li>Yerel aramalar için konum bilgileri</li>
+            <li>Kendi alan adınızda yayın</li>
+          </ul>
+          <p class="price">Fiyat için görüşelim</p>
+        </div>
+        <div class="pack reveal">
+          <h3>Özel proje</h3>
+          <p class="for">Standart paketlere sığmayan ihtiyaçlar için.</p>
+          <ul>
+            <li>Randevu veya rezervasyon servisi bağlama</li>
+            <li>Ürün ve katalog sayfaları</li>
+            <li>Mevcut sitenin yenilenmesi</li>
+            <li>Kapsam ve süre görüşmede belirlenir</li>
+          </ul>
+          <p class="price">Fiyat için görüşelim</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sss" aria-labelledby="sss-baslik">
+    <div class="wrap">
+      <p class="eyebrow">Sorular</p>
+      <h2 id="sss-baslik">Sık sorulan sorular.</h2>
+      <p class="sub">Aklınızdaki soru burada yoksa formdan ya da WhatsApp'tan sorabilirsiniz.</p>
+      <div class="faq">
+        <details>
+          <summary>Başka şehirdeyim, nasıl çalışıyoruz?</summary>
+          <p>Bütün süreç uzaktan yürür. Görüşmeleri telefonda ya da WhatsApp'ta yaparız, taslağı internetten görürsünüz. Yüz yüze buluşmanıza gerek yok.</p>
+        </details>
+        <details>
+          <summary>Barındırma ve alan adı için ödeme yapacak mıyım?</summary>
+          <p>Sitelerim statik olduğu için sunucu kirası gerektirmez. Alan adı (.com, .com.tr gibi) yıllık ücretlidir. Alan adını sizin adınıza almanızı öneririm, böylece site her zaman sizin kalır.</p>
+        </details>
+        <details>
+          <summary>Sitem Google'da ilk sırada çıkar mı?</summary>
+          <p>Sıralama garantisi kimse veremez. Sitenin teknik altyapısını arama motorlarına uygun hazırlarım. Sıralama, rekabete ve zamana göre değişir.</p>
+        </details>
+        <details>
+          <summary>Site ne kadar sürede hazır olur?</summary>
+          <p>Sayfa sayısına ve içeriğin ne zaman hazır olduğuna bağlıdır. Teklifte tarihi yazılı olarak veririm.</p>
+        </details>
+        <details>
+          <summary>Web sitesi yaptırmak için ne hazırlamam gerekir?</summary>
+          <p>Logonuz, birkaç fotoğraf, hizmetlerinizin listesi ve iletişim bilgileriniz yeterli. Bunlar yoksa birlikte planlar, eksikleri görüşmede tamamlarız.</p>
+        </details>
+        <details>
+          <summary>Yayından sonra değişiklik yaptırabilir miyim?</summary>
+          <p>Metin, fotoğraf ve telefon numarası gibi güncellemeleri benden isteyebilirsiniz. Neyin pakete dahil olduğu teklifte belirtilir.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-label="Teklif çağrısı">
+    <div class="wrap">
+      <h2>Sıradaki site sizinki olsun.</h2>
+      <a class="btn light" href="#iletisim">Teklif iste</a>
+    </div>
+  </section>
+
+  <section class="block" id="iletisim" aria-labelledby="iletisim-baslik" style="border-top:0">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow">İletişim</p>
+        <h2 id="iletisim-baslik">Projenizi anlatın, teklif hazırlayayım.</h2>
+        <p class="sub" style="margin-bottom:0">İşletmenizin türünü ve ne istediğinizi kısaca yazın. Aynı gün içinde dönmeye çalışırım.</p>
+        <address>
+          <div><span>Telefon</span><a href="tel:+905511187400">0551 118 74 00</a></div>
+          <div><span>WhatsApp</span><a href="https://wa.me/905511187400" rel="noopener">Mesaj gönder</a></div>
+          <div><span>E-posta</span><a href="mailto:emreyks4209@gmail.com">emreyks4209@gmail.com</a></div>
+          <div><span>Hizmet alanı</span>Türkiye geneli, uzaktan</div>
+        </address>
+      </div>
+
+      <form id="form" novalidate>
+        <div class="row2">
+          <label>Adınız soyadınız
+            <input type="text" id="ad" autocomplete="name" required>
+          </label>
+          <label>Telefon
+            <input type="tel" id="tel" autocomplete="tel" inputmode="tel" required>
+          </label>
+        </div>
+        <label>İşletme türü
+          <select id="tur">
+            <option>Avukat / hukuk bürosu</option>
+            <option>Doktor / klinik</option>
+            <option>Diyetisyen / danışmanlık</option>
+            <option>Diş kliniği</option>
+            <option>Restoran / kafe</option>
+            <option>Kuaför / güzellik salonu</option>
+            <option>Diğer</option>
+          </select>
+        </label>
+        <label>Ne istiyorsunuz?
+          <textarea id="mesaj" placeholder="Örnek: Yeni açtığım işletme için tanıtım sitesi istiyorum."></textarea>
+        </label>
+        <button type="submit" class="btn">Mesajı hazırla</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <p class="hint">Gönder'e bastığınızda WhatsApp'ta hazır bir mesaj açılır. Göndererek talebinizi tamamlarsınız.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 EY Studios. Tüm hakları saklıdır.</span>
+    <span>Türkiye geneli, uzaktan hizmet</span>
+  </div>
+  <div class="mega" aria-hidden="true">EY Studios</div>
+</footer>
+
+<script>
+(function () {
+  var FORM_ENDPOINT = ''; // Formspree gibi bir adres yazarsanız form doğrudan gönderir; boşsa WhatsApp mesajı hazırlar.
+  var WHATSAPP = '905511187400';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  /* ---- Başlığı kelime kelime aç ---- */
+  var h1 = document.getElementById('baslik');
+  if (h1 && !reduce) {
+    var words = h1.textContent.trim().split(/\s+/);
+    h1.innerHTML = '';
+    words.forEach(function (w, i) {
+      var o = document.createElement('span'); o.className = 'w';
+      var n = document.createElement('span'); n.textContent = w; n.style.setProperty('--i', i);
+      o.appendChild(n); h1.appendChild(o); h1.appendChild(document.createTextNode(' '));
+    });
+    h1.classList.add('split');
+  }
+
+  /* ---- Canlı vitrin: sektör temaları arasında geçiş ---- */
+  var themes = [
+    { url: 'hukukburosu.com', name: 'Yılmaz Hukuk', big: 'Adaletin sarsılmaz gücü.', sub: 'Ceza, ticaret ve icra hukuku.', btn: 'Görüşme talep et', bg: '#050505', ink: '#E0E0E0', acc: '#C5A059', on: '#000000', card: '#141414' },
+    { url: 'doktorklinik.com', name: 'Dr. Mehmet Demir', big: 'Önce dinleriz.', sub: 'Muayene, bilgilendirme ve takip.', btn: 'Randevu talep et', bg: '#0A192F', ink: '#FFFFFF', acc: '#CCA565', on: '#0A192F', card: '#13294B' },
+    { url: 'diyetisyen.com', name: 'Dyt. Zeynep Kaya', big: 'Sağlıklı yaşama başla.', sub: 'Kişiye özel beslenme programı.', btn: 'Hemen başvur', bg: '#FAFAF9', ink: '#1C1917', acc: '#2E7D32', on: '#FFFFFF', card: '#ECECE8' },
+    { url: 'disklinigi.com', name: 'Örnek Diş Kliniği', big: 'Sizi dinleyen diş hekimliği.', sub: 'Tedaviler, saatler ve konum.', btn: 'Randevu al', bg: '#EAF6F3', ink: '#10302B', acc: '#0E8F80', on: '#FFFFFF', card: '#D3ECE7' },
+    { url: 'lokanta.com', name: 'Örnek Lokanta', big: 'Sofranız hazır.', sub: 'Yemekler, fiyatlar ve rezervasyon.', btn: 'Rezervasyon', bg: '#14110F', ink: '#F4EFE7', acc: '#FF6B3D', on: '#14110F', card: '#221B17' },
+    { url: 'guzellik.com', name: 'Örnek Güzellik Salonu', big: 'Bakım zamanı.', sub: 'Hizmet seç, süreyi ve fiyatı gör.', btn: 'Hizmet seç', bg: '#EFE9F7', ink: '#1E1230', acc: '#D62E79', on: '#FFFFFF', card: '#E0D6F0' }
+  ];
+  var stage = document.getElementById('stage');
+  var urlEl = document.getElementById('hUrl');
+  var dataEls = stage ? stage.querySelectorAll('[data-k]') : [];
+  var cur = 0, typeTimer = null, cycleTimer = null;
+  var pages = ['avukat.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi.html', 'restoran.html', 'kuafor.html'];
+  var labels = ['Avukat', 'Doktor', 'Diyetisyen', 'Diş kliniği', 'Restoran', 'Kuaför'];
+  var pBtns = document.querySelectorAll('.picker-btns button');
+  var pLink = document.getElementById('pLink');
+
+  function typeInto(el, text) {
+    clearInterval(typeTimer);
+    var i = 0; el.textContent = '';
+    typeTimer = setInterval(function () {
+      i++; el.textContent = text.slice(0, i);
+      if (i >= text.length) clearInterval(typeTimer);
+    }, 32);
+  }
+
+  function setTheme(i) {
+    var t = themes[i];
+    stage.style.setProperty('--s-bg', t.bg);
+    stage.style.setProperty('--s-ink', t.ink);
+    stage.style.setProperty('--s-acc', t.acc);
+    stage.style.setProperty('--s-on', t.on);
+    stage.style.setProperty('--s-card', t.card);
+    Array.prototype.forEach.call(dataEls, function (el) { el.classList.add('out'); });
+    setTimeout(function () {
+      Array.prototype.forEach.call(dataEls, function (el) {
+        el.textContent = t[el.getAttribute('data-k')];
+        el.classList.remove('out');
+      });
+    }, 260);
+    typeInto(urlEl, t.url);
+    Array.prototype.forEach.call(pBtns, function (b, idx) { b.setAttribute('aria-pressed', idx === i ? 'true' : 'false'); });
+    if (pLink) { pLink.href = pages[i]; pLink.textContent = 'Örneği aç: ' + labels[i] + ' →'; }
+  }
+
+  if (stage && !reduce) {
+    cycleTimer = setInterval(function () {
+      if (document.hidden) return;
+      cur = (cur + 1) % themes.length;
+      setTheme(cur);
+    }, 3800);
+  }
+
+  Array.prototype.forEach.call(pBtns, function (b) {
+    b.addEventListener('click', function () {
+      clearInterval(cycleTimer);
+      cur = parseInt(b.getAttribute('data-i'), 10);
+      setTheme(cur);
+    });
+  });
+
+  /* ---- Fareyle 3B eğim ---- */
+  var shell = document.getElementById('shell');
+  var dev = document.getElementById('device');
+  if (shell && dev && fine && !reduce) {
+    shell.addEventListener('pointermove', function (e) {
+      var r = shell.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      shell.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      shell.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      dev.style.setProperty('--ry', (-14 + (px - 0.5) * 16) + 'deg');
+      dev.style.setProperty('--rx', (6 - (py - 0.5) * 14) + 'deg');
+    });
+    shell.addEventListener('pointerleave', function () {
+      dev.style.removeProperty('--ry'); dev.style.removeProperty('--rx');
+    });
+  }
+
+  /* ---- Kaydırdıkça site kendini kurar ---- */
+  var story = document.getElementById('story');
+  if (story && !reduce && getComputedStyle(story).display !== 'none') {
+    var steps = story.querySelectorAll('.story-steps li');
+    var bar = document.getElementById('storyBar');
+    var lChat = document.getElementById('lChat');
+    var lDraft = document.getElementById('lDraft');
+    var lLive = document.getElementById('lLive');
+    var lNotes = document.getElementById('lNotes');
+    var sPhone = document.getElementById('sPhone');
+    var sBadge = document.getElementById('sBadge');
+    var sUrl = document.getElementById('sUrl');
+    var bubs = story.querySelectorAll('.bub');
+    var notes = story.querySelectorAll('.note');
+    var FULL = 'sizinsiteniz.com';
+    var ticking = false;
+
+    function render() {
+      ticking = false;
+      var r = story.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      var total = story.offsetHeight - vh;
+      var p = clamp(-r.top / total, 0, 1);
+      var idx = Math.min(3, Math.floor(p * 4));
+      var s = idx === 3 ? clamp(p * 4 - 3, 0, 1) : p * 4 - idx;
+
+      Array.prototype.forEach.call(steps, function (li, i) { li.classList.toggle('on', i === idx); });
+      bar.style.width = (p * 100) + '%';
+
+      lChat.classList.toggle('on', idx === 0);
+      lDraft.classList.toggle('on', idx === 1);
+      lLive.classList.toggle('on', idx >= 2);
+      lNotes.classList.toggle('on', idx === 3);
+      sPhone.classList.toggle('on', idx === 3 || (idx === 2 && s > 0.35));
+      sBadge.classList.toggle('on', idx === 3 || (idx === 2 && s > 0.85));
+
+      Array.prototype.forEach.call(bubs, function (b) {
+        b.classList.toggle('on', idx > 0 || s >= parseFloat(b.getAttribute('data-at')));
+      });
+      Array.prototype.forEach.call(notes, function (n) {
+        n.classList.toggle('on', idx === 3 && s >= parseFloat(n.getAttribute('data-at')));
+      });
+
+      var t = idx === 1 ? clamp(s / 0.85, 0, 1) : (idx > 1 ? 1 : 0);
+      lDraft.style.setProperty('--t', t);
+
+      var txt;
+      if (idx === 0) txt = '\u00a0';
+      else if (idx === 1) txt = 'önizleme';
+      else if (idx === 2) txt = FULL.slice(0, Math.floor(clamp(s / 0.7, 0, 1) * FULL.length)) || '\u00a0';
+      else txt = FULL;
+      if (sUrl.textContent !== txt) sUrl.textContent = txt;
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    render();
+  }
+
+  /* ---- Kaydırınca beliren öğeler ---- */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el, i) {
+      el.style.transitionDelay = ((i % 3) * 80) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---- Üstte ilerleme çubuğu ---- */
+  var prog = document.getElementById('prog');
+  var progTick = false;
+  function updateProg() {
+    progTick = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (max > 0 ? clamp(window.scrollY / max, 0, 1) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { if (!progTick) { progTick = true; requestAnimationFrame(updateProg); } }, { passive: true });
+  window.addEventListener('resize', updateProg);
+  updateProg();
+
+  /* ---- Açık / koyu tema düğmesi ---- */
+  var themeBtn = document.getElementById('themeBtn');
+  var rootEl = document.documentElement;
+  if (!rootEl.getAttribute('data-theme')) {
+    rootEl.setAttribute('data-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function themeLabel() {
+    if (themeBtn) themeBtn.setAttribute('aria-label', rootEl.getAttribute('data-theme') === 'dark' ? 'Açık temaya geç' : 'Koyu temaya geç');
+  }
+  themeLabel();
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = rootEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      rootEl.setAttribute('data-theme', next);
+      themeLabel();
+      try { localStorage.setItem('ey-theme', next); } catch (e) {}
+    });
+  }
+
+  /* ---- Mıknatıslı düğmeler ve kart eğimi (yalnızca fareyle) ---- */
+  if (fine && !reduce) {
+    Array.prototype.forEach.call(document.querySelectorAll('.hero-shell .btn, .cta-band .btn'), function (b) {
+      b.addEventListener('pointermove', function (e) {
+        var r = b.getBoundingClientRect();
+        var x = (e.clientX - (r.left + r.width / 2)) * 0.25;
+        var y = (e.clientY - (r.top + r.height / 2)) * 0.35;
+        b.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      });
+      b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.work.live'), function (c) {
+      var fr = c.querySelector('.frame');
+      c.addEventListener('pointermove', function (e) {
+        var r = fr.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        fr.style.setProperty('--ry', ((px - 0.5) * 10) + 'deg');
+        fr.style.setProperty('--rx', ((0.5 - py) * 8) + 'deg');
+      });
+      c.addEventListener('pointerleave', function () { fr.style.removeProperty('--ry'); fr.style.removeProperty('--rx'); });
+    });
+  }
+
+  /* ---- Portföy: kaydırdıkça yatay ilerler (geniş ekranda) ---- */
+  var gal = document.getElementById('hgal');
+  var gsec = document.getElementById('calismalar');
+  var worksEl = gsec ? gsec.querySelector('.works') : null;
+  var hfill = document.getElementById('hbarFill');
+  var hOn = false, hDist = 0, hTick = false;
+
+  function hLayout() {
+    if (!gal || !worksEl) return;
+    var want = window.innerWidth > 960 && window.innerHeight >= 760 && !reduce && fine;
+    if (want !== hOn) {
+      hOn = want;
+      gsec.classList.toggle('hmode', want);
+      if (want) {
+        Array.prototype.forEach.call(worksEl.querySelectorAll('.reveal'), function (el) { el.classList.add('in'); el.style.transitionDelay = '0ms'; });
+      } else {
+        gal.style.height = ''; worksEl.style.transform = '';
+      }
+    }
+    if (hOn) {
+      worksEl.style.transform = 'none';
+      var x0 = worksEl.parentElement.getBoundingClientRect().left;
+      hDist = Math.max(0, x0 + worksEl.offsetWidth + x0 - window.innerWidth);
+      gal.style.height = (window.innerHeight + hDist) + 'px';
+      hRender();
+    }
+  }
+  function hRender() {
+    hTick = false;
+    if (!hOn) return;
+    var r = gal.getBoundingClientRect();
+    var span = gal.offsetHeight - window.innerHeight;
+    var p = span > 0 ? clamp(-r.top / span, 0, 1) : 0;
+    worksEl.style.transform = 'translate3d(' + (-p * hDist) + 'px,0,0)';
+    if (hfill) hfill.style.width = (p * 100) + '%';
+  }
+  if (gal && worksEl) {
+    window.addEventListener('scroll', function () { if (hOn && !hTick) { hTick = true; requestAnimationFrame(hRender); } }, { passive: true });
+    window.addEventListener('resize', hLayout);
+    window.addEventListener('load', hLayout);
+    gsec.addEventListener('focusin', function (e) {
+      if (!hOn) return;
+      var card = e.target.closest ? e.target.closest('.work') : null;
+      if (!card) return;
+      var x0 = worksEl.parentElement.getBoundingClientRect().left;
+      var left = card.getBoundingClientRect().left - worksEl.getBoundingClientRect().left;
+      var t = clamp(left - x0, 0, hDist);
+      var top = gal.getBoundingClientRect().top + window.scrollY;
+      var span = gal.offsetHeight - window.innerHeight;
+      if (hDist > 0) window.scrollTo(0, top + (t / hDist) * span);
+    });
+    hLayout();
+  }
+
+  /* ---- Form ---- */
+  var form = document.getElementById('form');
+  var status = document.getElementById('status');
+  function show(msg, isErr) { status.className = isErr ? 'status err' : 'status'; status.textContent = msg; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ad = document.getElementById('ad').value.trim();
+    var tel = document.getElementById('tel').value.trim();
+    var tur = document.getElementById('tur').value;
+    var mesaj = document.getElementById('mesaj').value.trim();
+    if (!ad || !tel) { show('Ad soyad ve telefon alanlarını doldurun.', true); return; }
+
+    var text = 'Merhaba, ' + tur + ' için web sitesi teklifi almak istiyorum.\n' +
+               'Ad soyad: ' + ad + '\nTelefon: ' + tel + (mesaj ? '\nİstek: ' + mesaj : '');
+
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ ad: ad, telefon: tel, tur: tur, mesaj: mesaj })
+      }).then(function (r) {
+        if (!r.ok) throw new Error('fail');
+        form.reset();
+        show('Mesajınız alındı. En kısa sürede size dönerim.', false);
+      }).catch(function () {
+        show('Mesaj gönderilemedi. Lütfen WhatsApp veya telefonla ulaşın.', true);
+      });
+      return;
+    }
+    show('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.', false);
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>
