@@ -11,7 +11,10 @@
 <meta name="theme-color" content="#2B3DF5">
 <meta name="google-site-verification" content="c4HIWb7nwjMsuN1VyCU3hOdzS-oNmRjyN4XFIVIuv20">
 <link rel="canonical" href="https://emreyukseltr.github.io/">
-<link rel="icon" href="favicon.png" type="image/png">
+
+<!-- İŞTE BURASI: Resim dosyasına gerek kalmadan şeffaf arka planlı, kodla çizilmiş sekme logon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='12' y='82' font-family='sans-serif' font-weight='900' font-size='75' fill='%23D1D5DB'>E</text><text x='52' y='82' font-family='sans-serif' font-weight='900' font-size='75' fill='%2300E5FF'>Y</text></svg>">
+
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://emreyukseltr.github.io/">
 <meta property="og:title" content="Avukat, Doktor ve Diyetisyen Web Sitesi Tasarımı | EY Studios TR">
@@ -29,7 +32,7 @@
   "description": "İşletmeler için web tasarım ve geliştirme. Türkiye genelinde uzaktan hizmet.",
   "url": "https://emreyukseltr.github.io/",
   "telephone": "+905511187400",
-  "email": "eystudios.tr@gmail.com",
+  "email": "emreyks4209@gmail.com",
   "areaServed": { "@type": "Country", "name": "Türkiye" },
   "serviceType": ["Web sitesi tasarımı", "Kurumsal web sitesi", "Avukat web sitesi", "Doktor web sitesi", "Diyetisyen web sitesi", "Diş hekimi web sitesi", "Restoran web sitesi", "Kuaför web sitesi"]
 }
@@ -840,14 +843,12 @@
         <address>
           <div><span>Telefon</span><a href="tel:+905511187400">0551 118 74 00</a></div>
           <div><span>WhatsApp</span><a href="https://wa.me/905511187400" rel="noopener">Mesaj gönder</a></div>
-          <div><span>E-posta</span><a href="mailto:emreyks4209@gmail.com">eystudios.tr@gmail.com</a></div>
-          <!-- INSTAGRAM LINKI GÜNCELLENDI (Sadece eystudios.tr yazıyor) -->
+          <div><span>E-posta</span><a href="mailto:emreyks4209@gmail.com">emreyks4209@gmail.com</a></div>
           <div><span>Instagram</span><a href="https://www.instagram.com/eystudios.tr?stkn=eTRseXVlbnVpODZ4&utm_source=qr" target="_blank" rel="noopener">eystudios.tr</a></div>
           <div><span>Hizmet alanı</span>Türkiye geneli, uzaktan</div>
         </address>
       </div>
 
-      <!-- FORM ALANINA E-POSTA EKLENDİ -->
       <form id="form" novalidate>
         <div class="row2">
           <label>Adınız soyadınız
@@ -892,7 +893,6 @@
 
 <script>
 (function () {
-  // Formspree Entegrasyonu
   var FORM_ENDPOINT = 'https://formspree.io/f/meaoaekk'; 
   var WHATSAPP = '905511187400';
 
@@ -1177,7 +1177,7 @@
     hLayout();
   }
 
-  /* ---- Formspree Entegreli Form JS GÜNCELLEMESİ (E-posta Eklendi) ---- */
+  /* ---- Formspree Entegreli Form ---- */
   var form = document.getElementById('form');
   var status = document.getElementById('status');
   function show(msg, isErr) { status.className = isErr ? 'status err' : 'status'; status.textContent = msg; }
@@ -1186,7 +1186,6 @@
     e.preventDefault();
     var ad = document.getElementById('ad').value.trim();
     var tel = document.getElementById('tel').value.trim();
-    // E-posta verisini al
     var email = document.getElementById('email').value.trim();
     var tur = document.getElementById('tur').value;
     var mesaj = document.getElementById('mesaj').value.trim();
@@ -1201,9 +1200,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ 
-          // Mail kutuna düşecek projenin türü:
           _subject: "Yeni Proje Talebi - " + tur,
-          // Formspree'nin gönderici olarak tanıyacağı mail (doğrudan yanıtla diyebilirsin)
           email: email, 
           Ad_Soyad: ad, 
           Telefon: tel, 
