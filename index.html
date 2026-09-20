@@ -762,7 +762,6 @@
             <li>Arama ve WhatsApp düğmeleri</li>
             <li>Temel arama motoru ayarları</li>
           </ul>
-          <!-- Fiyat eklemek için aşağıdaki satırı düzenleyin, örnek: Başlangıç fiyatı 5.000 TL -->
           <p class="price">Fiyat için görüşelim</p>
         </div>
         <div class="pack reveal">
@@ -842,12 +841,13 @@
           <div><span>Telefon</span><a href="tel:+905511187400">0551 118 74 00</a></div>
           <div><span>WhatsApp</span><a href="https://wa.me/905511187400" rel="noopener">Mesaj gönder</a></div>
           <div><span>E-posta</span><a href="mailto:emreyks4209@gmail.com">emreyks4209@gmail.com</a></div>
-          <!-- INSTAGRAM LINKI -->
-          <div><span>Instagram</span><a href="https://www.instagram.com/eystudios.tr?stkn=eTRseXVlbnVpODZ4&utm_source=qr" target="_blank" rel="noopener">@eystudios.tr</a></div>
+          <!-- INSTAGRAM LINKI GÜNCELLENDI (Sadece eystudios.tr yazıyor) -->
+          <div><span>Instagram</span><a href="https://www.instagram.com/eystudios.tr?stkn=eTRseXVlbnVpODZ4&utm_source=qr" target="_blank" rel="noopener">eystudios.tr</a></div>
           <div><span>Hizmet alanı</span>Türkiye geneli, uzaktan</div>
         </address>
       </div>
 
+      <!-- FORM ALANINA E-POSTA EKLENDİ -->
       <form id="form" novalidate>
         <div class="row2">
           <label>Adınız soyadınız
@@ -857,6 +857,9 @@
             <input type="tel" id="tel" autocomplete="tel" inputmode="tel" required>
           </label>
         </div>
+        <label>E-posta adresi
+          <input type="email" id="email" autocomplete="email" required>
+        </label>
         <label>İşletme türü
           <select id="tur">
             <option>Avukat / hukuk bürosu</option>
@@ -873,7 +876,7 @@
         </label>
         <button type="submit" class="btn">Mesajı hazırla</button>
         <p class="status" id="status" role="status" aria-live="polite"></p>
-        <p class="hint">Gönder'e bastığınızda WhatsApp'ta hazır bir mesaj açılır. Göndererek talebinizi tamamlarsınız.</p>
+        <p class="hint">Gönder'e bastığınızda doğrudan sistemimize iletilir. İsterseniz WhatsApp üzerinden de ulaşabilirsiniz.</p>
       </form>
     </div>
   </section>
@@ -1174,7 +1177,7 @@
     hLayout();
   }
 
-  /* ---- Formspree Entegreli Form ---- */
+  /* ---- Formspree Entegreli Form JS GÜNCELLEMESİ (E-posta Eklendi) ---- */
   var form = document.getElementById('form');
   var status = document.getElementById('status');
   function show(msg, isErr) { status.className = isErr ? 'status err' : 'status'; status.textContent = msg; }
@@ -1183,12 +1186,15 @@
     e.preventDefault();
     var ad = document.getElementById('ad').value.trim();
     var tel = document.getElementById('tel').value.trim();
+    // E-posta verisini al
+    var email = document.getElementById('email').value.trim();
     var tur = document.getElementById('tur').value;
     var mesaj = document.getElementById('mesaj').value.trim();
-    if (!ad || !tel) { show('Ad soyad ve telefon alanlarını doldurun.', true); return; }
+    
+    if (!ad || !tel || !email) { show('Ad soyad, telefon ve e-posta alanlarını doldurun.', true); return; }
 
     var text = 'Merhaba, ' + tur + ' için web sitesi teklifi almak istiyorum.\n' +
-               'Ad soyad: ' + ad + '\nTelefon: ' + tel + (mesaj ? '\nİstek: ' + mesaj : '');
+               'Ad soyad: ' + ad + '\nTelefon: ' + tel + '\nE-posta: ' + email + (mesaj ? '\nİstek: ' + mesaj : '');
 
     if (FORM_ENDPOINT) {
       fetch(FORM_ENDPOINT, {
@@ -1197,6 +1203,8 @@
         body: JSON.stringify({ 
           // Mail kutuna düşecek projenin türü:
           _subject: "Yeni Proje Talebi - " + tur,
+          // Formspree'nin gönderici olarak tanıyacağı mail (doğrudan yanıtla diyebilirsin)
+          email: email, 
           Ad_Soyad: ad, 
           Telefon: tel, 
           Sektor: tur, 
