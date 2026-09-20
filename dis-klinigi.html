@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Örnek Diş Kliniği | Diş Hekimi ve Muayenehane</title>
+<meta name="description" content="Muayene, dolgu, kanal tedavisi, implant ve ortodonti için randevu alın. Çalışma saatleri, adres ve iletişim bilgileri bu sayfada.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%B7%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3FAF8; --surface: #FFFFFF; --ink: #0F2A26; --muted: #45625C; --line: #D3E6E1;
+    --accent: #0B7A6D; --on: #FFFFFF; --soft: #DDF1EC; --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1.05rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(1140px, 100% - 2.5rem); margin-inline: auto; }
+  section { scroll-margin-top: 4.5rem; }
+
+  .topbar { background: var(--ink); color: #fff; font-size: .9rem; text-align: center; padding: .5rem 1rem; }
+  .topbar a { font-weight: 700; text-decoration: none; }
+
+  header.head { position: sticky; top: 0; z-index: 30; background: rgba(243,250,248,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header.head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .8rem; }
+  .logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; }
+  .logo svg { width: 2.2rem; height: 2.2rem; }
+  nav ul { display: flex; gap: 1.5rem; align-items: center; list-style: none; margin: 0; padding: 0; }
+  nav a { text-decoration: none; font-weight: 600; font-size: .97rem; }
+  nav a:hover { color: var(--accent); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: .7rem 1.4rem; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 1rem/1 var(--font); text-decoration: none; border: 2px solid var(--accent); cursor: pointer; transition: transform .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  nav .btn { min-height: 42px; padding: .4rem 1.1rem; }
+
+  /* Hero */
+  .hero { padding-block: clamp(2.5rem, 7vw, 5.5rem); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .eyebrow { display: inline-block; background: var(--soft); color: var(--accent); font-weight: 700; font-size: .88rem; padding: .35rem .8rem; border-radius: 99px; margin-bottom: 1.2rem; }
+  h1 { font-size: clamp(2.3rem, 5.2vw, 4.2rem); line-height: 1.04; letter-spacing: -.035em; font-weight: 800; margin: 0 0 1.2rem; text-wrap: balance; }
+  .lede { font-size: 1.15rem; color: var(--muted); max-width: 48ch; margin: 0 0 1.8rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  .art { position: relative; aspect-ratio: 1 / 1; max-width: 460px; margin-inline: auto; width: 100%; }
+  .art .blob { position: absolute; inset: 4%; background: var(--soft); border-radius: 42% 58% 55% 45% / 50% 44% 56% 50%; animation: morph 12s ease-in-out infinite; }
+  .art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  @keyframes morph { 50% { border-radius: 58% 42% 45% 55% / 44% 56% 46% 54%; } }
+  .chip { position: absolute; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .9rem; font-size: .88rem; font-weight: 600; box-shadow: 0 10px 30px rgba(15,42,38,.12); }
+  .chip small { display: block; font-weight: 500; color: var(--muted); font-size: .78rem; }
+  .chip.a { top: 8%; left: -2%; } .chip.b { right: -3%; top: 44%; } .chip.c { left: 6%; bottom: 6%; }
+
+  /* Blocks */
+  .block { padding-block: clamp(3rem, 7vw, 5rem); }
+  .block.alt { background: var(--surface); border-block: 1px solid var(--line); }
+  h2 { font-size: clamp(1.8rem, 3.8vw, 2.7rem); line-height: 1.1; letter-spacing: -.03em; font-weight: 800; margin: 0 0 .8rem; max-width: 22ch; text-wrap: balance; }
+  .sub { color: var(--muted); max-width: 58ch; margin: 0 0 2.4rem; }
+
+  .treat { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; counter-reset: t; }
+  .treat li { counter-increment: t; display: grid; grid-template-columns: 2.6rem 1fr; gap: 1rem; padding: 1.2rem 0; border-top: 1px solid var(--line); }
+  .treat li::before { content: counter(t, decimal-leading-zero); font-weight: 800; color: var(--accent); font-size: 1.1rem; padding-top: .1rem; }
+  .treat h3 { margin: 0 0 .2rem; font-size: 1.15rem; letter-spacing: -.01em; }
+  .treat p { margin: 0; color: var(--muted); font-size: .98rem; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; counter-reset: s; }
+  .steps li { counter-increment: s; background: var(--bg); border: 1px solid var(--line); border-radius: 20px; padding: 1.6rem; }
+  .steps li::before { content: counter(s); display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; margin-bottom: 1rem; }
+  .steps h3 { margin: 0 0 .4rem; font-size: 1.15rem; }
+  .steps p { margin: 0; color: var(--muted); font-size: .98rem; }
+
+  .info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 1.8rem; }
+  .card h3 { margin: 0 0 1rem; font-size: 1.25rem; }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: .55rem 0; border-bottom: 1px dashed var(--line); }
+  .hours td:last-child { text-align: right; font-weight: 700; }
+  .hours tr:last-child td { border-bottom: 0; }
+  .card address { font-style: normal; display: grid; gap: .6rem; }
+  .card address a { font-weight: 700; }
+
+  .faq { max-width: 780px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 1.1rem 2.4rem 1.1rem 0; font-weight: 700; font-size: 1.08rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: .2rem; top: 50%; transform: translateY(-50%); font-size: 1.6rem; color: var(--accent); }
+  details[open] summary::after { content: "\2212"; }
+  details p { margin: 0 0 1.1rem; color: var(--muted); }
+
+  .book { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4rem); }
+  form { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 1.8rem; display: grid; gap: 1.1rem; }
+  label { display: grid; gap: .35rem; font-weight: 700; font-size: .95rem; }
+  input, select, textarea { font: 400 1rem/1.4 var(--font); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: .8rem .9rem; width: 100%; }
+  .row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .check { display: flex; gap: .7rem; align-items: flex-start; font-weight: 400; font-size: .9rem; color: var(--muted); }
+  .check input { width: 1.2rem; height: 1.2rem; flex: none; margin-top: .2rem; accent-color: var(--accent); }
+  .status { min-height: 1.3rem; margin: 0; font-weight: 600; }
+  .status.err { color: #B3261E; }
+  .hint { margin: 0; font-size: .88rem; color: var(--muted); }
+
+  footer { padding-block: 2rem 6rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+  footer p { margin: 0 0 .5rem; max-width: 80ch; }
+
+  .callbar { display: none; }
+  .demo-back{position:fixed;left:12px;bottom:12px;z-index:9999;background:#0C1020;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+  .demo-back:hover{background:#2B3DF5}
+
+  @media (max-width: 900px) {
+    .hero .wrap, .book, .info { grid-template-columns: minmax(0, 1fr); }
+    .treat { grid-template-columns: minmax(0, 1fr); }
+    .steps { grid-template-columns: minmax(0, 1fr); }
+    nav ul li:not(:last-child) { display: none; }
+    .chip.a { left: 0; } .chip.b { right: 0; }
+  }
+  @media (max-width: 700px) {
+    .row2 { grid-template-columns: minmax(0, 1fr); }
+    .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: .7rem .9rem calc(.7rem + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); }
+    .demo-back { bottom: 78px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .art .blob { animation: none; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="topbar">Acil diş ağrısı için: <a href="tel:+905551234567">+90 (555) 123 45 67</a></div>
+
+<header class="head">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#0B7A6D"/><path d="M12 22c4 9 20 9 24 0" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/></svg>
+      Örnek Diş Kliniği
+    </a>
+    <nav aria-label="Ana menü">
+      <ul>
+        <li><a href="#tedaviler">Tedaviler</a></li>
+        <li><a href="#muayene">İlk muayene</a></li>
+        <li><a href="#saatler">Saatler</a></li>
+        <li><a href="#sss">SSS</a></li>
+        <li><a class="btn" href="#randevu">Randevu al</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Diş hekimi · Muayenehane</span>
+        <h1>Sizi dinleyen, her adımı anlatan diş hekimliği.</h1>
+        <p class="lede">Muayene, dolgu, kanal tedavisi, implant, ortodonti ve estetik uygulamalar için randevu alabilirsiniz. Tedaviye başlamadan önce seçenekleri ve süreci birlikte konuşuruz.</p>
+        <div class="cta">
+          <a class="btn" href="#randevu">Randevu al</a>
+          <a class="btn ghost" href="tel:+905551234567">Hemen ara</a>
+        </div>
+      </div>
+      <div class="art" aria-hidden="true">
+        <div class="blob"></div>
+        <svg viewBox="0 0 400 400"><path d="M70 170c20 130 240 130 260 0" stroke="#0B7A6D" stroke-width="22" stroke-linecap="round" fill="none"/><circle cx="150" cy="120" r="12" fill="#0B7A6D"/><circle cx="250" cy="120" r="12" fill="#0B7A6D"/></svg>
+        <div class="chip a">Hafta içi 09.00–18.00<small>Cumartesi 09.00–14.00</small></div>
+        <div class="chip b">İlk muayenede bilgilendirme</div>
+        <div class="chip c">Acil durumda arayın</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="tedaviler" aria-labelledby="t-b">
+    <div class="wrap">
+      <h2 id="t-b">Yapılan uygulamalar</h2>
+      <p class="sub">Şikâyetinize göre hangi tedavinin gerekli olduğu muayeneden sonra netleşir.</p>
+      <ol class="treat">
+        <li><div><h3>Muayene ve kontrol</h3><p>Diş ve diş eti sağlığının değerlendirilmesi, gerekirse röntgen.</p></div></li>
+        <li><div><h3>Dolgu ve estetik dolgu</h3><p>Çürük ve kırıkların diş rengine uygun malzemeyle onarılması.</p></div></li>
+        <li><div><h3>Kanal tedavisi</h3><p>Diş sinirinde enfeksiyon veya kalıcı ağrı olduğunda uygulanır.</p></div></li>
+        <li><div><h3>İmplant</h3><p>Eksik dişlerin yerine kalıcı çözüm. Uygunluk muayeneyle belirlenir.</p></div></li>
+        <li><div><h3>Ortodonti</h3><p>Tel ve şeffaf plak seçenekleriyle diş dizilimi tedavisi.</p></div></li>
+        <li><div><h3>Diş beyazlatma</h3><p>Uygunluk kontrolünden sonra uygulanan estetik işlem.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="muayene" aria-labelledby="m-b">
+    <div class="wrap">
+      <h2 id="m-b">İlk muayenede ne olur?</h2>
+      <p class="sub">Ne yaşayacağınızı bilmek çoğu zaman kaygıyı azaltır.</p>
+      <ol class="steps">
+        <li><h3>Sizi dinleriz</h3><p>Şikâyetinizi, sağlık geçmişinizi ve varsa kullandığınız ilaçları konuşuruz.</p></li>
+        <li><h3>Muayene ederiz</h3><p>Dişlerinizi ve diş etinizi kontrol eder, gerekirse röntgen çekeriz.</p></li>
+        <li><h3>Plan yaparız</h3><p>Seçenekleri, süreyi ve ücret bilgisini tedaviye başlamadan önce paylaşırız.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block alt" id="saatler" aria-labelledby="s-b">
+    <div class="wrap">
+      <h2 id="s-b">Saatler ve konum</h2>
+      <p class="sub">Randevusuz geldiğinizde yoğunluğa göre bekleyebilirsiniz. Randevu almanızı öneririz.</p>
+      <div class="info">
+        <div class="card">
+          <h3>Çalışma saatleri</h3>
+          <table class="hours">
+            <tr><td>Pazartesi – Cuma</td><td>09.00 – 18.00</td></tr>
+            <tr><td>Cumartesi</td><td>09.00 – 14.00</td></tr>
+            <tr><td>Pazar</td><td>Kapalı</td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Adres ve iletişim</h3>
+          <address>
+            <span>Örnek Mah. Örnek Cd. No: 12, Şehir</span>
+            <a href="tel:+905551234567">+90 (555) 123 45 67</a>
+            <a href="https://wa.me/905551234567" rel="noopener">WhatsApp ile yazın</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Örnek+Diş+Kliniği" rel="noopener">Yol tarifi al</a>
+          </address>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sss" aria-labelledby="q-b">
+    <div class="wrap">
+      <h2 id="q-b">Sık sorulan sorular</h2>
+      <div class="faq" style="margin-top:1.5rem">
+        <details><summary>İlk randevuya ne getirmeliyim?</summary><p>Kimliğinizi, varsa önceki röntgen ve tedavi kayıtlarınızı, düzenli kullandığınız ilaçların listesini getirmeniz yeterli.</p></details>
+        <details><summary>Muayene ne kadar sürer?</summary><p>Genellikle kısa sürer. Ek işlem gerekirse süre uzayabilir, bunu size önceden söyleriz.</p></details>
+        <details><summary>Tedavi ücretini ne zaman öğrenirim?</summary><p>Muayeneden sonra, tedaviye başlamadan önce ücret ve seçenekler size açıkça anlatılır.</p></details>
+        <details><summary>Ağrım var, hemen gelebilir miyim?</summary><p>Acil durumlarda önce telefonla arayın. Uygun bir saat için sizi yönlendirelim.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="randevu" aria-labelledby="r-b">
+    <div class="wrap book">
+      <div>
+        <h2 id="r-b">Randevu talebi</h2>
+        <p class="sub">Formu doldurun, WhatsApp'ta hazır bir mesaj açılsın. Mesajı göndererek talebinizi tamamlayın. Size uygun saati onaylamak için geri dönüş yaparız.</p>
+      </div>
+      <form id="f" novalidate>
+        <div class="row2">
+          <label>Adınız soyadınız<input id="ad" autocomplete="name" required></label>
+          <label>Telefon<input id="tel" type="tel" inputmode="tel" autocomplete="tel" required></label>
+        </div>
+        <div class="row2">
+          <label>Konu
+            <select id="konu"><option>Muayene / kontrol</option><option>Dolgu</option><option>Kanal tedavisi</option><option>İmplant</option><option>Ortodonti</option><option>Beyazlatma</option><option>Diğer</option></select>
+          </label>
+          <label>Uygun zaman
+            <select id="zaman"><option>Sabah</option><option>Öğleden sonra</option><option>Fark etmez</option></select>
+          </label>
+        </div>
+        <label class="check"><input type="checkbox" id="kvkk"><span>Bilgilerimin yalnızca randevumu planlamak için kullanılmasını kabul ediyorum. Sağlık bilgisi yazmayacağım.</span></label>
+        <button class="btn" type="submit">Mesajı hazırla</button>
+        <p class="status" id="st" role="status" aria-live="polite"></p>
+        <p class="hint">Lütfen bu forma teşhis, ilaç veya kimlik bilgisi yazmayın. Ayrıntıları muayenede konuşuruz.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Örnek Diş Kliniği. Tüm hakları saklıdır.</p>
+    <p>Bu sayfadaki bilgiler genel bilgilendirme amaçlıdır ve kişiye özel tıbbi görüş yerine geçmez.</p>
+  </div>
+</footer>
+
+<div class="callbar"><a class="btn" href="tel:+905551234567">Ara</a><a class="btn ghost" href="#randevu">Randevu</a></div>
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function () {
+  // Formspree gibi bir servis kullanmak için adresi yazın; boşsa WhatsApp mesajı hazırlanır.
+  var FORM_ENDPOINT = '';
+  var WHATSAPP = '905551234567';
+  var f = document.getElementById('f'), st = document.getElementById('st');
+  function show(m, e) { st.className = e ? 'status err' : 'status'; st.textContent = m; }
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var ad = document.getElementById('ad').value.trim(), tel = document.getElementById('tel').value.trim();
+    var konu = document.getElementById('konu').value, zaman = document.getElementById('zaman').value;
+    if (!ad || !tel) return show('Ad soyad ve telefon alanlarını doldurun.', true);
+    if (!document.getElementById('kvkk').checked) return show('Devam etmek için onay kutusunu işaretleyin.', true);
+    var text = 'Merhaba, randevu talep ediyorum.\nAd soyad: ' + ad + '\nTelefon: ' + tel + '\nKonu: ' + konu + '\nUygun zaman: ' + zaman;
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ ad: ad, telefon: tel, konu: konu, zaman: zaman }) })
+        .then(function (r) { if (!r.ok) throw 0; f.reset(); show('Talebiniz alındı. Size geri döneceğiz.', false); })
+        .catch(function () { show('Gönderilemedi. Lütfen telefonla arayın.', true); });
+      return;
+    }
+    show('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.', false);
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>

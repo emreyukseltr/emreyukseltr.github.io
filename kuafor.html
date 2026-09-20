@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Örnek Güzellik Salonu | Kuaför, Tırnak ve Cilt Bakımı</title>
+<meta name="description" content="Saç, tırnak ve cilt bakımı hizmetleri ve fiyatları. Hizmetlerinizi seçin, WhatsApp ile randevu talebinizi gönderin.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%85%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EFE9F7; --surface: #FFFFFF; --ink: #1E1230; --muted: #56496B; --line: #D9CFEA;
+    --accent: #D62E79; --on: #FFFFFF; --soft: #E0D6F0; --deep: #2A1240;
+    --display: 'Syne', 'Segoe UI', system-ui, sans-serif;
+    --body: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1.05rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(1160px, 100% - 2.5rem); margin-inline: auto; }
+  section { scroll-margin-top: 1rem; }
+
+  header.head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; }
+  .logo { font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-decoration: none; letter-spacing: -.02em; }
+  nav ul { display: flex; gap: 1.6rem; align-items: center; list-style: none; margin: 0; padding: 0; }
+  nav a { text-decoration: none; font-weight: 600; }
+  nav a:not(.btn):hover { color: var(--accent); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: .7rem 1.5rem; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 1rem/1 var(--body); text-decoration: none; border: 2px solid var(--accent); cursor: pointer; transition: transform .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  nav .btn { min-height: 42px; padding: .4rem 1.2rem; }
+
+  .hero { padding-block: clamp(2rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem); }
+  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3.4rem, 13vw, 11rem); line-height: .88; letter-spacing: -.055em; margin: 0 0 1.6rem; }
+  h1 span { color: var(--accent); }
+  .hero-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2rem; align-items: end; }
+  .lede { font-size: 1.2rem; color: var(--muted); max-width: 44ch; margin: 0; }
+  .cta { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: flex-end; }
+
+  .ribbon { background: var(--deep); color: #fff; overflow: hidden; white-space: nowrap; }
+  .ribbon-track { display: inline-flex; animation: slide 30s linear infinite; }
+  .ribbon ul { display: flex; list-style: none; margin: 0; padding: 0; }
+  .ribbon li { display: flex; align-items: center; gap: 1.6rem; padding: .95rem 0 .95rem 1.6rem; font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+  .ribbon li::after { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--accent); }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  .block { padding-block: clamp(3rem, 7vw, 5.5rem); }
+  h2 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -.04em; margin: 0 0 .8rem; }
+  .sub { color: var(--muted); max-width: 56ch; margin: 0 0 2.2rem; }
+
+  .book { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+  .cat { margin-bottom: 1.8rem; }
+  .cat h3 { font-family: var(--display); font-size: 1.15rem; letter-spacing: -.01em; margin: 0 0 .6rem; color: var(--accent); }
+  .svc { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: .9rem; align-items: center; padding: .95rem 1rem; background: var(--surface); border: 2px solid transparent; border-radius: 16px; margin-bottom: .55rem; cursor: pointer; transition: border-color .15s, background-color .15s; }
+  .svc:hover { border-color: var(--line); }
+  .svc input { position: absolute; opacity: 0; pointer-events: none; }
+  .box { width: 1.5rem; height: 1.5rem; border-radius: 8px; border: 2px solid var(--line); display: grid; place-items: center; color: transparent; font-weight: 800; font-size: .9rem; transition: all .15s; }
+  .svc:has(input:checked) { border-color: var(--accent); background: #FFF6FA; }
+  .svc:has(input:checked) .box { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .svc:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .svc b { display: block; font-weight: 700; }
+  .svc small { color: var(--muted); }
+  .price { font-family: var(--display); font-weight: 700; white-space: nowrap; }
+
+  .panel { position: sticky; top: 1rem; background: var(--deep); color: #fff; border-radius: 24px; padding: 1.7rem; display: grid; gap: 1rem; }
+  .panel h3 { font-family: var(--display); margin: 0; font-size: 1.5rem; letter-spacing: -.02em; }
+  .sum { background: rgba(255,255,255,.08); border-radius: 14px; padding: 1rem 1.1rem; min-height: 5.2rem; }
+  .sum b { font-family: var(--display); font-size: 1.25rem; display: block; }
+  .sum span { color: #CFC3E6; font-size: .92rem; }
+  .panel label, .panel legend { font-weight: 700; font-size: .92rem; }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  .pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .4rem; }
+  .pill { position: relative; }
+  .pill input { position: absolute; opacity: 0; pointer-events: none; }
+  .pill span { display: inline-block; padding: .45rem .85rem; border-radius: 99px; border: 1.5px solid rgba(255,255,255,.3); font-size: .9rem; font-weight: 600; cursor: pointer; }
+  .pill input:checked + span { background: #fff; color: var(--deep); border-color: #fff; }
+  .pill input:focus-visible + span { outline: 3px solid #fff; outline-offset: 2px; }
+  .panel input.txt { width: 100%; font: 400 1rem/1.4 var(--body); color: var(--ink); background: #fff; border: 0; border-radius: 12px; padding: .8rem .9rem; margin-top: .35rem; }
+  .panel .btn { width: 100%; }
+  .status { min-height: 1.3rem; margin: 0; font-weight: 600; font-size: .95rem; }
+  .status.err { color: #FFB3CF; }
+  .hint { margin: 0; color: #CFC3E6; font-size: .85rem; }
+
+  .info { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+  .card { background: var(--surface); border-radius: 20px; padding: 1.6rem; }
+  .card h3 { font-family: var(--display); margin: 0 0 .8rem; font-size: 1.2rem; }
+  .card table { width: 100%; border-collapse: collapse; }
+  .card td { padding: .35rem 0; }
+  .card td:last-child { text-align: right; font-weight: 700; }
+  .card address { font-style: normal; display: grid; gap: .4rem; }
+  .card a { font-weight: 700; }
+
+  footer { padding-block: 2rem 6rem; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
+
+  .callbar { display: none; }
+  .demo-back{position:fixed;left:12px;bottom:12px;z-index:9999;background:#0C1020;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+  .demo-back:hover{background:#2B3DF5}
+
+  @media (max-width: 900px) {
+    .hero-row, .book, .info { grid-template-columns: minmax(0, 1fr); }
+    .cta { justify-content: flex-start; }
+    .panel { position: static; }
+    nav ul li:not(:last-child) { display: none; }
+  }
+  @media (max-width: 700px) {
+    .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: .7rem .9rem calc(.7rem + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); }
+    .demo-back { bottom: 78px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ribbon-track { animation: none; } .ribbon { overflow-x: auto; } .btn, .svc, .box { transition: none; } }
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <a class="logo" href="#">Örnek Güzellik</a>
+    <nav aria-label="Ana menü">
+      <ul>
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#bilgi">Saatler</a></li>
+        <li><a class="btn" href="#hizmetler">Randevu al</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Bakım <span>zamanı.</span></h1>
+      <div class="hero-row">
+        <p class="lede">Saç, tırnak ve cilt bakımı için ihtiyacınız olan hizmetleri seçin, tahmini süreyi ve başlangıç fiyatını görün, randevu talebinizi tek dokunuşla gönderin.</p>
+        <div class="cta">
+          <a class="btn" href="#hizmetler">Hizmet seç</a>
+          <a class="btn ghost" href="tel:+905551234567">Hemen ara</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon-track">
+      <ul><li>Saç kesimi</li><li>Boya</li><li>Fön</li><li>Keratin bakım</li><li>Manikür</li><li>Kalıcı oje</li><li>Cilt bakımı</li><li>Kaş tasarımı</li></ul>
+      <ul><li>Saç kesimi</li><li>Boya</li><li>Fön</li><li>Keratin bakım</li><li>Manikür</li><li>Kalıcı oje</li><li>Cilt bakımı</li><li>Kaş tasarımı</li></ul>
+    </div>
+  </div>
+
+  <section class="block" id="hizmetler" aria-labelledby="h-b">
+    <div class="wrap">
+      <h2 id="h-b">Hizmetler ve randevu</h2>
+      <p class="sub">İstediğiniz hizmetlere dokunun. Süreler yaklaşık, fiyatlar başlangıç fiyatıdır. Kesin bilgi randevuda netleşir.</p>
+
+      <div class="book">
+        <div id="list">
+          <div class="cat">
+            <h3>Saç</h3>
+            <label class="svc"><input type="checkbox" data-n="Saç kesimi" data-m="45" data-p="350"><span class="box">✓</span><span><b>Saç kesimi</b><small>yaklaşık 45 dk</small></span><span class="price">350 ₺</span></label>
+            <label class="svc"><input type="checkbox" data-n="Fön" data-m="30" data-p="200"><span class="box">✓</span><span><b>Fön</b><small>yaklaşık 30 dk</small></span><span class="price">200 ₺</span></label>
+            <label class="svc"><input type="checkbox" data-n="Saç boyama" data-m="120" data-p="900"><span class="box">✓</span><span><b>Saç boyama</b><small>yaklaşık 2 sa</small></span><span class="price">900 ₺</span></label>
+            <label class="svc"><input type="checkbox" data-n="Keratin bakım" data-m="90" data-p="1200"><span class="box">✓</span><span><b>Keratin bakım</b><small>yaklaşık 1 sa 30 dk</small></span><span class="price">1.200 ₺</span></label>
+          </div>
+          <div class="cat">
+            <h3>Tırnak</h3>
+            <label class="svc"><input type="checkbox" data-n="Manikür" data-m="40" data-p="250"><span class="box">✓</span><span><b>Manikür</b><small>yaklaşık 40 dk</small></span><span class="price">250 ₺</span></label>
+            <label class="svc"><input type="checkbox" data-n="Kalıcı oje" data-m="60" data-p="400"><span class="box">✓</span><span><b>Kalıcı oje</b><small>yaklaşık 1 sa</small></span><span class="price">400 ₺</span></label>
+            <label class="svc"><input type="checkbox" data-n="Pedikür" data-m="50" data-p="350"><span class="box">✓</span><span><b>Pedikür</b><small>yaklaşık 50 dk</small></span><span class="price">350 ₺</span></label>
+          </div>
+          <div class="cat">
+            <h3>Cilt ve kaş</h3>
+            <label class="svc"><input type="checkbox" data-n="Cilt bakımı" data-m="60" data-p="700"><span class="box">✓</span><span><b>Cilt bakımı</b><small>yaklaşık 1 sa</small></span><span class="price">700 ₺</span></label>
+            <label class="svc"><input type="checkbox" data-n="Kaş tasarımı" data-m="20" data-p="200"><span class="box">✓</span><span><b>Kaş tasarımı</b><small>yaklaşık 20 dk</small></span><span class="price">200 ₺</span></label>
+            <label class="svc"><input type="checkbox" data-n="Kirpik lifting" data-m="60" data-p="600"><span class="box">✓</span><span><b>Kirpik lifting</b><small>yaklaşık 1 sa</small></span><span class="price">600 ₺</span></label>
+          </div>
+          <p class="hint" style="color:var(--muted)">Bu hizmetler ve fiyatlar örnektir. Salonunuza göre değiştirilir.</p>
+        </div>
+
+        <form class="panel" id="f" novalidate aria-label="Randevu talebi">
+          <h3>Randevu talebiniz</h3>
+          <div class="sum" id="sum" aria-live="polite"><b>Henüz hizmet seçmediniz</b><span>Soldan bir ya da birkaç hizmet seçin.</span></div>
+          <fieldset>
+            <legend>Hangi gün?</legend>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="gun" value="Pazartesi"><span>Pzt</span></label>
+              <label class="pill"><input type="radio" name="gun" value="Salı"><span>Sal</span></label>
+              <label class="pill"><input type="radio" name="gun" value="Çarşamba"><span>Çar</span></label>
+              <label class="pill"><input type="radio" name="gun" value="Perşembe"><span>Per</span></label>
+              <label class="pill"><input type="radio" name="gun" value="Cuma"><span>Cum</span></label>
+              <label class="pill"><input type="radio" name="gun" value="Cumartesi"><span>Cmt</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Hangi saatlerde?</legend>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="saat" value="Sabah"><span>Sabah</span></label>
+              <label class="pill"><input type="radio" name="saat" value="Öğle"><span>Öğle</span></label>
+              <label class="pill"><input type="radio" name="saat" value="Akşamüstü"><span>Akşamüstü</span></label>
+            </div>
+          </fieldset>
+          <label>Adınız soyadınız<input class="txt" id="ad" autocomplete="name" required></label>
+          <label>Telefon<input class="txt" id="tel" type="tel" inputmode="tel" autocomplete="tel" required></label>
+          <button class="btn" type="submit">Randevu talebini gönder</button>
+          <p class="status" id="st" role="status" aria-live="polite"></p>
+          <p class="hint">WhatsApp'ta hazır bir mesaj açılır. Mesajı göndererek talebinizi tamamlarsınız. Kesin saat onay mesajıyla netleşir.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="bilgi" style="padding-top:0" aria-labelledby="b-b">
+    <div class="wrap">
+      <h2 id="b-b">Saatler ve konum</h2>
+      <div class="info" style="margin-top:1.5rem">
+        <div class="card"><h3>Çalışma saatleri</h3><table><tr><td>Pazartesi – Cumartesi</td><td>10.00 – 19.00</td></tr><tr><td>Pazar</td><td>Kapalı</td></tr></table></div>
+        <div class="card"><h3>Adres</h3><address><span>Örnek Mah. Örnek Cd. No: 8, Şehir</span><a href="https://www.google.com/maps/search/?api=1&query=Örnek+Güzellik+Salonu" rel="noopener">Yol tarifi al</a></address></div>
+        <div class="card"><h3>İletişim</h3><address><a href="tel:+905551234567">+90 (555) 123 45 67</a><a href="https://wa.me/905551234567" rel="noopener">WhatsApp ile yazın</a></address></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Örnek Güzellik Salonu. Tüm hakları saklıdır.</div></footer>
+
+<div class="callbar"><a class="btn" href="tel:+905551234567">Ara</a><a class="btn ghost" href="#hizmetler">Randevu</a></div>
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function () {
+  // Formspree gibi bir servis kullanmak için adresi yazın; boşsa WhatsApp mesajı hazırlanır.
+  var FORM_ENDPOINT = '';
+  var WHATSAPP = '905551234567';
+
+  var boxes = document.querySelectorAll('#list input[type=checkbox]');
+  var sum = document.getElementById('sum');
+
+  function fmtTime(m) {
+    var h = Math.floor(m / 60), r = m % 60;
+    return (h ? h + ' sa ' : '') + (r ? r + ' dk' : (h ? '' : '0 dk'));
+  }
+  function fmtPrice(n) { return n.toLocaleString('tr-TR') + ' ₺'; }
+  function selected() {
+    return Array.prototype.filter.call(boxes, function (b) { return b.checked; });
+  }
+  function render() {
+    var s = selected(), min = 0, pr = 0;
+    s.forEach(function (b) { min += +b.getAttribute('data-m'); pr += +b.getAttribute('data-p'); });
+    if (!s.length) {
+      sum.innerHTML = '<b>Henüz hizmet seçmediniz</b><span>Soldan bir ya da birkaç hizmet seçin.</span>';
+      return;
+    }
+    sum.innerHTML = '<b>' + s.length + ' hizmet · yaklaşık ' + fmtTime(min) + '</b><span>Başlangıç fiyatı toplamı ' + fmtPrice(pr) + '</span>';
+  }
+  Array.prototype.forEach.call(boxes, function (b) { b.addEventListener('change', render); });
+
+  var f = document.getElementById('f'), st = document.getElementById('st');
+  function show(m, e) { st.className = e ? 'status err' : 'status'; st.textContent = m; }
+  function radio(name) { var r = f.querySelector('input[name=' + name + ']:checked'); return r ? r.value : ''; }
+
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var s = selected(), ad = document.getElementById('ad').value.trim(), tel = document.getElementById('tel').value.trim();
+    if (!s.length) return show('Lütfen en az bir hizmet seçin.', true);
+    if (!ad || !tel) return show('Ad soyad ve telefon alanlarını doldurun.', true);
+    var names = s.map(function (b) { return b.getAttribute('data-n'); }).join(', ');
+    var min = 0, pr = 0; s.forEach(function (b) { min += +b.getAttribute('data-m'); pr += +b.getAttribute('data-p'); });
+    var gun = radio('gun') || 'fark etmez', saat = radio('saat') || 'fark etmez';
+    var text = 'Merhaba, randevu talep ediyorum.\nHizmetler: ' + names + '\nTahmini süre: ' + fmtTime(min) + '\nGün: ' + gun + '\nSaat: ' + saat + '\nAd soyad: ' + ad + '\nTelefon: ' + tel;
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ hizmetler: names, gun: gun, saat: saat, ad: ad, telefon: tel }) })
+        .then(function (r) { if (!r.ok) throw 0; f.reset(); render(); show('Talebiniz alındı. Onay için size döneceğiz.', false); })
+        .catch(function () { show('Gönderilemedi. Lütfen telefonla arayın.', true); });
+      return;
+    }
+    show('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.', false);
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>

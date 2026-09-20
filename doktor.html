@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Op. Dr. Mehmet Demir | Özel Klinik</title>
+    <meta name="description" content="Laparoskopik cerrahi, estetik ve rekonstrüktif cerrahi ile endoskopik tarama için randevu bilgileri, çalışma saatleri ve iletişim.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A9%BA%3C/text%3E%3C/svg%3E">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+        :root {
+            --primary: #0a192f;
+            --accent: #cca565;
+            --light: #f4f7f6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Outfit', sans-serif; background-color: var(--light); color: #333; overflow-x: hidden; line-height: 1.6; }
+        a { color: inherit; }
+        :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+        nav { position: absolute; width: 100%; top: 0; z-index: 100; padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #fff; font-family: 'Playfair Display', serif; font-size: 2rem; letter-spacing: 1px; }
+        .logo span { color: var(--accent); font-style: italic; }
+        .nav-contact { color: #fff; font-size: 0.9rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid var(--accent); padding-bottom: 5px; text-decoration: none; }
+
+        .hero { min-height: 100vh; display: flex; width: 100%; position: relative; }
+        .hero-left { width: 45%; background-color: var(--primary); display: flex; flex-direction: column; justify-content: center; padding: 120px 5% 60px; position: relative; }
+        .hero-right { width: 55%; background: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1600&q=80') center/cover; position: relative; }
+        .hero-right::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, var(--primary) 0%, transparent 30%); }
+
+        .hero-left h1 { font-family: 'Playfair Display', serif; font-size: 4.8rem; color: #fff; line-height: 1.1; margin-bottom: 25px; font-weight: 400; }
+        .hero-left p { color: #b4bccb; font-size: 1.15rem; line-height: 1.8; font-weight: 300; max-width: 90%; margin-bottom: 30px; }
+        .hero-tel { color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.5rem; text-decoration: none; }
+
+        .booking-box { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); background: #fff; padding: 40px; width: 430px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); z-index: 10; border-top: 4px solid var(--primary); }
+        .booking-box h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary); margin-bottom: 22px; text-align: center; }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid #ccc; background: transparent; font-size: 1rem; font-family: 'Outfit', sans-serif; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-bottom-color: var(--accent); }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: #767676; font-weight: 300; }
+        .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+        .check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.82rem; color: #555; margin-bottom: 6px; }
+        .check input { width: 16px; height: 16px; margin-top: 3px; accent-color: var(--primary); flex: none; }
+        .btn { width: 100%; padding: 18px; background: var(--primary); color: #fff; border: none; font-size: 0.95rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-top: 12px; font-family: 'Outfit', sans-serif; font-weight: 500; }
+        .btn:hover { background: var(--accent); color: var(--primary); }
+        .status { min-height: 1.2rem; margin-top: 10px; font-size: 0.9rem; color: var(--primary); font-weight: 500; }
+        .status.err { color: #b3261e; }
+        .hint { font-size: 0.78rem; color: #666; margin-top: 6px; }
+
+        .trust-bar { background: #fff; padding: 60px 10%; display: flex; justify-content: space-between; gap: 30px; border-bottom: 1px solid #eaeaea; }
+        .stat { text-align: center; width: 30%; }
+        .stat-num { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--primary); margin-bottom: 5px; }
+        .stat-label { color: #555; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        .services { padding: 100px 10%; background: var(--light); }
+        .services h2 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--primary); text-align: center; margin-bottom: 70px; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; }
+        .srv-card { background: #fff; padding: 50px 40px; text-align: left; transition: transform 0.4s; border-top: 3px solid transparent; }
+        .srv-card:hover { transform: translateY(-15px); border-top-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .srv-icon { font-size: 2.5rem; color: #a8823f; margin-bottom: 25px; font-family: 'Playfair Display', serif; font-style: italic; }
+        .srv-card h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary); margin-bottom: 15px; }
+        .srv-card p { color: #555; font-size: 1rem; line-height: 1.7; font-weight: 300; }
+
+        .visit { background: var(--primary); color: #fff; padding: 80px 10%; }
+        .visit h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 400; margin-bottom: 40px; }
+        .visit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; }
+        .visit h5 { color: var(--accent); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; margin-bottom: 10px; }
+        .visit p, .visit a { color: #d6dbe5; font-weight: 300; text-decoration: none; display: block; }
+        .visit a:hover { color: var(--accent); }
+
+        footer { padding: 30px 5% 90px; text-align: center; background: var(--primary); color: #8f9ab0; font-size: 0.88rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        footer p { margin-bottom: 6px; }
+
+        .demo-back{position:fixed;left:12px;bottom:12px;z-index:9999;background:#0C1020;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.2)}
+        .demo-back:hover{background:#2B3DF5}
+
+        @media (max-width: 1024px) {
+            nav { position: relative; flex-direction: column; align-items: flex-start; gap: 15px; padding: 30px 5% 10px 5%; background-color: var(--primary); }
+            .hero { flex-direction: column; min-height: 0; }
+            .hero-left { width: 100%; padding: 20px 5% 60px 5%; justify-content: flex-start; }
+            .hero-right { width: 100%; height: 50vh; }
+            .hero-right::after { background: linear-gradient(180deg, var(--primary) 0%, transparent 30%); }
+            .hero-left h1 { font-size: 3rem; line-height: 1.2; }
+            .booking-box { position: relative; right: auto; top: auto; transform: none; width: 90%; max-width: 500px; padding: 30px 20px; margin: -80px auto 40px auto; z-index: 20; }
+            .trust-bar { flex-direction: column; gap: 40px; padding: 60px 5%; }
+            .stat { width: 100%; }
+            .services { padding: 60px 5%; }
+            .services h2 { font-size: 2.2rem; line-height: 1.3; word-wrap: break-word; }
+            .visit { padding: 60px 5%; }
+        }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .srv-card, .btn { transition: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Dr. Mehmet <span>Demir</span></div>
+        <a class="nav-contact" href="tel:+905551234567">Randevu için arayın</a>
+    </nav>
+
+    <main>
+    <section class="hero">
+        <div class="hero-left">
+            <h1>Önce <br>dinleriz.</h1>
+            <p>Muayene, bilgilendirme ve ameliyat sonrası kontrol: her aşamada sorularınızı yanıtlar, seçenekleri açıkça anlatırız. Randevu için formu doldurun ya da arayın.</p>
+            <a class="hero-tel" href="tel:+905551234567">+90 (555) 123 45 67</a>
+        </div>
+        <div class="hero-right"></div>
+
+        <div class="booking-box">
+            <h3>Randevu Talebi</h3>
+            <form id="f" novalidate>
+                <div class="form-group"><label class="sr" for="ad">Adınız soyadınız</label><input type="text" id="ad" placeholder="Adınız Soyadınız" autocomplete="name" required></div>
+                <div class="form-group"><label class="sr" for="tel">Telefon</label><input type="tel" id="tel" placeholder="İletişim Numaranız" autocomplete="tel" inputmode="tel" required></div>
+                <div class="form-group"><label class="sr" for="mesaj">Randevu nedeni</label><textarea id="mesaj" placeholder="Randevu nedeniniz (kısaca)" rows="2"></textarea></div>
+                <label class="check"><input type="checkbox" id="kvkk"><span>Bilgilerimin yalnızca randevumu planlamak için kullanılmasını kabul ediyorum. Sağlık bilgisi yazmayacağım.</span></label>
+                <button type="submit" class="btn">Randevu Talep Et</button>
+                <p class="status" id="st" role="status" aria-live="polite"></p>
+                <p class="hint">Lütfen teşhis, ilaç veya kimlik bilgisi yazmayın. Ayrıntıları muayenede konuşuruz. Gönder'e bastığınızda WhatsApp'ta hazır bir mesaj açılır.</p>
+            </form>
+        </div>
+    </section>
+
+    <section class="trust-bar">
+        <div class="stat"><div class="stat-num">01</div><div class="stat-label">Randevu ile muayene</div></div>
+        <div class="stat"><div class="stat-num">02</div><div class="stat-label">Ameliyat öncesi bilgilendirme</div></div>
+        <div class="stat"><div class="stat-num">03</div><div class="stat-label">Ameliyat sonrası kontrol</div></div>
+    </section>
+
+    <section class="services">
+        <h2>Uygulama Alanları</h2>
+        <div class="service-grid">
+            <div class="srv-card">
+                <div class="srv-icon">I.</div>
+                <h4>Laparoskopik Cerrahi</h4>
+                <p>Safra kesesi ve fıtık ameliyatlarında küçük kesilerle yapılan kapalı yöntem. Uygunluk muayeneden sonra belirlenir.</p>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">II.</div>
+                <h4>Estetik &amp; Rekonstrüktif</h4>
+                <p>Meme cerrahisi, onkoplastik yaklaşımlar ve bedensel deformitelerin onarımı. Seçenekler görüşmede anlatılır.</p>
+            </div>
+            <div class="srv-card">
+                <div class="srv-icon">III.</div>
+                <h4>Endoskopik Tarama</h4>
+                <p>Mide ve bağırsak taramaları, sedasyon altında uygulanır. Hazırlık bilgileri randevuda verilir.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="visit" id="iletisim">
+        <h2>Muayene Bilgileri</h2>
+        <div class="visit-grid">
+            <div><h5>Telefon</h5><a href="tel:+905551234567">+90 (555) 123 45 67</a><a href="https://wa.me/905551234567" rel="noopener">WhatsApp ile yazın</a></div>
+            <div><h5>Adres</h5><p>Örnek Mah. Örnek Cd. No: 20, Şehir</p><a href="https://www.google.com/maps/search/?api=1&query=Özel+Klinik" rel="noopener">Yol tarifi al</a></div>
+            <div><h5>Saatler</h5><p>Hafta içi 09.00 – 17.00</p><p>Cumartesi ve Pazar kapalı</p></div>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Op. Dr. Mehmet Demir. Tüm hakları saklıdır.</p>
+        <p>Bu sayfadaki bilgiler genel bilgilendirme amaçlıdır ve kişiye özel tıbbi görüş yerine geçmez. Acil durumlarda 112'yi arayın.</p>
+    </footer>
+
+    <a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function () {
+  // Formspree gibi bir servis kullanmak için adresi yazın; boşsa WhatsApp mesajı hazırlanır.
+  var FORM_ENDPOINT = '';
+  var WHATSAPP = '905551234567';
+  var f = document.getElementById('f'), st = document.getElementById('st');
+  function show(m, e) { st.className = e ? 'status err' : 'status'; st.textContent = m; }
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var ad = document.getElementById('ad').value.trim(), tel = document.getElementById('tel').value.trim(), mesaj = document.getElementById('mesaj').value.trim();
+    if (!ad || !tel) return show('Ad soyad ve telefon alanlarını doldurun.', true);
+    if (!document.getElementById('kvkk').checked) return show('Devam etmek için onay kutusunu işaretleyin.', true);
+    var text = 'Merhaba, randevu talep ediyorum.\nAd soyad: ' + ad + '\nTelefon: ' + tel + (mesaj ? '\nNeden: ' + mesaj : '');
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ ad: ad, telefon: tel, mesaj: mesaj }) })
+        .then(function (r) { if (!r.ok) throw 0; f.reset(); show('Talebiniz alındı. Size dönüş yapacağız.', false); })
+        .catch(function () { show('Gönderilemedi. Lütfen telefonla arayın.', true); });
+      return;
+    }
+    show('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.', false);
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>

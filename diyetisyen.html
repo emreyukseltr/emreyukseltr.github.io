@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyt. Zeynep Kaya | Online ve Yüz Yüze Diyet Danışmanlığı</title>
+    <meta name="description" content="Kişiye özel beslenme programı için ön görüşme randevusu. Online ve yüz yüze danışmanlık. İletişim ve çalışma saatleri bu sayfada.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A5%97%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', system-ui, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { display: flex; min-height: 100vh; background-color: #fff; overflow-x: hidden; }
+        a { color: inherit; }
+        :focus-visible { outline: 3px solid #2e7d32; outline-offset: 3px; }
+
+        .split-image {
+            width: 50%;
+            background: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80') center/cover;
+            position: relative;
+            min-height: 100vh;
+        }
+        .overlay-text { position: absolute; bottom: 50px; left: 50px; color: #fff; background: rgba(46, 125, 50, 0.92); padding: 30px; border-radius: 20px; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .overlay-text h2 { font-size: 2rem; margin-bottom: 10px; }
+
+        .split-content { width: 50%; padding: 50px 80px 90px; display: flex; flex-direction: column; justify-content: center; background: #fafaf9; }
+        .brand { font-size: 1.5rem; color: #2e7d32; font-weight: 800; margin-bottom: 30px; letter-spacing: -0.5px; }
+        .split-content h1 { font-size: 3rem; color: #1c1917; line-height: 1.1; margin-bottom: 20px; }
+        .split-content > p { color: #57534e; font-size: 1.1rem; margin-bottom: 30px; }
+
+        .quick-form { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e7e5e4; }
+        .quick-form h3 { margin-bottom: 20px; color: #2e7d32; }
+        .input-group { margin-bottom: 15px; }
+        .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+        .input-group input, .input-group textarea { width: 100%; padding: 15px; border: 1px solid #d6d3d1; border-radius: 8px; background: #f5f5f4; font-size: 1rem; }
+        .input-group input::placeholder, .input-group textarea::placeholder { color: #78716c; }
+        .input-group input:focus, .input-group textarea:focus { border-color: #2e7d32; outline: none; background: #fff; }
+        .check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: #57534e; margin-bottom: 14px; }
+        .check input { width: 18px; height: 18px; margin-top: 3px; accent-color: #2e7d32; flex: none; }
+        .submit-btn { width: 100%; padding: 15px; background: #2e7d32; color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #1b5e20; }
+        .status { min-height: 1.3rem; margin-top: 10px; font-size: 0.92rem; color: #2e7d32; font-weight: 500; }
+        .status.err { color: #b3261e; }
+        .hint { font-size: 0.8rem; color: #78716c; margin-top: 6px; }
+
+        .contact { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; font-size: 0.95rem; color: #57534e; }
+        .contact h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #2e7d32; margin-bottom: 4px; }
+        .contact a { font-weight: 600; text-decoration: none; color: #1c1917; display: block; }
+        .legal { margin-top: 26px; font-size: 0.8rem; color: #78716c; }
+
+        .demo-back{position:fixed;left:12px;bottom:12px;z-index:9999;background:#0C1020;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+        .demo-back:hover{background:#2B3DF5}
+
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .split-image { width: 100%; min-height: 400px; }
+            .overlay-text { bottom: 20px; left: 20px; right: 20px; max-width: none; }
+            .split-content { width: 100%; padding: 40px 20px 90px; }
+            .split-content h1 { font-size: 2.3rem; }
+        }
+        @media (max-width: 480px) { .contact { grid-template-columns: minmax(0, 1fr); } }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .submit-btn { transition: none; } }
+    </style>
+</head>
+<body>
+    <div class="split-image">
+        <div class="overlay-text">
+            <h2>Kendine İnan!</h2>
+            <p>Aç kalmadan, porsiyon dengesi ve sürdürülebilir alışkanlıklarla dengeli beslenmeyi birlikte planlayalım.</p>
+        </div>
+    </div>
+
+    <main class="split-content">
+        <div class="brand">Dyt. Zeynep Kaya</div>
+        <h1>Sağlıklı Yaşam <br> Serüvenine Başla</h1>
+        <p>Kliniğimizde veya online olarak, senin günlük yaşamına, alışkanlıklarına ve sağlık durumuna uygun beslenme programları hazırlıyoruz.</p>
+
+        <form class="quick-form" id="f" novalidate>
+            <h3>Ön Görüşme Randevusu</h3>
+            <div class="input-group"><label class="sr" for="ad">Adınız soyadınız</label><input type="text" id="ad" placeholder="Adınız Soyadınız" autocomplete="name" required></div>
+            <div class="input-group"><label class="sr" for="tel">Telefon</label><input type="tel" id="tel" placeholder="Telefon Numaranız" autocomplete="tel" inputmode="tel" required></div>
+            <div class="input-group"><label class="sr" for="mesaj">Hedefiniz</label><textarea id="mesaj" placeholder="Hedefiniz nedir? (kısaca)" rows="2"></textarea></div>
+            <label class="check"><input type="checkbox" id="kvkk"><span>Bilgilerimin yalnızca randevumu planlamak için kullanılmasını kabul ediyorum. Sağlık bilgisi yazmayacağım.</span></label>
+            <button class="submit-btn" type="submit">Hemen Başvur</button>
+            <p class="status" id="st" role="status" aria-live="polite"></p>
+            <p class="hint">Lütfen hastalık veya ilaç bilgisi yazmayın, ayrıntıları görüşmede konuşuruz. Gönder'e bastığınızda WhatsApp'ta hazır bir mesaj açılır.</p>
+        </form>
+
+        <div class="contact">
+            <div><h4>Telefon</h4><a href="tel:+905551234567">+90 (555) 123 45 67</a><a href="https://wa.me/905551234567" rel="noopener">WhatsApp ile yaz</a></div>
+            <div><h4>Adres</h4><span>Örnek Mah. Örnek Cd. No: 3, Şehir</span><a href="https://www.google.com/maps/search/?api=1&query=Diyetisyen+Kliniği" rel="noopener">Yol tarifi al</a></div>
+            <div><h4>Saatler</h4><span>Hafta içi 09.00 – 18.00</span></div>
+            <div><h4>Danışmanlık</h4><span>Yüz yüze ve online</span></div>
+        </div>
+        <p class="legal">&copy; 2026 Dyt. Zeynep Kaya. Bu sayfadaki bilgiler genel bilgilendirme amaçlıdır ve kişiye özel tıbbi görüş yerine geçmez.</p>
+    </main>
+
+    <a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function () {
+  // Formspree gibi bir servis kullanmak için adresi yazın; boşsa WhatsApp mesajı hazırlanır.
+  var FORM_ENDPOINT = '';
+  var WHATSAPP = '905551234567';
+  var f = document.getElementById('f'), st = document.getElementById('st');
+  function show(m, e) { st.className = e ? 'status err' : 'status'; st.textContent = m; }
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var ad = document.getElementById('ad').value.trim(), tel = document.getElementById('tel').value.trim(), mesaj = document.getElementById('mesaj').value.trim();
+    if (!ad || !tel) return show('Ad soyad ve telefon alanlarını doldurun.', true);
+    if (!document.getElementById('kvkk').checked) return show('Devam etmek için onay kutusunu işaretleyin.', true);
+    var text = 'Merhaba, ön görüşme randevusu almak istiyorum.\nAd soyad: ' + ad + '\nTelefon: ' + tel + (mesaj ? '\nHedef: ' + mesaj : '');
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ ad: ad, telefon: tel, mesaj: mesaj }) })
+        .then(function (r) { if (!r.ok) throw 0; f.reset(); show('Başvurunuz alındı. Size dönüş yapacağız.', false); })
+        .catch(function () { show('Gönderilemedi. Lütfen telefonla arayın.', true); });
+      return;
+    }
+    show('WhatsApp açılıyor. Mesajı göndererek başvurunuzu tamamlayın.', false);
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>
