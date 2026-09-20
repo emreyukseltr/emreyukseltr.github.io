@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>| EY Studios |</title>
+<title>Avukat, Doktor ve Diyetisyen Web Sitesi Tasarımı | EY Studios TR</title>
 <meta name="description" content="Avukat, doktor, diyetisyen, diş hekimi, restoran ve kuaför için mobil uyumlu, hızlı web sitesi tasarımı. Türkiye genelinde uzaktan hizmet. Teklif alın.">
-<meta name="keywords" content="web sitesi yaptırma, web tasarım, kurumsal web sitesi, avukat web sitesi, doktor web sitesi, diyetisyen web sitesi, diş hekimi web sitesi, restoran web sitesi, kuaför web sitesi, EY Studios">
+<meta name="keywords" content="web sitesi yaptırma, web tasarım, kurumsal web sitesi, avukat web sitesi, doktor web sitesi, diyetisyen web sitesi, diş hekimi web sitesi, restoran web sitesi, kuaför web sitesi, EY Studios TR">
 <meta name="robots" content="index, follow">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#2B3DF5">
 <meta name="google-site-verification" content="c4HIWb7nwjMsuN1VyCU3hOdzS-oNmRjyN4XFIVIuv20">
 <link rel="canonical" href="https://emreyukseltr.github.io/">
+<link rel="icon" href="favicon.png" type="image/png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://emreyukseltr.github.io/">
-<meta property="og:title" content="Avukat, Doktor ve Diyetisyen Web Sitesi Tasarımı | EY Studios">
+<meta property="og:title" content="Avukat, Doktor ve Diyetisyen Web Sitesi Tasarımı | EY Studios TR">
 <meta property="og:description" content="Mesleğinize uygun, mobil uyumlu ve hızlı web siteleri. Türkiye genelinde uzaktan hizmet.">
 <meta property="og:locale" content="tr_TR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +25,7 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "EY Studios",
+  "name": "EY Studios TR",
   "description": "İşletmeler için web tasarım ve geliştirme. Türkiye genelinde uzaktan hizmet.",
   "url": "https://emreyukseltr.github.io/",
   "telephone": "+905511187400",
@@ -95,13 +96,17 @@
   .btn.line { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
   .btn.line:hover { background: #fff; color: #1B2BD0; filter: none; }
 
-  /* ---------- Hero ---------- */
+  /* ---------- Hero & Logo ---------- */
   .hero-shell { background: var(--hero-bg); color: #fff; overflow: clip; position: relative; }
   .hero-shell :focus-visible { outline-color: #fff; }
   .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; }
-  .logo { text-decoration: none; font-family: var(--display); font-size: 1.6rem; letter-spacing: -0.03em; display: flex; align-items: baseline; gap: .35rem; }
-  .logo b { font-weight: 800; }
-  .logo span { font-weight: 500; opacity: .75; }
+  
+  /* NEON LOGO CSS */
+  .logo { text-decoration: none; font-family: var(--display); font-size: 2rem; letter-spacing: -0.03em; display: flex; align-items: baseline; }
+  .logo .logo-e { color: inherit; font-weight: 800; }
+  .logo .logo-y { color: #00E5FF; font-weight: 800; text-shadow: 0 0 12px rgba(0, 229, 255, 0.7); margin-left: -2px; }
+  .logo .st { font-weight: 500; font-size: 1.1rem; margin-left: 8px; opacity: 0.85; letter-spacing: 0; }
+
   nav ul { display: flex; align-items: center; gap: 1.7rem; list-style: none; margin: 0; padding: 0; }
   nav a { text-decoration: none; font-weight: 500; }
   nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -173,7 +178,6 @@
     50% { transform: rotateY(-6deg) rotateX(3deg); }
   }
 
-
   /* ---------- Upgrade: spotlight, grid, picker, progress, theme button ---------- */
   .hero-shell::before {
     content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
@@ -209,7 +213,7 @@
   :root[data-theme="dark"] .tbtn .i-sun { display: block; }
   :root[data-theme="dark"] .tbtn .i-moon { display: none; }
 
-  /* Yatay kayan portföy (yalnızca geniş ekran ve yeterli yükseklikte JS açar) */
+  /* Yatay kayan portföy */
   .hbar { display: none; height: 3px; background: var(--line); margin-top: 1.6rem; border-radius: 2px; overflow: hidden; max-width: 20rem; }
   .hbar i { display: block; height: 100%; width: 0; background: var(--accent); }
   #calismalar.hmode { padding-block: 0; }
@@ -433,7 +437,11 @@
 <div class="hero-shell" id="shell">
   <header class="site-head">
     <div class="wrap">
-      <a class="logo" href="#"><b>EY</b><span>Studios</span></a>
+      <!-- LOGO BURADA NEON EFEKTİYLE GÜNCELLENDİ -->
+      <a class="logo" href="#">
+        <span class="logo-e">E</span><span class="logo-y">Y</span>
+        <span class="st">Studios TR</span>
+      </a>
       <nav aria-label="Ana menü">
         <ul>
           <li><a href="#calismalar">Çalışmalar</a></li>
@@ -542,7 +550,7 @@
             <div class="sbody">
 
               <div class="layer chat on" id="lChat">
-                <div class="chat-head">EY Studios</div>
+                <div class="chat-head">EY Studios TR</div>
                 <div class="bub me" data-at="0.08">Merhaba, kliniğim için bir web sitesi istiyorum.</div>
                 <div class="bub you" data-at="0.3">Merhaba! Hangi hizmetleri öne çıkaralım?</div>
                 <div class="bub me" data-at="0.55">Tedaviler, çalışma saatleri ve randevu formu.</div>
@@ -713,7 +721,7 @@
             </div>
           </div>
           <h3>Kuaför ve güzellik salonu</h3>
-          <p>Hizmet seçtikçe süre ve fiyatı toplayan, WhatsApp ile randevu gönderen panel.</p>
+          <p>Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p>
           <span class="tag">Örneği aç</span>
         </a>
       </div>
@@ -834,6 +842,8 @@
           <div><span>Telefon</span><a href="tel:+905511187400">0551 118 74 00</a></div>
           <div><span>WhatsApp</span><a href="https://wa.me/905511187400" rel="noopener">Mesaj gönder</a></div>
           <div><span>E-posta</span><a href="mailto:emreyks4209@gmail.com">emreyks4209@gmail.com</a></div>
+          <!-- INSTAGRAM LINKI -->
+          <div><span>Instagram</span><a href="https://www.instagram.com/eystudios.tr?stkn=eTRseXVlbnVpODZ4&utm_source=qr" target="_blank" rel="noopener">@eystudios.tr</a></div>
           <div><span>Hizmet alanı</span>Türkiye geneli, uzaktan</div>
         </address>
       </div>
@@ -871,15 +881,16 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 EY Studios. Tüm hakları saklıdır.</span>
+    <span>© 2026 EY Studios TR. Tüm hakları saklıdır.</span>
     <span>Türkiye geneli, uzaktan hizmet</span>
   </div>
-  <div class="mega" aria-hidden="true">EY Studios</div>
+  <div class="mega" aria-hidden="true">EY Studios TR</div>
 </footer>
 
 <script>
 (function () {
-  var FORM_ENDPOINT = ''; // Formspree gibi bir adres yazarsanız form doğrudan gönderir; boşsa WhatsApp mesajı hazırlar.
+  // Formspree Entegrasyonu
+  var FORM_ENDPOINT = 'https://formspree.io/f/meaoaekk'; 
   var WHATSAPP = '905511187400';
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1163,7 +1174,7 @@
     hLayout();
   }
 
-  /* ---- Form ---- */
+  /* ---- Formspree Entegreli Form ---- */
   var form = document.getElementById('form');
   var status = document.getElementById('status');
   function show(msg, isErr) { status.className = isErr ? 'status err' : 'status'; status.textContent = msg; }
@@ -1183,13 +1194,20 @@
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ ad: ad, telefon: tel, tur: tur, mesaj: mesaj })
+        body: JSON.stringify({ 
+          // Mail kutuna düşecek projenin türü:
+          _subject: "Yeni Proje Talebi - " + tur,
+          Ad_Soyad: ad, 
+          Telefon: tel, 
+          Sektor: tur, 
+          Detay: mesaj 
+        })
       }).then(function (r) {
         if (!r.ok) throw new Error('fail');
         form.reset();
-        show('Mesajınız alındı. En kısa sürede size dönerim.', false);
+        show('Talebiniz başarıyla alındı. En kısa sürede size dönüş yapacağım.', false);
       }).catch(function () {
-        show('Mesaj gönderilemedi. Lütfen WhatsApp veya telefonla ulaşın.', true);
+        show('Bir hata oluştu. Lütfen WhatsApp üzerinden ulaşın.', true);
       });
       return;
     }
