@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yılmaz Hukuk Bürosu | Avukat</title>
+<meta name="description" content="Ceza, ticaret ve icra-iflas hukuku alanlarında danışmanlık ve vekalet. İlk görüşmede yanınızda getirmeniz gereken belgeleri öğrenin, ön görüşme talep edin.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%96%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root {
+    --bg: #0E0E0E; --paper: #F3F2EE; --ink: #0E0E0E; --soft: #A5A198; --muted: #5F5B53;
+    --line: rgba(243,242,238,.16); --line-d: rgba(14,14,14,.18); --acc: #D9331A;
+    --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--paper); font-family: var(--sans); font-size: 1.05rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--acc); outline-offset: 3px; }
+  .light :focus-visible { outline-color: var(--acc); }
+  .wrap { width: min(1200px, 100% - 2.5rem); margin-inline: auto; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  section { scroll-margin-top: 4rem; }
+  .dark { background: var(--bg); color: var(--paper); }
+  .light { background: var(--paper); color: var(--ink); }
+
+  /* Header */
+  .head { position: sticky; top: 0; z-index: 40; background: rgba(14,14,14,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .95rem; }
+  .logo { font-family: var(--serif); font-size: 1.7rem; text-decoration: none; letter-spacing: -.01em; line-height: 1; }
+  .logo i { color: var(--acc); }
+  .head nav { display: flex; align-items: center; gap: 1.8rem; }
+  .head nav a { text-decoration: none; font-weight: 500; font-size: .95rem; }
+  .head nav a:hover { color: var(--acc); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: .8rem 1.6rem; font: 600 1rem/1 var(--sans); text-decoration: none; cursor: pointer; background: var(--acc); color: #fff; border: 1.5px solid var(--acc); transition: transform .2s, background-color .2s, color .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: inherit; border-color: currentColor; }
+  .btn.ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .head .btn { min-height: 42px; padding: .5rem 1.1rem; }
+
+  .kicker { font-size: .82rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 1.4rem; }
+  .light .kicker { color: var(--muted); }
+
+  /* Hero */
+  .hero { position: relative; min-height: calc(100vh - 66px); min-height: calc(100svh - 66px); display: flex; align-items: center; overflow: clip; padding-block: 4rem 5rem; }
+  .glyph { position: absolute; right: -3vw; top: 4%; font-family: var(--serif); font-size: min(62vw, 58rem); line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(243,242,238,.15); pointer-events: none; user-select: none; transform: translate3d(calc(var(--px, 0) * 28px), calc(var(--sy, 0) * -70px), 0); transition: transform .3s ease-out; }
+  .hero .wrap { position: relative; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(3.4rem, 11.5vw, 10.5rem); line-height: .9; letter-spacing: -.035em; margin: 0 0 2.2rem; max-width: 11ch; }
+  h1 em { color: var(--acc); }
+  .hero-foot { display: flex; flex-wrap: wrap; gap: 2rem 4rem; align-items: flex-end; justify-content: space-between; max-width: 62rem; }
+  .lede { font-size: 1.2rem; color: #CFCBC2; max-width: 44ch; margin: 0; }
+  .cta { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .rule { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--acc); transform-origin: left; animation: draw 1.4s .5s cubic-bezier(.2,.7,.2,1) both; }
+  .rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0s); }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } }
+  @keyframes draw { from { transform: scaleX(0); } }
+
+
+  /* Doku, ışık, bant ve beliriş efektleri */
+  body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 70; opacity: .08; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(560px circle at var(--mx, 72%) var(--my, 30%), rgba(217,51,26,.22), transparent 62%); }
+  .hero .wrap { z-index: 1; }
+  .band { background: var(--acc); color: #fff; overflow: hidden; white-space: nowrap; }
+  .band-track { display: inline-flex; animation: slide 50s linear infinite; }
+  .band span { font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1; padding: 1.1rem 0 1.1rem 2.2rem; display: inline-flex; align-items: center; gap: 2.2rem; }
+  .band span::after { content: "§"; font-style: normal; opacity: .7; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  .js .rv { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.in { opacity: 1; transform: none; }
+
+  /* Practice areas */
+  .areas { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 6vw, 4.8rem); line-height: .98; letter-spacing: -.03em; margin: 0 0 1.2rem; }
+  .rows { margin-top: 2.6rem; border-bottom: 1px solid var(--line-d); }
+  details { border-top: 1px solid var(--line-d); }
+  summary { display: grid; grid-template-columns: 4.5rem 1fr auto; align-items: baseline; gap: 1rem; padding: 1.5rem 0; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  .num { font-size: .95rem; font-weight: 600; color: var(--muted); }
+  .ttl { font-family: var(--serif); font-size: clamp(2.2rem, 6.4vw, 5.2rem); line-height: 1; letter-spacing: -.03em; transition: color .2s, transform .3s; }
+  summary:hover .ttl { color: var(--acc); transform: translateX(8px); }
+  .pm { width: 1.6rem; height: 1.6rem; position: relative; align-self: center; }
+  .pm::before, .pm::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: currentColor; transition: transform .3s; }
+  .pm::after { transform: rotate(90deg); }
+  details[open] .pm::after { transform: rotate(0); }
+  .body { padding: 0 0 2.4rem 5.5rem; max-width: 60rem; }
+  .body > p { color: var(--muted); margin: 0 0 1.6rem; max-width: 56ch; }
+  .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 2.5rem; }
+  .two h3 { font-size: .95rem; font-weight: 700; margin: 0 0 .6rem; }
+  .two ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+  .two li { padding-left: 1.3rem; position: relative; }
+  .two li::before { content: ""; position: absolute; left: 0; top: .65em; width: .6rem; height: 2px; background: var(--acc); }
+  .note { margin: 1.6rem 0 0; padding: .9rem 1.1rem; border-left: 3px solid var(--acc); background: rgba(14,14,14,.05); font-size: .97rem; max-width: 56ch; }
+
+  /* Prep checklist */
+  .prep-sec { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+  .prep { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .prep .lede { margin-bottom: 1.8rem; }
+  .meter { margin-bottom: 1.4rem; }
+  .meter span { font-weight: 600; font-size: .95rem; }
+  .meter i { display: block; height: 3px; background: var(--line); margin-top: .6rem; }
+  .meter b { display: block; height: 100%; width: 0; background: var(--acc); transition: width .3s ease; }
+  .checks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .checks label { display: grid; grid-template-columns: auto 1fr; gap: 1.1rem; align-items: center; padding: 1.15rem 0; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 1.12rem; }
+  .checks input { position: absolute; opacity: 0; pointer-events: none; }
+  .tick { width: 1.7rem; height: 1.7rem; border: 2px solid var(--soft); display: grid; place-items: center; color: transparent; font-weight: 700; transition: all .2s; }
+  .checks input:checked + .tick { background: var(--acc); border-color: var(--acc); color: #fff; }
+  .checks input:checked ~ .txt { color: var(--soft); text-decoration: line-through; text-decoration-color: rgba(243,242,238,.35); }
+  .checks input:focus-visible + .tick { outline: 3px solid var(--paper); outline-offset: 2px; }
+
+  /* Steps */
+  .flow { padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .steps { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; counter-reset: s; }
+  .steps li { counter-increment: s; border-top: 2px solid var(--ink); padding-top: 1.2rem; }
+  .steps li::before { content: counter(s); display: block; font-family: var(--serif); font-size: 6rem; line-height: .85; color: var(--acc); margin-bottom: 1rem; }
+  .steps h3 { font-size: 1.25rem; margin: 0 0 .4rem; }
+  .steps p { margin: 0; color: var(--muted); }
+
+  /* Contact */
+  .contact { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+  .cgrid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 5rem); }
+  .lines { display: grid; gap: .9rem; margin-top: 2rem; }
+  .lines div { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; }
+  .lines span { color: var(--soft); }
+  .lines a { font-weight: 600; }
+  form { display: grid; gap: 1.6rem; }
+  label.f { display: grid; gap: .3rem; font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+  .f input, .f textarea { font: 400 1.15rem/1.4 var(--sans); color: var(--paper); background: transparent; border: 0; border-bottom: 1.5px solid var(--line); padding: .6rem 0; width: 100%; border-radius: 0; text-transform: none; letter-spacing: 0; }
+  .f input:focus, .f textarea:focus { outline: none; border-bottom-color: var(--acc); }
+  .f textarea { min-height: 96px; resize: vertical; }
+  .check { display: flex; gap: .8rem; align-items: flex-start; font-size: .9rem; color: var(--soft); }
+  .check input { width: 1.15rem; height: 1.15rem; margin-top: .2rem; flex: none; accent-color: var(--acc); }
+  .status { min-height: 1.3rem; margin: 0; font-weight: 600; color: #fff; }
+  .status.err { color: #FF9C88; }
+  .hint { margin: 0; color: var(--soft); font-size: .88rem; }
+
+  footer { padding-block: 2rem 5rem; border-top: 1px solid var(--line); color: var(--soft); font-size: .92rem; }
+  footer p { margin: 0 0 .4rem; max-width: 80ch; }
+  .callbar { display: none; }
+  .demo-back{position:fixed;left:12px;bottom:12px;z-index:9999;background:#F3F2EE;color:#0E0E0E;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .demo-back:hover{background:#2B3DF5;color:#fff}
+
+  @media (max-width: 900px) {
+    .prep, .cgrid { grid-template-columns: minmax(0, 1fr); }
+    .steps { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .body { padding-left: 0; }
+    .two { grid-template-columns: minmax(0, 1fr); }
+    summary { grid-template-columns: 3rem 1fr auto; }
+    .head nav a:not(.btn) { display: none; }
+  }
+  @media (max-width: 700px) {
+    .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: .7rem .9rem calc(.7rem + env(safe-area-inset-bottom)); background: #161616; border-top: 1px solid var(--line); }
+    .demo-back { bottom: 78px; }
+    .lines div { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .rise, .rule, .band-track { animation: none; } .band { overflow-x: auto; } .js .rv { opacity: 1; transform: none; transition: none; } .glyph { transition: none; transform: none; } .btn, .ttl { transition: none; } }
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <a class="logo" href="#top">Yılmaz <i>Hukuk</i></a>
+    <nav aria-label="Ana menü">
+      <a href="#alanlar">Alanlar</a>
+      <a href="#hazirlik">Hazırlık</a>
+      <a href="#iletisim">İletişim</a>
+      <a class="btn" href="tel:+905551234567">Ara</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero dark" id="top" aria-labelledby="baslik">
+    <div class="glyph" aria-hidden="true">§</div>
+    <div class="wrap">
+      <p class="kicker rise" style="--d:.05s">Avukatlık bürosu</p>
+      <h1 id="baslik" class="rise" style="--d:.15s">Net bir <em>yol haritası.</em></h1>
+      <div class="hero-foot rise" style="--d:.35s">
+        <p class="lede">Ceza, ticaret ve icra hukuku alanlarında danışmanlık ve vekalet. İlk görüşmede durumunuzu dinler, sürecin nasıl ilerleyeceğini ve hangi belgelerin gerektiğini anlatırız.</p>
+        <div class="cta">
+          <a class="btn" href="#iletisim">Görüşme talep et</a>
+          <a class="btn ghost" href="tel:+905551234567">+90 (555) 123 45 67</a>
+        </div>
+      </div>
+    </div>
+    <div class="rule" aria-hidden="true"></div>
+  </section>
+
+  <div class="band" aria-hidden="true"><div class="band-track"><span>Ceza hukuku</span><span>Ticaret ve şirketler</span><span>İcra ve iflas</span><span>Ceza hukuku</span><span>Ticaret ve şirketler</span><span>İcra ve iflas</span><span>Ceza hukuku</span><span>Ticaret ve şirketler</span><span>İcra ve iflas</span><span>Ceza hukuku</span><span>Ticaret ve şirketler</span><span>İcra ve iflas</span></div></div>
+
+  <section class="light areas" id="alanlar" aria-labelledby="alan-b">
+    <div class="wrap">
+      <p class="kicker">Çalışma alanları</p>
+      <h2 id="alan-b">Hangi konuda destek arıyorsunuz?</h2>
+
+      <div class="rows">
+        <details class="rv" name="alan" open>
+          <summary><span class="num">01</span><span class="ttl">Ceza hukuku</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="body">
+            <p>Soruşturma, kovuşturma ve temyiz aşamalarında müşteki, mağdur veya şüpheli/sanık tarafında hukuki destek.</p>
+            <div class="two">
+              <div><h3>Görüşmede konuşacaklarımız</h3><ul><li>Dosyanın hangi aşamada olduğu: ifade, iddianame, dava ya da temyiz</li><li>Önünüzdeki duruşma ve süre bilgileri</li><li>Olası savunma yolları ve süreç boyunca sizden beklenenler</li></ul></div>
+              <div><h3>Yanınızda getirin</h3><ul><li>Çağrı kağıdı, tebligat veya iddianame</li><li>Kimlik belgeniz</li><li>Varsa önceki avukatla yazışmalar ve dosya numarası</li></ul></div>
+            </div>
+            <p class="note">Tebliğ edilen evraklarda itiraz ve cevap süreleri kısa olabilir. Evrakı aldığınız gün bizimle iletişime geçmeniz iyi olur.</p>
+          </div>
+        </details>
+
+        <details class="rv" name="alan">
+          <summary><span class="num">02</span><span class="ttl">Ticaret ve şirketler</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="body">
+            <p>Sözleşme hazırlama ve inceleme, şirket işlemleri ve ticari uyuşmazlıklarda danışmanlık ve vekalet.</p>
+            <div class="two">
+              <div><h3>Görüşmede konuşacaklarımız</h3><ul><li>Sözleşmedeki riskli maddeler ve karşı tarafın yükümlülükleri</li><li>Uyuşmazlık varsa hangi yolun izlenebileceği</li><li>Şirket kuruluşu, devir ve ortaklık değişikliklerinde gerekli adımlar</li></ul></div>
+              <div><h3>Yanınızda getirin</h3><ul><li>Sözleşme taslağı veya imzalı sözleşme</li><li>Ticaret sicil kaydı ve vergi levhası</li><li>Karşı tarafla yazışmalar, faturalar, ihtarnameler</li></ul></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="rv" name="alan">
+          <summary><span class="num">03</span><span class="ttl">İcra ve iflas</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="body">
+            <p>Alacak takibi, ödeme emrine itiraz, haciz işlemleri ve konkordato süreçlerinde hukuki destek.</p>
+            <div class="two">
+              <div><h3>Görüşmede konuşacaklarımız</h3><ul><li>Alacağın dayanağı ve takip için uygun yol</li><li>Karşınıza gelen ödeme emri veya haciz bildirimine ne yapılabileceği</li><li>Borçlu tarafın mal varlığına dair bilinenler</li></ul></div>
+              <div><h3>Yanınızda getirin</h3><ul><li>Senet, çek, fatura veya sözleşme</li><li>Ödeme emri, icra dosya numarası veya tebligat</li><li>Banka dekontları ve yazışmalar</li></ul></div>
+            </div>
+            <p class="note">İcra takiplerinde itiraz süreleri çok kısadır. Tebligatı aldığınız tarihi not edin ve vakit kaybetmeden ulaşın.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark prep-sec" id="hazirlik" aria-labelledby="hz-b">
+    <div class="wrap prep">
+      <div>
+        <p class="kicker">İlk görüşme</p>
+        <h2 id="hz-b">Yanınızda neler olsun?</h2>
+        <p class="lede">Elinizdeki belgeleri işaretleyin, hazır olanları tek dokunuşla bize iletin. Hepsinin olması gerekmiyor, elinizde olanlarla başlayabiliriz.</p>
+        <div class="meter" aria-live="polite"><span id="cnt">0 / 6 hazır</span><i><b id="bar"></b></i></div>
+        <button class="btn" id="sendList" type="button">Hazır olanları WhatsApp'la ilet</button>
+      </div>
+      <ul class="checks" id="checks">
+        <li class="rv"><label><input type="checkbox" data-l="Kimlik belgesi"><span class="tick" aria-hidden="true">✓</span><span class="txt">Kimlik belgeniz</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Tebligat, çağrı kağıdı veya ödeme emri"><span class="tick" aria-hidden="true">✓</span><span class="txt">Tebligat, çağrı kağıdı veya ödeme emri</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Sözleşme veya senet"><span class="tick" aria-hidden="true">✓</span><span class="txt">Sözleşme veya senet</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Fatura, dekont ve banka kayıtları"><span class="tick" aria-hidden="true">✓</span><span class="txt">Fatura, dekont ve banka kayıtları</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Yazışmalar (WhatsApp, e-posta, ihtarname)"><span class="tick" aria-hidden="true">✓</span><span class="txt">Yazışmalar: WhatsApp, e-posta, ihtarname</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Dosya numarası ve önceki avukat bilgisi"><span class="tick" aria-hidden="true">✓</span><span class="txt">Varsa dosya numarası ve önceki avukat bilgisi</span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="light flow" id="surec" aria-labelledby="sr-b">
+    <div class="wrap">
+      <p class="kicker">Süreç</p>
+      <h2 id="sr-b">Görüşmeden sonra ne olur?</h2>
+      <ol class="steps">
+        <li class="rv"><h3>Görüşme ve değerlendirme</h3><p>Dosyanız incelenir, seçenekler ve olası süreler size açıkça anlatılır.</p></li>
+        <li class="rv"><h3>Yol haritası ve vekalet</h3><p>Birlikte çalışmaya karar verirseniz vekaletname düzenlenir, önemli tarihler yazılı olarak paylaşılır.</p></li>
+        <li class="rv"><h3>Takip ve bilgilendirme</h3><p>Dosyadaki gelişmeler size düzenli olarak aktarılır, sorularınız yanıtlanır.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="dark contact" id="iletisim" aria-labelledby="ic-b">
+    <div class="wrap cgrid">
+      <div>
+        <p class="kicker">İletişim</p>
+        <h2 id="ic-b">Görüşme talep edin.</h2>
+        <p class="lede">Durumunuzu kısaca yazın, size dönüş yapalım. Ayrıntıları görüşmede konuşuruz.</p>
+        <div class="lines">
+          <div><span>Telefon</span><a href="tel:+905551234567">+90 (555) 123 45 67</a></div>
+          <div><span>WhatsApp</span><a href="https://wa.me/905551234567" rel="noopener">Mesaj gönderin</a></div>
+          <div><span>Adres</span><em style="font-style:normal">Adalet Mah. Kanun Sk. No: 10/4, Şehir</em></div>
+          <div><span>Saatler</span><em style="font-style:normal">Hafta içi 09.00 – 18.00, Cumartesi randevuyla</em></div>
+        </div>
+      </div>
+      <form id="f" novalidate>
+        <label class="f">Adınız soyadınız<input id="ad" autocomplete="name" required></label>
+        <label class="f">Telefon<input id="tel" type="tel" inputmode="tel" autocomplete="tel" required></label>
+        <label class="f">Konu (kısaca)<textarea id="mesaj"></textarea></label>
+        <label class="check"><input type="checkbox" id="kvkk"><span>Bilgilerimin yalnızca görüşme talebimi yanıtlamak için kullanılmasını kabul ediyorum.</span></label>
+        <button class="btn" type="submit">Görüşme talep et</button>
+        <p class="status" id="st" role="status" aria-live="polite"></p>
+        <p class="hint">Lütfen kimlik numarası veya dosyanın gizli ayrıntılarını yazmayın. Gönder'e bastığınızda WhatsApp'ta hazır bir mesaj açılır.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="dark">
+  <div class="wrap">
+    <p>© 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+    <p>Bu sitedeki bilgiler bilgilendirme amaçlıdır ve hukuki görüş niteliği taşımaz. Her dosya kendi koşullarına göre değerlendirilir.</p>
+  </div>
+</footer>
+
+<div class="callbar"><a class="btn" href="tel:+905551234567">Ara</a><a class="btn ghost" href="#iletisim" style="color:#F3F2EE">Görüşme</a></div>
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function () {
+  // Formspree gibi bir servis kullanmak için adresi yazın; boşsa WhatsApp mesajı hazırlanır.
+  var FORM_ENDPOINT = '';
+  var WHATSAPP = '905551234567';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  // § simgesi: fare ve kaydırma ile hafifçe hareket eder
+  var hero = document.getElementById('top');
+  if (hero && !reduce) {
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      hero.style.setProperty('--px', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+    var tick = false;
+    window.addEventListener('scroll', function () {
+      if (tick) return; tick = true;
+      requestAnimationFrame(function () {
+        tick = false;
+        hero.style.setProperty('--sy', clamp(window.scrollY / window.innerHeight, 0, 1).toFixed(3));
+      });
+    }, { passive: true });
+  }
+
+  // Kaydırınca beliren öğeler
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    Array.prototype.forEach.call(rv, function (el, i) { el.style.transitionDelay = ((i % 3) * 70) + 'ms'; io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(rv, function (el) { el.classList.add('in'); });
+  }
+
+  // Belge listesi
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#checks input'));
+  var cnt = document.getElementById('cnt'), bar = document.getElementById('bar');
+  function upd() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    cnt.textContent = n + ' / ' + boxes.length + ' hazır';
+    bar.style.width = (n / boxes.length * 100) + '%';
+  }
+  boxes.forEach(function (b) { b.addEventListener('change', upd); });
+  document.getElementById('sendList').addEventListener('click', function () {
+    var got = boxes.filter(function (b) { return b.checked; }).map(function (b) { return '- ' + b.getAttribute('data-l'); });
+    var text = 'Merhaba, ön görüşme talep ediyorum.' + (got.length ? '\nElimde hazır olanlar:\n' + got.join('\n') : '');
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+
+  // Form
+  var f = document.getElementById('f'), st = document.getElementById('st');
+  function show(m, e) { st.className = e ? 'status err' : 'status'; st.textContent = m; }
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var ad = document.getElementById('ad').value.trim(), tel = document.getElementById('tel').value.trim(), mesaj = document.getElementById('mesaj').value.trim();
+    if (!ad || !tel) return show('Ad soyad ve telefon alanlarını doldurun.', true);
+    if (!document.getElementById('kvkk').checked) return show('Devam etmek için onay kutusunu işaretleyin.', true);
+    var text = 'Merhaba, ön görüşme talep ediyorum.\nAd soyad: ' + ad + '\nTelefon: ' + tel + (mesaj ? '\nKonu: ' + mesaj : '');
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ ad: ad, telefon: tel, mesaj: mesaj }) })
+        .then(function (r) { if (!r.ok) throw 0; f.reset(); show('Talebiniz alındı. Size dönüş yapacağız.', false); })
+        .catch(function () { show('Gönderilemedi. Lütfen telefonla arayın.', true); });
+      return;
+    }
+    show('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.', false);
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>
