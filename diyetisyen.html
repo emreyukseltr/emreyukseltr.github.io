@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>kök — Beslenme Danışmanlığı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1E7;
+    --paper-2:#E4E9DC;
+    --ink:#1E2A1F;
+    --ink-soft:#45543F;
+    --wine:#2F5233;
+    --wine-dark:#1F3A24;
+    --mustard:#D9A441;
+    --sage:#77876A;
+    --forest:#16231A;
+    --forest-2:#1E301F;
+    --cream-card:#F8F5EC;
+    --line: rgba(30,42,31,0.14);
+    --gold-line: rgba(217,164,65,0.55);
+    --radius: 3px;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit;}
+  html{scroll-behavior:smooth; scroll-padding-top: calc(78px + env(safe-area-inset-top,0px));}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', system-ui, sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+  }
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    z-index:500;
+    pointer-events:none;
+    opacity:0.05;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:500;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  .measure{max-width:62ch;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:999;
+    padding-top: env(safe-area-inset-top,0px);
+    background:var(--forest); /* Navbar bug'ı giderildi - Katı Renk */
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    display:flex; align-items:center; gap:10px;
+    color:var(--paper);
+  }
+  .logo .mark{width:20px; height:20px; flex:none; color:var(--mustard);}
+  .root-divider{
+    display:flex; align-items:center; gap:18px; max-width:1180px; margin:0 auto; padding:0 28px;
+  }
+  .root-divider .ln{flex:1; height:1px; background:var(--line);}
+  .root-divider svg{width:20px; height:20px; color:var(--mustard); flex:none;}
+  .logo .wordmark{display:flex; align-items:baseline; gap:8px;}
+  .logo span{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.6rem;
+    font-weight:500;
+    color:#B9C5B2;
+    letter-spacing:0.02em;
+  }
+  nav.links{display:flex; gap:34px; font-size:0.9rem; letter-spacing:0.01em;}
+  nav.links a{text-decoration:none; color:#C7D2C1; position:relative; padding:2px 0;}
+  nav.links a:hover{color:var(--paper);}
+  nav.links a::after{
+    content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1px;
+    background:var(--wine); transition:right .25s ease;
+  }
+  nav.links a:hover::after{right:0;}
+  .btn{
+    position:relative;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-size:0.9rem;
+    font-weight:500;
+    letter-spacing:0.015em;
+    border:1px solid transparent;
+    cursor:pointer;
+    overflow:hidden;
+    isolation:isolate;
+    transition:transform .18s ease, color .3s ease, border-color .18s ease;
+  }
+  .btn::before{
+    content:''; position:absolute; inset:0; z-index:-1;
+    transform:translateX(-101%); transition:transform .38s cubic-bezier(.65,0,.35,1);
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn:hover::before{transform:translateX(0);}
+  .btn-primary{background:var(--wine-dark); color:var(--paper);}
+  .btn-primary::before{background:var(--wine);}
+  .btn-ghost{border-color: var(--ink); color:var(--ink); background:transparent;}
+  .btn-ghost::before{background:var(--ink);}
+  .btn-ghost:hover{color:var(--paper);}
+  .btn-cream{background:var(--cream-card); color:var(--forest);}
+  .btn-cream::before{background:#fff;}
+  .nav-cta{display:none;}
+  .nav-cta.btn-primary{background:var(--mustard); color:var(--forest);}
+  .nav-cta.btn-primary::before{background:#EFC777;}
+  @media(min-width:860px){ .nav-cta{display:inline-flex;} }
+  .burger{
+    display:flex; background:none; border:1px solid rgba(255,255,255,0.35); border-radius:var(--radius);
+    padding:9px 11px; cursor:pointer;
+  }
+  @media(min-width:860px){ .burger{display:none;} nav.links{display:flex;} }
+  @media(max-width:859px){ nav.links{display:none;} }
+  .burger span, .burger span::before, .burger span::after{
+    content:''; display:block; width:18px; height:1.5px; background:var(--paper); position:relative;
+  }
+  .burger span::before{position:absolute; top:-6px;} .burger span::after{position:absolute; top:6px;}
+
+  .mobile-menu{
+    display:none; flex-direction:column; gap:0; border-bottom:1px solid rgba(255,255,255,0.1);
+    background:var(--forest);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:16px 28px; text-decoration:none; color:var(--paper); border-top:1px solid rgba(255,255,255,0.1);
+    font-size:1.02rem;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:radial-gradient(120% 100% at 50% 0%, #1C2E1F 0%, var(--forest) 55%, #101A13 100%);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:'';
+    position:absolute; left:0; right:0; bottom:0; height:120px;
+    background:linear-gradient(to bottom, transparent, var(--paper));
+    pointer-events:none;
+  }
+  .hero-inner{
+    padding:56px 28px 110px;
+    display:grid; gap:44px;
+    position:relative; z-index:1;
+  }
+  @media(min-width:920px){
+    .hero-inner{grid-template-columns: 1.05fr 0.85fr; align-items:center; padding:70px 28px 150px; min-height:82vh;}
+  }
+  .heritage{
+    font-size:0.72rem; color:#C7D2C1; letter-spacing:0.06em; margin-bottom:18px;
+    padding-bottom:14px; border-bottom:1px solid var(--gold-line); display:inline-block;
+  }
+  .hero-eyebrow{
+    font-size:0.98rem; color:var(--mustard); font-family:'Fraunces',serif; font-style:italic; font-weight:500;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size: clamp(2.5rem, 6vw, 4.3rem);
+    color:var(--paper);
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--mustard);
+  }
+  .hero-sub{
+    margin-top:22px; font-size:1.12rem; color:#C7D2C1; max-width:46ch;
+  }
+  .hero-actions{
+    display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;
+  }
+  .hero .btn-primary{background:var(--mustard); color:#25190A;}
+  .hero .btn-primary::before{background:#EFC777;}
+  .hero .btn-ghost{border-color:rgba(255,255,255,0.4); color:var(--paper);}
+  .hero .btn-ghost::before{background:rgba(255,255,255,0.14);}
+  .hero-stats{
+    display:flex; gap:30px; margin-top:56px; flex-wrap:wrap;
+    padding-top:28px; border-top:1px solid rgba(255,255,255,0.14);
+  }
+  .stat{padding-right:30px; border-right:1px solid rgba(255,255,255,0.14);}
+  .stat:last-child{border-right:none; padding-right:0;}
+  .stat b{
+    display:block; font-family:'Fraunces',serif; font-size:1.9rem; font-weight:500; color:var(--mustard);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat span{font-size:0.85rem; color:#B9C5B2;}
+
+  .hero-art{position:relative; display:flex; justify-content:center;}
+  .hero-art svg{width:100%; max-width:420px; height:auto;}
+  .breathing{ animation: breathe 7s ease-in-out infinite; transform-origin:50% 55%; }
+  @media (prefers-reduced-motion: reduce){ .breathing{animation:none;} }
+  @keyframes breathe{
+    0%,100%{ transform:scale(1) rotate(0deg); }
+    50%{ transform:scale(1.035) rotate(1.2deg); }
+  }
+  .fade-up{
+    opacity:0; transform:translateY(14px);
+    animation:fadeUp .8s ease forwards;
+  }
+  @media (prefers-reduced-motion: reduce){ .fade-up{opacity:1; transform:none; animation:none;} }
+  @keyframes fadeUp{ to{opacity:1; transform:translateY(0);} }
+  .d1{animation-delay:.05s;} .d2{animation-delay:.18s;} .d3{animation-delay:.3s;} .d4{animation-delay:.42s;}
+
+  /* ---------- section basics ---------- */
+  section{padding:88px 0;}
+  @media(min-width:900px){ section{padding:120px 0;} }
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .kicker{
+    font-family:'Fraunces',serif; font-style:italic; color:var(--wine); font-size:1.02rem; margin-bottom:14px; display:block;
+  }
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);}
+  .section-head p{margin-top:16px; color:var(--ink-soft); font-size:1.05rem;}
+
+  /* ---------- philosophy ---------- */
+  .philosophy{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .phil-grid{display:grid; gap:48px;}
+  @media(min-width:900px){ .phil-grid{grid-template-columns: 0.95fr 1.05fr; gap:70px;} }
+  .phil-text p{font-size:1.18rem; color:var(--ink); font-family:'Fraunces',serif; font-weight:400; line-height:1.5;}
+  .phil-text p + p{margin-top:18px; font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--ink-soft);}
+  .principles{display:flex; flex-direction:column;}
+  .principle{
+    display:grid; grid-template-columns:56px 1fr; gap:18px;
+    padding:26px 0; border-top:1px solid var(--line);
+  }
+  .principle:last-child{border-bottom:1px solid var(--line);}
+  .principle .num{font-family:'Fraunces',serif; font-size:2.1rem; color:var(--wine); font-weight:400;}
+  .principle h3{font-size:1.15rem; font-weight:600; font-family:'Work Sans',sans-serif; margin-bottom:6px;}
+  .principle p{color:var(--ink-soft); font-size:0.98rem;}
+
+  /* ---------- about (Düzenlendi) ---------- */
+  .about-grid{display:grid; gap:48px;}
+  @media(min-width:900px){ .about-grid{grid-template-columns:0.8fr 1.2fr; gap:70px; align-items:start;} }
+  .portrait{
+    aspect-ratio:3/4; background:linear-gradient(160deg, var(--wine) 0%, var(--wine-dark) 100%);
+    border-radius: 140px 8px 140px 8px;
+    position:relative; overflow:hidden;
+  }
+  .portrait svg{position:absolute; inset:0; width:100%; height:100%;}
+  .about-body h2{font-size:clamp(1.8rem,3vw,2.3rem); margin-bottom:20px;}
+  .about-body p{color:var(--ink-soft); font-size:1.05rem;}
+  .about-body p + p{margin-top:16px;}
+  .creds{
+    margin-top:32px; display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  }
+  .cred{
+    border-left:2px solid var(--wine); padding-left:16px; font-size:0.94rem; color:var(--ink-soft);
+  }
+  .cred b{display:block; color:var(--ink); font-weight:600; font-size:0.98rem; margin-bottom:2px;}
+
+  /* ---------- services ---------- */
+  .service-row{
+    display:grid; gap:28px; align-items:center;
+    padding:44px 0; border-top:1px solid var(--line);
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  @media(min-width:860px){ .service-row{grid-template-columns:1fr 1fr; gap:60px;} }
+  .service-row.rev .s-media{order:2;}
+  @media(max-width:859px){ .service-row.rev .s-media{order:0;} }
+  .s-media{
+    aspect-ratio:4/3; border-radius:var(--radius); overflow:hidden;
+    background:var(--forest);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .s-media svg{width:62%; height:62%;}
+  .s-tag{font-size:0.85rem; color:var(--wine); font-family:'Fraunces',serif; font-style:italic; margin-bottom:10px; display:block;}
+  .s-text h3{font-size:1.5rem; margin-bottom:14px;}
+  .s-text p{color:var(--ink-soft);}
+
+  /* ---------- process ---------- */
+  .process{background:var(--forest); color:var(--paper);}
+  .process .section-head p{color:#C7D2C1;}
+  .process .kicker{color:var(--mustard);}
+  .process-list{display:grid; gap:0;}
+  @media(min-width:780px){ .process-list{grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.12);} }
+  .p-step{
+    background:var(--forest); padding:38px 34px;
+    border-top:1px solid rgba(255,255,255,0.14);
+  }
+  @media(min-width:780px){ .p-step{border-top:none;} }
+  .p-step .num{
+    font-family:'Fraunces',serif; font-size:2.6rem; color:var(--mustard); display:block; margin-bottom:16px;
+  }
+  .p-step h3{color:var(--paper); font-size:1.2rem; margin-bottom:12px; font-weight:500;}
+  .p-step p{color:#B9C5B2; font-size:0.98rem;}
+
+  /* ---------- testimonials ---------- */
+  .testi{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .testi-wrap{max-width:760px; margin:0 auto; text-align:center; position:relative; min-height:220px;}
+  .testi-wrap::before{
+    content:'"'; position:absolute; top:-64px; left:50%; transform:translateX(-50%);
+    font-family:'Fraunces',serif; font-size:9rem; color:var(--wine); opacity:0.1; line-height:1; pointer-events:none;
+  }
+  .t-item{
+    display:none; opacity:0; transition:opacity .5s ease;
+  }
+  .t-item.active{display:block; opacity:1;}
+  .t-item blockquote{
+    font-family:'Fraunces',serif; font-size:clamp(1.3rem,3vw,1.85rem); font-style:italic; font-weight:400;
+    color:var(--ink); margin:0; line-height:1.45;
+  }
+  .t-item cite{
+    display:block; margin-top:22px; font-style:normal; font-size:0.92rem; color:var(--ink-soft);
+  }
+  .t-dots{display:flex; justify-content:center; gap:10px; margin-top:36px;}
+  .t-dots button{
+    width:8px; height:8px; border-radius:50%; border:none; background:var(--line); cursor:pointer; padding:0;
+  }
+  .t-dots button.active{background:var(--wine);}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--forest); color:var(--paper); position:relative; overflow:hidden;}
+  .contact-grid{display:grid; gap:44px;}
+  @media(min-width:940px){ .contact-grid{grid-template-columns:0.85fr 1.15fr; gap:70px; align-items:start;} }
+  .contact-info .kicker{color:var(--mustard);}
+  .contact-info h2{font-size:clamp(1.9rem,3.6vw,2.5rem); color:var(--paper);}
+  .contact-info p{color:#C7D2C1; margin-top:18px; font-size:1.02rem; max-width:40ch;}
+  .contact-detail{margin-top:34px; display:flex; flex-direction:column; gap:14px;}
+  .contact-detail div{font-size:0.95rem; color:#DCE4D6;}
+  .contact-detail b{display:block; color:var(--mustard); font-size:0.78rem; letter-spacing:0.02em; margin-bottom:3px; font-family:'Work Sans',sans-serif; text-transform:none;}
+
+  .form-card{
+    background:var(--cream-card); color:var(--ink); border-radius:var(--radius); padding:42px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35);
+    border-top:2px solid var(--mustard);
+  }
+  .form-row{display:grid; gap:20px;}
+  @media(min-width:600px){ .form-row.two{grid-template-columns:1fr 1fr;} }
+  .field{display:flex; flex-direction:column; gap:8px; margin-bottom:20px;}
+  .field label{font-size:0.85rem; color:var(--ink-soft); font-weight:500;}
+  .field input, .field select, .field textarea{
+    border:none; border-bottom:1.5px solid var(--line); background:transparent;
+    padding:10px 2px; font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--ink);
+    outline:none; transition:border-color .2s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--wine);}
+  .field textarea{resize:vertical; min-height:90px;}
+  .form-note{font-size:0.82rem; color:var(--ink-soft); margin-top:6px;}
+  .form-msg{font-size:0.88rem; margin-top:14px; display:none;}
+  .form-msg.show{display:block;}
+
+  /* ---------- footer ---------- */
+  footer{padding:44px 0; }
+  .foot-row{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; align-items:center;
+    border-top:1px solid var(--line); padding-top:28px;
+  }
+  .foot-links{display:flex; gap:22px; font-size:0.9rem; color:var(--ink-soft);}
+  .foot-links a{text-decoration:none;}
+  .foot-links a:hover{color:var(--wine);}
+  .foot-note{font-size:0.82rem; color:var(--ink-soft);}
+
+  /* ---------- Back to Top Button ---------- */
+  .btt{
+    position:fixed; bottom:30px; right:30px; z-index:900;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--forest); color:var(--mustard);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--gold-line); cursor:pointer;
+    opacity:0; visibility:hidden; transform:translateY(15px);
+    transition:all .3s ease; text-decoration:none;
+  }
+  .btt.show{opacity:1; visibility:visible; transform:translateY(0);}
+  .btt:hover{background:var(--wine-dark); color:var(--paper);}
+
+  :focus-visible{ outline:2px solid var(--wine); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2v9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 11c-3 1-4 4-5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 11c3 1 4 4 5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 7c-2 .3-3 1.6-3.6 3.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".65"/>
+        <path d="M12 7c2 .3 3 1.6 3.6 3.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".65"/>
+      </svg>
+      <div class="wordmark">kök<span>beslenme danışmanlığı</span></div>
+    </div>
+    <nav class="links">
+      <a href="#hakkimda">Hakkımda</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#surec">Süreç</a>
+      <a href="#yorumlar">Yorumlar</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+    <a href="#iletisim" class="btn btn-primary nav-cta">Ön Görüşme Talep Et</a>
+    <button class="burger" id="burgerBtn" aria-label="Menü" aria-expanded="false"><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hakkimda">Hakkımda</a>
+    <a href="#hizmetler">Hizmetler</a>
+    <a href="#surec">Süreç</a>
+    <a href="#yorumlar">Yorumlar</a>
+    <a href="#iletisim">İletişim</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+    <div>
+      <div class="heritage fade-up d1">İstanbul · 2016'dan beri özel danışmanlık</div>
+      <span class="hero-eyebrow fade-up d1">Örnek Diyetisyen ile</span>
+      <h1 class="fade-up d2">Beslenmeni<br><em>kökünden</em> değiştir.</h1>
+      <p class="hero-sub fade-up d3">Diyet listesi değil, gerçek hayatına uyan ve sürmesi kolay bir düzen kuruyoruz. Yasaklar üzerinden değil, seni tanımak üzerinden ilerliyoruz.</p>
+      <div class="hero-actions fade-up d4">
+        <a href="#iletisim" class="btn btn-primary">Ön Görüşme Talep Et</a>
+        <a href="#surec" class="btn btn-ghost">Süreci İncele</a>
+      </div>
+      <div class="hero-stats fade-up d4">
+        <div class="stat"><b data-target="9" data-suffix=" yıl">0 yıl</b><span>klinik deneyim</span></div>
+        <div class="stat"><b data-target="600" data-suffix="+">0+</b><span>tamamlanan danışmanlık</span></div>
+        <div class="stat"><b data-target="89" data-prefix="%" data-suffix="">%0</b><span>hedefine ulaşan danışan</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg class="breathing" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gWine" x1="88" y1="60" x2="332" y2="338" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3C6844"/>
+            <stop offset="1" stop-color="#1F3A24"/>
+          </linearGradient>
+          <linearGradient id="gGold" x1="122" y1="92" x2="222" y2="306" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#E8BE72"/>
+            <stop offset="1" stop-color="#C68A2E"/>
+          </linearGradient>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#F8F5EC" stop-opacity="0.32"/>
+            <stop offset="70%" stop-color="#F8F5EC" stop-opacity="0.06"/>
+            <stop offset="100%" stop-color="#F8F5EC" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0A120C" flood-opacity="0.45"/>
+          </filter>
+        </defs>
+        <circle cx="210" cy="210" r="205" fill="url(#glow)"/>
+        <circle cx="210" cy="210" r="196" stroke="#F8F5EC" stroke-opacity="0.1"/>
+        <g filter="url(#soft)">
+          <path d="M210 60c70 0 122 55 122 128 0 76-58 150-122 150S88 264 88 188C88 115 140 60 210 60Z" fill="url(#gWine)"/>
+          <path d="M210 92c-58 6-96 55-88 118 7 56 52 96 100 96 1 0 2-84-12-130-13-42-40-71-0-84Z" fill="url(#gGold)" opacity="0.92"/>
+          <path d="M170 150c30-18 66-18 90 4 22 20 30 52 20 88-40 8-84-4-104-34-16-24-18-40-6-58Z" fill="#0F1A11"/>
+        </g>
+        <g opacity="0.55" stroke="#F8F5EC" stroke-width="1.1" stroke-linecap="round">
+          <path d="M210 296v34"/>
+          <path d="M210 320c-10 6-14 14-14 24"/>
+          <path d="M210 320c10 6 14 14 14 24"/>
+        </g>
+      </svg>
+    </div>
+    </div>
+  </section>
+
+  <div class="root-divider" role="presentation">
+    <span class="ln"></span>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 2v9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M12 11c-3 1-4 4-5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M12 11c3 1 4 4 5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <span class="ln"></span>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="wrap phil-grid">
+      <div class="phil-text">
+        <p>"Kilo verdirmek" tek başına bir hedef değildir. Asıl mesele, o düzeni yıllarca sürdürebilmek.</p>
+        <p>Çoğu diyet, kısa vadede işe yarayıp uzun vadede seni eski noktana geri götürür. Ben senin yaşam tarzını, çalışma saatlerini, yemek alışkanlıklarını ve gerçekten neyi sevip neyi sevmediğini dinleyerek başlıyorum — sonra bir plan değil, sürdürülebilir bir düzen kuruyoruz.</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <span class="num">1</span>
+          <div><h3>Dinle</h3><p>Sağlık geçmişini, rutinini ve hedeflerini gerçekten anlamadan hiçbir öneri vermem.</p></div>
+        </div>
+        <div class="principle">
+          <span class="num">2</span>
+          <div><h3>Anla</h3><p>Kan değerlerin, uyku düzenin ve stres seviyen kadar; hangi öğünü asla vazgeçemeyeceğini de önemsiyorum.</p></div>
+        </div>
+        <div class="principle">
+          <span class="num">3</span>
+          <div><h3>Uygula</h3><p>Plan kağıt üzerinde değil, mutfağında işe yaramalı. Birlikte test eder, birlikte düzeltiriz.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (Hizmetler'in üstüne taşındı) -->
+  <section id="hakkimda">
+    <div class="wrap about-grid">
+      <div class="portrait">
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+          <rect width="300" height="400" fill="#1F3A24"/>
+          <circle cx="150" cy="160" r="70" fill="#D9A441" opacity="0.9"/>
+          <path d="M60 400c0-70 40-120 90-120s90 50 90 120Z" fill="#16231A"/>
+        </svg>
+      </div>
+      <div class="about-body">
+        <span class="kicker">Hakkımda</span>
+        <h2>Merhaba, ben Örnek Diyetisyen.</h2>
+        <p>9 yıldır klinik diyetisyenlik yapıyorum ve bu süreçte fark ettiğim tek şey var: en iyi plan, sürdürebildiğin plandır. Danışanlarımla kurduğum ilişkiyi bir seferlik reçeteden çok, uzun soluklu bir yol arkadaşlığı olarak görüyorum.</p>
+        <p>Beslenme ve Diyetetik lisansımı tamamladıktan sonra sporcu beslenmesi ve kadın sağlığı alanlarında ileri eğitimler aldım. Şu anda hem yüz yüze hem online danışanlarla, İstanbul merkezli olarak çalışıyorum.</p>
+        <div class="creds">
+          <div class="cred"><b>Lisans Eğitimi</b>Beslenme ve Diyetetik, Hacettepe Üniversitesi</div>
+          <div class="cred"><b>Sertifika</b>Sporcu Beslenmesi İleri Uzmanlık Programı</div>
+          <div class="cred"><b>Sertifika</b>Kadın Sağlığı ve Hormonal Beslenme</div>
+          <div class="cred"><b>Üyelik</b>Türkiye Diyetisyenler Derneği</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="hizmetler">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Hizmetler</span>
+        <h2>Neler üzerinde çalışıyoruz</h2>
+        <p>Her danışanla farklı bir noktadan başlıyoruz — ama hepsinde ortak olan şey sürdürülebilirlik.</p>
+      </div>
+
+      <div class="service-row">
+        <div class="s-media">
+          <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="34" stroke="#D9A441" stroke-width="2.5"/><path d="M50 24v26l18 12" stroke="#F8F5EC" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="s-text">
+          <span class="s-tag">01 — Kilo Yönetimi</span>
+          <h3>Kalıcı ve sürdürülebilir kilo değişimi</h3>
+          <p>Kısa süreli "şok" diyetler yerine, günlük rutinine oturan, esnek ve uzun vadeli bir beslenme planı kurguluyoruz. Hedefimiz sadece tartıdaki sayı değil, kurduğun düzenin kalıcılığı.</p>
+        </div>
+      </div>
+
+      <div class="service-row rev">
+        <div class="s-media">
+          <svg viewBox="0 0 100 100" fill="none"><path d="M30 70l14-30 10 18 8-14 8 10" stroke="#D9A441" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="70" cy="34" r="5" fill="#F8F5EC"/></svg>
+        </div>
+        <div class="s-text">
+          <span class="s-tag">02 — Sporcu Beslenmesi</span>
+          <h3>Performans ve toparlanma odaklı planlama</h3>
+          <p>Antrenman yüküne, müsabaka takvimine ve toparlanma sürene göre şekillenen; enerji ve makro dengesini gözeten beslenme programları hazırlıyorum.</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="s-media">
+          <svg viewBox="0 0 100 100" fill="none"><path d="M50 20c-16 12-28 26-28 42a28 28 0 0056 0c0-16-12-30-28-42Z" stroke="#D9A441" stroke-width="2.5"/></svg>
+        </div>
+        <div class="s-text">
+          <span class="s-tag">03 — Kadın Sağlığı & Hormonal Denge</span>
+          <h3>PCOS, gebelik ve menopoz dönemlerine özel yaklaşım</h3>
+          <p>Hormonal döngünün beslenme ihtiyaçlarını nasıl değiştirdiğini gözeterek; gebelik, PCOS ve menopoz süreçlerine özel, hekiminle koordineli planlar oluşturuyorum.</p>
+        </div>
+      </div>
+
+      <div class="service-row rev">
+        <div class="s-media">
+          <svg viewBox="0 0 100 100" fill="none"><rect x="26" y="30" width="48" height="40" rx="3" stroke="#D9A441" stroke-width="2.5"/><path d="M34 44h32M34 54h20" stroke="#F8F5EC" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="s-text">
+          <span class="s-tag">04 — Online Takip Programı</span>
+          <h3>Uzaktan, haftalık check-in'lerle sürekli destek</h3>
+          <p>Şehir dışında ya da yoğun tempoda olsan da; haftalık mesaj desteği ve düzenli görüşmelerle sürecin hiç kopmadan devam etmesini sağlıyorum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="surec">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Süreç</span>
+        <h2>Nasıl çalışıyoruz</h2>
+        <p>Üç adımlık, net bir başlangıç. Belirsizlik yok, sürpriz yok.</p>
+      </div>
+      <div class="process-list">
+        <div class="p-step">
+          <span class="num">1</span>
+          <h3>Ön Görüşme</h3>
+          <p>20 dakikalık ücretsiz bir tanışma görüşmesiyle başlıyoruz. Hedeflerini, beklentilerini ve sorularını konuşuyoruz.</p>
+        </div>
+        <div class="p-step">
+          <span class="num">2</span>
+          <h3>Değerlendirme & Plan</h3>
+          <p>Sağlık geçmişin, alışkanlıkların ve yaşam tarzın üzerinden sana özel ilk planı hazırlıyorum.</p>
+        </div>
+        <div class="p-step">
+          <span class="num">3</span>
+          <h3>Takip & Destek</h3>
+          <p>Düzenli görüşmeler ve mesaj desteğiyle süreç boyunca planı birlikte güncelliyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi" id="yorumlar">
+    <div class="wrap testi-wrap">
+      <div class="t-item active">
+        <blockquote>"Artık 'yasak' bir yemek listem yok. Kendi bedenimi dinlemeyi yeniden öğrendim."</blockquote>
+        <cite>— Selin, 34</cite>
+      </div>
+      <div class="t-item">
+        <blockquote>"İlk kez bir planı 6 aydır sürdürebiliyorum. Daha önce hiçbiri bu kadar uzun sürmemişti."</blockquote>
+        <cite>— Barış, 41</cite>
+      </div>
+      <div class="t-item">
+        <blockquote>"Hamileliğim boyunca hem kendim hem bebeğim için doğru besinleri seçtiğimi bilerek çok rahattım."</blockquote>
+        <cite>— Merve, 29</cite>
+      </div>
+      <div class="t-dots">
+        <button class="active" data-i="0" aria-label="1. yorum"></button>
+        <button data-i="1" aria-label="2. yorum"></button>
+        <button data-i="2" aria-label="3. yorum"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="iletisim">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <span class="kicker">İletişim</span>
+        <h2>Ön görüşmeni ayarlayalım.</h2>
+        <p>Formu doldur, taleplerin doğrudan mail kutuma düşsün. 24 saat içinde dönüş yapıyorum.</p>
+        <div class="contact-detail">
+          <div><b>E-POSTA</b>info@kokbeslenme.com</div>
+          <div><b>TELEFON</b>0532 000 00 00</div>
+          <div><b>KONUM</b>Kadıköy, İstanbul · Online danışmanlık</div>
+        </div>
+      </div>
+
+      <form class="form-card" id="leadForm">
+        <div class="form-row two">
+          <div class="field">
+            <label for="adsoyad">Ad Soyad</label>
+            <input id="adsoyad" name="adsoyad" type="text" required placeholder="Adın Soyadın">
+          </div>
+          <div class="field">
+            <label for="telefon">Telefon</label>
+            <input id="telefon" name="telefon" type="tel" required placeholder="05xx xxx xx xx">
+          </div>
+        </div>
+        <div class="form-row two">
+          <div class="field">
+            <label for="eposta">E-posta</label>
+            <input id="eposta" name="eposta" type="email" required placeholder="ornek@mail.com">
+          </div>
+          <div class="field">
+            <label for="ilgi">İlgilendiğin Hizmet</label>
+            <select id="ilgi" name="ilgi">
+              <option>Kilo Yönetimi</option>
+              <option>Sporcu Beslenmesi</option>
+              <option>Kadın Sağlığı & Hormonal Denge</option>
+              <option>Online Takip Programı</option>
+              <option>Emin değilim, konuşarak karar vermek istiyorum</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="mesaj">Mesajın</label>
+          <textarea id="mesaj" name="mesaj" placeholder="Hedeflerinden ya da merak ettiklerinden kısaca bahset..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%; justify-content:center;">Talebi Gönder</button>
+        <p class="form-note">Gönder'e bastığında mail uygulaman, bilgilerinle doldurulmuş halde açılacak.</p>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="logo" style="font-size:1.1rem;">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px; height:18px;">
+        <path d="M12 2v9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 11c-3 1-4 4-5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 11c3 1 4 4 5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <div class="wordmark">kök</div>
+    </div>
+    <div class="foot-links">
+      <a href="#hakkimda">Hakkımda</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#iletisim">İletişim</a>
+      <a href="#" onclick="return false;">Instagram</a>
+    </div>
+    <div class="foot-note">© 2026 kök beslenme danışmanlığı</div>
+  </div>
+</footer>
+
+<!-- Yukarı Çık Butonu -->
+<a href="#" class="btt" id="btt" aria-label="Yukarı Çık">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</a>
+
+<script>
+  // Hero stat count-up
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var stats = document.querySelectorAll('.hero-stats b[data-target]');
+    stats.forEach(function(el){
+      var target = parseFloat(el.dataset.target);
+      var prefix = el.dataset.prefix || '';
+      var suffix = el.dataset.suffix || '';
+      if(reduce){ el.textContent = prefix + target + suffix; return; }
+      var start = null; var dur = 1300;
+      function tick(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = Math.round(target * eased);
+        el.textContent = prefix + val + suffix;
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  })();
+
+  // Mobile menu
+  var burger = document.getElementById('burgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menu.classList.remove('open'); });
+  });
+
+  // Testimonial rotation
+  (function(){
+    var items = document.querySelectorAll('.t-item');
+    var dots = document.querySelectorAll('.t-dots button');
+    var i = 0;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function show(n){
+      items.forEach(function(el,idx){ el.classList.toggle('active', idx===n); });
+      dots.forEach(function(el,idx){ el.classList.toggle('active', idx===n); });
+      i = n;
+    }
+    dots.forEach(function(d){
+      d.addEventListener('click', function(){ show(parseInt(d.dataset.i,10)); });
+    });
+    if(!reduce){
+      setInterval(function(){ show((i+1)%items.length); }, 6000);
+    }
+  })();
+
+  // Back to Top Button Logic
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 400) {
+      btt.classList.add('show');
+    } else {
+      btt.classList.remove('show');
+    }
+  });
+  btt.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Lead form -> mailto
+  var DIETITIAN_EMAIL = "info@kokbeslenme.com"; // <-- gerçek kullanımda bu e-postayı değiştir
+  var form = document.getElementById('leadForm');
+  var msg = document.getElementById('formMsg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ad = form.adsoyad.value.trim();
+    var tel = form.telefon.value.trim();
+    var mail = form.eposta.value.trim();
+    var ilgi = form.ilgi.value;
+    var mesaj = form.mesaj.value.trim();
+
+    var subject = "Yeni Danışan Talebi — " + ad;
+    var body =
+      "Ad Soyad: " + ad + "\n" +
+      "Telefon: " + tel + "\n" +
+      "E-posta: " + mail + "\n" +
+      "İlgilendiği Hizmet: " + ilgi + "\n\n" +
+      "Mesaj:\n" + (mesaj || "—");
+
+    var mailtoLink = "mailto:" + DIETITIAN_EMAIL +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+
+    msg.textContent = "Mail uygulaman açılıyor, göndermeden önce son kontrolünü yapabilirsin.";
+    msg.classList.add('show');
+    window.location.href = mailtoLink;
+  });
+</script>
+
+</body>
+</html>
