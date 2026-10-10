@@ -91,6 +91,7 @@
     font: 600 1rem/1.2 var(--body); text-decoration: none; cursor: pointer;
     background: var(--accent); color: var(--on-accent); border: 1.5px solid var(--accent);
     transition: transform .2s ease, filter .2s ease;
+    white-space: nowrap;
   }
   .btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
   .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
@@ -102,26 +103,29 @@
   /* ---------- Hero & Logo ---------- */
   .hero-shell { background: var(--hero-bg); color: #fff; overflow: clip; position: relative; }
   .hero-shell :focus-visible { outline-color: #fff; }
-  .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; }
+  .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; flex-wrap: nowrap; }
   
-  .logo { text-decoration: none; font-family: var(--display); font-size: 2rem; letter-spacing: -0.03em; display: flex; align-items: baseline; }
+  .logo { text-decoration: none; font-family: var(--display); font-size: 2rem; letter-spacing: -0.03em; display: flex; align-items: baseline; flex: none; }
   .logo .logo-e { color: inherit; font-weight: 800; }
   .logo .logo-y { color: #00E5FF; font-weight: 800; text-shadow: 0 0 12px rgba(0, 229, 255, 0.7); margin-left: -2px; }
   .logo .st { font-weight: 500; font-size: 1.1rem; margin-left: 8px; opacity: 0.85; letter-spacing: 0; }
 
-  nav ul { display: flex; align-items: center; gap: 1.7rem; list-style: none; margin: 0; padding: 0; }
-  nav a { text-decoration: none; font-weight: 500; }
+  nav ul { display: flex; align-items: center; gap: 1.2rem; list-style: none; margin: 0; padding: 0; flex-wrap: nowrap; }
+  nav a { text-decoration: none; font-weight: 500; white-space: nowrap; }
   nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
   nav .btn { min-height: 42px; padding: .45rem 1.1rem; }
 
-  /* Dil Menüsü CSS */
-  .lang-menu { position: relative; display: inline-block; }
-  .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; backdrop-filter: blur(5px); }
+  /* GERÇEK BAYRAKLI DİL MENÜSÜ */
+  .lang-menu { position: relative; display: flex; align-items: center; }
+  .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; backdrop-filter: blur(5px); white-space: nowrap; }
+  .lang-btn img { border-radius: 2px; width: 20px; height: auto; display: block; }
   .lang-btn:hover { background: rgba(255,255,255,0.25); }
-  .lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; min-width: 140px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; z-index: 9999; overflow: hidden; }
+  
+  .lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; min-width: max-content; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; z-index: 99999; overflow: hidden; border: 1px solid var(--line); }
   .lang-dropdown.show { opacity: 1; visibility: visible; transform: translateY(0); }
-  .lang-option { background: none; border: none; padding: 10px 14px; text-align: left; width: 100%; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #1B2BD0; display: flex; align-items: center; gap: 8px; transition: background 0.2s; }
-  .lang-option:hover { background: #f0f0f0; color: #000; }
+  .lang-option { background: none; border: none; padding: 12px 16px; text-align: left; width: 100%; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: #1B2BD0; transition: background 0.2s; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .lang-option img { border-radius: 2px; width: 20px; height: auto; display: block; }
+  .lang-option:hover { background: #f4f5f8; color: #0C1020; }
 
   .hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 7rem); }
   .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
@@ -179,7 +183,7 @@
   .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; pointer-events: none; }
   .progress i { display: block; height: 100%; width: 0; background: #FFC940; }
 
-  .tbtn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.7); background: transparent; color: #fff; display: grid; place-items: center; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+  .tbtn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.7); background: transparent; color: #fff; display: grid; place-items: center; cursor: pointer; transition: background-color .2s ease, color .2s ease; flex: none; }
   .tbtn:hover { background: #fff; color: #1B2BD0; }
   .tbtn .i-sun { display: none; }
   :root[data-theme="dark"] .tbtn .i-sun { display: block; }
@@ -340,6 +344,7 @@
   .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
   .js .reveal.in { opacity: 1; transform: none; }
 
+  /* MOBİL DÜZENLEMELERİ (GÖRSELDEKİ HATALAR İÇİN) */
   @media (max-width: 960px) {
     .hero .wrap, .contact { grid-template-columns: minmax(0, 1fr); }
     .stage { min-height: 0; }
@@ -359,9 +364,23 @@
     .story-bar { margin-top: .8rem; }
     .note { width: 70%; }
   }
+
   @media (max-width: 620px) {
-    nav ul li:not(:last-child) { display: none; }
+    nav ul li:not(:last-child):not(.keep) { display: none; }
     nav ul li.keep { display: block; }
+    .site-head .wrap { gap: 0.5rem; padding-block: 0.8rem; }
+    nav ul { gap: 0.5rem; }
+    
+    .logo { font-size: 1.6rem; }
+    .logo .st { display: none; } /* Dar ekranda "Studios TR" yazısını gizle */
+    
+    .lang-btn { padding: 6px 10px; font-size: 0.85rem; }
+    .lang-btn img { width: 16px; }
+    
+    .head .btn { padding: .4rem .8rem; font-size: .85rem; min-height: 38px; }
+    .tbtn { width: 36px; height: 36px; }
+    .tbtn svg { width: 16px; height: 16px; }
+
     .works { grid-template-columns: minmax(0, 1fr); }
     .steps, .strip { grid-template-columns: minmax(0, 1fr); }
     .row2 { grid-template-columns: minmax(0, 1fr); }
@@ -406,20 +425,25 @@
          <li><a href="#calismalar" data-i18n="nav2">Çalışmalar</a></li>
          <li><a href="#paketler" data-i18n="nav3">Paketler</a></li>     
           <li class="keep"><button class="tbtn" id="themeBtn" type="button" aria-label="Açık ya da koyu temayı değiştir"><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></g></svg></button></li>
+          
+          <!-- GERÇEK BAYRAKLI DİL MENÜSÜ -->
           <li class="keep lang-menu">
-            <button class="lang-btn" id="langBtn">🇹🇷 TR ▼</button>
+            <button class="lang-btn" id="langBtn">
+              <img src="https://flagcdn.com/w20/tr.png" alt="TR"> TR ▼
+            </button>
             <div class="lang-dropdown" id="langDropdown">
-              <button class="lang-option" data-lang="tr">🇹🇷 TR (Türkçe)</button>
-              <button class="lang-option" data-lang="en">🇬🇧 EN (English)</button>
-              <button class="lang-option" data-lang="de">🇩🇪 DE (Deutsch)</button>
-              <button class="lang-option" data-lang="nl">🇳🇱 NL (Nederlands)</button>
-              <button class="lang-option" data-lang="es">🇪🇸 ES (Español)</button>
-              <button class="lang-option" data-lang="fr">🇫🇷 FR (Français)</button>
-              <button class="lang-option" data-lang="it">🇮🇹 IT (Italiano)</button>
-              <button class="lang-option" data-lang="ru">🇷🇺 RU (Русский)</button>
+              <button class="lang-option" data-lang="tr"><img src="https://flagcdn.com/w20/tr.png" alt="TR"> Türkçe</button>
+              <button class="lang-option" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="EN"> English</button>
+              <button class="lang-option" data-lang="de"><img src="https://flagcdn.com/w20/de.png" alt="DE"> Deutsch</button>
+              <button class="lang-option" data-lang="nl"><img src="https://flagcdn.com/w20/nl.png" alt="NL"> Nederlands</button>
+              <button class="lang-option" data-lang="es"><img src="https://flagcdn.com/w20/es.png" alt="ES"> Español</button>
+              <button class="lang-option" data-lang="fr"><img src="https://flagcdn.com/w20/fr.png" alt="FR"> Français</button>
+              <button class="lang-option" data-lang="it"><img src="https://flagcdn.com/w20/it.png" alt="IT"> Italiano</button>
+              <button class="lang-option" data-lang="ru"><img src="https://flagcdn.com/w20/ru.png" alt="RU"> Русский</button>
             </div>
           </li>
-          <li><a href="#iletisim" class="btn light" data-i18n="nav4">Teklif iste</a></li>
+
+          <li class="keep"><a href="#iletisim" class="btn light head" data-i18n="nav4">Teklif iste</a></li>
         </ul>
       </nav>
     </div>
@@ -1179,7 +1203,7 @@
     window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
   });
 
-  // --- ÇEVİRİ ALTYAPISI (TR, EN, DE, ES) ---
+  // --- ÇEVİRİ ALTYAPISI VE GERÇEK BAYRAKLAR ---
   const i18n = {
     "tr": { 
       "nav1": "Süreç", "nav2": "Çalışmalar", "nav3": "Paketler", "nav4": "Teklif iste",
@@ -1220,7 +1244,7 @@
       "pk3_t": "Özel proje", "pk3_f": "Standart paketlere sığmayan ihtiyaçlar için.", "pk3_ul": "<li>Randevu veya rezervasyon servisi bağlama</li><li>Ürün ve katalog sayfaları</li><li>Mevcut sitenin yenilenmesi</li><li>Kapsam ve süre görüşmede belirlenir</li>",
       "pk_p": "Fiyat için görüşelim",
       "sss_k": "Sorular", "sss_h": "Sık sorulan sorular.", "sss_s": "Aklınızdaki soru burada yoksa formdan ya da WhatsApp'tan sorabilirsiniz.",
-      "sss_faq": "<details><summary>Başka şehirdeyim, nasıl çalışıyoruz?</summary><p>Bütün süreç uzaktan yürür. Görüşmeleri telefonda ya da WhatsApp'ta yaparız, taslağı internetten görürsünüz. Yüz yüze buluşmanıza gerek yok.</p></details><details><summary>Barındırma ve alan adı için ödeme yapacak mıyım?</summary><p>Sitelerim statik olduğu için sunucu kirası gerektirmez. Alan adı (.com, .com.tr gibi) yıllık ücretlidir.</p></details><details><summary>Sitem Google'da ilk sırada çıkar mı?</summary><p>Sıralama garantisi kimse veremez. Sitenin teknik altyapısını arama motorlarına uygun hazırlarım.</p></details><details><summary>Site ne kadar sürede hazır olur?</summary><p>Sayfa sayısına ve içeriğin ne zaman hazır olduğuna bağlıdır. Teklifte tarihi yazılı olarak veririm.</p></details>",
+      "sss_faq": "<details><summary>Başka şehirdeyim, nasıl çalışıyoruz?</summary><p>Bütün süreç uzaktan yürür. Görüşmeleri telefonda ya da WhatsApp'ta yaparız, taslağı internetten görürsünüz. Yüz yüze buluşmanıza gerek yok.</p></details><details><summary>Barındırma ve alan adı için ödeme yapacak mıyım?</summary><p>Sitelerim statik olduğu için sunucu kirası gerektirmez. Alan adı (.com, .com.tr gibi) yıllık ücretlidir. Alan adını sizin adınıza almanızı öneririm, böylece site her zaman sizin kalır.</p></details><details><summary>Sitem Google'da ilk sırada çıkar mı?</summary><p>Sıralama garantisi kimse veremez. Sitenin teknik altyapısını arama motorlarına uygun hazırlarım. Sıralama, rekabete ve zamana göre değişir.</p></details><details><summary>Site ne kadar sürede hazır olur?</summary><p>Sayfa sayısına ve içeriğin ne zaman hazır olduğuna bağlıdır. Teklifte tarihi yazılı olarak veririm.</p></details><details><summary>Web sitesi yaptırmak için ne hazırlamam gerekir?</summary><p>Logonuz, birkaç fotoğraf, hizmetlerinizin listesi ve iletişim bilgileriniz yeterli. Bunlar yoksa birlikte planlar, eksikleri görüşmede tamamlarız.</p></details><details><summary>Yayından sonra değişiklik yaptırabilir miyim?</summary><p>Metin, fotoğraf ve telefon numarası gibi güncellemeleri benden isteyebilirsiniz. Neyin pakete dahil olduğu teklifte belirtilir.</p></details>",
       "cta_h": "Sıradaki site sizinki olsun.",
       "ilet_k": "İletişim", "ilet_h": "Projenizi anlatın, teklif hazırlayayım.", "ilet_s": "İşletmenizin türünü ve ne istediğinizi kısaca yazın. Aynı gün içinde dönmeye çalışırım.",
       "f_t1": "Telefon", "f_t2": "WhatsApp", "f_t3": "E-posta", "f_t4": "Instagram", "f_t5": "Hizmet alanı", "f_tw": "Mesaj gönder", "f_td": "Türkiye geneli, uzaktan",
@@ -1321,10 +1345,20 @@
     }
   };
   
-  // Sadece JSON yapısını tamamlamak adına eksik diller için İngilizce fall-back (yer tutucu) kullanılmıştır.
+  // Eksik diller için İngilizce fall-back
   ['es', 'nl', 'fr', 'it', 'ru'].forEach(lang => i18n[lang] = i18n['en']);
 
-  const flags = { "tr": "🇹🇷 TR", "en": "🇬🇧 EN", "es": "🇪🇸 ES", "de": "🇩🇪 DE", "nl": "🇳🇱 NL", "fr": "🇫🇷 FR", "it": "🇮🇹 IT", "ru": "🇷🇺 RU" };
+  const flags = { 
+    "tr": '<img src="https://flagcdn.com/w20/tr.png" alt="TR"> TR ▼', 
+    "en": '<img src="https://flagcdn.com/w20/gb.png" alt="EN"> EN ▼', 
+    "es": '<img src="https://flagcdn.com/w20/es.png" alt="ES"> ES ▼', 
+    "de": '<img src="https://flagcdn.com/w20/de.png" alt="DE"> DE ▼', 
+    "nl": '<img src="https://flagcdn.com/w20/nl.png" alt="NL"> NL ▼', 
+    "fr": '<img src="https://flagcdn.com/w20/fr.png" alt="FR"> FR ▼', 
+    "it": '<img src="https://flagcdn.com/w20/it.png" alt="IT"> IT ▼', 
+    "ru": '<img src="https://flagcdn.com/w20/ru.png" alt="RU"> RU ▼' 
+  };
+  
   const langBtn = document.getElementById('langBtn');
   const langDrop = document.getElementById('langDropdown');
 
@@ -1334,7 +1368,7 @@
   document.querySelectorAll('.lang-option').forEach(btn => {
     btn.addEventListener('click', function() {
       const lang = this.getAttribute('data-lang');
-      langBtn.innerHTML = flags[lang] + ' <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+      langBtn.innerHTML = flags[lang];
       
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
