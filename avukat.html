@@ -257,16 +257,16 @@
         <p class="kicker" data-i18n="p_k">İlk görüşme</p>
         <h2 id="hz-b" data-i18n="p_h">Yanınızda neler olsun?</h2>
         <p class="lede" data-i18n="p_p">Elinizdeki belgeleri işaretleyin, hazır olanları tek dokunuşla bize iletin. Hepsinin olması gerekmiyor, elinizde olanlarla başlayabiliriz.</p>
-        <div class="meter" aria-live="polite"><span id="cnt">0 / 6 hazır</span><i><b id="bar"></b></i></div>
+        <div class="meter" aria-live="polite"><span id="cnt" data-i18n="p_cnt">0 / 6 hazır</span><i><b id="bar"></b></i></div>
         <button class="btn" id="sendList" type="button" data-i18n="p_b">Hazır olanları WhatsApp'la ilet</button>
       </div>
       <ul class="checks" id="checks">
-        <li class="rv"><label><input type="checkbox" data-l="Kimlik belgesi"><span class="tick">✓</span><span class="txt">Kimlik belgeniz</span></label></li>
-        <li class="rv"><label><input type="checkbox" data-l="Tebligat"><span class="tick">✓</span><span class="txt">Tebligat veya çağrı kağıdı</span></label></li>
-        <li class="rv"><label><input type="checkbox" data-l="Sözleşme"><span class="tick">✓</span><span class="txt">Sözleşme veya senet</span></label></li>
-        <li class="rv"><label><input type="checkbox" data-l="Fatura"><span class="tick">✓</span><span class="txt">Fatura, dekont vb.</span></label></li>
-        <li class="rv"><label><input type="checkbox" data-l="Yazışmalar"><span class="tick">✓</span><span class="txt">Yazışmalar (WhatsApp vb.)</span></label></li>
-        <li class="rv"><label><input type="checkbox" data-l="Dosya no"><span class="tick">✓</span><span class="txt">Dosya numarası</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Kimlik belgesi"><span class="tick">✓</span><span class="txt" data-i18n="ch1">Kimlik belgeniz</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Tebligat"><span class="tick">✓</span><span class="txt" data-i18n="ch2">Tebligat veya çağrı kağıdı</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Sözleşme"><span class="tick">✓</span><span class="txt" data-i18n="ch3">Sözleşme veya senet</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Fatura"><span class="tick">✓</span><span class="txt" data-i18n="ch4">Fatura, dekont vb.</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Yazışmalar"><span class="tick">✓</span><span class="txt" data-i18n="ch5">Yazışmalar (WhatsApp vb.)</span></label></li>
+        <li class="rv"><label><input type="checkbox" data-l="Dosya no"><span class="tick">✓</span><span class="txt" data-i18n="ch6">Dosya numarası</span></label></li>
       </ul>
     </div>
   </section>
@@ -290,16 +290,16 @@
         <h2 id="ic-b" data-i18n="c_h">Görüşme talep edin.</h2>
         <p class="lede" data-i18n="c_p">Durumunuzu kısaca yazın, size dönüş yapalım. Ayrıntıları görüşmede konuşuruz.</p>
         <div class="lines">
-          <div><span>Telefon</span><a href="tel:+905551234567">+90 (555) 123 45 67</a></div>
-          <div><span>WhatsApp</span><a href="https://wa.me/905551234567" rel="noopener">Mesaj gönderin</a></div>
-          <div><span>Adres</span><em style="font-style:normal">Adalet Mah. Kanun Sk. No: 10/4, Şehir</em></div>
+          <div><span data-i18n="c_tel">Telefon</span><a href="tel:+905551234567">+90 (555) 123 45 67</a></div>
+          <div><span data-i18n="c_wp">WhatsApp</span><a href="https://wa.me/905551234567" rel="noopener" data-i18n="c_wpl">Mesaj gönderin</a></div>
+          <div><span data-i18n="c_adr">Adres</span><em style="font-style:normal">Adalet Mah. Kanun Sk. No: 10/4, Şehir</em></div>
         </div>
       </div>
       <form id="f" novalidate>
-        <label class="f">Adınız soyadınız<input id="ad" autocomplete="name" required></label>
-        <label class="f">Telefon<input id="tel" type="tel" inputmode="tel" autocomplete="tel" required></label>
-        <label class="f">Konu (kısaca)<textarea id="mesaj"></textarea></label>
-        <label class="check"><input type="checkbox" id="kvkk"><span>Bilgilerimin yanıtlanmak için kullanılmasını kabul ediyorum.</span></label>
+        <label class="f"><span data-i18n="f_n">Adınız soyadınız</span><input id="ad" autocomplete="name" required></label>
+        <label class="f"><span data-i18n="f_t">Telefon</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel" required></label>
+        <label class="f"><span data-i18n="f_m">Konu (kısaca)</span><textarea id="mesaj"></textarea></label>
+        <label class="check"><input type="checkbox" id="kvkk"><span data-i18n="f_c">Bilgilerimin yanıtlanmak için kullanılmasını kabul ediyorum.</span></label>
         <button class="btn" type="submit" data-i18n="c_btn">Görüşme talep et</button>
         <p class="status" id="st" role="status" aria-live="polite"></p>
       </form>
@@ -314,39 +314,161 @@
 </footer>
 
 <script>
-// ÇEVİRİ SÖZLÜĞÜ
+// ÇEVİRİ SÖZLÜĞÜ EKSİKSİZ DOLDURULDU
 const i18n = {
   "tr": {
     "n1": "Alanlar", "n2": "Hazırlık", "n3": "İletişim", "n4": "Ara",
-    "h_ey": "Avukatlık bürosu", "h_h1": "Net bir <em>yol haritası.</em>", "h_p": "Ceza, ticaret ve icra hukuku alanlarında danışmanlık ve vekalet.", "h_b1": "Görüşme talep et",
+    "h_ey": "Avukatlık bürosu", "h_h1": "Net bir <em>yol haritası.</em>", "h_p": "Ceza, ticaret ve icra hukuku alanlarında danışmanlık ve vekalet. İlk görüşmede durumunuzu dinler, sürecin nasıl ilerleyeceğini ve hangi belgelerin gerektiğini anlatırız.", "h_b1": "Görüşme talep et",
     "a_k": "Çalışma alanları", "a_h": "Hangi konuda destek arıyorsunuz?",
-    "a1_t": "Ceza hukuku", "a1_p": "Soruşturma, kovuşturma ve temyiz aşamalarında hukuki destek.",
-    "a2_t": "Ticaret ve şirketler", "a2_p": "Sözleşme hazırlama ve inceleme, ticari uyuşmazlıklar.",
-    "a3_t": "İcra ve iflas", "a3_p": "Alacak takibi, haciz işlemleri ve konkordato süreçleri.",
-    "p_k": "İlk görüşme", "p_h": "Yanınızda neler olsun?", "p_p": "Elinizdeki belgeleri işaretleyin, hazır olanları bize iletin.", "p_b": "Hazır olanları WhatsApp'la ilet",
+    "a1_t": "Ceza hukuku", "a1_p": "Soruşturma, kovuşturma ve temyiz aşamalarında müşteki, mağdur veya şüpheli/sanık tarafında hukuki destek.",
+    "a2_t": "Ticaret ve şirketler", "a2_p": "Sözleşme hazırlama ve inceleme, şirket işlemleri ve ticari uyuşmazlıklarda danışmanlık ve vekalet.",
+    "a3_t": "İcra ve iflas", "a3_p": "Alacak takibi, ödeme emrine itiraz, haciz işlemleri ve konkordato süreçlerinde hukuki destek.",
+    "p_k": "İlk görüşme", "p_h": "Yanınızda neler olsun?", "p_p": "Elinizdeki belgeleri işaretleyin, hazır olanları tek dokunuşla bize iletin. Hepsinin olması gerekmiyor, elinizde olanlarla başlayabiliriz.", 
+    "p_cnt": "hazır", "p_b": "Hazır olanları WhatsApp'la ilet",
+    "ch1": "Kimlik belgeniz", "ch2": "Tebligat veya çağrı kağıdı", "ch3": "Sözleşme veya senet", "ch4": "Fatura, dekont vb.", "ch5": "Yazışmalar (WhatsApp vb.)", "ch6": "Dosya numarası",
     "s_k": "Süreç", "s_h": "Görüşmeden sonra ne olur?",
     "s1_t": "Görüşme ve değerlendirme", "s1_p": "Dosyanız incelenir, seçenekler anlatılır.",
     "s2_t": "Yol haritası ve vekalet", "s2_p": "Birlikte çalışmaya karar verirseniz vekaletname düzenlenir.",
     "s3_t": "Takip ve bilgilendirme", "s3_p": "Dosyadaki gelişmeler size düzenli aktarılır.",
-    "c_k": "İletişim", "c_h": "Görüşme talep edin.", "c_p": "Durumunuzu kısaca yazın, size dönüş yapalım.", "c_btn": "Görüşme talep et", "f_cpy": "© 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır."
+    "c_k": "İletişim", "c_h": "Görüşme talep edin.", "c_p": "Durumunuzu kısaca yazın, size dönüş yapalım. Ayrıntıları görüşmede konuşuruz.", 
+    "c_tel": "Telefon", "c_wp": "WhatsApp", "c_wpl": "Mesaj gönderin", "c_adr": "Adres",
+    "f_n": "Adınız soyadınız", "f_t": "Telefon", "f_m": "Konu (kısaca)", "f_c": "Bilgilerimin yanıtlanmak için kullanılmasını kabul ediyorum.",
+    "c_btn": "Görüşme talep et", "f_cpy": "© 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır."
   },
   "en": {
     "n1": "Practice Areas", "n2": "Preparation", "n3": "Contact", "n4": "Call",
-    "h_ey": "Law Firm", "h_h1": "A clear <em>roadmap.</em>", "h_p": "Consultancy and representation in criminal, commercial, and enforcement law.", "h_b1": "Request Consultation",
+    "h_ey": "Law Firm", "h_h1": "A clear <em>roadmap.</em>", "h_p": "Consultancy and representation in criminal, commercial, and enforcement law. We listen to your situation and explain the process.", "h_b1": "Request Consultation",
     "a_k": "Practice Areas", "a_h": "How can we help you?",
     "a1_t": "Criminal Law", "a1_p": "Legal support during investigation, prosecution, and appeal stages.",
-    "a2_t": "Commercial Law", "a2_p": "Contract drafting and review, commercial disputes.",
+    "a2_t": "Commercial Law", "a2_p": "Contract drafting and review, corporate transactions, and commercial disputes.",
     "a3_t": "Enforcement & Bankruptcy", "a3_p": "Debt collection, foreclosure procedures, and concordat processes.",
-    "p_k": "First Meeting", "p_h": "What to bring?", "p_p": "Check the documents you have and send them to us.", "p_b": "Send checked via WhatsApp",
+    "p_k": "First Meeting", "p_h": "What to bring?", "p_p": "Check the documents you have and send them to us. We can start with what you have.", 
+    "p_cnt": "ready", "p_b": "Send checked via WhatsApp",
+    "ch1": "ID Document", "ch2": "Notification or Summons", "ch3": "Contract or Promissory Note", "ch4": "Invoice, Receipt, etc.", "ch5": "Correspondence (WhatsApp, etc.)", "ch6": "File Number",
     "s_k": "Process", "s_h": "What happens next?",
     "s1_t": "Meeting and Evaluation", "s1_p": "Your file is reviewed, options are explained.",
     "s2_t": "Roadmap & Power of Attorney", "s2_p": "If we proceed, a power of attorney is arranged.",
     "s3_t": "Tracking & Informing", "s3_p": "Developments are regularly reported to you.",
-    "c_k": "Contact", "c_h": "Request a consultation.", "c_p": "Briefly describe your situation.", "c_btn": "Request Consultation", "f_cpy": "© 2026 Yilmaz Law Firm. All rights reserved."
+    "c_k": "Contact", "c_h": "Request a consultation.", "c_p": "Briefly describe your situation, we will get back to you.", 
+    "c_tel": "Phone", "c_wp": "WhatsApp", "c_wpl": "Send message", "c_adr": "Address",
+    "f_n": "Full Name", "f_t": "Phone", "f_m": "Topic (briefly)", "f_c": "I agree my information can be used to respond.",
+    "c_btn": "Request Consultation", "f_cpy": "© 2026 Yilmaz Law Firm. All rights reserved."
+  },
+  "de": {
+    "n1": "Rechtsgebiete", "n2": "Vorbereitung", "n3": "Kontakt", "n4": "Anrufen",
+    "h_ey": "Anwaltskanzlei", "h_h1": "Ein klarer <em>Fahrplan.</em>", "h_p": "Beratung und Vertretung im Straf-, Handels- und Vollstreckungsrecht.", "h_b1": "Beratung anfordern",
+    "a_k": "Rechtsgebiete", "a_h": "Wie können wir Ihnen helfen?",
+    "a1_t": "Strafrecht", "a1_p": "Rechtliche Unterstützung während Ermittlungs-, Strafverfolgungs- und Berufungsverfahren.",
+    "a2_t": "Handelsrecht", "a2_p": "Vertragsgestaltung und -prüfung, geschäftliche Streitigkeiten.",
+    "a3_t": "Vollstreckung & Insolvenz", "a3_p": "Inkasso, Zwangsvollstreckung und Konkordatsverfahren.",
+    "p_k": "Erstes Treffen", "p_h": "Was mitbringen?", "p_p": "Kreuzen Sie die Dokumente an, die Sie haben, und senden Sie sie uns.", 
+    "p_cnt": "bereit", "p_b": "Per WhatsApp senden",
+    "ch1": "Ausweis", "ch2": "Benachrichtigung oder Vorladung", "ch3": "Vertrag", "ch4": "Rechnung, Quittung usw.", "ch5": "Korrespondenz", "ch6": "Aktenzeichen",
+    "s_k": "Prozess", "s_h": "Was passiert als Nächstes?",
+    "s1_t": "Besprechung und Bewertung", "s1_p": "Ihre Akte wird geprüft, Optionen werden erklärt.",
+    "s2_t": "Fahrplan & Vollmacht", "s2_p": "Wenn wir fortfahren, wird eine Vollmacht ausgestellt.",
+    "s3_t": "Verfolgung & Information", "s3_p": "Entwicklungen werden Ihnen regelmäßig mitgeteilt.",
+    "c_k": "Kontakt", "c_h": "Beratung anfordern.", "c_p": "Beschreiben Sie kurz Ihre Situation.", 
+    "c_tel": "Telefon", "c_wp": "WhatsApp", "c_wpl": "Nachricht senden", "c_adr": "Adresse",
+    "f_n": "Vollständiger Name", "f_t": "Telefon", "f_m": "Thema (kurz)", "f_c": "Ich stimme der Nutzung meiner Daten zu.",
+    "c_btn": "Beratung anfordern", "f_cpy": "© 2026 Anwaltskanzlei Yilmaz. Alle Rechte vorbehalten."
+  },
+  "nl": {
+    "n1": "Rechtsgebieden", "n2": "Voorbereiding", "n3": "Contact", "n4": "Bellen",
+    "h_ey": "Advocatenkantoor", "h_h1": "Een duidelijke <em>routekaart.</em>", "h_p": "Advies en vertegenwoordiging in straf-, handels- en executierecht.", "h_b1": "Consult aanvragen",
+    "a_k": "Rechtsgebieden", "a_h": "Hoe kunnen we u helpen?",
+    "a1_t": "Strafrecht", "a1_p": "Juridische ondersteuning tijdens onderzoek, vervolging en beroep.",
+    "a2_t": "Handelsrecht", "a2_p": "Opstellen en beoordelen van contracten, zakelijke geschillen.",
+    "a3_t": "Executie & Faillissement", "a3_p": "Incasso, executieprocedures en concordaatprocessen.",
+    "p_k": "Eerste ontmoeting", "p_h": "Wat mee te nemen?", "p_p": "Vink de documenten aan die u heeft en stuur ze naar ons.", 
+    "p_cnt": "klaar", "p_b": "Verzenden via WhatsApp",
+    "ch1": "ID", "ch2": "Kennisgeving of Dagvaarding", "ch3": "Contract", "ch4": "Factuur, Bon etc.", "ch5": "Correspondentie", "ch6": "Dossiernummer",
+    "s_k": "Proces", "s_h": "Wat gebeurt er daarna?",
+    "s1_t": "Ontmoeting en Evaluatie", "s1_p": "Uw dossier wordt bekeken, opties uitgelegd.",
+    "s2_t": "Routekaart & Volmacht", "s2_p": "Indien we doorgaan, wordt een volmacht geregeld.",
+    "s3_t": "Opvolging", "s3_p": "Ontwikkelingen worden regelmatig doorgegeven.",
+    "c_k": "Contact", "c_h": "Vraag een consult aan.", "c_p": "Beschrijf kort uw situatie.", 
+    "c_tel": "Telefoon", "c_wp": "WhatsApp", "c_wpl": "Stuur bericht", "c_adr": "Adres",
+    "f_n": "Volledige naam", "f_t": "Telefoon", "f_m": "Onderwerp (kort)", "f_c": "Ik ga akkoord met het gebruik van mijn gegevens.",
+    "c_btn": "Consult Aanvragen", "f_cpy": "© 2026 Advocatenkantoor Yilmaz. Alle rechten voorbehouden."
+  },
+  "fr": {
+    "n1": "Domaines", "n2": "Préparation", "n3": "Contact", "n4": "Appeler",
+    "h_ey": "Cabinet d'Avocats", "h_h1": "Une <em>feuille de route</em> claire.", "h_p": "Conseil et représentation en droit pénal, commercial et des poursuites.", "h_b1": "Demander Consultation",
+    "a_k": "Domaines de pratique", "a_h": "Comment pouvons-nous vous aider?",
+    "a1_t": "Droit Pénal", "a1_p": "Assistance lors des enquêtes, poursuites et appels.",
+    "a2_t": "Droit Commercial", "a2_p": "Rédaction de contrats, litiges commerciaux.",
+    "a3_t": "Exécution & Faillite", "a3_p": "Recouvrement de créances, saisies.",
+    "p_k": "Première Rencontre", "p_h": "Quoi apporter?", "p_p": "Cochez les documents que vous avez et envoyez-les nous.", 
+    "p_cnt": "prêt", "p_b": "Envoyer via WhatsApp",
+    "ch1": "Pièce d'identité", "ch2": "Notification ou Assignation", "ch3": "Contrat", "ch4": "Facture, Reçu", "ch5": "Correspondance", "ch6": "Numéro de dossier",
+    "s_k": "Processus", "s_h": "Que se passe-t-il ensuite?",
+    "s1_t": "Évaluation", "s1_p": "Votre dossier est examiné, les options expliquées.",
+    "s2_t": "Procuration", "s2_p": "Si nous procédons, une procuration est établie.",
+    "s3_t": "Suivi", "s3_p": "Les développements vous sont communiqués.",
+    "c_k": "Contact", "c_h": "Demandez une consultation.", "c_p": "Décrivez brièvement votre situation.", 
+    "c_tel": "Téléphone", "c_wp": "WhatsApp", "c_wpl": "Envoyer le message", "c_adr": "Adresse",
+    "f_n": "Nom complet", "f_t": "Téléphone", "f_m": "Sujet (bref)", "f_c": "J'accepte l'utilisation de mes données.",
+    "c_btn": "Demander", "f_cpy": "© 2026 Cabinet Yilmaz. Tous droits réservés."
+  },
+  "it": {
+    "n1": "Aree", "n2": "Preparazione", "n3": "Contatto", "n4": "Chiama",
+    "h_ey": "Studio Legale", "h_h1": "Una <em>tabella di marcia</em> chiara.", "h_p": "Consulenza e rappresentanza in diritto penale, commerciale ed esecutivo.", "h_b1": "Richiedi Consulenza",
+    "a_k": "Aree di Pratica", "a_h": "Come possiamo aiutarti?",
+    "a1_t": "Diritto Penale", "a1_p": "Supporto legale durante indagini, procedimenti e appelli.",
+    "a2_t": "Diritto Commerciale", "a2_p": "Redazione contratti e controversie commerciali.",
+    "a3_t": "Esecuzioni & Fallimenti", "a3_p": "Recupero crediti e procedure esecutive.",
+    "p_k": "Primo Incontro", "p_h": "Cosa portare?", "p_p": "Spunta i documenti che hai e inviaceli.", 
+    "p_cnt": "pronto", "p_b": "Invia tramite WhatsApp",
+    "ch1": "Documento d'identità", "ch2": "Notifica o Citazione", "ch3": "Contratto", "ch4": "Fattura, Ricevuta", "ch5": "Corrispondenenza", "ch6": "Numero pratica",
+    "s_k": "Processo", "s_h": "Cosa succede dopo?",
+    "s1_t": "Valutazione", "s1_p": "Il tuo fascicolo viene esaminato.",
+    "s2_t": "Procura", "s2_p": "Viene organizzata una procura.",
+    "s3_t": "Aggiornamenti", "s3_p": "Sviluppi riportati regolarmente.",
+    "c_k": "Contatto", "c_h": "Richiedi una consulenza.", "c_p": "Descrivi brevemente la tua situazione.", 
+    "c_tel": "Telefono", "c_wp": "WhatsApp", "c_wpl": "Invia messaggio", "c_adr": "Indirizzo",
+    "f_n": "Nome e Cognome", "f_t": "Telefono", "f_m": "Argomento", "f_c": "Accetto l'uso dei miei dati.",
+    "c_btn": "Richiedi Consulenza", "f_cpy": "© 2026 Studio Legale Yilmaz. Tutti i diritti riservati."
+  },
+  "es": {
+    "n1": "Áreas", "n2": "Preparación", "n3": "Contacto", "n4": "Llamar",
+    "h_ey": "Bufete de Abogados", "h_h1": "Una <em>hoja de ruta</em> clara.", "h_p": "Asesoramiento y representación en derecho penal, comercial y de ejecución.", "h_b1": "Solicitar Consulta",
+    "a_k": "Áreas de Práctica", "a_h": "¿Cómo podemos ayudarle?",
+    "a1_t": "Derecho Penal", "a1_p": "Apoyo legal en investigaciones y juicios.",
+    "a2_t": "Derecho Comercial", "a2_p": "Redacción de contratos y disputas comerciales.",
+    "a3_t": "Ejecución y Quiebra", "a3_p": "Cobro de deudas y ejecuciones hipotecarias.",
+    "p_k": "Primera Reunión", "p_h": "¿Qué traer?", "p_p": "Marque los documentos que tiene y envíenoslos.", 
+    "p_cnt": "listo", "p_b": "Enviar por WhatsApp",
+    "ch1": "Identificación", "ch2": "Notificación", "ch3": "Contrato", "ch4": "Factura", "ch5": "Correspondencia", "ch6": "Número de archivo",
+    "s_k": "Proceso", "s_h": "¿Qué pasa después?",
+    "s1_t": "Evaluación", "s1_p": "Se revisa su archivo.",
+    "s2_t": "Poder Notarial", "s2_p": "Se organiza el poder notarial.",
+    "s3_t": "Seguimiento", "s3_p": "Se le informa regularmente.",
+    "c_k": "Contacto", "c_h": "Solicite una consulta.", "c_p": "Describa brevemente su situación.", 
+    "c_tel": "Teléfono", "c_wp": "WhatsApp", "c_wpl": "Enviar mensaje", "c_adr": "Dirección",
+    "f_n": "Nombre completo", "f_t": "Teléfono", "f_m": "Tema", "f_c": "Acepto el uso de mis datos.",
+    "c_btn": "Solicitar Consulta", "f_cpy": "© 2026 Bufete Yilmaz. Todos los derechos reservados."
+  },
+  "ru": {
+    "n1": "Области", "n2": "Подготовка", "n3": "Контакт", "n4": "Звонок",
+    "h_ey": "Юридическая фирма", "h_h1": "Четкая <em>дорожная карта.</em>", "h_p": "Консультации и представительство в уголовном и коммерческом праве.", "h_b1": "Запрос консультации",
+    "a_k": "Области практики", "a_h": "Чем мы можем помочь?",
+    "a1_t": "Уголовное право", "a1_p": "Юридическая поддержка на этапах расследования и суда.",
+    "a2_t": "Коммерческое право", "a2_p": "Составление контрактов и коммерческие споры.",
+    "a3_t": "Исполнительное производство", "a3_p": "Взыскание долгов и процессы банкротства.",
+    "p_k": "Первая встреча", "p_h": "Что принести?", "p_p": "Отметьте документы, которые у вас есть, и отправьте их нам.", 
+    "p_cnt": "готово", "p_b": "Отправить через WhatsApp",
+    "ch1": "Документ, удостоверяющий личность", "ch2": "Уведомление", "ch3": "Договор", "ch4": "Счет", "ch5": "Переписка", "ch6": "Номер дела",
+    "s_k": "Процесс", "s_h": "Что происходит дальше?",
+    "s1_t": "Оценка", "s1_p": "Ваше дело рассматривается.",
+    "s2_t": "Доверенность", "s2_p": "Оформляется доверенность.",
+    "s3_t": "Отслеживание", "s3_p": "Мы регулярно сообщаем вам о ходе дела.",
+    "c_k": "Контакт", "c_h": "Запрос консультации.", "c_p": "Кратко опишите вашу ситуацию.", 
+    "c_tel": "Телефон", "c_wp": "WhatsApp", "c_wpl": "Отправить сообщение", "c_adr": "Адрес",
+    "f_n": "Полное имя", "f_t": "Телефон", "f_m": "Тема", "f_c": "Я согласен на использование моих данных.",
+    "c_btn": "Запрос консультации", "f_cpy": "© 2026 Юридическая фирма Yilmaz. Все права защищены."
   }
 };
-// Diğer dilleri şimdilik İngilizceye bağlıyoruz.
-['es', 'de', 'nl', 'fr', 'it', 'ru'].forEach(lang => i18n[lang] = i18n['en']);
 
 const flags = { 
   "tr": '<img src="https://flagcdn.com/w20/tr.png" width="20" alt="TR"> TR ▼', 
@@ -372,20 +494,24 @@ document.querySelectorAll('.lang-option').forEach(btn => {
       const key = el.getAttribute('data-i18n');
       if (i18n[lang] && i18n[lang][key]) el.innerHTML = i18n[lang][key];
     });
+    // Liste sayısı güncelleme tetikleyicisi
+    upd();
   });
 });
 
-// Checklist JS
+// Checklist JS (Çeviri güncellemeli)
 var boxes = Array.prototype.slice.call(document.querySelectorAll('#checks input'));
 var cnt = document.getElementById('cnt'), bar = document.getElementById('bar');
 function upd() {
   var n = boxes.filter(function (b) { return b.checked; }).length;
-  cnt.textContent = n + ' / ' + boxes.length + ' hazır';
+  var currentLang = 'tr'; // Default, lang seçimine göre güncellenebilir
+  for(let key in flags) { if(langBtn.innerHTML.includes(key.toUpperCase())) currentLang = key; }
+  cnt.textContent = n + ' / ' + boxes.length + ' ' + (i18n[currentLang]['p_cnt'] || 'hazır');
   bar.style.width = (n / boxes.length * 100) + '%';
 }
 boxes.forEach(function (b) { b.addEventListener('change', upd); });
 document.getElementById('sendList').addEventListener('click', function () {
-  var got = boxes.filter(function (b) { return b.checked; }).map(function (b) { return '- ' + b.getAttribute('data-l'); });
+  var got = boxes.filter(function (b) { return b.checked; }).map(function (b) { return '- ' + b.nextElementSibling.nextElementSibling.textContent; });
   var text = 'Merhaba, ön görüşme talep ediyorum.\nElimde hazır olanlar:\n' + got.join('\n');
   window.open('https://wa.me/905551234567?text=' + encodeURIComponent(text), '_blank');
 });
