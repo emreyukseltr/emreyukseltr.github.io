@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Tasarım ve Dijital Çözümler | EY Studios TR</title>
+<meta name="description" content="Avukat, doktor, diyetisyen ve işletmeler için mobil uyumlu web sitesi tasarımı ve dijital çözümler. Kurucu: Emre Yüksel - EY Studios TR.">
+<meta name="keywords" content="web sitesi yaptırma, web tasarım, Emre Yüksel web tasarım, dijital çözümler, kurumsal web sitesi, avukat web sitesi, doktor web sitesi, EY Studios TR">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#2B3DF5">
+<meta name="google-site-verification" content="c4HIWb7nwjMsuN1VyCU3hOdzS-oNmRjyN4XFIVIuv20">
+<link rel="canonical" href="https://emreyukseltr.github.io/">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='12' y='82' font-family='sans-serif' font-weight='900' font-size='75' fill='%23D1D5DB'>E</text><text x='52' y='82' font-family='sans-serif' font-weight='900' font-size='75' fill='%2300E5FF'>Y</text></svg>">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://emreyukseltr.github.io/">
+<meta property="og:title" content="Web Tasarım ve Dijital Çözümler | EY Studios TR">
+<meta property="og:description" content="İşletmenize prestij katan web tasarımı ve dijital çözümler. EY Studios TR - Emre Yüksel.">
+<meta property="og:locale" content="tr_TR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');try{var _t=localStorage.getItem('ey-theme');if(_t==='dark'||_t==='light'){document.documentElement.setAttribute('data-theme',_t);}}catch(e){}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "EY Studios TR",
+  "founder": "Emre Yüksel",
+  "description": "İşletmeler için web tasarım, geliştirme ve dijital çözümler. Türkiye genelinde uzaktan hizmet.",
+  "url": "https://emreyukseltr.github.io/",
+  "telephone": "+905511187400",
+  "email": "eystudios.tr@gmail.com",
+  "areaServed": { "@type": "Country", "name": "Türkiye" },
+  "serviceType": ["Web sitesi tasarımı", "Dijital çözümler", "Kurumsal web sitesi", "Avukat web sitesi", "Doktor web sitesi"]
+}
+</script>
+<style>
+  :root {
+    --bg: #F4F5F8;
+    --surface: #FFFFFF;
+    --ink: #0C1020;
+    --muted: #4B546A;
+    --line: #D5D9E3;
+    --accent: #2B3DF5;
+    --on-accent: #FFFFFF;
+    --hero: #2B3DF5;
+    --hero-bg: #2B3DF5;
+    --cta-bg: #2B3DF5;
+    --cta-ink: #FFFFFF;
+    --tick-bg: #0C1020;
+    --tick-ink: #FFFFFF;
+    --tick-dot: #8F9BFF;
+    color-scheme: light;
+    --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+    --body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B0E17; --surface: #131828; --ink: #ECEFF8; --muted: #A3ACC2;
+      --line: #252C42; --accent: #8F9BFF; --on-accent: #0B0E17; --hero: #101745; --hero-bg: radial-gradient(900px circle at 78% 26%, #2B3AD0 0%, #111950 42%, #070A1C 100%); --cta-bg: #8F9BFF; --cta-ink: #0B0E17; --tick-bg: #8F9BFF; --tick-ink: #0B0E17; --tick-dot: #0B0E17; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0B0E17; --surface: #131828; --ink: #ECEFF8; --muted: #A3ACC2;
+    --line: #252C42; --accent: #8F9BFF; --on-accent: #0B0E17; --hero: #101745; --hero-bg: radial-gradient(900px circle at 78% 26%, #2B3AD0 0%, #111950 42%, #070A1C 100%); --cta-bg: #8F9BFF; --cta-ink: #0B0E17; --tick-bg: #8F9BFF; --tick-ink: #0B0E17; --tick-dot: #0B0E17; color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .4s ease, color .4s ease;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  section { scroll-margin-top: 1rem; }
+
+  .skip { position: absolute; left: -999px; top: 8px; background: #fff; color: #0C1020; padding: 10px 14px; border-radius: 8px; z-index: 50; }
+  .skip:focus { left: 8px; }
+  .wrap { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 50px; padding: .7rem 1.4rem; border-radius: 10px;
+    font: 600 1rem/1.2 var(--body); text-decoration: none; cursor: pointer;
+    background: var(--accent); color: var(--on-accent); border: 1.5px solid var(--accent);
+    transition: transform .2s ease, filter .2s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--bg); filter: none; }
+  .btn.light { background: #fff; color: #1B2BD0; border-color: #fff; }
+  .btn.line { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+  .btn.line:hover { background: #fff; color: #1B2BD0; filter: none; }
+
+  /* ---------- Hero & Logo ---------- */
+  .hero-shell { background: var(--hero-bg); color: #fff; overflow: clip; position: relative; }
+  .hero-shell :focus-visible { outline-color: #fff; }
+  .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; flex-wrap: nowrap; }
+  
+  .logo { text-decoration: none; font-family: var(--display); font-size: 2rem; letter-spacing: -0.03em; display: flex; align-items: baseline; flex: none; }
+  .logo .logo-e { color: inherit; font-weight: 800; }
+  .logo .logo-y { color: #00E5FF; font-weight: 800; text-shadow: 0 0 12px rgba(0, 229, 255, 0.7); margin-left: -2px; }
+  .logo .st { font-weight: 500; font-size: 1.1rem; margin-left: 8px; opacity: 0.85; letter-spacing: 0; }
+
+  nav ul { display: flex; align-items: center; gap: 1.2rem; list-style: none; margin: 0; padding: 0; flex-wrap: nowrap; }
+  nav a { text-decoration: none; font-weight: 500; white-space: nowrap; }
+  nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
+  nav .btn { min-height: 42px; padding: .45rem 1.1rem; }
+
+  /* GERÇEK BAYRAKLI DİL MENÜSÜ */
+  .lang-menu { position: relative; display: flex; align-items: center; }
+  .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; backdrop-filter: blur(5px); white-space: nowrap; }
+  .lang-btn img { border-radius: 2px; width: 20px; height: auto; display: block; }
+  .lang-btn:hover { background: rgba(255,255,255,0.25); }
+  
+  .lang-dropdown.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  .lang-option { background: none; border: none; padding: 12px 16px; text-align: left; width: 100%; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: #1B2BD0; transition: background 0.2s; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .lang-option img { border-radius: 2px; width: 20px; height: auto; display: block; }
+  .lang-option:hover { background: #f4f5f8; color: #0C1020; }
+
+  .hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 7rem); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  h1 { font-family: var(--display); font-weight: 800; margin: 0 0 1.5rem; font-size: clamp(2.5rem, 5.6vw, 4.9rem); line-height: 1; letter-spacing: -0.04em; text-wrap: balance; }
+  h1.split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+  h1.split .w > span { display: inline-block; transform: translateY(108%); animation: up .85s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--i) * 70ms + 150ms); }
+  @keyframes up { to { transform: none; } }
+  .lede { font-size: 1.22rem; color: rgba(255,255,255,.88); margin: 0 0 2rem; max-width: 46ch; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  .stage { --s-bg: #0E0E0E; --s-ink: #F3F2EE; --s-acc: #D9331A; --s-on: #FFF; --s-card: #1C1C1C; position: relative; perspective: 1500px; min-height: 26rem; display: grid; place-items: center; padding: 1.5rem 0 2.5rem; }
+  .device { position: relative; width: 100%; max-width: 540px; transform-style: preserve-3d; transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 6deg)); transition: transform .25s ease-out; }
+  .browser { border-radius: 12px; overflow: hidden; background: var(--surface); box-shadow: 0 40px 80px rgba(4,8,60,.5); aspect-ratio: 16 / 11; display: flex; flex-direction: column; }
+  .chrome { display: flex; align-items: center; gap: .4rem; padding: .55rem .8rem; border-bottom: 1px solid var(--line); background: var(--surface); color: var(--ink); flex: none; }
+  .chrome i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--line); display: block; }
+  .chrome span { margin-left: .6rem; font-size: .78rem; color: var(--muted); min-height: 1.1em; }
+
+  .site { flex: 1; display: flex; flex-direction: column; gap: .8rem; padding: 1.2rem 1.4rem; background: var(--s-bg); color: var(--s-ink); transition: background-color .7s ease, color .7s ease; }
+  .s-nav { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: .8rem; }
+  .s-links i { display: inline-block; width: 1.8rem; height: .28rem; background: currentColor; opacity: .25; border-radius: 2px; margin-left: .5rem; }
+  .s-big { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 2.3vw, 1.9rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 13ch; margin-top: auto; }
+  .s-sub { font-size: .78rem; opacity: .75; }
+  .s-btn { align-self: flex-start; background: var(--s-acc); color: var(--s-on); font-size: .75rem; font-weight: 600; padding: .5rem .9rem; border-radius: 6px; transition: background-color .7s ease, color .7s ease; }
+  .s-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+  .s-cards div { height: 2.4rem; background: var(--s-card); border-radius: 6px; transition: background-color .7s ease; }
+  [data-k] { transition: opacity .25s ease; }
+  [data-k].out { opacity: 0; }
+
+  .phone { position: absolute; right: -5%; bottom: -9%; width: 30%; aspect-ratio: 9 / 19; border-radius: 22px; border: 6px solid #0C1020; background: #0C1020; overflow: hidden; display: flex; transform: translateZ(70px) rotate(3deg); box-shadow: 0 30px 60px rgba(4,8,60,.55); }
+  .phone .site { padding: .8rem .7rem; gap: .5rem; }
+  .phone .s-big { font-size: .95rem; }
+  .phone .s-sub { font-size: .6rem; }
+  .phone .s-btn { font-size: .58rem; padding: .35rem .6rem; }
+  .phone .s-nav { font-size: .62rem; }
+  .phone .s-links { display: none; }
+  .phone .s-cards { grid-template-columns: 1fr; }
+  .phone .s-cards div { height: 1.3rem; }
+  .phone .s-cards div:nth-child(3) { display: none; }
+
+  @media (hover: none) { .device { animation: sway 9s ease-in-out infinite; } }
+  @keyframes sway { 0%, 100% { transform: rotateY(-16deg) rotateX(6deg); } 50% { transform: rotateY(-6deg) rotateX(3deg); } }
+
+  .hero-shell::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(520px circle at var(--mx, 72%) var(--my, 28%), rgba(255,255,255,.18), transparent 62%); }
+  .hero-shell::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%); mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%); }
+  .hero-shell > * { position: relative; z-index: 1; }
+  .right { min-width: 0; }
+  .picker { margin-top: .4rem; }
+  .picker-label { margin: 0 0 .55rem; font-size: .9rem; opacity: .85; }
+  .picker-btns { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .picker-btns button { font: 600 .88rem/1 var(--body); color: #fff; background: transparent; border: 1.5px solid rgba(255,255,255,.55); border-radius: 99px; padding: .6rem 1rem; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+  .picker-btns button:hover { background: rgba(255,255,255,.16); }
+  .picker-btns button[aria-pressed="true"] { background: #fff; color: #1B2BD0; border-color: #fff; }
+  .picker-link { display: inline-block; margin-top: .9rem; font-weight: 600; color: #fff; text-underline-offset: 4px; }
+
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; pointer-events: none; }
+  .progress i { display: block; height: 100%; width: 0; background: #FFC940; }
+
+  .tbtn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.7); background: transparent; color: #fff; display: grid; place-items: center; cursor: pointer; transition: background-color .2s ease, color .2s ease; flex: none; }
+  .tbtn:hover { background: #fff; color: #1B2BD0; }
+  .tbtn .i-sun { display: none; }
+  :root[data-theme="dark"] .tbtn .i-sun { display: block; }
+  :root[data-theme="dark"] .tbtn .i-moon { display: none; }
+
+  .hbar { display: none; height: 3px; background: var(--line); margin-top: 1.6rem; border-radius: 2px; overflow: hidden; max-width: 20rem; }
+  .hbar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  #calismalar.hmode { padding-block: 0; }
+  .hmode .hpin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+  .hmode h2 { font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
+  .hmode .sub { margin-bottom: 1.4rem; }
+  .hmode .works { display: flex; flex-wrap: nowrap; width: max-content; gap: 2rem; will-change: transform; }
+  .hmode .work { flex: 0 0 clamp(300px, 27vw, 400px); }
+  .hmode .hbar { display: block; }
+
+  .ticker { background: var(--tick-bg); color: var(--tick-ink); overflow: hidden; white-space: nowrap; }
+  .ticker-track { display: inline-flex; animation: slide 45s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .ticker ul { display: flex; list-style: none; margin: 0; padding: 0; }
+  .ticker li { display: flex; align-items: center; gap: 1.8rem; padding: 1rem 0 1rem 1.8rem; font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+  .ticker li::after { content: ""; width: .5rem; height: .5rem; background: var(--tick-dot); transform: rotate(45deg); }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  .strip { margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem; padding-block: 2.2rem; }
+  .strip div { border-top: 2px solid var(--ink); padding-top: .8rem; }
+  .strip dt { font-size: .9rem; color: var(--muted); margin-bottom: .2rem; }
+  .strip dd { margin: 0; font-weight: 600; line-height: 1.35; }
+
+  .block { padding-block: clamp(3rem, 7vw, 5.5rem); border-top: 1px solid var(--line); }
+  .eyebrow { font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: .02em; color: var(--accent); margin: 0 0 .7rem; }
+  h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.04; letter-spacing: -0.03em; margin: 0 0 .9rem; max-width: 20ch; text-wrap: balance; }
+  .sub { color: var(--muted); max-width: 58ch; margin: 0 0 2.6rem; }
+
+  .works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.6rem, 3.5vw, 2.6rem) clamp(1.2rem, 3vw, 2.2rem); }
+  .work { display: block; text-decoration: none; }
+  .work h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; margin: 1rem 0 .3rem; }
+  .work p { margin: 0 0 .6rem; color: var(--muted); font-size: 1rem; }
+  .tag { font-weight: 600; font-size: .95rem; }
+  .work.live .tag { color: var(--accent); }
+  .work.soon .tag { color: var(--muted); }
+  .frame { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .work.live:hover .frame { transform: perspective(900px) translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); border-color: var(--accent); box-shadow: 0 18px 40px rgba(12,16,32,.16); }
+  .frame .chrome span { font-size: .78rem; }
+  .scr { aspect-ratio: 4 / 3; padding: 1rem 1.1rem; background: var(--s-bg); color: var(--s-ink); display: flex; flex-direction: column; gap: .5rem; overflow: hidden; }
+  .scr .n { display: flex; justify-content: space-between; align-items: center; font-size: .7rem; font-weight: 600; }
+  .scr .n em { font-style: normal; opacity: .7; font-weight: 500; }
+  .scr .big { font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1.05; letter-spacing: -0.02em; margin-top: auto; max-width: 11ch; }
+  .scr .t { font-size: .68rem; opacity: .75; max-width: 24ch; line-height: 1.4; }
+  .scr .b { align-self: flex-start; font-size: .68rem; font-weight: 600; padding: .4rem .75rem; border-radius: 6px; background: var(--s-acc); color: var(--s-on); }
+
+  .packs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+  .pack { padding: 1.6rem 1.6rem 1.8rem 0; }
+  .pack + .pack { padding-left: 1.6rem; border-left: 1px solid var(--line); }
+  .pack h3 { font-family: var(--display); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; margin: 0 0 .3rem; }
+  .pack .for { color: var(--muted); margin: 0 0 1.2rem; }
+  .pack ul { list-style: none; padding: 0; margin: 0 0 1.4rem; display: grid; gap: .6rem; }
+  .pack li { padding-left: 1.4rem; position: relative; }
+  .pack li::before { content: ""; position: absolute; left: 0; top: .6em; width: .6rem; height: 2px; background: var(--accent); }
+  .price { font-weight: 600; margin: 0; }
+
+  .story-pin { display: none; height: 430vh; position: relative; border-top: 1px solid var(--line); }
+  .js .story-pin { display: block; }
+  .js .story-static { display: none; }
+  .pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; }
+  .pin-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .pin h2 { margin-bottom: 0; }
+  .story-steps { list-style: none; margin: 1.8rem 0 0; padding: 0; }
+  .story-steps li { padding: .8rem 0 .8rem 1.2rem; border-left: 3px solid var(--line); opacity: .38; transition: opacity .3s ease, border-color .3s ease; }
+  .story-steps li.on { opacity: 1; border-left-color: var(--accent); }
+  .story-steps h3 { margin: 0; font-family: var(--display); font-size: 1.4rem; letter-spacing: -0.02em; font-weight: 700; }
+  .story-steps p { margin: 0; color: var(--muted); max-height: 0; opacity: 0; overflow: hidden; transition: max-height .4s ease, opacity .3s ease, margin .3s ease; }
+  .story-steps li.on p { max-height: 7rem; opacity: 1; margin-top: .3rem; }
+  .story-bar { height: 3px; background: var(--line); margin-top: 1.4rem; border-radius: 2px; overflow: hidden; }
+  .story-bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+
+  .story-stage { position: relative; padding-bottom: 1.5rem; }
+  .sbrowser { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; box-shadow: 0 30px 70px rgba(12,16,32,.2); }
+  .sbody { position: relative; aspect-ratio: 16 / 11; overflow: hidden; background: var(--bg); }
+  .layer { position: absolute; inset: 0; opacity: 0; transition: opacity .45s ease; pointer-events: none; display: flex; flex-direction: column; }
+  .layer.on { opacity: 1; }
+  .theme-dental { --s-bg: #EAF6F3; --s-ink: #10302B; --s-acc: #0E8F80; --s-on: #fff; --s-card: #D5EDE8; }
+  .layer .site { height: 100%; }
+
+  .chat { padding: 1.1rem; gap: .65rem; justify-content: flex-end; background: var(--bg); }
+  .chat-head { position: absolute; top: 0; left: 0; right: 0; padding: .7rem 1.1rem; background: var(--surface); border-bottom: 1px solid var(--line); font-weight: 600; font-size: .85rem; display: flex; align-items: center; gap: .5rem; }
+  .chat-head::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: #2E9E5B; }
+  .bub { max-width: 78%; padding: .65rem .9rem; border-radius: 14px; font-size: .9rem; line-height: 1.4; opacity: 0; transform: translateY(10px) scale(.98); transition: opacity .35s ease, transform .35s ease; }
+  .bub.on { opacity: 1; transform: none; }
+  .bub.me { align-self: flex-end; background: var(--accent); color: var(--on-accent); border-bottom-right-radius: 4px; }
+  .bub.you { align-self: flex-start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+
+  .draft { background: var(--bg); }
+  .dskel { position: absolute; inset: 0; padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: .8rem; background: var(--bg); }
+  .sk { background: var(--line); border-radius: 6px; }
+  .draft .real { position: absolute; inset: 0; display: flex; clip-path: inset(0 calc((1 - var(--t, 0)) * 100%) 0 0); }
+  .scan { position: absolute; top: 0; bottom: 0; left: calc(var(--t, 0) * 100%); width: 2px; background: var(--accent); box-shadow: 0 0 22px 2px var(--accent); opacity: calc(1 - (var(--t, 0) - .95) * 20); }
+
+  .badge { position: absolute; top: .8rem; right: .8rem; background: #0C1020; color: #fff; font-size: .75rem; font-weight: 600; padding: .35rem .7rem; border-radius: 99px; display: flex; align-items: center; gap: .4rem; opacity: 0; transform: translateY(-8px); transition: opacity .4s ease, transform .4s ease; }
+  .badge::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: #3DDC84; }
+  .badge.on { opacity: 1; transform: none; }
+
+  .sphone { position: absolute; right: 4%; bottom: 0; width: 24%; aspect-ratio: 9 / 19; border-radius: 20px; border: 5px solid #0C1020; background: #0C1020; overflow: hidden; display: flex; box-shadow: 0 24px 50px rgba(12,16,32,.4); opacity: 0; transform: translateY(40px) scale(.92); transition: opacity .5s ease, transform .5s ease; }
+  .sphone.on { opacity: 1; transform: none; }
+  .sphone .site { padding: .7rem .6rem; gap: .4rem; }
+  .sphone .s-big { font-size: .8rem; }
+  .sphone .s-sub { font-size: .5rem; }
+  .sphone .s-btn { font-size: .5rem; padding: .3rem .5rem; }
+  .sphone .s-nav { font-size: .55rem; }
+  .sphone .s-links { display: none; }
+  .sphone .s-cards { grid-template-columns: 1fr; }
+  .sphone .s-cards div { height: 1rem; }
+  .sphone .s-cards div:nth-child(3) { display: none; }
+
+  .notes { padding: 1rem; align-items: flex-end; justify-content: flex-start; gap: .6rem; }
+  .note { width: min(60%, 18rem); background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: .65rem .85rem; font-size: .82rem; line-height: 1.35; box-shadow: 0 10px 30px rgba(12,16,32,.18); opacity: 0; transform: translateX(18px); transition: opacity .4s ease, transform .4s ease; }
+  .note.on { opacity: 1; transform: none; }
+  .note b { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; margin-bottom: .1rem; }
+
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.8rem; counter-reset: s; }
+  .steps li { counter-increment: s; border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .steps li::before { content: counter(s); display: block; font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--accent); margin-bottom: .6rem; }
+  .steps h3 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .35rem; }
+  .steps p { margin: 0; color: var(--muted); }
+
+  .faq { border-top: 2px solid var(--ink); max-width: 780px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 1.15rem 2.4rem 1.15rem 0; font-weight: 600; font-size: 1.1rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: .2rem; top: 50%; transform: translateY(-50%); font-size: 1.6rem; font-weight: 500; color: var(--accent); }
+  details[open] summary::after { content: "\2212"; }
+  details p { margin: 0 0 1.2rem; color: var(--muted); max-width: 62ch; }
+
+  .cta-band { background: var(--cta-bg); color: var(--cta-ink); padding-block: clamp(3.5rem, 9vw, 7rem); }
+  .cta-band .wrap { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+  .cta-band h2 { font-size: clamp(2.6rem, 8vw, 6.8rem); line-height: .95; letter-spacing: -0.045em; font-weight: 800; max-width: 12ch; margin: 0; }
+  .cta-band :focus-visible { outline-color: var(--cta-ink); }
+
+  .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4.5rem); }
+  .contact address { font-style: normal; display: grid; gap: .9rem; margin-top: 1.8rem; }
+  .contact address div { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; }
+  .contact address span { color: var(--muted); }
+  .contact address a { font-weight: 500; }
+  form { display: grid; gap: 1.1rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.7rem; }
+  label { display: grid; gap: .35rem; font-weight: 600; font-size: .98rem; }
+  input, select, textarea { font: 400 1rem/1.4 var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .8rem .9rem; width: 100%; }
+  textarea { min-height: 120px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+  .status { min-height: 1.4rem; margin: 0; font-weight: 500; }
+  .status.err { color: #B3261E; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .status.err { color: #FFB4AB; } }
+  :root[data-theme="dark"] .status.err { color: #FFB4AB; }
+  .hint { margin: 0; color: var(--muted); font-size: .92rem; }
+
+  footer { border-top: 1px solid var(--line); padding-top: 2rem; color: var(--muted); font-size: .95rem; overflow: hidden; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 2rem; }
+  .mega { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 12.5vw, 17rem); line-height: .82; letter-spacing: -0.05em; text-align: center; color: var(--line); margin-top: 1.5rem; white-space: nowrap; user-select: none; }
+
+  .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* MOBİL DÜZENLEMELERİ (GÖRSELDEKİ HATALAR İÇİN) */
+  @media (max-width: 960px) {
+    .hero .wrap, .contact { grid-template-columns: minmax(0, 1fr); }
+    .stage { min-height: 0; }
+    .device { max-width: 460px; margin-inline: auto; }
+    .works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .packs { grid-template-columns: minmax(0, 1fr); }
+    .pack, .pack + .pack { padding: 1.5rem 0; border-left: 0; }
+    .pack + .pack { border-top: 1px solid var(--line); }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .story-pin { height: 380vh; }
+    .pin-grid { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
+    .pin h2 { font-size: 1.7rem; }
+    .story-steps { margin-top: .8rem; }
+    .story-steps li { display: none; padding: .3rem 0 .3rem 1rem; }
+    .story-steps li.on { display: block; }
+    .story-bar { margin-top: .8rem; }
+    .note { width: 70%; }
+  }
+
+  @media (max-width: 620px) {
+    nav ul li:not(:last-child):not(.keep) { display: none; }
+    nav ul li.keep { display: block; }
+    .site-head .wrap { gap: 0.5rem; padding-block: 0.8rem; }
+    nav ul { gap: 0.5rem; }
+    
+    .logo { font-size: 1.6rem; }
+    .logo .st { display: none; } /* Dar ekranda "Studios TR" yazısını gizle */
+    
+    .lang-btn { padding: 6px 10px; font-size: 0.85rem; }
+    .lang-btn img { width: 16px; }
+    
+    .tbtn { width: 36px; height: 36px; }
+    .tbtn svg { width: 16px; height: 16px; }
+
+    .works { grid-template-columns: minmax(0, 1fr); }
+    .steps, .strip { grid-template-columns: minmax(0, 1fr); }
+    .row2 { grid-template-columns: minmax(0, 1fr); }
+    .contact address div { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+    .phone { right: 0; }
+  }
+
+  .sectors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2.2rem; }
+  .sectors article { border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .sectors h3 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.02em; margin: 0 0 .4rem; }
+  .sectors h3 a { text-decoration: none; }
+  .sectors h3 a:hover { color: var(--accent); }
+  .sectors p { margin: 0; color: var(--muted); }
+  @media (max-width: 960px) { .sectors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .sectors { grid-template-columns: minmax(0, 1fr); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track, .device { animation: none; }
+    .ticker { overflow-x: auto; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .btn, .frame, body { transition: none; }
+    .js .story-pin { display: none; }
+    .js .story-static { display: block; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+
+<div class="hero-shell" id="shell">
+  <header class="site-head">
+    <div class="wrap">
+      <a class="logo" href="/">
+        <span class="logo-e">E</span><span class="logo-y">Y</span>
+        <span class="st">Studios TR</span>
+      </a>
+      <nav aria-label="Ana menü">
+        <ul>
+         <li><a href="#surec" data-i18n="nav1">Süreç</a></li>
+         <li><a href="#calismalar" data-i18n="nav2">Çalışmalar</a></li>
+         <li><a href="#paketler" data-i18n="nav3">Paketler</a></li>     
+          <li class="keep"><button class="tbtn" id="themeBtn" type="button" aria-label="Açık ya da koyu temayı değiştir"><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></g></svg></button></li>
+          
+          <!-- GERÇEK BAYRAKLI DİL MENÜSÜ -->
+          <li class="keep lang-menu">
+            <button class="lang-btn" id="langBtn">
+              <img src="https://flagcdn.com/w20/tr.png" alt="TR"> TR ▼
+            </button>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option" data-lang="tr"><img src="https://flagcdn.com/w20/tr.png" alt="TR"> Türkçe</button>
+              <button class="lang-option" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="EN"> English</button>
+              <button class="lang-option" data-lang="de"><img src="https://flagcdn.com/w20/de.png" alt="DE"> Deutsch</button>
+              <button class="lang-option" data-lang="nl"><img src="https://flagcdn.com/w20/nl.png" alt="NL"> Nederlands</button>
+              <button class="lang-option" data-lang="es"><img src="https://flagcdn.com/w20/es.png" alt="ES"> Español</button>
+              <button class="lang-option" data-lang="fr"><img src="https://flagcdn.com/w20/fr.png" alt="FR"> Français</button>
+              <button class="lang-option" data-lang="it"><img src="https://flagcdn.com/w20/it.png" alt="IT"> Italiano</button>
+              <button class="lang-option" data-lang="ru"><img src="https://flagcdn.com/w20/ru.png" alt="RU"> Русский</button>
+            </div>
+          </li>
+
+          <li class="keep"><a href="#iletisim" class="btn light head" data-i18n="nav4">Teklif iste</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="baslik">
+    <div class="wrap">
+      <div>
+        <h1 id="baslik" data-i18n="hero1">İşletmenize yakışan, ilk bakışta güven veren web siteleri.</h1>
+        <p class="lede" data-i18n="hero2">Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.</p>
+        <div class="cta-row">
+          <a class="btn light" href="#iletisim" data-i18n="h_btn1">Teklif iste</a>
+          <a class="btn line" href="#calismalar" data-i18n="h_btn2">Çalışmalara bak</a>
+        </div>
+      </div>
+
+      <div class="right">
+      <div class="stage" id="stage" aria-hidden="true">
+        <div class="device" id="device">
+          <div class="browser">
+            <div class="chrome"><i></i><i></i><i></i><span id="hUrl">hukukburosu.com</span></div>
+            <div class="site">
+              <div class="s-nav"><b data-k="name">Yılmaz Hukuk</b><span class="s-links"><i></i><i></i><i></i></span></div>
+              <div class="s-big" data-k="big">Net bir yol haritası.</div>
+              <div class="s-sub" data-k="sub">Ceza, ticaret ve icra hukuku.</div>
+              <div class="s-btn" data-k="btn">Görüşme talep et</div>
+              <div class="s-cards"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+          <div class="phone">
+            <div class="site">
+              <div class="s-nav"><b data-k="name">Yılmaz Hukuk</b></div>
+              <div class="s-big" data-k="big">Net bir yol haritası.</div>
+              <div class="s-sub" data-k="sub">Ceza, ticaret ve icra hukuku.</div>
+              <div class="s-btn" data-k="btn">Görüşme talep et</div>
+              <div class="s-cards"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="picker" role="group" aria-label="Sektör seçin">
+        <p class="picker-label" data-i18n="pck_l">Sektörünüzü seçin, sitenin nasıl görüneceğine bakın:</p>
+        <div class="picker-btns">
+          <button type="button" data-i="0" aria-pressed="true" data-i18n="p1">Avukat</button>
+          <button type="button" data-i="1" aria-pressed="false" data-i18n="p2">Doktor</button>
+          <button type="button" data-i="2" aria-pressed="false" data-i18n="p3">Diyetisyen</button>
+          <button type="button" data-i="3" aria-pressed="false" data-i18n="p4">Diş kliniği</button>
+          <button type="button" data-i="4" aria-pressed="false" data-i18n="p5">Restoran</button>
+          <button type="button" data-i="5" aria-pressed="false" data-i18n="p6">Kuaför</button>
+        </div>
+        <a class="picker-link" id="pLink" href="avukat.html" data-i18n="p_link">Örneği aç: Avukat →</a>
+      </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="ticker" aria-label="Hazırlanabilecek sektörlerden bazıları">
+  <div class="ticker-track">
+    <ul>
+      <li>Avukat</li><li>Doktor</li><li>Diş hekimi</li><li>Diyetisyen</li><li>Psikolog</li><li>Veteriner</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Güzellik salonu</li><li>Oto servis</li><li>Emlak</li><li>Otel</li><li>Mali müşavir</li><li>Fotoğrafçı</li>
+    </ul>
+    <ul aria-hidden="true">
+      <li>Avukat</li><li>Doktor</li><li>Diş hekimi</li><li>Diyetisyen</li><li>Psikolog</li><li>Veteriner</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Güzellik salonu</li><li>Oto servis</li><li>Emlak</li><li>Otel</li><li>Mali müşavir</li><li>Fotoğrafçı</li>
+    </ul>
+  </div>
+</div>
+
+<main id="icerik">
+  <div class="wrap">
+    <dl class="strip" aria-label="Her sitede bulunanlar">
+      <div><dt data-i18n="s1_t">Çalışma</dt><dd data-i18n="s1_d">Uzaktan, Türkiye'nin her yerinden</dd></div>
+      <div><dt data-i18n="s2_t">Altyapı</dt><dd data-i18n="s2_d">Statik sayfalar, sunucu kirası yok</dd></div>
+      <div><dt data-i18n="s3_t">Cihazlar</dt><dd data-i18n="s3_d">Telefon, tablet ve bilgisayarda düzgün</dd></div>
+      <div><dt data-i18n="s4_t">Arama</dt><dd data-i18n="s4_d">Başlık, açıklama ve konum bilgisi hazır</dd></div>
+      <div><dt data-i18n="s5_t">Maliyet</dt><dd data-i18n="s5_d">Yalnızca alan adı yıllık ücretlidir</dd></div>
+    </dl>
+  </div>
+
+  <section class="story-pin" id="story" aria-labelledby="surec-baslik">
+    <div class="pin">
+      <div class="wrap pin-grid">
+        <div class="story-copy">
+          <p class="eyebrow" id="surec" data-i18n="su_k">Süreç</p>
+          <h2 id="surec-baslik" data-i18n="su_h">Boş sayfadan yayına, dört adım.</h2>
+          <ol class="story-steps">
+            <li class="on"><h3 data-i18n="su_1t">1. Görüşme</h3><p data-i18n="su_1d">İşletmenizi, hedefinizi ve elinizdeki içeriği telefonda ya da WhatsApp'ta konuşuruz.</p></li>
+            <li><h3 data-i18n="su_2t">2. Taslak</h3><p data-i18n="su_2d">Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
+            <li><h3 data-i18n="su_3t">3. Yayın</h3><p data-i18n="su_3d">Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
+            <li><h3 data-i18n="su_4t">4. Destek</h3><p data-i18n="su_4d">Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
+          </ol>
+          <div class="story-bar" aria-hidden="true"><i id="storyBar"></i></div>
+        </div>
+
+        <div class="story-stage" aria-hidden="true">
+          <div class="sbrowser">
+            <div class="chrome"><i></i><i></i><i></i><span id="sUrl">&nbsp;</span></div>
+            <div class="sbody">
+
+              <div class="layer chat on" id="lChat">
+                <div class="chat-head">EY Studios TR</div>
+                <div class="bub me" data-at="0.08">Merhaba, kliniğim için bir web sitesi istiyorum.</div>
+                <div class="bub you" data-at="0.3">Merhaba! Hangi hizmetleri öne çıkaralım?</div>
+                <div class="bub me" data-at="0.55">Tedaviler, çalışma saatleri ve randevu formu.</div>
+                <div class="bub you" data-at="0.8">Anladım, ilk taslağı hazırlıyorum.</div>
+              </div>
+
+              <div class="layer draft" id="lDraft">
+                <div class="dskel">
+                  <div style="display:flex;justify-content:space-between"><div class="sk" style="width:22%;height:.9rem"></div><div class="sk" style="width:26%;height:.6rem"></div></div>
+                  <div class="sk" style="width:55%;height:2rem;margin-top:auto"></div>
+                  <div class="sk" style="width:38%;height:.8rem"></div>
+                  <div class="sk" style="width:22%;height:1.8rem"></div>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem"><div class="sk" style="height:2.4rem"></div><div class="sk" style="height:2.4rem"></div><div class="sk" style="height:2.4rem"></div></div>
+                </div>
+                <div class="real theme-dental">
+                  <div class="site">
+                    <div class="s-nav"><b>Örnek Diş Kliniği</b><span class="s-links"><i></i><i></i><i></i></span></div>
+                    <div class="s-big">Gülüşünüz için randevu alın.</div>
+                    <div class="s-sub">Tedaviler, saatler ve konum.</div>
+                    <div class="s-btn">Randevu al</div>
+                    <div class="s-cards"><div></div><div></div><div></div></div>
+                  </div>
+                </div>
+                <div class="scan"></div>
+              </div>
+
+              <div class="layer live theme-dental" id="lLive">
+                <div class="site">
+                  <div class="s-nav"><b>Örnek Diş Kliniği</b><span class="s-links"><i></i><i></i><i></i></span></div>
+                  <div class="s-big">Gülüşünüz için randevu alın.</div>
+                  <div class="s-sub">Tedaviler, saatler ve konum.</div>
+                  <div class="s-btn">Randevu al</div>
+                  <div class="s-cards"><div></div><div></div><div></div></div>
+                </div>
+              </div>
+
+              <div class="badge" id="sBadge">Yayında</div>
+
+              <div class="sphone theme-dental" id="sPhone">
+                <div class="site">
+                  <div class="s-nav"><b>Örnek Diş Kliniği</b></div>
+                  <div class="s-big">Gülüşünüz için randevu alın.</div>
+                  <div class="s-sub">Tedaviler, saatler ve konum.</div>
+                  <div class="s-btn">Randevu al</div>
+                  <div class="s-cards"><div></div><div></div><div></div></div>
+                </div>
+              </div>
+
+              <div class="layer notes" id="lNotes">
+                <div class="note" data-at="0.1"><b>Yeni mesaj</b>Cumartesi çalışma saatimizi güncelleyebilir misiniz?</div>
+                <div class="note" data-at="0.45"><b>Güncellendi</b>Değişiklik yayında.</div>
+                <div class="note" data-at="0.75"><b>Teşekkürler</b>Site her zaman güncel kalıyor.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block story-static" aria-labelledby="surec-baslik-static">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="su_k">Süreç</p>
+      <h2 id="surec-baslik-static" data-i18n="su_h">İşler dört adımda ilerler.</h2>
+      <p class="sub" data-i18n="su_sub">Tüm süreç telefon, WhatsApp ve e-posta üzerinden yürür. Yüz yüze buluşmanız gerekmez.</p>
+      <ol class="steps">
+        <li><h3 data-i18n="su_1t">Görüşme</h3><p data-i18n="su_1d">İşletmenizi, hedefinizi ve elinizdeki içeriği konuşuruz.</p></li>
+        <li><h3 data-i18n="su_2t">Taslak</h3><p data-i18n="su_2d">Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
+        <li><h3 data-i18n="su_3t">Yayın</h3><p data-i18n="su_3d">Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
+        <li><h3 data-i18n="su_4t">Destek</h3><p data-i18n="su_4d">Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="calismalar" aria-labelledby="calisma-baslik">
+    <div class="hgal" id="hgal"><div class="hpin">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="cal_k">Çalışmalar</p>
+      <h2 id="calisma-baslik" data-i18n="cal_h">Sektörünüze göre hazır örnekler.</h2>
+      <p class="sub" data-i18n="cal_s">Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.</p>
+
+      <div class="works">
+        <a class="work live reveal" href="avukat.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>hukukburosu.com</span></div>
+            <div class="scr" style="--s-bg:#0E0E0E;--s-ink:#F3F2EE;--s-acc:#D9331A;--s-on:#FFF">
+              <div class="n"><span>Yılmaz Hukuk</span><em>Hukuk bürosu</em></div>
+              <div class="big">Net bir yol haritası.</div>
+              <div class="t">Ceza, ticaret ve icra hukuku.</div>
+              <div class="b">Görüşme talep et</div>
+            </div>
+          </div>
+          <h3 data-i18n="c1_t">Avukat ve hukuk bürosu</h3>
+          <p data-i18n="c1_d">Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="doktor.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>doktorklinik.com</span></div>
+            <div class="scr" style="--s-bg:#0A192F;--s-ink:#FFFFFF;--s-acc:#CCA565;--s-on:#0A192F">
+              <div class="n"><span>Dr. Mehmet Demir</span><em>Özel klinik</em></div>
+              <div class="big">Önce dinleriz.</div>
+              <div class="t">Muayene, bilgilendirme ve takip.</div>
+              <div class="b">Randevu talep et</div>
+            </div>
+          </div>
+          <h3 data-i18n="c2_t">Doktor ve özel klinik</h3>
+          <p data-i18n="c2_d">Görsel ve randevu formunun yan yana durduğu yerleşim, muayene bilgileri ve uygulama alanları.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="diyetisyen.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>kokbeslenme.com</span></div>
+            <div class="scr" style="--s-bg:#16231A;--s-ink:#EEF1E7;--s-acc:#D9A441;--s-on:#16231A">
+              <div class="n"><span>kök Beslenme</span><em>Danışmanlık</em></div>
+              <div class="big">Beslenmeni kökünden değiştir.</div>
+              <div class="t">Sürdürülebilir, kişiye özel planlar.</div>
+              <div class="b">Ön Görüşme Talep Et</div>
+            </div>
+          </div>
+          <h3 data-i18n="c3_t">Diyetisyen ve danışmanlık</h3>
+          <p data-i18n="c3_d">Koyu orman yeşili ve hardal tonlarıyla, premium hissiyatlı lüks danışmanlık konsepti.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="dis-klinigi.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>disklinigi.com</span></div>
+            <div class="scr" style="--s-bg:#EAF6F3;--s-ink:#10302B;--s-acc:#0E8F80;--s-on:#fff">
+              <div class="n"><span>Örnek Diş Kliniği</span><em>Klinik</em></div>
+              <div class="big">Sizi dinleyen diş hekimliği.</div>
+              <div class="t">Tedaviler, saatler ve konum.</div>
+              <div class="b">Randevu al</div>
+            </div>
+          </div>
+          <h3 data-i18n="c4_t">Diş kliniği</h3>
+          <p data-i18n="c4_d">Tedavi listesi, ilk muayene adımları, saatler, sık sorulan sorular ve tek dokunuşla arama.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="restoran.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>lokanta.com</span></div>
+            <div class="scr" style="--s-bg:#14110F;--s-ink:#F4EFE7;--s-acc:#FF6B3D;--s-on:#14110F">
+              <div class="n"><span>Örnek Lokanta</span><em>Menü</em></div>
+              <div class="big">Sofranız hazır.</div>
+              <div class="t">Yemekler, fiyatlar ve rezervasyon.</div>
+              <div class="b">Rezervasyon</div>
+            </div>
+          </div>
+          <h3 data-i18n="c5_t">Restoran ve kafe</h3>
+          <p data-i18n="c5_d">Kategorilere ayrılmış sabit menü, öne çıkan yemekler ve tek dokunuşla rezervasyon araması.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+
+        <a class="work live reveal" href="kuafor.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>guzellik.com</span></div>
+            <div class="scr" style="--s-bg:#EFE9F7;--s-ink:#1E1230;--s-acc:#D62E79;--s-on:#fff">
+              <div class="n"><span>Örnek Güzellik Salonu</span><em>Salon</em></div>
+              <div class="big">Bakım zamanı.</div>
+              <div class="t">Hizmet seç, süreyi ve fiyatı gör.</div>
+              <div class="b">Hizmet seç</div>
+            </div>
+          </div>
+          <h3 data-i18n="c6_t">Kuaför ve güzellik salonu</h3>
+          <p data-i18n="c6_d">Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+      </div>
+      <div class="hbar" aria-hidden="true"><i id="hbarFill"></i></div>
+    </div>
+    </div></div>
+  </section>
+
+  <section class="block" id="sektorler" aria-labelledby="sektor-baslik">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="sek_k">Sektörler</p>
+      <h2 id="sektor-baslik" data-i18n="sek_h">Mesleğinize göre web sitesi.</h2>
+      <p class="sub" data-i18n="sek_s">Avukat, doktor, diyetisyen, diş hekimi, restoran ya da kuaför için web sitesi yaptırmak istiyorsanız, mesleğinize uygun hazır bir örnekle başlıyorum. İçerik, renk ve logo işletmenize göre uyarlanır.</p>
+      <div class="sectors">
+        <article><h3><a href="avukat.html" data-i18n="sek1_t">Avukat web sitesi</a></h3><p data-i18n="sek1_d">Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.</p></article>
+        <article><h3><a href="doktor.html" data-i18n="sek2_t">Doktor web sitesi</a></h3><p data-i18n="sek2_d">Uygulama alanları, muayene saatleri ve randevu bilgileri tek sayfada. Telefondan da rahat okunur.</p></article>
+        <article><h3><a href="diyetisyen.html" data-i18n="sek3_t">Diyetisyen web sitesi</a></h3><p data-i18n="sek3_d">Online ve yüz yüze danışmanlığı anlatan, ön görüşme formu olan sıcak bir tanıtım sitesi.</p></article>
+        <article><h3><a href="dis-klinigi.html" data-i18n="sek4_t">Diş hekimi web sitesi</a></h3><p data-i18n="sek4_d">Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.</p></article>
+        <article><h3><a href="restoran.html" data-i18n="sek5_t">Restoran ve kafe web sitesi</a></h3><p data-i18n="sek5_d">Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.</p></article>
+        <article><h3><a href="kuafor.html" data-i18n="sek6_t">Kuaför ve güzellik salonu web sitesi</a></h3><p data-i18n="sek6_d">Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="paketler" aria-labelledby="paket-baslik">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="pak_k">Paketler</p>
+      <h2 id="paket-baslik" data-i18n="pak_h">İhtiyacınıza uygun üç paket.</h2>
+      <p class="sub" data-i18n="pak_s">Kapsam net, teklif yazılı. Ne alacağınızı işe başlamadan bilirsiniz.</p>
+
+      <div class="packs">
+        <div class="pack reveal">
+          <h3 data-i18n="pk1_t">Tek sayfa</h3>
+          <p class="for" data-i18n="pk1_f">Yeni açılan işler, esnaf ve serbest çalışanlar için.</p>
+          <ul data-i18n="pk1_ul">
+            <li>Tanıtım, hizmetler ve iletişim tek sayfada</li>
+            <li>Telefon uyumlu tasarım</li>
+            <li>Arama ve WhatsApp düğmeleri</li>
+            <li>Temel arama motoru ayarları</li>
+          </ul>
+          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
+        </div>
+        <div class="pack reveal">
+          <h3 data-i18n="pk2_t">Kurumsal site</h3>
+          <p class="for" data-i18n="pk2_f">Klinik, büro ve firmalar için.</p>
+          <ul data-i18n="pk2_ul">
+            <li>5 sayfaya kadar: ana sayfa, hakkımızda, hizmetler, galeri, iletişim</li>
+            <li>İletişim formu ve Google Harita</li>
+            <li>Yerel aramalar için konum bilgileri</li>
+            <li>Kendi alan adınızda yayın</li>
+          </ul>
+          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
+        </div>
+        <div class="pack reveal">
+          <h3 data-i18n="pk3_t">Özel proje</h3>
+          <p class="for" data-i18n="pk3_f">Standart paketlere sığmayan ihtiyaçlar için.</p>
+          <ul data-i18n="pk3_ul">
+            <li>Randevu veya rezervasyon servisi bağlama</li>
+            <li>Ürün ve katalog sayfaları</li>
+            <li>Mevcut sitenin yenilenmesi</li>
+            <li>Kapsam ve süre görüşmede belirlenir</li>
+          </ul>
+          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sss" aria-labelledby="sss-baslik">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="sss_k">Sorular</p>
+      <h2 id="sss-baslik" data-i18n="sss_h">Sık sorulan sorular.</h2>
+      <p class="sub" data-i18n="sss_s">Aklınızdaki soru burada yoksa formdan ya da WhatsApp'tan sorabilirsiniz.</p>
+      <div class="faq" data-i18n="sss_faq">
+        <details>
+          <summary>Başka şehirdeyim, nasıl çalışıyoruz?</summary>
+          <p>Bütün süreç uzaktan yürür. Görüşmeleri telefonda ya da WhatsApp'ta yaparız, taslağı internetten görürsünüz. Yüz yüze buluşmanıza gerek yok.</p>
+        </details>
+        <details>
+          <summary>Barındırma ve alan adı için ödeme yapacak mıyım?</summary>
+          <p>Sitelerim statik olduğu için sunucu kirası gerektirmez. Alan adı (.com, .com.tr gibi) yıllık ücretlidir. Alan adını sizin adınıza almanızı öneririm, böylece site her zaman sizin kalır.</p>
+        </details>
+        <details>
+          <summary>Sitem Google'da ilk sırada çıkar mı?</summary>
+          <p>Sıralama garantisi kimse veremez. Sitenin teknik altyapısını arama motorlarına uygun hazırlarım. Sıralama, rekabete ve zamana göre değişir.</p>
+        </details>
+        <details>
+          <summary>Site ne kadar sürede hazır olur?</summary>
+          <p>Sayfa sayısına ve içeriğin ne zaman hazır olduğuna bağlıdır. Teklifte tarihi yazılı olarak veririm.</p>
+        </details>
+        <details>
+          <summary>Web sitesi yaptırmak için ne hazırlamam gerekir?</summary>
+          <p>Logonuz, birkaç fotoğraf, hizmetlerinizin listesi ve iletişim bilgileriniz yeterli. Bunlar yoksa birlikte planlar, eksikleri görüşmede tamamlarız.</p>
+        </details>
+        <details>
+          <summary>Yayından sonra değişiklik yaptırabilir miyim?</summary>
+          <p>Metin, fotoğraf ve telefon numarası gibi güncellemeleri benden isteyebilirsiniz. Neyin pakete dahil olduğu teklifte belirtilir.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-label="Teklif çağrısı">
+    <div class="wrap">
+      <h2 data-i18n="cta_h">Sıradaki site sizinki olsun.</h2>
+      <a class="btn light" href="#iletisim" data-i18n="nav4">Teklif iste</a>
+    </div>
+  </section>
+
+  <section class="block" id="iletisim" aria-labelledby="iletisim-baslik" style="border-top:0">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow" data-i18n="ilet_k">İletişim</p>
+        <h2 id="iletisim-baslik" data-i18n="ilet_h">Projenizi anlatın, teklif hazırlayayım.</h2>
+        <p class="sub" style="margin-bottom:0" data-i18n="ilet_s">İşletmenizin türünü ve ne istediğinizi kısaca yazın. Aynı gün içinde dönmeye çalışırım.</p>
+        <address>
+          <div><span data-i18n="f_t1">Telefon</span><a href="tel:+905511187400">0551 118 74 00</a></div>
+          <div><span data-i18n="f_t2">WhatsApp</span><a href="https://wa.me/905511187400" rel="noopener" data-i18n="f_tw">Mesaj gönder</a></div>
+          <div><span data-i18n="f_t3">E-posta</span><a href="mailto:eystudios.tr@gmail.com">eystudios.tr@gmail.com</a></div>
+          <div><span data-i18n="f_t4">Instagram</span><a href="https://www.instagram.com/eystudios.tr?stkn=eTRseXVlbnVpODZ4&utm_source=qr" target="_blank" rel="noopener">eystudios.tr</a></div>
+          <div><span data-i18n="f_t5">Hizmet alanı</span><span data-i18n="f_td">Türkiye geneli, uzaktan</span></div>
+        </address>
+      </div>
+
+      <form id="form" novalidate>
+        <div class="row2">
+          <label><span data-i18n="fm1">Adınız soyadınız</span>
+            <input type="text" id="ad" autocomplete="name" required>
+          </label>
+          <label><span data-i18n="fm2">Telefon</span>
+            <input type="tel" id="tel" autocomplete="tel" inputmode="tel" required>
+          </label>
+        </div>
+        <label><span data-i18n="fm3">E-posta adresi</span>
+          <input type="email" id="email" autocomplete="email" required>
+        </label>
+        <label><span data-i18n="fm4">İşletme türü</span>
+          <select id="tur">
+            <option>Avukat / hukuk bürosu</option>
+            <option>Doktor / klinik</option>
+            <option>Diyetisyen / danışmanlık</option>
+            <option>Diş kliniği</option>
+            <option>Restoran / kafe</option>
+            <option>Kuaför / güzellik salonu</option>
+            <option>Diğer</option>
+          </select>
+        </label>
+        <label><span data-i18n="fm5">Ne istiyorsunuz?</span>
+          <textarea id="mesaj" placeholder="Örnek: Yeni açtığım işletme için tanıtım sitesi istiyorum."></textarea>
+        </label>
+        <button type="submit" class="btn" data-i18n="fm_btn">Mesajı hazırla</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <p class="hint" data-i18n="fm_h">Gönder'e bastığınızda doğrudan sistemimize iletilir. İsterseniz WhatsApp üzerinden de ulaşabilirsiniz.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span data-i18n="foot1">© 2026 EY Studios TR. Tüm hakları saklıdır.</span>
+    <span data-i18n="foot2">Türkiye geneli, uzaktan hizmet</span>
+  </div>
+  <div class="mega" aria-hidden="true">EY Studios TR</div>
+</footer>
+
+<script>
+(function () {
+  var FORM_ENDPOINT = 'https://formspree.io/f/meaoaekk'; 
+  var WHATSAPP = '905511187400';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  /* ---- Başlığı kelime kelime aç ---- */
+  var h1 = document.getElementById('baslik');
+  if (h1 && !reduce) {
+    var words = h1.textContent.trim().split(/\s+/);
+    h1.innerHTML = '';
+    words.forEach(function (w, i) {
+      var o = document.createElement('span'); o.className = 'w';
+      var n = document.createElement('span'); n.textContent = w; n.style.setProperty('--i', i);
+      o.appendChild(n); h1.appendChild(o); h1.appendChild(document.createTextNode(' '));
+    });
+    h1.classList.add('split');
+  }
+
+  /* ---- Canlı vitrin ---- */
+  var themes = [
+    { url: 'hukukburosu.com', name: 'Yılmaz Hukuk', big: 'Net bir yol haritası.', sub: 'Ceza, ticaret ve icra hukuku.', btn: 'Görüşme talep et', bg: '#0E0E0E', ink: '#F3F2EE', acc: '#D9331A', on: '#FFF', card: '#1C1C1C' },
+    { url: 'doktorklinik.com', name: 'Dr. Mehmet Demir', big: 'Önce dinleriz.', sub: 'Muayene, bilgilendirme ve takip.', btn: 'Randevu talep et', bg: '#0A192F', ink: '#FFFFFF', acc: '#CCA565', on: '#0A192F', card: '#13294B' },
+    { url: 'kokbeslenme.com', name: 'kök Beslenme', big: 'Beslenmeni kökünden değiştir.', sub: 'Sürdürülebilir, kişiye özel planlar.', btn: 'Ön Görüşme Talep Et', bg: '#16231A', ink: '#EEF1E7', acc: '#D9A441', on: '#16231A', card: '#1F3A24' },
+    { url: 'disklinigi.com', name: 'Örnek Diş Kliniği', big: 'Sizi dinleyen diş hekimliği.', sub: 'Tedaviler, saatler ve konum.', btn: 'Randevu al', bg: '#EAF6F3', ink: '#10302B', acc: '#0E8F80', on: '#FFFFFF', card: '#D3ECE7' },
+    { url: 'lokanta.com', name: 'Örnek Lokanta', big: 'Sofranız hazır.', sub: 'Yemekler, fiyatlar ve rezervasyon.', btn: 'Rezervasyon', bg: '#14110F', ink: '#F4EFE7', acc: '#FF6B3D', on: '#14110F', card: '#221B17' },
+    { url: 'guzellik.com', name: 'Örnek Güzellik Salonu', big: 'Bakım zamanı.', sub: 'Hizmet seç, süreyi ve fiyatı gör.', btn: 'Hizmet seç', bg: '#EFE9F7', ink: '#1E1230', acc: '#D62E79', on: '#FFFFFF', card: '#E0D6F0' }
+  ];
+  var stage = document.getElementById('stage');
+  var urlEl = document.getElementById('hUrl');
+  var dataEls = stage ? stage.querySelectorAll('[data-k]') : [];
+  var cur = 0, typeTimer = null, cycleTimer = null;
+  var pages = ['avukat.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi.html', 'restoran.html', 'kuafor.html'];
+  var labels = ['Avukat', 'Doktor', 'Diyetisyen', 'Diş kliniği', 'Restoran', 'Kuaför'];
+  var pBtns = document.querySelectorAll('.picker-btns button');
+  var pLink = document.getElementById('pLink');
+
+  function typeInto(el, text) {
+    clearInterval(typeTimer);
+    var i = 0; el.textContent = '';
+    typeTimer = setInterval(function () {
+      i++; el.textContent = text.slice(0, i);
+      if (i >= text.length) clearInterval(typeTimer);
+    }, 32);
+  }
+
+  function setTheme(i) {
+    var t = themes[i];
+    stage.style.setProperty('--s-bg', t.bg);
+    stage.style.setProperty('--s-ink', t.ink);
+    stage.style.setProperty('--s-acc', t.acc);
+    stage.style.setProperty('--s-on', t.on);
+    stage.style.setProperty('--s-card', t.card);
+    Array.prototype.forEach.call(dataEls, function (el) { el.classList.add('out'); });
+    setTimeout(function () {
+      Array.prototype.forEach.call(dataEls, function (el) {
+        el.textContent = (window.eyDemo && window.eyDemo(i, el.getAttribute('data-k'))) || t[el.getAttribute('data-k')];
+        el.classList.remove('out');
+      });
+    }, 260);
+    typeInto(urlEl, t.url);
+    Array.prototype.forEach.call(pBtns, function (b, idx) { b.setAttribute('aria-pressed', idx === i ? 'true' : 'false'); });
+    if (pLink) { pLink.href = pages[i]; pLink.textContent = 'Örneği aç: ' + labels[i] + ' →'; }
+  }
+
+  if (stage && !reduce) {
+    cycleTimer = setInterval(function () {
+      if (document.hidden) return;
+      cur = (cur + 1) % themes.length;
+      setTheme(cur);
+    }, 3800);
+  }
+
+  Array.prototype.forEach.call(pBtns, function (b) {
+    b.addEventListener('click', function () {
+      clearInterval(cycleTimer);
+      cur = parseInt(b.getAttribute('data-i'), 10);
+      setTheme(cur);
+    });
+  });
+
+  /* ---- Fareyle 3B eğim ---- */
+  var shell = document.getElementById('shell');
+  var dev = document.getElementById('device');
+  if (shell && dev && fine && !reduce) {
+    shell.addEventListener('pointermove', function (e) {
+      var r = shell.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      shell.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      shell.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      dev.style.setProperty('--ry', (-14 + (px - 0.5) * 16) + 'deg');
+      dev.style.setProperty('--rx', (6 - (py - 0.5) * 14) + 'deg');
+    });
+    shell.addEventListener('pointerleave', function () {
+      dev.style.removeProperty('--ry'); dev.style.removeProperty('--rx');
+    });
+  }
+
+  /* ---- Kaydırdıkça site kendini kurar ---- */
+  var story = document.getElementById('story');
+  if (story && !reduce && getComputedStyle(story).display !== 'none') {
+    var steps = story.querySelectorAll('.story-steps li');
+    var bar = document.getElementById('storyBar');
+    var lChat = document.getElementById('lChat');
+    var lDraft = document.getElementById('lDraft');
+    var lLive = document.getElementById('lLive');
+    var lNotes = document.getElementById('lNotes');
+    var sPhone = document.getElementById('sPhone');
+    var sBadge = document.getElementById('sBadge');
+    var sUrl = document.getElementById('sUrl');
+    var bubs = story.querySelectorAll('.bub');
+    var notes = story.querySelectorAll('.note');
+    var FULL = 'sizinsiteniz.com';
+    var ticking = false;
+
+    function render() {
+      ticking = false;
+      var r = story.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      var total = story.offsetHeight - vh;
+      var p = clamp(-r.top / total, 0, 1);
+      var idx = Math.min(3, Math.floor(p * 4));
+      var s = idx === 3 ? clamp(p * 4 - 3, 0, 1) : p * 4 - idx;
+
+      Array.prototype.forEach.call(steps, function (li, i) { li.classList.toggle('on', i === idx); });
+      bar.style.width = (p * 100) + '%';
+
+      lChat.classList.toggle('on', idx === 0);
+      lDraft.classList.toggle('on', idx === 1);
+      lLive.classList.toggle('on', idx >= 2);
+      lNotes.classList.toggle('on', idx === 3);
+      sPhone.classList.toggle('on', idx === 3 || (idx === 2 && s > 0.35));
+      sBadge.classList.toggle('on', idx === 3 || (idx === 2 && s > 0.85));
+
+      Array.prototype.forEach.call(bubs, function (b) {
+        b.classList.toggle('on', idx > 0 || s >= parseFloat(b.getAttribute('data-at')));
+      });
+      Array.prototype.forEach.call(notes, function (n) {
+        n.classList.toggle('on', idx === 3 && s >= parseFloat(n.getAttribute('data-at')));
+      });
+
+      var t = idx === 1 ? clamp(s / 0.85, 0, 1) : (idx > 1 ? 1 : 0);
+      lDraft.style.setProperty('--t', t);
+
+      var txt;
+      if (idx === 0) txt = '\u00a0';
+      else if (idx === 1) txt = 'önizleme';
+      else if (idx === 2) txt = FULL.slice(0, Math.floor(clamp(s / 0.7, 0, 1) * FULL.length)) || '\u00a0';
+      else txt = FULL;
+      if (sUrl.textContent !== txt) sUrl.textContent = txt;
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    render();
+  }
+
+  /* ---- Kaydırınca beliren öğeler ---- */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el, i) {
+      el.style.transitionDelay = ((i % 3) * 80) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---- Üstte ilerleme çubuğu ---- */
+  var prog = document.getElementById('prog');
+  var progTick = false;
+  function updateProg() {
+    progTick = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (max > 0 ? clamp(window.scrollY / max, 0, 1) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', function () { if (!progTick) { progTick = true; requestAnimationFrame(updateProg); } }, { passive: true });
+  window.addEventListener('resize', updateProg);
+  updateProg();
+
+  /* ---- Açık / koyu tema düğmesi ---- */
+  var themeBtn = document.getElementById('themeBtn');
+  var rootEl = document.documentElement;
+  if (!rootEl.getAttribute('data-theme')) {
+    rootEl.setAttribute('data-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function themeLabel() {
+    if (themeBtn) themeBtn.setAttribute('aria-label', rootEl.getAttribute('data-theme') === 'dark' ? 'Açık temaya geç' : 'Koyu temaya geç');
+  }
+  themeLabel();
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = rootEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      rootEl.setAttribute('data-theme', next);
+      themeLabel();
+      try { localStorage.setItem('ey-theme', next); } catch (e) {}
+    });
+  }
+
+  /* ---- Mıknatıslı düğmeler ve kart eğimi ---- */
+  if (fine && !reduce) {
+    Array.prototype.forEach.call(document.querySelectorAll('.hero-shell .btn, .cta-band .btn'), function (b) {
+      b.addEventListener('pointermove', function (e) {
+        var r = b.getBoundingClientRect();
+        var x = (e.clientX - (r.left + r.width / 2)) * 0.25;
+        var y = (e.clientY - (r.top + r.height / 2)) * 0.35;
+        b.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      });
+      b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.work.live'), function (c) {
+      var fr = c.querySelector('.frame');
+      c.addEventListener('pointermove', function (e) {
+        var r = fr.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        fr.style.setProperty('--ry', ((px - 0.5) * 10) + 'deg');
+        fr.style.setProperty('--rx', ((0.5 - py) * 8) + 'deg');
+      });
+      c.addEventListener('pointerleave', function () { fr.style.removeProperty('--ry'); fr.style.removeProperty('--rx'); });
+    });
+  }
+
+  /* ---- Portföy: kaydırdıkça yatay ilerler ---- */
+  var gal = document.getElementById('hgal');
+  var gsec = document.getElementById('calismalar');
+  var worksEl = gsec ? gsec.querySelector('.works') : null;
+  var hfill = document.getElementById('hbarFill');
+  var hOn = false, hDist = 0, hTick = false;
+
+  function hLayout() {
+    if (!gal || !worksEl) return;
+    var want = window.innerWidth > 960 && window.innerHeight >= 760 && !reduce && fine;
+    if (want !== hOn) {
+      hOn = want;
+      gsec.classList.toggle('hmode', want);
+      if (want) {
+        Array.prototype.forEach.call(worksEl.querySelectorAll('.reveal'), function (el) { el.classList.add('in'); el.style.transitionDelay = '0ms'; });
+      } else {
+        gal.style.height = ''; worksEl.style.transform = '';
+      }
+    }
+    if (hOn) {
+      worksEl.style.transform = 'none';
+      var x0 = worksEl.parentElement.getBoundingClientRect().left;
+      hDist = Math.max(0, x0 + worksEl.offsetWidth + x0 - window.innerWidth);
+      gal.style.height = (window.innerHeight + hDist) + 'px';
+      hRender();
+    }
+  }
+  function hRender() {
+    hTick = false;
+    if (!hOn) return;
+    var r = gal.getBoundingClientRect();
+    var span = gal.offsetHeight - window.innerHeight;
+    var p = span > 0 ? clamp(-r.top / span, 0, 1) : 0;
+    worksEl.style.transform = 'translate3d(' + (-p * hDist) + 'px,0,0)';
+    if (hfill) hfill.style.width = (p * 100) + '%';
+  }
+  if (gal && worksEl) {
+    window.addEventListener('scroll', function () { if (hOn && !hTick) { hTick = true; requestAnimationFrame(hRender); } }, { passive: true });
+    window.addEventListener('resize', hLayout);
+    window.addEventListener('load', hLayout);
+    gsec.addEventListener('focusin', function (e) {
+      if (!hOn) return;
+      var card = e.target.closest ? e.target.closest('.work') : null;
+      if (!card) return;
+      var x0 = worksEl.parentElement.getBoundingClientRect().left;
+      var left = card.getBoundingClientRect().left - worksEl.getBoundingClientRect().left;
+      var t = clamp(left - x0, 0, hDist);
+      var top = gal.getBoundingClientRect().top + window.scrollY;
+      var span = gal.offsetHeight - window.innerHeight;
+      if (hDist > 0) window.scrollTo(0, top + (t / hDist) * span);
+    });
+    hLayout();
+  }
+
+  /* ---- Formspree Entegreli Form ---- */
+  var form = document.getElementById('form');
+  var status = document.getElementById('status');
+  function show(msg, isErr) { status.className = isErr ? 'status err' : 'status'; status.textContent = msg; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ad = document.getElementById('ad').value.trim();
+    var tel = document.getElementById('tel').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var tur = document.getElementById('tur').value;
+    var mesaj = document.getElementById('mesaj').value.trim();
+    
+    if (!ad || !tel || !email) { show(window.eyMsg('req'), true); return; }
+
+    var text = 'Merhaba, ' + tur + ' için web sitesi teklifi almak istiyorum.\n' +
+               'Ad soyad: ' + ad + '\nTelefon: ' + tel + '\nE-posta: ' + email + (mesaj ? '\nİstek: ' + mesaj : '');
+
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ _subject: "Yeni Proje Talebi - " + tur, email: email, Ad_Soyad: ad, Telefon: tel, Sektor: tur, Detay: mesaj })
+      }).then(function (r) {
+        if (!r.ok) throw new Error('fail');
+        form.reset();
+        show(window.eyMsg('ok'), false);
+      }).catch(function () {
+        show(window.eyMsg('err'), true);
+      });
+      return;
+    }
+    show('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.', false);
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+
+  // --- ÇEVİRİ ALTYAPISI VE GERÇEK BAYRAKLAR ---
+  const i18n = {
+    "tr": { 
+      "nav1": "Süreç", "nav2": "Çalışmalar", "nav3": "Paketler", "nav4": "Teklif iste",
+      "hero1": "İşletmenize yakışan, ilk bakışta güven veren web siteleri.", 
+      "hero2": "Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.",
+      "h_btn1": "Teklif iste", "h_btn2": "Çalışmalara bak",
+      "pck_l": "Sektörünüzü seçin, sitenin nasıl görüneceğine bakın:",
+      "p1": "Avukat", "p2": "Doktor", "p3": "Diyetisyen", "p4": "Diş kliniği", "p5": "Restoran", "p6": "Kuaför",
+      "p_link": "Örneği aç: Avukat →",
+      "s1_t": "Çalışma", "s1_d": "Uzaktan, Türkiye'nin her yerinden",
+      "s2_t": "Altyapı", "s2_d": "Statik sayfalar, sunucu kirası yok",
+      "s3_t": "Cihazlar", "s3_d": "Telefon, tablet ve bilgisayarda düzgün",
+      "s4_t": "Arama", "s4_d": "Başlık, açıklama ve konum bilgisi hazır",
+      "s5_t": "Maliyet", "s5_d": "Yalnızca alan adı yıllık ücretlidir",
+      "su_k": "Süreç", "su_h": "Boş sayfadan yayına, dört adım.", "su_sub": "Tüm süreç telefon, WhatsApp ve e-posta üzerinden yürür. Yüz yüze buluşmanız gerekmez.",
+      "su_1t": "1. Görüşme", "su_1d": "İşletmenizi, hedefinizi ve elinizdeki içeriği telefonda ya da WhatsApp'ta konuşuruz.",
+      "su_2t": "2. Taslak", "su_2d": "Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.",
+      "su_3t": "3. Yayın", "su_3d": "Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.",
+      "su_4t": "4. Destek", "su_4d": "Yayından sonra değişiklik gerekirse bana yazarsınız.",
+      "cal_k": "Çalışmalar", "cal_h": "Sektörünüze göre hazır örnekler.", "cal_s": "Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.",
+      "c1_t": "Avukat ve hukuk bürosu", "c1_d": "Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.",
+      "c2_t": "Doktor ve özel klinik", "c2_d": "Görsel ve randevu formunun yan yana durduğu yerleşim, muayene bilgileri ve uygulama alanları.",
+      "c3_t": "Diyetisyen ve danışmanlık", "c3_d": "Koyu orman yeşili ve hardal tonlarıyla, premium hissiyatlı lüks danışmanlık konsepti.",
+      "c4_t": "Diş kliniği", "c4_d": "Tedavi listesi, ilk muayene adımları, saatler, sık sorulan sorular ve tek dokunuşla arama.",
+      "c5_t": "Restoran ve kafe", "c5_d": "Kategorilere ayrılmış sabit menü, öne çıkan yemekler ve tek dokunuşla rezervasyon araması.",
+      "c6_t": "Kuaför ve güzellik salonu", "c6_d": "Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.",
+      "c_btn": "Örneği aç",
+      "sek_k": "Sektörler", "sek_h": "Mesleğinize göre web sitesi.", "sek_s": "Avukat, doktor, diyetisyen, diş hekimi, restoran ya da kuaför için web sitesi yaptırmak istiyorsanız, mesleğinize uygun hazır bir örnekle başlıyorum. İçerik, renk ve logo işletmenize göre uyarlanır.",
+      "sek1_t": "Avukat web sitesi", "sek1_d": "Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.",
+      "sek2_t": "Doktor web sitesi", "sek2_d": "Uygulama alanları, muayene saatleri ve randevu bilgileri tek sayfada. Telefondan da rahat okunur.",
+      "sek3_t": "Diyetisyen web sitesi", "sek3_d": "Online ve yüz yüze danışmanlığı anlatan, ön görüşme formu olan sıcak bir tanıtım sitesi.",
+      "sek4_t": "Diş hekimi web sitesi", "sek4_d": "Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.",
+      "sek5_t": "Restoran ve kafe web sitesi", "sek5_d": "Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.",
+      "sek6_t": "Kuaför ve güzellik salonu web sitesi", "sek6_d": "Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.",
+      "pak_k": "Paketler", "pak_h": "İhtiyacınıza uygun üç paket.", "pak_s": "Kapsam net, teklif yazılı. Ne alacağınızı işe başlamadan bilirsiniz.",
+      "pk1_t": "Tek sayfa", "pk1_f": "Yeni açılan işler, esnaf ve serbest çalışanlar için.", "pk1_ul": "<li>Tanıtım, hizmetler ve iletişim tek sayfada</li><li>Telefon uyumlu tasarım</li><li>Arama ve WhatsApp düğmeleri</li><li>Temel arama motoru ayarları</li>",
+      "pk2_t": "Kurumsal site", "pk2_f": "Klinik, büro ve firmalar için.", "pk2_ul": "<li>5 sayfaya kadar: ana sayfa, hakkımızda, hizmetler, galeri, iletişim</li><li>İletişim formu ve Google Harita</li><li>Yerel aramalar için konum bilgileri</li><li>Kendi alan adınızda yayın</li>",
+      "pk3_t": "Özel proje", "pk3_f": "Standart paketlere sığmayan ihtiyaçlar için.", "pk3_ul": "<li>Randevu veya rezervasyon servisi bağlama</li><li>Ürün ve katalog sayfaları</li><li>Mevcut sitenin yenilenmesi</li><li>Kapsam ve süre görüşmede belirlenir</li>",
+      "pk_p": "Fiyat için görüşelim",
+      "sss_k": "Sorular", "sss_h": "Sık sorulan sorular.", "sss_s": "Aklınızdaki soru burada yoksa formdan ya da WhatsApp'tan sorabilirsiniz.",
+      "sss_faq": "<details><summary>Başka şehirdeyim, nasıl çalışıyoruz?</summary><p>Bütün süreç uzaktan yürür. Görüşmeleri telefonda ya da WhatsApp'ta yaparız, taslağı internetten görürsünüz. Yüz yüze buluşmanıza gerek yok.</p></details><details><summary>Barındırma ve alan adı için ödeme yapacak mıyım?</summary><p>Sitelerim statik olduğu için sunucu kirası gerektirmez. Alan adı (.com, .com.tr gibi) yıllık ücretlidir. Alan adını sizin adınıza almanızı öneririm, böylece site her zaman sizin kalır.</p></details><details><summary>Sitem Google'da ilk sırada çıkar mı?</summary><p>Sıralama garantisi kimse veremez. Sitenin teknik altyapısını arama motorlarına uygun hazırlarım. Sıralama, rekabete ve zamana göre değişir.</p></details><details><summary>Site ne kadar sürede hazır olur?</summary><p>Sayfa sayısına ve içeriğin ne zaman hazır olduğuna bağlıdır. Teklifte tarihi yazılı olarak veririm.</p></details><details><summary>Web sitesi yaptırmak için ne hazırlamam gerekir?</summary><p>Logonuz, birkaç fotoğraf, hizmetlerinizin listesi ve iletişim bilgileriniz yeterli. Bunlar yoksa birlikte planlar, eksikleri görüşmede tamamlarız.</p></details><details><summary>Yayından sonra değişiklik yaptırabilir miyim?</summary><p>Metin, fotoğraf ve telefon numarası gibi güncellemeleri benden isteyebilirsiniz. Neyin pakete dahil olduğu teklifte belirtilir.</p></details>",
+      "cta_h": "Sıradaki site sizinki olsun.",
+      "ilet_k": "İletişim", "ilet_h": "Projenizi anlatın, teklif hazırlayayım.", "ilet_s": "İşletmenizin türünü ve ne istediğinizi kısaca yazın. Aynı gün içinde dönmeye çalışırım.",
+      "f_t1": "Telefon", "f_t2": "WhatsApp", "f_t3": "E-posta", "f_t4": "Instagram", "f_t5": "Hizmet alanı", "f_tw": "Mesaj gönder", "f_td": "Türkiye geneli, uzaktan",
+      "fm1": "Adınız soyadınız", "fm2": "Telefon", "fm3": "E-posta adresi", "fm4": "İşletme türü", "fm5": "Ne istiyorsunuz?", "fm_btn": "Mesajı hazırla", "fm_h": "Gönder'e bastığınızda doğrudan sistemimize iletilir. İsterseniz WhatsApp üzerinden de ulaşabilirsiniz.",
+      "foot1": "© 2026 EY Studios TR. Tüm hakları saklıdır.", "foot2": "Türkiye geneli, uzaktan hizmet"
+    },
+    "en": { 
+      "nav1": "Process", "nav2": "Portfolio", "nav3": "Packages", "nav4": "Get Quote",
+      "hero1": "Websites that suit your business and inspire trust.", 
+      "hero2": "I build mobile-friendly, SEO-ready sites for local businesses, clinics, and firms. Working globally: remote meetings, digital delivery.",
+      "h_btn1": "Get Quote", "h_btn2": "View Work",
+      "pck_l": "Select your industry to see how your site will look:",
+      "p1": "Lawyer", "p2": "Doctor", "p3": "Dietitian", "p4": "Dental Clinic", "p5": "Restaurant", "p6": "Salon",
+      "p_link": "Open demo: Lawyer →",
+      "s1_t": "Work", "s1_d": "Remote, available worldwide",
+      "s2_t": "Infrastructure", "s2_d": "Static pages, no server rent",
+      "s3_t": "Devices", "s3_d": "Perfect on phone, tablet & PC",
+      "s4_t": "Search", "s4_d": "SEO ready with meta & location",
+      "s5_t": "Cost", "s5_d": "Only annual domain fee applies",
+      "su_k": "Process", "su_h": "From blank page to live in 4 steps.", "su_sub": "The entire process is managed via phone/email. No face-to-face meeting needed.",
+      "su_1t": "1. Meeting", "su_1d": "We discuss your business, goals, and content.",
+      "su_2t": "2. Draft", "su_2d": "I'll show you the design and adjust based on feedback.",
+      "su_3t": "3. Publish", "su_3d": "Connected to your domain and tested on all devices.",
+      "su_4t": "4. Support", "su_4d": "Contact me for any post-launch changes.",
+      "cal_k": "Portfolio", "cal_h": "Ready templates for your industry.", "cal_s": "We don't start from scratch. We adapt the right template with your brand's colors and content.",
+      "c1_t": "Lawyer & Law Firm", "c1_d": "A serious look, service cards, and consultation form.",
+      "c2_t": "Doctor & Clinic", "c2_d": "Special layout with visuals and appointment forms.",
+      "c3_t": "Dietitian & Consulting", "c3_d": "Premium feel luxury consulting concept.",
+      "c4_t": "Dental Clinic", "c4_d": "Treatments, hours, FAQs, and one-tap calling.",
+      "c5_t": "Restaurant & Cafe", "c5_d": "Fixed menu, highlights, and WhatsApp reservations.",
+      "c6_t": "Hair & Beauty Salon", "c6_d": "Service & price list with WhatsApp booking.",
+      "c_btn": "Open demo",
+      "sek_k": "Sectors", "sek_h": "A website for your profession.", "sek_s": "Whether you are a lawyer, doctor, dietitian, or restaurant owner, we start with a ready template tailored for you.",
+      "sek1_t": "Lawyer Website", "sek1_d": "A clean site showing practice areas and consultation forms.",
+      "sek2_t": "Doctor Website", "sek2_d": "Practice areas, hours, and appointment info on one page.",
+      "sek3_t": "Dietitian Website", "sek3_d": "A warm intro site explaining online/offline consulting.",
+      "sek4_t": "Dental Website", "sek4_d": "Shows treatments and enables easy calling for patients.",
+      "sek5_t": "Restaurant Website", "sek5_d": "Menu, hours, and quick reservation buttons.",
+      "sek6_t": "Salon Website", "sek6_d": "Price lists and appointment requests via WhatsApp.",
+      "pak_k": "Packages", "pak_h": "Three packages to suit your needs.", "pak_s": "Clear scope, written quote. You know what you get before we start.",
+      "pk1_t": "Single Page", "pk1_f": "For new businesses and freelancers.", "pk1_ul": "<li>Intro, services, and contact on one page</li><li>Mobile responsive</li><li>Call & WhatsApp buttons</li><li>Basic SEO setup</li>",
+      "pk2_t": "Corporate Site", "pk2_f": "For clinics, firms, and agencies.", "pk2_ul": "<li>Up to 5 pages (Home, About, Services, Gallery, Contact)</li><li>Contact form & Google Maps</li><li>Local search setup</li><li>Custom domain hosting</li>",
+      "pk3_t": "Custom Project", "pk3_f": "For needs beyond standard packages.", "pk3_ul": "<li>Booking/Reservation systems</li><li>Product & catalog pages</li><li>Redesigning existing sites</li><li>Scope defined during meeting</li>",
+      "pk_p": "Contact for pricing",
+      "sss_k": "FAQ", "sss_h": "Frequently Asked Questions.", "sss_s": "If your question isn't here, feel free to ask via WhatsApp.",
+      "sss_faq": "<details><summary>I'm in a different city, how do we work?</summary><p>Everything is done remotely via phone or WhatsApp. No need for face-to-face meetings.</p></details><details><summary>Do I pay for hosting?</summary><p>No, my sites are static so there is no server rent. You only pay for your domain name yearly.</p></details><details><summary>Will I be #1 on Google?</summary><p>No one can guarantee rankings. I provide the best technical SEO setup to help you compete.</p></details><details><summary>How long does it take?</summary><p>Depends on the page count and content readiness. I will provide a timeline in the quote.</p></details>",
+      "cta_h": "Let your site be the next one.",
+      "ilet_k": "Contact", "ilet_h": "Tell me your project, I'll prepare a quote.", "ilet_s": "Briefly describe your business and needs. I'll get back to you today.",
+      "f_t1": "Phone", "f_t2": "WhatsApp", "f_t3": "Email", "f_t4": "Instagram", "f_t5": "Service Area", "f_tw": "Send message", "f_td": "Global, remote work",
+      "fm1": "Full Name", "fm2": "Phone", "fm3": "Email Address", "fm4": "Business Type", "fm5": "What do you need?", "fm_btn": "Prepare Message", "fm_h": "Clicking send will deliver the message directly to us.",
+      "foot1": "© 2026 EY Studios TR. All rights reserved.", "foot2": "Global Digital Solutions"
+    },
+    "de": { 
+      "nav1": "Prozess", "nav2": "Portfolio", "nav3": "Pakete", "nav4": "Angebot",
+      "hero1": "Websites, die passen und Vertrauen schaffen.", 
+      "hero2": "Ich erstelle mobilfreundliche, SEO-bereite Websites für lokale Unternehmen und Kliniken. Weltweite Remote-Arbeit.",
+      "h_btn1": "Angebot anfordern", "h_btn2": "Arbeiten ansehen",
+      "pck_l": "Wählen Sie Ihre Branche:",
+      "p1": "Anwalt", "p2": "Arzt", "p3": "Ernährungsberater", "p4": "Zahnklinik", "p5": "Restaurant", "p6": "Friseur",
+      "p_link": "Demo öffnen: Anwalt →",
+      "s1_t": "Arbeit", "s1_d": "Remote, weltweit verfügbar",
+      "s2_t": "Infrastruktur", "s2_d": "Statische Seiten, keine Servermiete",
+      "s3_t": "Geräte", "s3_d": "Perfekt auf Handy, Tablet & PC",
+      "s4_t": "Suche", "s4_d": "SEO-bereit mit Meta & Standort",
+      "s5_t": "Kosten", "s5_d": "Nur jährliche Domain-Gebühr",
+      "su_k": "Prozess", "su_h": "In 4 Schritten online.", "su_sub": "Der gesamte Prozess wird über Telefon/E-Mail abgewickelt.",
+      "su_1t": "1. Meeting", "su_1d": "Wir besprechen Ihr Unternehmen und Ihre Ziele.",
+      "su_2t": "2. Entwurf", "su_2d": "Ich zeige Ihnen das Design und passe es an.",
+      "su_3t": "3. Veröffentlichung", "su_3d": "Mit Ihrer Domain verbunden und getestet.",
+      "su_4t": "4. Support", "su_4d": "Kontaktieren Sie mich für Änderungen.",
+      "cal_k": "Portfolio", "cal_h": "Fertige Vorlagen für Ihre Branche.", "cal_s": "Wir passen die richtige Vorlage mit Ihren Farben und Inhalten an.",
+      "c1_t": "Anwalt & Kanzlei", "c1_d": "Ein seriöser Look mit Servicekarten.",
+      "c2_t": "Arzt & Klinik", "c2_d": "Spezielles Layout mit visuellen Termin-Formularen.",
+      "c3_t": "Ernährungsberater", "c3_d": "Premium-Luxus-Beratungskonzept.",
+      "c4_t": "Zahnklinik", "c4_d": "Behandlungen, Öffnungszeiten, FAQs.",
+      "c5_t": "Restaurant & Cafe", "c5_d": "Festes Menü und WhatsApp-Reservierungen.",
+      "c6_t": "Friseur & Beauty", "c6_d": "Preisliste mit WhatsApp-Buchung.",
+      "c_btn": "Demo öffnen",
+      "sek_k": "Branchen", "sek_h": "Eine Website für Ihren Beruf.", "sek_s": "Wir starten mit einer für Sie maßgeschneiderten Vorlage.",
+      "sek1_t": "Anwalt Website", "sek1_d": "Saubere Seite mit Rechtsgebieten.",
+      "sek2_t": "Arzt Website", "sek2_d": "Fachgebiete und Termine auf einer Seite.",
+      "sek3_t": "Ernährungsberater Website", "sek3_d": "Eine warme Intro-Seite.",
+      "sek4_t": "Zahnarzt Website", "sek4_d": "Zeigt Behandlungen und einfachen Kontakt.",
+      "sek5_t": "Restaurant Website", "sek5_d": "Menü und schnelle Reservierungs-Buttons.",
+      "sek6_t": "Friseur Website", "sek6_d": "Preislisten und Terminanfragen.",
+      "pak_k": "Pakete", "pak_h": "Drei Pakete für Ihre Bedürfnisse.", "pak_s": "Klarer Umfang, schriftliches Angebot.",
+      "pk1_t": "Single Page", "pk1_f": "Für neue Unternehmen.", "pk1_ul": "<li>Intro und Kontakt auf einer Seite</li><li>Mobil ansprechend</li><li>Anruf- & WhatsApp-Buttons</li>",
+      "pk2_t": "Corporate Site", "pk2_f": "Für Kliniken und Firmen.", "pk2_ul": "<li>Bis zu 5 Seiten</li><li>Kontaktformular & Maps</li><li>Lokale SEO</li>",
+      "pk3_t": "Custom Project", "pk3_f": "Für spezielle Anforderungen.", "pk3_ul": "<li>Buchungssysteme</li><li>Katalogseiten</li><li>Umfang nach Absprache</li>",
+      "pk_p": "Kontakt für Preise",
+      "sss_k": "FAQ", "sss_h": "Häufig gestellte Fragen.", "sss_s": "Fragen Sie gerne per WhatsApp.",
+      "sss_faq": "<details><summary>Zahle ich für Hosting?</summary><p>Nein, es gibt keine Servermiete.</p></details>",
+      "cta_h": "Ihre neue Website wartet.",
+      "ilet_k": "Kontakt", "ilet_h": "Erzählen Sie mir von Ihrem Projekt.", "ilet_s": "Ich melde mich noch heute bei Ihnen.",
+      "f_t1": "Telefon", "f_t2": "WhatsApp", "f_t3": "E-Mail", "f_t4": "Instagram", "f_t5": "Servicegebiet", "f_tw": "Nachricht senden", "f_td": "Weltweit, Remote",
+      "fm1": "Name", "fm2": "Telefon", "fm3": "E-Mail", "fm4": "Geschäftsart", "fm5": "Was benötigen Sie?", "fm_btn": "Nachricht vorbereiten", "fm_h": "Ihre Nachricht wird sicher übermittelt.",
+      "foot1": "© 2026 EY Studios TR. Alle Rechte vorbehalten.", "foot2": "Globale Digitale Lösungen"
+    }
+  };
+  
+  window.EY_I18N = i18n;
+
+})();
+</script>
+<script>
+/* EY Studios TR - dil menüsü ve çeviri sistemi */
+(function () {
+  /* Sayfadaki tr/en/de sözlüğünü satır içi script'ten kendisi okur */
+  var I = window.EY_I18N;
+  if (!I) {
+    try {
+      Array.prototype.forEach.call(document.scripts, function (s) {
+        var t = s.textContent, m = t.indexOf('const i18n = ');
+        if (I || m < 0) return;
+        var a = t.indexOf('{', m), depth = 0, i = a, q = null;
+        for (; i < t.length; i++) {
+          var c = t[i];
+          if (q) { if (c === '\\') i++; else if (c === q) q = null; }
+          else if (c === '"' || c === "'") q = c;
+          else if (c === '{') depth++;
+          else if (c === '}' && --depth === 0) break;
+        }
+        I = (new Function('return ' + t.slice(a, i + 1)))();
+      });
+    } catch (e) {}
+  }
+  if (!I) { console.warn('ey-lang: çeviri sözlüğü okunamadı.'); return; }
+
+  /* ES / NL / FR / IT / RU: ana metinler. Burada olmayan anahtarlar İngilizceye düşer. */
+  var K = ['nav1','nav2','nav3','nav4','hero1','h_btn1','h_btn2','pck_l','p1','p2','p3','p4','p5','p6','su_h','cal_h','c_btn','sek_h','pak_h','pk_p','sss_h','cta_h','ilet_h','f_t1','f_t3','f_t5','fm1','fm2','fm3','fm4','fm5','fm_btn','foot1'];
+  var T = {
+    es: ['Proceso','Trabajos','Paquetes','Pedir presupuesto','Sitios web que transmiten confianza desde el primer vistazo.','Pedir presupuesto','Ver trabajos','Elige tu sector y mira cómo quedaría tu web:','Abogado','Médico','Dietista','Clínica dental','Restaurante','Peluquería','De la página en blanco a la publicación en cuatro pasos.','Ejemplos listos para tu sector.','Abrir ejemplo','Un sitio web para tu profesión.','Tres paquetes para tus necesidades.','Hablemos del precio','Preguntas frecuentes.','Que el próximo sitio sea el tuyo.','Cuéntame tu proyecto y preparo un presupuesto.','Teléfono','Correo','Zona de servicio','Nombre y apellidos','Teléfono','Correo electrónico','Tipo de negocio','¿Qué necesitas?','Preparar mensaje','© 2026 EY Studios TR. Todos los derechos reservados.'],
+    nl: ['Proces','Werk','Pakketten','Offerte aanvragen','Websites die vanaf het eerste moment vertrouwen wekken.','Offerte aanvragen','Bekijk werk','Kies je branche en zie hoe je site eruitziet:','Advocaat','Arts','Diëtist','Tandartspraktijk','Restaurant','Kapper','Van leeg scherm naar online in vier stappen.','Kant-en-klare voorbeelden voor jouw branche.','Voorbeeld openen','Een website voor jouw beroep.','Drie pakketten voor jouw behoeften.','Prijs in overleg','Veelgestelde vragen.','Laat de volgende site de jouwe zijn.','Vertel over je project, ik maak een offerte.','Telefoon','E-mail','Werkgebied','Volledige naam','Telefoon','E-mailadres','Type bedrijf','Wat heb je nodig?','Bericht voorbereiden','© 2026 EY Studios TR. Alle rechten voorbehouden.'],
+    fr: ['Processus','Réalisations','Offres','Demander un devis','Des sites web qui inspirent confiance au premier regard.','Demander un devis','Voir les réalisations','Choisissez votre secteur pour voir le rendu :','Avocat','Médecin','Diététicien','Clinique dentaire','Restaurant','Coiffeur','De la page blanche à la mise en ligne en quatre étapes.','Des exemples prêts pour votre secteur.',"Ouvrir l'exemple",'Un site web pour votre métier.','Trois offres adaptées à vos besoins.','Parlons du prix','Questions fréquentes.','Le prochain site pourrait être le vôtre.','Parlez-moi de votre projet, je prépare un devis.','Téléphone','E-mail',"Zone d'intervention",'Nom et prénom','Téléphone','Adresse e-mail',"Type d'activité",'Que souhaitez-vous ?','Préparer le message','© 2026 EY Studios TR. Tous droits réservés.'],
+    it: ['Processo','Lavori','Pacchetti','Richiedi preventivo','Siti web che ispirano fiducia al primo sguardo.','Richiedi preventivo','Guarda i lavori','Scegli il tuo settore e guarda come sarà il sito:','Avvocato','Medico','Dietista','Studio dentistico','Ristorante','Parrucchiere','Dalla pagina bianca alla pubblicazione in quattro passi.','Esempi pronti per il tuo settore.','Apri esempio','Un sito web per la tua professione.','Tre pacchetti per le tue esigenze.','Parliamo del prezzo','Domande frequenti.','Il prossimo sito sia il tuo.','Raccontami il progetto, preparo un preventivo.','Telefono','E-mail','Area di servizio','Nome e cognome','Telefono','Indirizzo e-mail','Tipo di attività','Di cosa hai bisogno?','Prepara il messaggio','© 2026 EY Studios TR. Tutti i diritti riservati.'],
+    ru: ['Процесс','Работы','Пакеты','Получить предложение','Сайты, вызывающие доверие с первого взгляда.','Получить предложение','Смотреть работы','Выберите сферу и посмотрите, как будет выглядеть сайт:','Юрист','Врач','Диетолог','Стоматология','Ресторан','Парикмахер','От чистого листа до запуска за четыре шага.','Готовые примеры для вашей сферы.','Открыть пример','Сайт для вашей профессии.','Три пакета под ваши задачи.','Цена по запросу','Частые вопросы.','Пусть следующий сайт будет вашим.','Расскажите о проекте, я подготовлю предложение.','Телефон','Эл. почта','Зона работы','Имя и фамилия','Телефон','Эл. почта','Тип бизнеса','Что вам нужно?','Подготовить сообщение','© 2026 EY Studios TR. Все права защищены.']
+  };
+  ['es','nl','fr','it','ru'].forEach(function (l) {
+    var o = {}; K.forEach(function (k, n) { o[k] = T[l][n]; });
+    o.su_k = o.nav1; o.cal_k = o.nav2; o.pak_k = o.nav3;
+    T[l] = o;
+  });
+
+  var $ = function (id) { return document.getElementById(id); };
+  var LANGS = {
+    tr: ['tr', 'TR', 'Türkçe'], en: ['gb', 'EN', 'English'], de: ['de', 'DE', 'Deutsch'],
+    nl: ['nl', 'NL', 'Nederlands'], es: ['es', 'ES', 'Español'], fr: ['fr', 'FR', 'Français'],
+    it: ['it', 'IT', 'Italiano'], ru: ['ru', 'RU', 'Русский']
+  };
+
+
+  /* Süreç adımları (ES/NL/FR/IT/RU) */
+  var SUK = ['su_1t','su_1d','su_2t','su_2d','su_3t','su_3d','su_4t','su_4d'];
+  var SU = {
+    es: ['1. Reunión','Hablamos de tu negocio, tus objetivos y tu contenido por teléfono o WhatsApp.','2. Borrador','Te muestro el diseño y lo ajustamos según tus comentarios.','3. Publicación','Lo conecto a tu dominio y lo probamos en móvil y ordenador.','4. Soporte','Si necesitas cambios después de publicar, escríbeme.'],
+    nl: ['1. Gesprek','We bespreken je bedrijf, doel en materiaal per telefoon of WhatsApp.','2. Ontwerp','Ik laat het ontwerp zien en pas het aan op basis van je feedback.','3. Publicatie','Ik koppel het aan je domein en we testen op telefoon en computer.','4. Support','Heb je na livegang wijzigingen nodig, stuur me dan een bericht.'],
+    fr: ['1. Échange','Nous parlons de votre activité, de vos objectifs et de vos contenus par téléphone ou WhatsApp.','2. Maquette',"Je vous montre le design et l'ajuste selon vos retours.",'3. Mise en ligne','Je le relie à votre domaine et nous testons sur mobile et ordinateur.','4. Support','Pour toute modification après la mise en ligne, écrivez-moi.'],
+    it: ['1. Colloquio','Parliamo della tua attività, dei tuoi obiettivi e dei contenuti per telefono o WhatsApp.','2. Bozza','Ti mostro il design e lo correggiamo in base ai tuoi feedback.','3. Pubblicazione','Lo collego al tuo dominio e lo testiamo su telefono e computer.','4. Assistenza','Se dopo la pubblicazione servono modifiche, scrivimi.'],
+    ru: ['1. Знакомство','Обсудим ваш бизнес, цели и материалы по телефону или в WhatsApp.','2. Черновик','Покажу дизайн и поправлю по вашим замечаниям.','3. Запуск','Подключу к вашему домену, проверим на телефоне и компьютере.','4. Поддержка','Если после запуска понадобятся правки, напишите мне.']
+  };
+  Object.keys(SU).forEach(function (l) { SUK.forEach(function (k, n) { T[l][k] = SU[l][n]; }); });
+
+  /* Süreç animasyonundaki sohbet, rozet ve bildirimler */
+  var ST = {
+    tr: { b: ['Merhaba, kliniğim için bir web sitesi istiyorum.','Merhaba! Hangi hizmetleri öne çıkaralım?','Tedaviler, çalışma saatleri ve randevu formu.','Anladım, ilk taslağı hazırlıyorum.'], g: 'Yayında', n: [['Yeni mesaj','Cumartesi çalışma saatimizi güncelleyebilir misiniz?'],['Güncellendi','Değişiklik yayında.'],['Teşekkürler','Site her zaman güncel kalıyor.']] },
+    en: { b: ['Hi, I would like a website for my clinic.','Hi! Which services should we highlight?','Treatments, opening hours and an appointment form.','Got it, I am preparing the first draft.'], g: 'Live', n: [['New message','Could you update our Saturday opening hours?'],['Updated','The change is live.'],['Thank you','The site always stays up to date.']] },
+    de: { b: ['Hallo, ich möchte eine Website für meine Klinik.','Hallo! Welche Leistungen sollen wir hervorheben?','Behandlungen, Öffnungszeiten und ein Terminformular.','Verstanden, ich bereite den ersten Entwurf vor.'], g: 'Online', n: [['Neue Nachricht','Können Sie unsere Samstagszeiten aktualisieren?'],['Aktualisiert','Die Änderung ist online.'],['Danke','Die Seite bleibt immer aktuell.']] },
+    es: { b: ['Hola, quiero una web para mi clínica.','¡Hola! ¿Qué servicios destacamos?','Tratamientos, horarios y un formulario de cita.','Entendido, preparo el primer borrador.'], g: 'Publicado', n: [['Mensaje nuevo','¿Puede actualizar nuestro horario del sábado?'],['Actualizado','El cambio ya está publicado.'],['Gracias','La web siempre está al día.']] },
+    nl: { b: ['Hallo, ik wil een website voor mijn praktijk.','Hallo! Welke diensten laten we uitkomen?','Behandelingen, openingstijden en een afspraakformulier.','Begrepen, ik maak het eerste ontwerp.'], g: 'Online', n: [['Nieuw bericht','Kunt u onze zaterdagopeningstijden aanpassen?'],['Bijgewerkt','De wijziging staat online.'],['Bedankt','De site blijft altijd actueel.']] },
+    fr: { b: ['Bonjour, je voudrais un site pour mon cabinet.','Bonjour ! Quels services mettons-nous en avant ?','Soins, horaires et un formulaire de rendez-vous.',"C'est noté, je prépare la première maquette."], g: 'En ligne', n: [['Nouveau message','Pouvez-vous mettre à jour nos horaires du samedi ?'],['Mis à jour','La modification est en ligne.'],['Merci','Le site reste toujours à jour.']] },
+    it: { b: ['Salve, vorrei un sito per il mio studio.','Salve! Quali servizi mettiamo in evidenza?','Trattamenti, orari e un modulo per gli appuntamenti.','Capito, preparo la prima bozza.'], g: 'Online', n: [['Nuovo messaggio','Può aggiornare il nostro orario del sabato?'],['Aggiornato','La modifica è online.'],['Grazie','Il sito resta sempre aggiornato.']] },
+    ru: { b: ['Здравствуйте, мне нужен сайт для клиники.','Здравствуйте! Какие услуги выделим?','Лечение, часы работы и форма записи.','Понял, готовлю первый черновик.'], g: 'В сети', n: [['Новое сообщение','Можете обновить наши часы работы в субботу?'],['Обновлено','Изменение уже на сайте.'],['Спасибо','Сайт всегда остаётся актуальным.']] }
+  };
+
+  /* ===== Kalan tüm metinler: ES / NL / FR / IT / RU + EN & DE SSS ===== */
+  var KS = ['hero2','s1_t','s1_d','s2_t','s2_d','s3_t','s3_d','s4_t','s4_d','s5_t','s5_d','su_sub','cal_s','c1_t','c2_t','c3_t','c4_t','c5_t','c6_t','sek_s','sek1_t','sek2_t','sek3_t','sek4_t','sek5_t','sek6_t','sek1_d','sek2_d','sek3_d','sek4_d','sek5_d','sek6_d','pak_s','sss_s','ilet_s','f_tw','f_td','fm_h','foot2'];
+  var FULL = {
+    es: { k: ['Creo sitios para comercios, clínicas y despachos que se ven bien en el móvil y están listos para aparecer en las búsquedas. Trabajo en remoto desde cualquier lugar: reunión por teléfono, entrega por internet.','Trabajo','En remoto, desde cualquier lugar','Infraestructura','Páginas estáticas, sin alquiler de servidor','Dispositivos','Perfecto en móvil, tablet y ordenador','Búsqueda','Título, descripción y ubicación listos','Coste','Solo se paga el dominio anual','Todo el proceso se hace por teléfono, WhatsApp y correo. No hace falta reunirse en persona.','No empezamos de cero. Abro el ejemplo de tu sector y adapto colores y contenido a tu negocio.','Abogados y despachos','Médicos y clínicas privadas','Dietistas y consultoría','Clínica dental','Restaurantes y cafés','Peluquerías y salones de belleza','Si quieres una web para abogado, médico, dietista, dentista, restaurante o peluquería, empiezo con un ejemplo de tu profesión. Contenido, color y logo se adaptan a tu negocio.','Web para abogados','Web para médicos','Web para dietistas','Web para dentistas','Web para restaurantes y cafés','Web para peluquerías y salones','Un sitio sobrio que muestra tus áreas de práctica, contacto y solicitud de consulta.','Áreas de atención, horarios y citas en una sola página, cómoda de leer en el móvil.','Una web cercana que presenta la consulta online y presencial, con formulario de contacto.','Muestra tratamientos, horarios y ubicación, y permite llamar con un toque.','Carta, horarios y botones de llamada y WhatsApp para reservar.','Lista de servicios y precios con solicitud de cita por WhatsApp.','Alcance claro, presupuesto por escrito. Sabes lo que recibes antes de empezar.','Si tu pregunta no está aquí, escríbela en el formulario o por WhatsApp.','Cuéntame brevemente el tipo de negocio y lo que necesitas. Intento responder el mismo día.','Enviar mensaje','En remoto, desde cualquier lugar','Al enviar, tu mensaje nos llega directamente. También puedes escribirme por WhatsApp.','Servicio en remoto'],
+      pk: [['Una página','Para negocios nuevos, comercios y autónomos.',['Presentación, servicios y contacto en una página','Diseño adaptado al móvil','Botones de llamada y WhatsApp','Ajustes básicos para buscadores']],['Web corporativa','Para clínicas, despachos y empresas.',['Hasta 5 páginas: inicio, nosotros, servicios, galería, contacto','Formulario de contacto y Google Maps','Datos de ubicación para búsquedas locales','Publicación en tu propio dominio']],['Proyecto a medida','Para necesidades fuera de los paquetes estándar.',['Conexión con servicios de citas o reservas','Páginas de productos y catálogo','Renovación de un sitio existente','Alcance y plazo se definen en la reunión']]],
+      faq: [['Estoy en otra ciudad, ¿cómo trabajamos?','Todo el proceso es remoto. Hablamos por teléfono o WhatsApp y ves el borrador por internet. No hace falta vernos.'],['¿Tendré que pagar hosting y dominio?','Mis sitios son estáticos y no necesitan alquiler de servidor. Solo el dominio (.com, .com.tr…) tiene cuota anual. Te recomiendo registrarlo a tu nombre.'],['¿Saldré primero en Google?','Nadie puede garantizar posiciones. Preparo la base técnica para los buscadores; el ranking depende de la competencia y del tiempo.'],['¿Cuánto tarda?','Depende del número de páginas y de cuándo esté listo el contenido. Te doy la fecha por escrito en el presupuesto.'],['¿Qué debo preparar?','Tu logo, algunas fotos, la lista de servicios y tus datos de contacto. Si no los tienes, lo planificamos juntos.'],['¿Puedo hacer cambios después de publicar?','Puedes pedirme actualizar textos, fotos o teléfono. Lo incluido en cada paquete se indica en el presupuesto.']] },
+    nl: { k: ['Ik bouw websites voor ondernemers, klinieken en kantoren die goed werken op de telefoon en klaar zijn voor zoekmachines. Ik werk op afstand vanuit overal: gesprek per telefoon, oplevering online.','Werkwijze','Op afstand, overal beschikbaar','Infrastructuur',"Statische pagina's, geen serverhuur",'Apparaten','Perfect op telefoon, tablet en computer','Zoeken','Titel, beschrijving en locatie klaar','Kosten','Alleen het domein kost jaarlijks','Het hele proces loopt via telefoon, WhatsApp en e-mail. Persoonlijk afspreken hoeft niet.','We beginnen niet bij nul. Ik open het voorbeeld voor jouw branche en pas kleuren en inhoud aan.','Advocaat en kantoor','Arts en privékliniek','Diëtist en advies','Tandartspraktijk','Restaurant en café','Kapper en schoonheidssalon','Wil je een website voor advocaat, arts, diëtist, tandarts, restaurant of kapper, dan start ik met een voorbeeld voor jouw beroep. Inhoud, kleur en logo pas ik aan.','Website voor advocaten','Website voor artsen','Website voor diëtisten','Website voor tandartsen','Website voor restaurants en cafés','Website voor kappers en salons','Een strakke site met je specialisaties, contactgegevens en aanvraag voor een eerste gesprek.','Specialisaties, spreekuren en afspraakinfo op één pagina, prettig te lezen op de telefoon.','Een warme site over online en persoonlijk advies, met contactformulier.','Toont behandelingen, openingstijden en locatie, met bellen met één tik.','Menu, openingstijden en knoppen voor bellen en WhatsApp om te reserveren.','Dienstenlijst met prijzen en afspraken via WhatsApp.','Duidelijk bereik, schriftelijke offerte. Je weet vooraf wat je krijgt.','Staat je vraag er niet bij? Stel hem via het formulier of WhatsApp.','Beschrijf kort je bedrijf en wat je nodig hebt. Ik probeer dezelfde dag te reageren.','Bericht sturen','Op afstand, overal','Na verzenden komt je bericht direct bij ons binnen. Je kunt ook via WhatsApp contact opnemen.','Dienstverlening op afstand'],
+      pk: [['Eén pagina',"Voor starters, ondernemers en zzp'ers.",['Introductie, diensten en contact op één pagina','Telefoonvriendelijk ontwerp','Bel- en WhatsApp-knoppen','Basisinstellingen voor zoekmachines']],['Zakelijke site','Voor klinieken, kantoren en bedrijven.',["Tot 5 pagina's: home, over ons, diensten, galerij, contact",'Contactformulier en Google Maps','Locatiegegevens voor lokaal zoeken','Online op je eigen domein']],['Maatwerk','Voor wensen buiten de standaardpakketten.',['Koppeling met afspraak- of reserveringssysteem',"Product- en cataloguspagina's",'Vernieuwing van een bestaande site','Bereik en doorlooptijd bepalen we in het gesprek']]],
+      faq: [['Ik woon in een andere stad, hoe werken we samen?','Alles gaat op afstand. We bellen of appen en je ziet het ontwerp online. Persoonlijk afspreken hoeft niet.'],['Betaal ik voor hosting en domein?','Mijn sites zijn statisch en hebben geen serverhuur nodig. Alleen het domein (.com, .com.tr) kost jaarlijks. Registreer het op je eigen naam.'],['Sta ik eerst in Google?','Niemand kan posities garanderen. Ik zorg voor de technische basis; de positie hangt af van concurrentie en tijd.'],['Hoe lang duurt het?',"Dat hangt af van het aantal pagina's en wanneer de inhoud klaar is. De datum staat in de offerte."],['Wat moet ik voorbereiden?',"Je logo, enkele foto's, je dienstenlijst en contactgegevens. Heb je die niet, dan plannen we het samen."],['Kan ik na livegang wijzigingen laten doen?',"Teksten, foto's en telefoonnummer kun je laten aanpassen. Wat inbegrepen is staat in de offerte."]] },
+    fr: { k: ["Je crée des sites pour commerçants, cliniques et cabinets, lisibles sur mobile et prêts pour les moteurs de recherche. Je travaille à distance, de n'importe où : échange par téléphone, livraison en ligne.",'Travail','À distance, partout','Infrastructure','Pages statiques, pas de location de serveur','Appareils','Parfait sur mobile, tablette et ordinateur','Recherche','Titre, description et localisation prêts','Coût','Seul le nom de domaine est payant chaque année',"Tout se passe par téléphone, WhatsApp et e-mail. Aucune rencontre en personne n'est nécessaire.","Nous ne partons pas de zéro. J'ouvre l'exemple de votre secteur et j'adapte couleurs et contenu à votre activité.",'Avocats et cabinets','Médecins et cliniques privées','Diététiciens et conseil','Clinique dentaire','Restaurants et cafés','Coiffeurs et instituts de beauté',"Pour un site d'avocat, de médecin, de diététicien, de dentiste, de restaurant ou de coiffeur, je pars d'un exemple adapté à votre métier. Contenu, couleurs et logo sont personnalisés.",'Site pour avocats','Site pour médecins','Site pour diététiciens','Site pour dentistes','Site pour restaurants et cafés','Site pour coiffeurs et instituts','Un site sobre qui présente vos domaines, vos coordonnées et la demande de premier rendez-vous.','Domaines de soins, horaires et rendez-vous sur une page, agréable à lire sur mobile.','Un site chaleureux qui présente le suivi en ligne et en cabinet, avec formulaire.','Présente soins, horaires et localisation, avec appel en un geste.',"Carte, horaires et boutons d'appel et WhatsApp pour réserver.",'Liste de services et de prix, rendez-vous par WhatsApp.','Périmètre clair, devis écrit. Vous savez ce que vous recevez avant de commencer.','Si votre question n\'est pas ici, posez-la par le formulaire ou sur WhatsApp.',"Décrivez brièvement votre activité et votre besoin. J'essaie de répondre le jour même.",'Envoyer un message','À distance, partout',"En envoyant, votre message nous parvient directement. Vous pouvez aussi m'écrire sur WhatsApp.",'Service à distance'],
+      pk: [['Une page','Pour les nouvelles activités, commerçants et indépendants.',['Présentation, services et contact sur une page','Design adapté au mobile',"Boutons d'appel et WhatsApp",'Réglages de base pour les moteurs de recherche']],['Site corporate','Pour cliniques, cabinets et entreprises.',["Jusqu'à 5 pages : accueil, à propos, services, galerie, contact",'Formulaire de contact et Google Maps','Données de localisation pour la recherche locale','Mise en ligne sur votre propre domaine']],['Projet sur mesure','Pour les besoins hors forfaits standards.',['Connexion à un service de rendez-vous ou de réservation','Pages produits et catalogue',"Refonte d'un site existant","Périmètre et délai définis lors de l'échange"]]],
+      faq: [['Je suis dans une autre ville, comment travaille-t-on ?','Tout se fait à distance. Nous échangeons par téléphone ou WhatsApp et vous voyez la maquette en ligne. Aucune rencontre nécessaire.'],["Dois-je payer l'hébergement et le domaine ?","Mes sites sont statiques et n'exigent pas de location de serveur. Seul le nom de domaine (.com, .com.tr) est payant chaque année. Je conseille de l'enregistrer à votre nom."],['Serai-je premier sur Google ?','Personne ne peut garantir un classement. Je prépare la base technique pour les moteurs de recherche ; le classement dépend de la concurrence et du temps.'],['Combien de temps cela prend-il ?','Cela dépend du nombre de pages et de la disponibilité des contenus. La date est indiquée par écrit dans le devis.'],['Que dois-je préparer ?','Votre logo, quelques photos, la liste de vos services et vos coordonnées. Sinon, nous planifions ensemble.'],['Puis-je demander des modifications après la mise en ligne ?','Vous pouvez me demander de mettre à jour textes, photos et numéro de téléphone. Ce qui est inclus est précisé dans le devis.']] },
+    it: { k: ['Creo siti per negozianti, cliniche e studi professionali che si vedono bene sul telefono e sono pronti per i motori di ricerca. Lavoro da remoto, ovunque: incontro per telefono, consegna online.','Lavoro','Da remoto, ovunque','Infrastruttura','Pagine statiche, nessun affitto di server','Dispositivi','Perfetto su telefono, tablet e computer','Ricerca','Titolo, descrizione e posizione pronti','Costo','Solo il dominio ha un costo annuale','Tutto avviene per telefono, WhatsApp ed e-mail. Non serve incontrarsi di persona.',"Non partiamo da zero. Apro l'esempio del tuo settore e adatto colori e contenuti alla tua attività.",'Avvocati e studi legali','Medici e cliniche private','Dietisti e consulenza','Studio dentistico','Ristoranti e caffè','Parrucchieri e centri estetici','Se vuoi un sito per avvocato, medico, dietista, dentista, ristorante o parrucchiere, parto da un esempio adatto alla tua professione. Contenuti, colori e logo si adattano alla tua attività.','Sito per avvocati','Sito per medici','Sito per dietisti','Sito per dentisti','Sito per ristoranti e caffè','Sito per parrucchieri e centri estetici','Un sito sobrio con le aree di attività, i contatti e la richiesta di primo colloquio.','Aree di cura, orari e appuntamenti in una pagina, comoda da leggere su telefono.','Un sito caldo che presenta la consulenza online e di persona, con modulo di contatto.','Mostra trattamenti, orari e posizione, con chiamata in un tocco.','Menu, orari e pulsanti di chiamata e WhatsApp per prenotare.','Elenco di servizi e prezzi con richiesta di appuntamento via WhatsApp.','Ambito chiaro, preventivo scritto. Sai cosa ricevi prima di iniziare.','Se la tua domanda non è qui, scrivila dal modulo o su WhatsApp.','Descrivi in breve il tipo di attività e cosa ti serve. Cerco di rispondere in giornata.','Invia messaggio','Da remoto, ovunque','Inviando, il messaggio ci arriva direttamente. Puoi anche scrivermi su WhatsApp.','Servizio da remoto'],
+      pk: [['Pagina singola','Per nuove attività, negozianti e liberi professionisti.',['Presentazione, servizi e contatti in una pagina','Design adatto al telefono','Pulsanti di chiamata e WhatsApp','Impostazioni base per i motori di ricerca']],['Sito aziendale','Per cliniche, studi e aziende.',['Fino a 5 pagine: home, chi sono, servizi, galleria, contatti','Modulo di contatto e Google Maps','Dati di posizione per le ricerche locali','Pubblicazione sul tuo dominio']],['Progetto su misura','Per esigenze fuori dai pacchetti standard.',['Collegamento a servizi di prenotazione','Pagine prodotto e catalogo','Rinnovo di un sito esistente','Ambito e tempi definiti nel colloquio']]],
+      faq: [["Sono in un'altra città, come lavoriamo?",'Tutto avviene da remoto. Parliamo per telefono o WhatsApp e vedi la bozza online. Non serve incontrarsi.'],['Devo pagare hosting e dominio?','I miei siti sono statici e non richiedono affitto di server. Solo il dominio (.com, .com.tr) ha un costo annuale. Ti consiglio di registrarlo a tuo nome.'],['Sarò primo su Google?','Nessuno può garantire le posizioni. Preparo la base tecnica per i motori di ricerca; la posizione dipende da concorrenza e tempo.'],['Quanto ci vuole?','Dipende dal numero di pagine e da quando i contenuti sono pronti. La data è scritta nel preventivo.'],['Cosa devo preparare?','Logo, alcune foto, elenco dei servizi e contatti. Se non li hai, li pianifichiamo insieme.'],['Posso fare modifiche dopo la pubblicazione?','Puoi chiedermi di aggiornare testi, foto e numero di telefono. Cosa è incluso è indicato nel preventivo.']] },
+    ru: { k: ['Создаю сайты для магазинов, клиник и офисов: удобные на телефоне и готовые к поиску. Работаю удалённо откуда угодно: встреча по телефону, сдача онлайн.','Работа','Удалённо, откуда угодно','Инфраструктура','Статические страницы, без аренды сервера','Устройства','Отлично на телефоне, планшете и компьютере','Поиск','Заголовок, описание и адрес готовы','Расходы','Платно только годовое продление домена','Весь процесс идёт по телефону, в WhatsApp и по почте. Встречаться лично не нужно.','Мы не начинаем с нуля. Открываю пример для вашей сферы и подстраиваю цвета и содержание под ваш бизнес.','Юристы и адвокатские бюро','Врачи и частные клиники','Диетологи и консультации','Стоматология','Рестораны и кафе','Парикмахерские и салоны красоты','Нужен сайт для юриста, врача, диетолога, стоматолога, ресторана или парикмахерской — начну с готового примера для вашей профессии. Содержание, цвета и логотип подстраиваются под вас.','Сайт для юриста','Сайт для врача','Сайт для диетолога','Сайт для стоматолога','Сайт для ресторана и кафе','Сайт для парикмахерской и салона','Строгий сайт с направлениями практики, контактами и заявкой на первую консультацию.','Направления, часы приёма и запись на одной странице, удобно читать на телефоне.','Тёплый сайт об онлайн- и очных консультациях с формой заявки.','Показывает лечение, часы работы и адрес, звонок в одно касание.','Меню, часы работы и кнопки звонка и WhatsApp для брони.','Список услуг с ценами и запись через WhatsApp.','Чёткий объём, письменное предложение. Вы знаете, что получите, до начала работы.','Не нашли свой вопрос? Задайте его через форму или в WhatsApp.','Коротко опишите бизнес и что нужно. Стараюсь ответить в тот же день.','Написать','Удалённо, откуда угодно','После отправки сообщение приходит напрямую мне. Можно также написать в WhatsApp.','Удалённая работа'],
+      pk: [['Одна страница','Для новых проектов, магазинов и самозанятых.',['Описание, услуги и контакты на одной странице','Дизайн для телефона','Кнопки звонка и WhatsApp','Базовая настройка для поиска']],['Корпоративный сайт','Для клиник, бюро и компаний.',['До 5 страниц: главная, о нас, услуги, галерея, контакты','Форма связи и Google Карты','Данные о местоположении для местного поиска','Публикация на вашем домене']],['Индивидуальный проект','Для задач вне стандартных пакетов.',['Подключение сервиса записи или бронирования','Страницы товаров и каталог','Обновление существующего сайта','Объём и сроки определяются на встрече']]],
+      faq: [['Я в другом городе, как мы работаем?','Весь процесс удалённый. Общаемся по телефону или в WhatsApp, черновик вы смотрите в интернете. Встречаться не нужно.'],['Нужно ли платить за хостинг и домен?','Мои сайты статические, аренда сервера не нужна. Платно только продление домена (.com, .com.tr). Советую оформить его на себя.'],['Буду ли я первым в Google?','Позиции никто не гарантирует. Я готовлю техническую основу для поиска; место зависит от конкуренции и времени.'],['Сколько времени занимает?','Зависит от числа страниц и готовности материалов. Срок указывается в предложении письменно.'],['Что нужно подготовить?','Логотип, несколько фото, список услуг и контакты. Если их нет, спланируем вместе.'],['Можно ли вносить правки после запуска?','Тексты, фото и номер телефона можно обновлять через меня. Что входит в пакет, указано в предложении.']] }
+  };
+  var EYB = { es: ['Sectores','Preguntas','Contacto'], nl: ['Sectoren','Vragen','Contact'], fr: ['Secteurs','Questions','Contact'], it: ['Settori','Domande','Contatti'], ru: ['Сферы','Вопросы','Контакты'] };
+  Object.keys(EYB).forEach(function (l) { T[l].sek_k = EYB[l][0]; T[l].sss_k = EYB[l][1]; T[l].ilet_k = EYB[l][2]; });
+  var FAQT = function (a) { return a.map(function (x) { return '<details><summary>' + x[0] + '</summary><p>' + x[1] + '</p></details>'; }).join(''); };
+  var LIST = function (a) { return a.map(function (x) { return '<li>' + x + '</li>'; }).join(''); };
+  Object.keys(FULL).forEach(function (l) {
+    var f = FULL[l], o = T[l];
+    KS.forEach(function (k, n) { o[k] = f.k[n]; });
+    [1, 2, 3].forEach(function (n) { var p = f.pk[n - 1]; o['pk' + n + '_t'] = p[0]; o['pk' + n + '_f'] = p[1]; o['pk' + n + '_ul'] = LIST(p[2]); });
+    o.sss_faq = FAQT(f.faq);
+    [1, 2, 3, 4, 5, 6].forEach(function (n) { o['c' + n + '_d'] = o['sek' + n + '_d']; });
+  });
+  T.en = { sss_faq: FAQT([["I'm in a different city, how do we work?",'Everything is done remotely by phone or WhatsApp, and you see the draft online. No need to meet in person.'],['Do I pay for hosting and a domain?','My sites are static, so there is no server rent. Only the domain (.com, .com.tr) has a yearly fee. I recommend registering it in your own name.'],['Will I rank first on Google?','No one can guarantee rankings. I prepare the technical base for search engines; ranking depends on competition and time.'],['How long does it take?','It depends on the page count and when your content is ready. I put the date in writing in the quote.'],['What do I need to prepare?',"Your logo, a few photos, your list of services and contact details. If you don't have them, we plan together."],['Can I request changes after launch?','You can ask me to update texts, photos and phone numbers. What is included is stated in the quote.']]) };
+  T.de = { sss_faq: FAQT([['Ich bin in einer anderen Stadt, wie arbeiten wir?','Alles läuft remote per Telefon oder WhatsApp, den Entwurf sehen Sie online. Ein persönliches Treffen ist nicht nötig.'],['Zahle ich für Hosting und Domain?','Meine Seiten sind statisch, es gibt keine Servermiete. Nur die Domain (.com, .com.tr) kostet jährlich. Ich empfehle, sie auf Ihren Namen zu registrieren.'],['Lande ich bei Google auf Platz 1?','Platzierungen kann niemand garantieren. Ich bereite die technische Basis für Suchmaschinen vor; das Ranking hängt von Wettbewerb und Zeit ab.'],['Wie lange dauert es?','Das hängt von der Seitenzahl und der Bereitschaft der Inhalte ab. Den Termin nenne ich schriftlich im Angebot.'],['Was muss ich vorbereiten?','Logo, einige Fotos, Leistungsliste und Kontaktdaten. Fehlt etwas, planen wir gemeinsam.'],['Kann ich nach dem Start Änderungen verlangen?','Texte, Fotos und Telefonnummern aktualisiere ich auf Anfrage. Was enthalten ist, steht im Angebot.']]) };
+
+  /* ===== Örnek site ("hologram") metinleri: [başlık, alt metin, düğme] x 6 sektör ===== */
+  var DM = {
+    tr: ['Net bir yol haritası.','Ceza, ticaret ve icra hukuku.','Görüşme talep et','Önce dinleriz.','Muayene, bilgilendirme ve takip.','Randevu talep et','Beslenmeni kökünden değiştir.','Sürdürülebilir, kişiye özel planlar.','Ön Görüşme Talep Et','Sizi dinleyen diş hekimliği.','Tedaviler, saatler ve konum.','Randevu al','Sofranız hazır.','Yemekler, fiyatlar ve rezervasyon.','Rezervasyon','Bakım zamanı.','Hizmet seç, süreyi ve fiyatı gör.','Hizmet seç'],
+    en: ['A clear roadmap.','Criminal, commercial and enforcement law.','Request a consultation','We listen first.','Examinations, information and follow-up.','Request an appointment','Change your eating from the root.','Sustainable, personalised plans.','Request an intro call','Dentistry that listens.','Treatments, hours and location.','Book now','Your table is ready.','Dishes, prices and reservations.','Reserve','Time for self-care.','Pick a service, see time and price.','Pick a service'],
+    de: ['Ein klarer Fahrplan.','Straf-, Handels- und Vollstreckungsrecht.','Gespräch anfragen','Zuerst hören wir zu.','Untersuchung, Aufklärung und Nachsorge.','Termin anfragen','Ernährung von Grund auf ändern.','Nachhaltige, persönliche Pläne.','Erstgespräch anfragen','Zahnmedizin, die zuhört.','Behandlungen, Zeiten und Standort.','Termin buchen','Ihr Tisch ist bereit.','Gerichte, Preise und Reservierung.','Reservieren','Zeit für Pflege.','Leistung wählen, Dauer und Preis sehen.','Leistung wählen'],
+    es: ['Una hoja de ruta clara.','Derecho penal, mercantil y de ejecución.','Solicitar consulta','Primero escuchamos.','Consulta, información y seguimiento.','Solicitar cita','Cambia tu alimentación de raíz.','Planes sostenibles y personalizados.','Solicitar primera llamada','Odontología que te escucha.','Tratamientos, horarios y ubicación.','Pedir cita','Tu mesa está lista.','Platos, precios y reservas.','Reservar','Hora de cuidarte.','Elige servicio, mira duración y precio.','Elegir servicio'],
+    nl: ['Een duidelijke routekaart.','Straf-, handels- en executierecht.','Gesprek aanvragen','Eerst luisteren we.','Onderzoek, uitleg en nazorg.','Afspraak aanvragen','Verander je eten bij de wortel.','Duurzame, persoonlijke plannen.','Kennismaking aanvragen','Tandzorg die luistert.','Behandelingen, tijden en locatie.','Afspraak maken','Je tafel staat klaar.','Gerechten, prijzen en reserveren.','Reserveren','Tijd voor verzorging.','Kies een dienst, zie tijd en prijs.','Dienst kiezen'],
+    fr: ['Une feuille de route claire.','Droit pénal, commercial et recouvrement.','Demander un rendez-vous',"Nous écoutons d'abord.",'Consultation, information et suivi.','Demander un rendez-vous','Changez votre alimentation à la racine.','Des plans durables et personnalisés.','Demander un premier appel',"Une dentisterie à l'écoute.",'Soins, horaires et localisation.','Prendre rendez-vous','Votre table est prête.','Plats, prix et réservation.','Réserver',"C'est l'heure du soin.",'Choisissez un service, voyez durée et prix.','Choisir un service'],
+    it: ['Una mappa chiara.',"Diritto penale, commerciale e dell'esecuzione.",'Richiedi un colloquio','Prima ascoltiamo.','Visita, informazioni e controlli.','Richiedi un appuntamento','Cambia la tua alimentazione alla radice.','Piani sostenibili e personalizzati.','Richiedi una prima chiamata',"Un'odontoiatria che ascolta.",'Trattamenti, orari e posizione.','Prenota ora','Il tuo tavolo è pronto.','Piatti, prezzi e prenotazioni.','Prenota','È il momento della cura.','Scegli il servizio, vedi durata e prezzo.','Scegli il servizio'],
+    ru: ['Чёткая дорожная карта.','Уголовное, торговое и исполнительное право.','Запросить консультацию','Сначала мы слушаем.','Приём, информация и наблюдение.','Записаться на приём','Измените питание у корня.','Устойчивые индивидуальные планы.','Запросить первую беседу','Стоматология, которая слушает.','Лечение, часы и адрес.','Записаться','Ваш столик готов.','Блюда, цены и бронирование.','Забронировать','Время заботы о себе.','Выберите услугу, узнайте время и цену.','Выбрать услугу']
+  };
+  window.eyDemo = function (i, key) {
+    var n = { big: 0, sub: 1, btn: 2 }[key];
+    return n === undefined ? null : (DM[cur] || DM.en)[i * 3 + n];
+  };
+
+  var OPEN = { tr: 'Örneği aç', en: 'Open demo', de: 'Demo öffnen', es: 'Abrir ejemplo', nl: 'Voorbeeld openen', fr: "Ouvrir l'exemple", it: 'Apri esempio', ru: 'Открыть пример' };
+
+  /* Anahtarı olmayan kısımlar: sektör şeridi, form seçenekleri, placeholder */
+  var EX = {
+    tr: {
+      tick: ['Avukat', 'Doktor', 'Diş hekimi', 'Diyetisyen', 'Psikolog', 'Veteriner', 'Restoran', 'Kafe', 'Kuaför', 'Güzellik salonu', 'Oto servis', 'Emlak', 'Otel', 'Mali müşavir', 'Fotoğrafçı'],
+      types: ['Avukat / hukuk bürosu', 'Doktor / klinik', 'Diyetisyen / danışmanlık', 'Diş kliniği', 'Restoran / kafe', 'Kuaför / güzellik salonu', 'Diğer'],
+      ph: 'Örnek: Yeni açtığım işletme için tanıtım sitesi istiyorum.'
+    },
+    en: {
+      tick: ['Lawyer', 'Doctor', 'Dentist', 'Dietitian', 'Psychologist', 'Veterinarian', 'Restaurant', 'Cafe', 'Hairdresser', 'Beauty salon', 'Auto repair', 'Real estate', 'Hotel', 'Accountant', 'Photographer'],
+      types: ['Lawyer / law firm', 'Doctor / clinic', 'Dietitian / consulting', 'Dental clinic', 'Restaurant / cafe', 'Hair / beauty salon', 'Other'],
+      ph: 'Example: I need an introduction website for my new business.'
+    },
+    de: {
+      tick: ['Anwalt', 'Arzt', 'Zahnarzt', 'Ernährungsberater', 'Psychologe', 'Tierarzt', 'Restaurant', 'Café', 'Friseur', 'Schönheitssalon', 'Autowerkstatt', 'Immobilien', 'Hotel', 'Steuerberater', 'Fotograf'],
+      types: ['Anwalt / Kanzlei', 'Arzt / Klinik', 'Ernährungsberater / Beratung', 'Zahnklinik', 'Restaurant / Café', 'Friseur / Beautysalon', 'Sonstiges'],
+      ph: 'Beispiel: Ich brauche eine Vorstellungswebsite für mein neues Unternehmen.'
+    }
+  };
+
+  var cur = 'tr';
+
+  var MSG = {
+    tr:{req:'Ad soyad, telefon ve e-posta alanlarını doldurun.',ok:'Talebiniz başarıyla alındı. En kısa sürede size dönüş yapacağım.',err:'Bir hata oluştu. Lütfen WhatsApp üzerinden ulaşın.'},
+    en:{req:'Please fill in your name, phone and email.',ok:'Your request has been received. I will get back to you shortly.',err:'Something went wrong. Please contact me via WhatsApp.'},
+    de:{req:'Bitte Name, Telefon und E-Mail ausfüllen.',ok:'Ihre Anfrage ist eingegangen. Ich melde mich in Kürze.',err:'Ein Fehler ist aufgetreten. Bitte per WhatsApp melden.'},
+    es:{req:'Rellena nombre, teléfono y correo.',ok:'Solicitud recibida. Te responderé en breve.',err:'Ha ocurrido un error. Escríbeme por WhatsApp.'},
+    nl:{req:'Vul naam, telefoon en e-mail in.',ok:'Aanvraag ontvangen. Ik neem snel contact op.',err:'Er ging iets mis. Neem contact op via WhatsApp.'},
+    fr:{req:'Veuillez remplir nom, téléphone et e-mail.',ok:'Demande reçue. Je vous répondrai rapidement.',err:"Une erreur s'est produite. Contactez-moi via WhatsApp."},
+    it:{req:'Compila nome, telefono ed e-mail.',ok:'Richiesta ricevuta. Ti risponderò presto.',err:'Si è verificato un errore. Scrivimi su WhatsApp.'},
+    ru:{req:'Заполните имя, телефон и e-mail.',ok:'Заявка получена. Я скоро свяжусь с вами.',err:'Произошла ошибка. Напишите мне в WhatsApp.'}
+  };
+  window.eyMsg = function (k) { return (MSG[cur] || MSG.en)[k]; };
+
+  /* ---------- Stil: katmanlar, konum, mobil ---------- */
+  var css = document.createElement('style');
+  css.textContent =
+    '.hero-shell>.site-head{z-index:100}' +
+    '.hero-shell>.hero{z-index:1}' +
+    '.site-head .wrap{position:relative}' +
+    '.lang-menu{position:static}' +
+    '.lang-btn{white-space:nowrap;flex-wrap:nowrap}' +
+    '.lang-btn img,.lang-option img{width:20px;height:14px;object-fit:cover;flex:none}' +
+    '.lang-dropdown{position:absolute;top:calc(100% - .35rem);right:0;left:auto;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.35);min-width:210px;max-width:calc(100vw - 2rem);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-8px);z-index:101;transition:opacity .2s ease,transform .2s ease,visibility .2s}' +
+    '.lang-dropdown.show{opacity:1;visibility:visible;transform:none}' +
+    '.lang-option{background:none;border:0;width:100%;padding:11px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;font:600 .92rem/1.2 var(--body);color:#1B2BD0;white-space:nowrap}' +
+    '.lang-option:hover{background:#f4f5f8;color:#0C1020}' +
+    '.lang-option{gap:10px}' +
+    '.lang-option b{display:inline-block;min-width:1.9rem}' +
+    '.lang-option span{font-weight:500;opacity:.8}' +
+    '.lang-option.active{background:#eef0ff}' +
+    'main,footer,.hero .wrap,.ticker{transition:opacity .16s ease}' +
+    'html.ey-fade main,html.ey-fade footer,html.ey-fade .hero .wrap,html.ey-fade .ticker{opacity:0}' +
+    '@media (max-width:620px){' +
+    '.btn.head{white-space:nowrap;padding:.4rem .7rem;font-size:.85rem;min-height:38px}' +
+    '.lang-btn{padding:6px 9px;font-size:.82rem;gap:5px}' +
+    '.lang-dropdown{min-width:190px}' +
+    '}';
+  document.head.appendChild(css);
+
+  /* ---------- Menüyü yeniden kur (eski dinleyicileri temizler) ---------- */
+  var oldBtn = $('langBtn');
+  var drop = $('langDropdown');
+  if (!oldBtn || !drop) return;
+  var btn = oldBtn.cloneNode(false);
+  oldBtn.parentNode.replaceChild(btn, oldBtn);
+
+  function flag(code) { return '<img src="https://flagcdn.com/w20/' + LANGS[code][0] + '.png" alt="">'; }
+
+  drop.innerHTML = Object.keys(LANGS).map(function (c) {
+    return '<button type="button" class="lang-option" data-lang="' + c + '">' + flag(c) +
+      '<b>' + LANGS[c][1] + '</b><span>' + LANGS[c][2] + '</span></button>';
+  }).join('');
+
+  function setBtn(c) {
+    btn.innerHTML = flag(c) + ' ' + LANGS[c][1] + ' ▼';
+    btn.setAttribute('aria-label', LANGS[c][2]);
+    btn.setAttribute('aria-haspopup', 'true');
+    Array.prototype.forEach.call(drop.querySelectorAll('.lang-option'), function (o) {
+      o.classList.toggle('active', o.getAttribute('data-lang') === c);
+    });
+  }
+
+  btn.addEventListener('click', function (e) { e.stopPropagation(); drop.classList.toggle('show'); });
+  drop.addEventListener('click', function (e) {
+    var o = e.target.closest ? e.target.closest('.lang-option') : null;
+    if (!o) return;
+    drop.classList.remove('show');
+    apply(o.getAttribute('data-lang'));
+  });
+  document.addEventListener('click', function () { drop.classList.remove('show'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') drop.classList.remove('show'); });
+
+  /* ---------- "Örneği aç: X →" bağlantısı ---------- */
+  function fixLink() {
+    var pl = $('pLink');
+    var b = document.querySelector('.picker-btns [aria-pressed="true"]');
+    if (!pl || !b) return;
+    var t = (OPEN[cur] || OPEN.en) + ': ' + b.textContent + ' →';
+    if (pl.textContent !== t) pl.textContent = t;
+  }
+  var pl = $('pLink');
+  if (pl && window.MutationObserver) {
+    new MutationObserver(fixLink).observe(pl, { childList: true, characterData: true, subtree: true });
+  }
+
+  /* ---------- Çeviriyi uygula ---------- */
+  function swap(lang) {
+    var d = Object.assign({}, I.tr, I.en, I[lang] || {}, T[lang] || {});
+    var ex = EX[lang] || EX.en;
+
+    document.documentElement.lang = lang;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function (el) {
+      var k = el.getAttribute('data-i18n');
+      if (k === 'p_link') return;
+      if (d[k] !== undefined) el.innerHTML = d[k];
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.ticker li'), function (li, i) {
+      li.textContent = ex.tick[i % ex.tick.length];
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#tur option'), function (o, i) {
+      if (ex.types[i]) o.textContent = ex.types[i];
+    });
+    var ta = $('mesaj'); if (ta) ta.placeholder = ex.ph;
+
+    var dm = DM[lang] || DM.en;
+    var pb = document.querySelector('.picker-btns [aria-pressed="true"]');
+    var di = pb ? parseInt(pb.getAttribute('data-i'), 10) : 0;
+    Array.prototype.forEach.call(document.querySelectorAll('#stage [data-k]'), function (el) {
+      var v = window.eyDemo(di, el.getAttribute('data-k')); if (v) el.textContent = v;
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.work .scr'), function (sc, i) {
+      var x = [sc.querySelector('.big'), sc.querySelector('.t'), sc.querySelector('.b')];
+      x.forEach(function (el, n) { if (el) el.textContent = dm[i * 3 + n]; });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#story .s-big'), function (el) { el.textContent = dm[9]; });
+    Array.prototype.forEach.call(document.querySelectorAll('#story .s-sub'), function (el) { el.textContent = dm[10]; });
+    Array.prototype.forEach.call(document.querySelectorAll('#story .s-btn'), function (el) { el.textContent = dm[11]; });
+    var st = ST[lang] || ST.en;
+    Array.prototype.forEach.call(document.querySelectorAll('.bub'), function (el, i) { if (st.b[i]) el.textContent = st.b[i]; });
+    var bg = $('sBadge'); if (bg) bg.textContent = st.g;
+    Array.prototype.forEach.call(document.querySelectorAll('.note'), function (el, i) {
+      if (st.n[i]) el.innerHTML = '<b>' + st.n[i][0] + '</b>' + st.n[i][1];
+    });
+
+    cur = lang;
+    setBtn(lang);
+    fixLink();
+  }
+
+  function apply(lang, instant) {
+    if (!LANGS[lang] || (lang === cur && !instant)) return;
+    try { localStorage.setItem('ey-lang', lang); } catch (e) {}
+    if (instant) { swap(lang); return; }
+    var root = document.documentElement;
+    root.classList.add('ey-fade');
+    setTimeout(function () {
+      swap(lang);
+      requestAnimationFrame(function () { root.classList.remove('ey-fade'); });
+    }, 170);
+  }
+
+  /* ---------- Açılışta dil seç ---------- */
+  setBtn('tr');
+  var start = null;
+  try { start = localStorage.getItem('ey-lang'); } catch (e) {}
+  if (!start) {
+    var nav = (navigator.language || 'tr').slice(0, 2).toLowerCase();
+    if (LANGS[nav]) start = nav;
+  }
+  if (start && start !== 'tr' && LANGS[start]) apply(start, true);
+})();
+
+</script>
+</body>
+</html>
