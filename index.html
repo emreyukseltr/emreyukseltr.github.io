@@ -3,9 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- GÖRSELDEKİ GİBİ YAPILDI: Başlık | Marka -->
 <title>Web Tasarım ve Dijital Çözümler | EY Studios TR</title>
-<!-- MAPS VE ESKİ ARAMALAR İÇİN: Emre Yüksel ve dijital çözümler eklendi -->
 <meta name="description" content="Avukat, doktor, diyetisyen ve işletmeler için mobil uyumlu web sitesi tasarımı ve dijital çözümler. Kurucu: Emre Yüksel - EY Studios TR.">
 <meta name="keywords" content="web sitesi yaptırma, web tasarım, Emre Yüksel web tasarım, dijital çözümler, kurumsal web sitesi, avukat web sitesi, doktor web sitesi, EY Studios TR">
 <meta name="robots" content="index, follow">
@@ -14,7 +12,6 @@
 <meta name="google-site-verification" content="c4HIWb7nwjMsuN1VyCU3hOdzS-oNmRjyN4XFIVIuv20">
 <link rel="canonical" href="https://emreyukseltr.github.io/">
 
-<!-- ŞEFFAF NEON LOGON -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='12' y='82' font-family='sans-serif' font-weight='900' font-size='75' fill='%23D1D5DB'>E</text><text x='52' y='82' font-family='sans-serif' font-weight='900' font-size='75' fill='%2300E5FF'>Y</text></svg>">
 
 <meta property="og:type" content="website">
@@ -107,7 +104,6 @@
   .hero-shell :focus-visible { outline-color: #fff; }
   .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; }
   
-  /* NEON LOGO CSS */
   .logo { text-decoration: none; font-family: var(--display); font-size: 2rem; letter-spacing: -0.03em; display: flex; align-items: baseline; }
   .logo .logo-e { color: inherit; font-weight: 800; }
   .logo .logo-y { color: #00E5FF; font-weight: 800; text-shadow: 0 0 12px rgba(0, 229, 255, 0.7); margin-left: -2px; }
@@ -118,39 +114,32 @@
   nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
   nav .btn { min-height: 42px; padding: .45rem 1.1rem; }
 
+  /* Dil Menüsü CSS */
+  .lang-menu { position: relative; display: inline-block; }
+  .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; backdrop-filter: blur(5px); }
+  .lang-btn:hover { background: rgba(255,255,255,0.25); }
+  .lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; min-width: 140px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; z-index: 9999; overflow: hidden; }
+  .lang-dropdown.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  .lang-option { background: none; border: none; padding: 10px 14px; text-align: left; width: 100%; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #1B2BD0; display: flex; align-items: center; gap: 8px; transition: background 0.2s; }
+  .lang-option:hover { background: #f0f0f0; color: #000; }
+
   .hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4rem, 8vw, 7rem); }
   .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-  h1 {
-    font-family: var(--display); font-weight: 800; margin: 0 0 1.5rem;
-    font-size: clamp(2.5rem, 5.6vw, 4.9rem); line-height: 1; letter-spacing: -0.04em; text-wrap: balance;
-  }
+  h1 { font-family: var(--display); font-weight: 800; margin: 0 0 1.5rem; font-size: clamp(2.5rem, 5.6vw, 4.9rem); line-height: 1; letter-spacing: -0.04em; text-wrap: balance; }
   h1.split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
   h1.split .w > span { display: inline-block; transform: translateY(108%); animation: up .85s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--i) * 70ms + 150ms); }
   @keyframes up { to { transform: none; } }
   .lede { font-size: 1.22rem; color: rgba(255,255,255,.88); margin: 0 0 2rem; max-width: 46ch; }
   .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
 
-  /* Living device stage */
-  .stage {
-    --s-bg: #0E0E0E; --s-ink: #F3F2EE; --s-acc: #D9331A; --s-on: #FFF; --s-card: #1C1C1C;
-    position: relative; perspective: 1500px; min-height: 26rem; display: grid; place-items: center; padding: 1.5rem 0 2.5rem;
-  }
-  .device {
-    position: relative; width: 100%; max-width: 540px; transform-style: preserve-3d;
-    transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 6deg)); transition: transform .25s ease-out;
-  }
-  .browser {
-    border-radius: 12px; overflow: hidden; background: var(--surface);
-    box-shadow: 0 40px 80px rgba(4,8,60,.5); aspect-ratio: 16 / 11; display: flex; flex-direction: column;
-  }
+  .stage { --s-bg: #0E0E0E; --s-ink: #F3F2EE; --s-acc: #D9331A; --s-on: #FFF; --s-card: #1C1C1C; position: relative; perspective: 1500px; min-height: 26rem; display: grid; place-items: center; padding: 1.5rem 0 2.5rem; }
+  .device { position: relative; width: 100%; max-width: 540px; transform-style: preserve-3d; transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 6deg)); transition: transform .25s ease-out; }
+  .browser { border-radius: 12px; overflow: hidden; background: var(--surface); box-shadow: 0 40px 80px rgba(4,8,60,.5); aspect-ratio: 16 / 11; display: flex; flex-direction: column; }
   .chrome { display: flex; align-items: center; gap: .4rem; padding: .55rem .8rem; border-bottom: 1px solid var(--line); background: var(--surface); color: var(--ink); flex: none; }
   .chrome i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--line); display: block; }
   .chrome span { margin-left: .6rem; font-size: .78rem; color: var(--muted); min-height: 1.1em; }
 
-  .site {
-    flex: 1; display: flex; flex-direction: column; gap: .8rem; padding: 1.2rem 1.4rem;
-    background: var(--s-bg); color: var(--s-ink); transition: background-color .7s ease, color .7s ease;
-  }
+  .site { flex: 1; display: flex; flex-direction: column; gap: .8rem; padding: 1.2rem 1.4rem; background: var(--s-bg); color: var(--s-ink); transition: background-color .7s ease, color .7s ease; }
   .s-nav { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: .8rem; }
   .s-links i { display: inline-block; width: 1.8rem; height: .28rem; background: currentColor; opacity: .25; border-radius: 2px; margin-left: .5rem; }
   .s-big { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 2.3vw, 1.9rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 13ch; margin-top: auto; }
@@ -161,11 +150,7 @@
   [data-k] { transition: opacity .25s ease; }
   [data-k].out { opacity: 0; }
 
-  .phone {
-    position: absolute; right: -5%; bottom: -9%; width: 30%; aspect-ratio: 9 / 19; border-radius: 22px;
-    border: 6px solid #0C1020; background: #0C1020; overflow: hidden; display: flex;
-    transform: translateZ(70px) rotate(3deg); box-shadow: 0 30px 60px rgba(4,8,60,.55);
-  }
+  .phone { position: absolute; right: -5%; bottom: -9%; width: 30%; aspect-ratio: 9 / 19; border-radius: 22px; border: 6px solid #0C1020; background: #0C1020; overflow: hidden; display: flex; transform: translateZ(70px) rotate(3deg); box-shadow: 0 30px 60px rgba(4,8,60,.55); }
   .phone .site { padding: .8rem .7rem; gap: .5rem; }
   .phone .s-big { font-size: .95rem; }
   .phone .s-sub { font-size: .6rem; }
@@ -176,36 +161,17 @@
   .phone .s-cards div { height: 1.3rem; }
   .phone .s-cards div:nth-child(3) { display: none; }
 
-  @media (hover: none) {
-    .device { animation: sway 9s ease-in-out infinite; }
-  }
-  @keyframes sway {
-    0%, 100% { transform: rotateY(-16deg) rotateX(6deg); }
-    50% { transform: rotateY(-6deg) rotateX(3deg); }
-  }
+  @media (hover: none) { .device { animation: sway 9s ease-in-out infinite; } }
+  @keyframes sway { 0%, 100% { transform: rotateY(-16deg) rotateX(6deg); } 50% { transform: rotateY(-6deg) rotateX(3deg); } }
 
-  /* ---------- Upgrade: spotlight, grid, picker, progress, theme button ---------- */
-  .hero-shell::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background: radial-gradient(520px circle at var(--mx, 72%) var(--my, 28%), rgba(255,255,255,.18), transparent 62%);
-  }
-  .hero-shell::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%);
-    mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%);
-  }
+  .hero-shell::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(520px circle at var(--mx, 72%) var(--my, 28%), rgba(255,255,255,.18), transparent 62%); }
+  .hero-shell::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%); mask-image: radial-gradient(ellipse at 75% 45%, #000 0, transparent 70%); }
   .hero-shell > * { position: relative; z-index: 1; }
   .right { min-width: 0; }
   .picker { margin-top: .4rem; }
   .picker-label { margin: 0 0 .55rem; font-size: .9rem; opacity: .85; }
   .picker-btns { display: flex; flex-wrap: wrap; gap: .45rem; }
-  .picker-btns button {
-    font: 600 .88rem/1 var(--body); color: #fff; background: transparent;
-    border: 1.5px solid rgba(255,255,255,.55); border-radius: 99px; padding: .6rem 1rem; cursor: pointer;
-    transition: background-color .2s ease, color .2s ease;
-  }
+  .picker-btns button { font: 600 .88rem/1 var(--body); color: #fff; background: transparent; border: 1.5px solid rgba(255,255,255,.55); border-radius: 99px; padding: .6rem 1rem; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
   .picker-btns button:hover { background: rgba(255,255,255,.16); }
   .picker-btns button[aria-pressed="true"] { background: #fff; color: #1B2BD0; border-color: #fff; }
   .picker-link { display: inline-block; margin-top: .9rem; font-weight: 600; color: #fff; text-underline-offset: 4px; }
@@ -219,7 +185,6 @@
   :root[data-theme="dark"] .tbtn .i-sun { display: block; }
   :root[data-theme="dark"] .tbtn .i-moon { display: none; }
 
-  /* Yatay kayan portföy */
   .hbar { display: none; height: 3px; background: var(--line); margin-top: 1.6rem; border-radius: 2px; overflow: hidden; max-width: 20rem; }
   .hbar i { display: block; height: 100%; width: 0; background: var(--accent); }
   #calismalar.hmode { padding-block: 0; }
@@ -230,7 +195,6 @@
   .hmode .work { flex: 0 0 clamp(300px, 27vw, 400px); }
   .hmode .hbar { display: block; }
 
-  /* ---------- Ticker ---------- */
   .ticker { background: var(--tick-bg); color: var(--tick-ink); overflow: hidden; white-space: nowrap; }
   .ticker-track { display: inline-flex; animation: slide 45s linear infinite; }
   .ticker:hover .ticker-track { animation-play-state: paused; }
@@ -239,19 +203,16 @@
   .ticker li::after { content: ""; width: .5rem; height: .5rem; background: var(--tick-dot); transform: rotate(45deg); }
   @keyframes slide { to { transform: translateX(-50%); } }
 
-  /* ---------- Spec strip ---------- */
   .strip { margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem; padding-block: 2.2rem; }
   .strip div { border-top: 2px solid var(--ink); padding-top: .8rem; }
   .strip dt { font-size: .9rem; color: var(--muted); margin-bottom: .2rem; }
   .strip dd { margin: 0; font-weight: 600; line-height: 1.35; }
 
-  /* ---------- Blocks ---------- */
   .block { padding-block: clamp(3rem, 7vw, 5.5rem); border-top: 1px solid var(--line); }
   .eyebrow { font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: .02em; color: var(--accent); margin: 0 0 .7rem; }
   h2 { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.04; letter-spacing: -0.03em; margin: 0 0 .9rem; max-width: 20ch; text-wrap: balance; }
   .sub { color: var(--muted); max-width: 58ch; margin: 0 0 2.6rem; }
 
-  /* Work */
   .works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.6rem, 3.5vw, 2.6rem) clamp(1.2rem, 3vw, 2.2rem); }
   .work { display: block; text-decoration: none; }
   .work h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; margin: 1rem 0 .3rem; }
@@ -269,7 +230,6 @@
   .scr .t { font-size: .68rem; opacity: .75; max-width: 24ch; line-height: 1.4; }
   .scr .b { align-self: flex-start; font-size: .68rem; font-weight: 600; padding: .4rem .75rem; border-radius: 6px; background: var(--s-acc); color: var(--s-on); }
 
-  /* Packages */
   .packs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
   .pack { padding: 1.6rem 1.6rem 1.8rem 0; }
   .pack + .pack { padding-left: 1.6rem; border-left: 1px solid var(--line); }
@@ -280,7 +240,6 @@
   .pack li::before { content: ""; position: absolute; left: 0; top: .6em; width: .6rem; height: 2px; background: var(--accent); }
   .price { font-weight: 600; margin: 0; }
 
-  /* ---------- Scroll-built story ---------- */
   .story-pin { display: none; height: 430vh; position: relative; border-top: 1px solid var(--line); }
   .js .story-pin { display: block; }
   .js .story-static { display: none; }
@@ -339,14 +298,12 @@
   .note.on { opacity: 1; transform: none; }
   .note b { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; margin-bottom: .1rem; }
 
-  /* Static steps fallback */
   .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.8rem; counter-reset: s; }
   .steps li { counter-increment: s; border-top: 2px solid var(--ink); padding-top: 1rem; }
   .steps li::before { content: counter(s); display: block; font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--accent); margin-bottom: .6rem; }
   .steps h3 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .35rem; }
   .steps p { margin: 0; color: var(--muted); }
 
-  /* FAQ */
   .faq { border-top: 2px solid var(--ink); max-width: 780px; }
   details { border-bottom: 1px solid var(--line); }
   summary { cursor: pointer; list-style: none; padding: 1.15rem 2.4rem 1.15rem 0; font-weight: 600; font-size: 1.1rem; position: relative; }
@@ -355,13 +312,11 @@
   details[open] summary::after { content: "\2212"; }
   details p { margin: 0 0 1.2rem; color: var(--muted); max-width: 62ch; }
 
-  /* CTA band */
   .cta-band { background: var(--cta-bg); color: var(--cta-ink); padding-block: clamp(3.5rem, 9vw, 7rem); }
   .cta-band .wrap { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 2rem; }
   .cta-band h2 { font-size: clamp(2.6rem, 8vw, 6.8rem); line-height: .95; letter-spacing: -0.045em; font-weight: 800; max-width: 12ch; margin: 0; }
   .cta-band :focus-visible { outline-color: var(--cta-ink); }
 
-  /* Contact */
   .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4.5rem); }
   .contact address { font-style: normal; display: grid; gap: .9rem; margin-top: 1.8rem; }
   .contact address div { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; }
@@ -382,7 +337,6 @@
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 2rem; }
   .mega { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 12.5vw, 17rem); line-height: .82; letter-spacing: -0.05em; text-align: center; color: var(--line); margin-top: 1.5rem; white-space: nowrap; user-select: none; }
 
-  /* Reveal */
   .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
   .js .reveal.in { opacity: 1; transform: none; }
 
@@ -415,7 +369,6 @@
     .phone { right: 0; }
   }
 
-  /* Sektör metinleri */
   .sectors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2.2rem; }
   .sectors article { border-top: 2px solid var(--ink); padding-top: 1rem; }
   .sectors h3 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.02em; margin: 0 0 .4rem; }
@@ -443,18 +396,30 @@
 <div class="hero-shell" id="shell">
   <header class="site-head">
     <div class="wrap">
-      <!-- LOGO BURADA NEON EFEKTİYLE GÜNCELLENDİ -->
       <a class="logo" href="/">
         <span class="logo-e">E</span><span class="logo-y">Y</span>
         <span class="st">Studios TR</span>
       </a>
       <nav aria-label="Ana menü">
         <ul>
-         <li><a href="#surec">Süreç</a></li>
-         <li><a href="#calismalar">Çalışmalar</a></li>
-         <li><a href="#paketler">Paketler</a></li>     
+         <li><a href="#surec" data-i18n="nav1">Süreç</a></li>
+         <li><a href="#calismalar" data-i18n="nav2">Çalışmalar</a></li>
+         <li><a href="#paketler" data-i18n="nav3">Paketler</a></li>     
           <li class="keep"><button class="tbtn" id="themeBtn" type="button" aria-label="Açık ya da koyu temayı değiştir"><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></g></svg></button></li>
-          <li><a href="#iletisim" class="btn light">Teklif iste</a></li>
+          <li class="keep lang-menu">
+            <button class="lang-btn" id="langBtn">🇹🇷 TR ▼</button>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option" data-lang="tr">🇹🇷 TR (Türkçe)</button>
+              <button class="lang-option" data-lang="en">🇬🇧 EN (English)</button>
+              <button class="lang-option" data-lang="de">🇩🇪 DE (Deutsch)</button>
+              <button class="lang-option" data-lang="nl">🇳🇱 NL (Nederlands)</button>
+              <button class="lang-option" data-lang="es">🇪🇸 ES (Español)</button>
+              <button class="lang-option" data-lang="fr">🇫🇷 FR (Français)</button>
+              <button class="lang-option" data-lang="it">🇮🇹 IT (Italiano)</button>
+              <button class="lang-option" data-lang="ru">🇷🇺 RU (Русский)</button>
+            </div>
+          </li>
+          <li><a href="#iletisim" class="btn light" data-i18n="nav4">Teklif iste</a></li>
         </ul>
       </nav>
     </div>
@@ -463,11 +428,11 @@
   <section class="hero" aria-labelledby="baslik">
     <div class="wrap">
       <div>
-        <h1 id="baslik">İşletmenize yakışan, ilk bakışta güven veren web siteleri.</h1>
-        <p class="lede">Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.</p>
+        <h1 id="baslik" data-i18n="hero1">İşletmenize yakışan, ilk bakışta güven veren web siteleri.</h1>
+        <p class="lede" data-i18n="hero2">Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.</p>
         <div class="cta-row">
-          <a class="btn light" href="#iletisim">Teklif iste</a>
-          <a class="btn line" href="#calismalar">Çalışmalara bak</a>
+          <a class="btn light" href="#iletisim" data-i18n="h_btn1">Teklif iste</a>
+          <a class="btn line" href="#calismalar" data-i18n="h_btn2">Çalışmalara bak</a>
         </div>
       </div>
 
@@ -496,16 +461,16 @@
         </div>
       </div>
       <div class="picker" role="group" aria-label="Sektör seçin">
-        <p class="picker-label">Sektörünüzü seçin, sitenin nasıl görüneceğine bakın:</p>
+        <p class="picker-label" data-i18n="pck_l">Sektörünüzü seçin, sitenin nasıl görüneceğine bakın:</p>
         <div class="picker-btns">
-          <button type="button" data-i="0" aria-pressed="true">Avukat</button>
-          <button type="button" data-i="1" aria-pressed="false">Doktor</button>
-          <button type="button" data-i="2" aria-pressed="false">Diyetisyen</button>
-          <button type="button" data-i="3" aria-pressed="false">Diş kliniği</button>
-          <button type="button" data-i="4" aria-pressed="false">Restoran</button>
-          <button type="button" data-i="5" aria-pressed="false">Kuaför</button>
+          <button type="button" data-i="0" aria-pressed="true" data-i18n="p1">Avukat</button>
+          <button type="button" data-i="1" aria-pressed="false" data-i18n="p2">Doktor</button>
+          <button type="button" data-i="2" aria-pressed="false" data-i18n="p3">Diyetisyen</button>
+          <button type="button" data-i="3" aria-pressed="false" data-i18n="p4">Diş kliniği</button>
+          <button type="button" data-i="4" aria-pressed="false" data-i18n="p5">Restoran</button>
+          <button type="button" data-i="5" aria-pressed="false" data-i18n="p6">Kuaför</button>
         </div>
-        <a class="picker-link" id="pLink" href="avukat.html">Örneği aç: Avukat →</a>
+        <a class="picker-link" id="pLink" href="avukat.html" data-i18n="p_link">Örneği aç: Avukat →</a>
       </div>
       </div>
     </div>
@@ -526,26 +491,25 @@
 <main id="icerik">
   <div class="wrap">
     <dl class="strip" aria-label="Her sitede bulunanlar">
-      <div><dt>Çalışma</dt><dd>Uzaktan, Türkiye'nin her yerinden</dd></div>
-      <div><dt>Altyapı</dt><dd>Statik sayfalar, sunucu kirası yok</dd></div>
-      <div><dt>Cihazlar</dt><dd>Telefon, tablet ve bilgisayarda düzgün</dd></div>
-      <div><dt>Arama</dt><dd>Başlık, açıklama ve konum bilgisi hazır</dd></div>
-      <div><dt>Maliyet</dt><dd>Yalnızca alan adı yıllık ücretlidir</dd></div>
+      <div><dt data-i18n="s1_t">Çalışma</dt><dd data-i18n="s1_d">Uzaktan, Türkiye'nin her yerinden</dd></div>
+      <div><dt data-i18n="s2_t">Altyapı</dt><dd data-i18n="s2_d">Statik sayfalar, sunucu kirası yok</dd></div>
+      <div><dt data-i18n="s3_t">Cihazlar</dt><dd data-i18n="s3_d">Telefon, tablet ve bilgisayarda düzgün</dd></div>
+      <div><dt data-i18n="s4_t">Arama</dt><dd data-i18n="s4_d">Başlık, açıklama ve konum bilgisi hazır</dd></div>
+      <div><dt data-i18n="s5_t">Maliyet</dt><dd data-i18n="s5_d">Yalnızca alan adı yıllık ücretlidir</dd></div>
     </dl>
   </div>
 
-  <!-- Kaydırınca site kendini kurar -->
   <section class="story-pin" id="story" aria-labelledby="surec-baslik">
     <div class="pin">
       <div class="wrap pin-grid">
         <div class="story-copy">
-          <p class="eyebrow" id="surec">Süreç</p>
-          <h2 id="surec-baslik">Boş sayfadan yayına, dört adım.</h2>
+          <p class="eyebrow" id="surec" data-i18n="su_k">Süreç</p>
+          <h2 id="surec-baslik" data-i18n="su_h">Boş sayfadan yayına, dört adım.</h2>
           <ol class="story-steps">
-            <li class="on"><h3>1. Görüşme</h3><p>İşletmenizi, hedefinizi ve elinizdeki içeriği telefonda ya da WhatsApp'ta konuşuruz.</p></li>
-            <li><h3>2. Taslak</h3><p>Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
-            <li><h3>3. Yayın</h3><p>Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
-            <li><h3>4. Destek</h3><p>Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
+            <li class="on"><h3 data-i18n="su_1t">1. Görüşme</h3><p data-i18n="su_1d">İşletmenizi, hedefinizi ve elinizdeki içeriği telefonda ya da WhatsApp'ta konuşuruz.</p></li>
+            <li><h3 data-i18n="su_2t">2. Taslak</h3><p data-i18n="su_2d">Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
+            <li><h3 data-i18n="su_3t">3. Yayın</h3><p data-i18n="su_3d">Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
+            <li><h3 data-i18n="su_4t">4. Destek</h3><p data-i18n="su_4d">Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
           </ol>
           <div class="story-bar" aria-hidden="true"><i id="storyBar"></i></div>
         </div>
@@ -618,17 +582,16 @@
     </div>
   </section>
 
-  <!-- JavaScript kapalıysa ya da hareket azaltılmışsa gösterilen sade süreç -->
   <section class="block story-static" aria-labelledby="surec-baslik-static">
     <div class="wrap">
-      <p class="eyebrow">Süreç</p>
-      <h2 id="surec-baslik-static">İşler dört adımda ilerler.</h2>
-      <p class="sub">Tüm süreç telefon, WhatsApp ve e-posta üzerinden yürür. Yüz yüze buluşmanız gerekmez.</p>
+      <p class="eyebrow" data-i18n="su_k">Süreç</p>
+      <h2 id="surec-baslik-static" data-i18n="su_h">İşler dört adımda ilerler.</h2>
+      <p class="sub" data-i18n="su_sub">Tüm süreç telefon, WhatsApp ve e-posta üzerinden yürür. Yüz yüze buluşmanız gerekmez.</p>
       <ol class="steps">
-        <li><h3>Görüşme</h3><p>İşletmenizi, hedefinizi ve elinizdeki içeriği konuşuruz.</p></li>
-        <li><h3>Taslak</h3><p>Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
-        <li><h3>Yayın</h3><p>Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
-        <li><h3>Destek</h3><p>Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
+        <li><h3 data-i18n="su_1t">Görüşme</h3><p data-i18n="su_1d">İşletmenizi, hedefinizi ve elinizdeki içeriği konuşuruz.</p></li>
+        <li><h3 data-i18n="su_2t">Taslak</h3><p data-i18n="su_2d">Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.</p></li>
+        <li><h3 data-i18n="su_3t">Yayın</h3><p data-i18n="su_3d">Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
+        <li><h3 data-i18n="su_4t">Destek</h3><p data-i18n="su_4d">Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
       </ol>
     </div>
   </section>
@@ -636,9 +599,9 @@
   <section class="block" id="calismalar" aria-labelledby="calisma-baslik">
     <div class="hgal" id="hgal"><div class="hpin">
     <div class="wrap">
-      <p class="eyebrow">Çalışmalar</p>
-      <h2 id="calisma-baslik">Sektörünüze göre hazır örnekler.</h2>
-      <p class="sub">Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.</p>
+      <p class="eyebrow" data-i18n="cal_k">Çalışmalar</p>
+      <h2 id="calisma-baslik" data-i18n="cal_h">Sektörünüze göre hazır örnekler.</h2>
+      <p class="sub" data-i18n="cal_s">Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.</p>
 
       <div class="works">
         <a class="work live reveal" href="avukat.html">
@@ -651,9 +614,9 @@
               <div class="b">Görüşme talep et</div>
             </div>
           </div>
-          <h3>Avukat ve hukuk bürosu</h3>
-          <p>Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.</p>
-          <span class="tag">Örneği aç</span>
+          <h3 data-i18n="c1_t">Avukat ve hukuk bürosu</h3>
+          <p data-i18n="c1_d">Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
 
         <a class="work live reveal" href="doktor.html">
@@ -666,12 +629,11 @@
               <div class="b">Randevu talep et</div>
             </div>
           </div>
-          <h3>Doktor ve özel klinik</h3>
-          <p>Görsel ve randevu formunun yan yana durduğu yerleşim, muayene bilgileri ve uygulama alanları.</p>
-          <span class="tag">Örneği aç</span>
+          <h3 data-i18n="c2_t">Doktor ve özel klinik</h3>
+          <p data-i18n="c2_d">Görsel ve randevu formunun yan yana durduğu yerleşim, muayene bilgileri ve uygulama alanları.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
 
-        <!-- DİYETİSYEN KARTI GÜNCELLENDİ -->
         <a class="work live reveal" href="diyetisyen.html">
           <div class="frame" aria-hidden="true">
             <div class="chrome"><i></i><i></i><i></i><span>kokbeslenme.com</span></div>
@@ -682,9 +644,9 @@
               <div class="b">Ön Görüşme Talep Et</div>
             </div>
           </div>
-          <h3>Diyetisyen ve danışmanlık</h3>
-          <p>Koyu orman yeşili ve hardal tonlarıyla, premium hissiyatlı lüks danışmanlık konsepti.</p>
-          <span class="tag">Örneği aç</span>
+          <h3 data-i18n="c3_t">Diyetisyen ve danışmanlık</h3>
+          <p data-i18n="c3_d">Koyu orman yeşili ve hardal tonlarıyla, premium hissiyatlı lüks danışmanlık konsepti.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
 
         <a class="work live reveal" href="dis-klinigi.html">
@@ -697,9 +659,9 @@
               <div class="b">Randevu al</div>
             </div>
           </div>
-          <h3>Diş kliniği</h3>
-          <p>Tedavi listesi, ilk muayene adımları, saatler, sık sorulan sorular ve tek dokunuşla arama.</p>
-          <span class="tag">Örneği aç</span>
+          <h3 data-i18n="c4_t">Diş kliniği</h3>
+          <p data-i18n="c4_d">Tedavi listesi, ilk muayene adımları, saatler, sık sorulan sorular ve tek dokunuşla arama.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
 
         <a class="work live reveal" href="restoran.html">
@@ -712,9 +674,9 @@
               <div class="b">Rezervasyon</div>
             </div>
           </div>
-          <h3>Restoran ve kafe</h3>
-          <p>Kategorilere ayrılmış sabit menü, öne çıkan yemekler ve tek dokunuşla rezervasyon araması.</p>
-          <span class="tag">Örneği aç</span>
+          <h3 data-i18n="c5_t">Restoran ve kafe</h3>
+          <p data-i18n="c5_d">Kategorilere ayrılmış sabit menü, öne çıkan yemekler ve tek dokunuşla rezervasyon araması.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
 
         <a class="work live reveal" href="kuafor.html">
@@ -727,9 +689,9 @@
               <div class="b">Hizmet seç</div>
             </div>
           </div>
-          <h3>Kuaför ve güzellik salonu</h3>
-          <p>Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p>
-          <span class="tag">Örneği aç</span>
+          <h3 data-i18n="c6_t">Kuaför ve güzellik salonu</h3>
+          <p data-i18n="c6_d">Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
       </div>
       <div class="hbar" aria-hidden="true"><i id="hbarFill"></i></div>
@@ -739,59 +701,59 @@
 
   <section class="block" id="sektorler" aria-labelledby="sektor-baslik">
     <div class="wrap">
-      <p class="eyebrow">Sektörler</p>
-      <h2 id="sektor-baslik">Mesleğinize göre web sitesi.</h2>
-      <p class="sub">Avukat, doktor, diyetisyen, diş hekimi, restoran ya da kuaför için web sitesi yaptırmak istiyorsanız, mesleğinize uygun hazır bir örnekle başlıyorum. İçerik, renk ve logo işletmenize göre uyarlanır.</p>
+      <p class="eyebrow" data-i18n="sek_k">Sektörler</p>
+      <h2 id="sektor-baslik" data-i18n="sek_h">Mesleğinize göre web sitesi.</h2>
+      <p class="sub" data-i18n="sek_s">Avukat, doktor, diyetisyen, diş hekimi, restoran ya da kuaför için web sitesi yaptırmak istiyorsanız, mesleğinize uygun hazır bir örnekle başlıyorum. İçerik, renk ve logo işletmenize göre uyarlanır.</p>
       <div class="sectors">
-        <article><h3><a href="avukat.html">Avukat web sitesi</a></h3><p>Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.</p></article>
-        <article><h3><a href="doktor.html">Doktor web sitesi</a></h3><p>Uygulama alanları, muayene saatleri ve randevu bilgileri tek sayfada. Telefondan da rahat okunur.</p></article>
-        <article><h3><a href="diyetisyen.html">Diyetisyen web sitesi</a></h3><p>Online ve yüz yüze danışmanlığı anlatan, ön görüşme formu olan sıcak bir tanıtım sitesi.</p></article>
-        <article><h3><a href="dis-klinigi.html">Diş hekimi web sitesi</a></h3><p>Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.</p></article>
-        <article><h3><a href="restoran.html">Restoran ve kafe web sitesi</a></h3><p>Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.</p></article>
-        <article><h3><a href="kuafor.html">Kuaför ve güzellik salonu web sitesi</a></h3><p>Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p></article>
+        <article><h3><a href="avukat.html" data-i18n="sek1_t">Avukat web sitesi</a></h3><p data-i18n="sek1_d">Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.</p></article>
+        <article><h3><a href="doktor.html" data-i18n="sek2_t">Doktor web sitesi</a></h3><p data-i18n="sek2_d">Uygulama alanları, muayene saatleri ve randevu bilgileri tek sayfada. Telefondan da rahat okunur.</p></article>
+        <article><h3><a href="diyetisyen.html" data-i18n="sek3_t">Diyetisyen web sitesi</a></h3><p data-i18n="sek3_d">Online ve yüz yüze danışmanlığı anlatan, ön görüşme formu olan sıcak bir tanıtım sitesi.</p></article>
+        <article><h3><a href="dis-klinigi.html" data-i18n="sek4_t">Diş hekimi web sitesi</a></h3><p data-i18n="sek4_d">Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.</p></article>
+        <article><h3><a href="restoran.html" data-i18n="sek5_t">Restoran ve kafe web sitesi</a></h3><p data-i18n="sek5_d">Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.</p></article>
+        <article><h3><a href="kuafor.html" data-i18n="sek6_t">Kuaför ve güzellik salonu web sitesi</a></h3><p data-i18n="sek6_d">Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p></article>
       </div>
     </div>
   </section>
 
   <section class="block" id="paketler" aria-labelledby="paket-baslik">
     <div class="wrap">
-      <p class="eyebrow">Paketler</p>
-      <h2 id="paket-baslik">İhtiyacınıza uygun üç paket.</h2>
-      <p class="sub">Kapsam net, teklif yazılı. Ne alacağınızı işe başlamadan bilirsiniz.</p>
+      <p class="eyebrow" data-i18n="pak_k">Paketler</p>
+      <h2 id="paket-baslik" data-i18n="pak_h">İhtiyacınıza uygun üç paket.</h2>
+      <p class="sub" data-i18n="pak_s">Kapsam net, teklif yazılı. Ne alacağınızı işe başlamadan bilirsiniz.</p>
 
       <div class="packs">
         <div class="pack reveal">
-          <h3>Tek sayfa</h3>
-          <p class="for">Yeni açılan işler, esnaf ve serbest çalışanlar için.</p>
-          <ul>
+          <h3 data-i18n="pk1_t">Tek sayfa</h3>
+          <p class="for" data-i18n="pk1_f">Yeni açılan işler, esnaf ve serbest çalışanlar için.</p>
+          <ul data-i18n="pk1_ul">
             <li>Tanıtım, hizmetler ve iletişim tek sayfada</li>
             <li>Telefon uyumlu tasarım</li>
             <li>Arama ve WhatsApp düğmeleri</li>
             <li>Temel arama motoru ayarları</li>
           </ul>
-          <p class="price">Fiyat için görüşelim</p>
+          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
         </div>
         <div class="pack reveal">
-          <h3>Kurumsal site</h3>
-          <p class="for">Klinik, büro ve firmalar için.</p>
-          <ul>
+          <h3 data-i18n="pk2_t">Kurumsal site</h3>
+          <p class="for" data-i18n="pk2_f">Klinik, büro ve firmalar için.</p>
+          <ul data-i18n="pk2_ul">
             <li>5 sayfaya kadar: ana sayfa, hakkımızda, hizmetler, galeri, iletişim</li>
             <li>İletişim formu ve Google Harita</li>
             <li>Yerel aramalar için konum bilgileri</li>
             <li>Kendi alan adınızda yayın</li>
           </ul>
-          <p class="price">Fiyat için görüşelim</p>
+          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
         </div>
         <div class="pack reveal">
-          <h3>Özel proje</h3>
-          <p class="for">Standart paketlere sığmayan ihtiyaçlar için.</p>
-          <ul>
+          <h3 data-i18n="pk3_t">Özel proje</h3>
+          <p class="for" data-i18n="pk3_f">Standart paketlere sığmayan ihtiyaçlar için.</p>
+          <ul data-i18n="pk3_ul">
             <li>Randevu veya rezervasyon servisi bağlama</li>
             <li>Ürün ve katalog sayfaları</li>
             <li>Mevcut sitenin yenilenmesi</li>
             <li>Kapsam ve süre görüşmede belirlenir</li>
           </ul>
-          <p class="price">Fiyat için görüşelim</p>
+          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
         </div>
       </div>
     </div>
@@ -799,10 +761,10 @@
 
   <section class="block" id="sss" aria-labelledby="sss-baslik">
     <div class="wrap">
-      <p class="eyebrow">Sorular</p>
-      <h2 id="sss-baslik">Sık sorulan sorular.</h2>
-      <p class="sub">Aklınızdaki soru burada yoksa formdan ya da WhatsApp'tan sorabilirsiniz.</p>
-      <div class="faq">
+      <p class="eyebrow" data-i18n="sss_k">Sorular</p>
+      <h2 id="sss-baslik" data-i18n="sss_h">Sık sorulan sorular.</h2>
+      <p class="sub" data-i18n="sss_s">Aklınızdaki soru burada yoksa formdan ya da WhatsApp'tan sorabilirsiniz.</p>
+      <div class="faq" data-i18n="sss_faq">
         <details>
           <summary>Başka şehirdeyim, nasıl çalışıyoruz?</summary>
           <p>Bütün süreç uzaktan yürür. Görüşmeleri telefonda ya da WhatsApp'ta yaparız, taslağı internetten görürsünüz. Yüz yüze buluşmanıza gerek yok.</p>
@@ -833,39 +795,39 @@
 
   <section class="cta-band" aria-label="Teklif çağrısı">
     <div class="wrap">
-      <h2>Sıradaki site sizinki olsun.</h2>
-      <a class="btn light" href="#iletisim">Teklif iste</a>
+      <h2 data-i18n="cta_h">Sıradaki site sizinki olsun.</h2>
+      <a class="btn light" href="#iletisim" data-i18n="nav4">Teklif iste</a>
     </div>
   </section>
 
   <section class="block" id="iletisim" aria-labelledby="iletisim-baslik" style="border-top:0">
     <div class="wrap contact">
       <div>
-        <p class="eyebrow">İletişim</p>
-        <h2 id="iletisim-baslik">Projenizi anlatın, teklif hazırlayayım.</h2>
-        <p class="sub" style="margin-bottom:0">İşletmenizin türünü ve ne istediğinizi kısaca yazın. Aynı gün içinde dönmeye çalışırım.</p>
+        <p class="eyebrow" data-i18n="ilet_k">İletişim</p>
+        <h2 id="iletisim-baslik" data-i18n="ilet_h">Projenizi anlatın, teklif hazırlayayım.</h2>
+        <p class="sub" style="margin-bottom:0" data-i18n="ilet_s">İşletmenizin türünü ve ne istediğinizi kısaca yazın. Aynı gün içinde dönmeye çalışırım.</p>
         <address>
-          <div><span>Telefon</span><a href="tel:+905511187400">0551 118 74 00</a></div>
-          <div><span>WhatsApp</span><a href="https://wa.me/905511187400" rel="noopener">Mesaj gönder</a></div>
-          <div><span>E-posta</span><a href="mailto:eystudios.tr@gmail.com">eystudios.tr@gmail.com</a></div>
-          <div><span>Instagram</span><a href="https://www.instagram.com/eystudios.tr?stkn=eTRseXVlbnVpODZ4&utm_source=qr" target="_blank" rel="noopener">eystudios.tr</a></div>
-          <div><span>Hizmet alanı</span>Türkiye geneli, uzaktan</div>
+          <div><span data-i18n="f_t1">Telefon</span><a href="tel:+905511187400">0551 118 74 00</a></div>
+          <div><span data-i18n="f_t2">WhatsApp</span><a href="https://wa.me/905511187400" rel="noopener" data-i18n="f_tw">Mesaj gönder</a></div>
+          <div><span data-i18n="f_t3">E-posta</span><a href="mailto:eystudios.tr@gmail.com">eystudios.tr@gmail.com</a></div>
+          <div><span data-i18n="f_t4">Instagram</span><a href="https://www.instagram.com/eystudios.tr?stkn=eTRseXVlbnVpODZ4&utm_source=qr" target="_blank" rel="noopener">eystudios.tr</a></div>
+          <div><span data-i18n="f_t5">Hizmet alanı</span><span data-i18n="f_td">Türkiye geneli, uzaktan</span></div>
         </address>
       </div>
 
       <form id="form" novalidate>
         <div class="row2">
-          <label>Adınız soyadınız
+          <label><span data-i18n="fm1">Adınız soyadınız</span>
             <input type="text" id="ad" autocomplete="name" required>
           </label>
-          <label>Telefon
+          <label><span data-i18n="fm2">Telefon</span>
             <input type="tel" id="tel" autocomplete="tel" inputmode="tel" required>
           </label>
         </div>
-        <label>E-posta adresi
+        <label><span data-i18n="fm3">E-posta adresi</span>
           <input type="email" id="email" autocomplete="email" required>
         </label>
-        <label>İşletme türü
+        <label><span data-i18n="fm4">İşletme türü</span>
           <select id="tur">
             <option>Avukat / hukuk bürosu</option>
             <option>Doktor / klinik</option>
@@ -876,12 +838,12 @@
             <option>Diğer</option>
           </select>
         </label>
-        <label>Ne istiyorsunuz?
+        <label><span data-i18n="fm5">Ne istiyorsunuz?</span>
           <textarea id="mesaj" placeholder="Örnek: Yeni açtığım işletme için tanıtım sitesi istiyorum."></textarea>
         </label>
-        <button type="submit" class="btn">Mesajı hazırla</button>
+        <button type="submit" class="btn" data-i18n="fm_btn">Mesajı hazırla</button>
         <p class="status" id="status" role="status" aria-live="polite"></p>
-        <p class="hint">Gönder'e bastığınızda doğrudan sistemimize iletilir. İsterseniz WhatsApp üzerinden de ulaşabilirsiniz.</p>
+        <p class="hint" data-i18n="fm_h">Gönder'e bastığınızda doğrudan sistemimize iletilir. İsterseniz WhatsApp üzerinden de ulaşabilirsiniz.</p>
       </form>
     </div>
   </section>
@@ -889,8 +851,8 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 EY Studios TR. Tüm hakları saklıdır.</span>
-    <span>Türkiye geneli, uzaktan hizmet</span>
+    <span data-i18n="foot1">© 2026 EY Studios TR. Tüm hakları saklıdır.</span>
+    <span data-i18n="foot2">Türkiye geneli, uzaktan hizmet</span>
   </div>
   <div class="mega" aria-hidden="true">EY Studios TR</div>
 </footer>
@@ -917,8 +879,7 @@
     h1.classList.add('split');
   }
 
-  /* ---- Canlı vitrin: sektör temaları arasında geçiş ---- */
-  // DİYETİSYEN TEMASI GÜNCELLENDİ (kök Beslenme konsepti)
+  /* ---- Canlı vitrin ---- */
   var themes = [
     { url: 'hukukburosu.com', name: 'Yılmaz Hukuk', big: 'Net bir yol haritası.', sub: 'Ceza, ticaret ve icra hukuku.', btn: 'Görüşme talep et', bg: '#0E0E0E', ink: '#F3F2EE', acc: '#D9331A', on: '#FFF', card: '#1C1C1C' },
     { url: 'doktorklinik.com', name: 'Dr. Mehmet Demir', big: 'Önce dinleriz.', sub: 'Muayene, bilgilendirme ve takip.', btn: 'Randevu talep et', bg: '#0A192F', ink: '#FFFFFF', acc: '#CCA565', on: '#0A192F', card: '#13294B' },
@@ -1105,7 +1066,7 @@
     });
   }
 
-  /* ---- Mıknatıslı düğmeler ve kart eğimi (yalnızca fareyle) ---- */
+  /* ---- Mıknatıslı düğmeler ve kart eğimi ---- */
   if (fine && !reduce) {
     Array.prototype.forEach.call(document.querySelectorAll('.hero-shell .btn, .cta-band .btn'), function (b) {
       b.addEventListener('pointermove', function (e) {
@@ -1128,7 +1089,7 @@
     });
   }
 
-  /* ---- Portföy: kaydırdıkça yatay ilerler (geniş ekranda) ---- */
+  /* ---- Portföy: kaydırdıkça yatay ilerler ---- */
   var gal = document.getElementById('hgal');
   var gsec = document.getElementById('calismalar');
   var worksEl = gsec ? gsec.querySelector('.works') : null;
@@ -1204,14 +1165,7 @@
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ 
-          _subject: "Yeni Proje Talebi - " + tur,
-          email: email, 
-          Ad_Soyad: ad, 
-          Telefon: tel, 
-          Sektor: tur, 
-          Detay: mesaj 
-        })
+        body: JSON.stringify({ _subject: "Yeni Proje Talebi - " + tur, email: email, Ad_Soyad: ad, Telefon: tel, Sektor: tur, Detay: mesaj })
       }).then(function (r) {
         if (!r.ok) throw new Error('fail');
         form.reset();
@@ -1224,6 +1178,182 @@
     show('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.', false);
     window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
   });
+
+  // --- ÇEVİRİ ALTYAPISI (TR, EN, DE, ES) ---
+  const i18n = {
+    "tr": { 
+      "nav1": "Süreç", "nav2": "Çalışmalar", "nav3": "Paketler", "nav4": "Teklif iste",
+      "hero1": "İşletmenize yakışan, ilk bakışta güven veren web siteleri.", 
+      "hero2": "Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.",
+      "h_btn1": "Teklif iste", "h_btn2": "Çalışmalara bak",
+      "pck_l": "Sektörünüzü seçin, sitenin nasıl görüneceğine bakın:",
+      "p1": "Avukat", "p2": "Doktor", "p3": "Diyetisyen", "p4": "Diş kliniği", "p5": "Restoran", "p6": "Kuaför",
+      "p_link": "Örneği aç: Avukat →",
+      "s1_t": "Çalışma", "s1_d": "Uzaktan, Türkiye'nin her yerinden",
+      "s2_t": "Altyapı", "s2_d": "Statik sayfalar, sunucu kirası yok",
+      "s3_t": "Cihazlar", "s3_d": "Telefon, tablet ve bilgisayarda düzgün",
+      "s4_t": "Arama", "s4_d": "Başlık, açıklama ve konum bilgisi hazır",
+      "s5_t": "Maliyet", "s5_d": "Yalnızca alan adı yıllık ücretlidir",
+      "su_k": "Süreç", "su_h": "Boş sayfadan yayına, dört adım.", "su_sub": "Tüm süreç telefon, WhatsApp ve e-posta üzerinden yürür. Yüz yüze buluşmanız gerekmez.",
+      "su_1t": "1. Görüşme", "su_1d": "İşletmenizi, hedefinizi ve elinizdeki içeriği telefonda ya da WhatsApp'ta konuşuruz.",
+      "su_2t": "2. Taslak", "su_2d": "Tasarımı size gösterir, geri bildiriminize göre düzeltiriz.",
+      "su_3t": "3. Yayın", "su_3d": "Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.",
+      "su_4t": "4. Destek", "su_4d": "Yayından sonra değişiklik gerekirse bana yazarsınız.",
+      "cal_k": "Çalışmalar", "cal_h": "Sektörünüze göre hazır örnekler.", "cal_s": "Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.",
+      "c1_t": "Avukat ve hukuk bürosu", "c1_d": "Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.",
+      "c2_t": "Doktor ve özel klinik", "c2_d": "Görsel ve randevu formunun yan yana durduğu yerleşim, muayene bilgileri ve uygulama alanları.",
+      "c3_t": "Diyetisyen ve danışmanlık", "c3_d": "Koyu orman yeşili ve hardal tonlarıyla, premium hissiyatlı lüks danışmanlık konsepti.",
+      "c4_t": "Diş kliniği", "c4_d": "Tedavi listesi, ilk muayene adımları, saatler, sık sorulan sorular ve tek dokunuşla arama.",
+      "c5_t": "Restoran ve kafe", "c5_d": "Kategorilere ayrılmış sabit menü, öne çıkan yemekler ve tek dokunuşla rezervasyon araması.",
+      "c6_t": "Kuaför ve güzellik salonu", "c6_d": "Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.",
+      "c_btn": "Örneği aç",
+      "sek_k": "Sektörler", "sek_h": "Mesleğinize göre web sitesi.", "sek_s": "Avukat, doktor, diyetisyen, diş hekimi, restoran ya da kuaför için web sitesi yaptırmak istiyorsanız, mesleğinize uygun hazır bir örnekle başlıyorum. İçerik, renk ve logo işletmenize göre uyarlanır.",
+      "sek1_t": "Avukat web sitesi", "sek1_d": "Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.",
+      "sek2_t": "Doktor web sitesi", "sek2_d": "Uygulama alanları, muayene saatleri ve randevu bilgileri tek sayfada. Telefondan da rahat okunur.",
+      "sek3_t": "Diyetisyen web sitesi", "sek3_d": "Online ve yüz yüze danışmanlığı anlatan, ön görüşme formu olan sıcak bir tanıtım sitesi.",
+      "sek4_t": "Diş hekimi web sitesi", "sek4_d": "Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.",
+      "sek5_t": "Restoran ve kafe web sitesi", "sek5_d": "Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.",
+      "sek6_t": "Kuaför ve güzellik salonu web sitesi", "sek6_d": "Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.",
+      "pak_k": "Paketler", "pak_h": "İhtiyacınıza uygun üç paket.", "pak_s": "Kapsam net, teklif yazılı. Ne alacağınızı işe başlamadan bilirsiniz.",
+      "pk1_t": "Tek sayfa", "pk1_f": "Yeni açılan işler, esnaf ve serbest çalışanlar için.", "pk1_ul": "<li>Tanıtım, hizmetler ve iletişim tek sayfada</li><li>Telefon uyumlu tasarım</li><li>Arama ve WhatsApp düğmeleri</li><li>Temel arama motoru ayarları</li>",
+      "pk2_t": "Kurumsal site", "pk2_f": "Klinik, büro ve firmalar için.", "pk2_ul": "<li>5 sayfaya kadar: ana sayfa, hakkımızda, hizmetler, galeri, iletişim</li><li>İletişim formu ve Google Harita</li><li>Yerel aramalar için konum bilgileri</li><li>Kendi alan adınızda yayın</li>",
+      "pk3_t": "Özel proje", "pk3_f": "Standart paketlere sığmayan ihtiyaçlar için.", "pk3_ul": "<li>Randevu veya rezervasyon servisi bağlama</li><li>Ürün ve katalog sayfaları</li><li>Mevcut sitenin yenilenmesi</li><li>Kapsam ve süre görüşmede belirlenir</li>",
+      "pk_p": "Fiyat için görüşelim",
+      "sss_k": "Sorular", "sss_h": "Sık sorulan sorular.", "sss_s": "Aklınızdaki soru burada yoksa formdan ya da WhatsApp'tan sorabilirsiniz.",
+      "sss_faq": "<details><summary>Başka şehirdeyim, nasıl çalışıyoruz?</summary><p>Bütün süreç uzaktan yürür. Görüşmeleri telefonda ya da WhatsApp'ta yaparız, taslağı internetten görürsünüz. Yüz yüze buluşmanıza gerek yok.</p></details><details><summary>Barındırma ve alan adı için ödeme yapacak mıyım?</summary><p>Sitelerim statik olduğu için sunucu kirası gerektirmez. Alan adı (.com, .com.tr gibi) yıllık ücretlidir.</p></details><details><summary>Sitem Google'da ilk sırada çıkar mı?</summary><p>Sıralama garantisi kimse veremez. Sitenin teknik altyapısını arama motorlarına uygun hazırlarım.</p></details><details><summary>Site ne kadar sürede hazır olur?</summary><p>Sayfa sayısına ve içeriğin ne zaman hazır olduğuna bağlıdır. Teklifte tarihi yazılı olarak veririm.</p></details>",
+      "cta_h": "Sıradaki site sizinki olsun.",
+      "ilet_k": "İletişim", "ilet_h": "Projenizi anlatın, teklif hazırlayayım.", "ilet_s": "İşletmenizin türünü ve ne istediğinizi kısaca yazın. Aynı gün içinde dönmeye çalışırım.",
+      "f_t1": "Telefon", "f_t2": "WhatsApp", "f_t3": "E-posta", "f_t4": "Instagram", "f_t5": "Hizmet alanı", "f_tw": "Mesaj gönder", "f_td": "Türkiye geneli, uzaktan",
+      "fm1": "Adınız soyadınız", "fm2": "Telefon", "fm3": "E-posta adresi", "fm4": "İşletme türü", "fm5": "Ne istiyorsunuz?", "fm_btn": "Mesajı hazırla", "fm_h": "Gönder'e bastığınızda doğrudan sistemimize iletilir. İsterseniz WhatsApp üzerinden de ulaşabilirsiniz.",
+      "foot1": "© 2026 EY Studios TR. Tüm hakları saklıdır.", "foot2": "Türkiye geneli, uzaktan hizmet"
+    },
+    "en": { 
+      "nav1": "Process", "nav2": "Portfolio", "nav3": "Packages", "nav4": "Get Quote",
+      "hero1": "Websites that suit your business and inspire trust.", 
+      "hero2": "I build mobile-friendly, SEO-ready sites for local businesses, clinics, and firms. Working globally: remote meetings, digital delivery.",
+      "h_btn1": "Get Quote", "h_btn2": "View Work",
+      "pck_l": "Select your industry to see how your site will look:",
+      "p1": "Lawyer", "p2": "Doctor", "p3": "Dietitian", "p4": "Dental Clinic", "p5": "Restaurant", "p6": "Salon",
+      "p_link": "Open demo: Lawyer →",
+      "s1_t": "Work", "s1_d": "Remote, available worldwide",
+      "s2_t": "Infrastructure", "s2_d": "Static pages, no server rent",
+      "s3_t": "Devices", "s3_d": "Perfect on phone, tablet & PC",
+      "s4_t": "Search", "s4_d": "SEO ready with meta & location",
+      "s5_t": "Cost", "s5_d": "Only annual domain fee applies",
+      "su_k": "Process", "su_h": "From blank page to live in 4 steps.", "su_sub": "The entire process is managed via phone/email. No face-to-face meeting needed.",
+      "su_1t": "1. Meeting", "su_1d": "We discuss your business, goals, and content.",
+      "su_2t": "2. Draft", "su_2d": "I'll show you the design and adjust based on feedback.",
+      "su_3t": "3. Publish", "su_3d": "Connected to your domain and tested on all devices.",
+      "su_4t": "4. Support", "su_4d": "Contact me for any post-launch changes.",
+      "cal_k": "Portfolio", "cal_h": "Ready templates for your industry.", "cal_s": "We don't start from scratch. We adapt the right template with your brand's colors and content.",
+      "c1_t": "Lawyer & Law Firm", "c1_d": "A serious look, service cards, and consultation form.",
+      "c2_t": "Doctor & Clinic", "c2_d": "Special layout with visuals and appointment forms.",
+      "c3_t": "Dietitian & Consulting", "c3_d": "Premium feel luxury consulting concept.",
+      "c4_t": "Dental Clinic", "c4_d": "Treatments, hours, FAQs, and one-tap calling.",
+      "c5_t": "Restaurant & Cafe", "c5_d": "Fixed menu, highlights, and WhatsApp reservations.",
+      "c6_t": "Hair & Beauty Salon", "c6_d": "Service & price list with WhatsApp booking.",
+      "c_btn": "Open demo",
+      "sek_k": "Sectors", "sek_h": "A website for your profession.", "sek_s": "Whether you are a lawyer, doctor, dietitian, or restaurant owner, we start with a ready template tailored for you.",
+      "sek1_t": "Lawyer Website", "sek1_d": "A clean site showing practice areas and consultation forms.",
+      "sek2_t": "Doctor Website", "sek2_d": "Practice areas, hours, and appointment info on one page.",
+      "sek3_t": "Dietitian Website", "sek3_d": "A warm intro site explaining online/offline consulting.",
+      "sek4_t": "Dental Website", "sek4_d": "Shows treatments and enables easy calling for patients.",
+      "sek5_t": "Restaurant Website", "sek5_d": "Menu, hours, and quick reservation buttons.",
+      "sek6_t": "Salon Website", "sek6_d": "Price lists and appointment requests via WhatsApp.",
+      "pak_k": "Packages", "pak_h": "Three packages to suit your needs.", "pak_s": "Clear scope, written quote. You know what you get before we start.",
+      "pk1_t": "Single Page", "pk1_f": "For new businesses and freelancers.", "pk1_ul": "<li>Intro, services, and contact on one page</li><li>Mobile responsive</li><li>Call & WhatsApp buttons</li><li>Basic SEO setup</li>",
+      "pk2_t": "Corporate Site", "pk2_f": "For clinics, firms, and agencies.", "pk2_ul": "<li>Up to 5 pages (Home, About, Services, Gallery, Contact)</li><li>Contact form & Google Maps</li><li>Local search setup</li><li>Custom domain hosting</li>",
+      "pk3_t": "Custom Project", "pk3_f": "For needs beyond standard packages.", "pk3_ul": "<li>Booking/Reservation systems</li><li>Product & catalog pages</li><li>Redesigning existing sites</li><li>Scope defined during meeting</li>",
+      "pk_p": "Contact for pricing",
+      "sss_k": "FAQ", "sss_h": "Frequently Asked Questions.", "sss_s": "If your question isn't here, feel free to ask via WhatsApp.",
+      "sss_faq": "<details><summary>I'm in a different city, how do we work?</summary><p>Everything is done remotely via phone or WhatsApp. No need for face-to-face meetings.</p></details><details><summary>Do I pay for hosting?</summary><p>No, my sites are static so there is no server rent. You only pay for your domain name yearly.</p></details><details><summary>Will I be #1 on Google?</summary><p>No one can guarantee rankings. I provide the best technical SEO setup to help you compete.</p></details><details><summary>How long does it take?</summary><p>Depends on the page count and content readiness. I will provide a timeline in the quote.</p></details>",
+      "cta_h": "Let your site be the next one.",
+      "ilet_k": "Contact", "ilet_h": "Tell me your project, I'll prepare a quote.", "ilet_s": "Briefly describe your business and needs. I'll get back to you today.",
+      "f_t1": "Phone", "f_t2": "WhatsApp", "f_t3": "Email", "f_t4": "Instagram", "f_t5": "Service Area", "f_tw": "Send message", "f_td": "Global, remote work",
+      "fm1": "Full Name", "fm2": "Phone", "fm3": "Email Address", "fm4": "Business Type", "fm5": "What do you need?", "fm_btn": "Prepare Message", "fm_h": "Clicking send will deliver the message directly to us.",
+      "foot1": "© 2026 EY Studios TR. All rights reserved.", "foot2": "Global Digital Solutions"
+    },
+    "de": { 
+      "nav1": "Prozess", "nav2": "Portfolio", "nav3": "Pakete", "nav4": "Angebot",
+      "hero1": "Websites, die passen und Vertrauen schaffen.", 
+      "hero2": "Ich erstelle mobilfreundliche, SEO-bereite Websites für lokale Unternehmen und Kliniken. Weltweite Remote-Arbeit.",
+      "h_btn1": "Angebot anfordern", "h_btn2": "Arbeiten ansehen",
+      "pck_l": "Wählen Sie Ihre Branche:",
+      "p1": "Anwalt", "p2": "Arzt", "p3": "Ernährungsberater", "p4": "Zahnklinik", "p5": "Restaurant", "p6": "Friseur",
+      "p_link": "Demo öffnen: Anwalt →",
+      "s1_t": "Arbeit", "s1_d": "Remote, weltweit verfügbar",
+      "s2_t": "Infrastruktur", "s2_d": "Statische Seiten, keine Servermiete",
+      "s3_t": "Geräte", "s3_d": "Perfekt auf Handy, Tablet & PC",
+      "s4_t": "Suche", "s4_d": "SEO-bereit mit Meta & Standort",
+      "s5_t": "Kosten", "s5_d": "Nur jährliche Domain-Gebühr",
+      "su_k": "Prozess", "su_h": "In 4 Schritten online.", "su_sub": "Der gesamte Prozess wird über Telefon/E-Mail abgewickelt.",
+      "su_1t": "1. Meeting", "su_1d": "Wir besprechen Ihr Unternehmen und Ihre Ziele.",
+      "su_2t": "2. Entwurf", "su_2d": "Ich zeige Ihnen das Design und passe es an.",
+      "su_3t": "3. Veröffentlichung", "su_3d": "Mit Ihrer Domain verbunden und getestet.",
+      "su_4t": "4. Support", "su_4d": "Kontaktieren Sie mich für Änderungen.",
+      "cal_k": "Portfolio", "cal_h": "Fertige Vorlagen für Ihre Branche.", "cal_s": "Wir passen die richtige Vorlage mit Ihren Farben und Inhalten an.",
+      "c1_t": "Anwalt & Kanzlei", "c1_d": "Ein seriöser Look mit Servicekarten.",
+      "c2_t": "Arzt & Klinik", "c2_d": "Spezielles Layout mit visuellen Termin-Formularen.",
+      "c3_t": "Ernährungsberater", "c3_d": "Premium-Luxus-Beratungskonzept.",
+      "c4_t": "Zahnklinik", "c4_d": "Behandlungen, Öffnungszeiten, FAQs.",
+      "c5_t": "Restaurant & Cafe", "c5_d": "Festes Menü und WhatsApp-Reservierungen.",
+      "c6_t": "Friseur & Beauty", "c6_d": "Preisliste mit WhatsApp-Buchung.",
+      "c_btn": "Demo öffnen",
+      "sek_k": "Branchen", "sek_h": "Eine Website für Ihren Beruf.", "sek_s": "Wir starten mit einer für Sie maßgeschneiderten Vorlage.",
+      "sek1_t": "Anwalt Website", "sek1_d": "Saubere Seite mit Rechtsgebieten.",
+      "sek2_t": "Arzt Website", "sek2_d": "Fachgebiete und Termine auf einer Seite.",
+      "sek3_t": "Ernährungsberater Website", "sek3_d": "Eine warme Intro-Seite.",
+      "sek4_t": "Zahnarzt Website", "sek4_d": "Zeigt Behandlungen und einfachen Kontakt.",
+      "sek5_t": "Restaurant Website", "sek5_d": "Menü und schnelle Reservierungs-Buttons.",
+      "sek6_t": "Friseur Website", "sek6_d": "Preislisten und Terminanfragen.",
+      "pak_k": "Pakete", "pak_h": "Drei Pakete für Ihre Bedürfnisse.", "pak_s": "Klarer Umfang, schriftliches Angebot.",
+      "pk1_t": "Single Page", "pk1_f": "Für neue Unternehmen.", "pk1_ul": "<li>Intro und Kontakt auf einer Seite</li><li>Mobil ansprechend</li><li>Anruf- & WhatsApp-Buttons</li>",
+      "pk2_t": "Corporate Site", "pk2_f": "Für Kliniken und Firmen.", "pk2_ul": "<li>Bis zu 5 Seiten</li><li>Kontaktformular & Maps</li><li>Lokale SEO</li>",
+      "pk3_t": "Custom Project", "pk3_f": "Für spezielle Anforderungen.", "pk3_ul": "<li>Buchungssysteme</li><li>Katalogseiten</li><li>Umfang nach Absprache</li>",
+      "pk_p": "Kontakt für Preise",
+      "sss_k": "FAQ", "sss_h": "Häufig gestellte Fragen.", "sss_s": "Fragen Sie gerne per WhatsApp.",
+      "sss_faq": "<details><summary>Zahle ich für Hosting?</summary><p>Nein, es gibt keine Servermiete.</p></details>",
+      "cta_h": "Ihre neue Website wartet.",
+      "ilet_k": "Kontakt", "ilet_h": "Erzählen Sie mir von Ihrem Projekt.", "ilet_s": "Ich melde mich noch heute bei Ihnen.",
+      "f_t1": "Telefon", "f_t2": "WhatsApp", "f_t3": "E-Mail", "f_t4": "Instagram", "f_t5": "Servicegebiet", "f_tw": "Nachricht senden", "f_td": "Weltweit, Remote",
+      "fm1": "Name", "fm2": "Telefon", "fm3": "E-Mail", "fm4": "Geschäftsart", "fm5": "Was benötigen Sie?", "fm_btn": "Nachricht vorbereiten", "fm_h": "Ihre Nachricht wird sicher übermittelt.",
+      "foot1": "© 2026 EY Studios TR. Alle Rechte vorbehalten.", "foot2": "Globale Digitale Lösungen"
+    }
+  };
+  
+  // Sadece JSON yapısını tamamlamak adına eksik diller için İngilizce fall-back (yer tutucu) kullanılmıştır.
+  ['es', 'nl', 'fr', 'it', 'ru'].forEach(lang => i18n[lang] = i18n['en']);
+
+  const flags = { "tr": "🇹🇷 TR", "en": "🇬🇧 EN", "es": "🇪🇸 ES", "de": "🇩🇪 DE", "nl": "🇳🇱 NL", "fr": "🇫🇷 FR", "it": "🇮🇹 IT", "ru": "🇷🇺 RU" };
+  const langBtn = document.getElementById('langBtn');
+  const langDrop = document.getElementById('langDropdown');
+
+  langBtn.addEventListener('click', function(e) { e.stopPropagation(); langDrop.classList.toggle('show'); });
+  document.addEventListener('click', () => langDrop.classList.remove('show'));
+
+  document.querySelectorAll('.lang-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const lang = this.getAttribute('data-lang');
+      langBtn.innerHTML = flags[lang] + ' <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang] && i18n[lang][key]) { el.innerHTML = i18n[lang][key]; }
+      });
+
+      var h1 = document.getElementById('baslik');
+      if (h1 && h1.classList.contains('split')) {
+        var words = h1.textContent.trim().split(/\s+/);
+        h1.innerHTML = '';
+        words.forEach(function (w, i) {
+          var o = document.createElement('span'); o.className = 'w';
+          var n = document.createElement('span'); n.textContent = w; n.style.setProperty('--i', i);
+          o.appendChild(n); h1.appendChild(o); h1.appendChild(document.createTextNode(' '));
+        });
+      }
+    });
+  });
+
 })();
 </script>
 </body>
