@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="tr" class="lenis lenis-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Op. Dr. Mehmet Demir | Lüks Klinik</title>
+    <meta name="description" content="Laparoskopik cerrahi ve estetik çözümlerinde uluslararası standartlar.">
+    <meta name="robots" content="noindex">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #030712;
+            --surface: #0a101d;
+            --gold: #cca565;
+            --gold-light: #e6ca94;
+            --white: #f8f9fa;
+            --text-gray: #9ca3af;
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+        
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--bg-color); 
+            color: var(--white); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- SİNEMATİK NOISE DOKUSU --- */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 999998; opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- ÖZEL İMLEÇ (CURSOR) --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 9999999; pointer-events: none;
+        }
+        .cursor-dot { width: 6px; height: 6px; background-color: var(--gold); }
+        .cursor-outline {
+            width: 44px; height: 44px; border: 1px solid rgba(204, 165, 101, 0.45);
+            transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease;
+        }
+        body.hovering .cursor-outline {
+            width: 75px; height: 75px; background-color: rgba(204, 165, 101, 0.1);
+            border-color: rgba(204, 165, 101, 0.8); backdrop-filter: blur(2px);
+        }
+
+        /* --- SİNEMATİK PRELOADER --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: #020408; z-index: 999999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        #preloader.hide { transform: translateY(-100%); }
+        .counter { font-family: var(--font-head); font-size: 6.5rem; font-weight: 500; color: var(--gold); line-height: 1; }
+        .loading-text { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 6px; color: var(--text-gray); margin-top: 15px; }
+        .loading-bar-wrap { width: 180px; height: 1px; background: rgba(255,255,255,0.1); margin-top: 35px; position: relative; }
+        .loading-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--gold); transition: width 0.08s linear; }
+
+        /* --- NAVİGASYON --- */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: transparent; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 5%; transition: all 0.5s ease;
+        }
+        nav.scrolled {
+            background-color: rgba(3, 7, 18, 0.94);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 18px 5%; border-bottom: 1px solid rgba(204,165,101,0.18);
+        }
+        .logo { font-family: var(--font-head); font-size: 1.75rem; font-weight: 500; color: var(--white); text-decoration: none; }
+        .logo span { color: var(--gold); font-style: italic; }
+        .nav-btn {
+            background-color: transparent; color: var(--white);
+            padding: 11px 28px; border: 1px solid rgba(255,255,255,0.22); border-radius: 99px;
+            font-size: 0.82rem; font-weight: 500; text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover { background-color: var(--white); color: var(--bg-color); }
+
+        /* --- HERO SECTION (SOYUT LÜKS KLİNİK IŞIĞI) --- */
+        .hero {
+            height: 100vh; width: 100%; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+            background: radial-gradient(circle at 50% 25%, #0f1d36 0%, #030712 75%);
+        }
+        /* Soyut steril ışık huzmesi */
+        .hero::before {
+            content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+            width: 70vw; height: 70vw; max-width: 900px; max-height: 900px;
+            background: radial-gradient(circle, rgba(204,165,101,0.12) 0%, rgba(15,29,54,0.05) 50%, transparent 70%);
+            pointer-events: none; z-index: 1; filter: blur(40px);
+        }
+        /* İnce mimari grid dokusu */
+        .hero::after {
+            content: ''; position: absolute; inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none; z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 3; max-width: 1100px; padding: 0 20px; }
+        
+        .title-wrap { overflow: hidden; display: block; line-height: 1.15; }
+        .title-line { 
+            font-family: var(--font-head); font-size: clamp(2.8rem, 6.5vw, 5.2rem); color: var(--white); font-weight: 400; 
+            display: block; transform: translateY(100%); transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .title-line.gold { 
+            color: var(--gold); font-style: italic; font-size: clamp(3.2rem, 7.5vw, 6rem); margin-top: 10px;
+        }
+        body.loaded .title-line { transform: translateY(0); }
+        
+        .hero p {
+            color: var(--text-gray); font-size: 1.15rem; font-weight: 300; margin-top: 35px; margin-bottom: 45px;
+            max-width: 650px; margin-left: auto; margin-right: auto;
+            opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; transition-delay: 0.8s;
+        }
+        body.loaded .hero p { opacity: 1; transform: translateY(0); }
+
+        /* --- TRUST BAR --- */
+        .trust-bar {
+            max-width: 1100px; margin: -60px auto 100px; position: relative; z-index: 10;
+            background: var(--surface); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;
+            display: flex; justify-content: space-around; padding: 45px 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+        }
+        .stat { text-align: center; }
+        .stat-num { font-family: var(--font-head); font-size: 3rem; color: var(--gold); font-weight: 500; line-height: 1; margin-bottom: 10px; }
+        .stat-label { color: var(--text-gray); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- HAKKINDA BÖLÜMÜ --- */
+        .about { padding: 100px 5% 140px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+        .about-img-wrap { position: relative; border-radius: 6px; overflow: hidden; height: 600px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); }
+        .about-img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80') center/cover;
+            filter: brightness(0.85) contrast(1.05);
+        }
+        .about-content h2 { font-family: var(--font-head); font-size: clamp(2.5rem, 4.5vw, 3.8rem); color: var(--white); line-height: 1.15; margin-bottom: 30px; font-weight: 400; }
+        .about-content p { font-size: 1.12rem; color: var(--text-gray); margin-bottom: 22px; line-height: 1.8; font-weight: 300; }
+
+        /* --- MARQUEE --- */
+        .marquee-section { padding: 60px 0; overflow: hidden; white-space: nowrap; border-top: 1px solid rgba(204,165,101,0.15); border-bottom: 1px solid rgba(204,165,101,0.15); background: #02040a; }
+        .marquee-content { display: inline-block; font-family: var(--font-head); font-size: 2.8rem; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); animation: scrollText 30s linear infinite; }
+        .marquee-content span { margin: 0 45px; color: var(--gold); -webkit-text-stroke: 0; font-style: italic; }
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- HİZMETLER --- */
+        .services { padding: 130px 5% 150px; max-width: 1300px; margin: 0 auto; }
+        .section-title { text-align: center; font-family: var(--font-head); font-size: 3.2rem; color: var(--white); margin-bottom: 80px; font-weight: 400; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .card { background: var(--surface); padding: 60px 45px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.04); transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); text-align: left; }
+        .card:hover { transform: translateY(-12px); border-color: rgba(204, 165, 101, 0.35); box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        .card-icon { font-family: var(--font-head); font-size: 3rem; color: var(--gold); font-style: italic; margin-bottom: 25px; line-height: 1; }
+        .card h3 { font-family: var(--font-head); font-size: 1.75rem; color: var(--white); margin-bottom: 18px; font-weight: 400; }
+        .card p { color: var(--text-gray); font-size: 1.05rem; font-weight: 300; line-height: 1.75; }
+
+        /* --- RANDEVU FORMU --- */
+        .booking-section { background-color: #020409; padding: 150px 5%; display: flex; justify-content: center; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
+        .booking-card { background: var(--surface); padding: 85px 75px; width: 100%; max-width: 760px; border-radius: 6px; border: 1px solid rgba(204,165,101,0.2); position: relative; }
+        .booking-card h2 { font-family: var(--font-head); font-size: 2.8rem; color: var(--white); margin-bottom: 15px; text-align: center; font-weight: 400; }
+        .booking-card > p { text-align: center; color: var(--text-gray); margin-bottom: 50px; font-size: 1.05rem; font-weight: 300; }
+        .field { margin-bottom: 35px; }
+        .field label { display: block; font-size: 0.8rem; font-weight: 500; color: var(--text-gray); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .field input, .field textarea { width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.12); background: transparent; padding: 14px 0; font-family: var(--font-body); font-size: 1.15rem; color: var(--white); outline: none; transition: border-color 0.3s; }
+        .field input:focus, .field textarea:focus { border-bottom-color: var(--gold); }
+        .field textarea { resize: vertical; min-height: 100px; }
+        .submit-btn { width: 100%; background-color: var(--gold); color: #050b14; border: none; padding: 22px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; transition: all 0.3s ease; margin-top: 15px; border-radius: 4px; }
+        .submit-btn:hover { background-color: var(--white); transform: translateY(-2px); }
+        .status-msg { margin-top: 20px; text-align: center; font-size: 1rem; }
+
+        /* --- FOOTER --- */
+        footer { padding: 130px 5% 50px; text-align: center; background: var(--bg-color); }
+        .footer-huge-text { font-family: var(--font-head); font-size: clamp(3rem, 12vw, 9.5rem); font-weight: 600; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); white-space: nowrap; margin-bottom: 50px; transition: all 0.5s ease; }
+        .footer-huge-text:hover { color: var(--gold); -webkit-text-stroke: 0; }
+        .footer-details { color: var(--text-gray); font-size: 0.95rem; display: flex; flex-direction: column; gap: 10px; font-weight: 300; }
+
+        /* EY Studios Butonu */
+        .ey-demo-back { position: fixed; bottom: 30px; left: 30px; z-index: 9999; background-color: rgba(255,255,255,0.04); backdrop-filter: blur(10px); color: var(--white); font-family: var(--font-body); font-size: 0.85rem; padding: 12px 24px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.12); text-decoration: none; transition: all 0.3s ease; }
+        .ey-demo-back:hover { background-color: var(--white); color: #000; }
+
+        /* Scroll Reveal */
+        .reveal { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .trust-bar { flex-direction: column; gap: 35px; margin: -40px 5% 80px; }
+            .about { grid-template-columns: 1fr; gap: 50px; padding: 80px 5%; }
+            .about-img-wrap { height: 420px; }
+            .booking-card { padding: 50px 30px; }
+            nav { padding: 20px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="noise-overlay"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-outline" id="cursorOutline"></div>
+
+<!-- PRELOADER SAYAÇ -->
+<div id="preloader">
+    <div class="counter" id="counter">0</div>
+    <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
+    <div class="loading-text" data-i18n="Yükleniyor">Yükleniyor</div>
+</div>
+
+<!-- NAVİGASYON -->
+<nav id="navbar">
+    <a href="#" class="logo hover-target">Dr. Mehmet <span>Demir</span></a>
+    <a href="#randevu" class="nav-btn hover-target" data-i18n="Randevu Al">Randevu Al</a>
+</nav>
+
+<!-- HERO BÖLÜMÜ -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="title-wrap"><span class="title-line" data-i18n="Sanat ve Cerrahinin">Sanat ve Cerrahinin</span></div>
+        <div class="title-wrap"><span class="title-line gold" data-i18n="Kusursuz Uyumu">Kusursuz Uyumu</span></div>
+        <p data-i18n="hero-desc">Her detayda mükemmelliği arayanlar için uluslararası standartlarda, bedeninize özel lüks estetik ve cerrahi çözümler.</p>
+    </div>
+</section>
+
+<!-- GÜVEN PANELİ (TRUST BAR) -->
+<div class="trust-bar reveal">
+    <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label" data-i18n="Yıl Deneyim">Yıl Deneyim</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num">5000+</div>
+        <div class="stat-label" data-i18n="Başarılı Operasyon">Başarılı Operasyon</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num">%100</div>
+        <div class="stat-label" data-i18n="Hasta Memnuniyeti">Hasta Memnuniyeti</div>
+    </div>
+</div>
+
+<!-- HAKKINDA / MİMARİ VİTRİN -->
+<section class="about">
+    <div class="about-img-wrap reveal">
+        <div class="about-img"></div>
+    </div>
+    <div class="about-content reveal">
+        <h2 data-i18n="Dokunuşun Gücü">Dokunuşun Gücü</h2>
+        <p data-i18n="about-1">Sadece bir cerrahi müdahale değil, bedeninize duyduğumuz saygının bir yansıması. Modern tıbbın en ileri teknolojilerini, estetik bir vizyonla harmanlıyoruz.</p>
+        <p data-i18n="about-2">Deneyim, güven ve kusursuz sonuçların birleştiği bu yolculukta, sizin için en doğru ve en doğal olanı tasarlamak tek önceliğimizdir.</p>
+    </div>
+</section>
+
+<!-- MARQUEE ŞERİDİ -->
+<section class="marquee-section">
+    <div class="marquee-content">
+        <span data-i18n="PREMIUM CERRAHİ">PREMIUM CERRAHİ</span> ✦ 
+        <span data-i18n="KUSURSUZ ESTETİK">KUSURSUZ ESTETİK</span> ✦ 
+        <span data-i18n="GÜVENİLİR SONUÇLAR">GÜVENİLİR SONUÇLAR</span> ✦
+        <span data-i18n="PREMIUM CERRAHİ">PREMIUM CERRAHİ</span> ✦ 
+        <span data-i18n="KUSURSUZ ESTETİK">KUSURSUZ ESTETİK</span> ✦ 
+        <span data-i18n="GÜVENİLİR SONUÇLAR">GÜVENİLİR SONUÇLAR</span> ✦
+    </div>
+</section>
+
+<!-- HİZMETLER -->
+<section class="services">
+    <div class="section-title reveal" data-i18n="Uzmanlık Alanlarımız">Uzmanlık Alanlarımız</div>
+    <div class="grid">
+        <div class="card hover-target reveal">
+            <div class="card-icon">I.</div>
+            <h3 data-i18n="Laparoskopik Cerrahi">Laparoskopik Cerrahi</h3>
+            <p data-i18n="srv-1">Minimal invaziv yöntemlerle, iz bırakmayan ve hızlı iyileşme sağlayan kapalı cerrahi çözümler. Maksimum konfor.</p>
+        </div>
+        <div class="card hover-target reveal">
+            <div class="card-icon">II.</div>
+            <h3 data-i18n="Estetik & Rekonstrüktif">Estetik & Rekonstrüktif</h3>
+            <p data-i18n="srv-2">Doğal görünüm ve mükemmel simetriyi hedefleyen, tamamen size özel tasarlanmış premium estetik operasyonlar.</p>
+        </div>
+        <div class="card hover-target reveal">
+            <div class="card-icon">III.</div>
+            <h3 data-i18n="Endoskopik Tarama">Endoskopik Tarama</h3>
+            <p data-i18n="srv-3">En son teknoloji cihazlarla, yüksek hassasiyetli teşhis ve güvenli, ağrısız ileri düzey tarama işlemleri.</p>
+        </div>
+    </div>
+</section>
+
+<!-- RANDEVU ALANI -->
+<section class="booking-section" id="randevu">
+    <div class="booking-card reveal">
+        <h2 data-i18n="Randevu Talebi">Randevu Talebi</h2>
+        <p data-i18n="Randevu Alt">Lütfen bilgilerinizi eksiksiz doldurun. Talebiniz doğrudan kliniğimizin WhatsApp hattına iletilecektir.</p>
+        <form id="docForm">
+            <div class="field">
+                <label data-i18n="Adınız Soyadınız">Adınız Soyadınız</label>
+                <input type="text" id="ad" placeholder="Ad Soyad" data-i18n-ph="Ad Soyad Placeholder" required class="hover-target">
+            </div>
+            <div class="field">
+                <label data-i18n="Telefon Numaranız">Telefon Numaranız</label>
+                <input type="tel" id="tel" placeholder="05XX XXX XX XX" data-i18n-ph="Tel Placeholder" required class="hover-target">
+            </div>
+            <div class="field">
+                <label data-i18n="Şikayetiniz veya Talebiniz">Şikayetiniz veya Talebiniz</label>
+                <textarea id="mesaj" placeholder="Kısaca belirtiniz..." data-i18n-ph="Mesaj Placeholder" class="hover-target"></textarea>
+            </div>
+            <button type="submit" class="submit-btn hover-target" data-i18n="WhatsApp ile Gönder">WhatsApp ile Gönder</button>
+            <div class="status-msg" id="stMsg"></div>
+        </form>
+    </div>
+</section>
+
+<!-- DEV TİPOGRAFİ FOOTER -->
+<footer>
+    <div class="footer-huge-text hover-target">DR. MEHMET DEMİR</div>
+    <div class="footer-details">
+        <p data-i18n="Özel Klinik İletişim">Özel Klinik İletişim</p>
+        <p data-i18n="Çalışma Saatleri">Hafta İçi: 09:00 – 18:00 | Cumartesi: 10:00 – 14:00</p>
+        <p data-i18n="Adres">Lüks Plaza, Kat: 3, Şişli / İstanbul</p>
+        <br>
+        <p data-i18n="Telif">© 2026 Op. Dr. Mehmet Demir. Tüm hakları saklıdır.</p>
+    </div>
+</footer>
+
+<a href="index.html" class="ey-demo-back hover-target" data-i18n="EY Studios Geri">← EY Studios örnek çalışma</a>
+
+<!-- 8 DİLLİ SÖZLÜK VE KUSURSUZ MOTOR -->
+<script>
+window.EY_PAGE_DICT = {
+  "doktor": [
+    ["Yükleniyor", "Loading", "Wird geladen", "Cargando", "Laden", "Chargement", "Caricamento", "Загрузка"],
+    ["Randevu Al", "Book Now", "Termin buchen", "Reservar Cita", "Boek Nu", "Prendre RDV", "Prenota Ora", "Записаться"],
+    ["Sanat ve Cerrahinin", "The Perfect Harmony of", "Die perfekte Harmonie von", "La perfecta armonía de", "De perfecte harmonie van", "L'harmonie parfaite de", "La perfetta armonia tra", "Идеальная гармония"],
+    ["Kusursuz Uyumu", "Art and Surgery", "Kunst und Chirurgie", "Arte y Cirugía", "Kunst en Chirurgie", "l'Art et la Chirurgie", "Arte e Chirurgia", "Искусства и Хирургии"],
+    ["hero-desc", "For those seeking perfection in every detail, internationally standardized, luxury aesthetic and surgical solutions tailored to your body.", "Für diejenigen, die in jedem Detail Perfektion suchen: international standardisierte, luxuriöse ästhetische und chirurgische Lösungen, maßgeschneidert für Ihren Körper.", "Para aquellos que buscan la perfección en cada detalle, soluciones estéticas y quirúrgicas de lujo estandarizadas internacionalmente, adaptadas a tu cuerpo.", "Voor degenen die perfectie zoeken in elk detail, internationaal gestandaardiseerde, luxe esthetische en chirurgische oplossingen op maat van uw lichaam.", "Pour ceux qui recherchent la perfection dans les moindres détails, des solutions esthétiques et chirurgicales de luxe aux normes internationales, adaptées à votre corps.", "Per coloro che cercano la perfezione in ogni dettaglio, soluzioni estetiche e chirurgiche di lusso standardizzate a livello internazionale su misura per il tuo corpo.", "Для тех, кто ищет совершенство в каждой детали: роскошные эстетические и хирургические решения по международным стандартам, созданные специально для вашего тела."],
+    ["Yıl Deneyim", "Years Experience", "Jahre Erfahrung", "Años de Experiencia", "Jaar Ervaring", "Ans d'Expérience", "Anni di Esperienza", "Лет опыта"],
+    ["Başarılı Operasyon", "Successful Operations", "Erfolgreiche Operationen", "Operaciones Exitosas", "Succesvolle Operaties", "Opérations Réussies", "Operazioni di Successo", "Успешных операций"],
+    ["Hasta Memnuniyeti", "Patient Satisfaction", "Patientenzufriedenheit", "Satisfacción del Paciente", "Patiënttevredenheid", "Satisfaction des Patients", "Soddisfazione del Paziente", "Удовлетворенность пациентов"],
+    ["Dokunuşun Gücü", "The Power of Touch", "Die Kraft der Berührung", "El Poder del Toque", "De Kracht van Aanraking", "Le Pouvoir du Toucher", "Il Potere del Tocco", "Сила прикосновения"],
+    ["about-1", "Not just a surgical intervention, but a reflection of our respect for your body. We blend the most advanced technologies of modern medicine with an aesthetic vision.", "Nicht nur ein chirurgischer Eingriff, sondern ein Spiegelbild unseres Respekts für Ihren Körper. Wir verbinden die fortschrittlichsten Technologien der modernen Medizin mit einer ästhetischen Vision.", "No solo una intervención quirúrgica, sino un reflejo de nuestro respeto por tu cuerpo. Combinamos las tecnologías más avanzadas de la medicina moderna con una visión estética.", "Niet zomaar een chirurgische ingreep, maar een weerspiegeling van ons respect voor uw lichaam. We combineren de meest geavanceerde technologieën van de moderne geneeskunde met een esthetische visie.", "Pas seulement une intervention chirurgicale, mais le reflet de notre respect pour votre corps. Nous associons les technologies les plus avancées de la médecine moderne à une vision esthétique.", "Non solo un intervento chirurgico, ma un riflesso del nostro rispetto per il tuo corpo. Uniamo le tecnologie più avanzate della medicina moderna con una visione estetica.", "Не просто хирургическое вмешательство, а отражение нашего уважения к вашему телу. Мы сочетаем самые передовые технологии современной медицины с эстетическим видением."],
+    ["about-2", "In this journey where experience, trust, and flawless results combine, designing what is most right and natural for you is our only priority.", "Auf dieser Reise, auf der sich Erfahrung, Vertrauen und makellose Ergebnisse vereinen, ist es unsere einzige Priorität, das für Sie Richtigste und Natürlichste zu entwerfen.", "En este viaje donde la experiencia, la confianza y los resultados impecables se combinan, diseñar lo que es más correcto y natural para ti es nuestra única prioridad.", "In deze reis waar ervaring, vertrouwen en vlekkeloze resultaten samenkomen, is het ontwerpen van wat voor u het meest juist en natuurlijk is onze enige prioriteit.", "Dans ce voyage où l'expérience, la confiance et des résultats impeccables se conjuguent, concevoir ce qui est le plus juste et naturel pour vous est notre seule priorité.", "In questo viaggio in cui si uniscono esperienza, fiducia e risultati impeccabili, progettare ciò che è più giusto e naturale per te è la nostra unica priorità.", "В этом путешествии, где сочетаются опыт, доверие и безупречные результаты, создание того, что является наиболее правильным и естественным для вас, является нашим единственным приоритетом."],
+    ["PREMIUM CERRAHİ", "PREMIUM SURGERY", "PREMIUM CHIRURGIE", "CIRUGÍA PREMIUM", "PREMIUM CHIRURGIE", "CHIRURGIE PREMIUM", "CHIRURGIA PREMIUM", "ПРЕМИУМ ХИРУРГИЯ"],
+    ["KUSURSUZ ESTETİK", "FLAWLESS AESTHETICS", "MAKELLOSE ÄSTHETIK", "ESTÉTICA IMPECABLE", "VLEKKELOZE ESTHETIEK", "ESTHÉTIQUE IMPECCABLE", "ESTETICA IMPECCABILE", "БЕЗУПРЕЧНАЯ ЭСТЕТИКА"],
+    ["GÜVENİLİR SONUÇLAR", "RELIABLE RESULTS", "ZUVERLÄSSIGE ERGEBNISSE", "RESULTADOS CONFIABLES", "BETROUWBARE RESULTATEN", "RÉSULTATS FIABLES", "RISULTATI AFFIDABILI", "НАДЕЖНЫЕ РЕЗУЛЬТАТЫ"],
+    ["Uzmanlık Alanlarımız", "Our Expertise", "Unsere Expertise", "Nuestra Experiencia", "Onze Expertise", "Notre Expertise", "Le Nostre Competenze", "Наши направления"],
+    ["Laparoskopik Cerrahi", "Laparoscopic Surgery", "Laparoskopische Chirurgie", "Cirugía Laparoscópica", "Laparoscopische Chirurgie", "Chirurgie Laparoscopique", "Chirurgia Laparoscopica", "Лапароскопическая хирургия"],
+    ["srv-1", "Closed surgical solutions providing fast recovery and leaving no scars through minimally invasive methods. Maximum comfort.", "Geschlossene chirurgische Lösungen, die durch minimalinvasive Methoden eine schnelle Genesung ermöglichen und keine Narben hinterlassen. Maximaler Komfort.", "Soluciones quirúrgicas cerradas que proporcionan una rápida recuperación y no dejan cicatrices mediante métodos mínimamente invasivos. Máximo confort.", "Gesloten chirurgische oplossingen die zorgen voor een snel herstel en geen littekens achterlaten door middel van minimaal invasieve methoden. Maximaal comfort.", "Solutions chirurgicales fermées offrant une récupération rapide et ne laissant aucune cicatrice grâce à des méthodes mini-invasives. Confort maximal.", "Soluzioni chirurgiche chiuse che garantiscono un rapido recupero e non lasciano cicatrici attraverso metodi minimamente invasivi. Massimo comfort.", "Закрытые хирургические решения, обеспечивающие быстрое восстановление и не оставляющие шрамов благодаря минимально инвазивным методам. Максимальный комфорт."],
+    ["Estetik & Rekonstrüktif", "Aesthetic & Reconstructive", "Ästhetisch & Rekonstruktiv", "Estética y Reconstructiva", "Esthetisch & Reconstructief", "Esthétique & Reconstructrice", "Estetica e Ricostruttiva", "Эстетическая и реконструктивная"],
+    ["srv-2", "Premium aesthetic operations designed specifically for you, aiming for a natural look and perfect symmetry.", "Premium ästhetische Operationen, die speziell für Sie entwickelt wurden und auf ein natürliches Aussehen und perfekte Symmetrie abzielen.", "Operaciones estéticas premium diseñadas específicamente para ti, buscando un aspecto natural y una simetría perfecta.", "Premium esthetische operaties speciaal voor u ontworpen, gericht op een natuurlijke uitstraling en perfecte symmetrie.", "Opérations esthétiques premium conçues spécifiquement pour vous, visant un aspect naturel et une symétrie parfaite.", "Operazioni estetiche premium progettate specificamente per te, mirando a un aspetto naturale e a una perfetta simmetria.", "Премиальные эстетические операции, разработанные специально для вас, направленные на естественный вид и идеальную симметрию."],
+    ["Endoskopik Tarama", "Endoscopic Screening", "Endoskopisches Screening", "Cribado Endoscópico", "Endoscopische Screening", "Dépistage Endoscopique", "Screening Endoscopico", "Эндоскопическое обследование"],
+    ["srv-3", "High-precision diagnosis and safe, painless advanced screening procedures with state-of-the-art devices.", "Hochpräzise Diagnose und sichere, schmerzfreie erweiterte Screening-Verfahren mit modernsten Geräten.", "Diagnóstico de alta precisión y procedimientos avanzados de cribado seguros y sin dolor con dispositivos de última generación.", "Uiterst nauwkeurige diagnose en veilige, pijnloze geavanceerde screeningprocedures met ultramoderne apparatuur.", "Diagnostic de haute précision et procédures de dépistage avancées sûres et indolores avec des appareils de pointe.", "Diagnosi ad alta precisione e procedure di screening avanzate sicure e indolori con dispositivi all'avanguardia.", "Высокоточная диагностика и безопасные, безболезненные передовые процедуры обследования на новейшем оборудовании."],
+    ["Randevu Talebi", "Appointment Request", "Terminanfrage", "Solicitud de Cita", "Afspraak Verzoek", "Demande de RDV", "Richiesta di Appuntamento", "Заявка на прием"],
+    ["Randevu Alt", "Please fill in your details completely. Your request will be forwarded directly to our clinic's WhatsApp line.", "Bitte füllen Sie Ihre Daten vollständig aus. Ihre Anfrage wird direkt an die WhatsApp-Leitung unserer Klinik weitergeleitet.", "Por favor, completa tus datos. Tu solicitud se enviará directamente a la línea de WhatsApp de nuestra clínica.", "Vul uw gegevens volledig in. Uw verzoek wordt direct doorgestuurd naar de WhatsApp-lijn van onze kliniek.", "Veuillez remplir complètement vos coordonnées. Votre demande sera transmise directement à la ligne WhatsApp de notre clinique.", "Si prega di compilare completamente i propri dati. La tua richiesta verrà inoltrata direttamente alla linea WhatsApp della nostra clinica.", "Пожалуйста, полностью заполните свои данные. Ваш запрос будет напрямую перенаправлен на линию WhatsApp нашей клиники."],
+    ["Adınız Soyadınız", "Full Name", "Vor- und Nachname", "Nombre Completo", "Volledige Naam", "Nom et Prénom", "Nome e Cognome", "Имя и фамилия"],
+    ["Ad Soyad Placeholder", "Full Name", "Name", "Nombre", "Naam", "Nom", "Nome", "Имя"],
+    ["Telefon Numaranız", "Phone Number", "Telefonnummer", "Número de Teléfono", "Telefoonnummer", "Numéro de Téléphone", "Numero di Telefono", "Номер телефона"],
+    ["Tel Placeholder", "Your Phone", "Ihre Telefonnummer", "Tu Teléfono", "Uw Telefoon", "Votre Téléphone", "Il Tuo Telefono", "Ваш телефон"],
+    ["Şikayetiniz veya Talebiniz", "Your Complaint or Request", "Ihre Beschwerde oder Anfrage", "Tu Queja o Solicitud", "Uw Klacht of Verzoek", "Votre Plainte ou Demande", "Il Tuo Reclamo o Richiesta", "Ваша жалоба или запрос"],
+    ["Mesaj Placeholder", "Briefly describe...", "Bitte kurz beschreiben...", "Describe brevemente...", "Beschrijf kort...", "Décrivez brièvement...", "Descrivi brevemente...", "Кратко опишите..."],
+    ["WhatsApp ile Gönder", "Send via WhatsApp", "Per WhatsApp senden", "Enviar por WhatsApp", "Verzenden via WhatsApp", "Envoyer via WhatsApp", "Invia tramite WhatsApp", "Отправить через WhatsApp"],
+    ["Özel Klinik İletişim", "Private Clinic Contact", "Privatklinik Kontakt", "Contacto de Clínica Privada", "Privékliniek Contact", "Contact Clinique Privée", "Contatto Clinica Privata", "Контакты частной клиники"],
+    ["Çalışma Saatleri", "Weekdays: 09:00 - 18:00 | Saturday: 10:00 - 14:00", "Wochentags: 09:00 - 18:00 | Samstag: 10:00 - 14:00", "Días laborables: 09:00 - 18:00 | Sábado: 10:00 - 14:00", "Doordeweeks: 09:00 - 18:00 | Zaterdag: 10:00 - 14:00", "En semaine : 09h00 - 18h00 | Samedi : 10h00 - 14h00", "Feriali: 09:00 - 18:00 | Sabato: 10:00 - 14:00", "Будни: 09:00 - 18:00 | Суббота: 10:00 - 14:00"],
+    ["Adres", "Luxury Plaza, 3rd Floor, Sisli / Istanbul", "Luxury Plaza, 3. Stock, Sisli / Istanbul", "Luxury Plaza, 3er Piso, Sisli / Estambul", "Luxury Plaza, 3e Verdieping, Sisli / Istanbul", "Luxury Plaza, 3ème étage, Sisli / Istanbul", "Luxury Plaza, 3° Piano, Sisli / Istanbul", "Лакшери Плаза, 3-й этаж, Шишли / Стамбул"],
+    ["Telif", "© 2026 Op. Dr. Mehmet Demir. All rights reserved.", "© 2026 Op. Dr. Mehmet Demir. Alle Rechte vorbehalten.", "© 2026 Op. Dr. Mehmet Demir. Todos los derechos reservados.", "© 2026 Op. Dr. Mehmet Demir. Alle rechten voorbehouden.", "© 2026 Op. Dr. Mehmet Demir. Tous droits réservés.", "© 2026 Op. Dr. Mehmet Demir. Tutti i diritti riservati.", "© 2026 Оп. Доктор Мехмет Демир. Все права защищены."],
+    ["EY Studios Geri", "← EY Studios sample work", "← EY Studios Beispielarbeit", "← Trabajo de muestra de EY Studios", "← EY Studios voorbeeldwerk", "← Réalisation exemple EY Studios", "← Lavoro di esempio EY Studios", "← Пример работы EY Studios"],
+    ["uyari-1", "Please fill in your name and phone number.", "Bitte füllen Sie Name und Telefonnummer aus.", "Por favor, rellene su nombre y número de teléfono.", "Vul uw naam en telefoonnummer in.", "Veuillez remplir votre nom et votre numéro de téléphone.", "Si prega di compilare nome e numero di telefono.", "Пожалуйста, заполните имя и номер телефона."],
+    ["uyari-2", "WhatsApp is opening...", "WhatsApp wird geöffnet...", "Abriendo WhatsApp...", "WhatsApp wordt geopend...", "Ouverture de WhatsApp...", "Apertura di WhatsApp in corso...", "Открытие WhatsApp..."]
+  ]
+};
+
+(function () {
+  var LANGS = ['tr', 'en', 'de', 'es', 'nl', 'fr', 'it', 'ru'];
+  var INFO = { tr: ['tr', 'TR', 'Türkçe'], en: ['gb', 'EN', 'English'], de: ['de', 'DE', 'Deutsch'], es: ['es', 'ES', 'Español'], nl: ['nl', 'NL', 'Nederlands'], fr: ['fr', 'FR', 'Français'], it: ['it', 'IT', 'Italiano'], ru: ['ru', 'RU', 'Русский'] };
+  var cur = 'tr', MAP = {};
+  
+  var key = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
+  var dict = window.EY_PAGE_DICT || {};
+  var rows = dict[key] || dict[Object.keys(dict)[0]];   
+  if (!rows || !rows.length) return;               
+  
+  rows.forEach(function (r) { MAP[r[0]] = r; });
+
+  var T = [];
+  function walk(el) {
+    if (/^(SCRIPT|STYLE|NOSCRIPT|SVG)$/i.test(el.tagName) || el.id === 'eyLang') return;
+    
+    var i18nVal = el.getAttribute('data-i18n');
+    if (i18nVal && MAP[i18nVal]) {
+        T.push({ el: el, row: MAP[i18nVal], isI18n: true });
+    }
+
+    var phVal = el.getAttribute('data-i18n-ph');
+    if (phVal && MAP[phVal]) {
+        T.push({ el: el, row: MAP[phVal], isPh: true });
+    }
+
+    Array.prototype.forEach.call(el.children, function (n) { walk(n); });
+  }
+  walk(document.body);
+
+  function pick(row, lang) { return lang === 'tr' ? row[0] : (row[LANGS.indexOf(lang)] || row[1] || row[0]); }
+  
+  function swap(lang) {
+    T.forEach(function (t) {
+      if (t.isPh) { 
+          t.el.setAttribute('placeholder', pick(t.row, lang)); 
+      }
+      else if (t.isI18n) {
+          t.el.innerHTML = pick(t.row, lang);
+      }
+    });
+    document.documentElement.lang = lang;
+    cur = lang; setBtn();
+  }
+
+  function apply(lang, instant) {
+    if (lang === cur && !instant) return;
+    try { localStorage.setItem('ey-lang', lang); } catch (e) {}
+    if (instant) { swap(lang); return; }
+    document.body.style.opacity = '0';
+    setTimeout(function () { swap(lang); document.body.style.opacity = ''; }, 160);
+  }
+
+  var css = document.createElement('style');
+  css.textContent = 'body{transition:opacity .16s ease}' +
+    '#eyLang{position:fixed;right:25px;bottom:25px;z-index:9998;font-family:var(--font-body)}' +
+    '#eyLang button{font:500 13px/1 var(--font-body);text-transform:uppercase;letter-spacing:1px; cursor:none}' +
+    '#eyBtn{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);color:var(--white);border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:12px 20px;backdrop-filter:blur(10px);box-shadow:0 8px 25px rgba(0,0,0,.4);white-space:nowrap}' +
+    '#eyBtn img,.eyOpt img{width:20px;height:14px;object-fit:cover;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.1)}' +
+    '#eyDrop{position:absolute;right:0;bottom:calc(100% + 10px);background:#070d18;border:1px solid rgba(204,165,101,0.25);border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.6);min-width:190px;overflow:hidden;display:none;flex-direction:column}' +
+    '#eyDrop.show{display:flex}' +
+    '.eyOpt{display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;background:none;border:0;text-align:left;color:var(--text-gray);white-space:nowrap}' +
+    '.eyOpt:hover,.eyOpt.on{background:rgba(204,165,101,0.12);color:var(--gold)}.eyOpt b{min-width:1.9rem}.eyOpt span{font-weight:400;opacity:.6;text-transform:none}';
+  document.head.appendChild(css);
+  var box = document.createElement('div'); box.id = 'eyLang';
+  var FL = {"tr": "<rect width=\"20\" height=\"14\" fill=\"#E30A17\"/><circle cx=\"7.4\" cy=\"7\" r=\"3.6\" fill=\"#fff\"/><circle cx=\"8.4\" cy=\"7\" r=\"2.9\" fill=\"#E30A17\"/><circle cx=\"12\" cy=\"7\" r=\"1\" fill=\"#fff\"/>", "gb": "<rect width=\"20\" height=\"14\" fill=\"#012169\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#fff\" stroke-width=\"2.6\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#C8102E\" stroke-width=\"1\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#fff\" stroke-width=\"4.4\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#C8102E\" stroke-width=\"2.4\"/>", "de": "<rect width=\"20\" height=\"4.7\" fill=\"#000\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#D00\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#FFCE00\"/>", "es": "<rect width=\"20\" height=\"14\" fill=\"#AA151B\"/><rect y=\"3.5\" width=\"20\" height=\"7\" fill=\"#F1BF00\"/>", "nl": "<rect width=\"20\" height=\"4.7\" fill=\"#AE1C28\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#21468B\"/>", "fr": "<rect width=\"6.7\" height=\"14\" fill=\"#0055A4\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#EF4135\"/>", "it": "<rect width=\"6.7\" height=\"14\" fill=\"#009246\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#CE2B37\"/>", "ru": "<rect width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#0039A6\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#D52B1E\"/>"};
+  var flag = function (c) { return '<img src="data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14">' + FL[INFO[c][0]] + '</svg>') + '" alt="">'; };
+  box.innerHTML = '<div id="eyDrop">' + LANGS.map(function (c) { return '<button type="button" class="eyOpt hover-target" data-l="' + c + '">' + flag(c) + '<b>' + INFO[c][1] + '</b><span>' + INFO[c][2] + '</span></button>'; }).join('') + '</div><button type="button" id="eyBtn" class="hover-target" aria-haspopup="true"></button>';
+  document.body.appendChild(box);
+  
+  var btn = document.getElementById('eyBtn'), drop = document.getElementById('eyDrop');
+  function setBtn() {
+    btn.innerHTML = flag(cur) + ' ' + INFO[cur][1] + ' ▲'; btn.setAttribute('aria-label', INFO[cur][2]);
+    Array.prototype.forEach.call(drop.children, function (o) { o.classList.toggle('on', o.getAttribute('data-l') === cur); });
+  }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); drop.classList.toggle('show'); });
+  drop.addEventListener('click', function (e) { var o = e.target.closest('.eyOpt'); if (!o) return; drop.classList.remove('show'); apply(o.getAttribute('data-l')); });
+  document.addEventListener('click', function () { drop.classList.remove('show'); });
+
+  setBtn();
+  var start = null; try { start = localStorage.getItem('ey-lang'); } catch (e) {}
+  if (!start) { var n = (navigator.language || 'tr').slice(0, 2).toLowerCase(); if (INFO[n]) start = n; }
+  if (start && start !== 'tr' && INFO[start]) apply(start, true);
+
+})();
+</script>
+
+<!-- ETKİLEŞİM & RUNTIME JS -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    // --- PRELOADER ---
+    let count = 0;
+    let counterElement = document.getElementById('counter');
+    let loadingBar = document.getElementById('loadingBar');
+    let preloader = document.getElementById('preloader');
+    
+    let interval = setInterval(function() {
+        count += Math.floor(Math.random() * 14) + 6;
+        if(count >= 100) {
+            count = 100;
+            clearInterval(interval);
+            setTimeout(function() {
+                preloader.classList.add('hide');
+                setTimeout(function(){
+                    document.body.classList.add('loaded');
+                    initEngine();
+                }, 600);
+            }, 300);
+        }
+        counterElement.innerText = count;
+        loadingBar.style.width = count + "%";
+    }, 55);
+
+    function initEngine() {
+        // --- LENIS SMOOTH SCROLL ---
+        const lenis = new Lenis({
+            duration: 1.25,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true,
+        });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // --- SCROLL REVEAL & NAVBAR ---
+        const nav = document.querySelector('nav');
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
+        reveals.forEach(r => observer.observe(r));
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    }
+
+    // --- ÖZEL İMLEÇ (CURSOR) ---
+    const dot = document.getElementById('cursorDot');
+    const outline = document.getElementById('cursorOutline');
+    const hoverTargets = document.querySelectorAll('a, button, .hover-target');
+
+    window.addEventListener('mousemove', function(e) {
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+        outline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 250, fill: "forwards" });
+    });
+
+    hoverTargets.forEach(target => {
+        target.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+        target.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+    });
+
+    document.addEventListener('eylang', () => {
+        document.querySelectorAll('.hover-target').forEach(target => {
+            target.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+            target.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+        });
+    });
+
+    // --- WHATSAPP FORMU ---
+    document.getElementById('docForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var ad = document.getElementById('ad').value.trim();
+        var tel = document.getElementById('tel').value.trim();
+        var mesaj = document.getElementById('mesaj').value.trim();
+        var stMsg = document.getElementById('stMsg');
+        
+        if(!ad || !tel) {
+            stMsg.style.color = '#ff3b30'; 
+            stMsg.textContent = window.eyT ? window.eyT('uyari-1') : 'Lütfen ad soyad ve telefon alanlarını doldurun.';
+            return;
+        }
+        stMsg.style.color = '#cca565'; 
+        stMsg.textContent = window.eyT ? window.eyT('uyari-2') : 'WhatsApp açılıyor...';
+        
+        var text = "Merhaba, randevu talep ediyorum.\nAd Soyad: " + ad + "\nTelefon: " + tel + "\nŞikayeti/Talebi: " + (mesaj || "-");
+        var WHATSAPP = "905551234567"; 
+        
+        setTimeout(function() {
+            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank');
+            stMsg.textContent = "";
+            document.getElementById('docForm').reset();
+        }, 800);
+    });
+
+});
+</script>
+
+</body>
+</html>
