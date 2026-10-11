@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="tr" class="lenis lenis-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Av. Mehmet Demir | Premium Hukuk Bürosu</title>
+    <meta name="description" content="Karmaşık hukuki ihtilaflarda uluslararası standartlarda stratejik temsil.">
+    <meta name="robots" content="noindex">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Smooth Scroll Engine -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #020202;       
+            --surface: #090909;        
+            --surface-light: #111111;
+            --bronze: #c5a059;         
+            --white: #ffffff;
+            --text-gray: #8a8a8a;
+            --border-color: rgba(255, 255, 255, 0.05);
+            
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+        
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--bg-color); 
+            color: var(--white); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- SİNEMATİK NOISE DOKUSU --- */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 999998; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- ÖZEL İMLEÇ (CUSTOM CURSOR) --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 9999999; pointer-events: none;
+        }
+        .cursor-dot { width: 5px; height: 5px; background-color: var(--bronze); box-shadow: 0 0 10px var(--bronze); }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid rgba(197, 160, 89, 0.4);
+            transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s;
+        }
+        body.hovering .cursor-outline {
+            width: 65px; height: 65px; background-color: rgba(197, 160, 89, 0.05);
+            border-color: rgba(197, 160, 89, 0.8); backdrop-filter: blur(2px);
+        }
+
+        /* --- SÜPER HIZLI İNTRO (PRELOADER YOK, FLAŞ GİRİŞ VAR) --- */
+        #flash-intro {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: #000; z-index: 999999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1);
+        }
+        #flash-intro.hide { transform: translateY(-100%); }
+        .intro-brand { font-family: var(--font-head); font-size: 2.5rem; font-weight: 500; color: var(--white); text-transform: uppercase; letter-spacing: 2px;}
+        .intro-brand span { color: var(--bronze); font-style: italic; }
+        .intro-line { width: 0; height: 1px; background: var(--bronze); margin-top: 20px; animation: swipeLine 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
+        @keyframes swipeLine { to { width: 150px; } }
+
+        /* --- NAVİGASYON --- */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: transparent; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 35px 5%; transition: all 0.5s ease;
+        }
+        nav.scrolled {
+            background-color: rgba(2, 2, 2, 0.95);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 20px 5%; border-bottom: 1px solid var(--border-color);
+        }
+        .logo { font-family: var(--font-head); font-size: 1.6rem; font-weight: 500; color: var(--white); text-decoration: none; letter-spacing: 1px; text-transform: uppercase;}
+        .logo span { color: var(--bronze); }
+        .nav-btn {
+            background-color: transparent; color: var(--white);
+            padding: 12px 30px; border: 1px solid rgba(255,255,255,0.15); border-radius: 2px;
+            font-size: 0.75rem; font-weight: 500; text-decoration: none; text-transform: uppercase; letter-spacing: 3px;
+            transition: all 0.4s ease;
+        }
+        .nav-btn:hover { background-color: var(--white); color: var(--bg-color); border-color: var(--white); }
+
+        /* --- HERO SECTION (AĞIRBAŞLI, MODERN CAM/ÇELİK MİMARİ) --- */
+        .hero {
+            height: 100vh; width: 100%; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 115vh;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop') center/cover;
+            filter: brightness(0.2) contrast(1.1) grayscale(0.5); /* Modern, karanlık, prestijli cam binalar */
+            z-index: 1; transform-origin: center;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(2,2,2,1) 100%); z-index: 2;
+        }
+        .hero-content { position: relative; z-index: 3; max-width: 1100px; padding: 0 20px; }
+        
+        .title-wrap { overflow: hidden; display: block; line-height: 1.1; margin-bottom: 5px;}
+        .title-line { 
+            font-family: var(--font-head); font-size: clamp(3rem, 7vw, 6rem); color: var(--white); font-weight: 400; 
+            display: block; transform: translateY(110%); transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .title-line.bronze { color: var(--bronze); font-style: italic; }
+        body.loaded .title-line { transform: translateY(0); }
+        
+        .hero p {
+            color: var(--text-gray); font-size: 1.1rem; font-weight: 300; margin-top: 30px; margin-bottom: 50px;
+            max-width: 650px; margin-left: auto; margin-right: auto; letter-spacing: 1px;
+            opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; transition-delay: 0.6s;
+        }
+        body.loaded .hero p { opacity: 1; transform: translateY(0); }
+
+        /* --- İTİBAR PANELİ (TRUST BAR) - GLOW EFEKTİ --- */
+        .trust-bar {
+            max-width: 1100px; margin: -50px auto 100px; position: relative; z-index: 10;
+            background: var(--surface); border: 1px solid var(--border-color);
+            display: flex; justify-content: space-around; padding: 50px 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+        .stat { text-align: center; border-right: 1px solid var(--border-color); width: 100%; transition: transform 0.4s ease; }
+        .stat:last-child { border-right: none; }
+        .stat:hover { transform: translateY(-5px); }
+        .stat-num { font-family: var(--font-head); font-size: 3.5rem; color: var(--bronze); font-weight: 400; line-height: 1; margin-bottom: 10px; transition: text-shadow 0.3s ease;}
+        .stat:hover .stat-num { text-shadow: 0 0 20px rgba(197, 160, 89, 0.4); }
+        .stat-label { color: var(--text-gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; transition: color 0.3s;}
+        .stat:hover .stat-label { color: var(--white); }
+
+        /* --- HAKKINDA (FELSEFE) BÖLÜMÜ --- */
+        .about { padding: 100px 5% 140px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .about-img-wrap { position: relative; overflow: hidden; height: 650px; border: 1px solid var(--border-color); }
+        .about-img { 
+            width: 100%; height: 120%; object-fit: cover; 
+            /* Modern, ciddi soyut iç mimari detay */
+            background: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop') center/cover;
+            filter: brightness(0.6) grayscale(0.2); transition: filter 0.5s ease;
+        }
+        .about-img-wrap:hover .about-img { filter: brightness(0.8) grayscale(0); }
+        .about-content h2 { font-family: var(--font-head); font-size: clamp(2.5rem, 4.5vw, 4rem); color: var(--white); line-height: 1.1; margin-bottom: 40px; font-weight: 400; }
+        .about-content p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 25px; line-height: 1.8; font-weight: 300; }
+
+        /* --- MARQUEE (KAYAN YAZI) --- */
+        .marquee-section { padding: 70px 0; overflow: hidden; white-space: nowrap; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); background: #010101; }
+        .marquee-content { display: inline-block; font-family: var(--font-head); font-size: 3rem; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.15); animation: scrollText 35s linear infinite; text-transform: uppercase;}
+        .marquee-content span { margin: 0 50px; color: var(--bronze); -webkit-text-stroke: 0; font-style: italic; }
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- UZMANLIK ALANLARI (INTERAKTİF KARTLAR) --- */
+        .services { padding: 150px 5% 150px; max-width: 1300px; margin: 0 auto; }
+        .section-title { text-align: center; font-family: var(--font-head); font-size: 3.5rem; color: var(--white); margin-bottom: 90px; font-weight: 400; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        
+        /* Gelişmiş Kart Animasyonları */
+        .card { 
+            background: var(--surface); padding: 70px 50px; border: 1px solid var(--border-color); 
+            text-align: left; position: relative; overflow: hidden;
+            transform: translateY(0); transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(197, 160, 89, 0.1), transparent 50%);
+            opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
+        }
+        .card::after { 
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; 
+            background: var(--bronze); transition: width 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+        }
+        .card:hover { 
+            transform: translateY(-15px); background: var(--surface-light); 
+            border-color: rgba(197, 160, 89, 0.3); box-shadow: 0 30px 60px rgba(0,0,0,0.8); 
+        }
+        .card:hover::before { opacity: 1; }
+        .card:hover::after { width: 100%; }
+        
+        .card-icon { font-family: var(--font-head); font-size: 3.5rem; color: var(--bronze); font-style: italic; margin-bottom: 30px; line-height: 1; transition: transform 0.4s ease;}
+        .card:hover .card-icon { transform: scale(1.1) translateX(5px); }
+        .card h3 { font-family: var(--font-head); font-size: 1.8rem; color: var(--white); margin-bottom: 20px; font-weight: 400;}
+        .card p { color: var(--text-gray); font-size: 1rem; font-weight: 300; line-height: 1.8; }
+
+        /* --- RANDEVU / DANIŞMANLIK FORMU --- */
+        .booking-section { background-color: #010101; padding: 150px 5%; display: flex; justify-content: center; position: relative; border-top: 1px solid var(--border-color); }
+        .booking-card { background: var(--surface); padding: 90px 80px; width: 100%; max-width: 800px; border: 1px solid var(--border-color); position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.9);}
+        
+        .booking-card h2 { font-family: var(--font-head); font-size: 3rem; color: var(--white); margin-bottom: 20px; text-align: center; font-weight: 400;}
+        .booking-card > p { text-align: center; color: var(--text-gray); margin-bottom: 60px; font-size: 1rem; font-weight: 300; letter-spacing: 1px;}
+        .field { margin-bottom: 45px; position: relative; }
+        .field label { display: block; font-size: 0.75rem; font-weight: 500; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 3px; }
+        .field input, .field textarea { width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); background: transparent; padding: 15px 0; font-family: var(--font-body); font-size: 1.1rem; color: var(--white); outline: none; transition: border-color 0.4s; }
+        .field input:focus, .field textarea:focus { border-bottom-color: var(--bronze); }
+        .field textarea { resize: vertical; min-height: 100px; }
+        .submit-btn { width: 100%; background-color: var(--bronze); color: #000; border: none; padding: 22px; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; transition: all 0.4s ease; margin-top: 20px; cursor: none;}
+        .submit-btn:hover { background-color: var(--white); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .status-msg { margin-top: 25px; text-align: center; font-size: 0.95rem; font-weight: 400; }
+
+        /* --- FOOTER (İHTİŞAMLI TİPOGRAFİ) --- */
+        footer { padding: 150px 5% 60px; text-align: center; overflow: hidden; position: relative; background: #000; border-top: 1px solid rgba(255,255,255,0.03);}
+        .footer-huge-text { font-family: var(--font-head); font-size: clamp(3rem, 12vw, 10rem); font-weight: 600; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); white-space: nowrap; margin-bottom: 60px; transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); text-transform: uppercase;}
+        .footer-huge-text:hover { color: var(--bronze); -webkit-text-stroke: 0; transform: scale(1.02);}
+        .footer-details { color: var(--text-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px; font-weight: 300; letter-spacing: 1px;}
+
+        /* EY Studios Butonu */
+        .ey-demo-back { position: fixed; bottom: 30px; left: 30px; z-index: 9999; background-color: rgba(255,255,255,0.02); backdrop-filter: blur(10px); color: var(--white); font-family: var(--font-body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.1); text-decoration: none; transition: all 0.3s ease; }
+        .ey-demo-back:hover { background-color: var(--white); color: #000; }
+
+        /* Scroll Reveal */
+        .reveal { opacity: 0; transform: translateY(60px); transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .trust-bar { flex-direction: column; gap: 40px; margin: -40px 5% 80px; }
+            .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 40px; }
+            .stat:last-child { border-bottom: none; padding-bottom: 0; }
+            .about { grid-template-columns: 1fr; gap: 50px; padding: 80px 5%; }
+            .about-img-wrap { height: 400px; }
+            .booking-card { padding: 50px 30px; }
+            nav { padding: 20px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="noise-overlay"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-outline" id="cursorOutline"></div>
+
+<!-- HIZLI SİNEMATİK İNTRO -->
+<div id="flash-intro">
+    <div class="intro-brand">Av. Mehmet <span>Demir</span></div>
+    <div class="intro-line"></div>
+</div>
+
+<!-- NAVİGASYON -->
+<nav id="navbar">
+    <a href="#" class="logo hover-target">Av. Mehmet <span>Demir</span></a>
+    <a href="#randevu" class="nav-btn hover-target" data-i18n="Danışmanlık Al">Danışmanlık Al</a>
+</nav>
+
+<!-- HERO BÖLÜMÜ -->
+<section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+        <div class="title-wrap"><span class="title-line" data-i18n="Güç. İtibar.">Güç. İtibar.</span></div>
+        <div class="title-wrap"><span class="title-line bronze" data-i18n="Kusursuz Savunma.">Kusursuz Savunma.</span></div>
+        <p data-i18n="hero-desc">Karmaşık hukuki ihtilaflarda, uluslararası standartlarda stratejik temsil ve kesin sonuç odaklı premium danışmanlık.</p>
+    </div>
+</section>
+
+<!-- GÜVEN PANELİ (TRUST BAR) -->
+<div class="trust-bar reveal">
+    <div class="stat hover-target">
+        <div class="stat-num">20+</div>
+        <div class="stat-label" data-i18n="Yıl Tecrübe">Yıl Tecrübe</div>
+    </div>
+    <div class="stat hover-target">
+        <div class="stat-num">1200+</div>
+        <div class="stat-label" data-i18n="Kazanılmış Dava">Kazanılmış Dava</div>
+    </div>
+    <div class="stat hover-target">
+        <div class="stat-num">35</div>
+        <div class="stat-label" data-i18n="Küresel Partner">Küresel Partner</div>
+    </div>
+</div>
+
+<!-- HAKKINDA / FELSEFE -->
+<section class="about">
+    <div class="about-img-wrap reveal hover-target">
+        <div class="about-img" id="parallaxImg"></div>
+    </div>
+    <div class="about-content reveal">
+        <h2 data-i18n="Hukukta Taviz Yoktur">Hukukta Taviz Yoktur.</h2>
+        <p data-i18n="about-1">Bizim için hukuk, sadece kanun maddelerinin yorumlanması değil; müvekkillerimizin itibarının, ticari sırlarının ve geleceğinin bir zırh gibi korunması sanatıdır.</p>
+        <p data-i18n="about-2">Sıfır hata prensibiyle çalışıyor, her dosyayı sadece kazanmak için değil, emsal teşkil edecek bir stratejiyle yönetiyoruz. Sizin savaşınız, bizim savaşımızdır.</p>
+    </div>
+</section>
+
+<!-- MARQUEE ŞERİDİ -->
+<section class="marquee-section">
+    <div class="marquee-content">
+        <span data-i18n="CEZA HUKUKU">CEZA HUKUKU</span> ✦ 
+        <span data-i18n="TİCARET HUKUKU">TİCARET HUKUKU</span> ✦ 
+        <span data-i18n="ULUSLARARASI HUKUK">ULUSLARARASI HUKUK</span> ✦
+        <span data-i18n="CEZA HUKUKU">CEZA HUKUKU</span> ✦ 
+        <span data-i18n="TİCARET HUKUKU">TİCARET HUKUKU</span> ✦ 
+        <span data-i18n="ULUSLARARASI HUKUK">ULUSLARARASI HUKUK</span> ✦
+    </div>
+</section>
+
+<!-- HİZMETLER / UZMANLIK -->
+<section class="services">
+    <div class="section-title reveal" data-i18n="Uzmanlık Alanlarımız">Uzmanlık Alanlarımız</div>
+    <div class="grid">
+        <div class="card hover-target reveal">
+            <div class="card-icon">I.</div>
+            <h3 data-i18n="Ceza Hukuku">Ceza Hukuku</h3>
+            <p data-i18n="srv-1">Ağır ceza davaları, beyaz yaka suçları ve mali soruşturmalarda, gizlilik esaslı ve agresif savunma stratejileri.</p>
+        </div>
+        <div class="card hover-target reveal">
+            <div class="card-icon">II.</div>
+            <h3 data-i18n="Ticaret & Şirketler">Ticaret & Şirketler Hukuku</h3>
+            <p data-i18n="srv-2">Büyük ölçekli birleşme ve devralmalar (M&A), uluslararası ticari sözleşmeler ve kurumsal ihtilaf yönetimi.</p>
+        </div>
+        <div class="card hover-target reveal">
+            <div class="card-icon">III.</div>
+            <h3 data-i18n="Uluslararası Tahkim">Uluslararası Tahkim</h3>
+            <p data-i18n="srv-3">Sınır ötesi ticari uyuşmazlıklar ve yabancı mahkeme kararlarının tanınması süreçlerinde mutlak hukuki üstünlük.</p>
+        </div>
+    </div>
+</section>
+
+<!-- RANDEVU ALANI -->
+<section class="booking-section" id="randevu">
+    <div class="booking-card reveal">
+        <h2 data-i18n="Danışmanlık Talebi">Danışmanlık Talebi</h2>
+        <p data-i18n="Randevu Alt">Hukuki süreciniz için ilk adımı atın. Talebiniz doğrudan yönetici avukatımızın güvenli hattına iletilecektir.</p>
+        <form id="docForm">
+            <div class="field">
+                <label data-i18n="Adınız Soyadınız">Adınız Soyadınız</label>
+                <input type="text" id="ad" placeholder="Ad Soyad / Kurum Adı" data-i18n-ph="Ad Soyad Placeholder" required class="hover-target">
+            </div>
+            <div class="field">
+                <label data-i18n="Telefon Numaranız">Telefon Numaranız</label>
+                <input type="tel" id="tel" placeholder="05XX XXX XX XX" data-i18n-ph="Tel Placeholder" required class="hover-target">
+            </div>
+            <div class="field">
+                <label data-i18n="Hukuki Konu">Hukuki Konu Özeti</label>
+                <textarea id="mesaj" placeholder="Özet bilgi geçiniz..." data-i18n-ph="Mesaj Placeholder" class="hover-target"></textarea>
+            </div>
+            <button type="submit" class="submit-btn hover-target" data-i18n="WhatsApp İle İletişime Geç">WhatsApp İle İletişime Geç</button>
+            <div class="status-msg" id="stMsg"></div>
+        </form>
+    </div>
+</section>
+
+<!-- DEV TİPOGRAFİ FOOTER -->
+<footer>
+    <div class="footer-huge-text hover-target">MEHMET DEMİR</div>
+    <div class="footer-details">
+        <p data-i18n="Gizlilik. Disiplin. Zafer.">Gizlilik. Disiplin. Zafer.</p>
+        <p data-i18n="Çalışma Saatleri">Pzt - Cuma: 09:00 – 19:00</p>
+        <p data-i18n="Adres">Levent, Büyükdere Cd. No: 199, Şişli / İstanbul</p>
+        <br>
+        <p data-i18n="Telif">© 2026 Av. Mehmet Demir. Tüm hakları saklıdır.</p>
+    </div>
+</footer>
+
+<a href="index.html" class="ey-demo-back hover-target" data-i18n="EY Studios Geri">← EY Studios örnek çalışma</a>
+
+<!-- ==========================================
+   8 DİLLİ SÖZLÜK & MOTOR 
+=========================================== -->
+<script>
+window.EY_PAGE_DICT = {
+  "avukat": [
+    ["Danışmanlık Al", "Get Consultation", "Beratung erhalten", "Obtener Consulta", "Krijg Consult", "Obtenir Consultation", "Ottieni Consulenza", "Получить консультацию"],
+    ["Güç. İtibar.", "Power. Prestige.", "Macht. Prestige.", "Poder. Prestigio.", "Macht. Prestige.", "Pouvoir. Prestige.", "Potere. Prestigio.", "Сила. Престиж."],
+    ["Kusursuz Savunma.", "Flawless Defense.", "Makellose Verteidigung.", "Defensa Impecable.", "Vlekkeloze Verdediging.", "Défense Impeccable.", "Difesa Impeccabile.", "Безупречная защита."],
+    ["hero-desc", "Strategic representation and results-oriented premium consulting in complex legal disputes at international standards.", "Strategische Vertretung und ergebnisorientierte Premium-Beratung bei komplexen Rechtsstreitigkeiten nach internationalen Standards.", "Representación estratégica y consultoría premium orientada a resultados en disputas legales complejas a estándares internacionales.", "Strategische vertegenwoordiging en resultaatgericht premium advies in complexe juridische geschillen volgens internationale normen.", "Représentation stratégique et conseil premium axé sur les résultats dans les litiges juridiques complexes aux normes internationales.", "Rappresentanza strategica e consulenza premium orientata ai risultati in complesse controversie legali a standard internazionali.", "Стратегическое представительство и ориентированный на результат премиум-консалтинг в сложных правовых спорах по международным стандартам."],
+    ["Yıl Tecrübe", "Years Experience", "Jahre Erfahrung", "Años de Experiencia", "Jaar Ervaring", "Ans d'Expérience", "Anni di Esperienza", "Лет опыта"],
+    ["Kazanılmış Dava", "Cases Won", "Gewonnene Fälle", "Casos Ganados", "Gewonnen Zaken", "Affaires Gagnées", "Casi Vinti", "Выигранных дел"],
+    ["Küresel Partner", "Global Partners", "Globale Partner", "Socios Globales", "Wereldwijde Partners", "Partenaires Mondiaux", "Partner Globali", "Глобальных партнеров"],
+    ["Hukukta Taviz Yoktur", "No Compromise in Law.", "Kein Kompromiss im Recht.", "Sin Compromisos en la Ley.", "Geen Compromis in de Wet.", "Aucun Compromis en Droit.", "Nessun Compromesso nella Legge.", "Никаких компромиссов в законе."],
+    ["about-1", "For us, law is not just about interpreting statutes; it is the art of protecting our clients' reputation, trade secrets, and future like armor.", "Für uns geht es im Recht nicht nur um die Auslegung von Gesetzen; es ist die Kunst, den Ruf, die Geschäftsgeheimnisse und die Zukunft unserer Mandanten wie eine Rüstung zu schützen.", "Para nosotros, la ley no se trata solo de interpretar estatutos; es el arte de proteger la reputación, los secretos comerciales y el futuro de nuestros clientes como una armadura.", "Voor ons is recht niet alleen het interpreteren van statuten; het is de kunst om de reputatie, handelsgeheimen en toekomst van onze cliënten als een pantser te beschermen.", "Pour nous, le droit ne consiste pas seulement à interpréter des lois ; c'est l'art de protéger la réputation, les secrets commerciaux et l'avenir de nos clients comme une armure.", "Per noi, la legge non è solo interpretare statuti; è l'arte di proteggere la reputazione, i segreti commerciali e il futuro dei nostri clienti come un'armatura.", "Для нас закон — это не просто толкование статей; это искусство защищать репутацию, коммерческие тайны и будущее наших клиентов, как броня."],
+    ["about-2", "We work on a zero-error principle, managing every case not just to win, but with a strategy that will set a precedent. Your battle is our battle.", "Wir arbeiten nach dem Null-Fehler-Prinzip und führen jeden Fall nicht nur, um zu gewinnen, sondern mit einer Strategie, die einen Präzedenzfall schafft. Ihr Kampf ist unser Kampf.", "Trabajamos bajo el principio de cero errores, manejando cada caso no solo para ganar, sino con una estrategia que sentará un precedente. Tu batalla es nuestra batalla.", "We werken volgens het nul-foutenprincipe en beheren elke zaak niet alleen om te winnen, maar met een strategie die een precedent zal scheppen. Uw strijd is onze strijd.", "Nous travaillons sur le principe du zéro erreur, gérant chaque dossier non seulement pour gagner, mais avec une stratégie qui fera jurisprudence. Votre bataille est notre bataille.", "Lavoriamo sul principio di zero errori, gestendo ogni caso non solo per vincere, ma con una strategia che costituirà un precedente. La tua battaglia è la nostra battaglia.", "Мы работаем по принципу нулевой ошибки, ведя каждое дело не просто для победы, а со стратегией, которая создаст прецедент. Ваша битва — это наша битва."],
+    ["CEZA HUKUKU", "CRIMINAL LAW", "STRAFRECHT", "DERECHO PENAL", "STRAFRECHT", "DROIT PÉNAL", "DIRITTO PENALE", "УГОЛОВНОЕ ПРАВО"],
+    ["TİCARET HUKUKU", "COMMERCIAL LAW", "HANDELSRECHT", "DERECHO COMERCIAL", "COMMERCIEEL RECHT", "DROIT COMMERCIAL", "DIRITTO COMMERCIALE", "КОММЕРЧЕСКОЕ ПРАВО"],
+    ["ULUSLARARASI HUKUK", "INTERNATIONAL LAW", "INTERNATIONALES RECHT", "DERECHO INTERNACIONAL", "INTERNATIONAAL RECHT", "DROIT INTERNATIONAL", "DIRITTO INTERNAZIONALE", "МЕЖДУНАРОДНОЕ ПРАВО"],
+    ["Uzmanlık Alanlarımız", "Our Expertise", "Unsere Expertise", "Nuestra Experiencia", "Onze Expertise", "Notre Expertise", "Le Nostre Competenze", "Наши направления"],
+    ["Ceza Hukuku", "Criminal Law", "Strafrecht", "Derecho Penal", "Strafrecht", "Droit Pénal", "Diritto Penale", "Уголовное право"],
+    ["srv-1", "Aggressive, confidentiality-based defense strategies in felony cases, white-collar crimes, and financial investigations.", "Aggressive, auf Vertraulichkeit basierende Verteidigungsstrategien bei Kapitalverbrechen, Wirtschaftskriminalität und Finanzermittlungen.", "Estrategias de defensa agresivas y basadas en la confidencialidad en casos de delitos graves, delitos de cuello blanco e investigaciones financieras.", "Agressieve, op vertrouwelijkheid gebaseerde verdedigingsstrategieën in zware strafzaken, witteboordencriminaliteit en financiële onderzoeken.", "Stratégies de défense agressives et fondées sur la confidentialité dans les affaires criminelles graves, la criminalité en col blanc et les enquêtes financières.", "Strategie di difesa aggressive e basate sulla riservatezza in casi di reati gravi, crimini dei colletti bianchi e indagini finanziarie.", "Агрессивные, основанные на конфиденциальности стратегии защиты по тяжким уголовным делам, беловоротничковой преступности и финансовым расследованиям."],
+    ["Ticaret & Şirketler", "Commercial & Corporate", "Handels- & Gesellschaftsrecht", "Comercial y Corporativo", "Commercieel & Zakelijk", "Commercial & Droit des Sociétés", "Commerciale e Societario", "Коммерческое и корпоративное"],
+    ["srv-2", "Large-scale mergers and acquisitions (M&A), international commercial contracts, and corporate dispute management.", "Groß angelegte Fusionen und Übernahmen (M&A), internationale Handelsverträge und Verwaltung von Unternehmensstreitigkeiten.", "Fusiones y adquisiciones a gran escala (M&A), contratos comerciales internacionales y gestión de disputas corporativas.", "Grootschalige fusies en overnames (M&A), internationale commerciële contracten en beheer van zakelijke geschillen.", "Fusions et acquisitions à grande échelle (M&A), contrats commerciaux internationaux et gestion des litiges d'entreprise.", "Fusioni e acquisizioni su larga scala (M&A), contratti commerciali internazionali e gestione delle controversie aziendali.", "Крупные слияния и поглощения (M&A), международные коммерческие контракты и управление корпоративными спорами."],
+    ["Uluslararası Tahkim", "International Arbitration", "Internationale Schiedsgerichtsbarkeit", "Arbitraje Internacional", "Internationale Arbitrage", "Arbitrage International", "Arbitrato Internazionale", "Международный арбитраж"],
+    ["srv-3", "Absolute legal supremacy in cross-border commercial disputes and processes for the recognition of foreign court judgments.", "Absolute rechtliche Vorherrschaft bei grenzüberschreitenden Handelsstreitigkeiten und Prozessen zur Anerkennung ausländischer Gerichtsurteile.", "Supremacía legal absoluta en disputas comerciales transfronterizas y procesos para el reconocimiento de sentencias de tribunales extranjeros.", "Absolute juridische suprematie in grensoverschrijdende commerciële geschillen en processen voor de erkenning van buitenlandse vonnissen.", "Suprématie juridique absolue dans les litiges commerciaux transfrontaliers et les processus de reconnaissance des jugements des tribunaux étrangers.", "Assoluta supremazia legale nelle controversie commerciali transfrontaliere e nei processi per il riconoscimento delle sentenze dei tribunali stranieri.", "Абсолютное юридическое превосходство в трансграничных коммерческих спорах и процессах признания решений иностранных судов."],
+    ["Danışmanlık Talebi", "Consultation Request", "Beratungsanfrage", "Solicitud de Consulta", "Consult Verzoek", "Demande de Consultation", "Richiesta di Consulenza", "Запрос на консультацию"],
+    ["Randevu Alt", "Take the first step for your legal process. Your request will be forwarded directly to our managing attorney's secure line.", "Machen Sie den ersten Schritt für Ihren rechtlichen Prozess. Ihre Anfrage wird direkt an die sichere Leitung unseres leitenden Anwalts weitergeleitet.", "Da el primer paso para tu proceso legal. Tu solicitud será enviada directamente a la línea segura de nuestro abogado gerente.", "Zet de eerste stap voor uw juridische proces. Uw verzoek wordt direct doorgestuurd naar de beveiligde lijn van onze beherend advocaat.", "Faites le premier pas pour votre processus juridique. Votre demande sera transmise directement à la ligne sécurisée de notre avocat directeur.", "Fai il primo passo per il tuo processo legale. La tua richiesta verrà inoltrata direttamente alla linea sicura del nostro avvocato gestore.", "Сделайте первый шаг в вашем судебном процессе. Ваш запрос будет напрямую перенаправлен на безопасную линию нашего управляющего адвоката."],
+    ["Adınız Soyadınız", "Full Name / Company Name", "Vollständiger Name / Firmenname", "Nombre Completo / Nombre de la Empresa", "Volledige Naam / Bedrijfsnaam", "Nom Complet / Nom de l'Entreprise", "Nome Completo / Nome dell'Azienda", "Полное имя / Название компании"],
+    ["Ad Soyad Placeholder", "Full Name / Company", "Name / Firma", "Nombre / Empresa", "Naam / Bedrijf", "Nom / Entreprise", "Nome / Azienda", "Имя / Компания"],
+    ["Telefon Numaranız", "Phone Number", "Telefonnummer", "Número de Teléfono", "Telefoonnummer", "Numéro de Téléphone", "Numero di Telefono", "Номер телефона"],
+    ["Tel Placeholder", "Your Phone", "Ihre Telefonnummer", "Tu Teléfono", "Uw Telefoon", "Votre Téléphone", "Il Tuo Telefono", "Ваш телефон"],
+    ["Hukuki Konu", "Legal Issue Summary", "Zusammenfassung des rechtlichen Problems", "Resumen del Asunto Legal", "Samenvatting Juridische Kwestie", "Résumé du Problème Juridique", "Riepilogo della Questione Legale", "Краткое описание правовой проблемы"],
+    ["Mesaj Placeholder", "Briefly provide information...", "Bitte geben Sie kurz Informationen...", "Proporcione información brevemente...", "Geef kort informatie...", "Fournissez brièvement des informations...", "Fornisci brevemente informazioni...", "Кратко предоставьте информацию..."],
+    ["WhatsApp İle İletişime Geç", "Contact via WhatsApp", "Kontakt über WhatsApp", "Contactar vía WhatsApp", "Contact via WhatsApp", "Contacter via WhatsApp", "Contatta via WhatsApp", "Связаться через WhatsApp"],
+    ["Gizlilik. Disiplin. Zafer.", "Privacy. Discipline. Victory.", "Privatsphäre. Disziplin. Sieg.", "Privacidad. Disciplina. Victoria.", "Privacy. Discipline. Overwinning.", "Confidentialité. Discipline. Victoire.", "Privacy. Disciplina. Vittoria.", "Конфиденциальность. Дисциплина. Победа."],
+    ["Çalışma Saatleri", "Mon - Fri: 09:00 - 19:00", "Mo - Fr: 09:00 - 19:00", "Lun - Vie: 09:00 - 19:00", "Ma - Vr: 09:00 - 19:00", "Lun - Ven : 09h00 - 19h00", "Lun - Ven: 09:00 - 19:00", "Пн - Пт: 09:00 - 19:00"],
+    ["Adres", "Levent, Buyukdere Cd. No: 199, Sisli / Istanbul", "Levent, Buyukdere Cd. No: 199, Sisli / Istanbul", "Levent, Buyukdere Cd. No: 199, Sisli / Estambul", "Levent, Buyukdere Cd. No: 199, Sisli / Istanbul", "Levent, Buyukdere Cd. No: 199, Sisli / Istanbul", "Levent, Buyukdere Cd. No: 199, Sisli / Istanbul", "Левент, пр. Бююкдере №: 199, Шишли / Стамбул"],
+    ["Telif", "© 2026 Atty. Mehmet Demir. All rights reserved.", "© 2026 Rechtsanwalt Mehmet Demir. Alle Rechte vorbehalten.", "© 2026 Abg. Mehmet Demir. Todos los derechos reservados.", "© 2026 Adv. Mehmet Demir. Alle rechten voorbehouden.", "© 2026 Me Mehmet Demir. Tous droits réservés.", "© 2026 Avv. Mehmet Demir. Tutti i diritti riservati.", "© 2026 Адв. Мехмет Демир. Все права защищены."],
+    ["EY Studios Geri", "← EY Studios sample work", "← EY Studios Beispielarbeit", "← Trabajo de muestra de EY Studios", "← EY Studios voorbeeldwerk", "← Réalisation exemple EY Studios", "← Lavoro di esempio EY Studios", "← Пример работы EY Studios"],
+    ["uyari-1", "Please fill in your name and phone number.", "Bitte füllen Sie Name und Telefonnummer aus.", "Por favor, rellene su nombre y número de teléfono.", "Vul uw naam en telefoonnummer in.", "Veuillez remplir votre nom et votre numéro de téléphone.", "Si prega di compilare nome e numero di telefono.", "Пожалуйста, заполните имя и номер телефона."],
+    ["uyari-2", "WhatsApp is opening...", "WhatsApp wird geöffnet...", "Abriendo WhatsApp...", "WhatsApp wordt geopend...", "Ouverture de WhatsApp...", "Apertura di WhatsApp in corso...", "Открытие WhatsApp..."]
+  ]
+};
+
+(function () {
+  var LANGS = ['tr', 'en', 'de', 'es', 'nl', 'fr', 'it', 'ru'];
+  var INFO = { tr: ['tr', 'TR', 'Türkçe'], en: ['gb', 'EN', 'English'], de: ['de', 'DE', 'Deutsch'], es: ['es', 'ES', 'Español'], nl: ['nl', 'NL', 'Nederlands'], fr: ['fr', 'FR', 'Français'], it: ['it', 'IT', 'Italiano'], ru: ['ru', 'RU', 'Русский'] };
+  var cur = 'tr', MAP = {};
+  
+  var key = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
+  var dict = window.EY_PAGE_DICT || {};
+  var rows = dict[key] || dict[Object.keys(dict)[0]];   
+  if (!rows || !rows.length) return;               
+  
+  rows.forEach(function (r) { MAP[r[0]] = r; });
+
+  var T = [];
+  function walk(el) {
+    if (/^(SCRIPT|STYLE|NOSCRIPT|SVG)$/i.test(el.tagName) || el.id === 'eyLang') return;
+    
+    var i18nVal = el.getAttribute('data-i18n');
+    if (i18nVal && MAP[i18nVal]) {
+        T.push({ el: el, row: MAP[i18nVal], isI18n: true });
+    }
+
+    var phVal = el.getAttribute('data-i18n-ph');
+    if (phVal && MAP[phVal]) {
+        T.push({ el: el, row: MAP[phVal], isPh: true });
+    }
+
+    Array.prototype.forEach.call(el.children, function (n) { walk(n); });
+  }
+  walk(document.body);
+
+  function pick(row, lang) { return lang === 'tr' ? row[0] : (row[LANGS.indexOf(lang)] || row[1] || row[0]); }
+  
+  function swap(lang) {
+    T.forEach(function (t) {
+      if (t.isPh) { 
+          t.el.setAttribute('placeholder', pick(t.row, lang)); 
+      }
+      else if (t.isI18n) {
+          t.el.innerHTML = pick(t.row, lang);
+      }
+    });
+    document.documentElement.lang = lang;
+    cur = lang; setBtn();
+  }
+
+  function apply(lang, instant) {
+    if (lang === cur && !instant) return;
+    try { localStorage.setItem('ey-lang', lang); } catch (e) {}
+    if (instant) { swap(lang); return; }
+    document.body.style.opacity = '0';
+    setTimeout(function () { swap(lang); document.body.style.opacity = ''; }, 160);
+  }
+
+  var css = document.createElement('style');
+  css.textContent = 'body{transition:opacity .16s ease}' +
+    '#eyLang{position:fixed;right:25px;bottom:25px;z-index:9998;font-family:var(--font-body)}' +
+    '#eyLang button{font:500 13px/1 var(--font-body);text-transform:uppercase;letter-spacing:1px; cursor:none}' +
+    '#eyBtn{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);color:var(--white);border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:12px 20px;backdrop-filter:blur(10px);box-shadow:0 8px 25px rgba(0,0,0,.6);white-space:nowrap}' +
+    '#eyBtn img,.eyOpt img{width:20px;height:14px;object-fit:cover;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.1)}' +
+    '#eyDrop{position:absolute;right:0;bottom:calc(100% + 10px);background:#050505;border:1px solid rgba(197, 160, 89,0.3);border-radius:2px;box-shadow:0 15px 40px rgba(0,0,0,.9);min-width:190px;overflow:hidden;display:none;flex-direction:column}' +
+    '#eyDrop.show{display:flex}' +
+    '.eyOpt{display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;background:none;border:0;text-align:left;color:var(--text-gray);white-space:nowrap}' +
+    '.eyOpt:hover,.eyOpt.on{background:rgba(197, 160, 89,0.1);color:var(--bronze)}.eyOpt b{min-width:1.9rem}.eyOpt span{font-weight:400;opacity:.5;text-transform:none}';
+  document.head.appendChild(css);
+  var box = document.createElement('div'); box.id = 'eyLang';
+  var FL = {"tr": "<rect width=\"20\" height=\"14\" fill=\"#E30A17\"/><circle cx=\"7.4\" cy=\"7\" r=\"3.6\" fill=\"#fff\"/><circle cx=\"8.4\" cy=\"7\" r=\"2.9\" fill=\"#E30A17\"/><circle cx=\"12\" cy=\"7\" r=\"1\" fill=\"#fff\"/>", "gb": "<rect width=\"20\" height=\"14\" fill=\"#012169\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#fff\" stroke-width=\"2.6\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#C8102E\" stroke-width=\"1\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#fff\" stroke-width=\"4.4\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#C8102E\" stroke-width=\"2.4\"/>", "de": "<rect width=\"20\" height=\"4.7\" fill=\"#000\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#D00\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#FFCE00\"/>", "es": "<rect width=\"20\" height=\"14\" fill=\"#AA151B\"/><rect y=\"3.5\" width=\"20\" height=\"7\" fill=\"#F1BF00\"/>", "nl": "<rect width=\"20\" height=\"4.7\" fill=\"#AE1C28\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#21468B\"/>", "fr": "<rect width=\"6.7\" height=\"14\" fill=\"#0055A4\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#EF4135\"/>", "it": "<rect width=\"6.7\" height=\"14\" fill=\"#009246\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#CE2B37\"/>", "ru": "<rect width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#0039A6\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#D52B1E\"/>"};
+  var flag = function (c) { return '<img src="data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14">' + FL[INFO[c][0]] + '</svg>') + '" alt="">'; };
+  box.innerHTML = '<div id="eyDrop">' + LANGS.map(function (c) { return '<button type="button" class="eyOpt hover-target" data-l="' + c + '">' + flag(c) + '<b>' + INFO[c][1] + '</b><span>' + INFO[c][2] + '</span></button>'; }).join('') + '</div><button type="button" id="eyBtn" class="hover-target" aria-haspopup="true"></button>';
+  document.body.appendChild(box);
+  
+  var btn = document.getElementById('eyBtn'), drop = document.getElementById('eyDrop');
+  function setBtn() {
+    btn.innerHTML = flag(cur) + ' ' + INFO[cur][1] + ' ▲'; btn.setAttribute('aria-label', INFO[cur][2]);
+    Array.prototype.forEach.call(drop.children, function (o) { o.classList.toggle('on', o.getAttribute('data-l') === cur); });
+  }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); drop.classList.toggle('show'); });
+  drop.addEventListener('click', function (e) { var o = e.target.closest('.eyOpt'); if (!o) return; drop.classList.remove('show'); apply(o.getAttribute('data-l')); });
+  document.addEventListener('click', function () { drop.classList.remove('show'); });
+
+  setBtn();
+  var start = null; try { start = localStorage.getItem('ey-lang'); } catch (e) {}
+  if (!start) { var n = (navigator.language || 'tr').slice(0, 2).toLowerCase(); if (INFO[n]) start = n; }
+  if (start && start !== 'tr' && INFO[start]) apply(start, true);
+
+})();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    // --- SÜPER HIZLI İNTRO (FLASH) ---
+    setTimeout(function() {
+        document.getElementById('flash-intro').classList.add('hide');
+        setTimeout(function(){
+            document.body.classList.add('loaded');
+            initEngine();
+        }, 500);
+    }, 800);
+
+    function initEngine() {
+        // --- LENIS SMOOTH SCROLL ---
+        const lenis = new Lenis({
+            duration: 1.25,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true,
+        });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // --- SCROLL REVEAL & NAVBAR ---
+        const nav = document.querySelector('nav');
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
+        reveals.forEach(r => observer.observe(r));
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    }
+
+    // --- ÖZEL İMLEÇ (CURSOR) ---
+    const dot = document.getElementById('cursorDot');
+    const outline = document.getElementById('cursorOutline');
+    const hoverTargets = document.querySelectorAll('a, button, .hover-target');
+
+    window.addEventListener('mousemove', function(e) {
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+        outline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 250, fill: "forwards" });
+    });
+
+    hoverTargets.forEach(target => {
+        target.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+        target.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+    });
+
+    document.addEventListener('eylang', () => {
+        document.querySelectorAll('.hover-target').forEach(target => {
+            target.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+            target.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+        });
+    });
+
+    // --- WHATSAPP FORMU ---
+    document.getElementById('docForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var ad = document.getElementById('ad').value.trim();
+        var tel = document.getElementById('tel').value.trim();
+        var mesaj = document.getElementById('mesaj').value.trim();
+        var stMsg = document.getElementById('stMsg');
+        
+        if(!ad || !tel) {
+            stMsg.style.color = '#ff3b30'; 
+            stMsg.textContent = window.eyT ? window.eyT('uyari-1') : 'Lütfen ad soyad ve telefon alanlarını doldurun.';
+            return;
+        }
+        stMsg.style.color = '#c5a059'; 
+        stMsg.textContent = window.eyT ? window.eyT('uyari-2') : 'WhatsApp açılıyor...';
+        
+        var text = "Merhaba, hukuki danışmanlık talep ediyorum.\nAd/Kurum: " + ad + "\nTelefon: " + tel + "\nKonu: " + (mesaj || "-");
+        var WHATSAPP = "905551234567"; 
+        
+        setTimeout(function() {
+            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank');
+            stMsg.textContent = "";
+            document.getElementById('docForm').reset();
+        }, 800);
+    });
+
+});
+</script>
+
+</body>
+</html>
