@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Alba — three-Michelin-star restaurant in Florence since 1824. Reserve via WhatsApp in 12 languages."><meta property="og:title" content="Alba · Lorenzo Vallesi"><meta property="og:description" content="Florence, since 1824."><script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Alba","servesCuisine":"Italian","foundingDate":"1824","address":{"@type":"PostalAddress","streetAddress":"Via dei Tornabuoni 12","addressLocality":"Firenze","addressCountry":"IT"},"telephone":"+390550000000"}</script>
+<meta name="theme-color" content="#190c09"><meta name="color-scheme" content="dark"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23190c09%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27%23f0a92e%27%3E%E2%9C%A6%3C/text%3E%3C/svg%3E"><script>document.documentElement.classList.add("js")</script>
+<title>Alba · Lorenzo Vallesi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--ink:#190c09;--ink2:#2b1511;--paper:#f4e8cf;--saf:#f0a92e;--wine:#8a2232;--olive:#8d9a45;--mute:#cdb09c;--serif:'Fraunces','Noto Serif',Georgia,serif;--sans:'Figtree',system-ui,'Noto Sans Arabic','Noto Color Emoji',sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.7 var(--sans)}
+:focus-visible{outline:2px solid var(--saf);outline-offset:3px}
+#intro{position:fixed;inset:0;z-index:99;background:#0d0504;display:grid;place-items:center;overflow:hidden;transition:opacity 1.1s}
+#intro.out{opacity:0;pointer-events:none}
+.scene{display:flex;perspective:900px;transform:scale(3.4);will-change:transform;animation:pull 3.4s cubic-bezier(.65,0,.25,1) forwards}
+@keyframes pull{0%,9%{transform:scale(3.4)}100%{transform:scale(1)}}
+.pg{width:min(38vw,230px);aspect-ratio:3/4;background:linear-gradient(90deg,#d6bf8e,var(--paper) 18%);color:var(--ink);padding:9% 8%;font:italic 300 clamp(11px,2.2vw,15px)/1.6 var(--serif);display:flex;flex-direction:column;justify-content:center;text-align:center}
+.pg+.pg{background:linear-gradient(270deg,#d6bf8e,var(--paper) 18%);transform-origin:left;animation:flip 1s 2.5s ease-in forwards}
+@keyframes flip{to{transform:rotateY(-160deg);opacity:.2}}
+.pg b{font:600 clamp(26px,6vw,46px)/1 var(--serif);letter-spacing:.2em;font-style:normal;margin-bottom:.4em}
+#skip{position:absolute;bottom:24px;inset-inline-end:24px;background:0;border:1px solid #fff4;color:var(--mute);padding:8px 16px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer}
+header{position:fixed;top:env(safe-area-inset-top,0px);inset-inline:0;z-index:20;display:flex;align-items:center;gap:26px;padding:16px 5vw;background:linear-gradient(var(--ink),#190c0900)}
+header .logo{font:600 24px var(--serif);letter-spacing:.3em;margin-inline-end:auto}
+header a{color:var(--paper);text-decoration:none;font-size:15px}
+.lang{position:relative}
+#lb{background:var(--ink2);color:var(--paper);border:1px solid #fff2;border-radius:99px;padding:8px 16px;font:inherit;font-size:14px;cursor:pointer}
+#lm{display:none;position:absolute;inset-inline-end:0;top:46px;width:min(300px,86vw);grid-template-columns:1fr 1fr;gap:6px;padding:10px;background:#2b1511;border:1px solid #fff2;border-radius:18px;box-shadow:0 20px 50px #000a}
+#lm.on{display:grid}
+#lm button{display:flex;gap:10px;align-items:center;background:0;border:0;color:var(--paper);font:600 14px var(--sans);padding:12px;border-radius:12px;cursor:pointer;text-align:start}
+#lm button[aria-current=true]{background:var(--saf);color:var(--ink)}
+.hero{min-height:100vh;min-height:100svh;position:relative;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:4vw;padding:14vh 5vw 8vh;background:radial-gradient(70% 60% at 85% 45%,#5c1a24,transparent 70%),var(--ink)}
+.hero h1{font:300 clamp(90px,17vw,250px)/.82 var(--serif);margin:0;letter-spacing:-.04em}
+.hero h1 span{display:block;font:italic 300 clamp(22px,3.4vw,46px)/1.2 var(--serif);color:var(--saf);letter-spacing:0;margin-top:.7em}
+.hero p{max-width:32ch;color:var(--mute);font-size:19px;margin:26px 0 32px}
+.btn{display:inline-block;background:var(--saf);color:var(--ink);border:0;border-radius:99px;padding:16px 36px;font:600 16px var(--sans);text-decoration:none;cursor:pointer;transition:transform .25s}
+.btn:hover{transform:translateY(-3px)}
+.pw{position:relative;width:min(100%,560px);justify-self:center;aspect-ratio:1}
+.plate{position:absolute;inset:9%;border-radius:50%;background:radial-gradient(circle,var(--paper) 0 58%,#d9c293 59% 62%,var(--paper) 63%);box-shadow:0 40px 80px #000a,inset 0 0 40px #0003;animation:spin 60s linear infinite}
+.plate:before{content:"";position:absolute;inset:22%;border-radius:50%;background:conic-gradient(var(--wine),var(--saf),var(--olive),var(--wine));filter:blur(16px);opacity:.9}
+.plate:after{content:"";position:absolute;inset:36%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6 0 12%,transparent 13%),radial-gradient(circle,#2b1511 0 45%,#4a2418);box-shadow:0 14px 26px #0008}
+.ring{position:absolute;inset:0;width:100%;animation:spin 40s linear infinite reverse}
+.ring text{fill:var(--paper);font:300 9.6px var(--serif);letter-spacing:.32em}
+@keyframes spin{to{transform:rotate(360deg)}}
+body.in .pw{animation:land 1.9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes land{from{transform:scale(1.15);opacity:0}}
+.band{overflow:hidden;background:var(--saf);color:var(--ink);padding:16px 0;white-space:nowrap;font:italic 300 28px var(--serif)}
+.band div{display:inline-block;animation:mq 40s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:13vh 5vw}
+h2{font:300 clamp(44px,7vw,96px)/1 var(--serif);margin:0 0 .6em;letter-spacing:-.02em}
+.chef{display:grid;grid-template-columns:1fr 1.2fr;gap:7vw;align-items:center;background:var(--ink2)}
+.portrait{aspect-ratio:4/5;max-width:440px;background:radial-gradient(circle at 50% 30%,#b84a3a,var(--wine) 45%,var(--ink) 90%);border-radius:999px 999px 10px 10px;display:grid;place-items:center;font:italic 300 clamp(70px,13vw,160px) var(--serif);color:var(--saf)}
+.chef p{font:300 clamp(21px,2.5vw,30px)/1.5 var(--serif);max-width:28em}
+.menu ol{margin:0;padding:0;list-style:none;max-width:980px;counter-reset:c}
+.menu li{counter-increment:c;display:grid;grid-template-columns:3em 1fr;gap:10px;padding:28px 0;border-bottom:1px solid #fff2;font:300 clamp(26px,4vw,48px)/1.15 var(--serif);transition:color .3s,padding .3s}
+.menu li:before{content:counter(c,upper-roman);font:italic 300 .6em var(--serif);color:var(--saf);align-self:center}
+.menu li em{display:block;font:italic 300 .5em var(--serif);color:var(--mute);margin-top:6px}
+.menu li:hover{color:var(--saf);padding-inline-start:18px}
+#book{background:var(--wine);margin:0 3vw 3vw;border-radius:36px;padding:10vh 5vw}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px}
+form .w{grid-column:1/-1}
+label{display:grid;gap:6px;font-size:14px;color:#f4e8cfcc}
+input,select{width:100%;background:#2b151166;color:var(--paper);border:1px solid #f4e8cf55;border-radius:14px;padding:14px;font:inherit;font-size:16px}
+select option{background:#2b1511}
+.dt{display:grid;grid-template-columns:.7fr 1.5fr .9fr;gap:6px}
+.ph{display:grid;grid-template-columns:minmax(0,.9fr) 1.4fr;gap:8px}
+#err{color:#ffd9a0;min-height:1.5em;margin:0}
+#book .btn{background:var(--paper)}
+footer{padding:30px 5vw 50px;color:var(--mute);font-size:14px;text-align:center}
+[dir=rtl] .hero h1,[dir=rtl] h2{letter-spacing:0}
+:lang(zh){--serif:'Noto Serif SC',serif}
+@media(max-width:820px){.hero,.chef,form{grid-template-columns:1fr}header a{display:none}.pw{max-width:380px}.portrait{max-width:300px}}
+@media(prefers-reduced-motion:reduce){.scene,.plate,.ring,.band div,.pg+.pg{animation:none}body.in .hero h1,body.in .pw{animation:none}}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.hero .since{font:italic 300 clamp(20px,2.4vw,30px)/1.2 var(--serif);color:var(--saf);margin:0 0 20px;max-width:none;display:flex;align-items:center;gap:14px}
+.hero .since:before{content:"";width:48px;height:1px;background:var(--saf)}
+.hero>.l{position:relative}
+.wm{position:absolute;inset-inline:0;bottom:-3vw;text-align:center;font:600 clamp(160px,34vw,520px)/.8 var(--serif);color:transparent;-webkit-text-stroke:1px rgba(244,232,207,.16);pointer-events:none;-webkit-user-select:none;user-select:none}
+.seal{position:absolute;inset-inline-end:3%;bottom:7%;width:21%;aspect-ratio:1;border-radius:50%;background:var(--saf);color:var(--ink);display:grid;place-items:center;font:600 clamp(13px,2.2vw,22px) var(--serif);transform:rotate(-12deg);box-shadow:0 14px 30px #000a,inset 0 0 0 5px var(--saf),inset 0 0 0 6px #190c0955}
+.hist{background:var(--ink2)}
+.hist ol{list-style:none;margin:0;padding:0;max-width:900px;border-inline-start:1px solid rgba(240,169,46,.55)}
+.hist li{position:relative;padding:0 0 60px;padding-inline-start:min(8vw,80px)}
+.hist li:before{content:"";position:absolute;inset-inline-start:-6px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--saf)}
+.hist strong{display:block;font:300 clamp(54px,9vw,116px)/1 var(--serif);letter-spacing:-.03em;color:var(--saf)}
+.hist span{font:300 clamp(20px,2.4vw,30px)/1.4 var(--serif);color:var(--paper)}
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease var(--d,0s),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.js .rv.v{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+#cl{position:fixed;left:0;top:0;width:900px;height:900px;margin:-450px 0 0 -450px;z-index:90;pointer-events:none;will-change:transform;transform:translate3d(72vw,36vh,0);background:radial-gradient(circle,rgba(240,169,46,.15),rgba(240,169,46,.04) 45%,transparent 66%)}
+
+#pr{position:fixed;top:0;inset-inline:0;height:3px;z-index:100;background:var(--saf);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.steam{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.pw{translate:calc(var(--px,0)*20px) calc(var(--py,0)*14px);transition:translate .5s ease-out}
+.wm{transform:translate3d(calc(var(--px,0)*-44px),calc(var(--py,0)*-26px),0);transition:transform .6s ease-out}
+.L{display:block;overflow:hidden;font-style:normal;padding:0 .05em .14em}
+.L b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(105%)}
+body.in .L b{animation:rise 1.6s cubic-bezier(.16,.9,.2,1) both;animation-delay:calc(var(--i)*.12s + .35s)}
+@keyframes rise{from{opacity:1;transform:translateY(105%) rotate(7deg)}to{opacity:1;transform:none}}
+.js .menu li.rv.v{transition:opacity 1s,transform 1s,color .3s,padding .3s}
+@media(prefers-reduced-motion:reduce){#cl{animation:none}.L b{opacity:1;transform:none;animation:none!important}}
+.back{position:fixed;inset-inline-start:max(14px,env(safe-area-inset-left,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:100;background:#0b0b0b;color:#fff;text-decoration:none;font:600 14px/1 var(--sans);padding:12px 16px;border-radius:12px;border:1px solid #ffffff22;box-shadow:0 8px 24px #0009}
+.back:hover{background:#1c1c1c}
+footer{padding-bottom:90px!important}
+.sig{display:inline-block;margin-top:14px;font:italic 300 22px var(--serif);color:var(--saf);text-decoration:none;border-bottom:1px solid var(--saf)}
+.pg{box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.plate,.ring{will-change:transform;animation-play-state:paused}
+body.in .plate,body.in .ring{animation-play-state:running}
+body:not(.in) .pw{visibility:hidden}
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+.hero h1{font-size:clamp(110px,21vw,330px)}
+.pw{width:min(118%,780px);margin-inline-end:-5vw}
+::selection{background:var(--saf);color:var(--ink)}
+@media(max-width:820px){.pw{width:min(100%,420px);margin:0 auto}}
+.hero{display:block;padding:0}
+.hero>.l{position:absolute;inset-inline-start:5vw;top:19vh;z-index:4;max-width:min(34ch,44vw)}
+.hero .sub{font:italic 300 clamp(18px,2vw,26px)/1.3 var(--serif);color:var(--paper);margin:0 0 14px;max-width:none}
+.hero .wm{bottom:auto;top:10vh}
+.hero .pw{position:absolute;inset-inline-end:-3vw;top:11vh;width:min(66vh,54vw);margin:0;z-index:3}
+.hero .mega{position:absolute;inset-inline:0;bottom:-.05em;margin:0;text-align:center;font-size:clamp(130px,33vw,560px);line-height:.8;letter-spacing:-.05em;color:var(--paper);z-index:1}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(rgba(25,12,9,0),var(--ink));pointer-events:none;z-index:2}
+.hz{height:420vh;position:relative;padding:0;background:var(--ink)}
+.stk{position:sticky;top:0;height:100vh;overflow:hidden}
+.tr{display:flex;height:100%;width:400vw;will-change:transform}
+.pn{flex:0 0 100vw;height:100%;display:grid;align-content:center;padding:0 7vw;position:relative}
+.pn:nth-child(even){background:radial-gradient(80% 80% at 70% 50%,#5c1a24,var(--ink))}
+.pn strong{font:300 clamp(130px,32vw,520px)/.8 var(--serif);color:var(--saf);letter-spacing:-.05em}
+.pn span{font:italic 300 clamp(24px,3.4vw,52px)/1.25 var(--serif);max-width:20em;margin-top:4vh}
+.ht{position:absolute;top:calc(90px + env(safe-area-inset-top,0px));inset-inline-start:7vw;z-index:2;font:italic 300 22px var(--serif);color:var(--mute);margin:0;letter-spacing:0}
+.bar{position:absolute;bottom:6vh;inset-inline:7vw;height:2px;background:rgba(255,255,255,.15)}
+.bar i{display:block;height:100%;background:var(--saf);transform-origin:left;transform:scaleX(0)}
+[dir=rtl] .bar i{transform-origin:right}
+.paper{background:var(--paper);color:var(--ink);position:relative;overflow:hidden}
+.paper:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 47px,rgba(25,12,9,.07) 47px 48px);pointer-events:none}
+.card{position:relative;max-width:860px;margin:0 auto;padding:clamp(28px,6vw,70px);border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:-10px;background:#faf1de;box-shadow:0 30px 60px rgba(25,12,9,.25)}
+.card h2{text-align:center;font-style:italic;color:var(--ink);margin-bottom:.4em}
+.mn{list-style:none;margin:0;padding:0}
+.mn li{display:flex;align-items:baseline;gap:12px;padding:16px 0;font:italic 300 clamp(22px,3.4vw,38px)/1.2 var(--serif)}
+.mn li:after{content:"";flex:1;order:2;border-bottom:1px dotted rgba(25,12,9,.5)}
+.mn li b{order:3;font:600 .8em var(--serif);font-style:normal}
+.mn small{display:block;font:400 .45em var(--sans);font-style:normal;color:#6b4a3a}
+.sg{text-align:end;font:italic 300 36px var(--serif);color:var(--wine);margin-top:34px}
+@media(max-width:820px){.hero{display:flex;flex-direction:column;padding:96px 6vw 0}
+.hero>.l,.hero .pw,.hero .mega{position:relative;inset:auto}
+.hero>.l{max-width:none;order:2}
+.hero .pw{width:min(78vw,380px);margin:0 auto;order:1}
+.hero .mega{order:3;margin:auto -6vw 0;font-size:35vw}
+.hero .wm{top:14vh}}
+.hero .pw{inset-inline-end:4vw;top:12vh;width:min(60vh,46vw)}
+.chef .portrait{max-width:380px}
+.dc:first-letter{float:inline-start;font:300 4.2em/.8 var(--serif);padding-inline-end:.08em;color:var(--saf)}
+:lang(zh) .dc:first-letter,:lang(ar) .dc:first-letter,:lang(fa) .dc:first-letter{float:none;font:inherit;padding:0;color:inherit}
+.sg2{font:italic 300 36px var(--serif);color:var(--saf);margin-top:26px}
+.aw{padding:9vh 5vw;background:var(--ink)}
+.ag{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:0 auto}
+.ag>div{padding:18px 4vw;border-inline-start:1px solid rgba(240,169,46,.4)}
+.ag strong{display:block;font:300 clamp(44px,6vw,84px)/1 var(--serif);color:var(--saf)}
+.ag span{color:var(--mute);font-size:15px}
+.paper{background:radial-gradient(70% 55% at 50% 35%,#40201a,var(--ink));color:#2c170d;overflow:visible}
+.paper:before{display:none}
+.sheet{position:relative;max-width:1020px;margin:0 auto}.sheet:before{content:"";position:absolute;inset:-40px -12px;background:radial-gradient(ellipse at 50% 55%,rgba(0,0,0,.6),transparent 68%);pointer-events:none}
+.card{max-width:none;margin:0;color:#2c170d;border:0;outline:0;box-shadow:none;padding:clamp(34px,6vw,84px);position:relative;
+background:radial-gradient(ellipse at 14% 8%,rgba(125,70,20,.38),transparent 42%),radial-gradient(ellipse at 88% 26%,rgba(125,70,20,.26),transparent 36%),radial-gradient(ellipse at 38% 96%,rgba(95,50,15,.4),transparent 46%),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),linear-gradient(#e9d6a6,#d6bb82);
+clip-path:polygon(0 1.2%,3% 0,12% .7%,25% 0,40% .6%,55% 0,70% .7%,85% 0,100% .9%,99.4% 20%,100% 45%,99.3% 70%,100% 99%,88% 100%,70% 99.3%,50% 100%,30% 99.5%,10% 100%,0 99%,.5% 75%,0 50%,.6% 25%)}
+.card:before{content:"";position:absolute;inset:16px;border:1px solid rgba(60,30,10,.55);pointer-events:none}
+.card:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 50%,rgba(80,40,10,.55) 100%),linear-gradient(90deg,transparent calc(50% - 1px),rgba(60,30,10,.2) 50%,transparent calc(50% + 1px)),linear-gradient(transparent calc(34% - 1px),rgba(60,30,10,.16) 34%,transparent calc(34% + 1px))}
+.card h2{color:#2c170d;text-align:center;font-style:italic;margin:0}
+.sub2{text-align:center;font:italic 300 20px var(--serif);color:#6b3f22;margin:6px 0 34px}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,6vw,80px)}
+.ct{margin-bottom:30px}
+.ct h3{font:600 26px var(--serif);color:var(--wine);margin:0 0 6px;padding-bottom:8px;border-bottom:1px solid rgba(60,30,10,.5)}
+.mn li{padding:11px 0;font-size:clamp(18px,2.1vw,25px)}
+.mn li:after{border-bottom-color:rgba(44,23,13,.55)}
+.mn small{color:#6b3f22}
+.vn{max-width:560px;margin-inline:auto}
+.deg{text-align:center;font:italic 300 clamp(18px,2.2vw,26px)/1.4 var(--serif);margin:8px 0 0;padding-top:20px;border-top:1px solid rgba(60,30,10,.5)}
+.card .sg{color:#6e1d27}
+.vis{background:var(--ink2)}
+.vg{display:grid;grid-template-columns:repeat(3,1fr);gap:4vw;max-width:1100px}
+.vg p{font:300 clamp(22px,2.6vw,34px)/1.4 var(--serif);margin:0}
+@media(max-width:820px){.mg,.vg{grid-template-columns:1fr}.ag{grid-template-columns:1fr 1fr}.ag>div{padding:18px 5vw}}
+.js .hero .l>*{opacity:0}
+body.in .hero .l>*{opacity:1;animation:up 1.1s cubic-bezier(.2,.8,.2,1) calc(var(--k,0)*.13s + 1.1s) backwards}
+@keyframes up{from{opacity:0;transform:translateY(28px)}}
+body.in .seal{animation:pop 1s 1.9s cubic-bezier(.3,1.5,.5,1) backwards}
+@keyframes pop{from{opacity:0;transform:rotate(-12deg) scale(.3)}}
+.hero .pw{translate:calc(var(--px,0)*20px) calc(var(--py,0)*14px + var(--sy,0)*.12px);transition:none}
+.hero .mega{translate:0 calc(var(--sy,0)*.2px)}
+.hero>.l{translate:0 calc(var(--sy,0)*-.1px)}
+.pn strong{translate:calc(var(--p,0)*-9vw) 0}
+.pn span{translate:calc(var(--p,0)*5vw) 0}
+[dir=rtl] .pn strong{translate:calc(var(--p,0)*9vw) 0}
+[dir=rtl] .pn span{translate:calc(var(--p,0)*-5vw) 0}
+.band.rev{background:var(--wine);color:var(--paper);font-size:26px}
+.band.rev div{animation-direction:reverse;animation-duration:55s}
+.ag>div:first-child strong{animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.5}}
+.mn li{transition:translate .3s}
+.mn li:hover{translate:8px 0}
+.btn{transition:transform .25s,translate .25s}
+.sheet{transform:translateZ(0)}
+.chef,.aw,.vis,#book{content-visibility:auto;contain-intrinsic-size:auto 800px}
+.cur{position:fixed;left:0;top:0;width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid var(--saf);border-radius:50%;z-index:101;pointer-events:none;opacity:0;will-change:transform;transition:opacity .3s,scale .25s,background .25s}
+.cur.on{opacity:1}.cur.h{scale:1.8;background:rgba(240,169,46,.2)}
+@media(pointer:coarse){.cur{display:none}}
+@media(prefers-reduced-motion:reduce){.js .hero .l>*{opacity:1}body.in .hero .l>*,body.in .seal,.ag>div:first-child strong{animation:none}.hero .mega,.hero>.l,.pn strong,.pn span{translate:none}}
+.hero .mega b{padding:0 .07em;margin:0 -.07em;background:linear-gradient(180deg,#f4e8cf 35%,#f0a92e 95%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.cs{height:480vh;position:relative;background:radial-gradient(70% 60% at 70% 50%,#4a1a1c,var(--ink))}
+.cw{position:absolute;inset:0;display:grid;place-items:center end;padding-inline-end:7vw}
+.cp{position:relative;width:min(60vh,40vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--paper) 0 58%,#d9c293 59% 62%,var(--paper) 63%);box-shadow:0 40px 80px #000a;transform:rotate(calc(var(--r,0)*1deg));will-change:transform}
+.sw{position:absolute;inset:16%;border-radius:50%;opacity:0;transition:opacity .7s}
+.sw.on{opacity:1}
+.s0{background:radial-gradient(circle at 62% 38%,#fff3 0 6%,transparent 7%),radial-gradient(circle at 40% 62%,#2b1511 0 7%,transparent 8%),radial-gradient(circle,#ff7a59,#c63b2f 42%,transparent 70%)}
+.s1{background:radial-gradient(circle at 60% 40%,#8d9a45 0 6%,transparent 7%),radial-gradient(circle,#f6b33c,#c9741a 45%,transparent 70%)}
+.s2{background:radial-gradient(circle at 38% 40%,#c0152f 0 8%,transparent 9%),radial-gradient(circle,#8a2232,#3a0a12 50%,transparent 72%)}
+.s3{background:radial-gradient(circle at 55% 35%,#fff 0 5%,transparent 6%),radial-gradient(circle,#fff3d6,#f0c36a 50%,transparent 72%)}
+.cn{position:absolute;inset:0;pointer-events:none}
+.c{position:absolute;inset-inline-start:6vw;top:50%;max-width:calc(83vw - min(60vh,40vw));opacity:0;translate:0 calc(-50% + 50px);transition:opacity .6s,translate .9s cubic-bezier(.2,.8,.2,1)}
+.c.on{opacity:1;translate:0 -50%}
+.c em{display:block;font:italic 300 clamp(28px,4vw,56px) var(--serif);color:var(--saf)}
+.c h3{font:300 clamp(36px,4.8vw,80px)/1 var(--serif);margin:.1em 0 .3em;letter-spacing:-.02em}
+.c p{font:italic 300 clamp(20px,2.2vw,30px) var(--serif);color:var(--mute);margin:0}
+@media(max-width:820px){.cw{place-items:start center;padding:16vh 0 0}.cp{width:min(68vw,38vh)}.c{inset-inline:6vw;max-width:none;top:auto;bottom:10vh;translate:0 50px}.c.on{translate:0 0}.c h3{font-size:clamp(36px,10vw,60px)}}
+.cur{width:24px;height:56px;margin:0;border:0;border-radius:0;background:none;transform-origin:50% 0;filter:drop-shadow(0 8px 8px rgba(0,0,0,.6));z-index:120}
+.cur.h{scale:1.3;background:none}
+.cur svg{display:block}
+.cur.st{animation:stab .35s ease-out}
+@keyframes stab{40%{translate:0 14px}}
+.fk,.fk *{cursor:none!important}
+.fk select,.fk input{cursor:auto!important}
+.btn:hover{box-shadow:0 12px 44px rgba(240,169,46,.4)}
+.fab{position:fixed;inset-inline-end:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:100;background:var(--saf);color:var(--ink);padding:14px 26px;border-radius:99px;font:600 15px var(--sans);text-decoration:none;box-shadow:0 12px 36px rgba(0,0,0,.5);opacity:0;translate:0 20px;pointer-events:none;transition:opacity .4s,translate .4s}
+.fab.on{opacity:1;translate:0 0;pointer-events:auto}
+.hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;z-index:0}
+html:not(.js) #intro{display:none}
+#tel{direction:ltr}
+[dir=rtl] #tel{text-align:right}
+.priv{font-size:13px;line-height:1.5;color:rgba(244,232,207,.7);margin:0}
+.vg a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(240,169,46,.5);transition:color .25s}
+.vg a:hover{color:var(--saf)}
+.lamp{position:absolute;top:0;inset-inline-end:calc(4vw + min(60vh,46vw)/2 - 1px);width:2px;height:11vh;background:linear-gradient(rgba(244,232,207,.1),rgba(244,232,207,.8));transform-origin:50% 0;z-index:4;pointer-events:none;animation:sway 7s ease-in-out infinite}
+.lamp:after{content:"";position:absolute;left:50%;top:100%;width:84px;height:46px;margin-left:-42px;border-radius:84px 84px 6px 6px;background:linear-gradient(#f9d98a,#f0a92e 70%,#b9741a);box-shadow:0 18px 70px 12px rgba(240,169,46,.45)}
+.lamp:before{content:"";position:absolute;left:50%;top:calc(100% + 40px);width:min(60vh,46vw);height:34vh;margin-left:calc(min(60vh,46vw)/-2);background:linear-gradient(rgba(240,169,46,.22),rgba(240,169,46,0));clip-path:polygon(42% 0,58% 0,100% 100%,0 100%)}
+@keyframes sway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+@keyframes drop{from{translate:0 -60vh}}
+body:not(.in) .lamp{visibility:hidden}
+body.in .lamp{animation:drop 1.5s 1.1s cubic-bezier(.3,1.25,.5,1) backwards,sway 7s 1.1s ease-in-out infinite}
+@media(max-width:820px){.lamp{display:none}}
+@media(prefers-reduced-motion:reduce){.lamp,body.in .lamp{animation:none}}
+@media(max-width:820px){
+.hero{padding:120px 6vw 0}
+.hero .pw{position:relative;inset:auto;top:auto;width:min(78vw,380px);margin:0 auto;order:1}
+.hero>.l{position:relative;inset:auto;max-width:none;order:2;margin-top:5vh}
+.hero .l p,.hero .sub{text-align:start}
+.hero .mega{position:relative;inset:auto;order:3;margin:auto -6vw 0;font-size:35vw}
+.lamp{display:block;inset-inline-end:auto;left:50%;margin-left:-1px;height:56px}
+.lamp:before{width:min(78vw,380px);margin-left:calc(min(78vw,380px)/-2);height:34vh}
+.ph{grid-template-columns:1fr}
+.back{font-size:12px;padding:9px 12px}
+.fab{padding:12px 20px;font-size:14px}
+}
+@media(max-width:360px){header{gap:10px;padding:12px 4vw}header .logo{font-size:18px;letter-spacing:.2em}#lb{padding:6px 10px;font-size:12px}.back{font-size:11px;padding:7px 10px}.fab{padding:10px 16px;font-size:13px}}
+@media(min-width:520px) and (max-width:820px){.hero .pw{width:min(60vw,460px)}.hero .l p{font-size:22px}}
+</style></head><body>
+<noscript><p style="padding:24px;margin:0;background:#190c09;color:#f4e8cf">Alba · Firenze — <a style="color:#f0a92e" href="https://wa.me/393331234567">WhatsApp</a></p></noscript>
+<div id="cl"></div><div id="pr"></div>
+<div id="intro" aria-hidden="true"><div class="scene"><div class="pg"><i id="i1"></i></div><div class="pg"><b>ALBA</b><i>Lorenzo Vallesi</i></div></div><button id="skip">Skip</button></div>
+<header><div class="logo">ALBA</div><a href="#menu" data-t="m"></a><a href="#hist" data-h="1"></a><a href="#chef" data-h="6"></a><a href="#book" data-t="r"></a>
+<div class="lang"><button id="lb" aria-haspopup="true" aria-expanded="false">🌐 <span id="lc"></span></button><div id="lm" role="menu"></div></div></header>
+<main>
+<div class="hero"><div class="wm" aria-hidden="true">1824</div><div class="lamp" aria-hidden="true"></div>
+<div class="pw" aria-hidden="true"><div class="plate"></div><svg class="ring" viewBox="0 0 200 200"><path id="cp" d="M100 100m-93 0a93 93 0 1 1 186 0a93 93 0 1 1-186 0" fill="none"/><text><textPath href="#cp" xlink:href="#cp">✦ ✦ ✦ ALBA · TRE STELLE · FIRENZE · ALBA · TRE STELLE · FIRENZE ·</textPath></text></svg><div class="seal">✦✦✦</div></div>
+<div class="l"><p class="since" data-h="0"></p><p class="sub">Lorenzo Vallesi · Firenze</p><p data-t="t"></p><a class="btn" href="#book" data-t="r"></a></div>
+<h1 class="mega" aria-label="Alba"><i class="L" aria-hidden="true"><b style="--i:0">A</b><b style="--i:1">l</b><b style="--i:2">b</b><b style="--i:3">a</b></i></h1></div>
+<div class="band" aria-hidden="true"><div>Crudo di gambero rosso ✦ Tortelli di zucca ✦ Piccione, fegato, ciliegia ✦ Sfera di latte ✦ Crudo di gambero rosso ✦ Tortelli di zucca ✦ Piccione, fegato, ciliegia ✦ Sfera di latte ✦</div></div>
+<section class="hz" id="hist"><div class="stk"><h2 class="ht" data-h="1"></h2><div class="tr" id="tr"><div class="pn"><strong>1824</strong><span data-h="2"></span></div><div class="pn"><strong>1889</strong><span data-h="3"></span></div><div class="pn"><strong>1946</strong><span data-h="4"></span></div><div class="pn"><strong>2019</strong><span data-h="5"></span></div></div><div class="bar"><i id="hb"></i></div></div></section>
+<section class="cs" id="courses"><div class="stk"><div class="cw"><div class="cp"><i class="sw s0"></i><i class="sw s1"></i><i class="sw s2"></i><i class="sw s3"></i></div></div><div class="cn"><div class="c"><em>I</em><h3>Crudo di gambero rosso</h3><p>agrumi, nero di seppia</p></div><div class="c"><em>II</em><h3>Tortelli di zucca</h3><p>amaretto, burro nocciola</p></div><div class="c"><em>III</em><h3>Piccione, fegato, ciliegia</h3><p>vin santo</p></div><div class="c"><em>IV</em><h3>Sfera di latte</h3><p>miele, timo</p></div></div><div class="bar"><i id="cbar"></i></div></div></section>
+<section class="chef" id="chef"><div class="portrait">LV</div><div><h2 data-h="6"></h2><p class="dc" data-h="7"></p><div class="sg2">Lorenzo Vallesi</div></div></section>
+<section class="aw"><div class="ag"><div><strong>✦✦✦</strong><span>Guida Michelin</span></div><div><strong>3</strong><span>Gambero Rosso · Tre Forchette</span></div><div><strong>19/20</strong><span>Gault&amp;Millau</span></div><div><strong>202</strong><span>1824 – 2026</span></div></div></section>
+<div class="band rev" aria-hidden="true"><div>ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ ALBA ✦ 1824 ✦ FIRENZE ✦ TRE STELLE ✦ </div></div>
+<section class="paper" id="menu"><div class="sheet"><div class="card"><h2 data-t="m"></h2><p class="sub2">Autunno 2026 · Firenze</p><div class="mg"><div class="ct"><h3>Antipasti</h3><ul class="mn"><li><span>Crudo di gambero rosso<small>agrumi, nero di seppia</small></span><b>€ 48</b></li><li><span>Carciofo, pecorino, tartufo nero<small>olio nuovo</small></span><b>€ 44</b></li><li><span>Ostrica, mela verde, finocchio<small>limone</small></span><b>€ 38</b></li></ul></div><div class="ct"><h3>Primi</h3><ul class="mn"><li><span>Tortelli di zucca<small>amaretto, burro nocciola</small></span><b>€ 42</b></li><li><span>Ravioli di cinghiale<small>ginepro, cioccolato</small></span><b>€ 46</b></li><li><span>Risotto al Chianti<small>midollo, rosmarino</small></span><b>€ 44</b></li></ul></div><div class="ct"><h3>Secondi</h3><ul class="mn"><li><span>Piccione, fegato, ciliegia<small>vin santo</small></span><b>€ 68</b></li><li><span>Rombo alla brace<small>capperi, limone</small></span><b>€ 72</b></li><li><span>Guancia di manzo<small>polenta, Brunello</small></span><b>€ 64</b></li></ul></div><div class="ct"><h3>Dolci</h3><ul class="mn"><li><span>Sfera di latte<small>miele, timo</small></span><b>€ 36</b></li><li><span>Zuppa inglese<small>alchermes, crema</small></span><b>€ 34</b></li><li><span>Pecorino e miele di castagno<small>pere</small></span><b>€ 28</b></li></ul></div></div><div class="ct vn"><h3>Vini</h3><ul class="mn"><li><span>Brunello di Montalcino 2016<small>Toscana</small></span><b>€ 220</b></li><li><span>Chianti Classico Riserva 2018<small>Toscana</small></span><b>€ 95</b></li><li><span>Vin Santo del Chianti 2009<small>al bicchiere</small></span><b>€ 18</b></li></ul></div><p class="deg">Menu degustazione, sette portate — € 290 · con abbinamento € 420</p><div class="sg">Lorenzo Vallesi</div></div></div></section>
+<section class="vis" id="visit"><h2 data-h="8"></h2><div class="vg"><p><a href="https://www.google.com/maps/search/?api=1&amp;query=Via+dei+Tornabuoni+12+Firenze" target="_blank" rel="noopener">Via dei Tornabuoni 12<br>50123 Firenze, Italia</a></p><p id="hrs"></p><p><a href="tel:+390550000000">+39 055 000 0000</a><br><a href="mailto:ciao@alba-firenze.it">ciao@alba-firenze.it</a></p></div></section>
+<section id="book"><h2 data-t="r"></h2>
+<form id="f" novalidate><label class="w"><span data-t="n"></span><input id="nm" autocomplete="name" required></label>
+<label class="w"><span data-t="ph"></span><div class="ph"><select id="cc" aria-label="Country code"></select><input id="tel" type="tel" inputmode="tel" autocomplete="tel-national" required></div></label>
+<label><span data-t="d"></span><div class="dt"><select id="dd" aria-label="Day"></select><select id="dm" aria-label="Month"></select><select id="dy" aria-label="Year"></select></div></label>
+<label><span data-t="g"></span><select id="gs"></select></label>
+<label><span data-h="9"></span><select id="tm"></select></label>
+<label class="w"><span data-h="10"></span><input id="nt" maxlength="200"></label>
+<p id="err" class="w" role="alert"></p><div class="w"><button class="btn" data-t="s"></button></div><p class="priv w" data-h="11"></p></form></section></main>
+<footer>© Alba — Via dei Tornabuoni 12, Firenze<br><a class="sig" href="https://eystudios.com.tr" target="_blank" rel="noopener">EY Studios</a></footer>
+<a class="fab" href="#book" data-t="r"></a>
+<a class="back" href="index.html">← EY Studios örnek çalışma</a>
+<script>
+try{history.scrollRestoration="manual";if(location.hash)history.replaceState(null,"",location.pathname+location.search)}catch(e){}scrollTo(0,0);addEventListener("pageshow",e=>{if(e.persisted)scrollTo(0,0)});
+{const g=document.createElement("link");g.rel="stylesheet";g.href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Figtree:wght@400;600&family=Noto+Color+Emoji&display=swap";document.head.appendChild(g)}
+const WA="393331234567",HERO_VIDEO=""; // set HERO_VIDEO to an mp4 URL to play a background video; // restaurant WhatsApp number, digits only with country code
+const L={tr:["Türkçe","🇹🇷","Menü","Şef","Rezervasyon","Toskana'nın ritmiyle, sabırla pişen üç yıldızlı bir sofra.","Lorenzo Vallesi, mutfağa on dört yaşında Floransa'da bir fırının önünde başladı. Bugün her tabağı mevsimin ve tedarikçilerinin imzasıyla hazırlıyor.","Ad soyad","Telefon","Tarih","Kişi sayısı","WhatsApp ile gönder","Lütfen tüm alanları doldurun.","Merhaba, Alba için rezervasyon talebi:","kişi"],
+en:["English","🇬🇧","Menu","Chef","Reservations","A three-star table cooked at the pace of Tuscany.","Lorenzo Vallesi began at fourteen outside a Florentine bakery. Today every plate carries the signature of the season and the growers behind it.","Full name","Phone","Date","Guests","Send via WhatsApp","Please complete every field.","Hello, reservation request for Alba:","guests"],
+de:["Deutsch","🇩🇪","Menü","Küchenchef","Reservierung","Ein Drei-Sterne-Tisch im Rhythmus der Toskana.","Lorenzo Vallesi begann mit vierzehn vor einer Bäckerei in Florenz. Heute trägt jeder Teller die Handschrift der Saison und seiner Erzeuger.","Vor- und Nachname","Telefon","Datum","Gäste","Per WhatsApp senden","Bitte füllen Sie alle Felder aus.","Guten Tag, Reservierungsanfrage für Alba:","Gäste"],
+ru:["Русский","🇷🇺","Меню","Шеф","Бронирование","Стол с тремя звёздами, приготовленный в ритме Тосканы.","Лоренцо Валлези начал в четырнадцать лет у флорентийской пекарни. Сегодня каждое блюдо несёт подпись сезона и фермеров.","Имя и фамилия","Телефон","Дата","Гостей","Отправить в WhatsApp","Заполните все поля.","Здравствуйте, запрос на бронь в Alba:","гостей"],
+ar:["العربية","🇸🇦","القائمة","الشيف","الحجز","مائدة بثلاث نجوم تُطهى على إيقاع توسكانا.","بدأ لورينزو فاليسي في الرابعة عشرة أمام مخبز في فلورنسا. واليوم يحمل كل طبق توقيع الموسم ومنتجيه.","الاسم الكامل","الهاتف","التاريخ","عدد الضيوف","إرسال عبر واتساب","يرجى تعبئة جميع الحقول.","مرحباً، طلب حجز في ألبا:","ضيوف"],
+fa:["فارسی","🇮🇷","منو","سرآشپز","رزرو","سفره‌ای سه‌ستاره، پخته‌شده با ریتم توسکانی.","لورنزو والِسی در چهارده‌سالگی مقابل یک نانوایی در فلورانس شروع کرد. امروز هر بشقاب امضای فصل و تولیدکنندگانش را دارد.","نام و نام خانوادگی","تلفن","تاریخ","تعداد مهمان","ارسال از طریق واتساپ","لطفاً همه فیلدها را پر کنید.","سلام، درخواست رزرو در آلبا:","مهمان"],
+fr:["Français","🇫🇷","Menu","Le chef","Réservation","Une table trois étoiles, cuisinée au rythme de la Toscane.","Lorenzo Vallesi a débuté à quatorze ans devant une boulangerie florentine. Aujourd'hui, chaque assiette porte la signature de la saison et de ses producteurs.","Nom complet","Téléphone","Date","Convives","Envoyer par WhatsApp","Veuillez remplir tous les champs.","Bonjour, demande de réservation pour Alba :","convives"],
+es:["Español","🇪🇸","Menú","El chef","Reservas","Una mesa de tres estrellas, cocinada al ritmo de la Toscana.","Lorenzo Vallesi empezó a los catorce años ante una panadería de Florencia. Hoy cada plato lleva la firma de la temporada y de sus productores.","Nombre completo","Teléfono","Fecha","Comensales","Enviar por WhatsApp","Completa todos los campos.","Hola, solicitud de reserva para Alba:","comensales"],
+it:["Italiano","🇮🇹","Menu","Lo chef","Prenotazioni","Una tavola a tre stelle, cucinata al ritmo della Toscana.","Lorenzo Vallesi ha iniziato a quattordici anni davanti a un forno fiorentino. Oggi ogni piatto porta la firma della stagione e di chi la coltiva.","Nome e cognome","Telefono","Data","Ospiti","Invia su WhatsApp","Compila tutti i campi.","Buongiorno, richiesta di prenotazione per Alba:","ospiti"],
+nl:["Nederlands","🇳🇱","Menu","De chef","Reserveren","Een driesterrentafel, gekookt in het ritme van Toscane.","Lorenzo Vallesi begon op zijn veertiende voor een Florentijnse bakkerij. Vandaag draagt elk bord de handtekening van het seizoen en zijn telers.","Volledige naam","Telefoon","Datum","Gasten","Verstuur via WhatsApp","Vul alle velden in.","Goedendag, reserveringsaanvraag voor Alba:","gasten"],
+pl:["Polski","🇵🇱","Menu","Szef kuchni","Rezerwacje","Stół z trzema gwiazdkami, gotowany w rytmie Toskanii.","Lorenzo Vallesi zaczynał w wieku czternastu lat przed florencką piekarnią. Dziś każde danie nosi podpis sezonu i jego dostawców.","Imię i nazwisko","Telefon","Data","Liczba gości","Wyślij przez WhatsApp","Uzupełnij wszystkie pola.","Dzień dobry, prośba o rezerwację w Alba:","gości"],
+zh:["中文","🇨🇳","菜单","主厨","预订","三星餐桌，以托斯卡纳的节奏烹制。","洛伦佐·瓦莱西十四岁时在佛罗伦萨一家面包店门前起步。如今每一道菜都带着季节与生产者的印记。","姓名","电话","日期","人数","通过 WhatsApp 发送","请填写所有字段。","您好，Alba 预订申请：","位"]};
+const H={tr:["1824'ten beri","Tarihimiz","Arno kıyısında bir osteria açılır","Saray sofralarına şarap sağlayan mahzen","Savaştan sonra elle yeniden inşa edilir","Üçüncü kuşak Lorenzo üçüncü yıldızı alır"],
+en:["Since 1824","Our history","An osteria opens beside the Arno","The cellar that supplied royal tables","Rebuilt by hand after the war","Lorenzo, third generation, earns the third star"],
+de:["Seit 1824","Unsere Geschichte","Eine Osteria öffnet am Arno","Der Keller, der königliche Tafeln belieferte","Nach dem Krieg von Hand wiederaufgebaut","Lorenzo, dritte Generation, erhält den dritten Stern"],
+ru:["С 1824 года","Наша история","У реки Арно открывается остерия","Погреб, снабжавший королевские столы","После войны восстановлен вручную","Лоренцо, третье поколение, получает третью звезду"],
+ar:["منذ عام 1824","تاريخنا","افتتاح أوستيريا على ضفة نهر أرنو","القبو الذي زوّد موائد الملوك","إعادة بنائه يدويًا بعد الحرب","لورينزو، الجيل الثالث، ينال النجمة الثالثة"],
+fa:["از سال 1824","تاریخچه ما","اوستریایی کنار رود آرنو گشایش می‌یابد","انبار شرابی که سفره‌های سلطنتی را تأمین می‌کرد","پس از جنگ با دست بازسازی شد","لورنزو، نسل سوم، ستاره سوم را می‌گیرد"],
+fr:["Depuis 1824","Notre histoire","Une osteria ouvre au bord de l'Arno","La cave qui fournissait les tables royales","Reconstruit à la main après la guerre","Lorenzo, troisième génération, décroche la troisième étoile"],
+es:["Desde 1824","Nuestra historia","Abre una osteria junto al Arno","La bodega que abastecía mesas reales","Reconstruido a mano tras la guerra","Lorenzo, tercera generación, logra la tercera estrella"],
+it:["Dal 1824","La nostra storia","Apre un'osteria sulle rive dell'Arno","La cantina che serviva le tavole reali","Ricostruito a mano dopo la guerra","Lorenzo, terza generazione, conquista la terza stella"],
+nl:["Sinds 1824","Onze geschiedenis","Aan de Arno opent een osteria","De kelder die koninklijke tafels bevoorraadde","Na de oorlog met de hand herbouwd","Lorenzo, derde generatie, behaalt de derde ster"],
+pl:["Od 1824 roku","Nasza historia","Nad Arno otwiera się osteria","Piwnica zaopatrująca stoły królewskie","Odbudowany własnoręcznie po wojnie","Lorenzo, trzecie pokolenie, zdobywa trzecią gwiazdkę"],
+zh:["始于1824年","我们的历史","阿尔诺河畔，一家小酒馆开张","为王室餐桌供酒的酒窖","战后亲手重建","第三代传人洛伦佐摘得第三颗星"]};
+const X={tr:["Hakkımızda","Alba, 1824'te Arno kıyısında dört masalı bir osteria olarak doğdu; Giovanni Vallesi nehrin ve tepelerin getirdiğini pişiriyordu. Üç kuşak sonra Lorenzo hâlâ her şafakta aynı odun fırınını yakıyor. Mutfağa tanışmadığı hiçbir şey girmez: çiftçiyi, balıkçıyı, bağı bizzat bilir.","Ziyaret"],
+en:["About","Alba began in 1824 as a four-table osteria on the Arno, where Giovanni Vallesi cooked whatever the river and the hills brought him. Three generations later, Lorenzo still lights the same wood oven every dawn. Nothing reaches his kitchen that he has not met in person: the farmer, the fisherman, the vineyard.","Visit"],
+de:["Über uns","Alba begann 1824 als Osteria mit vier Tischen am Arno, wo Giovanni Vallesi kochte, was Fluss und Hügel ihm brachten. Drei Generationen später heizt Lorenzo noch immer jeden Morgen denselben Holzofen an. In seine Küche gelangt nur, was er persönlich kennt: den Bauern, den Fischer, den Weinberg.","Besuch"],
+ru:["О нас","Alba началась в 1824 году как остерия на четыре стола на берегу Арно: Джованни Валлези готовил то, что приносили река и холмы. Три поколения спустя Лоренцо по-прежнему каждый рассвет разжигает ту же дровяную печь. Он лично знаком с каждым, кто поставляет продукты: с фермером, рыбаком, виноделом.","Как нас найти"],
+ar:["من نحن","بدأت ألبا عام 1824 كأوستيريا من أربع طاولات على ضفاف نهر أرنو، حيث كان جوفاني فاليسي يطهو ما يجود به النهر والتلال. وبعد ثلاثة أجيال، لا يزال لورينزو يشعل الفرن الخشبي نفسه كل فجر. لا يدخل مطبخه شيء لم يلتقِ به شخصيًا: المزارع والصياد والكرم.","زيارتنا"],
+fa:["درباره ما","آلبا در سال 1824 به‌صورت اوستریایی چهارمیزه در کنار رود آرنو آغاز شد؛ جووانی والِسی آنچه را رود و تپه‌ها می‌آوردند می‌پخت. سه نسل بعد، لورنزو هنوز هر سپیده‌دم همان تنور هیزمی را روشن می‌کند. به آشپزخانه‌اش چیزی راه نمی‌یابد مگر آنکه شخصاً با کشاورز، ماهیگیر و تاکستانش آشنا باشد.","دیدار"],
+fr:["À propos","Alba est née en 1824 comme une osteria de quatre tables sur l'Arno, où Giovanni Vallesi cuisinait ce que le fleuve et les collines lui apportaient. Trois générations plus tard, Lorenzo allume encore chaque aube le même four à bois. Rien n'entre en cuisine sans qu'il ait rencontré en personne l'agriculteur, le pêcheur, la vigne.","Nous visiter"],
+es:["Sobre nosotros","Alba nació en 1824 como una osteria de cuatro mesas junto al Arno, donde Giovanni Vallesi cocinaba lo que le traían el río y las colinas. Tres generaciones después, Lorenzo sigue encendiendo cada amanecer el mismo horno de leña. Nada entra en su cocina sin que haya conocido en persona al agricultor, al pescador y al viñedo.","Visítanos"],
+it:["Chi siamo","Alba nasce nel 1824 come osteria da quattro tavoli sull'Arno, dove Giovanni Vallesi cucinava ciò che il fiume e le colline gli portavano. Tre generazioni dopo, Lorenzo accende ancora ogni alba lo stesso forno a legna. In cucina non entra nulla che non abbia incontrato di persona: il contadino, il pescatore, la vigna.","Vieni a trovarci"],
+nl:["Over ons","Alba begon in 1824 als osteria met vier tafels aan de Arno, waar Giovanni Vallesi kookte wat de rivier en de heuvels hem brachten. Drie generaties later steekt Lorenzo nog elke ochtend dezelfde houtoven aan. Niets komt in zijn keuken dat hij niet persoonlijk heeft ontmoet: de boer, de visser, de wijngaard.","Bezoek"],
+pl:["O nas","Alba powstała w 1824 roku jako osteria na cztery stoły nad Arno, gdzie Giovanni Vallesi gotował to, co przynosiły rzeka i wzgórza. Trzy pokolenia później Lorenzo wciąż każdego świtu rozpala ten sam piec opalany drewnem. Do kuchni nie trafia nic, czego nie poznał osobiście: rolnika, rybaka, winnicy.","Odwiedź nas"],
+zh:["关于我们","Alba 1824年诞生于阿尔诺河畔，最初只是一家四张桌子的小酒馆，乔瓦尼·瓦莱西烹制河流与山丘带来的食材。三代之后，洛伦佐每天黎明仍点燃同一座柴火烤炉。凡是进入厨房的食材，他都亲自见过：农夫、渔夫和葡萄园。","到访"]};
+for(const k in X)H[k].push(...X[k]);
+const Y={tr:["Saat","Alerji veya özel istek"],en:["Time","Allergies or special requests"],de:["Uhrzeit","Allergien oder Wünsche"],ru:["Время","Аллергии или пожелания"],ar:["الوقت","حساسية أو طلبات خاصة"],fa:["ساعت","آلرژی یا درخواست ویژه"],fr:["Heure","Allergies ou demandes particulières"],es:["Hora","Alergias o peticiones especiales"],it:["Orario","Allergie o richieste particolari"],nl:["Tijd","Allergieën of bijzondere wensen"],pl:["Godzina","Alergie lub specjalne życzenia"],zh:["时间","过敏或特别要求"]};
+for(const k in Y)H[k].push(...Y[k]);
+const Z={tr:"Bilgileriniz yalnızca rezervasyon talebinizi yanıtlamak için kullanılır.",en:"Your details are used only to answer your reservation request.",de:"Ihre Angaben werden ausschließlich zur Beantwortung Ihrer Reservierungsanfrage verwendet.",ru:"Ваши данные используются только для ответа на запрос о бронировании.",ar:"تُستخدم بياناتك فقط للرد على طلب الحجز.",fa:"اطلاعات شما فقط برای پاسخ به درخواست رزرو استفاده می‌شود.",fr:"Vos informations servent uniquement à répondre à votre demande de réservation.",es:"Tus datos se usan únicamente para responder a tu solicitud de reserva.",it:"I tuoi dati vengono usati solo per rispondere alla tua richiesta di prenotazione.",nl:"Uw gegevens worden alleen gebruikt om uw reserveringsaanvraag te beantwoorden.",pl:"Twoje dane służą wyłącznie do odpowiedzi na prośbę o rezerwację.",zh:"您的信息仅用于回复您的预订请求。"};
+for(const k in Z)H[k].push(Z[k]);
+const K=["m","c","r","t","p","n","ph","d","g","s","err","w","u"].map((k,i)=>[k,i+2]);
+const C="AF93,AL355,DZ213,AR54,AM374,AU61,AT43,AZ994,BH973,BD880,BY375,BE32,BA387,BR55,BG359,KH855,CA1,CL56,CN86,CO57,HR385,CY357,CZ420,DK45,EG20,EE372,FI358,FR33,GE995,DE49,GH233,GR30,HK852,HU36,IS354,IN91,ID62,IR98,IQ964,IE353,IL972,IT39,JP81,JO962,KZ7,KE254,KW965,KG996,LV371,LB961,LY218,LT370,LU352,MY60,MV960,MT356,MX52,MD373,MC377,MN976,ME382,MA212,NP977,NL31,NZ64,NG234,MK389,NO47,OM968,PK92,PS970,PE51,PH63,PL48,PT351,QA974,RO40,RU7,SA966,RS381,SG65,SK421,SI386,ZA27,KR82,ES34,LK94,SE46,CH41,SY963,TW886,TJ992,TH66,TN216,TR90,TM993,UA380,AE971,GB44,US1,UZ998,VN84,YE967".split(",").map(s=>[s.slice(0,2),s.slice(2)]);
+const fl=c=>[...c].map(x=>String.fromCodePoint(127397+x.charCodeAt(0))).join("");
+const $=id=>document.getElementById(id);let cur="en";
+function dp(l){{const e=$("tm"),v=e.value,f=new Intl.DateTimeFormat(l,{hour:"2-digit",minute:"2-digit"});e.innerHTML=[19,19.5,20,20.5,21,21.5,22].map(h=>`<option value="${h|0}:${h%1?"30":"00"}">${f.format(new Date(2026,9,13,h|0,h%1?30:0))}</option>`).join("");if(v)e.value=v}
+const n=new Date(),F=new Intl.NumberFormat(l,{useGrouping:false}),f=(a,b,c)=>{const e=$(a),v=e.value;e.innerHTML=c;if(v)e.value=v};
+f('dd',0,[...Array(31)].map((_,i)=>`<option value="${i+1}">${F.format(i+1)}</option>`).join(''));
+const M=new Intl.DateTimeFormat(l+'-u-ca-gregory',{month:'long'});
+f('dm',0,[...Array(12)].map((_,i)=>`<option value="${i}">${M.format(new Date(2026,i,15))}</option>`).join(''));
+f('dy',0,[0,1].map(i=>`<option value="${n.getFullYear()+i}">${F.format(n.getFullYear()+i)}</option>`).join(''));
+if(!dp.s){dp.s=1;$('dd').value=n.getDate();$('dm').value=n.getMonth()}}
+function set(l){cur=l;const d=L[l];document.documentElement.lang=l;document.documentElement.dir=["ar","fa"].includes(l)?"rtl":"ltr";
+K.forEach(([k,i])=>document.querySelectorAll(`[data-t=${k}]`).forEach(e=>e.textContent=d[i]));
+$("lc").textContent=l.toUpperCase();document.querySelectorAll("[data-h]").forEach(e=>e.textContent=H[l][e.dataset.h]);try{const f=n=>new Intl.DateTimeFormat(l,{weekday:"short"}).format(new Date(2026,9,n));$("hrs").textContent=f(13)+" – "+f(17)+" · 19:00 – 23:00"}catch(e){}if($("i1"))$("i1").textContent=d[5];
+let dn;try{dn=new Intl.DisplayNames([l],{type:"region"})}catch(e){dn={of:c=>c}}const old=$("cc").value||"TR90";
+$("cc").innerHTML=C.map(([c,p])=>`<option value="${c}${p}">${fl(c)} ${dn.of(c)||c} +${p}</option>`).join("");
+$("cc").value=[...$("cc").options].some(o=>o.value==old)?old:"TR90";
+const g=$("gs"),v=g.value||2;g.innerHTML=[...Array(10)].map((_,i)=>`<option value="${i+1}">${new Intl.NumberFormat(l).format(i+1)}</option>`).join("");g.value=v;
+let ln=null;try{ln=new Intl.DisplayNames([l],{type:"language"})}catch(e){}
+$("lm").innerHTML=Object.entries(L).map(([k,v])=>{let n=v[0];try{n=ln.of(k)||n;n=n.charAt(0).toLocaleUpperCase(l)+n.slice(1)}catch(e){}return`<button data-l="${k}" role="menuitem"><span>${v[1]}</span>${n}</button>`}).join("");
+dp(l);[...$("lm").children].forEach(b=>b.setAttribute("aria-current",b.dataset.l==l));
+try{localStorage.setItem("lang",l)}catch(e){}}
+$("lm").innerHTML=Object.entries(L).map(([k,v])=>`<button data-l="${k}" role="menuitem"><span>${v[1]}</span>${v[0]}</button>`).join("");
+$("lm").onclick=e=>{const b=e.target.closest("button");if(b){set(b.dataset.l);tg(0);const m=document.querySelector("main");m.animate&&m.animate([{opacity:.2},{opacity:1}],{duration:450,easing:"ease-out"})}};
+function tg(o){$("lm").classList.toggle("on",o);$("lb").setAttribute("aria-expanded",!!o)}
+$("lb").onclick=()=>tg(!$("lm").classList.contains("on"));
+let s;try{s=localStorage.getItem("lang")}catch(e){}
+function geo(){let z="";try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+const T=[[/Istanbul/,"tr"],[/Rome|Vatican|San_Marino/,"it"],[/Madrid|Ceuta|Canary|Mexico|Bogota|Lima|Santiago|Argentina|Caracas|La_Paz|Montevideo|Guayaquil|Asuncion|Panama|Costa_Rica|Guatemala|El_Salvador|Havana|Santo_Domingo/,"es"],[/Paris|Monaco/,"fr"],[/Berlin|Vienna|Zurich|Busingen|Vaduz/,"de"],[/Moscow|Kaliningrad|Samara|Yekaterinburg|Novosibirsk|Vladivostok|Minsk/,"ru"],[/Amsterdam/,"nl"],[/Warsaw/,"pl"],[/Shanghai|Hong_Kong|Taipei|Macau|Urumqi/,"zh"],[/Tehran/,"fa"],[/Dubai|Riyadh|Cairo|Baghdad|Kuwait|Qatar|Beirut|Amman|Damascus|Algiers|Tunis|Casablanca|Tripoli|Muscat|Bahrain|Khartoum|Aden/,"ar"]];
+for(const[r,l]of T)if(r.test(z))return l;return null}
+function pick(){let f=null;for(const x of(navigator.languages||[navigator.language])){const c=(x||"").slice(0,2).toLowerCase();if(L[c]){f=c;break}}
+const g=geo();return f&&(f!=="en"||!g)?f:(g||"en")}
+s=L[s]?s:pick();set(s);
+
+const gd=()=>new Date(+$("dy").value,+$("dm").value,+$("dd").value),vd=()=>{const d=gd(),t=new Date();t.setHours(0,0,0,0);return d.getMonth()==+$("dm").value&&d>=t};
+function burst(el){if(!el||!el.animate||matchMedia("(prefers-reduced-motion:reduce)").matches)return;const r=el.getBoundingClientRect();for(let i=0;i<16;i++){const s=document.createElement("span");s.textContent="✦";s.style.cssText="position:fixed;left:"+(r.left+r.width/2)+"px;top:"+(r.top+r.height/2)+"px;color:#f0a92e;font-size:"+(10+Math.random()*16)+"px;pointer-events:none;z-index:130";document.body.appendChild(s);const a=Math.random()*6.28,d=60+Math.random()*110;s.animate([{transform:"translate(-50%,-50%) scale(.4)",opacity:1},{transform:"translate(calc(-50% + "+Math.cos(a)*d+"px),calc(-50% + "+Math.sin(a)*d+"px)) scale(1.2) rotate(180deg)",opacity:0}],{duration:900+Math.random()*500,easing:"cubic-bezier(.2,.8,.2,1)"}).onfinish=()=>s.remove()}}
+$("f").onsubmit=e=>{e.preventDefault();const d=L[cur],p=$("cc").value.slice(2);
+const t=$("tel").value.replace(/\D/g,"").replace(/^0+/,"");
+if(!$("nm").value.trim()||t.length<6||!vd()){$("err").textContent=d[12];return}
+const wd=gd().getDay();if(wd<2||wd>6){$("err").textContent="✕ "+$("hrs").textContent;return}$("err").textContent="";
+const m=`${d[13]}\n${$("nm").value.trim()}\n📅 ${new Intl.DateTimeFormat(cur+'-u-ca-gregory',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(gd())}\n🕖 ${$("tm").options[$("tm").selectedIndex].text}\n👥 ${$("gs").value} ${d[14]}\n📞 +${p} ${t}${$("nt").value.trim()?"\n📝 "+$("nt").value.trim():""}`;
+window.open(`https://wa.me/${WA}?text=${encodeURIComponent(m)}`,"_blank","noopener");$("err").textContent="✓ WhatsApp";burst($("f").querySelector(".btn"))};
+function end(){const i=$("intro");i.classList.add("out");document.body.classList.add("in");window.steamGo&&window.steamGo();setTimeout(()=>i.remove(),1100)}
+document.documentElement.classList.add("js");document.querySelectorAll("h2,.chef p,.portrait,.ct h3,.mn li,.ag>div,.vg p,.deg,.sg,.sg2,#book form").forEach(e=>e.classList.add("rv"));const rv=document.querySelectorAll(".rv");rv.forEach(e=>e.style.setProperty("--d",Math.min([...e.parentElement.children].indexOf(e),6)*90+"ms"));document.querySelectorAll(".hero .l>*").forEach((e,i)=>e.style.setProperty("--k",i));
+if("IntersectionObserver" in window){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("v");o.unobserve(e.target)}}),{threshold:.15});rv.forEach(e=>o.observe(e))}else rv.forEach(e=>e.classList.add("v"));
+$("skip").onclick=end;setTimeout(end,matchMedia("(prefers-reduced-motion:reduce)").matches?100:3700);
+(function(){const hr=document.querySelector(".hero"),cl=$("cl"),pr=$("pr");let mx=innerWidth*.72,my=innerHeight*.36,tk=0;
+const M={};function meas(){M.h0=$("hist").offsetTop;M.h1=$("hist").offsetHeight;M.c0=$("courses").offsetTop;M.c1=$("courses").offsetHeight;M.b0=$("book").offsetTop}meas();addEventListener("resize",meas);addEventListener("load",meas);if(window.ResizeObserver)new ResizeObserver(meas).observe(document.body);
+function hzu(){const p=Math.max(0,Math.min(1,(scrollY-M.h0)/(M.h1-innerHeight)));if(hzu.p===p)return;hzu.p=p;$("tr").style.transform="translate3d("+(document.documentElement.dir=="rtl"?1:-1)*p*300+"vw,0,0)";$("hb").style.transform="scaleX("+p+")";$("tr").style.setProperty("--p",p.toFixed(3))}
+const sws=[...document.querySelectorAll(".sw")],cns=[...document.querySelectorAll(".cn .c")],cpe=document.querySelector(".cp"),czs=$("courses");
+function csu(){const p=Math.max(0,Math.min(.999,(scrollY-M.c0)/(M.c1-innerHeight))),i=Math.floor(p*4);if(csu.p===p)return;csu.p=p;if(csu.i!==i){csu.i=i;sws.forEach((e,k)=>e.classList.toggle("on",k==i));cns.forEach((e,k)=>e.classList.toggle("on",k==i))}cpe.style.setProperty("--r",(p*540).toFixed(1));$("cbar").style.transform="scaleX("+p+")"}
+const fb=document.querySelector(".fab"),bkE=$("book");function fab(){fb.classList.toggle("on",scrollY>innerHeight*.8&&M.b0-scrollY>innerHeight*.5)}
+const rmo=matchMedia("(prefers-reduced-motion:reduce)").matches;let bs=[],rate=1,tgt=1,vr=0;
+function vl(){rate+=(tgt-rate)*.08;tgt+=(1-tgt)*.05;if(!bs.length)bs=[...document.querySelectorAll(".band>div")].map(e=>e.getAnimations()[0]).filter(Boolean);const go=rate>1.02||tgt>1.02;bs.forEach(a=>a.playbackRate=go?rate:1);vr=go?requestAnimationFrame(vl):0}
+function fr(){tk=0;{const dv=Math.abs(scrollY-(fr.l||scrollY));fr.l=scrollY;if(dv>0&&!rmo){tgt=Math.min(7,1+dv*.35);if(!vr)vr=requestAnimationFrame(vl)}}hzu();csu();fab();if(scrollY<innerHeight*1.2)hr.style.setProperty("--sy",scrollY);cl.style.transform="translate3d("+mx+"px,"+my+"px,0)";hr.style.setProperty("--px",(mx/innerWidth-.5).toFixed(2));hr.style.setProperty("--py",(my/innerHeight-.5).toFixed(2));pr.style.transform="scaleX("+Math.min(1,scrollY/((document.documentElement.scrollHeight-innerHeight)||1))+")"}
+const q=()=>{if(!tk)tk=requestAnimationFrame(fr)};
+const fine=matchMedia("(pointer:fine)").matches;let cu=null,cx=mx,cy=my,cr=0,lb=null;
+const FORK='<svg viewBox="0 0 24 56" width="24" height="56" aria-hidden="true"><g fill="#f6c453" stroke="#2b1511" stroke-width=".9"><rect x="1.5" y="0.5" width="3" height="18" rx="1.5"/><rect x="10.5" y="0.5" width="3" height="18" rx="1.5"/><rect x="19.5" y="0.5" width="3" height="18" rx="1.5"/><path d="M1.5 14h21c0 7-3.800 10.200-8.500 11.200V53a2 2 0 0 1-4 0V25.200C5.300 24.200 1.500 21 1.500 14z"/></g></svg>';
+
+function c2(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;const vx=mx-cx;cu.style.transform="translate3d("+cx+"px,"+cy+"px,0) rotate("+(-30+Math.max(-30,Math.min(30,vx*.5)))+"deg)";if(Math.abs(mx-cx)+Math.abs(my-cy)>.5)cr=requestAnimationFrame(c2);else cr=0}
+function cm(e){const t=e.target;if(cu&&t.closest){cu.classList.add("on");cu.classList.toggle("h",!!t.closest("a,button,select,input,label"));if(!cr)cr=requestAnimationFrame(c2)}
+const b=t.closest&&t.closest(".btn");if(b){const r=b.getBoundingClientRect();b.style.translate=((e.clientX-r.left-r.width/2)*.22)+"px "+((e.clientY-r.top-r.height/2)*.3)+"px";lb=b}else if(lb){lb.style.translate="";lb=null}}
+addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY;q();cm(e)},{passive:true});
+addEventListener("pointerdown",()=>{if(cu){cu.classList.remove("st");void cu.offsetWidth;cu.classList.add("st")}});addEventListener("scroll",q,{passive:true});q();
+if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+const c=document.createElement("canvas");c.className="steam";document.querySelector(".pw").appendChild(c);const x=c.getContext("2d");if(!x)return;
+const sp=document.createElement("canvas");sp.width=sp.height=64;const g=sp.getContext("2d"),gr=g.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,"rgba(244,232,207,1)");gr.addColorStop(1,"rgba(244,232,207,0)");g.fillStyle=gr;g.fillRect(0,0,64,64);
+let w,h,P=[],on=0,vis=1,run=0;
+function rs(){w=c.width=(c.offsetWidth/2)|0;h=c.height=(c.offsetHeight/2)|0}
+function r(f){return{x:w*(.36+Math.random()*.28),y:f?h*(.1+Math.random()*.5):h*.58,s:14+Math.random()*30,v:.15+Math.random()*.3,l:f?Math.random():0,d:Math.random()*6}}
+function t(){if(!(on&&vis)){run=0;return}x.clearRect(0,0,w,h);P.forEach((p,i)=>{p.y-=p.v;p.l+=.004;p.x+=Math.sin(p.l*9+p.d)*.3;x.globalAlpha=Math.sin(Math.min(p.l,1)*Math.PI)*.2;x.drawImage(sp,p.x-p.s,p.y-p.s,p.s*2,p.s*2);if(p.l>=1)P[i]=r()});requestAnimationFrame(t)}
+function st(){if(on&&vis&&!run){run=1;requestAnimationFrame(t)}}
+rs();addEventListener("resize",rs);for(let i=0;i<16;i++)P.push(r(1));
+if("IntersectionObserver" in window)new IntersectionObserver(e=>{vis=e[0].isIntersecting;st()}).observe(hr);
+window.steamGo=()=>{on=1;st()}})();
+(function(){const ag=document.querySelector(".ag");if(!ag||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+const ss=[...ag.querySelectorAll("strong")].map(e=>{const m=e.textContent.match(/^(\d+)(.*)$/);return m?{e,n:+m[1],x:m[2]}:null}).filter(Boolean);
+ss.forEach(o=>o.e.textContent="0"+o.x);
+new IntersectionObserver((es,ob)=>{if(!es[0].isIntersecting)return;ob.disconnect();const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1600),v=1-Math.pow(1-k,3);ss.forEach(o=>o.e.textContent=Math.round(o.n*v)+o.x);if(k<1)requestAnimationFrame(f)})(t0)},{threshold:.4}).observe(ag)})();
+(function(){if(!matchMedia("(pointer:fine)").matches||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+const D=document.documentElement;D.style.scrollBehavior="auto";let ty=scrollY,cy=scrollY,r=0;const mxs=()=>D.scrollHeight-innerHeight;
+function sl(){cy+=(ty-cy)*.09;if(Math.abs(ty-cy)<.4)cy=ty;scrollTo(0,cy);r=cy===ty?0:requestAnimationFrame(sl)}
+addEventListener("wheel",e=>{if(e.ctrlKey||(e.target.closest&&e.target.closest("select")))return;e.preventDefault();ty=Math.max(0,Math.min(mxs(),ty+e.deltaY*(e.deltaMode?32:1)));if(!r)r=requestAnimationFrame(sl)},{passive:false});
+addEventListener("scroll",()=>{if(!r){ty=cy=scrollY}},{passive:true});
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;const t=document.querySelector(a.getAttribute("href"));if(!t)return;e.preventDefault();ty=Math.max(0,Math.min(mxs(),t.getBoundingClientRect().top+scrollY-60));if(!r)r=requestAnimationFrame(sl)})})();
+if(HERO_VIDEO){const v=document.createElement("video");v.src=HERO_VIDEO;v.muted=v.loop=v.playsInline=v.autoplay=true;v.setAttribute("aria-hidden","true");v.className="hv";document.querySelector(".hero").prepend(v)}
+addEventListener("keydown",e=>{if(e.key==="Escape")tg(0)});document.addEventListener("click",e=>{if(!(e.target.closest&&e.target.closest(".lang")))tg(0)});
+</script></body></html>
