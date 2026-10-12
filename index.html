@@ -107,7 +107,6 @@ section.hs{padding:0;position:relative}
 .card .opt input{width:18px;height:18px;accent-color:var(--acc);flex:none;padding:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}.chips b{font-weight:600;font-size:13px;background:var(--acc);color:var(--on);border-radius:99px;padding:5px 12px}
 .ok{color:var(--acc);font-weight:600;font-size:15px}
-
 .phr{border:1px solid var(--line);border-radius:14px;align-items:stretch;gap:0;transition:border-color .3s}
 .phr:focus-within{border-color:var(--acc)}
 .phr .dd>button{border:0;border-radius:14px 0 0 14px;border-inline-end:1px solid var(--line);height:100%;padding:12px 16px}
@@ -222,11 +221,11 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
 .pp{transform-box:fill-box;transform-origin:center;animation:pp 2.4s infinite}@keyframes pp{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.2);opacity:0}}
 @media(max-width:520px){.wa{bottom:calc(76px + env(safe-area-inset-bottom,0px))}footer{padding-bottom:160px}}
 
-/* Hekim Kadrosu (Doctor Team) Styles */
+/* DOKTOR KADROSU STİLLERİ */
 .doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4vw;margin-top:60px}
 .doc-card{background:var(--card);border:1px solid var(--line);border-radius:32px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s}
 .doc-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
-.doc-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#eef3f0;object-position:top} /* Yüzlerin tam ortalanması için object-position eklendi */
+.doc-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#eef3f0;object-position:top} 
 .doc-info{padding:30px 24px;text-align:center}
 .doc-name{font:500 24px Unbounded,sans-serif;margin-bottom:8px}
 .doc-title{color:var(--mut);font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
@@ -270,8 +269,7 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
   <h2 data-i="teamH">Uzman Kadromuz</h2>
   <div class="doc-grid">
     <div class="doc-card">
-      <!-- Erkek Doktor (Caner Hoca) -->
-      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop" alt="Dr. Caner Yılmaz" class="doc-img">
+      <img src="https://images.pexels.com/photos/3259629/pexels-photo-3259629.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dr. Caner Yılmaz" class="doc-img">
       <div class="doc-info">
         <div class="doc-name">Dr. Caner Yılmaz</div>
         <div class="doc-title" data-i="doc1">Çene Cerrahı & İmplantoloji</div>
@@ -279,8 +277,7 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
       </div>
     </div>
     <div class="doc-card">
-      <!-- Çekici Kadın Doktor (Aylin Hoca) -->
-      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=600&auto=format&fit=crop" alt="Dr. Aylin Demir" class="doc-img">
+      <img src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dr. Aylin Demir" class="doc-img">
       <div class="doc-info">
         <div class="doc-name">Dr. Aylin Demir</div>
         <div class="doc-title" data-i="doc2">Gülüş Tasarımı & Estetik</div>
@@ -399,7 +396,6 @@ function set(k){
   document.querySelectorAll('[data-i]').forEach(e=>e.textContent=d[e.dataset.i]);
   document.documentElement.lang=k;
   
-  /* ANADİL YÖN KONTROLÜ (RTL / LTR) */
   if (k === 'ar' || k === 'fa' || k === 'he' || k === 'ur') {
       document.documentElement.dir = 'rtl';
       document.body.style.textAlign = 'right';
@@ -425,13 +421,11 @@ ll.onclick=e=>{const li=e.target.closest('li');if(li){set(li.dataset.k);lang.cla
 document.addEventListener('click',e=>{if(!lang.contains(e.target))lang.classList.remove('open')});
 document.querySelectorAll('a[data-p]').forEach(a=>a.addEventListener('click',()=>{const n=+a.dataset.p;sel.add(n);pdl.querySelectorAll('input')[n].checked=true;chips(Math.max(LG.indexOf(document.documentElement.lang),0))}));
 const ba=$('#ba');ba.querySelector('input').addEventListener('input',e=>ba.style.setProperty('--p',e.target.value+'%'));
-/* cursor, magnetic */
 const cur=$('#cur');let cx=0,cy=0,tx=0,ty=0,mx=-999,my=-999;
 addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY});
 (function lp(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(lp)})();
 document.addEventListener('pointerover',e=>cur.classList.toggle('big2',!!e.target.closest('a,button,.ba,li,.opt,summary')));
 document.querySelectorAll('.mag').forEach(m=>{m.addEventListener('pointermove',e=>{const r=m.getBoundingClientRect();m.style.transform='translate('+(e.clientX-r.left-r.width/2)*.25+'px,'+(e.clientY-r.top-r.height/2)*.35+'px)'});m.addEventListener('pointerleave',()=>m.style.transform='')});
-/* scroll */
 function sizeHS(){hs.style.height=innerWidth<=800?'auto':(tk.scrollWidth-innerWidth+innerHeight)+'px'}
 function scrollFx(){
   const h=document.documentElement;$('#pb').style.transform='scaleX('+scrollY/(h.scrollHeight-innerHeight||1)+')';
@@ -442,11 +436,10 @@ function scrollFx(){
 addEventListener('scroll',scrollFx,{passive:true});addEventListener('resize',()=>{sizeHS();scrollFx();build()});
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const e=en.target,n=+e.dataset.n;let t0;const f=t=>{t0=t0||t;const p=Math.min((t-t0)/1800,1);e.textContent=Math.round(n*(1-Math.pow(1-p,3))).toLocaleString();if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);io.unobserve(e)}}));
 document.querySelectorAll('[data-n]').forEach(e=>io.observe(e));
-/* hero particles: a tooth that scatters from the cursor - PATLAMA SORUNU ÇÖZÜLDÜ */
+
+/* SADECE MOUSE ILE PATLAMA - MOBİL KAYDIRMA İPTAL */
 const cv=$('#cv'),g=cv.getContext('2d'),TP=new Path2D("M50 8c-14-9-38-6-40 20-1 20 8 28 10 52 1 14 9 38 16 38 8 0 6-26 14-26s6 26 14 26c7 0 15-24 16-38 2-24 11-32 10-52C88 2 64-1 50 8z");
 let W,H,pts=[],dpr=1,col='#8DF0D8',vis=true,tt=0;
-let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
 function build(){dpr=Math.min(devicePixelRatio||1,1.25);W=cv.width=cv.offsetWidth*dpr;H=cv.height=cv.offsetHeight*dpr;
   col=getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||col;
   const o=document.createElement('canvas');o.width=W;o.height=H;const c=o.getContext('2d'),m=W<800*dpr,s=m?Math.min(W*.6,H*.34):H*.7,k=s/120;
@@ -455,22 +448,11 @@ function build(){dpr=Math.min(devicePixelRatio||1,1.25);W=cv.width=cv.offsetWidt
   for(let y=0;y<H;y+=st)for(let x=0;x<W;x+=st)if(d[(y*W+x)*4+3]>128)T.push([x,y]);
   pts=T.map(t=>({x:Math.random()*W,y:Math.random()*H,tx:t[0],ty:t[1],vx:0,vy:0}))}
 
-/* Fare ile üzerine gelince patlama (Sadece masaüstünde) */
 $('.hero').addEventListener('pointermove',e=>{
-  if(!isMobile && e.pointerType === 'mouse') {
-    const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*dpr;my=(e.clientY-r.top)*dpr;
-  }
+  if(e.pointerType !== 'mouse') return;
+  const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*dpr;my=(e.clientY-r.top)*dpr
 });
 $('.hero').addEventListener('pointerleave',()=>{mx=my=-999});
-
-/* Mobilde sadece dokununca (tap) ufak bir dalgalanma yapsın, scroll yaparken patlamasın */
-$('.hero').addEventListener('touchstart', e => {
-    const touch = e.touches[0];
-    const r = cv.getBoundingClientRect();
-    mx = (touch.clientX - r.left) * dpr;
-    my = (touch.clientY - r.top) * dpr;
-    setTimeout(() => { mx = my = -999; }, 100); 
-}, {passive: true});
 
 new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
 (function draw(){requestAnimationFrame(draw);if(!vis)return;tt+=.02;g.clearRect(0,0,W,H);g.fillStyle=col;const R=130*dpr,sz=2*dpr;
@@ -481,7 +463,6 @@ const dt=$('#dt');addEventListener('pointermove',e=>{dt.style.left=e.clientX+'px
 document.addEventListener('pointerover',e=>{document.body.classList.toggle('hv',!!e.target.closest('a,button,.ba,li,.opt,summary'));document.body.classList.toggle('tx',!!e.target.closest('input:not([type=range]):not([type=checkbox]),textarea'))});
 document.addEventListener('click',()=>setTimeout(()=>{$('#ccb').setAttribute('aria-expanded',$('#cc').classList.contains('open'));$('#pb2').setAttribute('aria-expanded',$('#pd').classList.contains('open'));$('#lb').setAttribute('aria-expanded',lang.classList.contains('open'))},0));
 addEventListener('keydown',e=>{if(e.key==='Escape'){lang.classList.remove('open');$('#cc').classList.remove('open');$('#pd').classList.remove('open')}});
-/* config: kendi sunucunuzdaki fotoğraflar ve harita */
 const BA_IMG={before:'img/before.jpg',after:'img/after.jpg'};
 const MAP_EMBED='';
 const CL=CLINIC;
@@ -500,7 +481,6 @@ $('.pl').innerHTML=w[0]+(w[1]?'<br>'+w.slice(1).join(' '):'');
 q('a[href^="https://wa.me/"]').forEach(a=>a.href='https://wa.me/'+c.wa);
 $('#yr').textContent=new Date().getFullYear();
 const ld=document.querySelector('script[type="application/ld+json"]');if(ld)ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Dentist",name:c.name,telephone:c.phone,email:c.email,openingHours:c.hours,address:{"@type":"PostalAddress",streetAddress:c.addr,addressCountry:"TR"},geo:{"@type":"GeoCoordinates",latitude:c.lat,longitude:c.lng}})})();
-/* boot */
 set(L[init]?init:'tr');build();
 let t0;const pc=$('#pc');(function f(t){t0=t0||t;const p=Math.min((t-t0)/1400,1);pc.textContent=Math.round(p*100);if(p<1)requestAnimationFrame(f);else setTimeout(()=>document.body.classList.add('ready'),150)})(performance.now());
 setTimeout(()=>document.body.classList.add('ready'),3200);
