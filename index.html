@@ -221,6 +221,16 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
 .mapv svg,.mapv iframe{width:100%;height:100%;min-height:340px;display:block;border:0}
 .pp{transform-box:fill-box;transform-origin:center;animation:pp 2.4s infinite}@keyframes pp{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.2);opacity:0}}
 @media(max-width:520px){.wa{bottom:calc(76px + env(safe-area-inset-bottom,0px))}footer{padding-bottom:160px}}
+
+/* Hekim Kadrosu (Doctor Team) Styles */
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4vw;margin-top:60px}
+.doc-card{background:var(--card);border:1px solid var(--line);border-radius:32px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s}
+.doc-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.doc-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#eef3f0;object-position:top} /* Yüzlerin tam ortalanması için object-position eklendi */
+.doc-info{padding:30px 24px;text-align:center}
+.doc-name{font:500 24px Unbounded,sans-serif;margin-bottom:8px}
+.doc-title{color:var(--mut);font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.doc-desc{font-size:15px;color:var(--ink);opacity:.8;line-height:1.6}
 </style>
 </head>
 <body>
@@ -232,6 +242,7 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
   <div class="logo" data-c="name">Aura Dental</div>
   <div class="nav-r">
     <a class="l" href="#t" data-i="n1">Tedaviler</a>
+    <a class="l" href="#team" data-i="n3">Doktorlar</a>
     <a class="l" href="#s" data-i="n2">Rakamlar</a>
     <div class="lang" id="lang"><button id="lb" aria-haspopup="true">TR ▾</button><ul id="ll"></ul></div>
     <a href="#book" data-i="cta">Randevu al</a>
@@ -253,6 +264,31 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
 <article class="card2"><div class="vis scn" data-photo="4"><svg viewBox="0 0 400 225"><g><rect x="25" y="45" width="48" height="130" rx="22" fill="#BFA66A"/><rect x="83" y="45" width="48" height="130" rx="22" fill="#CDB878"/><rect x="141" y="45" width="48" height="130" rx="22" fill="#DCCB93"/><rect x="199" y="45" width="48" height="130" rx="22" fill="#E8DDB8"/><rect x="257" y="45" width="48" height="130" rx="22" fill="#F3ECD6"/><rect x="315" y="45" width="48" height="130" rx="22" fill="#fff" stroke="#9fb4ff" stroke-width="4"/></g><text x="339" y="30" font-size="26" fill="#fff" text-anchor="middle">✦</text><text x="368" y="60" font-size="14" fill="#fff">✦</text></svg></div><div class="ct"><h3 data-i="t4">Beyazlatma</h3><p data-i="d4">Tek seansta güvenli parlaklık.</p><a class="cta mag" href="#book" data-p="4" data-i="cta">Randevu al</a></div></article>
 </div><div class="bar"><i id="hb"></i></div></div></section>
 <section id="ba2s"><div class="bah"><h2 id="bah"></h2><p class="note" data-j="sm">Örnek görsel</p></div><div class="ba ba2" id="ba2"><div class="l a"><svg viewBox="0 0 500 120"><use href="#tp" x="0" width="100" height="120"/><use href="#tp" x="100" width="100" height="120"/><use href="#tp" x="200" width="100" height="120"/><use href="#tp" x="300" width="100" height="120"/><use href="#tp" x="400" width="100" height="120"/></svg></div><div class="l b"><svg viewBox="0 0 500 120"><use href="#tp" x="0" width="100" height="120"/><use href="#tp" x="100" width="100" height="120"/><use href="#tp" x="200" width="100" height="120"/><use href="#tp" x="300" width="100" height="120"/><use href="#tp" x="400" width="100" height="120"/></svg></div><i class="tgl" data-j="b1">Önce</i><i class="tgr" data-j="b2">Sonra</i><div class="h"></div><input type="range" min="0" max="100" value="50" aria-label="before / after"></div></section>
+
+<!-- DOKTOR KADROSU BÖLÜMÜ -->
+<section id="team">
+  <h2 data-i="teamH">Uzman Kadromuz</h2>
+  <div class="doc-grid">
+    <div class="doc-card">
+      <!-- Erkek Doktor (Caner Hoca) -->
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop" alt="Dr. Caner Yılmaz" class="doc-img">
+      <div class="doc-info">
+        <div class="doc-name">Dr. Caner Yılmaz</div>
+        <div class="doc-title" data-i="doc1">Çene Cerrahı & İmplantoloji</div>
+        <div class="doc-desc" data-i="doc1d">15+ yıllık deneyim. Karmaşık implant vakaları ve ileri cerrahi uzmanı.</div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <!-- Çekici Kadın Doktor (Aylin Hoca) -->
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=600&auto=format&fit=crop" alt="Dr. Aylin Demir" class="doc-img">
+      <div class="doc-info">
+        <div class="doc-name">Dr. Aylin Demir</div>
+        <div class="doc-title" data-i="doc2">Gülüş Tasarımı & Estetik</div>
+        <div class="doc-desc" data-i="doc2d">Dijital gülüş planlaması ve porselen laminate uygulamalarında öncü.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="j"><h2 data-j="jh">Yolculuğun</h2><ol class="jr" id="jr"><li><b data-j="j1">Tanışma</b></li><li><b data-j="j2">Dijital plan</b></li><li><b data-j="j3">Tedavi</b></li><li><b data-j="j4">Takip</b></li></ol></section>
 <a class="wa" href="https://wa.me/905000000000" target="_blank" rel="noopener"><i class="dot"></i>WhatsApp</a><a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
@@ -280,18 +316,18 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
 const FL={tr:'🇹🇷',en:'🇬🇧',de:'🇩🇪',ru:'🇷🇺',ar:'🇸🇦',fa:'🇮🇷',fr:'🇫🇷',es:'🇪🇸',it:'🇮🇹',nl:'🇳🇱',pl:'🇵🇱',zh:'🇨🇳'};
 
 const L={
-tr:{n:"Türkçe",n1:"Tedaviler",n2:"Rakamlar",cta:"Randevu al",h1a:"Gülüşün,",h1b:"tasarlandı.",sub:"İstanbul'un kalbinde, sessiz ve steril bir klinikte yeni nesil diş hekimliği.",th:"Tedaviler",t1:"İmplant",d1:"Kalıcı, doğal görünen dişler.",t2:"Gülüş tasarımı",d2:"Dijital planlama, porselen laminate.",t3:"Ortodonti",d3:"Şeffaf plaklarla görünmez düzeltme.",t4:"Beyazlatma",d4:"Tek seansta güvenli parlaklık.",s1:"mutlu hasta",s2:"yıllık deneyim",s3:"dilde destek",fh:"Gülümsemeye hazır mısın?"},
-en:{n:"English",n1:"Treatments",n2:"Numbers",cta:"Book a visit",h1a:"Your smile,",h1b:"designed.",sub:"Next-generation dentistry in a calm, spotless clinic in the heart of Istanbul.",th:"Treatments",t1:"Implants",d1:"Permanent, natural-looking teeth.",t2:"Smile design",d2:"Digital planning, porcelain veneers.",t3:"Orthodontics",d3:"Invisible straightening with clear aligners.",t4:"Whitening",d4:"Safe brightness in one session.",s1:"happy patients",s2:"years of experience",s3:"languages spoken",fh:"Ready to smile?"},
-de:{n:"Deutsch",n1:"Behandlungen",n2:"Zahlen",cta:"Termin buchen",h1a:"Dein Lächeln,",h1b:"gestaltet.",sub:"Zahnmedizin der nächsten Generation in einer ruhigen Klinik im Herzen Istanbuls.",th:"Behandlungen",t1:"Implantate",d1:"Dauerhafte, natürliche Zähne.",t2:"Smile Design",d2:"Digitale Planung, Keramik-Veneers.",t3:"Kieferorthopädie",d3:"Unsichtbare Korrektur mit Alignern.",t4:"Bleaching",d4:"Sichere Aufhellung in einer Sitzung.",s1:"zufriedene Patienten",s2:"Jahre Erfahrung",s3:"Sprachen",fh:"Bereit zu lächeln?"},
-ru:{n:"Русский",n1:"Лечение",n2:"Цифры",cta:"Записаться",h1a:"Ваша улыбка,",h1b:"спроектирована.",sub:"Стоматология нового поколения в спокойной клинике в центре Стамбула.",th:"Лечение",t1:"Импланты",d1:"Постоянные, естественные зубы.",t2:"Дизайн улыбки",d2:"Цифровое планирование, виниры.",t3:"Ортодонтия",d3:"Незаметное выравнивание элайнерами.",t4:"Отбеливание",d4:"Безопасное сияние за один визит.",s1:"довольных пациентов",s2:"лет опыта",s3:"языков",fh:"Готовы улыбнуться?"},
-ar:{n:"العربية",n1:"العلاجات",n2:"أرقام",cta:"احجز موعدًا",h1a:"ابتسامتك،",h1b:"مصمّمة.",sub:"طب أسنان من الجيل الجديد في عيادة هادئة في قلب إسطنبول.",th:"العلاجات",t1:"زراعة الأسنان",d1:"أسنان دائمة بمظهر طبيعي.",t2:"تصميم الابتسامة",d2:"تخطيط رقمي وقشور خزفية.",t3:"تقويم الأسنان",d3:"تقويم شفاف غير مرئي.",t4:"تبييض الأسنان",d4:"بياض آمن في جلسة واحدة.",s1:"مريض سعيد",s2:"سنة خبرة",s3:"لغة",fh:"هل أنت مستعد للابتسام؟"},
-fa:{n:"فارسی",n1:"درمان‌ها",n2:"آمار",cta:"رزرو نوبت",h1a:"لبخندت،",h1b:"طراحی‌شده.",sub:"دندانپزشکی نسل جدید در کلینیکی آرام در قلب استانبول.",th:"درمان‌ها",t1:"ایمپلنت",d1:"دندان‌های دائمی و طبیعی.",t2:"طراحی لبخند",d2:"برنامه‌ریزی دیجیتال، لمینت.",t3:"ارتودنسی",d3:"ردیف‌سازی نامرئی با الاینر.",t4:"سفید کردن",d4:"درخشش ایمن در یک جلسه.",s1:"بیمار راضی",s2:"سال تجربه",s3:"زبان",fh:"آماده لبخند هستید؟"},
-fr:{n:"Français",n1:"Soins",n2:"Chiffres",cta:"Prendre rendez-vous",h1a:"Votre sourire,",h1b:"dessiné.",sub:"La dentisterie nouvelle génération, dans une clinique calme au cœur d'Istanbul.",th:"Soins",t1:"Implants",d1:"Des dents durables, naturelles.",t2:"Smile design",d2:"Planification digitale, facettes.",t3:"Orthodontie",d3:"Alignement invisible par gouttières.",t4:"Blanchiment",d4:"Éclat sûr en une séance.",s1:"patients satisfaits",s2:"ans d'expérience",s3:"langues parlées",fh:"Prêt à sourire ?"},
-es:{n:"Español",n1:"Tratamientos",n2:"Cifras",cta:"Reservar cita",h1a:"Tu sonrisa,",h1b:"diseñada.",sub:"Odontología de nueva generación en una clínica tranquila en el corazón de Estambul.",th:"Tratamientos",t1:"Implantes",d1:"Dientes permanentes y naturales.",t2:"Diseño de sonrisa",d2:"Planificación digital, carillas.",t3:"Ortodoncia",d3:"Alineación invisible con alineadores.",t4:"Blanqueamiento",d4:"Brillo seguro en una sesión.",s1:"pacientes felices",s2:"años de experiencia",s3:"idiomas",fh:"¿Listo para sonreír?"},
-it:{n:"Italiano",n1:"Trattamenti",n2:"Numeri",cta:"Prenota una visita",h1a:"Il tuo sorriso,",h1b:"progettato.",sub:"Odontoiatria di nuova generazione in una clinica silenziosa nel cuore di Istanbul.",th:"Trattamenti",t1:"Impianti",d1:"Denti permanenti e naturali.",t2:"Smile design",d2:"Pianificazione digitale, faccette.",t3:"Ortodonzia",d3:"Allineamento invisibile con aligner.",t4:"Sbiancamento",d4:"Luminosità sicura in una seduta.",s1:"pazienti felici",s2:"anni di esperienza",s3:"lingue parlate",fh:"Pronto a sorridere?"},
-nl:{n:"Nederlands",n1:"Behandelingen",n2:"Cijfers",cta:"Afspraak maken",h1a:"Jouw glimlach,",h1b:"ontworpen.",sub:"Tandheelkunde van de nieuwe generatie in een rustige kliniek in het hart van Istanbul.",th:"Behandelingen",t1:"Implantaten",d1:"Blijvende, natuurlijke tanden.",t2:"Smile design",d2:"Digitale planning, veneers.",t3:"Orthodontie",d3:"Onzichtbaar rechtzetten met aligners.",t4:"Bleken",d4:"Veilige witheid in één sessie.",s1:"tevreden patiënten",s2:"jaar ervaring",s3:"talen",fh:"Klaar om te lachen?"},
-pl:{n:"Polski",n1:"Zabiegi",n2:"Liczby",cta:"Umów wizytę",h1a:"Twój uśmiech,",h1b:"zaprojektowany.",sub:"Stomatologia nowej generacji w spokojnej klinice w sercu Stambułu.",th:"Zabiegi",t1:"Implanty",d1:"Trwałe, naturalne zęby.",t2:"Projekt uśmiechu",d2:"Planowanie cyfrowe, licówki.",t3:"Ortodoncja",d3:"Niewidoczne prostowanie nakładkami.",t4:"Wybielanie",d4:"Bezpieczny blask w jednej wizycie.",s1:"zadowolonych pacjentów",s2:"lat doświadczenia",s3:"języków",fh:"Gotowy się uśmiechnąć?"},
-zh:{n:"中文",n1:"诊疗项目",n2:"数据",cta:"预约就诊",h1a:"你的笑容，",h1b:"精心设计。",sub:"位于伊斯坦布尔中心、安静洁净的新一代牙科诊所。",th:"诊疗项目",t1:"种植牙",d1:"持久自然的牙齿。",t2:"笑容设计",d2:"数字化规划，瓷贴面。",t3:"正畸",d3:"隐形矫正器无痕排齐。",t4:"美白",d4:"一次就诊安全亮白。",s1:"满意患者",s2:"年经验",s3:"种语言",fh:"准备好微笑了吗？"}
+tr:{n:"Türkçe",n1:"Tedaviler",n2:"Rakamlar",n3:"Doktorlar",cta:"Randevu al",h1a:"Gülüşün,",h1b:"tasarlandı.",sub:"İstanbul'un kalbinde, sessiz ve steril bir klinikte yeni nesil diş hekimliği.",th:"Tedaviler",teamH:"Uzman Kadromuz",doc1:"Çene Cerrahı & İmplantoloji",doc1d:"15+ yıllık deneyim. Karmaşık implant vakaları ve ileri cerrahi uzmanı.",doc2:"Gülüş Tasarımı & Estetik",doc2d:"Dijital gülüş planlaması ve porselen laminate uygulamalarında öncü.",t1:"İmplant",d1:"Kalıcı, doğal görünen dişler.",t2:"Gülüş tasarımı",d2:"Dijital planlama, porselen laminate.",t3:"Ortodonti",d3:"Şeffaf plaklarla görünmez düzeltme.",t4:"Beyazlatma",d4:"Tek seansta güvenli parlaklık.",s1:"mutlu hasta",s2:"yıllık deneyim",s3:"dilde destek",fh:"Gülümsemeye hazır mısın?"},
+en:{n:"English",n1:"Treatments",n2:"Numbers",n3:"Doctors",cta:"Book a visit",h1a:"Your smile,",h1b:"designed.",sub:"Next-generation dentistry in a calm, spotless clinic in the heart of Istanbul.",th:"Treatments",teamH:"Our Expert Team",doc1:"Oral Surgeon & Implantology",doc1d:"15+ years experience. Expert in complex implants and advanced surgery.",doc2:"Smile Design & Aesthetics",doc2d:"Pioneer in digital smile planning and porcelain veneers.",t1:"Implants",d1:"Permanent, natural-looking teeth.",t2:"Smile design",d2:"Digital planning, porcelain veneers.",t3:"Orthodontics",d3:"Invisible straightening with clear aligners.",t4:"Whitening",d4:"Safe brightness in one session.",s1:"happy patients",s2:"years of experience",s3:"languages spoken",fh:"Ready to smile?"},
+de:{n:"Deutsch",n1:"Behandlungen",n2:"Zahlen",n3:"Ärzte",cta:"Termin buchen",h1a:"Dein Lächeln,",h1b:"gestaltet.",sub:"Zahnmedizin der nächsten Generation in einer ruhigen Klinik im Herzen Istanbuls.",th:"Behandlungen",teamH:"Unser Expertenteam",doc1:"Kieferchirurg & Implantologie",doc1d:"15+ Jahre Erfahrung. Experte für komplexe Implantate und fortgeschrittene Chirurgie.",doc2:"Smile Design & Ästhetik",doc2d:"Pionier in digitaler Lächelnplanung und Keramik-Veneers.",t1:"Implantate",d1:"Dauerhafte, natürliche Zähne.",t2:"Smile Design",d2:"Digitale Planung, Keramik-Veneers.",t3:"Kieferorthopädie",d3:"Unsichtbare Korrektur mit Alignern.",t4:"Bleaching",d4:"Sichere Aufhellung in einer Sitzung.",s1:"zufriedene Patienten",s2:"Jahre Erfahrung",s3:"Sprachen",fh:"Bereit zu lächeln?"},
+ru:{n:"Русский",n1:"Лечение",n2:"Цифры",n3:"Врачи",cta:"Записаться",h1a:"Ваша улыбка,",h1b:"спроектирована.",sub:"Стоматология нового поколения в спокойной клинике в центре Стамбула.",th:"Лечение",teamH:"Наша команда экспертов",doc1:"Хирург-имплантолог",doc1d:"Опыт 15+ лет. Эксперт по сложным имплантатам и передовой хирургии.",doc2:"Дизайн улыбки и эстетика",doc2d:"Пионер в цифровом планировании улыбки и винирах.",t1:"Импланты",d1:"Постоянные, естественные зубы.",t2:"Дизайн улыбки",d2:"Цифровое планирование, виниры.",t3:"Ортодонтия",d3:"Незаметное выравнивание элайнерами.",t4:"Отбеливание",d4:"Безопасное сияние за один визит.",s1:"довольных пациентов",s2:"лет опыта",s3:"языков",fh:"Готовы улыбнуться?"},
+ar:{n:"العربية",n1:"العلاجات",n2:"أرقام",n3:"الأطباء",cta:"احجز موعدًا",h1a:"ابتسامتك،",h1b:"مصمّمة.",sub:"طب أسنان من الجيل الجديد في عيادة هادئة في قلب إسطنبول.",th:"العلاجات",teamH:"فريقنا الخبير",doc1:"جراح الفم وزراعة الأسنان",doc1d:"خبرة 15+ سنة. خبير في الزراعة المعقدة والجراحة المتقدمة.",doc2:"تصميم الابتسامة والتجميل",doc2d:"رائد في التخطيط الرقمي للابتسامة والقشور الخزفية.",t1:"زراعة الأسنان",d1:"أسنان دائمة بمظهر طبيعي.",t2:"تصميم الابتسامة",d2:"تخطيط رقمي وقشور خزفية.",t3:"تقويم الأسنان",d3:"تقويم شفاف غير مرئي.",t4:"تبييض الأسنان",d4:"بياض آمن في جلسة واحدة.",s1:"مريض سعيد",s2:"سنة خبرة",s3:"لغة",fh:"هل أنت مستعد للابتسام؟"},
+fa:{n:"فارسی",n1:"درمان‌ها",n2:"آمار",n3:"پزشکان",cta:"رزرو نوبت",h1a:"لبخندت،",h1b:"طراحی‌شده.",sub:"دندانپزشکی نسل جدید در کلینیکی آرام در قلب استانبول.",th:"درمان‌ها",teamH:"تیم متخصص ما",doc1:"جراح فک و ایمپلنتولوژی",doc1d:"۱۵+ سال تجربه. متخصص در ایمپلنت‌های پیچیده و جراحی پیشرفته.",doc2:"طراحی لبخند و زیبایی",doc2d:"پیشگام در برنامه‌ریزی دیجیتال لبخند و لمینت.",t1:"ایمپلنت",d1:"دندان‌های دائمی و طبیعی.",t2:"طراحی لبخند",d2:"برنامه‌ریزی دیجیتال، لمینت.",t3:"ارتودنسی",d3:"ردیف‌سازی نامرئی با الاینر.",t4:"سفید کردن",d4:"درخشش ایمن در یک جلسه.",s1:"بیمار راضی",s2:"سال تجربه",s3:"زبان",fh:"آماده لبخند هستید؟"},
+fr:{n:"Français",n1:"Soins",n2:"Chiffres",n3:"Médecins",cta:"Prendre rendez-vous",h1a:"Votre sourire,",h1b:"dessiné.",sub:"La dentisterie nouvelle génération, dans une clinique calme au cœur d'Istanbul.",th:"Soins",teamH:"Notre Équipe d'Experts",doc1:"Chirurgien Oral & Implantologie",doc1d:"15+ ans d'expérience. Expert en implants complexes et chirurgie avancée.",doc2:"Smile Design & Esthétique",doc2d:"Pionier dans la planification digitale du sourire et facettes.",t1:"Implants",d1:"Des dents durables, naturelles.",t2:"Smile design",d2:"Planification digitale, facettes.",t3:"Orthodontie",d3:"Alignement invisible par gouttières.",t4:"Blanchiment",d4:"Éclat sûr en une séance.",s1:"patients satisfaits",s2:"ans d'expérience",s3:"langues parlées",fh:"Prêt à sourire ?"},
+es:{n:"Español",n1:"Tratamientos",n2:"Cifras",n3:"Doctores",cta:"Reservar cita",h1a:"Tu sonrisa,",h1b:"diseñada.",sub:"Odontología de nueva generación en una clínica tranquila en el corazón de Estambul.",th:"Tratamientos",teamH:"Nuestro Equipo Experto",doc1:"Cirujano Oral e Implantología",doc1d:"Más de 15 años de experiencia. Experto en implantes complejos y cirugía avanzada.",doc2:"Diseño de Sonrisa y Estética",doc2d:"Pionero en planificación digital de sonrisas y carillas.",t1:"Implantes",d1:"Dientes permanentes y naturales.",t2:"Diseño de sonrisa",d2:"Planificación digital, carillas.",t3:"Ortodoncia",d3:"Alineación invisible con alineadores.",t4:"Blanqueamiento",d4:"Brillo seguro en una sesión.",s1:"pacientes felices",s2:"años de experiencia",s3:"idiomas",fh:"¿Listo para sonreír?"},
+it:{n:"Italiano",n1:"Trattamenti",n2:"Numeri",n3:"Medici",cta:"Prenota una visita",h1a:"Il tuo sorriso,",h1b:"progettato.",sub:"Odontoiatria di nuova generazione in una clinica silenziosa nel cuore di Istanbul.",th:"Trattamenti",teamH:"Il Nostro Team Esperto",doc1:"Chirurgo Orale e Implantologia",doc1d:"Oltre 15 anni di esperienza. Esperto in impianti complessi e chirurgia avanzata.",doc2:"Smile Design & Estetica",doc2d:"Pioniere nella pianificazione digitale del sorriso e faccette.",t1:"Impianti",d1:"Denti permanenti e naturali.",t2:"Smile design",d2:"Pianificazione digitale, faccette.",t3:"Ortodonzia",d3:"Allineamento invisibile con aligner.",t4:"Sbiancamento",d4:"Luminosità sicura in una seduta.",s1:"pazienti felici",s2:"anni di esperienza",s3:"lingue parlate",fh:"Pronto a sorridere?"},
+nl:{n:"Nederlands",n1:"Behandelingen",n2:"Cijfers",n3:"Artsen",cta:"Afspraak maken",h1a:"Jouw glimlach,",h1b:"ontworpen.",sub:"Tandheelkunde van de nieuwe generatie in een rustige kliniek in het hart van Istanbul.",th:"Behandelingen",teamH:"Ons Expertteam",doc1:"Mond- en kaakchirurg & Implantologie",doc1d:"15+ jaar ervaring. Expert in complexe implantaten en geavanceerde chirurgie.",doc2:"Smile Design & Esthetiek",doc2d:"Pionier in digitale glimlachplanning en veneers.",t1:"Implantaten",d1:"Blijvende, natuurlijke tanden.",t2:"Smile design",d2:"Digitale planning, veneers.",t3:"Orthodontie",d3:"Onzichtbaar rechtzetten met aligners.",t4:"Bleken",d4:"Veilige witheid in één sessie.",s1:"tevreden patiënten",s2:"jaar ervaring",s3:"talen",fh:"Klaar om te lachen?"},
+pl:{n:"Polski",n1:"Zabiegi",n2:"Liczby",n3:"Lekarze",cta:"Umów wizytę",h1a:"Twój uśmiech,",h1b:"zaprojektowany.",sub:"Stomatologia nowej generacji w spokojnej klinice w sercu Stambułu.",th:"Zabiegi",teamH:"Nasz Zespół Ekspertów",doc1:"Chirurg Szczękowy i Implantologia",doc1d:"Ponad 15 lat doświadczenia. Ekspert w złożonych implantach i zaawansowanej chirurgii.",doc2:"Projekt Uśmiechu i Estetyka",doc2d:"Pionier w cyfrowym planowaniu uśmiechu i licówkach.",t1:"Implanty",d1:"Trwałe, naturalne zęby.",t2:"Projekt uśmiechu",d2:"Planowanie cyfrowe, licówki.",t3:"Ortodoncja",d3:"Niewidoczne prostowanie nakładkami.",t4:"Wybielanie",d4:"Bezpieczny blask w jednej wizycie.",s1:"zadowolonych pacjentów",s2:"lat doświadczenia",s3:"języków",fh:"Gotowy się uśmiechnąć?"},
+zh:{n:"中文",n1:"诊疗项目",n2:"数据",n3:"医生团队",cta:"预约就诊",h1a:"你的笑容，",h1b:"精心设计。",sub:"位于伊斯坦布尔中心、安静洁净的新一代牙科诊所。",th:"诊疗项目",teamH:"我们的专家团队",doc1:"口腔外科及种植学",doc1d:"超过15年经验。复杂种植及高级手术专家。",doc2:"笑容设计及美学",doc2d:"数字笑容规划及瓷贴面领域的先驱。",t1:"种植牙",d1:"持久自然的牙齿。",t2:"笑容设计",d2:"数字化规划，瓷贴面。",t3:"正畸",d3:"隐形矫正器无痕排齐。",t4:"美白",d4:"一次就诊安全亮白。",s1:"满意患者",s2:"年经验",s3:"种语言",fh:"准备好微笑了吗？"}
 };
 /* ===== MÜŞTERİ BİLGİLERİ: yalnızca bu bloğu düzenleyin ===== */
 const CLINIC={name:'Aura Dental',city:'Şişli, İstanbul',addr:'Halaskargazi Cd. No: 00, Şişli / İstanbul',hours:'09:00 – 18:00',phone:'+90 500 000 00 00',wa:'905000000000',email:'hello@auradental.example',rating:'4.9',lat:41.0602,lng:28.9877};
@@ -406,9 +442,11 @@ function scrollFx(){
 addEventListener('scroll',scrollFx,{passive:true});addEventListener('resize',()=>{sizeHS();scrollFx();build()});
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const e=en.target,n=+e.dataset.n;let t0;const f=t=>{t0=t0||t;const p=Math.min((t-t0)/1800,1);e.textContent=Math.round(n*(1-Math.pow(1-p,3))).toLocaleString();if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);io.unobserve(e)}}));
 document.querySelectorAll('[data-n]').forEach(e=>io.observe(e));
-/* hero particles: a tooth that scatters from the cursor */
+/* hero particles: a tooth that scatters from the cursor - PATLAMA SORUNU ÇÖZÜLDÜ */
 const cv=$('#cv'),g=cv.getContext('2d'),TP=new Path2D("M50 8c-14-9-38-6-40 20-1 20 8 28 10 52 1 14 9 38 16 38 8 0 6-26 14-26s6 26 14 26c7 0 15-24 16-38 2-24 11-32 10-52C88 2 64-1 50 8z");
 let W,H,pts=[],dpr=1,col='#8DF0D8',vis=true,tt=0;
+let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 function build(){dpr=Math.min(devicePixelRatio||1,1.25);W=cv.width=cv.offsetWidth*dpr;H=cv.height=cv.offsetHeight*dpr;
   col=getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||col;
   const o=document.createElement('canvas');o.width=W;o.height=H;const c=o.getContext('2d'),m=W<800*dpr,s=m?Math.min(W*.6,H*.34):H*.7,k=s/120;
@@ -416,8 +454,24 @@ function build(){dpr=Math.min(devicePixelRatio||1,1.25);W=cv.width=cv.offsetWidt
   const d=c.getImageData(0,0,W,H).data,st=Math.max(4,Math.round(s/75)),T=[];
   for(let y=0;y<H;y+=st)for(let x=0;x<W;x+=st)if(d[(y*W+x)*4+3]>128)T.push([x,y]);
   pts=T.map(t=>({x:Math.random()*W,y:Math.random()*H,tx:t[0],ty:t[1],vx:0,vy:0}))}
-$('.hero').addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*dpr;my=(e.clientY-r.top)*dpr});
+
+/* Fare ile üzerine gelince patlama (Sadece masaüstünde) */
+$('.hero').addEventListener('pointermove',e=>{
+  if(!isMobile && e.pointerType === 'mouse') {
+    const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*dpr;my=(e.clientY-r.top)*dpr;
+  }
+});
 $('.hero').addEventListener('pointerleave',()=>{mx=my=-999});
+
+/* Mobilde sadece dokununca (tap) ufak bir dalgalanma yapsın, scroll yaparken patlamasın */
+$('.hero').addEventListener('touchstart', e => {
+    const touch = e.touches[0];
+    const r = cv.getBoundingClientRect();
+    mx = (touch.clientX - r.left) * dpr;
+    my = (touch.clientY - r.top) * dpr;
+    setTimeout(() => { mx = my = -999; }, 100); 
+}, {passive: true});
+
 new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
 (function draw(){requestAnimationFrame(draw);if(!vis)return;tt+=.02;g.clearRect(0,0,W,H);g.fillStyle=col;const R=130*dpr,sz=2*dpr;
   for(const p of pts){p.vx+=(p.tx-p.x)*.025;p.vy+=(p.ty-p.y)*.025;const dx=p.x-mx,dy=p.y-my,dd=dx*dx+dy*dy;
