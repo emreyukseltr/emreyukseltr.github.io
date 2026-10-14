@@ -35,7 +35,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:
 .lang{position:relative}.lang button{font:600 13px Manrope;background:none;border:1px solid var(--line);color:var(--ink);padding:8px 14px;border-radius:99px;cursor:pointer}
 .lang ul{position:absolute;inset-inline-end:0;top:46px;list-style:none;padding:8px;background:var(--card);border:1px solid var(--line);border-radius:18px;display:none;grid-template-columns:1fr 1fr;gap:2px;min-width:260px;box-shadow:0 30px 60px #0006;z-index:5}
 .lang.open ul{display:grid}.lang li{padding:9px 12px;border-radius:10px;cursor:pointer;font-size:14px}.lang li:hover,.lang li.on{background:var(--acc);color:var(--on)}
-.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:0 4vw 7vh;overflow:hidden}
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:0 4vw 7vh;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
 #cv{position:absolute;inset:0;width:100%;height:100%}
 .hc{position:relative;pointer-events:none}.hc a{pointer-events:auto}
 .hero h1{font-size:clamp(32px,6.4vw,112px)}:lang(ru) .hero h1,:lang(pl) .hero h1,:lang(de) .hero h1,:lang(nl) .hero h1{font-size:clamp(28px,4.8vw,84px)}
@@ -465,8 +465,13 @@ function build(){dpr=Math.min(devicePixelRatio||1,1.25);W=cv.width=Math.round(cv
   const d=c.getImageData(0,0,W,H).data,st=Math.max(4,Math.round(s/75)),T=[];
   for(let y=0;y<H;y+=st)for(let x=0;x<W;x+=st)if(d[(y*W+x)*4+3]>128)T.push([x,y]);
   const old=pts;pts=T.map((t,i)=>old[i]?{x:old[i].x,y:old[i].y,tx:t[0],ty:t[1],vx:0,vy:0}:{x:Math.random()*W,y:Math.random()*H,tx:t[0],ty:t[1],vx:0,vy:0})}
-$('.hero').addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*dpr;my=(e.clientY-r.top)*dpr});
-$('.hero').addEventListener('pointerleave',()=>{mx=my=-999});
+$('.hero').addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*dpr;my=(e.clientY-r.top)*dpr});
+$('.hero').addEventListener('pointerleave',e=>{if(e.pointerType!=='touch')mx=my=-999});
+/* Dokunmatik: basılı tutmadan, dokunur dokunmaz parmağı takip eder; sayfa kaydırması da çalışmaya devam eder.
+   (Pointer olayları kaydırma başlayınca iptal edildiği için touch olayları kullanılır.) */
+{let tu=0;const tp=e=>{const t=e.touches[0];if(!t)return;clearTimeout(tu);const r=cv.getBoundingClientRect();mx=(t.clientX-r.left)*dpr;my=(t.clientY-r.top)*dpr};
+$('.hero').addEventListener('touchstart',tp,{passive:true});$('.hero').addEventListener('touchmove',tp,{passive:true});
+const te=()=>{clearTimeout(tu);tu=setTimeout(()=>{mx=my=-999},600)};$('.hero').addEventListener('touchend',te,{passive:true});$('.hero').addEventListener('touchcancel',te,{passive:true})}
 new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
 new IntersectionObserver(e=>document.body.classList.toggle('hcta',e[0].isIntersecting)).observe($('.hero .acts'));
 (function draw(){requestAnimationFrame(draw);if(!vis)return;tt+=.02;g.clearRect(0,0,W,H);g.fillStyle=col;const R=130*dpr,sz=2*dpr;
