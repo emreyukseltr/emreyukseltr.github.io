@@ -188,6 +188,10 @@ h2 em{font-style:italic;color:var(--tone-lo);transition:color .6s}
 .svc:hover::after,.svc[aria-pressed="true"]::after{transform:scaleX(1)}
 .svc-n{display:block;font:400 clamp(25px,3vw,40px)/1.1 var(--serif);letter-spacing:-.01em;transition:transform .55s var(--ease)}
 .svc:hover .svc-n{transform:translateX(10px)}
+.svc>span:first-child{min-width:0}
+/* Uzun kelimeler (ör. Feuchtigkeitsbehandlung, восстанавливающий) sütundan taşmasın */
+.svc-n,.promo h3,.bag li b{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+h1,h2,h3{overflow-wrap:break-word}
 .svc-d{display:block;font-size:14px;line-height:1.5;color:var(--mute-d);margin-top:6px;max-width:62ch}
 .svc-tm{display:none;font-size:13px;color:var(--mute-d);margin-top:4px}
 .svc-t{font-size:14px;color:var(--mute-d);white-space:nowrap}
@@ -431,8 +435,8 @@ legend.ph+*{clear:both}
   .hdr{gap:10px}
   .brand{font-size:20px}
   .pill{padding:10px 15px;font-size:13px}
-  .svc{grid-template-columns:minmax(0,1fr) auto 44px;gap:14px;padding:22px 0}
-  .svc-t{display:none}
+  .svc{grid-template-columns:minmax(0,1fr) 44px;gap:14px;padding:22px 0}
+  .svc-t,.svc-p{display:none}
   .svc-tm{display:block}
   .svc-d{display:none}
   .svc[aria-pressed="true"] .svc-d{display:block}
@@ -2170,7 +2174,7 @@ legend.ph+*{clear:both}
     var list = $('#svcList');
     list.innerHTML = SERVICES.filter(function (s) { return s.c === state.cat; }).map(function (s, k) {
       var on = state.sel.indexOf(s.id) > -1;
-      return '<button type="button" class="svc" data-id="' + s.id + '" aria-pressed="' + on + '" style="--k:' + k + '"><span><span class="svc-n">' + esc(L(s)) + (s.pop ? '<span class="badge">' + t('popular') + '</span>' : '') + '</span><span class="svc-d">' + esc(D(s)) + '</span><span class="svc-tm">' + dur(s.m) + ' · ' + money(s.p) + '</span></span><span class="svc-t">' + dur(s.m) + '</span><span class="svc-p"><small>' + t('from') + '</small>' + money(s.p) + '</span><span class="svc-x" aria-hidden="true">+</span></button>';
+      return '<button type="button" class="svc" data-id="' + s.id + '" aria-pressed="' + on + '" style="--k:' + k + '"><span><span class="svc-n">' + esc(L(s)) + (s.pop ? '<span class="badge">' + t('popular') + '</span>' : '') + '</span><span class="svc-d">' + esc(D(s)) + '</span><span class="svc-tm">' + dur(s.m) + ' · ' + t('from') + ' ' + money(s.p) + '</span></span><span class="svc-t">' + dur(s.m) + '</span><span class="svc-p"><small>' + t('from') + '</small>' + money(s.p) + '</span><span class="svc-x" aria-hidden="true">+</span></button>';
     }).join('');
     if (!animate) $$('.svc', list).forEach(function (b) { b.style.animation = 'none'; });
   }
