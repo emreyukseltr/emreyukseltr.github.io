@@ -28,6 +28,8 @@
   --pad:clamp(20px, 5vw, 72px);
   --ease:cubic-bezier(.2,.7,.1,1);
 }
+/* Bodoni Moda ve Instrument Sans Kiril harf içermez; Rusçada benzer karakterli fontlar */
+html:lang(ru){--serif:'Playfair Display', Georgia, serif; --sans:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px}
 body{margin:0;background:var(--ivory);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
@@ -68,11 +70,21 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:95;opa
 .nav a:hover{opacity:1}
 .nav a:hover::after{transform:scaleX(1);transform-origin:left}
 .hdr-r{display:flex;align-items:center;gap:10px}
-.lang{display:flex;gap:2px;background:none;border:1px solid var(--line-d);border-radius:99px;padding:4px;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.06em}
-.lang span{padding:5px 9px;border-radius:99px;opacity:.55;transition:background-color .3s,color .3s,opacity .3s}
-.lang span.on{background:var(--ivory);color:var(--ink);opacity:1}
+.lang-w{position:relative}
+.lang{display:inline-flex;align-items:center;gap:7px;background:none;color:inherit;border:1px solid var(--line-d);border-radius:99px;padding:10px 13px;cursor:pointer;font:600 12px/1 var(--sans);letter-spacing:.08em;transition:border-color .3s}
+.lang:hover{border-color:rgba(244,238,230,.42)}
+.lang svg{width:9px;height:9px;transition:transform .35s var(--ease)}
+.lang[aria-expanded="true"] svg{transform:rotate(180deg)}
+.lang-m{position:absolute;top:calc(100% + 10px);right:0;min-width:184px;margin:0;padding:6px;list-style:none;background:rgba(22,17,14,.97);border:1px solid var(--line-d);border-radius:16px;box-shadow:0 22px 60px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s,transform .35s var(--ease),visibility 0s .35s}
+.lang-m.show{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .35s var(--ease),visibility 0s}
+.lang-m button{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:11px 12px;border:0;border-radius:10px;background:none;color:var(--ivory);font:500 14px/1.2 var(--sans);text-align:left;cursor:pointer;transition:background-color .2s,color .2s}
+.lang-m button small{font-size:10.5px;font-weight:600;letter-spacing:.1em;opacity:.45}
+.lang-m button:hover,.lang-m button:focus-visible{background:rgba(244,238,230,.08)}
+.lang-m button[aria-checked="true"]{color:var(--tone-hi)}
+.lang-m button[aria-checked="true"] small{opacity:1}
 .pill{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:600;padding:11px 18px;border-radius:99px;background:var(--tone);color:var(--on-tone);white-space:nowrap;transition:transform .35s var(--ease),background-color .6s,color .6s}
 .pill:hover{transform:translateY(-2px)}
+.hdr.tight .pill{display:none}
 .burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-d);background:none;cursor:pointer;position:relative;flex:none}
 .burger i{position:absolute;left:13px;right:13px;height:1.5px;background:currentColor;transition:transform .45s var(--ease),top .45s var(--ease)}
 .burger i:first-child{top:17px}
@@ -448,9 +460,8 @@ legend.ph+*{clear:both}
   .badge{margin-left:8px}
 }
 @media (max-width:430px){
-  .lang{padding:0;border:0}
-  .lang span{display:none;border:1px solid var(--line-d);padding:8px 10px}
-  .lang span:not(.on){display:block;opacity:1}
+  .lang{padding:10px 11px;gap:6px}
+  .pill{padding:10px 14px;font-size:13px}
   .brand{font-size:19px}
   .hero{padding-top:110px}
   .eyebrow{letter-spacing:.18em;font-size:11px}
@@ -480,7 +491,7 @@ legend.ph+*{clear:both}
 
 <header class="hdr" id="hdr">
   <a class="brand" href="#top" data-salon="brand" aria-label="Maison Nova">Maison <i>Nova</i></a>
-  <nav class="nav" aria-label="Ana menü">
+  <nav class="nav" aria-label="Ana menü" data-ia="navAria">
     <a href="#renk" data-i="nav1">Renk</a>
     <a href="#menu" data-i="nav2">Hizmetler</a>
     <a href="#galeri" data-i="nav3">Galeri</a>
@@ -488,13 +499,16 @@ legend.ph+*{clear:both}
     <a href="#iletisim" data-i="nav4">İletişim</a>
   </nav>
   <div class="hdr-r">
-    <button class="lang" id="langT" type="button"><span data-l="tr">TR</span><span data-l="en">EN</span></button>
+    <div class="lang-w">
+      <button class="lang" id="langT" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langM"><span id="langC">TR</span><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5L5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <ul class="lang-m" id="langM" role="menu"></ul>
+    </div>
     <a class="pill mag" href="#randevu" data-i="cta">Randevu al</a>
-    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Menü"><i></i><i></i></button>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Menü" data-ia="menuAria"><i></i><i></i></button>
   </div>
 </header>
 
-<nav class="mnav" id="mnav" aria-label="Mobil menü" aria-hidden="true">
+<nav class="mnav" id="mnav" aria-label="Mobil menü" data-ia="mnavAria" aria-hidden="true">
   <a href="#renk" style="--k:0" data-i="nav1">Renk</a>
   <a href="#menu" style="--k:1" data-i="nav2">Hizmetler</a>
   <a href="#galeri" style="--k:2" data-i="nav3">Galeri</a>
@@ -592,8 +606,8 @@ legend.ph+*{clear:both}
     <div class="look-foot">
       <div class="look-bar" aria-hidden="true"><i id="lookBar"></i></div>
       <div class="look-btns">
-        <button class="rnd" type="button" id="lookPrev" data-a="prev" aria-label="Önceki">←</button>
-        <button class="rnd" type="button" id="lookNext" data-a="next" aria-label="Sonraki">→</button>
+        <button class="rnd" type="button" id="lookPrev" data-a="prev" aria-label="Önceki" data-ia="prev">←</button>
+        <button class="rnd" type="button" id="lookNext" data-a="next" aria-label="Sonraki" data-ia="next">→</button>
       </div>
     </div>
   </section>
@@ -671,7 +685,7 @@ legend.ph+*{clear:both}
             <legend class="ph"><span>4</span><b data-i="s4">Bilgileriniz</b></legend>
             <div class="two">
               <label class="fld"><span data-i="fName">Ad soyad</span><input id="fName" name="name" autocomplete="name" required></label>
-              <label class="fld"><span data-i="fTel">Telefon</span><input id="fTel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx" required></label>
+              <label class="fld"><span data-i="fTel">Telefon</span><input id="fTel" name="tel" type="tel" inputmode="tel" autocomplete="tel" data-iph="telPh" placeholder="05xx xxx xx xx" required></label>
             </div>
             <label class="fld"><span data-i="fNote">Not (isteğe bağlı)</span><textarea id="fNote" name="note" rows="3" data-iph="notePh" placeholder="Örn. saçım omuz hizasında, daha önce boya yaptırdım."></textarea></label>
             <label class="agree"><input type="checkbox" id="fAgree" required><span data-i="agree">Randevum için benimle iletişime geçilmesini kabul ediyorum.</span></label>
@@ -741,7 +755,7 @@ legend.ph+*{clear:both}
   </div>
 </footer>
 
-<div class="bagbar" id="bagbar" role="region" aria-label="Randevu çantası">
+<div class="bagbar" id="bagbar" role="region" aria-label="Randevu çantası" data-ia="bagAria">
   <p id="bagbarTxt"></p>
   <a class="btn tone" href="#randevu"><span data-i="go">Randevuya geç</span><span class="arr" aria-hidden="true">→</span></a>
 </div>
@@ -914,9 +928,1068 @@ legend.ph+*{clear:both}
     faqK: ['Sorular', 'Questions'], faqH: ['Merak <em>edilenler.</em>', 'Good to <em>know.</em>'],
     mapLbl: ['Haritada aç ↗', 'Open in Maps ↗'],
     curAdd: ['Ekle', 'Add'], curDrag: ['Sürükle', 'Drag'], curPick: ['Seç', 'Pick'],
-    langAria: ['Switch to English', 'Türkçeye geç'],
+    langMenu: ['Dil seçin', 'Choose language'],
+    prev: ['Önceki', 'Previous'], next: ['Sonraki', 'Next'], bagAria: ['Randevu çantası', 'Booking bag'],
+    navAria: ['Ana menü', 'Main menu'], mnavAria: ['Mobil menü', 'Mobile menu'], menuAria: ['Menü', 'Menu'],
+    telPh: ['05xx xxx xx xx', '+44 7xxx xxxxxx'], hUnit: ['sa', 'h'], minUnit: ['dk', 'min'],
     title: ['Saç & Güzellik Atölyesi', 'Hair & Beauty Atelier']
   };
+
+  /* ---------- Diller ----------
+     T, hizmetler ve diğer veriler yukarıda Türkçe + İngilizce yazılı; diğer diller aşağıdaki
+     I18N paketlerinden aynı yapıya yerleştirilir. WhatsApp mesajı salona her zaman Türkçe gider. */
+  var LANGS = {
+    tr: { code: 'TR', name: 'Türkçe', loc: 'tr-TR', trName: 'Türkçe' },
+    en: { code: 'EN', name: 'English', loc: 'en-GB', trName: 'İngilizce' },
+    de: { code: 'DE', name: 'Deutsch', loc: 'de-DE', trName: 'Almanca' },
+    nl: { code: 'NL', name: 'Nederlands', loc: 'nl-NL', trName: 'Felemenkçe' },
+    fr: { code: 'FR', name: 'Français', loc: 'fr-FR', trName: 'Fransızca' },
+    it: { code: 'IT', name: 'Italiano', loc: 'it-IT', trName: 'İtalyanca' },
+    es: { code: 'ES', name: 'Español', loc: 'es-ES', trName: 'İspanyolca' },
+    ru: { code: 'RU', name: 'Русский', loc: 'ru-RU', trName: 'Rusça' }
+  };
+  var ORDER = ['tr', 'en', 'de', 'nl', 'fr', 'it', 'es', 'ru'];
+  var I18N = {
+    de: {
+      ui: {
+        skip: "Zum Inhalt springen",
+        nav1: "Farbe",
+        nav2: "Leistungen",
+        nav3: "Lookbook",
+        nav4: "Kontakt",
+        nav5: "Team",
+        cta: "Jetzt buchen",
+        hEy: "Atelier für Haar & Beauty",
+        h1a: "Jede Strähne",
+        h1b: "ein Unikat.",
+        lede: "Ob Schnitt oder Farbe, Nägel oder Haut – jeder Besuch wird zu Ihrem persönlichen Ritual. Wählen Sie Ihre Leistungen: Dauer und Preis sehen Sie sofort, gebucht ist mit einem Fingertipp.",
+        b1: "Termin vereinbaren",
+        b2: "Leistungen & Preise",
+        rating: "4,9 bei Google · 320+ Bewertungen",
+        hrsS: "Mo–Sa · 10–20 Uhr",
+        scroll: "Scrollen",
+        labK: "Farblabor",
+        labH: "Finden Sie Ihren <em>Farbton.</em>",
+        labS: "Tippen Sie auf einen Farbton – schon erstrahlt die ganze Seite darin. Ihren Lieblingston übernehmen Sie mit einem Fingertipp in Ihre Buchung.",
+        toneAdd: "Diesen Farbton vormerken",
+        toneAdded: "Zur Buchung hinzugefügt ✓",
+        menuK: "Unsere Leistungen",
+        menuH: "Alles, was Ihnen <em>schmeichelt.</em>",
+        menuS: "Tippen Sie auf eine Leistung, um sie Ihrer Auswahl hinzuzufügen. Zeitangaben sind Richtwerte, alle Preise verstehen sich als Ab-Preise.",
+        from: "ab",
+        note: "Leistungen und Preise sind Beispiele und werden individuell auf Ihren Salon abgestimmt.",
+        expK: "Das Erlebnis",
+        expH: "Mehr als nur ein <em>Termin.</em>",
+        e1t: "Beratung",
+        e1d: "Am Anfang steht das Gespräch – über Ihr Haar, Ihre Haut und Ihre Wünsche.",
+        e2t: "Ritual",
+        e2d: "Warme Tücher, eine Kopfhautmassage und Produkte, die wir eigens für Sie auswählen.",
+        e3t: "Das Finish",
+        e3d: "Bis Sie in den Spiegel schauen und lächeln.",
+        e4t: "Pflege für zu Hause",
+        e4d: "Persönliche Pflegetipps, damit das Ergebnis lange schön bleibt.",
+        lookH: "Looks der Saison – <em>aus unserem Salon.</em>",
+        teamK: "Das Team",
+        teamH: "In besten <em>Händen.</em>",
+        yrs: "Jahre Erfahrung",
+        withPro: "Termin bei {n}",
+        revK: "Kundenstimmen",
+        bookK: "Buchung",
+        bookH: "Wir halten Ihnen <em>einen Platz frei.</em>",
+        bookS: "Vier kurze Schritte – Ihre Bestätigung erhalten Sie per WhatsApp.",
+        s1: "Leistungen",
+        s2: "Stylist",
+        s3: "Tag & Uhrzeit",
+        s4: "Ihre Daten",
+        bagEmpty: "Noch keine Leistung gewählt – fügen Sie einfach eine oder mehrere aus unserem Angebot hinzu.",
+        total: "Gesamt ab",
+        addMore: "+ Leistung hinzufügen",
+        approx: "Ungefähre Dauer",
+        tone: "Farbton",
+        remove: "Entfernen",
+        any: "Keine Präferenz",
+        closed: "Ruhetag",
+        pickDay: "Bitte wählen Sie zuerst einen Tag.",
+        noSlot: "Heute sind leider keine Termine mehr frei.",
+        fName: "Vor- und Nachname",
+        fTel: "Telefon",
+        fNote: "Anmerkung (optional)",
+        notePh: "Z. B. schulterlanges Haar, bereits gefärbt.",
+        agree: "Ich bin damit einverstanden, dass mich der Salon zu meinem Termin kontaktiert.",
+        send: "Per WhatsApp anfragen",
+        errSvc: "Bitte wählen Sie mindestens eine Leistung.",
+        errDay: "Bitte wählen Sie Tag und Uhrzeit.",
+        errName: "Bitte geben Sie Ihren Namen ein.",
+        errTel: "Bitte geben Sie eine gültige Telefonnummer ein.",
+        errAgree: "Bitte stimmen Sie der Kontaktaufnahme zu, um fortzufahren.",
+        doneH: "Ihre Anfrage ist vorbereitet.",
+        doneP: "WhatsApp wurde geöffnet. Senden Sie die Nachricht einfach ab – wir bestätigen Ihren Termin in Kürze.",
+        waLink: "WhatsApp nicht geöffnet? Hier tippen",
+        again: "Neuer Termin",
+        visK: "Ihr Besuch",
+        visH: "Wir freuen uns <em>auf Sie.</em>",
+        dir: "Route planen",
+        call: "Anrufen",
+        openNow: "Jetzt geöffnet · bis {h} Uhr",
+        closedNow: "Jetzt geschlossen",
+        demo: "Dies ist eine Beispiel-Website; Leistungen, Preise und Bilder werden individuell auf Ihren Salon abgestimmt.",
+        credit: "Design & Entwicklung: EY Studios ↗",
+        go: "Zur Buchung",
+        svcN: "{n} Leistung|{n} Leistungen",
+        back: "← Arbeitsprobe von EY Studios",
+        nav6: "Gutschein",
+        avail: "Noch frei: {d}, {t} Uhr",
+        today: "heute",
+        tomorrow: "morgen",
+        popular: "Beliebt",
+        promoK: "Exklusiv im {m}",
+        promoD: "Strahlende Farbe und spürbar gestärktes Haar – alles in einem Termin. Das Angebot gilt nur in diesem Monat.",
+        promoAdd: "Angebot hinzufügen",
+        promoAdded: "In Ihrer Auswahl ✓",
+        promoLine: "Aktionsrabatt",
+        giftK: "Gutschein",
+        giftLabel: "Geschenkgutschein",
+        giftValid: "12 Monate gültig",
+        giftH: "Verschenken Sie <em>ein Ritual.</em>",
+        giftS: "Zum Geburtstag, zum Jahrestag oder einfach als Dankeschön. Wählen Sie den Betrag – den Gutschein schicken wir Ihnen digital per WhatsApp.",
+        giftBtn: "Gutschein anfragen",
+        faqK: "Häufige Fragen",
+        faqH: "Gut zu <em>wissen.</em>",
+        mapLbl: "Karte öffnen ↗",
+        curAdd: "Buchen",
+        curDrag: "Ziehen",
+        curPick: "Wählen",
+        title: "Atelier für Haar & Beauty",
+        prev: "Zurück",
+        next: "Weiter",
+        bagAria: "Ihre Terminauswahl",
+        navAria: "Hauptmenü",
+        mnavAria: "Mobiles Menü",
+        menuAria: "Menü",
+        langMenu: "Sprache wählen",
+        telPh: "01xx xxxxxxxx",
+        hUnit: "Std.",
+        minUnit: "Min."
+      },
+      tones: [
+        ["Platin","Eisig und strahlend – mutig und modern."],
+        ["Aschblond","Kühle Untertöne mit einem weichen, edlen Finish."],
+        ["Champagner","Schimmernd, warm und zeitlos."],
+        ["Honiggold","Unser beliebtester Balayage-Ton – lässt das Gesicht sofort strahlen."],
+        ["Karamell","Wie geschaffen für olivfarbene und warme Hauttöne."],
+        ["Kupfer","Leuchtend, mutig und ein echter Hingucker."],
+        ["Burgunder","Tief, edel und voller Intensität."],
+        ["Schokolade","Ein sattes Braun, das dennoch natürlich wirkt."]
+      ],
+      cats: {"hair":"Haar","color":"Farbe","nails":"Nägel","skin":"Haut & Brauen","bridal":"Braut & Events"},
+      services: {
+        cut: ["Schnitt & Föhnen","Ein Schnitt, der Ihre Gesichtsform betont – inklusive Waschen und Föhnen."],
+        blow: ["Föhnen & Styling","Glatt, gewellt oder voluminös – ganz nach Anlass."],
+        mens: ["Herrenschnitt","Schnitt mit Schere und Maschine, inklusive Waschen und Styling."],
+        keratin: ["Keratinbehandlung","Bändigt Frizz und schenkt langanhaltenden Glanz."],
+        bond: ["Bond-Repair-Pflege","Ein stärkendes Ritual für Haar, das durch Farbe und Hitze strapaziert ist."],
+        root: ["Ansatzfarbe","Färbt den nachgewachsenen Ansatz nahtlos – exakt in Ihrem Farbton."],
+        full: ["Komplettfärbung","Ein satter, gleichmäßiger Farbton mit langanhaltendem Glanz."],
+        balayage: ["Balayage","Von Hand aufgetragene, sonnengeküsste Aufhellung mit weichen Übergängen."],
+        highlights: ["Strähnchen","Feine Foliensträhnchen für Leuchtkraft und Tiefe."],
+        gloss: ["Glossing","Frischt die Farbe auf und sorgt zwischen den Terminen für Glanz."],
+        mani: ["Maniküre","Formen, Nagelhautpflege und Feuchtigkeit für zarte Hände."],
+        gel: ["Gel-Lack","Bis zu drei Wochen makelloser Glanz."],
+        ext: ["Nagelverlängerung","Gelmodellage, individuell für Sie in Form gebracht."],
+        pedi: ["Pediküre","Fußpflege, Formen der Nägel und eine wohltuende Massage."],
+        facial: ["Klassische Gesichtsbehandlung","Tiefenreinigung, Peeling und Maske."],
+        hydra: ["Intensive Feuchtigkeitsbehandlung","Polstert müde Haut auf und schenkt ihr frisches Strahlen."],
+        brow: ["Augenbrauenstyling","Brauen, perfekt auf Ihre Gesichtsproportionen abgestimmt."],
+        lash: ["Wimpernlifting","Natürlich geschwungene Wimpern, die länger wirken."],
+        bride: ["Brautfrisur & Make-up","Inklusive Probetermin – am Hochzeitstag im Salon oder an Ihrer Location."],
+        updo: ["Hochsteckfrisur","Für Verlobung, Abiball oder Gala."],
+        mua: ["Professionelles Make-up","Ein Make-up, das auch auf Fotos makellos aussieht."]
+      },
+      promo: "Balayage + Bond-Repair-Pflege",
+      faq: [
+        ["Wie kann ich meinen Termin absagen?","Schreiben Sie uns einfach bis spätestens 24 Stunden vorher per WhatsApp – die Absage ist kostenfrei."],
+        ["Warum steht bei den Preisen „ab“?","Haarlänge und Produktmenge beeinflussen den Preis. Den genauen Preis nennen wir Ihnen in der Beratung, noch bevor wir beginnen."],
+        ["Wie kann ich bezahlen?","Sie zahlen im Salon bar oder mit Karte; bei größeren Behandlungen ist auch Ratenzahlung möglich."],
+        ["Gibt es Parkplätze?","Ja – im Parkhaus direkt gegenüber parken Sie als unser Gast 2 Stunden kostenlos."],
+        ["Welche Produkte verwenden Sie?","Wir arbeiten mit professionellen, haar- und hautfreundlichen Produkten und empfehlen Ihnen die passende Pflege für zu Hause."]
+      ],
+      staffRoles: ["Coloristin","Schnitt & Styling","Nägel & Brauen"],
+      looks: ["Balayage in Honiggold","Aschblonde Strähnchen","Kupferglanz","Präziser Bob","Braut-Hochsteckfrisur","Gel-Lack in Burgunder"],
+      reviews: [
+        "Mein Balayage ist genau so geworden, wie ich es mir vorgestellt habe – und sieht nach drei Monaten immer noch aus wie frisch gemacht.",
+        "Der Termin war in zwei Minuten gebucht – und dann wurde ich zwei Stunden lang nach Strich und Faden verwöhnt.",
+        "Frisur und Make-up haben an meiner Hochzeit bis spät in die Nacht perfekt gehalten. Alle wollten wissen, wo ich das habe machen lassen."
+      ]
+    },
+    nl: {
+      ui: {
+        skip: "Direct naar de inhoud",
+        nav1: "Kleur",
+        nav2: "Behandelingen",
+        nav3: "Lookbook",
+        nav4: "Contact",
+        nav5: "Team",
+        cta: "Boek nu",
+        hEy: "Atelier voor haar & beauty",
+        h1a: "In elke lok",
+        h1b: "ons handschrift.",
+        lede: "Van coupe tot kleur, van nagels tot huid: elk bezoek is een ritueel dat helemaal om jou draait. Kies je behandelingen, bekijk meteen duur en prijs en boek met één tik.",
+        b1: "Maak een afspraak",
+        b2: "Bekijk behandelingen",
+        rating: "4,9 op Google · 320+ reviews",
+        hrsS: "Ma–za · 10:00–20:00",
+        scroll: "Scroll",
+        labK: "Kleurenlab",
+        labH: "Ontdek jouw <em>tint.</em>",
+        labS: "Tik op een tint en zie de pagina meekleuren. Voeg je favoriet met één tik toe aan je afspraak.",
+        toneAdd: "Voeg deze tint toe aan mijn afspraak",
+        toneAdded: "Toegevoegd aan je afspraak ✓",
+        menuK: "Behandelmenu",
+        menuH: "Alles wat jou <em>laat stralen.</em>",
+        menuS: "Tik op een behandeling om die aan je afspraak toe te voegen. De duur is indicatief; alle prijzen zijn vanafprijzen.",
+        from: "vanaf",
+        note: "Behandelingen en prijzen zijn voorbeelden en worden afgestemd op jouw salon.",
+        expK: "De ervaring",
+        expH: "Meer dan een <em>afspraak.</em>",
+        e1t: "Consult",
+        e1d: "We beginnen met luisteren – naar je haar, je huid en je wensen.",
+        e2t: "Ritueel",
+        e2d: "Warme handdoeken, een hoofdhuidmassage en producten die speciaal voor jou zijn gekozen.",
+        e3t: "De afwerking",
+        e3d: "Tot je in de spiegel kijkt en denkt: dít is het.",
+        e4t: "Nazorg",
+        e4d: "Persoonlijk advies, zodat het resultaat langer mooi blijft.",
+        lookH: "Dit seizoen <em>bij ons in de stoel.</em>",
+        teamK: "Het team",
+        teamH: "In vakkundige <em>handen.</em>",
+        yrs: "jaar ervaring",
+        withPro: "Boek bij {n}",
+        revK: "Ervaringen",
+        bookK: "Afspraak",
+        bookH: "We houden <em>een plekje voor je vrij.</em>",
+        bookS: "In vier korte stappen geregeld – de bevestiging krijg je via WhatsApp.",
+        s1: "Behandelingen",
+        s2: "Stylist",
+        s3: "Dag & tijd",
+        s4: "Je gegevens",
+        bagEmpty: "Je hebt nog geen behandeling gekozen. Voeg er een of meer toe uit het behandelmenu.",
+        total: "Totaal vanaf",
+        addMore: "+ Behandeling toevoegen",
+        approx: "Geschatte duur",
+        tone: "Tint",
+        remove: "Verwijderen",
+        any: "Geen voorkeur",
+        closed: "Gesloten",
+        pickDay: "Kies eerst een dag.",
+        noSlot: "Vandaag zijn er geen tijden meer vrij.",
+        fName: "Voor- en achternaam",
+        fTel: "Telefoonnummer",
+        fNote: "Opmerking (optioneel)",
+        notePh: "Bijv. schouderlang haar, eerder gekleurd.",
+        agree: "Ik geef toestemming om contact met me op te nemen over mijn afspraak.",
+        send: "Aanvragen via WhatsApp",
+        errSvc: "Kies minstens één behandeling.",
+        errDay: "Kies een dag en een tijd.",
+        errName: "Vul je naam in.",
+        errTel: "Vul een geldig telefoonnummer in.",
+        errAgree: "Vink het vakje aan om verder te gaan.",
+        doneH: "Je aanvraag staat klaar.",
+        doneP: "WhatsApp is geopend. Verstuur het bericht, dan bevestigt de salon je afspraak zo snel mogelijk.",
+        waLink: "Gaat WhatsApp niet open? Tik hier",
+        again: "Nieuwe afspraak",
+        visK: "Locatie",
+        visH: "Kom <em>bij ons langs.</em>",
+        dir: "Route",
+        call: "Bel",
+        openNow: "Nu open · tot {h}:00",
+        closedNow: "Nu gesloten",
+        demo: "Dit is een voorbeeldwebsite; behandelingen, prijzen en foto’s worden afgestemd op jouw salon.",
+        credit: "Ontwerp & ontwikkeling: EY Studios ↗",
+        go: "Verder",
+        svcN: "{n} behandeling|{n} behandelingen",
+        back: "← Voorbeeldproject van EY Studios",
+        nav6: "Cadeaubon",
+        avail: "{d} om {t} nog plek",
+        today: "vandaag",
+        tomorrow: "morgen",
+        popular: "Populair",
+        promoK: "{m}actie",
+        promoD: "Stralende kleur en sterker haar in één afspraak. Alleen deze maand geldig.",
+        promoAdd: "Actie toevoegen",
+        promoAdded: "Toegevoegd ✓",
+        promoLine: "Actiekorting",
+        giftK: "Cadeaubon",
+        giftLabel: "Cadeaubon",
+        giftValid: "12 maanden geldig",
+        giftH: "Geef iemand <em>een ritueel</em> cadeau.",
+        giftS: "Voor een verjaardag, een trouwdag of gewoon als bedankje. Kies een bedrag; je ontvangt de bon digitaal via WhatsApp.",
+        giftBtn: "Cadeaubon aanvragen",
+        faqK: "Veelgestelde vragen",
+        faqH: "Goed om te <em>weten.</em>",
+        mapLbl: "Bekijk op de kaart ↗",
+        curAdd: "Erbij",
+        curDrag: "Sleep",
+        curPick: "Kies",
+        title: "Atelier voor haar & beauty",
+        prev: "Vorige",
+        next: "Volgende",
+        bagAria: "Overzicht van je afspraak",
+        navAria: "Hoofdmenu",
+        mnavAria: "Mobiel menu",
+        menuAria: "Menu",
+        langMenu: "Taal kiezen",
+        telPh: "06 xxxxxxxx",
+        hUnit: "uur",
+        minUnit: "min"
+      },
+      tones: [
+        ["Platina","IJskoel en stralend – gedurfd en modern."],
+        ["Asblond","Koele ondertonen met een zachte, verfijnde finish."],
+        ["Champagne","Stralend, warm en tijdloos."],
+        ["Honingblond","Onze meest gevraagde balayagetint – fleurt je gezicht meteen op."],
+        ["Karamel","Prachtig bij een olijfkleurige of warme huidtint."],
+        ["Koper","Levendig, gedurfd en een echte blikvanger."],
+        ["Bordeaux","Diep, vorstelijk en intens."],
+        ["Chocolade","Een vol, warm bruin dat toch natuurlijk oogt."]
+      ],
+      cats: {"hair":"Haar","color":"Kleur","nails":"Nagels","skin":"Huid & wenkbrauwen","bridal":"Bruid & gelegenheid"},
+      services: {
+        cut: ["Knippen & föhnen","Een coupe die bij je gezicht past, inclusief wassen en föhnen."],
+        blow: ["Föhnen & stylen","Golvend, steil of met volume – net waar de dag om vraagt."],
+        mens: ["Heren knippen","Knippen met schaar en tondeuse, inclusief wassen en stylen."],
+        keratin: ["Keratinebehandeling","Intensieve behandeling die pluis vermindert en langdurige glans geeft."],
+        bond: ["Bond repair","Versterkend herstelritueel voor haar dat beschadigd is door kleuren en hitte."],
+        root: ["Uitgroei kleuren","Je uitgroei naadloos bijgekleurd, precies in je eigen tint."],
+        full: ["Volledige kleuring","Eén egale, diepe tint met langdurige glans."],
+        balayage: ["Balayage","Met de hand aangebracht, voor een zongekust effect met zachte overgangen."],
+        highlights: ["Highlights","Fijne highlights in folie, voor meer licht en diepte."],
+        gloss: ["Gloss & toner","Frist je kleur op en geeft extra glans tussen twee kleurbeurten door."],
+        mani: ["Manicure","Vijlen, nagelriemverzorging en hydratatie."],
+        gel: ["Gellak","Tot wel drie weken een smetteloze glans."],
+        ext: ["Nagelverlenging","Verlenging met gel, in een vorm die bij je past."],
+        pedi: ["Pedicure","Voetverzorging, vijlen en massage."],
+        facial: ["Klassieke gezichtsbehandeling","Dieptereiniging, peeling en masker."],
+        hydra: ["Hydraterende gezichtsbehandeling","Geeft een vermoeide huid weer veerkracht en een stralende teint."],
+        brow: ["Wenkbrauwstyling","Wenkbrauwen in model, afgestemd op de verhoudingen van je gezicht."],
+        lash: ["Wimperlift","Natuurlijk gekrulde wimpers die langer lijken."],
+        bride: ["Bruidskapsel & make-up","Inclusief proefsessie; op de grote dag in de salon of op je trouwlocatie."],
+        updo: ["Opsteekkapsel","Voor verlovingen, diploma-uitreikingen en gala’s."],
+        mua: ["Professionele make-up","Make-up die ook op de foto vlekkeloos oogt."]
+      },
+      promo: "Balayage + bond repair",
+      faq: [
+        ["Hoe annuleer ik mijn afspraak?","Stuur ons uiterlijk 24 uur van tevoren een berichtje via WhatsApp; daar rekenen we niets voor."],
+        ["Waarom staat er ‘vanaf’ bij de prijzen?","De lengte van je haar en de hoeveelheid product bepalen de prijs. Je hoort de exacte prijs tijdens het consult, nog voordat we beginnen."],
+        ["Hoe kan ik betalen?","Je betaalt in de salon contant, met pin of met creditcard; bij grotere behandelingen kun je ook in termijnen betalen."],
+        ["Kan ik in de buurt parkeren?","Ja, je parkeert 2 uur gratis in de parkeergarage recht tegenover de salon."],
+        ["Met welke producten werken jullie?","We werken met professionele producten die mild zijn voor haar en huid, en adviseren je graag over de juiste producten voor thuis."]
+      ],
+      staffRoles: ["Kleurspecialist","Coupe & styling","Nagels & wenkbrauwen"],
+      looks: ["Honingblonde balayage","Asblonde highlights","Koperglans","Strakke bob","Opgestoken bruidskapsel","Bordeaux gellak"],
+      reviews: [
+        "Mijn balayage is precies geworden zoals ik hem voor me zag. Drie maanden later ziet hij er nog steeds uit als nieuw!",
+        "Boeken was in twee minuten geregeld en daarna werd ik twee uur lang verwend.",
+        "Mijn bruidskapsel en make-up bleven tot diep in de nacht perfect zitten. Iedereen vroeg waar ik het had laten doen."
+      ]
+    },
+    fr: {
+      ui: {
+        skip: "Aller au contenu",
+        nav1: "Couleur",
+        nav2: "Prestations",
+        nav3: "Lookbook",
+        nav4: "Contact",
+        nav5: "Équipe",
+        cta: "Réserver",
+        hEy: "Atelier coiffure & beauté",
+        h1a: "Chacun",
+        h1b: "sa signature.",
+        lede: "De la coupe à la couleur, des ongles au visage : chaque visite est un rituel pensé pour vous. Choisissez vos prestations, consultez durée et tarifs, puis réservez d’un simple geste.",
+        b1: "Prendre rendez-vous",
+        b2: "Voir la carte",
+        rating: "4,9 sur Google · plus de 320 avis",
+        hrsS: "Lun.–sam. · 10h–20h",
+        scroll: "Défiler",
+        labK: "Le labo couleur",
+        labH: "Trouvez votre <em>nuance.</em>",
+        labS: "Sélectionnez une nuance : la page se pare aussitôt de sa couleur. Ajoutez celle qui vous plaît à votre réservation, en un seul geste.",
+        toneAdd: "Ajouter à ma réservation",
+        toneAdded: "Ajoutée à votre réservation ✓",
+        menuK: "La carte",
+        menuH: "Tout ce qui <em>vous sublime.</em>",
+        menuS: "Choisissez une prestation pour l’ajouter à votre sélection. Les durées sont indicatives et les prix sont indiqués « à partir de ».",
+        from: "dès",
+        note: "Les prestations et les tarifs sont donnés à titre d’exemple et seront adaptés à votre salon.",
+        expK: "L’expérience",
+        expH: "Bien plus qu’un <em>rendez-vous.</em>",
+        e1t: "Diagnostic",
+        e1d: "Tout commence par un temps d’écoute : vos cheveux, votre peau, vos envies.",
+        e2t: "Rituel",
+        e2d: "Serviettes chaudes, massage du cuir chevelu et produits choisis pour vous.",
+        e3t: "La touche finale",
+        e3d: "Jusqu’à ce que votre reflet vous fasse sourire.",
+        e4t: "Soins à la maison",
+        e4d: "Des conseils personnalisés pour prolonger l’éclat du résultat.",
+        lookH: "Nos looks <em>de la saison.</em>",
+        teamK: "L’équipe",
+        teamH: "Entre des mains <em>expertes.</em>",
+        yrs: "ans d’expérience",
+        withPro: "Réserver avec {n}",
+        revK: "Avis clients",
+        bookK: "Réservation",
+        bookH: "Votre fauteuil <em>vous attend.</em>",
+        bookS: "Quatre étapes rapides, puis votre confirmation arrive sur WhatsApp.",
+        s1: "Prestations",
+        s2: "Expert",
+        s3: "Date & heure",
+        s4: "Vos coordonnées",
+        bagEmpty: "Aucune prestation pour l’instant : ajoutez-en une ou plusieurs depuis la carte.",
+        total: "Total à partir de",
+        addMore: "+ Ajouter une prestation",
+        approx: "Durée estimée ",
+        tone: "Nuance ",
+        remove: "Retirer",
+        any: "Sans préférence",
+        closed: "Fermé",
+        pickDay: "Choisissez d’abord un jour.",
+        noSlot: "Plus aucun créneau disponible aujourd’hui.",
+        fName: "Prénom et nom",
+        fTel: "Téléphone",
+        fNote: "Précisions (facultatif)",
+        notePh: "Ex. : cheveux à hauteur d’épaules, déjà colorés.",
+        agree: "J’accepte d’être contacté(e) au sujet de mon rendez-vous.",
+        send: "Réserver via WhatsApp",
+        errSvc: "Veuillez choisir au moins une prestation.",
+        errDay: "Veuillez choisir un jour et un créneau.",
+        errName: "Veuillez indiquer votre nom.",
+        errTel: "Veuillez saisir un numéro de téléphone valide.",
+        errAgree: "Veuillez cocher la case de consentement pour continuer.",
+        doneH: "Votre demande est prête.",
+        doneP: "WhatsApp s’est ouvert. Envoyez le message : le salon vous confirmera votre rendez-vous très rapidement.",
+        waLink: "WhatsApp ne s’est pas ouvert ? Cliquez ici",
+        again: "Nouvelle réservation",
+        visK: "Le salon",
+        visH: "Au plaisir de <em>vous recevoir.</em>",
+        dir: "Itinéraire",
+        call: "Appeler",
+        openNow: "Ouvert en ce moment · jusqu’à {h}h",
+        closedNow: "Fermé en ce moment",
+        demo: "Ceci est un site de démonstration : prestations, tarifs et visuels seront adaptés à votre salon.",
+        credit: "Design & développement : EY Studios ↗",
+        go: "Continuer",
+        svcN: "{n} prestation|{n} prestations",
+        back: "← EY Studios · exemple de réalisation",
+        nav6: "Carte cadeau",
+        avail: "Disponible {d} à {t}",
+        today: "aujourd’hui",
+        tomorrow: "demain",
+        popular: "Populaire",
+        promoK: "En {m} uniquement",
+        promoD: "Une couleur lumineuse et des cheveux renforcés, en un seul rendez-vous. Offre valable jusqu’à la fin du mois.",
+        promoAdd: "Ajouter l’offre",
+        promoAdded: "Dans votre sélection ✓",
+        promoLine: "Remise promotionnelle",
+        giftK: "Carte cadeau",
+        giftLabel: "Carte cadeau",
+        giftValid: "Valable 12 mois",
+        giftH: "Offrez <em>un rituel</em> à ceux que vous aimez.",
+        giftS: "Pour un anniversaire, une fête ou simplement pour dire merci. Choisissez un montant : la carte numérique vous est envoyée sur WhatsApp.",
+        giftBtn: "Offrir une carte cadeau",
+        faqK: "Questions",
+        faqH: "Bon à <em>savoir.</em>",
+        mapLbl: "Ouvrir le plan ↗",
+        curAdd: "Ajouter",
+        curDrag: "Glisser",
+        curPick: "Choisir",
+        title: "Atelier coiffure & beauté",
+        prev: "Précédent",
+        next: "Suivant",
+        bagAria: "Votre sélection",
+        navAria: "Menu principal",
+        mnavAria: "Menu mobile",
+        menuAria: "Menu",
+        langMenu: "Choisir la langue",
+        telPh: "06 xx xx xx xx",
+        hUnit: "h",
+        minUnit: "min"
+      },
+      tones: [
+        ["Platine","D’une clarté glacée, audacieux et moderne."],
+        ["Blond cendré","Des reflets froids pour un rendu doux et raffiné."],
+        ["Champagne","Lumineux, chaud et intemporel."],
+        ["Miel doré","La nuance de balayage la plus demandée : un coup d’éclat immédiat."],
+        ["Caramel","Idéal pour les peaux mates et dorées."],
+        ["Cuivré","Vif et flamboyant, il ne passe jamais inaperçu."],
+        ["Bordeaux","Profond, noble et intense."],
+        ["Chocolat","Un brun gourmand, au rendu naturel."]
+      ],
+      cats: {"hair":"Coiffure","color":"Couleur","nails":"Ongles","skin":"Visage & regard","bridal":"Mariage & événements"},
+      services: {
+        cut: ["Coupe & brushing","Une coupe adaptée à votre visage, shampooing et brushing compris."],
+        blow: ["Brushing & coiffage","Ondulé, lisse ou volumineux : selon l’humeur du jour."],
+        mens: ["Coupe homme","Coupe aux ciseaux et à la tondeuse, shampooing et coiffage."],
+        keratin: ["Soin à la kératine","Discipline les frisottis et apporte une brillance durable."],
+        bond: ["Rituel reconstructeur","Un soin fortifiant pour les cheveux fragilisés par la couleur et les outils chauffants."],
+        root: ["Retouche racines","Des repousses parfaitement couvertes, dans votre nuance exacte."],
+        full: ["Coloration complète","Une teinte riche et uniforme, à la brillance durable."],
+        balayage: ["Balayage","Éclaircissement peint à main levée, effet soleil et transitions tout en douceur."],
+        highlights: ["Mèches","Réalisées finement en papillotes, pour plus d’éclat et de relief."],
+        gloss: ["Gloss & patine","Ravive la couleur et la brillance entre deux rendez-vous."],
+        mani: ["Manucure","Mise en forme, soin des cuticules et hydratation."],
+        gel: ["Vernis semi-permanent","Jusqu’à trois semaines de brillance impeccable."],
+        ext: ["Extensions d’ongles","Allongement au gel, forme et longueur sur mesure."],
+        pedi: ["Pédicure","Soin des pieds, mise en forme des ongles et massage."],
+        facial: ["Soin visage signature","Nettoyage en profondeur, gommage et masque."],
+        hydra: ["Soin hydratation intense","Repulpe et illumine les peaux fatiguées."],
+        brow: ["Restructuration des sourcils","Une ligne redessinée selon les proportions de votre visage."],
+        lash: ["Rehaussement de cils","Des cils naturellement recourbés, visiblement plus longs."],
+        bride: ["Coiffure & maquillage de mariée","Essai inclus ; le jour J, au salon ou sur le lieu de votre réception."],
+        updo: ["Chignon de soirée","Pour les fiançailles, les remises de diplôme et les soirées de gala."],
+        mua: ["Maquillage professionnel","Un maquillage impeccable, même en photo."]
+      },
+      promo: "Balayage + rituel reconstructeur",
+      faq: [
+        ["Comment annuler mon rendez-vous ?","Il suffit de nous prévenir sur WhatsApp au moins 24 heures à l’avance : l’annulation est gratuite."],
+        ["Pourquoi les prix sont-ils indiqués « à partir de » ?","La longueur des cheveux et la quantité de produit utilisée font varier le prix. Nous vous confirmons le tarif exact lors du diagnostic, avant de commencer."],
+        ["Quels sont les moyens de paiement ?","Vous pouvez régler au salon en espèces ou par carte ; le paiement en plusieurs fois est possible pour les prestations d’un montant élevé."],
+        ["Y a-t-il un parking ?","Oui : nous vous offrons 2 heures de stationnement dans le parking situé juste en face du salon."],
+        ["Quels produits utilisez-vous ?","Nous travaillons avec des produits professionnels, respectueux des cheveux et de la peau, et vous conseillons ceux qui conviendront le mieux à votre routine à la maison."]
+      ],
+      staffRoles: ["Coloriste","Coupe & coiffage","Ongles & regard"],
+      looks: ["Balayage miel doré","Mèches blond cendré","Gloss cuivré","Carré graphique","Chignon de mariée","Semi-permanent bordeaux"],
+      reviews: [
+        "Mon balayage est exactement comme je l’imaginais, et trois mois plus tard, on dirait qu’il a été fait hier.",
+        "Deux minutes pour réserver, puis deux heures à me faire chouchouter.",
+        "Ma coiffure et mon maquillage de mariée ont tenu parfaitement jusqu’au bout de la nuit. Tout le monde voulait savoir où je les avais fait faire !"
+      ]
+    },
+    it: {
+      ui: {
+        skip: "Vai al contenuto",
+        nav1: "Colore",
+        nav2: "Servizi",
+        nav3: "Lookbook",
+        nav4: "Contatti",
+        nav5: "Team",
+        cta: "Prenota",
+        hEy: "Atelier di acconciatura e bellezza",
+        h1a: "Capelli",
+        h1b: "d’autore.",
+        lede: "Dal taglio al colore, dalle unghie alla cura del viso: ogni visita è un rituale su misura per te. Scegli i servizi, scopri subito durata e prezzo e prenota con un tocco.",
+        b1: "Prenota un appuntamento",
+        b2: "Scopri i servizi",
+        rating: "4,9 su Google · oltre 320 recensioni",
+        hrsS: "Lun–Sab · 10:00–20:00",
+        scroll: "Scorri",
+        labK: "Laboratorio del colore",
+        labH: "Trova la tua <em>tonalità.</em>",
+        labS: "Tocca una tonalità e guarda la pagina tingersi del suo colore. Aggiungi la tua preferita alla prenotazione in un attimo.",
+        toneAdd: "Aggiungi alla prenotazione",
+        toneAdded: "Aggiunta alla prenotazione ✓",
+        menuK: "Menu dei servizi",
+        menuH: "Tutto ciò che <em>ti dona.</em>",
+        menuS: "Tocca un servizio per aggiungerlo alla tua selezione. Le durate sono indicative e i prezzi sono di partenza.",
+        from: "da",
+        note: "Servizi e prezzi sono a titolo di esempio e vengono personalizzati per il tuo salone.",
+        expK: "L’esperienza",
+        expH: "Più di un semplice <em>appuntamento.</em>",
+        e1t: "Consulenza",
+        e1d: "Partiamo dall’ascolto: dei tuoi capelli, della tua pelle e dei tuoi desideri.",
+        e2t: "Rituale",
+        e2d: "Asciugamani caldi, un massaggio alla cute e prodotti scelti per te.",
+        e3t: "Il tocco finale",
+        e3d: "Finché non ti guardi allo specchio e sorridi.",
+        e4t: "Cura a casa",
+        e4d: "Consigli su misura per mantenere a lungo il risultato.",
+        lookH: "I look di stagione, <em>firmati da noi.</em>",
+        teamK: "Il team",
+        teamH: "In mani <em>esperte.</em>",
+        yrs: "anni di esperienza",
+        withPro: "Prenota con {n}",
+        revK: "Recensioni",
+        bookK: "Prenotazione",
+        bookH: "Il tuo posto <em>ti aspetta.</em>",
+        bookS: "Quattro semplici passaggi: la conferma ti arriva su WhatsApp.",
+        s1: "Servizi",
+        s2: "Stylist",
+        s3: "Giorno e ora",
+        s4: "I tuoi dati",
+        bagEmpty: "Nessun servizio selezionato: aggiungine uno o più dal menu.",
+        total: "Totale a partire da",
+        addMore: "+ Aggiungi un servizio",
+        approx: "Durata indicativa",
+        tone: "Tonalità",
+        remove: "Rimuovi",
+        any: "Nessuna preferenza",
+        closed: "Chiuso",
+        pickDay: "Scegli prima un giorno.",
+        noSlot: "Per oggi non ci sono più orari disponibili.",
+        fName: "Nome e cognome",
+        fTel: "Telefono",
+        fNote: "Note (facoltative)",
+        notePh: "Es. capelli alle spalle, già colorati.",
+        agree: "Autorizzo il salone a contattarmi per il mio appuntamento.",
+        send: "Richiedi su WhatsApp",
+        errSvc: "Scegli almeno un servizio.",
+        errDay: "Scegli giorno e orario.",
+        errName: "Inserisci il tuo nome.",
+        errTel: "Inserisci un numero di telefono valido.",
+        errAgree: "Spunta la casella del consenso per continuare.",
+        doneH: "La tua richiesta è pronta.",
+        doneP: "WhatsApp si è aperto: invia il messaggio e il salone ti confermerà l’appuntamento a breve.",
+        waLink: "WhatsApp non si è aperto? Tocca qui",
+        again: "Nuova prenotazione",
+        visK: "Dove siamo",
+        visH: "Vieni a <em>trovarci.</em>",
+        dir: "Indicazioni",
+        call: "Chiama",
+        openNow: "Aperto ora · chiude alle {h}:00",
+        closedNow: "Al momento chiuso",
+        demo: "Questo è un sito dimostrativo: servizi, prezzi e immagini vengono personalizzati per il tuo salone.",
+        credit: "Design e sviluppo: EY Studios ↗",
+        go: "Continua",
+        svcN: "{n} servizio|{n} servizi",
+        back: "← EY Studios · progetto di esempio",
+        nav6: "Buono regalo",
+        avail: "Posto libero {d} alle {t}",
+        today: "oggi",
+        tomorrow: "domani",
+        popular: "Più richiesto",
+        promoK: "L’offerta di {m}",
+        promoD: "Colore luminoso e capelli più forti in un solo appuntamento. Promozione valida fino a fine mese.",
+        promoAdd: "Aggiungi l’offerta",
+        promoAdded: "Nella tua selezione ✓",
+        promoLine: "Sconto promozionale",
+        giftK: "Buono regalo",
+        giftLabel: "Buono regalo",
+        giftValid: "Valido 12 mesi",
+        giftH: "Regala <em>un rituale</em> a chi ami.",
+        giftS: "Per un compleanno, un anniversario o semplicemente per dire grazie. Scegli l’importo: il buono arriva in formato digitale su WhatsApp.",
+        giftBtn: "Richiedi un buono regalo",
+        faqK: "Domande frequenti",
+        faqH: "Buono a <em>sapersi.</em>",
+        mapLbl: "Apri sulla mappa ↗",
+        curAdd: "Aggiungi",
+        curDrag: "Trascina",
+        curPick: "Scegli",
+        title: "Atelier di acconciatura e bellezza",
+        prev: "Indietro",
+        next: "Avanti",
+        bagAria: "La tua selezione",
+        navAria: "Menu principale",
+        mnavAria: "Menu mobile",
+        menuAria: "Menu",
+        langMenu: "Scegli la lingua",
+        telPh: "+39 3xx xxx xxxx",
+        hUnit: "h",
+        minUnit: "min"
+      },
+      tones: [
+        ["Platino","Glaciale e luminoso: deciso e moderno."],
+        ["Biondo cenere","Riflessi freddi per un effetto morbido e raffinato."],
+        ["Champagne","Luminoso, caldo e senza tempo."],
+        ["Miele dorato","La tonalità più amata per il balayage: illumina subito il viso."],
+        ["Caramello","Perfetto per incarnati olivastri e caldi."],
+        ["Rame","Vivace, audace: impossibile non notarlo."],
+        ["Bordeaux","Profondo, regale e intenso."],
+        ["Cioccolato","Un castano intenso dall’effetto naturale."]
+      ],
+      cats: {"hair":"Capelli","color":"Colore","nails":"Unghie","skin":"Viso & sguardo","bridal":"Sposa & cerimonie"},
+      services: {
+        cut: ["Taglio & piega","Un taglio studiato sui lineamenti del tuo viso, con shampoo e piega."],
+        blow: ["Piega & styling","Mossa, liscia o voluminosa: la piega giusta per la tua giornata."],
+        mens: ["Taglio uomo","Taglio a forbice e macchinetta, shampoo e styling."],
+        keratin: ["Trattamento alla cheratina","Riduce il crespo e dona una lucentezza duratura."],
+        bond: ["Rituale ricostruttivo","Rinforza in profondità i capelli sfibrati da colorazioni e styling a caldo."],
+        root: ["Ritocco radici","Ricrescita coperta alla perfezione, nella tua tonalità esatta."],
+        full: ["Colorazione completa","Un’unica tonalità piena e uniforme, brillante a lungo."],
+        balayage: ["Balayage","Schiariture a mano libera, effetto baciato dal sole e sfumature morbide."],
+        highlights: ["Mèches","Schiariture sottili con le cartine, per dare luce e profondità."],
+        gloss: ["Gloss tonalizzante","Ravviva il colore e intensifica la brillantezza tra un appuntamento e l’altro."],
+        mani: ["Manicure","Modellatura, cura delle cuticole e idratazione."],
+        gel: ["Semipermanente","Unghie impeccabili e brillanti fino a tre settimane."],
+        ext: ["Ricostruzione unghie","Allungamento in gel, con una forma su misura per te."],
+        pedi: ["Pedicure","Cura dei piedi, modellatura delle unghie e massaggio."],
+        facial: ["Trattamento viso classico","Pulizia profonda, esfoliazione e maschera."],
+        hydra: ["Trattamento idratante intensivo","Rimpolpa e illumina la pelle spenta."],
+        brow: ["Architettura sopracciglia","Sopracciglia modellate sulle proporzioni del tuo viso."],
+        lash: ["Laminazione ciglia","Ciglia naturali, più incurvate e visibilmente più lunghe."],
+        bride: ["Acconciatura & trucco sposa","Prova inclusa; in salone o nella location del matrimonio."],
+        updo: ["Raccolto per cerimonie","Per fidanzamenti, lauree e serate di gala."],
+        mua: ["Trucco professionale","Un make-up impeccabile anche in foto."]
+      },
+      promo: "Balayage + rituale ricostruttivo",
+      faq: [
+        ["Come posso disdire il mio appuntamento?","Basta un messaggio su WhatsApp fino a 24 ore prima dell’appuntamento: la disdetta è gratuita."],
+        ["Perché accanto ai prezzi c’è scritto «da»?","La lunghezza dei capelli e la quantità di prodotto incidono sul costo finale: ti confermiamo il prezzo esatto durante la consulenza, prima di iniziare."],
+        ["Come posso pagare?","In salone puoi pagare in contanti o con carta; per i trattamenti più importanti è possibile anche il pagamento a rate."],
+        ["C’è un parcheggio?","Sì: i nostri clienti hanno 2 ore di sosta gratuita nel parcheggio proprio di fronte al salone."],
+        ["Quali prodotti usate?","Usiamo prodotti professionali, delicati su capelli e pelle, e ti consigliamo quelli più adatti per la cura a casa."]
+      ],
+      staffRoles: ["Colorista","Taglio & styling","Unghie & sopracciglia"],
+      looks: ["Balayage miele dorato","Mèches biondo cenere","Gloss ramato","Bob geometrico","Raccolto da sposa","Semipermanente bordeaux"],
+      reviews: [
+        "Il balayage è venuto esattamente come lo immaginavo e dopo tre mesi sembra ancora appena fatto!",
+        "Ho prenotato in due minuti e poi mi hanno coccolata per due ore.",
+        "Acconciatura e trucco da sposa sono rimasti perfetti fino a fine serata. Tutti mi chiedevano dove li avessi fatti!"
+      ]
+    },
+    es: {
+      ui: {
+        skip: "Saltar al contenido",
+        nav1: "Color",
+        nav2: "Servicios",
+        nav3: "Lookbook",
+        nav4: "Contacto",
+        nav5: "Equipo",
+        cta: "Pedir cita",
+        hEy: "Atelier de peluquería y belleza",
+        h1a: "Tu cabello,",
+        h1b: "nuestra firma.",
+        lede: "Del corte al color, de las uñas a la piel: cada visita es un ritual pensado para ti. Elige tus servicios, consulta la duración y el precio, y reserva con un solo toque.",
+        b1: "Reservar cita",
+        b2: "Ver servicios",
+        rating: "4,9 en Google · más de 320 reseñas",
+        hrsS: "Lun.–sáb. · 10:00–20:00",
+        scroll: "Desliza",
+        labK: "Laboratorio de color",
+        labH: "Encuentra tu <em>tono.</em>",
+        labS: "Toca un tono y mira cómo la página se tiñe de su color. Añade el que más te guste a tu cita con un solo toque.",
+        toneAdd: "Añadir este tono a mi cita",
+        toneAdded: "Añadido a tu cita ✓",
+        menuK: "Carta de servicios",
+        menuH: "Todo lo que <em>te sienta bien.</em>",
+        menuS: "Toca un servicio para añadirlo a tu reserva. Las duraciones son orientativas y los precios indicados son de partida.",
+        from: "desde",
+        note: "Los servicios y precios son de ejemplo y se adaptan a tu salón.",
+        expK: "La experiencia",
+        expH: "Mucho más que <em>una cita.</em>",
+        e1t: "Asesoramiento",
+        e1d: "Empezamos por escuchar: tu cabello, tu piel y lo que buscas.",
+        e2t: "Ritual",
+        e2d: "Toallas calientes, masaje capilar y productos elegidos para ti.",
+        e3t: "Acabado",
+        e3d: "Hasta que te mires al espejo y sonrías.",
+        e4t: "Cuidados en casa",
+        e4d: "Consejos personalizados para que el resultado dure como el primer día.",
+        lookH: "Esta temporada, <em>en nuestro salón.</em>",
+        teamK: "El equipo",
+        teamH: "En manos <em>expertas.</em>",
+        yrs: "años de experiencia",
+        withPro: "Reservar con {n}",
+        revK: "Opiniones",
+        bookK: "Reserva",
+        bookH: "Te guardamos <em>el sitio.</em>",
+        bookS: "Cuatro pasos rápidos y la confirmación te llega por WhatsApp.",
+        s1: "Servicios",
+        s2: "Estilista",
+        s3: "Día y hora",
+        s4: "Tus datos",
+        bagEmpty: "Aún no has elegido ningún servicio. Añade uno o varios desde la carta.",
+        total: "Total desde",
+        addMore: "+ Añadir servicio",
+        approx: "Duración estimada",
+        tone: "Tono",
+        remove: "Quitar",
+        any: "Sin preferencia",
+        closed: "Cerrado",
+        pickDay: "Elige primero un día.",
+        noSlot: "Hoy ya no quedan horas libres.",
+        fName: "Nombre y apellidos",
+        fTel: "Teléfono",
+        fNote: "Observaciones (opcional)",
+        notePh: "Ej.: melena por los hombros, ya me he teñido otras veces.",
+        agree: "Acepto que el salón se ponga en contacto conmigo para gestionar mi cita.",
+        send: "Pedir cita por WhatsApp",
+        errSvc: "Elige al menos un servicio.",
+        errDay: "Elige día y hora.",
+        errName: "Introduce tu nombre.",
+        errTel: "Introduce un número de teléfono válido.",
+        errAgree: "Para continuar, marca la casilla de consentimiento.",
+        doneH: "Tu solicitud está lista.",
+        doneP: "Se ha abierto WhatsApp. Envía el mensaje y el salón te confirmará la cita en breve.",
+        waLink: "¿No se ha abierto WhatsApp? Toca aquí",
+        again: "Nueva cita",
+        visK: "Visítanos",
+        visH: "Te <em>esperamos.</em>",
+        dir: "Cómo llegar",
+        call: "Llamar",
+        openNow: "Abierto ahora · hasta las {h}:00",
+        closedNow: "Cerrado ahora",
+        demo: "Esta es una web de ejemplo; los servicios, precios e imágenes se adaptan a tu salón.",
+        credit: "Diseño y desarrollo: EY Studios ↗",
+        go: "Continuar",
+        svcN: "{n} servicio|{n} servicios",
+        back: "← Proyecto de muestra de EY Studios",
+        nav6: "Bono regalo",
+        avail: "Próxima cita libre: {d} a las {t}",
+        today: "hoy",
+        tomorrow: "mañana",
+        popular: "Popular",
+        promoK: "Solo en {m}",
+        promoD: "Color luminoso y un cabello más fuerte en una sola cita. Promoción válida durante este mes.",
+        promoAdd: "Añadir la promoción",
+        promoAdded: "En tu reserva ✓",
+        promoLine: "Descuento promocional",
+        giftK: "Bono regalo",
+        giftLabel: "Bono regalo",
+        giftValid: "Válido 12 meses",
+        giftH: "Regala <em>un ritual.</em>",
+        giftS: "Para un cumpleaños, un aniversario o simplemente para dar las gracias. Elige el importe y el bono llegará en formato digital por WhatsApp.",
+        giftBtn: "Pedir un bono regalo",
+        faqK: "Preguntas",
+        faqH: "Resolvemos <em>tus dudas.</em>",
+        mapLbl: "Ver en el mapa ↗",
+        curAdd: "Añade",
+        curDrag: "Arrastra",
+        curPick: "Elige",
+        title: "Atelier de peluquería y belleza",
+        prev: "Anterior",
+        next: "Siguiente",
+        bagAria: "Tu reserva",
+        navAria: "Menú principal",
+        mnavAria: "Menú móvil",
+        menuAria: "Menú",
+        langMenu: "Elegir idioma",
+        telPh: "+34 6xx xxx xxx",
+        hUnit: "h",
+        minUnit: "min"
+      },
+      tones: [
+        ["Platino","Gélido y luminoso: atrevido y moderno."],
+        ["Rubio ceniza","Reflejos fríos y un acabado suave y sofisticado."],
+        ["Champán","Luminoso, cálido y atemporal."],
+        ["Miel dorada","Nuestro tono de balayage más pedido: ilumina el rostro al instante."],
+        ["Caramelo","Ideal para pieles morenas y de subtono cálido."],
+        ["Cobre","Vibrante, atrevido e imposible de ignorar."],
+        ["Burdeos","Un tono profundo, noble e intenso."],
+        ["Chocolate","Un castaño intenso de aspecto natural."]
+      ],
+      cats: {"hair":"Cabello","color":"Color","nails":"Uñas","skin":"Piel y mirada","bridal":"Novias y eventos"},
+      services: {
+        cut: ["Corte y peinado","Un corte pensado para tu rostro, con lavado y peinado."],
+        blow: ["Peinado a medida","Ondas, liso pulido o volumen: lo que pida el día."],
+        mens: ["Corte de caballero","Corte a tijera y máquina, lavado y peinado."],
+        keratin: ["Tratamiento de keratina","Controla el encrespamiento y aporta un brillo duradero."],
+        bond: ["Ritual reconstructor","Fortalece el cabello castigado por el color y el calor."],
+        root: ["Retoque de raíz","Cubrimos el crecimiento con tu tono exacto, sin que se note."],
+        full: ["Coloración completa","Un único tono, intenso y uniforme, con brillo duradero."],
+        balayage: ["Balayage","Aclarado pintado a mano, con efecto sol y degradados suaves."],
+        highlights: ["Mechas","Finas y precisas, con papel de aluminio, para dar luz y profundidad."],
+        gloss: ["Baño de color","Reaviva el color y potencia el brillo entre visita y visita."],
+        mani: ["Manicura","Limado, cuidado de cutículas e hidratación."],
+        gel: ["Esmaltado semipermanente","Hasta tres semanas de brillo impecable."],
+        ext: ["Uñas de gel","Alargamiento con gel y la forma que mejor te sienta."],
+        pedi: ["Pedicura","Cuidado de los pies, limado y masaje."],
+        facial: ["Higiene facial","Limpieza profunda, exfoliación y mascarilla."],
+        hydra: ["Hidratación facial intensa","Devuelve jugosidad y luz a la piel cansada."],
+        brow: ["Diseño de cejas","Cejas definidas según las proporciones de tu rostro."],
+        lash: ["Lifting de pestañas","Pestañas curvadas y visiblemente más largas, con un efecto natural."],
+        bride: ["Peinado y maquillaje de novia","Prueba incluida; en el salón o en el lugar de la celebración."],
+        updo: ["Recogido para eventos","Para pedidas, graduaciones y galas."],
+        mua: ["Maquillaje profesional","Un maquillaje impecable, también en las fotos."]
+      },
+      promo: "Balayage + ritual reconstructor",
+      faq: [
+        ["¿Cómo cancelo mi cita?","Basta con escribirnos por WhatsApp hasta 24 horas antes; no tiene ningún coste."],
+        ["¿Por qué los precios aparecen como «desde»?","El largo del cabello y la cantidad de producto influyen en el precio. Te confirmamos el importe exacto en el asesoramiento, antes de empezar."],
+        ["¿Cómo puedo pagar?","En el salón, en efectivo o con tarjeta; en los tratamientos de mayor importe ofrecemos pago a plazos."],
+        ["¿Hay aparcamiento?","Sí, tienes 2 horas gratis en el parking que hay justo enfrente del salón."],
+        ["¿Qué productos utilizáis?","Trabajamos con productos profesionales que respetan el cabello y la piel, y te recomendamos los más adecuados para tus cuidados en casa."]
+      ],
+      staffRoles: ["Colorista","Corte y peinado","Uñas y mirada"],
+      looks: ["Balayage miel dorada","Mechas rubio ceniza","Brillo cobrizo","Bob recto","Recogido de novia","Semipermanente burdeos"],
+      reviews: [
+        "El balayage me quedó tal y como lo había imaginado, y tres meses después sigue como el primer día.",
+        "Pedir cita me llevó dos minutos, y luego fueron dos horas de mimos.",
+        "El peinado y el maquillaje de mi boda aguantaron perfectos toda la noche. Todo el mundo me preguntaba dónde me lo había hecho."
+      ]
+    },
+    ru: {
+      ui: {
+        skip: "Перейти к содержанию",
+        nav1: "Цвет",
+        nav2: "Услуги",
+        nav3: "Lookbook",
+        nav4: "Контакты",
+        nav5: "Команда",
+        cta: "Записаться",
+        hEy: "Ателье красоты",
+        h1a: "В каждой пряди —",
+        h1b: "почерк мастера.",
+        lede: "От стрижки до окрашивания, от маникюра до ухода за лицом — каждый визит превращается в ритуал, созданный специально для вас. Выберите услуги, узнайте длительность и стоимость — и запишитесь в одно касание.",
+        b1: "Записаться онлайн",
+        b2: "Услуги и цены",
+        rating: "4,9 в Google · 320+ отзывов",
+        hrsS: "Пн–Сб · 10:00–20:00",
+        scroll: "Листайте",
+        labK: "Лаборатория цвета",
+        labH: "Найдите свой <em>оттенок.</em>",
+        labS: "Выберите оттенок — и страница окрасится в его цвет. Понравился? Добавьте его к записи одним касанием.",
+        toneAdd: "Добавить оттенок к записи",
+        toneAdded: "Оттенок добавлен ✓",
+        menuK: "Меню услуг",
+        menuH: "Всё, что вам <em>к лицу.</em>",
+        menuS: "Нажмите на услугу, чтобы добавить её к записи. Длительность ориентировочная, цены указаны «от».",
+        from: "от",
+        note: "Услуги и цены приведены для примера и адаптируются под ваш салон.",
+        expK: "Впечатления",
+        expH: "Больше, чем <em>визит в салон.</em>",
+        e1t: "Консультация",
+        e1d: "Всё начинается с внимания — к вашим волосам, коже и пожеланиям.",
+        e2t: "Ритуал",
+        e2d: "Тёплые полотенца, массаж головы и средства, подобранные именно для вас.",
+        e3t: "Финальный штрих",
+        e3d: "До того самого момента, когда вы взглянете в зеркало и скажете: «Вот оно».",
+        e4t: "Домашний уход",
+        e4d: "Персональные рекомендации, чтобы результат радовал как можно дольше.",
+        lookH: "Образы сезона <em>от наших мастеров.</em>",
+        teamK: "Команда",
+        teamH: "В надёжных <em>руках.</em>",
+        yrs: "лет опыта",
+        withPro: "Записаться к {n}",
+        revK: "Отзывы",
+        bookK: "Онлайн-запись",
+        bookH: "Ваше кресло <em>уже ждёт.</em>",
+        bookS: "Четыре коротких шага — и подтверждение придёт в WhatsApp.",
+        s1: "Услуги",
+        s2: "Мастер",
+        s3: "Дата и время",
+        s4: "Ваши данные",
+        bagEmpty: "Пока здесь пусто — добавьте одну или несколько услуг из меню.",
+        total: "Итого от",
+        addMore: "+ Добавить услугу",
+        approx: "Примерное время",
+        tone: "Оттенок",
+        remove: "Убрать",
+        any: "Любой мастер",
+        closed: "Выходной",
+        pickDay: "Сначала выберите день.",
+        noSlot: "На сегодня свободного времени больше нет.",
+        fName: "Имя и фамилия",
+        fTel: "Телефон",
+        fNote: "Комментарий (необязательно)",
+        notePh: "Например: волосы до плеч, ранее окрашивались.",
+        agree: "Даю согласие на связь со мной по вопросам записи.",
+        send: "Отправить заявку в WhatsApp",
+        errSvc: "Выберите хотя бы одну услугу.",
+        errDay: "Выберите день и время.",
+        errName: "Укажите ваше имя.",
+        errTel: "Укажите корректный номер телефона.",
+        errAgree: "Чтобы продолжить, отметьте согласие на связь.",
+        doneH: "Заявка готова.",
+        doneP: "WhatsApp уже открыт. Отправьте сообщение — и салон в ближайшее время подтвердит запись.",
+        waLink: "WhatsApp не открылся? Нажмите здесь",
+        again: "Новая запись",
+        visK: "Контакты",
+        visH: "Будем рады <em>вас видеть.</em>",
+        dir: "Маршрут",
+        call: "Позвонить",
+        openNow: "Сейчас открыто · до {h}:00",
+        closedNow: "Сейчас закрыто",
+        demo: "Это демонстрационный сайт: услуги, цены и изображения адаптируются под ваш салон.",
+        credit: "Дизайн и разработка: EY Studios ↗",
+        go: "К записи",
+        svcN: "{n} услуга|{n} услуги|{n} услуг",
+        back: "← Портфолио EY Studios",
+        nav6: "Сертификаты",
+        avail: "Свободно: {d}, {t}",
+        today: "сегодня",
+        tomorrow: "завтра",
+        popular: "Хит",
+        promoK: "{m} · спецпредложение",
+        promoD: "Сияющий цвет и укреплённые волосы — за один визит. Предложение действует до конца месяца.",
+        promoAdd: "Добавить к записи",
+        promoAdded: "Уже в записи ✓",
+        promoLine: "Скидка по акции",
+        giftK: "Подарочный сертификат",
+        giftLabel: "Сертификат",
+        giftValid: "Действует 12 месяцев",
+        giftH: "Подарите близким <em>ритуал красоты.</em>",
+        giftS: "На день рождения, годовщину или просто в знак благодарности. Выберите номинал — электронный сертификат придёт в WhatsApp.",
+        giftBtn: "Заказать сертификат",
+        faqK: "Вопросы",
+        faqH: "Полезно <em>знать.</em>",
+        mapLbl: "Открыть на карте ↗",
+        curAdd: "Добавить",
+        curDrag: "Листать",
+        curPick: "Выбрать",
+        title: "Ателье красоты",
+        prev: "Назад",
+        next: "Вперёд",
+        bagAria: "Ваша запись",
+        navAria: "Главное меню",
+        mnavAria: "Мобильное меню",
+        menuAria: "Меню",
+        langMenu: "Выбрать язык",
+        telPh: "+7 (9xx) xxx-xx-xx",
+        hUnit: "ч",
+        minUnit: "мин"
+      },
+      tones: [
+        ["Платина","Ледяное сияние — смело и современно."],
+        ["Пепельный блонд","Холодный подтон — мягко и утончённо."],
+        ["Шампань","Тёплый лучистый оттенок вне времени."],
+        ["Медовое сияние","Самый востребованный оттенок балаяжа — мгновенно освежает лицо."],
+        ["Карамель","Безупречно сочетается со смуглой и оливковой кожей."],
+        ["Медь","Яркая и смелая — её невозможно не заметить."],
+        ["Бургунди","Глубокий, благородный, роскошный."],
+        ["Шоколад","Насыщенный шатен, который смотрится естественно."]
+      ],
+      cats: {"hair":"Волосы","color":"Окрашивание","nails":"Ногти","skin":"Лицо и брови","bridal":"Свадьба и торжества"},
+      services: {
+        cut: ["Стрижка и укладка","Стрижка с учётом формы лица, мытьё головы и укладка феном."],
+        blow: ["Укладка","Локоны, идеальная гладкость или объём — по настроению."],
+        mens: ["Мужская стрижка","Стрижка ножницами и машинкой, мытьё головы и укладка."],
+        keratin: ["Кератиновый уход","Убирает пушистость и дарит волосам стойкий блеск."],
+        bond: ["Восстанавливающий уход","Укрепляющий ритуал для волос, пострадавших от окрашивания и горячей укладки."],
+        root: ["Окрашивание корней","Отросшие корни — точно в ваш оттенок, без заметной границы."],
+        full: ["Окрашивание в один тон","Ровный, насыщенный цвет и стойкий блеск."],
+        balayage: ["Балаяж","Техника свободной руки: плавные переходы и эффект выгоревших на солнце прядей."],
+        highlights: ["Мелирование","Тонкие пряди на фольге — для сияния и глубины цвета."],
+        gloss: ["Тонирование","Освежает цвет и добавляет блеска между окрашиваниями."],
+        mani: ["Маникюр","Форма ногтей, уход за кутикулой и увлажнение кожи рук."],
+        gel: ["Покрытие гель-лаком","До трёх недель безупречного блеска."],
+        ext: ["Наращивание ногтей","Моделирование гелем и форма, которая подойдёт именно вам."],
+        pedi: ["Педикюр","Уход за стопами, форма ногтей и расслабляющий массаж."],
+        facial: ["Фирменный уход за лицом","Глубокое очищение, пилинг и маска."],
+        hydra: ["Интенсивное увлажнение","Возвращает усталой коже упругость и сияние."],
+        brow: ["Оформление бровей","Идеальная форма с учётом пропорций вашего лица."],
+        lash: ["Ламинирование ресниц","Естественный изгиб и визуально более длинные ресницы."],
+        bride: ["Свадебный образ","Причёска и макияж с репетицией — в салоне или с выездом на площадку."],
+        updo: ["Вечерняя причёска","Для помолвки, выпускного и торжественных вечеров."],
+        mua: ["Профессиональный макияж","Безупречный и в жизни, и на фото."]
+      },
+      promo: "Балаяж + восстанавливающий уход",
+      faq: [
+        ["Как отменить запись?","Просто напишите нам в WhatsApp не позднее чем за 24 часа до визита — это бесплатно."],
+        ["Почему цены указаны «от»?","На стоимость влияют длина волос и расход материалов. Точную цену мы назовём на консультации, до начала процедуры."],
+        ["Как можно оплатить услуги?","Оплатить можно в салоне наличными или картой; для дорогостоящих процедур доступна рассрочка."],
+        ["Есть ли парковка?","Да, на парковке прямо напротив салона первые 2 часа для наших гостей бесплатны."],
+        ["Какую косметику вы используете?","Мы работаем с профессиональной косметикой, бережной к волосам и коже, и поможем подобрать средства для домашнего ухода."]
+      ],
+      staffRoles: ["Колорист","Стилист-парикмахер","Мастер маникюра и бровист"],
+      looks: ["Медовый балаяж","Пепельное мелирование","Медное тонирование","Графичное каре","Свадебная причёска","Гель-лак бургунди"],
+      reviews: [
+        "Балаяж получился именно таким, как я мечтала. Прошло уже три месяца, а выглядит как в первый день!",
+        "Записалась онлайн за пару минут, а в салоне меня два часа просто баловали.",
+        "Причёска и макияж на свадьбу продержались идеально до самого утра. Все спрашивали, у кого я делала образ."
+      ]
+    }
+  };
+  Object.keys(I18N).forEach(function (lc) {
+    var P = I18N[lc], ix = ORDER.indexOf(lc);
+    Object.keys(P.ui).forEach(function (k) { if (T[k]) T[k][ix] = P.ui[k]; });
+    TONES.forEach(function (o, i) { o[lc] = P.tones[i][0]; o['d' + lc] = P.tones[i][1]; });
+    CATS.forEach(function (o) { o[lc] = P.cats[o.id]; });
+    SERVICES.forEach(function (o) { o[lc] = P.services[o.id][0]; o['d' + lc] = P.services[o.id][1]; });
+    PROMO[lc] = P.promo;
+    FAQ.forEach(function (o, i) { o[lc] = P.faq[i]; });
+    STAFF.forEach(function (o, i) { o[lc] = P.staffRoles[i]; });
+    LOOKS.forEach(function (o, i) { o[lc] = P.looks[i]; });
+    REVIEWS.forEach(function (o, i) { o[lc] = P.reviews[i]; });
+  });
+  /*@I18N-END@*/
 
   /* ------------------------------------------------------------------ */
   var root = document.documentElement;
@@ -925,31 +1998,50 @@ legend.ph+*{clear:both}
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-  /* Varsayılan Türkçe; başka bir EY sayfasında Türkçe dışı bir dil seçildiyse İngilizce */
-  var lang = 'tr';
-  try { var stored = localStorage.getItem('ey-lang'); if (stored && stored !== 'tr') lang = 'en'; } catch (e) {}
+  /* Dil sırası: ?lang=de bağlantısı > daha önce seçilen dil > tarayıcı dili > İngilizce.
+     Desteklenmeyen bir dil kayıtlıysa (ör. ru) İngilizce açılır. */
+  var lang = 'en';
+  (function () {
+    var q = (location.search.match(/[?&]lang=([a-z]{2})/i) || [])[1], st = null;
+    try { st = localStorage.getItem('ey-lang'); } catch (e) {}
+    if (q && LANGS[q.toLowerCase()]) {
+      lang = q.toLowerCase();
+      try { localStorage.setItem('ey-lang', lang); } catch (e) {}
+      return;
+    }
+    if (st) { lang = LANGS[st] ? st : 'en'; return; }
+    var nl = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'tr'];
+    for (var i = 0; i < nl.length; i++) { var c = String(nl[i]).slice(0, 2).toLowerCase(); if (LANGS[c]) { lang = c; return; } }
+  })();
 
   var state = { sel: [], tone: null, view: 2, pro: 'any', day: null, time: null, cat: 'hair', promo: false, gift: 2500 };
   var SVC = {}; SERVICES.forEach(function (s) { SVC[s.id] = s; });
 
+  function loc(l) { return LANGS[l || lang].loc; }
+  function cap(s) { return s.charAt(0).toLocaleUpperCase(loc()) + s.slice(1); }
+  function tl(k, l) { var a = T[k]; if (!a) return k; var v = a[ORDER.indexOf(l)]; return v == null ? a[1] : v; }
   function t(k, n) {
-    var v = T[k] ? T[k][lang === 'en' ? 1 : 0] : k;
+    var v = tl(k, lang);
     if (n !== undefined) {
-      if (v.indexOf('|') > -1) v = v.split('|')[n === 1 ? 0 : 1];
+      if (v.indexOf('|') > -1) {
+        /* İki biçim: tekil|çoğul. Rusça gibi üç biçimli dillerde: one|few|many */
+        var f = v.split('|'), pc = f.length > 2 && window.Intl && Intl.PluralRules ? new Intl.PluralRules(loc()).select(n) : '';
+        v = f.length > 2 ? f[pc === 'one' ? 0 : pc === 'few' ? 1 : 2] : f[n === 1 ? 0 : 1];
+      }
       v = v.replace('{n}', n);
     }
     return v;
   }
-  function L(o) { return o[lang] || o.tr; }
-  function D(o) { return lang === 'en' ? o.den : o.dtr; }
+  function L(o) { return o[lang] || o.en || o.tr; }
+  function D(o) { return o['d' + lang] || o.den; }
   function money(n, l) {
     l = l || lang;
-    try { return new Intl.NumberFormat(l === 'en' ? 'en-GB' : 'tr-TR', { style: 'currency', currency: 'TRY', currencyDisplay: 'narrowSymbol', maximumFractionDigits: 0 }).format(n); }
-    catch (e) { return n.toLocaleString(l === 'en' ? 'en-GB' : 'tr-TR') + ' ₺'; }
+    try { return new Intl.NumberFormat(loc(l), { style: 'currency', currency: 'TRY', currencyDisplay: 'narrowSymbol', maximumFractionDigits: 0 }).format(n); }
+    catch (e) { return n.toLocaleString(loc(l)) + ' ₺'; }
   }
   function dur(m, l) {
     l = l || lang;
-    var u = l === 'en' ? ['h', 'min'] : ['sa', 'dk'];
+    var u = [tl('hUnit', l), tl('minUnit', l)];
     var h = Math.floor(m / 60), r = m % 60;
     return [h ? h + ' ' + u[0] : '', (r || !h) ? r + ' ' + u[1] : ''].filter(Boolean).join(' ');
   }
@@ -1132,8 +2224,8 @@ legend.ph+*{clear:both}
     return { m: m, p: p - disc, disc: disc };
   }
   function renderPromo() {
-    var mo = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'tr-TR', { month: 'long' }).format(new Date());
-    $('#promoK').textContent = t('promoK').replace('{m}', mo.charAt(0).toLocaleUpperCase(lang === 'en' ? 'en' : 'tr') + mo.slice(1));
+    var mo = new Intl.DateTimeFormat(loc(), { month: 'long' }).format(new Date()), pk = t('promoK');
+    $('#promoK').textContent = pk.indexOf('{m}') === 0 ? cap(pk.replace('{m}', mo)) : pk.replace('{m}', mo);
     $('#promoT').textContent = L(PROMO);
     $('#promoOld').textContent = money(promoFull());
     $('#promoNew').textContent = money(PROMO.price);
@@ -1190,8 +2282,7 @@ legend.ph+*{clear:both}
     return out;
   }
   function renderDays() {
-    var loc = lang === 'en' ? 'en-GB' : 'tr-TR';
-    var wd = new Intl.DateTimeFormat(loc, { weekday: 'short' }), mo = new Intl.DateTimeFormat(loc, { month: 'short' });
+    var wd = new Intl.DateTimeFormat(loc(), { weekday: 'short' }), mo = new Intl.DateTimeFormat(loc(), { month: 'short' });
     $('#days').innerHTML = DAYS.map(function (d) {
       var sl = slotsFor(d), open = sl.some(function (s) { return !s.off; }), k = key(d);
       return '<button type="button" class="day" data-day="' + k + '" aria-pressed="' + (state.day === k) + '"' + (open ? '' : ' disabled') + '><small>' + wd.format(d).replace('.', '') + '</small><b>' + d.getDate() + '</b><span>' + (open ? mo.format(d).replace('.', '') : (SALON.hours[d.getDay()] ? '—' : t('closed'))) + '</span></button>';
@@ -1213,7 +2304,7 @@ legend.ph+*{clear:both}
 
   /* ---------- Saatler ---------- */
   function renderHours() {
-    var loc = lang === 'en' ? 'en-GB' : 'tr-TR', fmt = new Intl.DateTimeFormat(loc, { weekday: 'long' });
+    var fmt = new Intl.DateTimeFormat(loc(), { weekday: 'long' });
     var base = new Date(2026, 0, 5), today = new Date().getDay(), rows = '';
     for (var i = 0; i < 7; i++) {
       var d = new Date(base); d.setDate(base.getDate() + i);
@@ -1238,8 +2329,8 @@ legend.ph+*{clear:both}
     }
     var el = $('#avail');
     if (!nextFree) { el.hidden = true; return; }
-    var dn = nextFree.i === 0 ? t('today') : nextFree.i === 1 ? t('tomorrow') : new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'tr-TR', { weekday: 'long' }).format(nextFree.d);
-    $('span', el).textContent = t('avail').replace('{d}', dn).replace('{t}', hm(nextFree.m)) + ' →';
+    var dn = nextFree.i === 0 ? t('today') : nextFree.i === 1 ? t('tomorrow') : new Intl.DateTimeFormat(loc(), { weekday: 'long' }).format(nextFree.d);
+    $('span', el).textContent = cap(t('avail').replace('{d}', dn).replace('{t}', hm(nextFree.m))) + ' →';
   }
 
   /* ---------- Hediye kartı ---------- */
@@ -1256,15 +2347,29 @@ legend.ph+*{clear:both}
   /* ---------- Dil ---------- */
   function applyLang() {
     root.lang = lang;
+    if (lang === 'ru' && !$('#fontRu')) {
+      var fl = document.createElement('link');
+      fl.id = 'fontRu'; fl.rel = 'stylesheet';
+      fl.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..600;1,400..600&family=Manrope:wght@400..700&display=swap';
+      fl.onload = fitHeader;
+      document.head.appendChild(fl);
+    }
     document.title = SALON.name + ' — ' + t('title');
     $$('[data-i]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i')); });
     $$('[data-iph]').forEach(function (el) { el.placeholder = t(el.getAttribute('data-iph')); });
-    $$('#langT span').forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-l') === lang); });
-    $('#langT').setAttribute('aria-label', t('langAria'));
-    $('#lookPrev').setAttribute('aria-label', lang === 'en' ? 'Previous' : 'Önceki');
-    $('#lookNext').setAttribute('aria-label', lang === 'en' ? 'Next' : 'Sonraki');
-    $('#bagbar').setAttribute('aria-label', lang === 'en' ? 'Booking bag' : 'Randevu çantası');
+    $$('[data-ia]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-ia'))); });
+    $('#langC').textContent = LANGS[lang].code;
+    $('#langT').setAttribute('aria-label', t('langMenu') + ': ' + LANGS[lang].name);
+    $$('#langM [data-lang]').forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-lang') === lang)); });
+    fitHeader();
     renderSwatches(); renderToneCard(); renderTabs(); renderServices(false); renderBand(); renderLooks(); renderTeam(); renderReviews(); renderBag(); renderPros(); renderDays(); renderSlots(); renderHours(); renderAvail(); renderGifts(); renderFaq(); renderPromo();
+  }
+
+  /* Dar ekranda başlık sığmıyorsa üstteki randevu düğmesini gizle (hero ve menüde zaten var) */
+  function fitHeader() {
+    var h = $('#hdr');
+    h.classList.remove('tight');
+    if (h.scrollWidth > h.clientWidth + 1) h.classList.add('tight');
   }
 
   /* ---------- Salon bilgisini yerleştir ---------- */
@@ -1332,15 +2437,39 @@ legend.ph+*{clear:both}
     $('#randevu').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   });
   $('#giftBtn').addEventListener('click', function () {
-    var msg = 'Merhaba ' + SALON.name + ', ' + money(state.gift, 'tr') + ' değerinde bir hediye kartı almak istiyorum.' + (lang !== 'tr' ? '\n(Müşteri dili: İngilizce)' : '');
+    var msg = 'Merhaba ' + SALON.name + ', ' + money(state.gift, 'tr') + ' değerinde bir hediye kartı almak istiyorum.' + (lang !== 'tr' ? '\n(Müşteri dili: ' + LANGS[lang].trName + ')' : '');
     window.open('https://wa.me/' + SALON.wa + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
   });
 
-  $('#langT').addEventListener('click', function () {
-    lang = lang === 'tr' ? 'en' : 'tr';
-    try { localStorage.setItem('ey-lang', lang); } catch (e) {}
+  /* Dil menüsü */
+  var langBtn = $('#langT'), langM = $('#langM');
+  langM.innerHTML = ORDER.map(function (c) {
+    return '<li role="none"><button type="button" role="menuitemradio" lang="' + c + '" data-lang="' + c + '" aria-checked="false">' + LANGS[c].name + '<small>' + LANGS[c].code + '</small></button></li>';
+  }).join('');
+  function langMenu(open, focus) {
+    langM.classList.toggle('show', open);
+    langBtn.setAttribute('aria-expanded', String(open));
+    if (open && focus) ($('[aria-checked="true"]', langM) || $('button', langM)).focus();
+  }
+  langBtn.addEventListener('click', function () { langMenu(langBtn.getAttribute('aria-expanded') !== 'true', true); });
+  langBtn.addEventListener('keydown', function (e) { if (e.key === 'ArrowDown') { e.preventDefault(); langMenu(true, true); } });
+  langM.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-lang]');
+    if (!b) return;
+    lang = b.getAttribute('data-lang');
+    try { localStorage.setItem('ey-lang', lang); } catch (e2) {}
     applyLang();
+    langMenu(false);
+    langBtn.focus();
   });
+  langM.addEventListener('keydown', function (e) {
+    var items = $$('button', langM), i = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); items[(i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length].focus(); }
+    else if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); items[e.key === 'Home' ? 0 : items.length - 1].focus(); }
+    else if (e.key === 'Escape') { e.preventDefault(); langMenu(false); langBtn.focus(); }
+    else if (e.key === 'Tab') langMenu(false);
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.lang-w')) langMenu(false); });
 
   /* Mobil menü */
   var burger = $('#burger'), mnav = $('#mnav');
@@ -1364,6 +2493,7 @@ legend.ph+*{clear:both}
     prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
     hdr.classList.toggle('sc', y > 30);
     hdr.classList.toggle('hide', y > 300 && y > lastY + 4 && !root.classList.contains('menu-open'));
+    if (hdr.classList.contains('hide')) langMenu(false);
     if (y < lastY - 4 || y < 300) hdr.classList.remove('hide');
     lastY = y;
   }
@@ -1422,7 +2552,7 @@ legend.ph+*{clear:both}
     if (!state.sel.length) { fail(t('errSvc')); $('#menu').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); return; }
     if (!state.day || state.time === null) { fail(t('errDay')); ($('#slots .chip:not(:disabled)') || $('.day:not(:disabled)')).focus(); return; }
     if (!name) return fail(t('errName'), $('#fName'));
-    if (tel.replace(/\D/g, '').length < 10) return fail(t('errTel'), $('#fTel'));
+    if (tel.replace(/\D/g, '').length < 9) return fail(t('errTel'), $('#fTel'));
     if (!$('#fAgree').checked) return fail(t('errAgree'), $('#fAgree'));
 
     var tt = totals(), d = dayObj(state.day);
@@ -1436,7 +2566,7 @@ legend.ph+*{clear:both}
     if (state.tone !== null) lines.push('• Ton: ' + TONES[state.tone].tr);
     lines.push('• Uzman: ' + pro, '• Tarih: ' + date + ', ' + hm(state.time), '• Tahmini süre: ' + dur(tt.m, 'tr'), '• Başlangıç fiyatı: ' + money(tt.p, 'tr'), '• Ad soyad: ' + name, '• Telefon: ' + tel);
     if (note) lines.push('• Not: ' + note);
-    if (lang !== 'tr') lines.push('(Müşteri dili: İngilizce)');
+    if (lang !== 'tr') lines.push('(Müşteri dili: ' + LANGS[lang].trName + ')');
     var url = 'https://wa.me/' + SALON.wa + '?text=' + encodeURIComponent(lines.join('\n'));
     window.open(url, '_blank', 'noopener');
     $('#waAgain').href = url;
@@ -1512,9 +2642,11 @@ legend.ph+*{clear:both}
     animated.forEach(function (s) { s.resize(); s.draw(); });
     looksSilk.forEach(function (s) { s.resize(); s.draw(); });
     lookProgress();
+    fitHeader();
     if (Math.abs(window.innerWidth - rw) > 120) { rw = window.innerWidth; }
   });
   lookProgress();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeader);
   restartQuotes();
   setInterval(function () { renderHours(); renderAvail(); }, 60000);
 
