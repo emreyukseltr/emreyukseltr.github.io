@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="tr" class="lenis lenis-smooth">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Av. Mehmet Demir | Premium Hukuk Bürosu</title>
     <meta name="description" content="Karmaşık hukuki ihtilaflarda uluslararası standartlarda stratejik temsil.">
     <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#020202">
+    <link rel="icon" type="image/png" href="favicon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Smooth Scroll Engine -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
 
     <style>
         :root {
@@ -28,7 +30,8 @@
             --font-body: 'Outfit', sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         html.lenis { height: auto; }
         .lenis.lenis-smooth { scroll-behavior: auto; }
@@ -66,6 +69,11 @@
             width: 65px; height: 65px; background-color: rgba(197, 160, 89, 0.05);
             border-color: rgba(197, 160, 89, 0.8); backdrop-filter: blur(2px);
         }
+        .cursor-dot, .cursor-outline { opacity: 0; }
+        body.has-cursor .cursor-dot, body.has-cursor .cursor-outline { opacity: 1; }
+        body.has-cursor, body.has-cursor * { cursor: none !important; }
+        body.has-cursor input, body.has-cursor textarea { cursor: text !important; }
+        @media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-outline { display: none; } }
 
         /* --- SÜPER HIZLI İNTRO (PRELOADER YOK, FLAŞ GİRİŞ VAR) --- */
         #flash-intro {
@@ -171,7 +179,7 @@
         /* --- UZMANLIK ALANLARI (INTERAKTİF KARTLAR) --- */
         .services { padding: 150px 5% 150px; max-width: 1300px; margin: 0 auto; }
         .section-title { text-align: center; font-family: var(--font-head); font-size: 3.5rem; color: var(--white); margin-bottom: 90px; font-weight: 400; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 40px; }
         
         /* Gelişmiş Kart Animasyonları */
         .card { 
@@ -217,7 +225,7 @@
 
         /* --- FOOTER (İHTİŞAMLI TİPOGRAFİ) --- */
         footer { padding: 150px 5% 60px; text-align: center; overflow: hidden; position: relative; background: #000; border-top: 1px solid rgba(255,255,255,0.03);}
-        .footer-huge-text { font-family: var(--font-head); font-size: clamp(3rem, 12vw, 10rem); font-weight: 600; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); white-space: nowrap; margin-bottom: 60px; transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); text-transform: uppercase;}
+        .footer-huge-text { font-family: var(--font-head); font-size: clamp(2rem, 10.5vw, 10rem); font-weight: 600; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); white-space: nowrap; margin-bottom: 60px; transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); text-transform: uppercase;}
         .footer-huge-text:hover { color: var(--bronze); -webkit-text-stroke: 0; transform: scale(1.02);}
         .footer-details { color: var(--text-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px; font-weight: 300; letter-spacing: 1px;}
 
@@ -238,13 +246,36 @@
             .booking-card { padding: 50px 30px; }
             nav { padding: 20px 5%; }
         }
+        @media (max-width: 600px) {
+            nav, nav.scrolled { padding: 14px 5%; gap: 12px; }
+            .logo { font-size: 1.1rem; letter-spacing: .5px; white-space: nowrap; }
+            .nav-btn { padding: 10px 14px; font-size: .68rem; letter-spacing: 1.5px; white-space: nowrap; }
+            .services, .booking-section { padding: 90px 5%; }
+            .section-title { font-size: 2.3rem; margin-bottom: 50px; }
+            .card { padding: 44px 28px; }
+            .booking-card { padding: 44px 22px; }
+            .booking-card h2 { font-size: 2.1rem; }
+            .stat-num { font-size: 2.8rem; }
+            .marquee-content { font-size: 2rem; }
+            footer { padding: 90px 5% 100px; }
+            .ey-demo-back { left: 12px; bottom: 12px; padding: 10px 14px; font-size: .68rem; letter-spacing: 1px; }
+            .submit-btn { padding: 18px 12px; letter-spacing: 2px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            #flash-intro { display: none; }
+            .reveal, .title-line, .hero p { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .marquee-content { animation: none; }
+            .card:hover, .stat:hover { transform: none; }
+        }
     </style>
 </head>
 <body>
+<noscript><style>#flash-intro{display:none}.reveal,.title-line,.hero p{opacity:1!important;transform:none!important}</style></noscript>
 
-<div class="noise-overlay"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-outline" id="cursorOutline"></div>
+<div class="noise-overlay" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-outline" id="cursorOutline" aria-hidden="true"></div>
 
 <!-- HIZLI SİNEMATİK İNTRO -->
 <div id="flash-intro">
@@ -337,21 +368,21 @@
     <div class="booking-card reveal">
         <h2 data-i18n="Danışmanlık Talebi">Danışmanlık Talebi</h2>
         <p data-i18n="Randevu Alt">Hukuki süreciniz için ilk adımı atın. Talebiniz doğrudan yönetici avukatımızın güvenli hattına iletilecektir.</p>
-        <form id="docForm">
+        <form id="docForm" novalidate>
             <div class="field">
-                <label data-i18n="Adınız Soyadınız">Adınız Soyadınız</label>
-                <input type="text" id="ad" placeholder="Ad Soyad / Kurum Adı" data-i18n-ph="Ad Soyad Placeholder" required class="hover-target">
+                <label for="ad" data-i18n="Adınız Soyadınız">Adınız Soyadınız</label>
+                <input type="text" id="ad" name="ad" autocomplete="name" placeholder="Ad Soyad / Kurum Adı" data-i18n-ph="Ad Soyad Placeholder" required class="hover-target">
             </div>
             <div class="field">
-                <label data-i18n="Telefon Numaranız">Telefon Numaranız</label>
-                <input type="tel" id="tel" placeholder="05XX XXX XX XX" data-i18n-ph="Tel Placeholder" required class="hover-target">
+                <label for="tel" data-i18n="Telefon Numaranız">Telefon Numaranız</label>
+                <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" placeholder="05XX XXX XX XX" data-i18n-ph="Tel Placeholder" required class="hover-target">
             </div>
             <div class="field">
-                <label data-i18n="Hukuki Konu">Hukuki Konu Özeti</label>
-                <textarea id="mesaj" placeholder="Özet bilgi geçiniz..." data-i18n-ph="Mesaj Placeholder" class="hover-target"></textarea>
+                <label for="mesaj" data-i18n="Hukuki Konu">Hukuki Konu Özeti</label>
+                <textarea id="mesaj" name="mesaj" placeholder="Özet bilgi geçiniz..." data-i18n-ph="Mesaj Placeholder" class="hover-target"></textarea>
             </div>
             <button type="submit" class="submit-btn hover-target" data-i18n="WhatsApp İle İletişime Geç">WhatsApp İle İletişime Geç</button>
-            <div class="status-msg" id="stMsg"></div>
+            <div class="status-msg" id="stMsg" role="status" aria-live="polite"></div>
         </form>
     </div>
 </section>
@@ -433,27 +464,29 @@ window.EY_PAGE_DICT = {
     
     var i18nVal = el.getAttribute('data-i18n');
     if (i18nVal && MAP[i18nVal]) {
-        T.push({ el: el, row: MAP[i18nVal], isI18n: true });
+        T.push({ el: el, row: MAP[i18nVal], orig: el.innerHTML, isI18n: true });
     }
 
     var phVal = el.getAttribute('data-i18n-ph');
     if (phVal && MAP[phVal]) {
-        T.push({ el: el, row: MAP[phVal], isPh: true });
+        T.push({ el: el, row: MAP[phVal], orig: el.getAttribute('placeholder'), isPh: true });
     }
 
     Array.prototype.forEach.call(el.children, function (n) { walk(n); });
   }
   walk(document.body);
 
-  function pick(row, lang) { return lang === 'tr' ? row[0] : (row[LANGS.indexOf(lang)] || row[1] || row[0]); }
+  function pick(row, lang, orig) { return lang === 'tr' ? orig : (row[LANGS.indexOf(lang)] || row[1] || orig); }
+  /* Script içindeki mesajlar için: Türkçede null döner, çağıran kendi Türkçe metnini kullanır */
+  window.eyT = function (k) { var r = MAP[k]; return (r && cur !== 'tr') ? (r[LANGS.indexOf(cur)] || r[1]) : null; };
   
   function swap(lang) {
     T.forEach(function (t) {
       if (t.isPh) { 
-          t.el.setAttribute('placeholder', pick(t.row, lang)); 
+          t.el.setAttribute('placeholder', pick(t.row, lang, t.orig));
       }
       else if (t.isI18n) {
-          t.el.innerHTML = pick(t.row, lang);
+          t.el.innerHTML = pick(t.row, lang, t.orig);
       }
     });
     document.documentElement.lang = lang;
@@ -471,13 +504,14 @@ window.EY_PAGE_DICT = {
   var css = document.createElement('style');
   css.textContent = 'body{transition:opacity .16s ease}' +
     '#eyLang{position:fixed;right:25px;bottom:25px;z-index:9998;font-family:var(--font-body)}' +
-    '#eyLang button{font:500 13px/1 var(--font-body);text-transform:uppercase;letter-spacing:1px; cursor:none}' +
+    '#eyLang button{font:500 13px/1 var(--font-body);text-transform:uppercase;letter-spacing:1px;cursor:pointer}' +
     '#eyBtn{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);color:var(--white);border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:12px 20px;backdrop-filter:blur(10px);box-shadow:0 8px 25px rgba(0,0,0,.6);white-space:nowrap}' +
     '#eyBtn img,.eyOpt img{width:20px;height:14px;object-fit:cover;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.1)}' +
     '#eyDrop{position:absolute;right:0;bottom:calc(100% + 10px);background:#050505;border:1px solid rgba(197, 160, 89,0.3);border-radius:2px;box-shadow:0 15px 40px rgba(0,0,0,.9);min-width:190px;overflow:hidden;display:none;flex-direction:column}' +
     '#eyDrop.show{display:flex}' +
     '.eyOpt{display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;background:none;border:0;text-align:left;color:var(--text-gray);white-space:nowrap}' +
-    '.eyOpt:hover,.eyOpt.on{background:rgba(197, 160, 89,0.1);color:var(--bronze)}.eyOpt b{min-width:1.9rem}.eyOpt span{font-weight:400;opacity:.5;text-transform:none}';
+    '.eyOpt:hover,.eyOpt.on{background:rgba(197, 160, 89,0.1);color:var(--bronze)}.eyOpt b{min-width:1.9rem}@media(max-width:600px){#eyLang{right:12px;bottom:12px}#eyBtn{padding:10px 14px}}' +
+    '.eyOpt span{font-weight:400;opacity:.5;text-transform:none}';
   document.head.appendChild(css);
   var box = document.createElement('div'); box.id = 'eyLang';
   var FL = {"tr": "<rect width=\"20\" height=\"14\" fill=\"#E30A17\"/><circle cx=\"7.4\" cy=\"7\" r=\"3.6\" fill=\"#fff\"/><circle cx=\"8.4\" cy=\"7\" r=\"2.9\" fill=\"#E30A17\"/><circle cx=\"12\" cy=\"7\" r=\"1\" fill=\"#fff\"/>", "gb": "<rect width=\"20\" height=\"14\" fill=\"#012169\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#fff\" stroke-width=\"2.6\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#C8102E\" stroke-width=\"1\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#fff\" stroke-width=\"4.4\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#C8102E\" stroke-width=\"2.4\"/>", "de": "<rect width=\"20\" height=\"4.7\" fill=\"#000\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#D00\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#FFCE00\"/>", "es": "<rect width=\"20\" height=\"14\" fill=\"#AA151B\"/><rect y=\"3.5\" width=\"20\" height=\"7\" fill=\"#F1BF00\"/>", "nl": "<rect width=\"20\" height=\"4.7\" fill=\"#AE1C28\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#21468B\"/>", "fr": "<rect width=\"6.7\" height=\"14\" fill=\"#0055A4\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#EF4135\"/>", "it": "<rect width=\"6.7\" height=\"14\" fill=\"#009246\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#CE2B37\"/>", "ru": "<rect width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#0039A6\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#D52B1E\"/>"};
@@ -490,9 +524,12 @@ window.EY_PAGE_DICT = {
     btn.innerHTML = flag(cur) + ' ' + INFO[cur][1] + ' ▲'; btn.setAttribute('aria-label', INFO[cur][2]);
     Array.prototype.forEach.call(drop.children, function (o) { o.classList.toggle('on', o.getAttribute('data-l') === cur); });
   }
-  btn.addEventListener('click', function (e) { e.stopPropagation(); drop.classList.toggle('show'); });
-  drop.addEventListener('click', function (e) { var o = e.target.closest('.eyOpt'); if (!o) return; drop.classList.remove('show'); apply(o.getAttribute('data-l')); });
-  document.addEventListener('click', function () { drop.classList.remove('show'); });
+  function openDrop(o) { drop.classList.toggle('show', o); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+  btn.setAttribute('aria-expanded', 'false');
+  btn.addEventListener('click', function (e) { e.stopPropagation(); openDrop(!drop.classList.contains('show')); });
+  drop.addEventListener('click', function (e) { var o = e.target.closest('.eyOpt'); if (!o) return; openDrop(false); apply(o.getAttribute('data-l')); });
+  document.addEventListener('click', function () { openDrop(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drop.classList.contains('show')) { openDrop(false); btn.focus(); } });
 
   setBtn();
   var start = null; try { start = localStorage.getItem('ey-lang'); } catch (e) {}
@@ -504,94 +541,99 @@ window.EY_PAGE_DICT = {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- SÜPER HIZLI İNTRO (FLASH) ---
-    setTimeout(function() {
-        document.getElementById('flash-intro').classList.add('hide');
-        setTimeout(function(){
-            document.body.classList.add('loaded');
-            initEngine();
-        }, 500);
-    }, 800);
-
-    function initEngine() {
-        // --- LENIS SMOOTH SCROLL ---
-        const lenis = new Lenis({
-            duration: 1.25,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            smooth: true,
-        });
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-
-        // --- SCROLL REVEAL & NAVBAR ---
-        const nav = document.querySelector('nav');
-        const reveals = document.querySelectorAll('.reveal');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
-        reveals.forEach(r => observer.observe(r));
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-        });
+    function start() { document.body.classList.add('loaded'); initEngine(); }
+    if (reduce) {
+        start();
+    } else {
+        setTimeout(function() {
+            document.getElementById('flash-intro').classList.add('hide');
+            setTimeout(start, 500);
+        }, 800);
     }
 
-    // --- ÖZEL İMLEÇ (CURSOR) ---
-    const dot = document.getElementById('cursorDot');
-    const outline = document.getElementById('cursorOutline');
-    const hoverTargets = document.querySelectorAll('a, button, .hover-target');
+    function initEngine() {
+        // --- İÇERİK BELİRME (Lenis'ten bağımsız: CDN yüklenmese de içerik görünür) ---
+        var reveals = document.querySelectorAll('.reveal');
+        if (reduce || !('IntersectionObserver' in window)) {
+            reveals.forEach(function (r) { r.classList.add('active'); });
+        } else {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+            reveals.forEach(function (r) { observer.observe(r); });
+        }
 
-    window.addEventListener('mousemove', function(e) {
-        dot.style.left = `${e.clientX}px`;
-        dot.style.top = `${e.clientY}px`;
-        outline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 250, fill: "forwards" });
-    });
+        // --- LENIS YUMUŞAK KAYDIRMA (varsa) ---
+        if (reduce || typeof window.Lenis !== 'function') return;
+        try {
+            var lenis = new Lenis({ duration: 1.25, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+            requestAnimationFrame(raf);
+            document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    var id = a.getAttribute('href');
+                    e.preventDefault();
+                    if (id.length < 2) { lenis.scrollTo(0); return; }
+                    var t = document.querySelector(id);
+                    if (t) lenis.scrollTo(t, { offset: -70 });
+                });
+            });
+        } catch (err) { /* Lenis çalışmazsa tarayıcının normal kaydırması kullanılır */ }
+    }
 
-    hoverTargets.forEach(target => {
-        target.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
-        target.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
-    });
+    // --- NAVBAR ---
+    var nav = document.getElementById('navbar');
+    function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 50); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-    document.addEventListener('eylang', () => {
-        document.querySelectorAll('.hover-target').forEach(target => {
-            target.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
-            target.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+    // --- ÖZEL İMLEÇ (yalnızca fare olan cihazlarda) ---
+    var dot = document.getElementById('cursorDot');
+    var outline = document.getElementById('cursorOutline');
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
+        window.addEventListener('mousemove', function (e) {
+            document.body.classList.add('has-cursor');
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            outline.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 250, fill: 'forwards' });
+        }, { passive: true });
+        document.addEventListener('mouseover', function (e) {
+            document.body.classList.toggle('hovering', !!(e.target.closest && e.target.closest('a, button, input, textarea, .hover-target')));
         });
-    });
+        document.documentElement.addEventListener('mouseleave', function () { document.body.classList.remove('has-cursor'); });
+    } else {
+        dot.remove(); outline.remove();
+    }
 
     // --- WHATSAPP FORMU ---
-    document.getElementById('docForm').addEventListener('submit', function(e) {
+    var WHATSAPP = '905511187400';
+    var form = document.getElementById('docForm');
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         var ad = document.getElementById('ad').value.trim();
         var tel = document.getElementById('tel').value.trim();
         var mesaj = document.getElementById('mesaj').value.trim();
         var stMsg = document.getElementById('stMsg');
-        
-        if(!ad || !tel) {
-            stMsg.style.color = '#ff3b30'; 
-            stMsg.textContent = window.eyT ? window.eyT('uyari-1') : 'Lütfen ad soyad ve telefon alanlarını doldurun.';
+        var t = function (k, fallback) { return (window.eyT && window.eyT(k)) || fallback; };
+
+        if (!ad || tel.replace(/\D/g, '').length < 7) {
+            stMsg.style.color = '#ff6b5e';
+            stMsg.textContent = t('uyari-1', 'Lütfen ad soyad ve telefon alanlarını doldurun.');
+            document.getElementById(ad ? 'tel' : 'ad').focus();
             return;
         }
-        stMsg.style.color = '#c5a059'; 
-        stMsg.textContent = window.eyT ? window.eyT('uyari-2') : 'WhatsApp açılıyor...';
-        
+        stMsg.style.color = '#c5a059';
+        stMsg.textContent = t('uyari-2', 'WhatsApp açılıyor...');
+
         var text = "Merhaba, hukuki danışmanlık talep ediyorum.\nAd/Kurum: " + ad + "\nTelefon: " + tel + "\nKonu: " + (mesaj || "-");
-        var WHATSAPP = "905551234567"; 
-        
-        setTimeout(function() {
-            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank');
-            stMsg.textContent = "";
-            document.getElementById('docForm').reset();
-        }, 800);
+        // Pencere doğrudan tıklama anında açılmalı; gecikmeli açılış Safari vb. tarafından engellenir.
+        window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        setTimeout(function () { stMsg.textContent = ''; form.reset(); }, 2500);
     });
 
 });

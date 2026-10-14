@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://emreyukseltr.github.io/sitemap.xml
+Sitemap: https://eystudios.com.tr/sitemap.xml

@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aura Dental — Istanbul</title>
-<meta name="description" content="Aura Dental — Şişli, İstanbul. Implants, smile design, veneers, orthodontics. 12 languages.">
+<meta name="description" content="Aura Dental — Şişli, İstanbul. İmplant, gülüş tasarımı, porselen laminate, ortodonti ve beyazlatma. 12 dilde hasta desteği.">
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🦷%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#08110F"><meta property="og:title" content="Aura Dental — Istanbul"><meta property="og:type" content="website">
@@ -193,6 +194,9 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
 .card .agree a{color:var(--acc);text-decoration:underline;text-underline-offset:2px}
 .card .agree a:hover{color:var(--ink)}
 .chips b{cursor:pointer;transition:opacity .2s}.chips b:hover{opacity:.75}
+.kvd{max-width:min(520px,90vw);border:1px solid var(--line);border-radius:24px;padding:30px;background:var(--card);color:var(--ink)}
+.kvd::backdrop{background:#0008;backdrop-filter:blur(4px)}
+.kvd h3{font-size:22px;margin-bottom:14px}.kvd p{color:var(--mut);margin-bottom:22px}
 .okbox{display:none;place-items:center;text-align:center;gap:18px;padding:50px 0;color:var(--acc)}
 .okbox p{color:var(--ink);font:300 clamp(20px,2.2vw,28px)/1.3 Unbounded,sans-serif;letter-spacing:-.03em}
 .card.done>*:not(.okbox){display:none}.card.done .okbox{display:grid}
@@ -244,13 +248,13 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
     <a class="l" href="#t" data-i="n1">Tedaviler</a>
     <a class="l" href="#team" data-i="n3">Doktorlar</a>
     <a class="l" href="#s" data-i="n2">Rakamlar</a>
-    <div class="lang" id="lang"><button id="lb" aria-haspopup="true">TR ▾</button><ul id="ll"></ul></div>
+    <div class="lang" id="lang"><button type="button" id="lb" aria-haspopup="true" aria-expanded="false" aria-controls="ll">TR ▾</button><ul id="ll"></ul></div>
     <a href="#book" data-i="cta">Randevu al</a>
   </div>
 </nav>
 <header class="hero"><canvas id="cv" aria-hidden="true"></canvas>
   <div class="hc"><div class="tags"><span data-c="rate">★ 4.9 · Google</span><span data-j="fc">Ücretsiz ilk muayene</span></div><h1><span class="ln"><i data-i="h1a">Gülüşün,</i></span><span class="ln b"><i data-i="h1b">tasarlandı.</i></span></h1>
-  <div class="hb"><p class="sub" data-i="sub">İstanbul'un kalbinde, sessiz ve steril bir klinikte yeni nesil diş hekimliği.</p><div class="acts"><a class="cta mag" href="#book" data-i="cta">Randevu al</a><a class="cta ghost" href="https://wa.me/905000000000" target="_blank" rel="noopener"><i class="dot"></i>WhatsApp</a></div></div></div>
+  <div class="hb"><p class="sub" data-i="sub">İstanbul'un kalbinde, sessiz ve steril bir klinikte yeni nesil diş hekimliği.</p><div class="acts"><a class="cta mag" href="#book" data-i="cta">Randevu al</a><a class="cta ghost" href="https://wa.me/905511187400" target="_blank" rel="noopener"><i class="dot"></i>WhatsApp</a></div></div></div>
 </header>
 <div class="mq"><div id="mq"></div></div>
 <section><p id="rv"></p></section>
@@ -270,7 +274,7 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
   <h2 data-i="teamH">Uzman Kadromuz</h2>
   <div class="doc-grid">
     <div class="doc-card">
-      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop" alt="Dr. John Doe" class="doc-img">
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop" alt="Dr. Caner Yılmaz" class="doc-img" loading="lazy" width="600" height="800">
       <div class="doc-info">
         <div class="doc-name">Dr. Caner Yılmaz</div>
         <div class="doc-title" data-i="doc1">Çene Cerrahı & İmplantoloji</div>
@@ -278,7 +282,7 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
       </div>
     </div>
     <div class="doc-card">
-      <img src="https://images.unsplash.com/photo-1594824436951-7f12bc414324?q=80&w=600&auto=format&fit=crop" alt="Dr. Jane Doe" class="doc-img">
+      <img src="https://images.unsplash.com/photo-1594824436951-7f12bc414324?q=80&w=600&auto=format&fit=crop" alt="Dr. Aylin Demir" class="doc-img" loading="lazy" width="600" height="800">
       <div class="doc-info">
         <div class="doc-name">Dr. Aylin Demir</div>
         <div class="doc-title" data-i="doc2">Gülüş Tasarımı & Estetik</div>
@@ -289,7 +293,7 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
 </section>
 
 <section id="j"><h2 data-j="jh">Yolculuğun</h2><ol class="jr" id="jr"><li><b data-j="j1">Tanışma</b></li><li><b data-j="j2">Dijital plan</b></li><li><b data-j="j3">Tedavi</b></li><li><b data-j="j4">Takip</b></li></ol></section>
-<a class="wa" href="https://wa.me/905000000000" target="_blank" rel="noopener"><i class="dot"></i>WhatsApp</a><a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+<a class="wa" href="https://wa.me/905511187400" target="_blank" rel="noopener"><i class="dot"></i>WhatsApp</a><a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
 <section class="stats" id="s">
   <div><strong data-n="18000">0</strong><small data-i="s1">mutlu hasta</small></div>
   <div><strong data-n="22">0</strong><small data-i="s2">yıllık deneyim</small></div>
@@ -303,10 +307,11 @@ nav,.tags span{-webkit-backdrop-filter:blur(16px)}
 <label><span data-j="cp">Şikayetiniz</span><textarea name="cp" rows="3"></textarea></label>
 <div class="lab"><span data-j="pr">İşlemler</span><div class="dd" id="pd"><button type="button" id="pb2"><span data-j="sel">İşlem seç</span><b>▾</b></button><div class="dl" id="pdl"></div></div><div class="chips" id="chips"></div></div>
 <label><span data-j="dt">Tercih edilen tarih</span><input type="date" name="dtp" id="dtp"></label>
-<label class="agree"><input type="checkbox" required><span id="kvkk-text"><span data-j="kv">Randevum için aranmayı kabul ediyorum.</span> <a href="#" target="_blank" data-j="kvd">KVKK ve Gizlilik Politikası</a>'nı okudum ve onaylıyorum.</span></label>
+<label class="agree"><input type="checkbox" required><span id="kvkk-text"><span data-j="kv">Randevum için aranmayı kabul ediyorum.</span> <span id="kvr"><a href="#kvkk" id="kvl">KVKK ve Gizlilik Politikası</a>'nı okudum ve onaylıyorum.</span></span></label>
 <button class="cta mag" type="submit" data-j="send">Randevu talep et</button>
 <div class="okbox" id="okm"><svg width="64" height="64" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 27l8 8 15-17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><p data-j="ok">Teşekkürler! En kısa sürede dönüş yapacağız.</p></div>
 </form></div></section>
+<dialog id="kvkk" class="kvd" aria-labelledby="kvh"><h3 id="kvh"></h3><p id="kvt"></p><form method="dialog"><button class="cta">OK</button></form></dialog>
 <section id="map"><h2 data-j="mp">Bize ulaşın</h2><div class="mapw"><div><p class="addr" data-c="addr">Halaskargazi Cd. No: 00, Şişli / İstanbul</p><ul class="tr2"><li data-j="ma">Metroya 5 dk yürüme</li><li data-j="mb">Ücretsiz otopark</li><li data-j="mc">Havalimanı transferi</li></ul><div class="acts"><a class="cta mag" id="mg" target="_blank" rel="noopener" data-j="dr">Yol tarifi al</a><a class="cta ghost" id="mapl" target="_blank" rel="noopener">Apple Maps</a><a class="cta ghost" id="myx" target="_blank" rel="noopener">Yandex</a></div></div>
 <a class="mapv" id="mapv" target="_blank" rel="noopener" aria-label="Map"><svg viewBox="0 0 600 420" aria-hidden="true"><path d="M440 420C420 300 520 240 600 190V420z" fill="var(--acc)" fill-opacity=".14"/><g fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="2"><path d="M0 90L600 60M0 200L600 170M0 330L600 300M90 0L130 420M240 0L260 420M390 0L380 420M510 0L540 420"/></g><path d="M0 255C150 235 250 150 420 160S560 70 600 45" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="6" stroke-linecap="round"/><g transform="translate(330 150)"><circle class="pp" r="26" fill="var(--acc)" fill-opacity=".2"/><path d="M0 30C-17 6-19-4-19-12a19 19 0 0 1 38 0c0 8-2 18-19 42z" fill="var(--acc)"/><circle cy="-12" r="6" fill="var(--bg)"/></g></svg></a></div></section>
 <footer id="c"><div class="meta"><span data-c="city">Şişli, İstanbul</span><span data-c="hours">09:00 – 18:00</span><a data-c="tel" href="tel:+905000000000" style="color:inherit;text-decoration:none">+90 500 000 00 00</a><a data-c="email" href="mailto:hello@auradental.example" style="color:inherit;text-decoration:none">hello@auradental.example</a></div><div class="big" data-c="big" aria-hidden="true">Aura</div><div class="cr"><span>© <span id="yr">2026</span> <span data-c="name">Aura Dental</span></span><span class="by">Crafted with obsession by <a href="https://eystudios.com.tr" target="_blank" rel="noopener">EY Studios ↗</a></span></div></footer>
@@ -328,7 +333,7 @@ pl:{n:"Polski",n1:"Zabiegi",n2:"Liczby",n3:"Lekarze",cta:"Umów wizytę",h1a:"Tw
 zh:{n:"中文",n1:"诊疗项目",n2:"数据",n3:"医生团队",cta:"预约就诊",h1a:"你的笑容，",h1b:"精心设计。",sub:"位于伊斯坦布尔中心、安静洁净的新一代牙科诊所。",th:"诊疗项目",teamH:"我们的专家团队",doc1:"口腔外科及种植学",doc1d:"超过15年经验。复杂种植及高级手术专家。",doc2:"笑容设计及美学",doc2d:"数字笑容规划及瓷贴面领域的先驱。",t1:"种植牙",d1:"持久自然的牙齿。",t2:"笑容设计",d2:"数字化规划，瓷贴面。",t3:"正畸",d3:"隐形矫正器无痕排齐。",t4:"美白",d4:"一次就诊安全亮白。",s1:"满意患者",s2:"年经验",s3:"种语言",fh:"准备好微笑了吗？"}
 };
 /* ===== MÜŞTERİ BİLGİLERİ: yalnızca bu bloğu düzenleyin ===== */
-const CLINIC={name:'Aura Dental',city:'Şişli, İstanbul',addr:'Halaskargazi Cd. No: 00, Şişli / İstanbul',hours:'09:00 – 18:00',phone:'+90 500 000 00 00',wa:'905000000000',email:'hello@auradental.example',rating:'4.9',lat:41.0602,lng:28.9877};
+const CLINIC={name:'Aura Dental',city:'Şişli, İstanbul',addr:'Halaskargazi Cd. No: 00, Şişli / İstanbul',hours:'09:00 – 18:00',phone:'+90 500 000 00 00',wa:'905511187400',email:'hello@auradental.example',rating:'4.9',lat:41.0602,lng:28.9877};
 const FORM_ENDPOINT=''; /* örn. Formspree/kendi API adresiniz; boşsa randevu WhatsApp'a düşer */
 /* ============================================================ */
 const $=s=>document.querySelector(s),ll=$('#ll'),lang=$('#lang'),rv=$('#rv'),hs=$('#t'),tk=$('#tk');
@@ -364,12 +369,16 @@ P.forEach((p,n)=>{const l=document.createElement('label');l.className='opt';l.in
 function chips(i){$('#chips').innerHTML=[...sel].sort().map(n=>'<b data-c="'+n+'" role="button" tabindex="0">'+P[n][i]+' ×</b>').join('')}
 function applyJ(k){const i=Math.max(LG.indexOf(k),0);
   document.querySelectorAll('[data-j]').forEach(e=>e.textContent=J[e.dataset.j][i]);
-  document.querySelectorAll('[data-pj]').forEach(e=>e.textContent=P[e.dataset.pj][i]);chips(i)}
+  document.querySelectorAll('[data-pj]').forEach(e=>e.textContent=P[e.dataset.pj][i]);chips(i);
+  const kl=document.createElement('a');kl.href='#kvkk';kl.id='kvl';kl.textContent=J.kvd[i];const [k1,k2]=J.kvr[i].split('{L}');const kr=$('#kvr');kr.textContent='';kr.append(k1,kl,k2);
+  $('#kvh').textContent=J.kvd[i];$('#kvt').textContent=J.kvt[i]}
+document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#kvl')){e.preventDefault();const d=$('#kvkk');if(d.showModal)d.showModal();else alert($('#kvt').textContent)}});
 $('#ccb').onclick=e=>{e.stopPropagation();$('#cc').classList.toggle('open');$('#pd').classList.remove('open')};
 $('#pb2').onclick=e=>{e.stopPropagation();$('#pd').classList.toggle('open');$('#cc').classList.remove('open')};
 document.addEventListener('click',e=>['#cc','#pd'].forEach(s=>{if(!$(s).contains(e.target))$(s).classList.remove('open')}));
 $('#bf').onsubmit=e=>{e.preventDefault();const f=e.target,i=LG.indexOf(document.documentElement.lang);
-  const m=CLINIC.name+'\n'+f.fn.value+' '+f.ln.value+'\n+'+dial+' '+$('#pn').value+'\n'+[...sel].sort().map(n=>P[n][1]).join(', ')+(f.dtp.value?'\n'+f.dtp.value:'')+'\n'+f.cp.value;
+  const pr=[...sel].sort().map(n=>P[n][0]).join(', ');
+  const m='Merhaba '+CLINIC.name+', randevu talebi:\nAd Soyad: '+f.fn.value.trim()+' '+f.ln.value.trim()+'\nTelefon: +'+dial+' '+$('#pn').value.trim()+(pr?'\nİşlemler: '+pr:'')+(f.dtp.value?'\nTercih edilen tarih: '+f.dtp.value:'')+(f.cp.value.trim()?'\nŞikayet: '+f.cp.value.trim():'')+'\nHasta dili: '+L[document.documentElement.lang].n;
   const pay={name:f.fn.value+' '+f.ln.value,phone:'+'+dial+' '+$('#pn').value,procedures:[...sel].sort().map(n=>P[n][1]),date:f.dtp.value,complaint:f.cp.value,lang:document.documentElement.lang};
   if(FORM_ENDPOINT){fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(pay)}).catch(()=>{})}else{try{window.open('https://wa.me/'+CLINIC.wa+'?text='+encodeURIComponent(m),'_blank','noopener')}catch(x){}}
   f.classList.add('done');
@@ -392,6 +401,7 @@ j1:["Tanışma","Consultation","Beratung","Консультация","استشا
 new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){e[0].target.classList.add('in');o.disconnect()}}).observe($('#jr'));
 Object.assign(J,{dt:["Tercih edilen tarih","Preferred date","Wunschtermin","Желаемая дата","التاريخ المفضل","تاریخ دلخواه","Date souhaitée","Fecha preferida","Data preferita","Gewenste datum","Preferowana data","期望日期"],kv:["Randevum için aranmayı kabul ediyorum.","I agree to be contacted for my appointment.","Ich stimme der Kontaktaufnahme für meinen Termin zu.","Я согласен(на) на связь по поводу моей записи.","أوافق على التواصل معي بخصوص موعدي.","با تماس برای نوبت من موافقم.","J'accepte d'être contacté(e) pour mon rendez-vous.","Acepto que me contacten para mi cita.","Accetto di essere contattato per il mio appuntamento.","Ik ga ermee akkoord gecontacteerd te worden voor mijn afspraak.","Wyrażam zgodę na kontakt w sprawie mojej wizyty.","我同意为预约事宜联系我。"],kvd:["KVKK ve Gizlilik Politikası","Privacy Policy and Terms","Datenschutzerklärung und AGB","Политика конфиденциальности и Условия","سياسة الخصوصية والشروط","حریم خصوصی و شرایط","Politique de confidentialité","Política de Privacidad","Informativa sulla Privacy","Privacybeleid en Voorwaarden","Polityka Prywatności","隐私政策与条款"]});
 Object.assign(J,{"fq": ["Sık sorulan sorular", "Frequently asked questions", "Häufige Fragen", "Частые вопросы", "الأسئلة الشائعة", "پرسش‌های پرتکرار", "Questions fréquentes", "Preguntas frecuentes", "Domande frequenti", "Veelgestelde vragen", "Najczęstsze pytania", "常见问题"], "q1": ["İlk muayene ücretsiz mi?", "Is the first consultation free?", "Ist die Erstberatung kostenlos?", "Первая консультация бесплатна?", "هل الاستشارة الأولى مجانية؟", "آیا اولین مشاوره رایگان است؟", "La première consultation est-elle gratuite ?", "¿La primera consulta es gratuita?", "La prima visita è gratuita?", "Is het eerste consult gratis?", "Czy pierwsza konsultacja jest bezpłatna?", "首次咨询免费吗？"], "a1": ["Evet. Muayene, röntgen değerlendirmesi ve tedavi planı ücretsizdir.", "Yes. The exam, X-ray review and treatment plan are free.", "Ja. Untersuchung, Röntgenauswertung und Behandlungsplan sind kostenlos.", "Да. Осмотр, анализ снимков и план лечения бесплатны.", "نعم. الفحص وتقييم الأشعة وخطة العلاج مجانية.", "بله. معاینه، بررسی رادیوگرافی و طرح درمان رایگان است.", "Oui. L'examen, l'analyse radio et le plan de soins sont offerts.", "Sí. La revisión, la valoración radiográfica y el plan son gratuitos.", "Sì. Visita, valutazione delle radiografie e piano di cura sono gratuiti.", "Ja. Onderzoek, röntgenbeoordeling en behandelplan zijn gratis.", "Tak. Badanie, ocena RTG i plan leczenia są bezpłatne.", "是的。检查、X光评估和治疗方案均免费。"], "q2": ["Kaç gün İstanbul'da kalmalıyım?", "How many days should I stay in Istanbul?", "Wie viele Tage muss ich in Istanbul bleiben?", "Сколько дней нужно пробыть в Стамбуле?", "كم يوماً يجب أن أبقى في إسطنبول؟", "چند روز باید در استانبول بمانم؟", "Combien de jours dois-je rester à Istanbul ?", "¿Cuántos días debo quedarme en Estambul?", "Quanti giorni devo restare a Istanbul?", "Hoe lang moet ik in Istanbul blijven?", "Ile dni powinienem zostać w Stambule?", "我需要在伊斯坦布尔停留几天？"], "a2": ["Tedaviye göre değişir. Muayenede size net bir takvim veririz.", "It depends on the treatment. You get a clear schedule at your consultation.", "Das hängt von der Behandlung ab. Beim Termin erhalten Sie einen klaren Zeitplan.", "Зависит от лечения. На консультации вы получите чёткий график.", "يعتمد على العلاج. نعطيك جدولاً واضحاً في الاستشارة.", "بسته به درمان است. در مشاوره برنامه زمانی روشنی می‌گیرید.", "Cela dépend du soin. Un calendrier précis vous est remis à la consultation.", "Depende del tratamiento. En la consulta recibe un calendario claro.", "Dipende dal trattamento. In visita ricevi un calendario chiaro.", "Dat hangt van de behandeling af. Bij het consult krijgt u een helder schema.", "Zależy od zabiegu. Na konsultacji otrzymasz jasny harmonogram.", "视治疗而定。咨询时我们会给您明确的时间表。"], "q3": ["Tedavi acı verir mi?", "Is the treatment painful?", "Ist die Behandlung schmerzhaft?", "Лечение болезненное?", "هل العلاج مؤلم؟", "آیا درمان دردناک است؟", "Le traitement est-il douloureux ?", "¿El tratamiento duele?", "Il trattamento è doloroso?", "Is de behandeling pijnlijk?", "Czy zabieg boli?", "治疗会疼吗？"], "a3": ["Uygun anestezi ile konforlu bir tedavi planlarız.", "We plan a comfortable treatment with suitable anaesthesia.", "Wir planen eine angenehme Behandlung mit passender Betäubung.", "Мы планируем комфортное лечение с подходящей анестезией.", "نخطط لعلاج مريح باستخدام التخدير المناسب.", "با بی‌حسی مناسب، درمانی راحت برنامه‌ریزی می‌کنیم.", "Nous prévoyons un soin confortable avec une anesthésie adaptée.", "Planificamos un tratamiento cómodo con la anestesia adecuada.", "Pianifichiamo un trattamento confortevole con anestesia adeguata.", "We plannen een comfortabele behandeling met passende verdoving.", "Planujemy komfortowy zabieg z odpowiednim znieczuleniem.", "我们会采用合适的麻醉，让治疗尽可能舒适。"], "q4": ["Fiyatı nasıl öğrenirim?", "How do I get a price?", "Wie erfahre ich den Preis?", "Как узнать стоимость?", "كيف أعرف السعر؟", "قیمت را چگونه بدانم؟", "Comment connaître le prix ?", "¿Cómo conozco el precio?", "Come conosco il prezzo?", "Hoe krijg ik a prijs?", "Jak poznać cenę?", "如何了解价格？"], "a4": ["Formu doldurun veya WhatsApp'tan röntgeninizi gönderin; plan ve fiyatı yazalım.", "Fill in the form or send your X-ray on WhatsApp; we reply with a plan and price.", "Formular ausfüllen oder Röntgenbild per WhatsApp senden; wir antworten mit Plan und Preis.", "Заполните форму или отправьте снимок в WhatsApp — мы пришлём план и цену.", "املأ النموذج أو أرسل الأشعة عبر واتساب، وسنرسل الخطة والسعر.", "فرم را پر کنید یا رادیوگرافی را در واتساپ بفرستید؛ طرح و قیمت را می‌فرستیم.", "Remplissez le formulaire ou envoyez votre radio sur WhatsApp ; nous répondons avec plan et prix.", "Rellene el formulario o envíe su radiografía por WhatsApp; le respondemos con plan y precio.", "Compila il modulo o invia la radiografia su WhatsApp; ti rispondiamo con piano e prezzo.", "Vul het formulier in of stuur uw röntgenfoto via WhatsApp; wij sturen plan en prijs.", "Wypełnij formularz lub wyślij RTG przez WhatsApp — odpiszemy z planem i ceną.", "填写表单或通过WhatsApp发送X光片，我们会回复方案与价格。"], "mp": ["Bize ulaşın", "Find us", "So finden Sie uns", "Как нас найти", "موقعنا", "نشانی ما", "Nous trouver", "Cómo llegar", "Dove siamo", "Hier vindt u ons", "Jak nas znaleźć", "交通与位置"], "dr": ["Yol tarifi al", "Get directions", "Route planen", "Построить маршрут", "احصل على الاتجاهات", "مسیریابی", "Itinéraire", "Cómo llegar", "Indicazioni", "Route plannen", "Wyznacz trasę", "获取路线"], "ma": ["Metroya 5 dk yürüme", "5 min walk to the metro", "5 Min. zu Fuß zur U-Bahn", "5 минут пешком до метро", "٥ دقائق سيراً إلى المترو", "۵ دقیقه پیاده تا مترو", "5 min à pied du métro", "5 min a pie del metro", "5 min a piedi dalla metro", "5 min lopen naar de metro", "5 min pieszo do metra", "步行5分钟到地铁"], "mb": ["Ücretsiz otopark", "Free parking", "Kostenlose Parkplätze", "Бесплатная парковка", "موقف سيارات مجاني", "پارکینگ رایگان", "Parking gratuit", "Aparcamiento gratuito", "Parcheggio gratuito", "Gratis parkeren", "Bezpłatny parking", "免费停车"], "mc": ["Havalimanı transferi", "Airport transfer", "Flughafentransfer", "Трансфер из аэропорта", "النقل من المطار", "انتقال فرودگاهی", "Transfert aéroport", "Traslado al aeropuerto", "Transfer aeroportuale", "Luchthaventransfer", "Transfer z lotniska", "机场接送"], "b1": ["Önce", "Before", "Vorher", "До", "قبل", "قبل", "Avant", "Antes", "Prima", "Voor", "Przed", "术前"], "b2": ["Sonra", "After", "Nachher", "После", "بعد", "بعد", "Après", "Después", "Dopo", "Na", "Po", "术后"], "sm": ["Örnek görsel", "Sample image", "Beispielbild", "Пример изображения", "صورة توضيحية", "تصویر نمونه", "Image illustrative", "Imagen de muestra", "Immagine illustrativa", "Voorbeeldafbeelding", "Obraz poglądowy", "示例图片"]});
+Object.assign(J,{kvr:["{L}'nı okudum ve onaylıyorum.", "I have read and accept the {L}.", "Ich habe die {L} gelesen und akzeptiere sie.", "Я прочитал(а) и принимаю: {L}.", "لقد قرأت {L} وأوافق عليها.", "{L} را خوانده‌ام و می‌پذیرم.", "J'ai lu et j'accepte la {L}.", "He leído y acepto la {L}.", "Ho letto e accetto l'{L}.", "Ik heb het {L} gelezen en ga akkoord.", "Przeczytałem(-am) i akceptuję: {L}.", "我已阅读并同意{L}。"],kvt:["Bu bir örnek sitedir. Gerçek sitede kliniğin KVKK aydınlatma metni ve gizlilik politikası burada yer alır.", "This is a sample website. On the live site, the clinic's privacy notice appears here.", "Dies ist eine Beispielseite. Auf der echten Website steht hier die Datenschutzerklärung der Klinik.", "Это демонстрационный сайт. На реальном сайте здесь будет политика конфиденциальности клиники.", "هذا موقع تجريبي. في الموقع الحقيقي تظهر هنا سياسة الخصوصية الخاصة بالعيادة.", "این یک وب‌سایت نمونه است. در سایت واقعی، سیاست حریم خصوصی کلینیک اینجا نمایش داده می‌شود.", "Ceci est un site de démonstration. Sur le site réel, la politique de confidentialité de la clinique figure ici.", "Este es un sitio de ejemplo. En la web real, aquí aparece la política de privacidad de la clínica.", "Questo è un sito di esempio. Sul sito reale qui compare l'informativa sulla privacy della clinica.", "Dit is een voorbeeldwebsite. Op de echte site staat hier het privacybeleid van de kliniek.", "To jest przykładowa strona. Na prawdziwej stronie znajdzie się tu polityka prywatności kliniki.", "这是一个示例网站。在正式网站上，这里将显示诊所的隐私政策。"]});
 function set(k){
   const d=L[k]||L.tr,i=Math.max(LG.indexOf(k),0);
   document.querySelectorAll('[data-i]').forEach(e=>e.textContent=d[e.dataset.i]);
@@ -409,15 +419,16 @@ function set(k){
   }
 
   $('#lb').innerHTML='<span class="fl">'+FL[k]+'</span> '+k.toUpperCase()+' ▾';applyJ(k);
-  ll.querySelectorAll('li').forEach(li=>li.classList.toggle('on',li.dataset.k===k));
+  ll.querySelectorAll('li').forEach(li=>{li.classList.toggle('on',li.dataset.k===k);li.setAttribute('aria-checked',li.dataset.k===k)});
   const tx=J.wh[i],w=k==='zh'?[...tx]:tx.split(' ');
   rv.innerHTML=w.map(x=>'<span>'+x+(k==='zh'?'':' ')+'</span>').join('');
   $('#mq').innerHTML=P.map(p=>'<span>'+p[i]+'</span>').join('').repeat(2);
-  try{localStorage.setItem('lng',k)}catch(e){}
+  try{localStorage.setItem('lng',k);localStorage.setItem('ey-lang',k)}catch(e){}
   $('#bah').textContent=J.b1[i]+' / '+J.b2[i];sizeHS();scrollFx();
 }
-Object.keys(L).forEach(k=>{const li=document.createElement('li');li.innerHTML='<span class="fl">'+FL[k]+'</span> '+L[k].n;li.dataset.k=k;li.style.display='flex';li.style.gap='10px';ll.appendChild(li)});
-let init='tr';try{init=localStorage.getItem('lng')||((navigator.language||'tr').slice(0,2))}catch(e){}
+Object.keys(L).forEach(k=>{const li=document.createElement('li');li.innerHTML='<span class="fl">'+FL[k]+'</span> '+L[k].n;li.dataset.k=k;li.lang=k;li.tabIndex=0;li.setAttribute('role','menuitemradio');li.style.display='flex';li.style.gap='10px';ll.appendChild(li)});
+ll.setAttribute('role','menu');ll.addEventListener('keydown',e=>{const li=e.target.closest('li');if(li&&(e.key==='Enter'||e.key===' ')){e.preventDefault();li.click();$('#lb').focus()}});
+let init='tr';try{init=localStorage.getItem('lng')||localStorage.getItem('ey-lang')||((navigator.language||'tr').slice(0,2))}catch(e){}
 $('#lb').onclick=()=>lang.classList.toggle('open');
 ll.onclick=e=>{const li=e.target.closest('li');if(li){set(li.dataset.k);lang.classList.remove('open')}};
 document.addEventListener('click',e=>{if(!lang.contains(e.target))lang.classList.remove('open')});
@@ -462,14 +473,14 @@ document.addEventListener('pointerover',e=>{document.body.classList.toggle('hv',
 document.addEventListener('click',()=>setTimeout(()=>{$('#ccb').setAttribute('aria-expanded',$('#cc').classList.contains('open'));$('#pb2').setAttribute('aria-expanded',$('#pd').classList.contains('open'));$('#lb').setAttribute('aria-expanded',lang.classList.contains('open'))},0));
 addEventListener('keydown',e=>{if(e.key==='Escape'){lang.classList.remove('open');$('#cc').classList.remove('open');$('#pd').classList.remove('open')}});
 /* config: kendi sunucunuzdaki fotoğraflar ve harita */
-const BA_IMG={before:'img/before.jpg',after:'img/after.jpg'};
+const BA_IMG={before:'',after:''}; /* örn. 'img/before.jpg' */
 const MAP_EMBED='';
 const CL=CLINIC;
 try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
 const top0=()=>scrollTo({top:0,left:0,behavior:'instant'});top0();addEventListener('pageshow',top0);
 $('#mg').href='https://www.google.com/maps/dir/?api=1&destination='+CL.lat+','+CL.lng;$('#mapl').href='https://maps.apple.com/?daddr='+CL.lat+','+CL.lng;$('#myx').href='https://yandex.com/maps/?rtext=~'+CL.lat+','+CL.lng+'&rtt=auto';$('#mapv').href=$('#mg').href;
 if(MAP_EMBED)$('#mapv').outerHTML='<div class="mapv"><iframe src="'+MAP_EMBED+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map"></iframe></div>';
-{const w=$('#ba2'),A=new Image(),B=new Image();let n=0;const go=()=>{if(++n<2)return;w.querySelector('.l.a').innerHTML='<img src="'+BA_IMG.after+'" alt="">';w.querySelector('.l.b').innerHTML='<img src="'+BA_IMG.before+'" alt="">'};A.onload=B.onload=go;A.src=BA_IMG.after;B.src=BA_IMG.before;
+{const w=$('#ba2'),A=new Image(),B=new Image();let n=0;const go=()=>{if(++n<2)return;w.querySelector('.l.a').innerHTML='<img src="'+BA_IMG.after+'" alt="">';w.querySelector('.l.b').innerHTML='<img src="'+BA_IMG.before+'" alt="">'};A.onload=B.onload=go;if(BA_IMG.after&&BA_IMG.before){A.src=BA_IMG.after;B.src=BA_IMG.before}
 w.querySelector('input').addEventListener('input',e=>w.style.setProperty('--p',e.target.value+'%'))}
 (function(){const c=CLINIC,q=s=>document.querySelectorAll(s),w=c.name.split(' '),t=(s,v)=>q(s).forEach(e=>e.textContent=v);
 document.title=c.name+' — '+c.city.split(',').pop().trim();

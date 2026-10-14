@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>kök — Beslenme Danışmanlığı</title>
+<meta name="description" content="Diyet listesi değil, gerçek hayatına uyan ve sürmesi kolay bir beslenme düzeni. Kilo yönetimi, sporcu beslenmesi, kadın sağlığı ve online takip.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16231A">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -101,7 +105,7 @@
   nav.links a:hover{color:var(--paper);}
   nav.links a::after{
     content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1px;
-    background:var(--wine); transition:right .25s ease;
+    background:var(--mustard); transition:right .25s ease;
   }
   nav.links a:hover::after{right:0;}
   .btn{
@@ -183,6 +187,7 @@
     padding-bottom:14px; border-bottom:1px solid var(--gold-line); display:inline-block;
   }
   .hero-eyebrow{
+    display:block;
     font-size:0.98rem; color:var(--mustard); font-family:'Fraunces',serif; font-style:italic; font-weight:500;
     margin-bottom:18px;
   }
@@ -365,7 +370,7 @@
   .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--wine);}
   .field textarea{resize:vertical; min-height:90px;}
   .form-note{font-size:0.82rem; color:var(--ink-soft); margin-top:6px;}
-  .form-msg{font-size:0.88rem; margin-top:14px; display:none;}
+  .form-msg{font-size:0.92rem; font-weight:500; margin-top:14px; display:none;}
   .form-msg.show{display:block;}
 
   /* ---------- footer ---------- */
@@ -449,7 +454,7 @@
       <a href="#iletisim" data-i18n="İletişim">İletişim</a>
     </nav>
     <a href="#iletisim" class="btn btn-primary nav-cta" data-i18n="Ön Görüşme Talep Et">Ön Görüşme Talep Et</a>
-    <button class="burger" id="burgerBtn" aria-label="Menü" aria-expanded="false"><span></span></button>
+    <button type="button" class="burger" id="burgerBtn" aria-label="Menü" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#hakkimda" data-i18n="Hakkımda">Hakkımda</a>
@@ -516,7 +521,7 @@
     </div>
   </section>
 
-  <div class="root-divider" role="presentation">
+  <div class="root-divider" aria-hidden="true">
     <span class="ln"></span>
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M12 2v9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
@@ -757,7 +762,7 @@
 <a href="index.html" class="ey-demo-back">← EY Studios örnek çalışma</a>
 
 <!-- Yukarı Çık Butonu -->
-<a href="#" class="btt" id="btt" aria-label="Yukarı Çık">
+<a href="#" class="btt" id="btt" aria-label="Yukarı çık">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 19V5M5 12l7-7 7 7"/>
   </svg>
@@ -767,7 +772,7 @@
 window.EY_PAGE_DICT = {
   "diyetisyen": [
     ["kök — Beslenme Danışmanlığı", "kök — Nutrition Counseling", "kök — Ernährungsberatung", "kök — Asesoramiento Nutricional", "kök — Voedingsadvies", "kök — Conseil en Nutrition", "kök — Consulenza Nutrizionale", "kök — Консультации по питанию"],
-    ["kökbeslenme danışmanlığı", "köknutrition counseling", "kökernährungsberatung", "kökasesoramiento nutricional", "kökvoedingsadvies", "kökconseil en nutrition", "kökconsulenza nutrizionale", "kökконсультации по питанию"],
+    ["beslenme danışmanlığı", "nutrition counseling", "Ernährungsberatung", "asesoramiento nutricional", "voedingsadvies", "conseil en nutrition", "consulenza nutrizionale", "консультации по питанию"],
     ["Hakkımda", "About Me", "Über mich", "Sobre mí", "Over mij", "À propos", "Su di me", "Обо мне"],
     ["Hizmetler", "Services", "Dienstleistungen", "Servicios", "Diensten", "Services", "Servizi", "Услуги"],
     ["Süreç", "Process", "Prozess", "Proceso", "Proces", "Processus", "Processo", "Процесс"],
@@ -1002,7 +1007,7 @@ window.EY_PAGE_DICT = {
     burger.setAttribute('aria-expanded', open ? 'true':'false');
   });
   menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); });
   });
 
   // Testimonial rotation
@@ -1039,7 +1044,7 @@ window.EY_PAGE_DICT = {
   });
 
   // Lead form -> WhatsApp integration (Mailto yerine WhatsApp)
-  var WHATSAPP = '905551234567'; // <-- Diyetisyenin WhatsApp numarası
+  var WHATSAPP = '905511187400'; // <-- Diyetisyenin WhatsApp numarası (demo: EY Studios hattı)
   var form = document.getElementById('leadForm');
   var msg = document.getElementById('formMsg');
   form.addEventListener('submit', function(e){
@@ -1053,7 +1058,7 @@ window.EY_PAGE_DICT = {
     if (!ad || !tel) {
       msg.textContent = window.eyT ? window.eyT('Lütfen ad soyad ve telefon alanlarını doldurun.') : 'Lütfen ad soyad ve telefon alanlarını doldurun.';
       msg.classList.add('show');
-      msg.style.color = '#FFB3CF';
+      msg.style.color = '#B3261E';
       return;
     }
 
@@ -1061,7 +1066,7 @@ window.EY_PAGE_DICT = {
 
     msg.textContent = window.eyT ? window.eyT('WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.') : 'WhatsApp açılıyor. Mesajı göndererek talebinizi tamamlayın.';
     msg.classList.add('show');
-    msg.style.color = '#C7D2C1';
+    msg.style.color = 'var(--wine)';
     window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
   });
 </script>

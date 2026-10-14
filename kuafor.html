@@ -6,6 +6,7 @@
 <title>Örnek Güzellik Salonu | Kuaför, Tırnak ve Cilt Bakımı</title>
 <meta name="description" content="Saç, tırnak ve cilt bakımı hizmetleri ve fiyatları. Hizmetlerinizi seçin, WhatsApp ile randevu talebinizi gönderin.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#EFE9F7">
 
 <!-- SOSYAL MEDYA ÖNİZLEME KODLARI BURAYA EKLENDİ -->
 <meta property="og:type" content="website">
@@ -34,7 +35,7 @@
   section { scroll-margin-top: 1rem; }
 
   header.head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; }
-  .logo { font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-decoration: none; letter-spacing: -.02em; }
+  .logo { font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-decoration: none; letter-spacing: -.02em; white-space: nowrap; }
   nav ul { display: flex; gap: 1.6rem; align-items: center; list-style: none; margin: 0; padding: 0; }
   nav a { text-decoration: none; font-weight: 600; }
   nav a:not(.btn):hover { color: var(--accent); }
@@ -42,10 +43,10 @@
   .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: .7rem 1.5rem; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 1rem/1 var(--body); text-decoration: none; border: 2px solid var(--accent); cursor: pointer; transition: transform .2s; }
   .btn:hover { transform: translateY(-2px); }
   .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
-  nav .btn { min-height: 42px; padding: .4rem 1.2rem; }
+  nav .btn { min-height: 42px; padding: .4rem 1.2rem; white-space: nowrap; }
 
   .hero { padding-block: clamp(2rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem); }
-  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(3.4rem, 13vw, 11rem); line-height: .88; letter-spacing: -.055em; margin: 0 0 1.6rem; }
+  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 12vw, 11rem); line-height: .88; letter-spacing: -.055em; margin: 0 0 1.6rem; }
   h1 span { color: var(--accent); }
   .hero-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2rem; align-items: end; }
   .lede { font-size: 1.2rem; color: var(--muted); max-width: 44ch; margin: 0; }
@@ -120,6 +121,7 @@
     .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: .7rem .9rem calc(.7rem + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); }
     .demo-back { bottom: 78px; }
   }
+  @media (max-width: 400px) { .logo { font-size: 1.12rem; } nav .btn { padding: .4rem .9rem; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ribbon-track { animation: none; } .ribbon { overflow-x: auto; } .btn, .svc, .box { transition: none; } }
 </style>
 </head>
@@ -145,7 +147,7 @@
         <p class="lede">Saç, tırnak ve cilt bakımı için ihtiyacınız olan hizmetleri seçin, tahmini süreyi ve başlangıç fiyatını görün, randevu talebinizi tek dokunuşla gönderin.</p>
         <div class="cta">
           <a class="btn" href="#hizmetler">Hizmet seç</a>
-          <a class="btn ghost" href="tel:+905551234567">Hemen ara</a>
+          <a class="btn ghost" href="tel:+905511187400">Hemen ara</a>
         </div>
       </div>
     </div>
@@ -224,8 +226,8 @@
       <h2 id="b-b">Saatler ve konum</h2>
       <div class="info" style="margin-top:1.5rem">
         <div class="card"><h3>Çalışma saatleri</h3><table><tr><td>Pazartesi – Cumartesi</td><td>10.00 – 19.00</td></tr><tr><td>Pazar</td><td>Kapalı</td></tr></table></div>
-        <div class="card"><h3>Adres</h3><address><span>Örnek Mah. Örnek Cd. No: 8, Şehir</span><a href="https://www.google.com/maps/search/?api=1&query=Örnek+Güzellik+Salonu" rel="noopener">Yol tarifi al</a></address></div>
-        <div class="card"><h3>İletişim</h3><address><a href="tel:+905551234567">+90 (555) 123 45 67</a><a href="https://wa.me/905551234567" rel="noopener">WhatsApp ile yazın</a></address></div>
+        <div class="card"><h3>Adres</h3><address><span>Örnek Mah. Örnek Cd. No: 8, Şehir</span><a href="https://www.google.com/maps/search/?api=1&amp;query=%C3%96rnek+G%C3%BCzellik+Salonu" target="_blank" rel="noopener">Yol tarifi al</a></address></div>
+        <div class="card"><h3>İletişim</h3><address><a href="tel:+905511187400">+90 (551) 118 74 00</a><a href="https://wa.me/905511187400" target="_blank" rel="noopener">WhatsApp ile yazın</a></address></div>
       </div>
     </div>
   </section>
@@ -233,7 +235,7 @@
 
 <footer><div class="wrap">© 2026 Örnek Güzellik Salonu. Tüm hakları saklıdır.</div></footer>
 
-<div class="callbar"><a class="btn" href="tel:+905551234567">Ara</a><a class="btn ghost" href="#hizmetler">Randevu</a></div>
+<div class="callbar"><a class="btn" href="tel:+905511187400">Ara</a><a class="btn ghost" href="#hizmetler">Randevu</a></div>
 <a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
 
 <script>
@@ -244,8 +246,7 @@ window.EY_PAGE_DICT = {
     ["Hizmetler", "Services", "Dienstleistungen", "Servicios", "Diensten", "Services", "Servizi", "Услуги"],
     ["Saatler", "Hours", "Öffnungszeiten", "Horarios", "Openingstijden", "Horaires", "Orari", "Часы работы"],
     ["Randevu al", "Book now", "Termin buchen", "Reservar cita", "Boek nu", "Prendre RDV", "Prenota ora", "Записаться"],
-    ["Bakım ", "Care ", "Pflege", "Cuidado ", "Verzorgings", "Temps de ", "Tempo di ", "Время "],
-    ["zamanı.", "time.", "zeit.", "tiempo.", "tijd.", "soin.", "cura.", "ухода."],
+    ["Bakım zamanı.", "Time for <span>care.</span>", "Zeit für <span>Pflege.</span>", "Hora de <span>cuidarte.</span>", "Tijd voor <span>zorg.</span>", "L'heure du <span>soin.</span>", "Tempo di <span>cura.</span>", "Время <span>ухода.</span>"],
     ["Saç, tırnak ve cilt bakımı için ihtiyacınız olan hizmetleri seçin, tahmini süreyi ve başlangıç fiyatını görün, randevu talebinizi tek dokunuşla gönderin.", "Select the services you need for hair, nail and skin care, see the estimated time and starting price, and send your appointment request with one tap.", "Wählen Sie die gewünschten Dienstleistungen für Haar-, Nagel- und Hautpflege, sehen Sie sich die geschätzte Zeit und den Startpreis an und senden Sie Ihre Terminanfrage mit einem Fingertipp.", "Selecciona los servicios que necesitas para el cuidado del cabello, uñas y piel, mira el tiempo estimado y el precio inicial, y envía tu solicitud de cita con un solo toque.", "Selecteer de diensten die u nodig heeft voor haar-, nagel- en huidverzorging, bekijk de geschatte tijd en vanaf-prijs, en verstuur uw afspraakverzoek met één tik.", "Sélectionnez les services dont vous avez besoin pour les soins des cheveux, des ongles et de la peau, consultez la durée estimée et le prix de départ, et envoyez votre demande de rendez-vous en un clic.", "Seleziona i servizi di cui hai bisogno per la cura di capelli, unghie e pelle, visualizza il tempo stimato e il prezzo di partenza e invia la tua richiesta di appuntamento con un tocco.", "Выберите необходимые услуги по уходу за волосами, ногтями и кожей, посмотрите примерное время и начальную цену, и отправьте заявку на приём в одно касание."],
     ["Hizmet seç", "Select service", "Service wählen", "Seleccionar servicio", "Kies dienst", "Choisir le service", "Scegli servizio", "Выбрать услугу"],
     ["Hemen ara", "Call now", "Jetzt anrufen", "Llamar ahora", "Bel nu", "Appeler maintenant", "Chiama ora", "Позвонить сейчас"],
@@ -416,14 +417,16 @@ window.EY_PAGE_DICT = {
 <script>
 (function () {
   var FORM_ENDPOINT = '';
-  var WHATSAPP = '905551234567';
+  var WHATSAPP = '905511187400'; // salonun numarası (demo: EY Studios hattı)
 
   var boxes = document.querySelectorAll('#list input[type=checkbox]');
   var sum = document.getElementById('sum');
 
-  function fmtTime(m) {
+  var UNITS = { tr: ['sa', 'dk'], en: ['h', 'min'], de: ['Std.', 'Min.'], es: ['h', 'min'], nl: ['u', 'min'], fr: ['h', 'min'], it: ['h', 'min'], ru: ['ч', 'мин'] };
+  function fmtTime(m, lang) {
+    var u = UNITS[lang || document.documentElement.lang] || UNITS.tr;
     var h = Math.floor(m / 60), r = m % 60;
-    return (h ? h + (window.eyT ? (h > 1 && window.eyT('saat') !== 'saat' ? ' hrs ' : ' sa ') : ' sa ') : '') + (r ? r + ' dk' : (h ? '' : '0 dk'));
+    return [h ? h + ' ' + u[0] : '', r || !h ? r + ' ' + u[1] : ''].filter(Boolean).join(' ');
   }
   function fmtPrice(n) { return n.toLocaleString('tr-TR') + ' ₺'; }
   function selected() {
@@ -453,11 +456,11 @@ window.EY_PAGE_DICT = {
     if (!s.length) return show((window.eyT ? window.eyT('Lütfen en az bir hizmet seçin.') : 'Lütfen en az bir hizmet seçin.'), true);
     if (!ad || !tel) return show((window.eyT ? window.eyT('Ad soyad ve telefon alanlarını doldurun.') : 'Ad soyad ve telefon alanlarını doldurun.'), true);
     
-    var names = s.map(function (b) { return (window.eyT ? window.eyT(b.getAttribute('data-n')) : b.getAttribute('data-n')); }).join(', ');
+    var names = s.map(function (b) { return b.getAttribute('data-n'); }).join(', ');
     var min = 0, pr = 0; s.forEach(function (b) { min += +b.getAttribute('data-m'); pr += +b.getAttribute('data-p'); });
     var gun = radio('gun') || 'fark etmez', saat = radio('saat') || 'fark etmez';
     
-    var text = 'Merhaba, randevu talep ediyorum.\nHizmetler: ' + names + '\nTahmini süre: ' + fmtTime(min) + '\nGün: ' + gun + '\nSaat: ' + saat + '\nAd soyad: ' + ad + '\nTelefon: ' + tel;
+    var text = 'Merhaba, randevu talep ediyorum.\nHizmetler: ' + names + '\nTahmini süre: ' + fmtTime(min, 'tr') + '\nGün: ' + gun + '\nSaat: ' + saat + '\nAd soyad: ' + ad + '\nTelefon: ' + tel;
     if (FORM_ENDPOINT) {
       fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ hizmetler: names, gun: gun, saat: saat, ad: ad, telefon: tel }) })
         .then(function (r) { if (!r.ok) throw 0; f.reset(); render(); show((window.eyT ? window.eyT('Talebiniz alındı. Onay için size döneceğiz.') : 'Talebiniz alındı. Onay için size döneceğiz.'), false); })
