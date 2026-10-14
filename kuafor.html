@@ -352,6 +352,7 @@ legend.ph+*{clear:both}
 .demo-back{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;background:rgba(251,248,243,.94);color:var(--ink);font:600 12px/1 var(--sans);padding:11px 15px;border-radius:99px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.18);border:1px solid var(--line);transition:transform .5s var(--ease)}
 .has-bag .demo-back{transform:translateY(-74px)}
 .menu-open .demo-back{opacity:0;pointer-events:none}
+.has-bag .ftr{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
 
 .cur{position:fixed;left:0;top:0;z-index:120;pointer-events:none;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--tone);display:grid;place-items:center;opacity:0;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),opacity .3s,background-color .6s}
 .cur.on{opacity:1}
@@ -2664,6 +2665,22 @@ legend.ph+*{clear:both}
     Promise.all([minT, fonts]).then(ready);
     setTimeout(ready, 2500);
   }
+})();
+</script>
+<script>
+/* Sayfa sonunda footer görünürken "örnek çalışma" düğmesini gizle; footer'daki EY Studios imzasının üstüne binmesin */
+(function () {
+  var b = document.querySelector('.demo-back, .ey-demo-back'), f = document.querySelector('footer');
+  if (!b || !f || !('IntersectionObserver' in window)) return;
+  var tr = getComputedStyle(b).transitionProperty === 'all' ? '' : getComputedStyle(b).transition;
+  b.style.transition = (tr ? tr + ', ' : '') + 'opacity .35s';
+  new IntersectionObserver(function (e) {
+    var on = e[0].isIntersecting;
+    b.style.opacity = on ? '0' : '';
+    b.style.pointerEvents = on ? 'none' : '';
+    if (on) { b.setAttribute('tabindex', '-1'); b.setAttribute('aria-hidden', 'true'); }
+    else { b.removeAttribute('tabindex'); b.removeAttribute('aria-hidden'); }
+  }).observe(f);
 })();
 </script>
 </body>

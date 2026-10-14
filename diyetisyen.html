@@ -1071,5 +1071,21 @@ window.EY_PAGE_DICT = {
   });
 </script>
 
+<script>
+/* Sayfa sonunda footer görünürken "örnek çalışma" düğmesini gizle; footer'daki EY Studios imzasının üstüne binmesin */
+(function () {
+  var b = document.querySelector('.demo-back, .ey-demo-back'), f = document.querySelector('footer');
+  if (!b || !f || !('IntersectionObserver' in window)) return;
+  var tr = getComputedStyle(b).transitionProperty === 'all' ? '' : getComputedStyle(b).transition;
+  b.style.transition = (tr ? tr + ', ' : '') + 'opacity .35s';
+  new IntersectionObserver(function (e) {
+    var on = e[0].isIntersecting;
+    b.style.opacity = on ? '0' : '';
+    b.style.pointerEvents = on ? 'none' : '';
+    if (on) { b.setAttribute('tabindex', '-1'); b.setAttribute('aria-hidden', 'true'); }
+    else { b.removeAttribute('tabindex'); b.removeAttribute('aria-hidden'); }
+  }).observe(f);
+})();
+</script>
 </body>
 </html>
