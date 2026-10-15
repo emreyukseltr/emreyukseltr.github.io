@@ -231,6 +231,8 @@ footer a{font-weight:600}
 .fld textarea{min-height:70px;resize:vertical}
 .fine{color:var(--mute);font-size:12.5px;margin-top:10px;text-align:center}
 
+html.soon .cart-btn,html.soon .plus,html.soon .bar,html.soon .d-act .qty,html.soon .d-ask,html.soon .card .mat{display:none!important}
+html.soon .has-bar .demo-back{transform:none}
 .toast{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));z-index:80;transform:translate(-50%,-20px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;padding:11px 18px;border-radius:99px;font-size:14px;font-weight:600;transition:all .35s var(--ease);max-width:calc(100vw - 32px);text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
@@ -256,12 +258,12 @@ footer a{font-weight:600}
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="eyebrow">El yapımı · Kararmaz · Hediye paketli</p>
-      <h1>Her gün takılacak <em>küçük ışıltılar.</em></h1>
-      <p class="lead">Beğendiğiniz takıyı seçin, sepete ekleyin; siparişiniz ürün adı ve fiyatıyla tek dokunuşta WhatsApp'tan bize gelsin.</p>
+      <p class="eyebrow" id="hEy">El yapımı · Kararmaz · Hediye paketli</p>
+      <h1 id="hT">Her gün takılacak <em>küçük ışıltılar.</em></h1>
+      <p class="lead" id="hL">Beğendiğiniz takıyı seçin, sepete ekleyin; siparişiniz ürün adı ve fiyatıyla tek dokunuşta WhatsApp'tan bize gelsin.</p>
       <div class="cta">
-        <a class="btn" href="#koleksiyon">Koleksiyonu gör</a>
-        <a class="btn ghost" data-wa="Merhaba, takılarınız hakkında bilgi almak istiyorum." href="#">
+        <a class="btn" id="hC" href="#koleksiyon">Koleksiyonu gör</a>
+        <a class="btn ghost" id="hW" data-wa="Merhaba, takılarınız hakkında bilgi almak istiyorum." href="#">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
           WhatsApp'tan yaz</a>
       </div>
@@ -282,7 +284,7 @@ footer a{font-weight:600}
 <section class="sec" id="koleksiyon">
   <div class="wrap">
     <div class="sec-h">
-      <h2>Koleksiyon <em>2026</em></h2>
+      <h2 id="kT">Koleksiyon <em>2026</em></h2>
       <p class="sub" id="countTxt"></p>
     </div>
     <div class="chips" id="chips" role="toolbar" aria-label="Kategoriler"></div>
@@ -309,9 +311,9 @@ footer a{font-weight:600}
 
 <section class="band" id="iletisim">
   <div class="wrap">
-    <h2>Aradığınızı <em>bulamadınız mı?</em></h2>
-    <p>İsme özel harf, taş rengi ya da set isteği için yazın; size özel hazırlayalım.</p>
-    <a class="btn" data-wa="Merhaba, size özel bir takı yaptırmak istiyorum." href="#">WhatsApp'tan yazın</a>
+    <h2 id="bT">Aradığınızı <em>bulamadınız mı?</em></h2>
+    <p id="bP">İsme özel harf, taş rengi ya da set isteği için yazın; size özel hazırlayalım.</p>
+    <a class="btn" id="bC" data-wa="Merhaba, size özel bir takı yaptırmak istiyorum." href="#">WhatsApp'tan yazın</a>
   </div>
 </section>
 </main>
@@ -382,6 +384,23 @@ footer a{font-weight:600}
   if (IG) { var ig = $('#igLink'); ig.href = 'https://instagram.com/' + IG; ig.hidden = false; }
   if (CITY) $('#shipTxt').textContent = CITY + " · Tüm Türkiye'ye kargo";
   $('#yr').textContent = new Date().getFullYear();
+
+  /* Açılış öncesi mod (?y=1): ürünler henüz yokken "çok yakında" sayfası */
+  var SOON = q.get('y') === '1';
+  var NOTIFY = 'Merhaba, koleksiyonunuz açıldığında bana haber verir misiniz? 🙏';
+  if (SOON) {
+    document.documentElement.classList.add('soon');
+    $('#hEy').textContent = 'Yeni koleksiyon · Çok yakında';
+    $('#hT').innerHTML = 'Işıltı <em>çok yakında.</em>';
+    $('#hL').textContent = 'İlk koleksiyonumuz hazırlanıyor. Açıldığında ilk siz haber alın, açılışa özel sürprizleri kaçırmayın.';
+    $('#hC').textContent = 'Açılışta haber ver'; $('#hC').setAttribute('data-wa', NOTIFY);
+    if (IG) { $('#hW').textContent = "Instagram'da takip et"; $('#hW').removeAttribute('data-wa'); $('#hW').href = 'https://instagram.com/' + IG; $('#hW').target = '_blank'; $('#hW').rel = 'noopener'; }
+    else $('#hW').hidden = true;
+    $('#kT').innerHTML = 'İlk koleksiyondan <em>ipuçları</em>';
+    $('#bT').innerHTML = 'Açılış listesine <em>katılın.</em>';
+    $('#bP').textContent = 'Koleksiyon açıldığında ilk size haber verelim; açılışa özel sürprizler listedekilere.';
+    $('#bC').textContent = 'Açılışta haber ver'; $('#bC').setAttribute('data-wa', NOTIFY);
+  }
 
   function waUrl(t) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t); }
   document.querySelectorAll('[data-wa]').forEach(function (a) {
@@ -556,13 +575,13 @@ footer a{font-weight:600}
   var PLUS = '<svg viewBox="0 0 18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3v12M3 9h12"/></svg>';
   function render() {
     var list = P.filter(function (x) { return cat === 'all' || x.c === cat; });
-    $('#countTxt').textContent = list.length + ' ürün';
+    $('#countTxt').textContent = SOON ? 'Çok yakında' : list.length + ' ürün';
     $('#grid').innerHTML = list.map(function (x, i) {
       return '<article class="card" style="animation-delay:' + (i * 40) + 'ms">' +
-        '<div class="picbox">' + (x.b ? '<span class="badge' + (x.hot ? ' hot' : '') + '">' + x.b + '</span>' : '') +
+        '<div class="picbox">' + (SOON ? '<span class="badge">Yakında</span>' : x.b ? '<span class="badge' + (x.hot ? ' hot' : '') + '">' + x.b + '</span>' : '') +
         '<button class="pic" type="button" data-open="' + x.id + '" style="background:' + x.tint + '" aria-label="' + esc(x.n) + ' detayını aç">' + pic(x, x.m[0], 'E') + '</button>' +
         '<button class="plus" type="button" data-add="' + x.id + '" aria-label="' + esc(x.n) + ' sepete ekle">' + PLUS + '</button></div>' +
-        '<div class="meta"><h3>' + esc(x.n) + '<span class="mat" role="img" aria-label="' + x.m.map(function (m) { return MET[m].n; }).join(', ') + '">' + x.m.map(function (m) { var c = MET[m].c; return '<i style="background:linear-gradient(135deg,' + c[0] + ',' + c[2] + ')"></i>'; }).join('') + '</span></h3><span class="price">' + tl(x.p) + '</span></div></article>';
+        '<div class="meta"><h3>' + esc(x.n) + '<span class="mat" role="img" aria-label="' + x.m.map(function (m) { return MET[m].n; }).join(', ') + '">' + x.m.map(function (m) { var c = MET[m].c; return '<i style="background:linear-gradient(135deg,' + c[0] + ',' + c[2] + ')"></i>'; }).join('') + '</span></h3><span class="price">' + (SOON ? '' : tl(x.p)) + '</span></div></article>';
     }).join('');
   }
   render();
@@ -678,8 +697,8 @@ footer a{font-weight:600}
     $('#dPic').style.background = cur.tint;
     $('#dPic').innerHTML = pic(cur, dm, dl);
     $('#dQty').textContent = dq;
-    $('#dPrice').textContent = tl(cur.p);
-    $('#dAdd').textContent = 'Sepete ekle · ' + tl(cur.p * dq);
+    $('#dPrice').textContent = SOON ? 'Yakında' : tl(cur.p);
+    $('#dAdd').textContent = SOON ? 'Çıkınca haber ver' : 'Sepete ekle · ' + tl(cur.p * dq);
     $('#dMetal').querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-m') === dm); });
     $('#dAsk').href = waUrl('Merhaba ' + BRAND + ', "' + cur.n + ' (' + MET[dm].n + (cur.letter ? ', harf: ' + dl : '') + ')" hakkında bilgi almak istiyorum. Stokta var mı?');
     $('#dAsk').target = '_blank'; $('#dAsk').rel = 'noopener';
@@ -696,7 +715,10 @@ footer a{font-weight:600}
   $('#dLetter').addEventListener('change', function () { dl = this.value; dPaint(); });
   $('#dMinus').addEventListener('click', function () { dq = Math.max(1, dq - 1); dPaint(); });
   $('#dPlus').addEventListener('click', function () { dq = Math.min(20, dq + 1); dPaint(); });
-  $('#dAdd').addEventListener('click', function () { add(cur.id, dm, cur.letter ? dl : '', dq); hide(); });
+  $('#dAdd').addEventListener('click', function () {
+    if (SOON) { window.open(waUrl('Merhaba ' + BRAND + ', "' + cur.n + '" satışa çıkınca bana haber verir misiniz? 🙏'), '_blank', 'noopener'); return; }
+    add(cur.id, dm, cur.letter ? dl : '', dq); hide();
+  });
   $('#grid').addEventListener('click', function (e) {
     var o = e.target.closest('[data-open]'), a = e.target.closest('[data-add]');
     if (o) openDetail(o.getAttribute('data-open'));
