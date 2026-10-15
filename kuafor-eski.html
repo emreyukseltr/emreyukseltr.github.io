@@ -124,6 +124,11 @@
   @media (max-width: 400px) { .logo { font-size: 1.12rem; } nav .btn { padding: .4rem .9rem; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ribbon-track { animation: none; } .ribbon { overflow-x: auto; } .btn, .svc, .box { transition: none; } }
 </style>
+<script>
+/* Sayfa yenilenince her zaman en baştan açılsın: tarayıcının kaydırma konumunu hatırlamasını kapat */
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
 </head>
 <body>
 <header class="head">

@@ -1421,6 +1421,11 @@
     }
 
     </style>
+<script>
+/* Sayfa yenilenince her zaman en baştan açılsın: tarayıcının kaydırma konumunu hatırlamasını kapat */
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
 </head>
 <body>
 <div class="cur" id="cur" aria-hidden="true"></div>
