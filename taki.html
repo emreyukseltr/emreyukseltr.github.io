@@ -52,6 +52,8 @@ img,svg{display:block;max-width:100%}
 .top .wrap{display:flex;align-items:center;gap:16px;height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;flex:1}
 .mono{flex:none;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--gold-hi);display:grid;place-items:center;font:italic 600 19px/1 var(--serif)}
+.logo-img{height:50px;width:auto;display:block}
+.f-logo{height:84px;width:auto}
 .logo b{font:600 22px/1 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .nav-d{display:none;gap:28px;font-size:14px;font-weight:600}
 .nav-d a{text-decoration:none;opacity:.75}
@@ -333,7 +335,7 @@ html.soon .has-bar .demo-back{transform:none}
 
 <footer>
   <div class="wrap">
-    <div><b style="font:600 24px/1 var(--serif);color:var(--ink)" data-brand>Mira Takı</b></div>
+    <div id="fBrand"><b style="font:600 24px/1 var(--serif);color:var(--ink)" data-brand>Mira Takı</b></div>
     <div class="fl">
       <a data-wa="Merhaba," href="#">WhatsApp</a>
       <a id="igLink" href="#" target="_blank" rel="noopener" hidden>Instagram</a>
@@ -399,6 +401,14 @@ html.soon .has-bar .demo-back{transform:none}
   $('#yr').textContent = new Date().getFullYear();
 
   /* Açılış öncesi mod (?y=1): ürünler henüz yokken "çok yakında" sayfası */
+  /* Önizleme logosu (?lg=dosya → onizleme/dosya.png) */
+  var LG = (q.get('lg') || '').replace(/[^a-z0-9-]/g, '').slice(0, 40);
+  if (LG) {
+    var src = 'onizleme/' + LG + '.png';
+    $('.logo').innerHTML = '<img class="logo-img" src="' + src + '" alt="">';
+    $('.logo img').alt = BRAND;
+    $('#fBrand').innerHTML = '<img class="f-logo" src="' + src + '" alt="">';
+  }
   if (q.get('t') === 'pembe') document.documentElement.classList.add('t-pembe');
   if (q.get('pati') === '1') $('#pati').hidden = false;
   var SOON = q.get('y') === '1';

@@ -38,3 +38,5 @@ self-contained HTML file in the repo root.
   owner's private "Teklif Defteri" artifact: https://claude.ai/artifact/Pyk8zdrZEnmW6h4y75F1Wn
   (collection `outreach`). Give each new batch different opening angles; when a prospect replies,
   read the log, say which angle worked and update its status. Never put prospect data in this repo.
+  Exception: a prospect's own logo for a sales preview may go in `onizleme/` (loaded by `taki.html?lg=`);
+  delete it if the deal does not happen.
