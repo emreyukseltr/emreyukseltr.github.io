@@ -31,3 +31,8 @@ self-contained HTML file in the repo root.
 - Develop on the working branch, then fast-forward `main` (the owner approved direct publishing).
 - Talk to the owner in Turkish. When writing messages in another language for them, always add a
   Turkish translation below.
+- Sales outreach is an ongoing A/B test of opening angles. Every offer message the owner approves
+  is logged (business, sector, city, channel, opening angle, offer, full text, status) in the
+  owner's private "Teklif Defteri" artifact: https://claude.ai/artifact/Pyk8zdrZEnmW6h4y75F1Wn
+  (collection `outreach`). Give each new batch different opening angles; when a prospect replies,
+  read the log, say which angle worked and update its status. Never put prospect data in this repo.
