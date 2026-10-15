@@ -16,6 +16,8 @@ self-contained HTML file in the repo root.
   no clipped or overlapping text, and long words in every language must wrap.
 - **Touch must work without a long press.** Use passive `touchstart`/`touchmove` for canvas effects,
   never block native scrolling, and disable text selection/callout on interactive heroes.
+  Exception: a scroll-driven "film" section may limit each fast gesture to one chapter (see the
+  film script in `dis-klinigi-super.html`); it must release native scrolling at the film's start and end.
 - **Performance.** Keep WebGL/canvas pages smooth on phones: integer canvas sizes, a low pixel
   budget, no `backdrop-filter` over animated canvases, and pause rendering when off-screen.
 - **Demo conventions.** Demo pages are `noindex`. They have the fixed `← EY Studios örnek çalışma` link
