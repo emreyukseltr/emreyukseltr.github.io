@@ -22,7 +22,7 @@ self-contained HTML file in the repo root.
   budget, no `backdrop-filter` over animated canvases, and pause rendering when off-screen.
 - **Demo conventions.** Demo pages are `noindex`. They have the fixed `← EY Studios örnek çalışma` link
   to `index.html`, which hides while the footer is visible so it never covers the footer credit
-  "Tasarım & geliştirme: EY Studios". WhatsApp number is `905511187400`. The language choice is
+  "Tasarım & geliştirme: EY Studios". WhatsApp number is `905306284284`. The language choice is
   stored in localStorage under `ey-lang`, and the default language is Turkish. Booking messages go
   to the business in Turkish.
 - `zeynep_alkoc.html` uses CRLF line endings — preserve them. It is a client preview (noindex,
