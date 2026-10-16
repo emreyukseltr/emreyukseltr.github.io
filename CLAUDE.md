@@ -27,6 +27,9 @@ self-contained HTML file in the repo root.
   to the business in Turkish.
 - `zeynep_alkoc.html` uses CRLF line endings — preserve them. It is a client preview (noindex,
   not in the sitemap) until the client's own domain is bought.
+- `luna.html` (served at eystudios.com.tr/luna) is Luna Bijuteri's client page, built from `taki.html`
+  with its config baked in (pink theme, coming-soon mode, the shop's own WhatsApp). noindex, not in the
+  sitemap; its assets live in `onizleme/`.
 
 ## Workflow
 
