@@ -7,6 +7,18 @@
 <meta name="description" content="El yapımı kolye, küpe, yüzük ve bileklikler. Beğendiğinizi sepete ekleyin, siparişiniz tek dokunuşla WhatsApp'tan gelsin.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#FBF6F1">
+<link rel="manifest" id="mf" href="taki.webmanifest">
+<link rel="apple-touch-icon" id="ati" href="taki-180.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" id="amt" content="Mira Takı">
+<script>
+/* Önizleme markası varsa uygulama simgesi ve adı ona göre (onizleme/<lg>.webmanifest, onizleme/<lg>-180.png) */
+(function(){try{var q=new URLSearchParams(location.search),lg=(q.get('lg')||'').replace(/[^a-z0-9-]/g,'').slice(0,40),m=(q.get('m')||'').replace(/[<>{}\\]/g,'').trim().slice(0,40);
+if(lg){document.getElementById('mf').href='onizleme/'+lg+'.webmanifest';document.getElementById('ati').href='onizleme/'+lg+'-180.png'}
+if(m)document.getElementById('amt').content=m}catch(e){}})();
+</script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://eystudios.com.tr/taki.html">
 <meta property="og:title" content="Mira Takı — El yapımı takılar">
@@ -152,6 +164,18 @@ img,svg{display:block;max-width:100%}
 .pati svg{flex:none;width:44px;height:44px;color:var(--berry)}
 .pati b{display:block;font:600 24px/1.1 var(--serif);margin-bottom:4px}
 .pati p{color:var(--ink2);font-size:14px}
+.appc{display:flex;align-items:center;gap:14px;margin:28px 0 0;padding:16px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line)}
+.appc img{flex:none;width:56px;height:56px;border-radius:14px;box-shadow:0 4px 12px rgba(42,30,34,.15)}
+.appc div{flex:1;min-width:0}
+.appc b{display:block;font-size:15px}
+.appc p{color:var(--mute);font-size:13px;line-height:1.35}
+.appc .btn{flex:none;min-height:42px;padding:0 16px;font-size:14px}
+@media (max-width:380px){.appc{flex-wrap:wrap}.appc .btn{width:100%}}
+@media (display-mode:standalone){.appc{display:none}}
+.isteps{margin:6px 20px 0;padding:0;list-style:none;counter-reset:i}
+.isteps li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);font-size:15px;counter-increment:i}
+.isteps li::before{content:counter(i);position:absolute;left:0;top:10px;width:30px;height:30px;border-radius:50%;background:var(--blush);color:var(--berry);display:grid;place-items:center;font-weight:800;font-size:14px}
+.isteps svg{display:inline-block;vertical-align:-4px;width:18px;height:18px}
 .band{margin:56px 0 0;padding:44px 0;background:var(--ink);color:#F7EEE6;text-align:center}
 .band h2{font-size:clamp(32px,8vw,52px)}
 .band h2 em{color:var(--gold-hi);font-style:italic}
@@ -324,6 +348,12 @@ html.soon .has-bar .demo-back{transform:none}
   </div>
 </section>
 
+<div class="wrap"><div class="appc" id="appCard">
+  <img id="appIcon" src="taki-180.png" alt="">
+  <div><b>Uygulama olarak ekleyin</b><p>Telefonunuzun ana ekranına ekleyin, tek dokunuşla açılsın.</p></div>
+  <button class="btn" type="button" id="appBtn">Yükle</button>
+</div></div>
+
 <section class="band" id="iletisim">
   <div class="wrap">
     <h2 id="bT">Aradığınızı <em>bulamadınız mı?</em></h2>
@@ -377,6 +407,12 @@ html.soon .has-bar .demo-back{transform:none}
   <div class="grab"><h2 id="cartH">Sepetiniz</h2><button class="x" type="button" data-close aria-label="Kapat"><svg viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
   <div id="cartList"></div>
   <div class="sum" id="cartSum"></div>
+</div>
+
+<div class="sheet" id="appSheet" role="dialog" aria-modal="true" aria-labelledby="appH">
+  <div class="grab"><h2 id="appH">Ana ekrana ekleyin</h2><button class="x" type="button" data-close aria-label="Kapat"><svg viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <ol class="isteps" id="appSteps"></ol>
+  <p class="fine" style="margin:14px 20px 0">Ana ekranınızdaki simgeye dokununca site uygulama gibi tam ekran açılır.</p>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -748,6 +784,20 @@ html.soon .has-bar .demo-back{transform:none}
     var o = e.target.closest('[data-open]'), a = e.target.closest('[data-add]');
     if (o) openDetail(o.getAttribute('data-open'));
     else if (a) { var x = byId[a.getAttribute('data-add')]; if (x.letter) openDetail(x.id); else add(x.id, x.m[0], '', 1); }
+  });
+
+  /* Uygulama olarak yükleme (PWA) */
+  var dp = null, ua = navigator.userAgent, IOS = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  $('#appIcon').src = $('#ati').getAttribute('href');
+  addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); dp = e; });
+  addEventListener('appinstalled', function () { $('#appCard').hidden = true; toast('Ana ekranınıza eklendi'); });
+  var SHARE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
+  $('#appBtn').addEventListener('click', function () {
+    if (dp) { dp.prompt(); dp.userChoice.then(function () { dp = null; }); return; }
+    $('#appSteps').innerHTML = IOS
+      ? '<li>Safari\'de alttaki <b>Paylaş</b> ' + SHARE + ' simgesine dokunun.</li><li>Listeden <b>Ana Ekrana Ekle</b>\'yi seçin.</li><li>Sağ üstte <b>Ekle</b>\'ye dokunun.</li>'
+      : '<li>Tarayıcının sağ üstündeki <b>⋮</b> menüsüne dokunun.</li><li><b>Uygulamayı yükle</b> ya da <b>Ana ekrana ekle</b>\'yi seçin.</li><li><b>Yükle</b>\'ye dokunarak onaylayın.</li>';
+    show($('#appSheet'));
   });
 
   var tt = 0;

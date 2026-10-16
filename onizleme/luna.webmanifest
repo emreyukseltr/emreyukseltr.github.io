@@ -1,0 +1,13 @@
+{
+  "name": "Luna Bijuteri",
+  "short_name": "Luna",
+  "start_url": "../taki.html?m=Luna+Bijuteri&ig=luna_bijuteri_bursa&c=Bursa&y=1&t=pembe&pati=1&lg=luna",
+  "scope": "../",
+  "display": "standalone",
+  "background_color": "#FDF7F8",
+  "theme_color": "#FDF7F8",
+  "icons": [
+    { "src": "luna-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "luna-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
