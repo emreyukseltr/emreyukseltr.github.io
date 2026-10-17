@@ -353,6 +353,7 @@ legend.ph+*{clear:both}
 .has-bag .demo-back{transform:translateY(-74px)}
 .menu-open .demo-back{opacity:0;pointer-events:none}
 .has-bag .ftr{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+.berber #renk,.berber #galeri,.berber a[href="#renk"],.berber a[href="#galeri"],.berber #toneTag{display:none!important}
 
 .cur{position:fixed;left:0;top:0;z-index:120;pointer-events:none;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--tone);display:grid;place-items:center;opacity:0;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),opacity .3s,background-color .6s}
 .cur.on{opacity:1}
@@ -2006,6 +2007,44 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     REVIEWS.forEach(function (o, i) { o[lc] = P.reviews[i]; });
   });
   /*@I18N-END@*/
+
+  /* Berber modu: ?s=berber (satış önizlemesi için erkek berberi hizmetleri; renk laboratuvarı ve lookbook gizlenir) */
+  if (/[?&]s=berber\b/.test(location.search)) {
+    document.documentElement.classList.add('berber');
+    CATS.length = 0;
+    [{ id: 'hair', tr: 'Saç', en: 'Hair' }, { id: 'beard', tr: 'Sakal & Tıraş', en: 'Beard & Shave' }, { id: 'care', tr: 'Bakım', en: 'Grooming' }, { id: 'pack', tr: 'Paketler', en: 'Packages' }].forEach(function (c) { CATS.push(c); });
+    SERVICES.length = 0;
+    [
+      { id: 'cut', c: 'hair', m: 40, p: 900, pop: 1, tr: 'Saç kesimi', en: 'Haircut', dtr: 'Makas ve makine ile kesim, yıkama ve şekillendirme.', den: 'Scissor and clipper cut, wash and styling.' },
+      { id: 'fade', c: 'hair', m: 50, p: 1000, tr: 'Fade kesim', en: 'Skin fade', dtr: 'Sıfırdan geçişli, keskin çizgili modern kesim.', den: 'Seamless skin fade with sharp lines.' },
+      { id: 'kid', c: 'hair', m: 30, p: 600, tr: 'Çocuk kesimi', en: "Kids' cut", dtr: 'Minik beyler için sabırlı ve net kesim.', den: 'A patient, tidy cut for little gents.' },
+      { id: 'perm', c: 'hair', m: 90, p: 1800, tr: 'Perma', en: 'Perm', dtr: 'Doğal görünen dalga ve hacim.', den: 'Natural-looking waves and volume.' },
+      { id: 'beard', c: 'beard', m: 25, p: 600, pop: 1, tr: 'Sakal şekillendirme', en: 'Beard trim & shape', dtr: 'Yüz hattınıza göre sakal tasarımı ve kontür.', den: 'Beard shaped and lined to your face.' },
+      { id: 'razor', c: 'beard', m: 30, p: 700, tr: 'Ustura tıraşı', en: 'Hot towel razor shave', dtr: 'Sıcak havlu ve usturayla klasik tıraş.', den: 'Classic shave with hot towel and straight razor.' },
+      { id: 'face', c: 'care', m: 30, p: 700, tr: 'Cilt bakımı', en: 'Facial', dtr: 'Siyah nokta temizliği, maske ve nemlendirme.', den: 'Blackhead cleanse, mask and hydration.' },
+      { id: 'wax', c: 'care', m: 15, p: 250, tr: 'Kulak & burun ağda', en: 'Ear & nose wax', dtr: 'Hızlı ve hijyenik temizlik.', den: 'Quick, hygienic clean-up.' },
+      { id: 'mani', c: 'care', m: 40, p: 700, tr: 'Manikür & pedikür', en: 'Manicure & pedicure', dtr: 'Erkeklere özel bakım ve şekillendirme.', den: 'Grooming and shaping for men.' },
+      { id: 'groom', c: 'pack', m: 150, p: 6000, tr: 'Damat tıraşı', en: 'Groom package', dtr: 'Saç, sakal, cilt bakımı ve fotoğrafa hazır bitiriş.', den: 'Hair, beard, facial and a photo-ready finish.' },
+      { id: 'vip', c: 'pack', m: 90, p: 2500, tr: 'VIP bakım', en: 'VIP grooming', dtr: 'Saç, sakal, cilt bakımı, sıcak havlu ve masaj.', den: 'Hair, beard, facial, hot towel and massage.' }
+    ].forEach(function (o) { SERVICES.push(o); });
+    PROMO.ids = ['cut', 'beard', 'face']; PROMO.price = 1750; PROMO.tr = 'Saç + sakal + cilt bakımı'; PROMO.en = 'Hair + beard + facial';
+    ORDER.forEach(function (lc) { if (lc !== 'tr' && lc !== 'en') delete PROMO[lc]; });
+    STAFF.length = 0;
+    [{ id: 'usta', name: 'Usta Berber', c: '#C8924F', yrs: 15, img: '', tr: 'Kurucu · kesim & sakal', en: 'Founder · cuts & beards' },
+     { id: 'kalfa', name: 'Mert Aydın', c: '#4E3124', yrs: 8, img: '', tr: 'Fade & modern kesim', en: 'Fades & modern cuts' },
+     { id: 'bakim', name: 'Can Kaya', c: '#7A2436', yrs: 5, img: '', tr: 'Cilt bakımı & tıraş', en: 'Facials & shaves' }].forEach(function (o) { STAFF.push(o); });
+    REVIEWS.length = 0;
+    [{ who: 'Emre K.', tr: 'Fade kesimi tam istediğim gibi; sakal çizgisi jilet gibi oldu.', en: 'The fade was exactly what I wanted; the beard line is razor sharp.' },
+     { who: 'Burak T.', tr: 'Randevuyu siteden aldım, gittiğimde hiç beklemeden koltuğa oturdum.', en: 'Booked on the site and sat straight down in the chair when I arrived.' },
+     { who: 'Can D.', tr: 'Damat tıraşım için geldim; fotoğraflarda herkes nerede yaptırdığımı sordu.', en: 'Came for my groom package; everyone asked where I got it done.' }].forEach(function (o) { REVIEWS.push(o); });
+    var BT = { hEy: ['Barber Shop', 'Barber Shop'], h1a: ['Keskin çizgiler,', 'Sharp lines,'], h1b: ['net tarz.', 'clean style.'],
+      lede: ['Kesimden sakala, ustura tıraşından cilt bakımına: hizmetinizi seçin, süreyi ve fiyatı görün, randevunuzu tek dokunuşla oluşturun.', 'From cuts to beards, razor shaves to facials: pick your service, see the time and price, and book in one tap.'],
+      e1d: ['Yüz hattınızı ve tarzınızı dinleyerek başlarız.', 'We start by listening to your style and face shape.'],
+      e2d: ['Sıcak havlu, ustura ve size özel seçilmiş bakım ürünleri.', 'Hot towel, straight razor and grooming products picked for you.'],
+      promoD: ['Saç, sakal ve cilt bakımı tek randevuda. Kampanya bu ay geçerlidir.', 'Hair, beard and facial in a single visit. Valid this month.'],
+      title: ['Barber Shop', 'Barber Shop'] };
+    Object.keys(BT).forEach(function (k) { if (T[k]) T[k] = ORDER.map(function (lc) { return lc === 'tr' ? BT[k][0] : BT[k][1]; }); });
+  }
 
   /* ------------------------------------------------------------------ */
   var root = document.documentElement;
