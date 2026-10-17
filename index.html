@@ -761,6 +761,21 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
           <p data-i18n="c8_d">Fotoğraflı ürün kataloğu, sepet ve tek dokunuşla WhatsApp'tan sipariş; telefona uygulama gibi eklenir.</p>
           <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
+
+        <a class="work live reveal" href="psikolog.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>psikologdenizarslan.com</span></div>
+            <div class="scr" style="--s-bg:#FBF7F1;--s-ink:#2B2833;--s-acc:#E07A62;--s-on:#FFFFFF">
+              <div class="n"><span>Psk. Deniz Arslan</span><em>Danışmanlık</em></div>
+              <div class="big">Kendinizi anlatmak için güvenli bir alan.</div>
+              <div class="t">Çocuk, ergen, yetişkin ve aile.</div>
+              <div class="b">Ön görüşme talep et</div>
+            </div>
+          </div>
+          <h3 data-i18n="c9_t">Psikolog ve terapist</h3>
+          <p data-i18n="c9_d">Çalışma alanları, yaklaşım, yüz yüze ya da online seçimli ön görüşme formu ve gizlilik vurgusu.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
       </div>
       <div class="hbar" aria-hidden="true"><i id="hbarFill"></i></div>
     </div>
@@ -781,6 +796,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         <article><h3><a href="kuafor.html" data-i18n="sek6_t">Kuaför ve güzellik salonu web sitesi</a></h3><p data-i18n="sek6_d">Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p></article>
         <article><h3><a href="oto.html" data-i18n="sek7_t">Oto yıkama ve kaplama web sitesi</a></h3><p data-i18n="sek7_d">Aracını seçen müşteri fiyatı anında görür, randevusunu WhatsApp'tan gönderir.</p></article>
         <article><h3><a href="taki.html" data-i18n="sek8_t">Takı ve butik web sitesi</a></h3><p data-i18n="sek8_d">Ürünlerinizi fiyatıyla listeler, siparişi ürün adıyla WhatsApp'a düşürür.</p></article>
+        <article><h3><a href="psikolog.html" data-i18n="sek9_t">Psikolog web sitesi</a></h3><p data-i18n="sek9_d">Danışanların çalışma alanlarınızı görüp yüz yüze ya da online ön görüşme talep ettiği sıcak bir site.</p></article>
       </div>
     </div>
   </section>
@@ -1546,6 +1562,21 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   Object.keys(NEWK).forEach(function (l) {
     var v = NEWK[l], o = T[l] = T[l] || {};
     ['c7_t', 'c7_d', 'c8_t', 'c8_d', 'sek7_t', 'sek7_d', 'sek8_t', 'sek8_d'].forEach(function (k, n) { o[k] = v[n]; });
+  });
+
+  var NEWK2 = {
+    tr: ["Psikolog ve terapist", "Çalışma alanları, yaklaşım, yüz yüze ya da online seçimli ön görüşme formu ve gizlilik vurgusu.", "Psikolog web sitesi", "Danışanların çalışma alanlarınızı görüp yüz yüze ya da online ön görüşme talep ettiği sıcak bir site."],
+    en: ["Psychologist & therapist", "Areas of work, approach, an in-person or online intro-call form and a focus on privacy.", "Psychologist website", "A warm site where clients see your areas of work and request an in-person or online first session."],
+    de: ["Psychologin & Therapeut", "Schwerpunkte, Ansatz, Formular für ein Erstgespräch vor Ort oder online und Fokus auf Vertraulichkeit.", "Website für Psychologen", "Eine warme Seite, auf der Klienten Ihre Schwerpunkte sehen und ein Erstgespräch vor Ort oder online anfragen."],
+    es: ["Psicólogo y terapeuta", "Áreas de trabajo, enfoque, formulario de primera consulta presencial u online y énfasis en la confidencialidad.", "Web para psicólogos", "Una web cálida donde los pacientes ven tus áreas de trabajo y piden una primera consulta presencial u online."],
+    nl: ["Psycholoog & therapeut", "Werkgebieden, aanpak, formulier voor een kennismaking op locatie of online en aandacht voor privacy.", "Website voor psychologen", "Een warme site waar cliënten je werkgebieden zien en een kennismaking op locatie of online aanvragen."],
+    fr: ["Psychologue et thérapeute", "Domaines d'intervention, approche, formulaire de premier rendez-vous au cabinet ou en ligne et confidentialité.", "Site pour psychologues", "Un site chaleureux où les patients découvrent vos domaines et demandent un premier rendez-vous au cabinet ou en ligne."],
+    it: ["Psicologo e terapeuta", "Aree di intervento, approccio, modulo per un primo colloquio in studio o online e attenzione alla riservatezza.", "Sito per psicologi", "Un sito accogliente dove i pazienti vedono le tue aree di intervento e chiedono un primo colloquio in studio o online."],
+    ru: ["Психолог и терапевт", "Направления работы, подход, форма записи на первую встречу очно или онлайн и акцент на конфиденциальность.", "Сайт для психолога", "Тёплый сайт, где клиенты видят направления вашей работы и записываются на первую встречу очно или онлайн."]
+  };
+  Object.keys(NEWK2).forEach(function (l) {
+    var v = NEWK2[l], o = T[l] = T[l] || {};
+    ['c9_t', 'c9_d', 'sek9_t', 'sek9_d'].forEach(function (k, n) { o[k] = v[n]; });
   });
 
   /* ===== Örnek site ("hologram") metinleri: [başlık, alt metin, düğme] x 6 sektör ===== */
