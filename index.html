@@ -513,6 +513,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
           <button type="button" data-i="9" aria-pressed="false" data-i18n="p10">Takı</button>
           <button type="button" data-i="10" aria-pressed="false" data-i18n="p11">Psikolog</button>
           <button type="button" data-i="11" aria-pressed="false" data-i18n="p12">Davet salonu</button>
+          <button type="button" data-i="12" aria-pressed="false" data-i18n="p13">Hafriyat</button>
         </div>
         <a class="picker-link" id="pLink" href="avukat.html" data-i18n="p_link">Örneği aç: Avukat →</a>
       </div>
@@ -797,6 +798,21 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
           <p data-i18n="c10_d">Paketler, kişi sayısı ve tarih seçerek tahmini teklif; talep WhatsApp'tan salona düşer.</p>
           <span class="tag" data-i18n="c_btn">Örneği aç</span>
         </a>
+
+        <a class="work live reveal" href="hafriyat.html">
+          <div class="frame" aria-hidden="true">
+            <div class="chrome"><i></i><i></i><i></i><span>novahafriyat.com</span></div>
+            <div class="scr" style="--s-bg:#111214;--s-ink:#F3F2EE;--s-acc:#F5B301;--s-on:#111111">
+              <div class="n"><span>Nova Hafriyat</span><em>Hafriyat</em></div>
+              <div class="big">Zemini biz hazırlarız, gerisi size kalır.</div>
+              <div class="t">Kazı, yıkım ve iş makinesi kiralama.</div>
+              <div class="b">Teklif al</div>
+            </div>
+          </div>
+          <h3 data-i18n="c11_t">Hafriyat ve iş makinesi</h3>
+          <p data-i18n="c11_d">Makine parkı, hizmetler ve iş türü, makine ve konum seçerek WhatsApp'tan teklif talebi.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
       </div>
       <div class="hbar" aria-hidden="true"><i id="hbarFill"></i></div>
     </div>
@@ -819,6 +835,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         <article><h3><a href="taki.html" data-i18n="sek8_t">Takı ve butik web sitesi</a></h3><p data-i18n="sek8_d">Ürünlerinizi fiyatıyla listeler, siparişi ürün adıyla WhatsApp'a düşürür.</p></article>
         <article><h3><a href="psikolog.html" data-i18n="sek9_t">Psikolog web sitesi</a></h3><p data-i18n="sek9_d">Danışanların çalışma alanlarınızı görüp yüz yüze ya da online ön görüşme talep ettiği sıcak bir site.</p></article>
         <article><h3><a href="davet.html" data-i18n="sek10_t">Davet salonu web sitesi</a></h3><p data-i18n="sek10_d">Çiftler ve aileler salonu görür, paketini seçer, tarih için WhatsApp'tan teklif ister.</p></article>
+        <article><h3><a href="hafriyat.html" data-i18n="sek11_t">Hafriyat firması web sitesi</a></h3><p data-i18n="sek11_d">Müteahhit ve ev sahipleri makine parkınızı görür, işini seçip WhatsApp'tan keşif ister.</p></article>
       </div>
     </div>
   </section>
@@ -1001,14 +1018,15 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     { url: 'novadetailing.com', name: 'Nova Detailing', big: 'Aracınız ilk günkü gibi parlasın.', sub: 'Aracını seç, fiyatını anında gör.', btn: 'Fiyatımı hesapla', bg: '#0A0C0F', ink: '#F2F4F7', acc: '#E5262C', on: '#FFFFFF', card: '#171B21' },
     { url: 'mirataki.com', name: 'Mira Takı', big: 'Her parça, bir hikâye.', sub: 'Katalog, sepet ve WhatsApp siparişi.', btn: 'Koleksiyonu gör', bg: '#FBF6F1', ink: '#2A1E22', acc: '#7C3A4A', on: '#FFFFFF', card: '#F1E6DE' },
     { url: 'psikologdenizarslan.com', name: 'Psk. Deniz Arslan', big: 'Kendinizi anlatmak için güvenli bir alan.', sub: 'Çocuk, ergen, yetişkin ve aile.', btn: 'Ön görüşme talep et', bg: '#FBF7F1', ink: '#2B2833', acc: '#E07A62', on: '#FFFFFF', card: '#F4EDE2' },
-    { url: 'maisonlumiere.com', name: 'Maison Lumière', big: 'En özel gününüz, tam hayal ettiğiniz gibi.', sub: 'Nişan, söz, kına ve özel davetler.', btn: 'Tarihimi sor', bg: '#F7F3EC', ink: '#2C2A26', acc: '#B08D57', on: '#FFFFFF', card: '#EFE8DC' }
+    { url: 'maisonlumiere.com', name: 'Maison Lumière', big: 'En özel gününüz, tam hayal ettiğiniz gibi.', sub: 'Nişan, söz, kına ve özel davetler.', btn: 'Tarihimi sor', bg: '#F7F3EC', ink: '#2C2A26', acc: '#B08D57', on: '#FFFFFF', card: '#EFE8DC' },
+    { url: 'novahafriyat.com', name: 'Nova Hafriyat', big: 'Zemini biz hazırlarız, gerisi size kalır.', sub: 'Kazı, yıkım ve iş makinesi kiralama.', btn: 'Teklif al', bg: '#111214', ink: '#F3F2EE', acc: '#F5B301', on: '#111111', card: '#1D1F23' }
   ];
   var stage = document.getElementById('stage');
   var urlEl = document.getElementById('hUrl');
   var dataEls = stage ? stage.querySelectorAll('[data-k]') : [];
   var cur = 0, typeTimer = null, cycleTimer = null;
-  var pages = ['avukat.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi.html', 'restoran.html', 'kuafor.html', 'kuafor.html?m=Nova+Barber&s=berber', 'kuafor.html?m=Nova+Nails&s=tirnak', 'oto.html', 'taki.html', 'psikolog.html', 'davet.html'];
-  var labels = ['Avukat', 'Doktor', 'Diyetisyen', 'Diş kliniği', 'Restoran', 'Kuaför', 'Berber', 'Tırnak', 'Oto bakım', 'Takı', 'Psikolog', 'Davet salonu'];
+  var pages = ['avukat.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi.html', 'restoran.html', 'kuafor.html', 'kuafor.html?m=Nova+Barber&s=berber', 'kuafor.html?m=Nova+Nails&s=tirnak', 'oto.html', 'taki.html', 'psikolog.html', 'davet.html', 'hafriyat.html'];
+  var labels = ['Avukat', 'Doktor', 'Diyetisyen', 'Diş kliniği', 'Restoran', 'Kuaför', 'Berber', 'Tırnak', 'Oto bakım', 'Takı', 'Psikolog', 'Davet salonu', 'Hafriyat'];
   var pBtns = document.querySelectorAll('.picker-btns button');
   var pLink = document.getElementById('pLink');
 
@@ -1638,9 +1656,12 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   };
   var DV = {"tr": ["En özel gününüz, tam hayal ettiğiniz gibi.", "Nişan, söz, kına ve özel davetler.", "Tarihimi sor", "Davet salonu", "Davet ve organizasyon salonu", "Paketler, kişi sayısı ve tarih seçerek tahmini teklif; talep WhatsApp'tan salona düşer.", "Davet salonu web sitesi", "Çiftler ve aileler salonu görür, paketini seçer, tarih için WhatsApp'tan teklif ister."], "en": ["Your special day, exactly as you imagined.", "Engagements, henna nights and private events.", "Check my date", "Event venue", "Event & party venue", "Packages and an instant estimate by guest count and date; requests go to the venue on WhatsApp.", "Event venue website", "Couples and families see the venue, pick a package and request a quote for their date on WhatsApp."], "de": ["Ihr besonderer Tag, genau wie erträumt.", "Verlobungen, Henna-Abende und private Feiern.", "Termin anfragen", "Eventlocation", "Event- & Feierlocation", "Pakete und Sofortschätzung nach Gästezahl und Datum; Anfragen gehen per WhatsApp an die Location.", "Website für Eventlocations", "Paare und Familien sehen die Location, wählen ein Paket und fragen per WhatsApp ein Angebot an."], "es": ["Tu día especial, tal como lo soñaste.", "Pedidas, noches de henna y eventos privados.", "Consultar fecha", "Salón de eventos", "Salón de eventos y celebraciones", "Paquetes y presupuesto al instante según invitados y fecha; la solicitud llega por WhatsApp.", "Web para salones de eventos", "Parejas y familias ven el salón, eligen paquete y piden presupuesto por WhatsApp."], "nl": ["Jouw speciale dag, precies zoals gedroomd.", "Verlovingen, hennafeesten en privé-events.", "Datum checken", "Feestzaal", "Feest- en evenementenzaal", "Pakketten en een directe schatting op aantal gasten en datum; aanvragen via WhatsApp.", "Website voor feestzalen", "Stellen en families bekijken de zaal, kiezen een pakket en vragen via WhatsApp een offerte aan."], "fr": ["Votre grand jour, tel que vous l’avez rêvé.", "Fiançailles, soirées henné et réceptions privées.", "Vérifier ma date", "Salle de réception", "Salle de réception et d’événements", "Formules et estimation immédiate selon invités et date ; demande envoyée sur WhatsApp.", "Site pour salles de réception", "Couples et familles découvrent la salle, choisissent une formule et demandent un devis sur WhatsApp."], "it": ["Il tuo giorno speciale, come lo hai sognato.", "Fidanzamenti, serate henné ed eventi privati.", "Verifica la data", "Sala ricevimenti", "Sala per ricevimenti ed eventi", "Pacchetti e stima immediata per ospiti e data; la richiesta arriva su WhatsApp.", "Sito per sale ricevimenti", "Coppie e famiglie vedono la sala, scelgono il pacchetto e chiedono un preventivo su WhatsApp."], "ru": ["Ваш особенный день — как вы мечтали.", "Помолвки, вечера хны и частные праздники.", "Узнать дату", "Банкетный зал", "Зал для торжеств и мероприятий", "Пакеты и мгновенный расчёт по числу гостей и дате; заявка уходит в WhatsApp.", "Сайт для банкетного зала", "Пары и семьи видят зал, выбирают пакет и запрашивают цену на дату в WhatsApp."]};
   Object.keys(DM).forEach(function (l) { DM[l] = DM[l].slice(0, 18).concat((DM2[l] || DM2.en).slice(0, 9), (DV[l] || DV.en).slice(0, 3)); });
+  var HF = {"tr": ["Zemini biz hazırlarız, gerisi size kalır.", "Kazı, yıkım ve iş makinesi kiralama.", "Teklif al", "Hafriyat", "Hafriyat ve iş makinesi", "Makine parkı, hizmetler ve iş türü, makine ve konum seçerek WhatsApp'tan teklif talebi.", "Hafriyat firması web sitesi", "Müteahhit ve ev sahipleri makine parkınızı görür, işini seçip WhatsApp'tan keşif ister."], "en": ["We prepare the ground, you build the rest.", "Excavation, demolition and plant hire.", "Get a quote", "Excavation", "Excavation & plant hire", "Machine fleet, services and a WhatsApp quote request by job, machine and location.", "Excavation company website", "Builders and owners see your fleet, pick the job and request a site visit on WhatsApp."], "de": ["Wir bereiten den Boden, Sie bauen weiter.", "Erdarbeiten, Abbruch und Maschinenverleih.", "Angebot anfragen", "Erdbau", "Erdbau & Maschinenverleih", "Maschinenpark, Leistungen und WhatsApp-Anfrage nach Arbeit, Maschine und Ort.", "Website für Erdbaufirmen", "Bauherren sehen Ihren Maschinenpark, wählen die Arbeit und fragen per WhatsApp eine Besichtigung an."], "es": ["Preparamos el terreno, usted construye.", "Excavación, demolición y alquiler de maquinaria.", "Pedir presupuesto", "Excavación", "Excavación y maquinaria", "Flota, servicios y solicitud de presupuesto por WhatsApp según trabajo, máquina y zona.", "Web para empresas de excavación", "Constructores y propietarios ven su flota, eligen el trabajo y piden visita por WhatsApp."], "nl": ["Wij maken de grond klaar, u bouwt verder.", "Graafwerk, sloop en machineverhuur.", "Offerte aanvragen", "Grondwerk", "Grondwerk & machineverhuur", "Machinepark, diensten en offerteaanvraag via WhatsApp op werk, machine en locatie.", "Website voor grondwerkbedrijven", "Aannemers en eigenaars zien uw machinepark, kiezen het werk en vragen via WhatsApp een bezoek aan."], "fr": ["Nous préparons le terrain, vous bâtissez.", "Terrassement, démolition et location d’engins.", "Demander un devis", "Terrassement", "Terrassement & location d’engins", "Parc d’engins, services et demande de devis WhatsApp par travaux, engin et lieu.", "Site pour entreprises de terrassement", "Promoteurs et particuliers voient vos engins, choisissent les travaux et demandent une visite sur WhatsApp."], "it": ["Prepariamo il terreno, voi costruite.", "Scavi, demolizioni e noleggio macchine.", "Chiedi un preventivo", "Scavi", "Scavi e noleggio macchine", "Parco macchine, servizi e richiesta preventivo su WhatsApp per lavoro, macchina e zona.", "Sito per imprese di scavi", "Costruttori e proprietari vedono il parco macchine, scelgono il lavoro e chiedono un sopralluogo su WhatsApp."], "ru": ["Мы готовим площадку — вы строите.", "Земляные работы, снос и аренда техники.", "Получить расчёт", "Земляные работы", "Земляные работы и спецтехника", "Парк техники, услуги и заявка в WhatsApp по виду работ, технике и адресу.", "Сайт для компании земляных работ", "Застройщики и владельцы видят вашу технику, выбирают работу и вызывают замерщика через WhatsApp."]};
+  Object.keys(DM).forEach(function (l) { DM[l] = DM[l].concat((HF[l] || HF.en).slice(0, 3)); });
+  Object.keys(HF).forEach(function (l) { var o = T[l] = T[l] || {}; o.p13 = HF[l][3]; o.c11_t = HF[l][4]; o.c11_d = HF[l][5]; o.sek11_t = HF[l][6]; o.sek11_d = HF[l][7]; });
   Object.keys(DV).forEach(function (l) { var o = T[l] = T[l] || {}; o.p12 = DV[l][3]; o.c10_t = DV[l][4]; o.c10_d = DV[l][5]; o.sek10_t = DV[l][6]; o.sek10_d = DV[l][7]; });
   /* Seçicideki sıra: 0–5 eski sektörler, 6 berber, 7 tırnak, 8 oto, 9 takı, 10 psikolog */
-  var PICK = [0, 1, 2, 3, 4, 5, 'b', 'n', 6, 7, 8, 9];
+  var PICK = [0, 1, 2, 3, 4, 5, 'b', 'n', 6, 7, 8, 9, 10];
   window.eyDemo = function (i, key) {
     var n = { big: 0, sub: 1, btn: 2 }[key];
     if (n === undefined) return null;
