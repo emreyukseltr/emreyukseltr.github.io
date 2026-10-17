@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="gece">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dijital Kartvizit — EY Studios örnek</title>
+<meta name="description" content="Tek dokunuşla arayın, WhatsApp'tan yazın, rehberinize ekleyin. QR ya da NFC ile açılan dijital kartvizit.">
+<meta name="robots" content="noindex">
+<!-- Gerçek bir müşteri için: <title> ve og:* etiketlerini de güncelleyin (link önizlemeleri JS çalıştırmaz) -->
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="EY Studios">
+<meta property="og:title" content="Dijital Kartvizit">
+<meta property="og:description" content="Tek dokunuşla arayın, WhatsApp'tan yazın, rehberinize ekleyin. QR ya da NFC ile açılır.">
+<meta property="og:url" content="https://eystudios.com.tr/kartvizit.html">
+<meta property="og:image" content="https://eystudios.com.tr/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D0E12">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<script>
+/* Tema ilk boyamadan önce: ?t=gece | krem | zeytin | ege */
+try{var t=new URLSearchParams(location.search).get('t');if(/^(gece|krem|zeytin|ege)$/.test(t))document.documentElement.setAttribute('data-theme',t)}catch(e){}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230D0E12'/%3E%3Crect x='14' y='20' width='36' height='24' rx='5' fill='none' stroke='%23D7B47A' stroke-width='4'/%3E%3Cpath d='M22 30h12M22 37h7' stroke='%23D7B47A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --disp:'Instrument Serif','Times New Roman',Georgia,serif;
+  --sans:'Manrope','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --gut:clamp(16px,5.4vw,22px); --r:22px;
+}
+html[data-theme="gece"]{
+  --page:#06070A; --bg:#0D0E12; --surf:#15171D; --surf2:#1C1F27; --line:rgba(255,255,255,.075); --line2:rgba(255,255,255,.15); --hi:rgba(255,255,255,.05);
+  --tx:#F4EFE6; --tx2:#C7C2B8; --mute:#8F8D94; --acc:#D7B47A; --acc-ink:#1A1408; --accbg:rgba(215,180,122,.12);
+  --ok:#55D690; --okbg:rgba(85,214,144,.12); --bad:#F0907E; --badbg:rgba(240,144,126,.12);
+  --cover:linear-gradient(165deg,#252937 0%,#121419 72%); --cover-tx:#F4EFE6; --arc:rgba(215,180,122,.17); --glow:rgba(215,180,122,.30); --chip:rgba(255,255,255,.07);
+  --avbg:linear-gradient(145deg,#2C2F3C,#17191F); --av-tx:#E8CD9C;
+  --bank:linear-gradient(130deg,#2E3242 0%,#17191F 58%,#3D3322 130%); --bank-tx:#F4EFE6;
+  --pg1:rgba(215,180,122,.13); --pg2:rgba(90,110,170,.12); --dots:rgba(255,255,255,.05);
+  --shadow:0 50px 120px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.06);
+}
+html[data-theme="krem"]{
+  --page:#E8DFCF; --bg:#F7F2E9; --surf:#FFFDF9; --surf2:#F1EADD; --line:rgba(60,40,20,.09); --line2:rgba(60,40,20,.18); --hi:rgba(255,255,255,.7);
+  --tx:#221C16; --tx2:#4F463C; --mute:#73685C; --acc:#A84F2B; --acc-ink:#FFF8F0; --accbg:rgba(168,79,43,.09);
+  --ok:#1C8A50; --okbg:rgba(28,138,80,.10); --bad:#B5432F; --badbg:rgba(181,67,47,.10);
+  --cover:linear-gradient(165deg,#EADBC1 0%,#D6BA92 100%); --cover-tx:#2A2017; --arc:rgba(120,70,30,.15); --glow:rgba(255,255,255,.6); --chip:rgba(255,255,255,.5);
+  --avbg:linear-gradient(145deg,#2C231B,#4C3828); --av-tx:#F2DDBF;
+  --bank:linear-gradient(130deg,#2C231B 0%,#4C3828 65%,#7E5535 130%); --bank-tx:#F7EEDF;
+  --pg1:rgba(168,79,43,.12); --pg2:rgba(255,255,255,.55); --dots:rgba(60,40,20,.07);
+  --shadow:0 50px 110px -45px rgba(70,45,20,.45),0 0 0 1px rgba(60,40,20,.07);
+}
+html[data-theme="zeytin"]{
+  --page:#0D100B; --bg:#151912; --surf:#1D2318; --surf2:#252D1F; --line:rgba(235,240,210,.08); --line2:rgba(235,240,210,.16); --hi:rgba(255,255,255,.04);
+  --tx:#EFEEE2; --tx2:#C9CAB7; --mute:#999D87; --acc:#C6D16E; --acc-ink:#171B0B; --accbg:rgba(198,209,110,.12);
+  --ok:#8FDC8A; --okbg:rgba(143,220,138,.12); --bad:#EE9C7E; --badbg:rgba(238,156,126,.12);
+  --cover:linear-gradient(165deg,#38462C 0%,#181D14 76%); --cover-tx:#EFEEE2; --arc:rgba(198,209,110,.16); --glow:rgba(198,209,110,.24); --chip:rgba(255,255,255,.07);
+  --avbg:linear-gradient(145deg,#35422B,#1C2117); --av-tx:#DDE69C;
+  --bank:linear-gradient(130deg,#3C4B2D 0%,#1D2318 62%,#545F2B 130%); --bank-tx:#EFEEE2;
+  --pg1:rgba(198,209,110,.11); --pg2:rgba(120,140,80,.12); --dots:rgba(235,240,210,.05);
+  --shadow:0 50px 120px -40px rgba(0,0,0,.9),0 0 0 1px rgba(235,240,210,.06);
+}
+html[data-theme="ege"]{
+  --page:#D8E3EA; --bg:#F2F6F8; --surf:#FFFFFF; --surf2:#E6EEF2; --line:rgba(15,40,60,.09); --line2:rgba(15,40,60,.18); --hi:rgba(255,255,255,.8);
+  --tx:#0E2232; --tx2:#38505F; --mute:#586C7A; --acc:#1D5F8E; --acc-ink:#FFFFFF; --accbg:rgba(29,95,142,.09);
+  --ok:#14885A; --okbg:rgba(20,136,90,.10); --bad:#C0472F; --badbg:rgba(192,71,47,.10);
+  --cover:linear-gradient(165deg,#C6DCE9 0%,#8FB5CD 100%); --cover-tx:#0E2232; --arc:rgba(255,255,255,.42); --glow:rgba(255,255,255,.65); --chip:rgba(255,255,255,.5);
+  --avbg:linear-gradient(145deg,#103550,#1D5F8E); --av-tx:#E4F0F7;
+  --bank:linear-gradient(130deg,#0F3550 0%,#1D5F8E 70%,#4B93BE 130%); --bank-tx:#F2F8FB;
+  --pg1:rgba(29,95,142,.12); --pg2:rgba(255,255,255,.6); --dots:rgba(15,40,60,.06);
+  --shadow:0 50px 110px -45px rgba(15,40,60,.45),0 0 0 1px rgba(15,40,60,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--page)}
+body{min-height:100vh;background:var(--page);color:var(--tx);font:500 15.5px/1.55 var(--sans);overflow-x:hidden;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+svg{display:block;flex:none}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.tap{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation;transition:transform .16s cubic-bezier(.3,.7,.4,1),background-color .2s,border-color .2s,box-shadow .2s}
+.tap:active{transform:scale(.96)}
+
+/* Arka plan (masaüstü) — durağan, animasyonsuz */
+.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(60vmax 50vmax at 12% 8%,var(--pg1),transparent 70%),radial-gradient(55vmax 45vmax at 92% 92%,var(--pg2),transparent 70%),radial-gradient(circle,var(--dots) 1px,transparent 1.4px) 0 0/22px 22px}
+.bgmono{position:fixed;right:-2vw;bottom:-6vw;z-index:0;pointer-events:none;font:400 38vw/.8 var(--disp);color:transparent;-webkit-text-stroke:1px var(--line2);opacity:.6;display:none;white-space:nowrap;letter-spacing:-.04em}
+
+/* Kart */
+.card{position:relative;z-index:1;max-width:460px;margin:0 auto;background:var(--bg);min-height:100vh;overflow:hidden;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
+@media (min-width:520px){
+  .card{margin:52px auto 64px;min-height:0;border-radius:36px;box-shadow:var(--shadow)}
+  .bgmono{display:block}
+}
+
+/* Kapak */
+.cover{position:relative;height:calc(172px + env(safe-area-inset-top,0px));background:var(--cover);overflow:hidden;color:var(--cover-tx)}
+.cover::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 92% -18%,transparent 0 25px,var(--arc) 25px 26px);-webkit-mask:linear-gradient(205deg,#000 8%,transparent 70%);mask:linear-gradient(205deg,#000 8%,transparent 70%)}
+.cover::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 92% -5%,var(--glow),transparent 70%)}
+.topbar{position:absolute;z-index:2;top:env(safe-area-inset-top,0px);left:0;right:0;display:flex;align-items:center;gap:10px;padding:14px var(--gut)}
+.bmk{flex:none;width:34px;height:34px;border-radius:11px;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;font:400 21px/1 var(--disp);box-shadow:0 6px 16px -6px rgba(0,0,0,.45)}
+.bnm{min-width:0;margin-right:auto;font:800 11px/1.25 var(--sans);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ibtn{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--chip);border:1px solid var(--line);color:var(--cover-tx);text-decoration:none}
+.ibtn .ico{width:20px;height:20px}
+
+/* Profil */
+.prof{position:relative;z-index:2;padding:0 var(--gut);margin-top:-60px}
+.av{position:relative;width:118px;height:118px;border-radius:50%;padding:5px;background:var(--bg)}
+.av-in{width:100%;height:100%;border-radius:50%;background:var(--avbg);display:grid;place-items:center;overflow:hidden;color:var(--av-tx);font:400 47px/1 var(--disp);letter-spacing:.01em;box-shadow:inset 0 0 0 1px var(--line2)}
+.av-in img{width:100%;height:100%;object-fit:cover}
+.av .st{position:absolute;right:9px;bottom:9px;width:20px;height:20px;border-radius:50%;background:var(--mute);border:4px solid var(--bg)}
+.av .st.on{background:var(--ok)}
+.name{font:400 clamp(35px,10.4vw,44px)/1.02 var(--disp);letter-spacing:-.012em;margin:14px 0 8px;overflow-wrap:anywhere;hyphens:auto}
+.name.long{font-size:clamp(29px,8.4vw,36px)}
+.role{font-weight:700;font-size:15.5px;line-height:1.4;overflow-wrap:anywhere}
+.role .co{color:var(--acc)}
+.role .sep{color:var(--mute);margin:0 .3em}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px;color:var(--mute);font-size:14px;font-weight:600}
+.meta .loc{display:inline-flex;align-items:center;gap:6px;min-width:0;overflow-wrap:anywhere}
+.meta .loc .ico{width:17px;height:17px}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 9px;border-radius:99px;background:var(--badbg);color:var(--bad);font-weight:800;font-size:12.5px;line-height:1.2}
+.pill i{position:relative;width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.pill.on{background:var(--okbg);color:var(--ok)}
+.pill.on i::after{content:"";position:absolute;inset:0;border-radius:50%;background:currentColor;opacity:0;animation:ping 2.4s ease-out 6 .8s}
+@keyframes ping{0%{transform:scale(1);opacity:.5}75%,100%{transform:scale(3);opacity:0}}
+.bio{margin-top:14px;color:var(--tx2);font-size:15.5px;line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:20px;border:1px solid var(--line);border-radius:20px;background:var(--surf);box-shadow:inset 0 1px 0 var(--hi)}
+.stats div{padding:13px 6px 12px;text-align:center;min-width:0}
+.stats div+div{border-left:1px solid var(--line)}
+.stats b{display:block;font:400 28px/1 var(--disp);letter-spacing:-.01em}
+.stats b em{font-style:normal;color:var(--acc)}
+.stats span{display:block;margin-top:5px;font-size:11.5px;line-height:1.25;color:var(--mute);font-weight:700}
+
+/* Ana eylemler */
+.acts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:0 var(--gut);margin-top:22px}
+.act{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:84px;padding:12px 2px 11px;border-radius:20px;background:var(--surf);border:1px solid var(--line);box-shadow:inset 0 1px 0 var(--hi);text-decoration:none;font-weight:750;font-size:12.5px;line-height:1.15;text-align:center;color:var(--tx)}
+.act .ic{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--accbg);color:var(--acc)}
+.act:hover{border-color:var(--line2)}
+.cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:0 var(--gut);margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:56px;padding:0 20px;border-radius:19px;font-weight:800;font-size:15.5px;line-height:1.15;text-decoration:none;text-align:center}
+.btn .ico{width:21px;height:21px}
+.btn-p{background:var(--acc);color:var(--acc-ink);box-shadow:0 14px 28px -14px var(--acc),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.12)}
+.btn-p:hover{filter:brightness(1.05)}
+.btn-g{background:var(--surf);border:1px solid var(--line2);color:var(--tx);box-shadow:inset 0 1px 0 var(--hi)}
+.btn-g:hover{background:var(--surf2)}
+.soc{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:8px;padding:0 var(--gut);margin-top:10px}
+.soc[hidden]{display:none}
+.soc a{display:flex;align-items:center;justify-content:center;gap:9px;min-width:0;height:52px;padding:0 10px;border-radius:17px;background:transparent;border:1px solid var(--line2);color:var(--tx2);text-decoration:none;font-weight:750;font-size:14px;line-height:1.15}
+.soc a span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.soc a:hover{color:var(--acc);border-color:var(--acc)}
+
+/* Bölümler */
+.sec{padding:0 var(--gut);margin-top:34px}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin:0 2px 12px}
+.sh h2{font:400 27px/1.1 var(--disp);letter-spacing:-.005em}
+.sh small{font-size:11.5px;color:var(--mute);font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.group{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:inset 0 1px 0 var(--hi)}
+.row{display:flex;align-items:center;gap:14px;width:100%;min-height:62px;padding:13px 16px;text-decoration:none;color:inherit;text-align:left}
+.row+.row{border-top:1px solid var(--line)}
+.row:active{background:var(--surf2)}
+.row .ri{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--accbg);color:var(--acc)}
+.row .ri .ico{width:19px;height:19px}
+.row .rt{flex:1;min-width:0}
+.row .rt small{display:block;font-size:12px;color:var(--mute);font-weight:700;line-height:1.3}
+.row .rt b{display:block;font-weight:700;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+.row .ch{width:18px;height:18px;color:var(--mute);stroke-width:2}
+.svc .no{flex:none;width:34px;font:400 25px/1 var(--disp);color:var(--acc);letter-spacing:-.02em}
+.svc .rt b{font-size:15.5px}
+.svc .rt span{display:block;color:var(--mute);font-size:13.5px;line-height:1.45;margin-top:2px}
+
+/* Portföy şeridi */
+.strip{display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);padding:2px var(--gut) 8px;margin:0 calc(-1 * var(--gut));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.strip::-webkit-scrollbar{display:none}
+.strip::after{content:"";flex:0 0 1px}
+.tile{position:relative;flex:0 0 72%;max-width:256px;height:214px;border-radius:22px;overflow:hidden;scroll-snap-align:start;text-align:left;color:#fff;isolation:isolate;box-shadow:0 1px 0 var(--hi) inset}
+.tile>span{position:absolute;display:block}
+.tile .cap{left:0;right:0;bottom:0;z-index:5;padding:46px 14px 13px;background:linear-gradient(180deg,transparent,rgba(8,8,10,.74))}
+.tile .cap b{display:block;font-weight:800;font-size:14.5px;line-height:1.25}
+.tile .cap em{display:block;font-style:normal;font-size:12.5px;opacity:.82;font-weight:600;margin-top:1px}
+.tile .pr{top:12px;left:12px;z-index:5;background:rgba(255,255,255,.93);color:#16161A;font-weight:800;font-size:12.5px;line-height:1;padding:7px 10px;border-radius:99px}
+/* 1 — deniz manzaralı daire */
+.t1{background:linear-gradient(180deg,#F8DDBD 0%,#F0B08E 50%,#5C8EA6 50%,#36667E 100%)}
+.t1 .sun{left:57%;top:24%;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle,#FFF1D9 0 60%,rgba(255,241,217,0) 72%)}
+.t1 .sea{left:0;right:0;top:52%;height:30%;background:repeating-linear-gradient(180deg,rgba(255,255,255,.22) 0 1px,transparent 1px 9px)}
+.t1 .b1{left:9%;bottom:26%;width:34%;height:60%;border-radius:4px 4px 0 0;background:conic-gradient(from 90deg at 4px 5px,#F6CB8E 25%,#2F3D4D 0) 3px 6px/12px 14px,#2F3D4D}
+.t1 .b2{left:40%;bottom:26%;width:16%;height:38%;border-radius:3px 3px 0 0;background:conic-gradient(from 90deg at 3px 4px,#F1BE86 25%,#40505F 0) 2px 5px/10px 12px,#40505F}
+.t1 .gr{left:0;right:0;bottom:0;height:27%;background:linear-gradient(180deg,#2A4A5A,#21394A)}
+/* 2 — bahçeli villa */
+.t2{background:linear-gradient(180deg,#BFDDF0 0%,#E7F1F4 62%,#9CC08A 62%,#6E9D63 100%)}
+.t2 .hill{left:-20%;right:-20%;bottom:22%;height:30%;border-radius:50%;background:#86B276}
+.t2 .hb{left:24%;bottom:24%;width:48%;height:32%;background:#F6EEE2;box-shadow:inset 0 -6px 0 rgba(0,0,0,.06)}
+.t2 .rf{left:19%;bottom:55%;width:58%;height:20%;background:#B5532F;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.t2 .dr{left:43%;bottom:24%;width:10%;height:17%;border-radius:10px 10px 0 0;background:#6B4A33}
+.t2 .w1,.t2 .w2{bottom:36%;width:9%;height:9%;border-radius:2px;background:#8FC3DE;box-shadow:inset 0 0 0 2px #F6EEE2}
+.t2 .w1{left:30%}.t2 .w2{left:59%}
+.t2 .tr{left:78%;bottom:24%;width:14%;height:30%;border-radius:50% 50% 40% 40%;background:#4F7F45}
+.t2 .tr2{left:8%;bottom:24%;width:11%;height:22%;border-radius:50% 50% 40% 40%;background:#5E8E50}
+.t2 .cl{left:12%;top:14%;width:26%;height:9%;border-radius:99px;background:rgba(255,255,255,.85);box-shadow:30px 10px 0 -4px rgba(255,255,255,.7)}
+/* 3 — zeytinlik arsa */
+.t3{background:linear-gradient(180deg,#F3E2B8 0%,#EAC98E 55%,#B49A55 100%)}
+.t3 .h1{left:-30%;right:10%;bottom:20%;height:52%;border-radius:50% 50% 0 0;background:#9AA35A}
+.t3 .h2{left:20%;right:-40%;bottom:0;height:48%;border-radius:50% 50% 0 0;background:#7B8A45}
+.t3 .ol{left:0;right:0;bottom:4%;height:40%;background:radial-gradient(circle,#4E5E2C 0 5px,transparent 5.6px) 6px 4px/26px 20px}
+.t3 .pin{left:62%;top:22%;width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#C2452D;box-shadow:inset 0 0 0 7px #C2452D,inset 0 0 0 13px #fff}
+.t3 .sn{left:16%;top:15%;width:30px;height:30px;border-radius:50%;background:#FFF4D6;opacity:.9}
+/* 4 — köşe dükkân */
+.t4{background:linear-gradient(180deg,#E9D7C3 0%,#E2C8AC 100%)}
+.t4 .fc{left:8%;right:8%;top:16%;bottom:0;background:#2F3B37;border-radius:6px 6px 0 0}
+.t4 .sg{left:22%;right:22%;top:21%;height:11%;border-radius:4px;background:#F2D9A4}
+.t4 .aw{left:5%;right:5%;top:36%;height:13%;background:repeating-linear-gradient(90deg,#C9452E 0 14px,#F6EEE2 14px 28px);clip-path:polygon(0 0,100% 0,96% 100%,4% 100%);border-radius:3px 3px 0 0}
+.t4 .wn{left:15%;width:44%;top:52%;bottom:0;background:linear-gradient(135deg,#9FC7CE,#5E8C96);box-shadow:inset 0 0 0 4px #24302C}
+.t4 .dr{right:15%;width:18%;top:55%;bottom:0;background:#6B4A33;box-shadow:inset 0 0 0 4px #24302C}
+.t4 .pl{left:2%;bottom:0;width:12%;height:20%;border-radius:50% 50% 8px 8px;background:#5E8E50}
+
+/* Google yorum */
+.rev{display:flex;align-items:center;gap:16px;padding:18px 18px 4px}
+.rev .sc{font:400 52px/.9 var(--disp);letter-spacing:-.02em}
+.rev .stars{display:flex;gap:2px;color:#F4B63F}
+.rev .stars svg{width:18px;height:18px;fill:currentColor;stroke:none}
+.rev p{font-size:13px;color:var(--mute);font-weight:700;margin-top:6px}
+.rev+.pad,.revnote+.pad{padding:14px 16px 16px}
+.pad .btn{width:100%}
+
+/* Çalışma saatleri */
+.hrs .row{min-height:48px;padding:11px 16px;justify-content:space-between;font-size:14.5px;font-weight:600;color:var(--tx2)}
+.hrs .row span:last-child{font-variant-numeric:tabular-nums;text-align:right}
+.hrs .row.today{color:var(--tx);font-weight:800;background:linear-gradient(90deg,var(--accbg),transparent 80%);box-shadow:inset 3px 0 0 var(--acc)}
+.hrs .row .cl{color:var(--mute)}
+
+/* IBAN */
+.bank{position:relative;overflow:hidden;border-radius:24px;padding:20px 20px 18px;background:var(--bank);color:var(--bank-tx);box-shadow:0 24px 40px -26px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.14)}
+.bank::before{content:"";position:absolute;right:-60px;top:-70px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 0 26px rgba(255,255,255,.03),0 0 0 52px rgba(255,255,255,.025)}
+.bank .top{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.bank .chip{width:40px;height:30px;border-radius:7px;background:linear-gradient(135deg,#F3DCA8,#B98F4E);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.bank .bk{font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;text-align:right}
+.bank .lbl{position:relative;display:block;margin-top:18px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.bank .ib{position:relative;margin-top:4px;font-weight:700;font-size:clamp(15px,4.6vw,18px);letter-spacing:.045em;font-variant-numeric:tabular-nums;line-height:1.35;word-spacing:.08em}
+.bank .who{position:relative;margin-top:2px;font-weight:700;font-size:15px;overflow-wrap:anywhere}
+.bank .foot{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cpy{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:inherit;font-weight:800;font-size:14px;margin-top:14px}
+.cpy .ico{width:18px;height:18px}
+
+/* QR */
+.qrbox{padding:22px 18px 18px;text-align:center}
+.qrf{display:inline-block;padding:12px;border-radius:24px;background:#fff;box-shadow:0 18px 36px -22px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.05);position:relative}
+.qrf canvas{display:block;border-radius:6px;max-width:100%;height:auto;aspect-ratio:1}
+.qrbox p{margin:14px auto 0;max-width:330px;color:var(--mute);font-size:13.5px;line-height:1.5}
+.qrbox .url{display:block;margin:6px auto 0;max-width:100%;font-size:12px;color:var(--tx2);font-weight:700;word-break:break-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.qrbox .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.qrbox .two .btn{padding:0 10px;font-size:14.5px;min-height:52px;border-radius:17px}
+
+/* Tema seçimi (demo) */
+.themes{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:8px}
+@media (max-width:399px){.themes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.th{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 14px 0 8px;border-radius:99px;border:1px solid var(--line2);font-weight:750;font-size:14px;color:var(--tx2)}
+.th i{width:28px;height:28px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px var(--line2),0 0 0 1px var(--line2)}
+.th[aria-pressed="true"]{border-color:var(--acc);color:var(--tx);box-shadow:0 0 0 1px var(--acc) inset}
+
+/* Footer */
+footer{margin:36px var(--gut) 0;padding:22px 2px 0;border-top:1px solid var(--line);color:var(--mute);font-size:13px;line-height:1.55}
+footer .order{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding:16px;border-radius:20px;background:var(--surf);border:1px solid var(--line);text-decoration:none;color:var(--tx)}
+footer .order b{display:block;font-size:15px;font-weight:800}
+footer .order b{color:var(--tx)}
+footer .order span span{display:block;font-size:13px;color:var(--mute);font-weight:600;margin-top:2px}
+footer .order .ico{color:var(--acc)}
+footer .cr{display:inline-block;margin-top:4px;padding:12px 0;color:var(--tx2);font-weight:700;text-decoration:none}
+footer .cr:hover{color:var(--acc)}
+
+.demo-back{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--tx);color:var(--bg);font:700 12px/1 var(--sans);padding:11px 15px;border-radius:99px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.toast{position:fixed;left:50%;bottom:calc(68px + env(safe-area-inset-bottom,0px));z-index:70;transform:translate(-50%,16px);opacity:0;pointer-events:none;max-width:calc(100vw - 32px);width:max-content;padding:12px 18px;border-radius:16px;background:var(--tx);color:var(--bg);font-weight:750;font-size:14px;line-height:1.35;text-align:center;box-shadow:0 14px 34px -10px rgba(0,0,0,.45);transition:opacity .25s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* Giriş animasyonu */
+.up{animation:up .75s cubic-bezier(.2,.75,.15,1) both;animation-delay:calc(var(--i,0) * 55ms + 60ms)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.av.up{animation-name:pop}
+@keyframes pop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
+
+@media (max-width:350px){
+  .acts{gap:6px}
+  .act{font-size:11px;letter-spacing:-.01em;min-height:80px;padding:12px 4px 11px}
+  .act .ic{width:38px;height:38px}
+  .btn{font-size:15px;padding:0 16px}
+  .qrbox{padding-left:14px;padding-right:14px}
+  .qrbox .two{gap:8px}
+  .qrbox .two .btn{font-size:13px;padding:0 8px;gap:6px}
+  .qrbox .two .btn .ico{display:none}
+  .stats b{font-size:25px}
+  .soc a{font-size:13px;gap:7px}
+}
+
+/* Portföy okları (fare ile) */
+.pfnav{display:none;gap:6px}
+.pfnav button{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line2);color:var(--tx2)}
+.pfnav button:hover{color:var(--acc);border-color:var(--acc)}
+.pfnav button:disabled{opacity:.35;cursor:default}
+.pfnav .ico{width:17px;height:17px;stroke-width:2.2}
+.pfnav .prev .ico{transform:scaleX(-1)}
+@media (hover:hover) and (pointer:fine){
+  .pfnav{display:flex}
+  .pfhint{display:none}
+}
+.revnote{padding:18px 18px 2px;color:var(--tx2);font-size:14.5px;line-height:1.55}
+.revnote[hidden],.rev[hidden]{display:none}
+
+/* Masaüstü yan panel: telefonda açmak için QR */
+.side{display:none}
+@media (min-width:1100px) and (min-height:600px){
+  .bgmono{right:auto;left:-3vw}
+  .side{display:block;position:fixed;z-index:1;top:50%;left:calc(50% + 230px + clamp(44px,5vw,88px));width:224px;transform:translateY(-50%);color:var(--tx)}
+  .side .qrf{padding:10px;border-radius:20px}
+  .side .k{display:block;margin-top:20px;font-size:11.5px;color:var(--mute);font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+  .side b{display:block;margin-top:6px;font:400 30px/1.05 var(--disp);letter-spacing:-.01em}
+  .side p{margin-top:8px;color:var(--tx2);font-size:14px;line-height:1.55}
+}
+@media (prefers-reduced-motion:reduce){
+  .up,.av.up{animation:none}
+  .pill.on i{animation:none}
+  .tap,.toast{transition:none}
+  .tap:active{transform:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5.2 3.8h3.1l1.7 4.1-2.1 1.3a11.3 11.3 0 0 0 6.9 6.9l1.3-2.1 4.1 1.7v3.1a1.9 1.9 0 0 1-2 1.9A16.7 16.7 0 0 1 3.3 5.8a1.9 1.9 0 0 1 1.9-2z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20.4 11.7a8.4 8.4 0 0 1-12.5 7.4l-4.3 1.3 1.4-4.2a8.4 8.4 0 1 1 15.4-4.5z"/><path d="M9.1 8.3c.3-.4.8-.4 1 0l.8 1.5c.2.3 0 .7-.2.9l-.5.4a5.5 5.5 0 0 0 2.7 2.7l.4-.5c.2-.3.6-.4.9-.2l1.5.8c.4.2.4.7 0 1-.9.7-2 .8-3.3.1a8.3 8.3 0 0 1-3.4-3.4c-.7-1.3-.6-2.4.1-3.3z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5l8 5.8 8-5.8"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.4a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.5"/></symbol>
+  <symbol id="i-userplus" viewBox="0 0 24 24"><circle cx="9.5" cy="8" r="3.6"/><path d="M2.8 20a6.7 6.7 0 0 1 13.4 0"/><path d="M19 7.5v6M16 10.5h6"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 14.5V3.5M7.8 7.6 12 3.4l4.2 4.2"/><path d="M5 11.5V18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6.5"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.3"/><rect x="14" y="4" width="6" height="6" rx="1.3"/><rect x="4" y="14" width="6" height="6" rx="1.3"/><path d="M14 14h2.5v2.5H14zM19.5 14v.01M14 19.5v.01M17 17h3v3h-3"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><path d="M8 10.6V16M8 7.7v.1M11.6 16v-5.4M11.6 13.2a2.5 2.5 0 0 1 5 0V16"/></symbol>
+  <symbol id="i-tt" viewBox="0 0 24 24"><path d="M14 3.5v11.2a3.8 3.8 0 1 1-3.8-3.8"/><path d="M14 3.5c.4 2.7 2.3 4.5 5 4.7"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.6 5.4 3.6 8.5s-1.2 5.9-3.6 8.5c-2.4-2.6-3.6-5.4-3.6-8.5S9.6 6.1 12 3.5z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.4l2.65 5.4 5.95.86-4.3 4.2 1 5.93L12 17l-5.3 2.8 1-5.93-4.3-4.2 5.95-.86z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.6"/><path d="M15.5 8.5V6.6a2.6 2.6 0 0 0-2.6-2.6H6.6A2.6 2.6 0 0 0 4 6.6v6.3a2.6 2.6 0 0 0 2.6 2.6h1.9"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11M7.6 10.8 12 15.2l4.4-4.4M5 19.5h14"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13.5 6.5 19 12l-5.5 5.5"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
+</svg>
+
+<div class="bgfx" aria-hidden="true"></div>
+<div class="bgmono" id="bgmono" aria-hidden="true">DA</div>
+
+<main class="card" id="card">
+  <header class="cover">
+    <div class="topbar">
+      <span class="bmk" id="bmk" aria-hidden="true">N</span>
+      <span class="bnm" id="bnm">Nova Gayrimenkul</span>
+      <a class="ibtn tap" href="#qr" id="toQr" aria-label="QR kodu göster"><svg class="ico"><use href="#i-qr"/></svg></a>
+      <button class="ibtn tap" type="button" id="shareTop" aria-label="Kartviziti paylaş"><svg class="ico"><use href="#i-share"/></svg></button>
+    </div>
+  </header>
+
+  <section class="prof" aria-labelledby="nm">
+    <div class="av up" style="--i:0">
+      <div class="av-in" id="avIn" aria-hidden="true">DA</div>
+      <span class="st" id="avSt" aria-hidden="true"></span>
+    </div>
+    <h1 class="name up" style="--i:1" id="nm">Deniz Arslan</h1>
+    <p class="role up" style="--i:2"><span id="ttl">Gayrimenkul Danışmanı</span><span class="sep">·</span><span class="co" id="co">Nova Gayrimenkul</span></p>
+    <div class="meta up" style="--i:3">
+      <span class="loc"><svg class="ico"><use href="#i-pin"/></svg><span id="city">Efeler, Aydın</span></span>
+      <span class="pill" id="pillTop"><i></i><span>Kontrol ediliyor</span></span>
+    </div>
+    <p class="bio up" style="--i:4" id="bio">Satılık–kiralık konut, arsa ve ticari gayrimenkulde 12 yıllık deneyim. Doğru fiyat, şeffaf süreç; tapuya kadar yanınızdayım.</p>
+    <div class="stats up" style="--i:5" id="stats">
+      <div><b>12<em>+</em></b><span>yıl deneyim</span></div>
+      <div><b>340<em>+</em></b><span>mutlu müşteri</span></div>
+      <div><b>4,9<em>★</em></b><span>Google puanı</span></div>
+    </div>
+  </section>
+
+  <nav class="acts up" style="--i:6" aria-label="Hızlı iletişim">
+    <a class="act tap" id="aCall" href="tel:+905306284284"><span class="ic"><svg class="ico"><use href="#i-phone"/></svg></span>Ara</a>
+    <a class="act tap" id="aWa" href="https://wa.me/905306284284" target="_blank" rel="noopener"><span class="ic"><svg class="ico"><use href="#i-wa"/></svg></span>WhatsApp</a>
+    <a class="act tap" id="aMail" href="mailto:ornek@eystudios.com.tr"><span class="ic"><svg class="ico"><use href="#i-mail"/></svg></span>E-posta</a>
+    <a class="act tap" id="aMap" href="https://www.google.com/maps/search/?api=1&amp;query=Nova%20Gayrimenkul%20Efeler%2C%20Ayd%C4%B1n" target="_blank" rel="noopener"><span class="ic"><svg class="ico"><use href="#i-pin"/></svg></span>Konum</a>
+  </nav>
+  <div class="cta up" style="--i:7">
+    <button class="btn btn-p tap" type="button" id="vcf"><svg class="ico"><use href="#i-userplus"/></svg>Rehbere Ekle</button>
+    <button class="btn btn-g tap" type="button" id="share"><svg class="ico"><use href="#i-share"/></svg>Paylaş</button>
+  </div>
+  <div class="soc up" style="--i:8" id="soc" role="group" aria-label="Sosyal medya"></div>
+
+  <section class="sec up" style="--i:9" aria-labelledby="h-ctc">
+    <div class="sh"><h2 id="h-ctc">İletişim</h2></div>
+    <div class="group">
+      <a class="row" id="rTel" href="tel:+905306284284"><span class="ri"><svg class="ico"><use href="#i-phone"/></svg></span><span class="rt"><small>Cep telefonu</small><b id="telTx">+90 530 628 42 84</b></span><svg class="ico ch"><use href="#i-chev"/></svg></a>
+      <a class="row" id="rMail" href="mailto:ornek@eystudios.com.tr"><span class="ri"><svg class="ico"><use href="#i-mail"/></svg></span><span class="rt"><small>E-posta</small><b id="mailTx">ornek@eystudios.com.tr</b></span><svg class="ico ch"><use href="#i-chev"/></svg></a>
+      <a class="row" id="rWeb" href="https://eystudios.com.tr" target="_blank" rel="noopener"><span class="ri"><svg class="ico"><use href="#i-globe"/></svg></span><span class="rt"><small>Web sitesi</small><b id="webTx">eystudios.com.tr</b></span><svg class="ico ch"><use href="#i-chev"/></svg></a>
+      <a class="row" id="rMap" href="#" target="_blank" rel="noopener"><span class="ri"><svg class="ico"><use href="#i-pin"/></svg></span><span class="rt"><small>Ofis</small><b id="adrTx">Nova Gayrimenkul · Efeler, Aydın</b></span><svg class="ico ch"><use href="#i-chev"/></svg></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-svc">
+    <div class="sh"><h2 id="h-svc">Hizmetler</h2><small>Dokunun, sorun</small></div>
+    <div class="group svc" id="svc"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-pf">
+    <div class="sh"><h2 id="h-pf">Portföyden</h2><small class="pfhint" id="pfHint">Kaydırın →</small><span class="pfnav"><button type="button" class="prev tap" id="pfPrev" aria-label="Önceki ilan" aria-controls="strip"><svg class="ico"><use href="#i-chev"/></svg></button><button type="button" class="next tap" id="pfNext" aria-label="Sonraki ilan" aria-controls="strip"><svg class="ico"><use href="#i-chev"/></svg></button></span></div>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rev">
+    <div class="sh"><h2 id="h-rev">Yorumlar</h2></div>
+    <div class="group">
+      <div class="rev" id="rev">
+        <div class="sc" aria-hidden="true">4,9</div>
+        <div>
+          <div class="stars" role="img" aria-label="5 üzerinden 4,9 yıldız"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <p>128 Google yorumu · örnek</p>
+        </div>
+      </div>
+      <p class="revnote" id="revNote" hidden>Memnun kaldıysanız Google’da birkaç kelime bırakmanız çok değerli; bir dakikanızı alır.</p>
+      <div class="pad"><a class="btn btn-g tap" id="revBtn" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pen"/></svg>Google'da yorum yap</a></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-hrs">
+    <div class="sh"><h2 id="h-hrs">Çalışma saatleri</h2><span class="pill" id="pillHrs"><i></i><span>Kontrol ediliyor</span></span></div>
+    <div class="group hrs" id="hrs"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-iban">
+    <div class="sh"><h2 id="h-iban">Ödeme bilgileri</h2><small>Örnek IBAN</small></div>
+    <div class="bank">
+      <div class="top"><span class="chip" aria-hidden="true"></span><span class="bk" id="bankNm">Örnek Bank</span></div>
+      <span class="lbl">IBAN</span>
+      <div class="ib" id="ibanTx">TR00 0000 0000 0000 0000 0000 00</div>
+      <div class="foot">
+        <div><span class="lbl" style="margin-top:14px">Alıcı</span><div class="who" id="ibanWho">Deniz Arslan</div></div>
+        <button class="cpy tap" type="button" id="ibanCp"><svg class="ico"><use href="#i-copy"/></svg>Kopyala</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="qr" aria-labelledby="h-qr">
+    <div class="sh"><h2 id="h-qr">Kartımı paylaş</h2><small>QR kod</small></div>
+    <div class="group qrbox">
+      <div class="qrf"><canvas id="qrc" width="232" height="232" role="img" aria-label="Bu kartvizitin QR kodu"></canvas></div>
+      <p>Telefon kamerasıyla okutun; bu kartvizit açılır. Masanıza, vitrininize ya da sunumunuza koyabilirsiniz.</p>
+      <span class="url" id="qrUrl"></span>
+      <div class="two">
+        <button class="btn btn-p tap" type="button" id="qrDl"><svg class="ico"><use href="#i-dl"/></svg>QR'ı indir</button>
+        <button class="btn btn-g tap" type="button" id="linkCp"><svg class="ico"><use href="#i-link"/></svg>Linki kopyala</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-th">
+    <div class="sh"><h2 id="h-th">Renk seçenekleri</h2><small>Demo</small></div>
+    <div class="themes" id="themes"></div>
+  </section>
+
+  <footer>
+    <a class="order tap" id="order" href="https://wa.me/905306284284" target="_blank" rel="noopener">
+      <span><b>Sizin için de hazırlayalım</b><span>QR ve NFC ile açılan dijital kartvizit</span></span>
+      <svg class="ico"><use href="#i-arrow"/></svg>
+    </a>
+    <p>Bu sayfa örnek bir dijital kartvizittir; isim, bağlantılar, IBAN ve yorumlar gösterim amaçlıdır ve size göre düzenlenir.</p>
+    <a class="cr" href="https://eystudios.com.tr" target="_blank" rel="noopener">Tasarım & geliştirme: EY Studios ↗</a>
+  </footer>
+</main>
+
+<aside class="side" aria-labelledby="sideT">
+  <div class="qrf"><canvas id="qrc2" width="200" height="200" role="img" aria-label="Bu kartvizitin QR kodu"></canvas></div>
+  <span class="k">Masaüstünde misiniz?</span>
+  <b id="sideT">Telefonunuzda açın</b>
+  <p>Kameranızla okutun; kartvizit telefonunuzda açılır, tek dokunuşla rehberinize eklenir.</p>
+</aside>
+
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   QR KOD ÜRETİCİ — dış kütüphane yok. Bayt kipi, hata düzeltme M,
+   sürüm 1–40 otomatik, 8 maskeden ceza puanı en düşük olan seçilir.
+   ===================================================================== */
+var QRGen = (function () {
+  'use strict';
+  var ECC = [-1, 10, 16, 26, 18, 24, 16, 18, 22, 22, 26, 30, 22, 22, 24, 24, 28, 28, 26, 26, 26, 26, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28];
+  var BLK = [-1, 1, 1, 1, 2, 2, 4, 4, 4, 5, 5, 5, 8, 9, 9, 10, 10, 11, 13, 14, 16, 17, 17, 18, 20, 21, 23, 25, 26, 28, 29, 31, 33, 35, 37, 38, 40, 43, 45, 47, 49];
+  function rawModules(v) {
+    var r = (16 * v + 128) * v + 64;
+    if (v >= 2) { var na = Math.floor(v / 7) + 2; r -= (25 * na - 10) * na - 55; if (v >= 7) r -= 36; }
+    return r;
+  }
+  function dataCodewords(v) { return Math.floor(rawModules(v) / 8) - ECC[v] * BLK[v]; }
+  function gmul(x, y) {
+    var z = 0;
+    for (var i = 7; i >= 0; i--) { z = (z << 1) ^ ((z >>> 7) * 0x11D); z ^= ((y >>> i) & 1) * x; }
+    return z;
+  }
+  function rsDivisor(d) {
+    var r = [], i, j, root = 1;
+    for (i = 0; i < d; i++) r.push(0);
+    r[d - 1] = 1;
+    for (i = 0; i < d; i++) {
+      for (j = 0; j < d; j++) { r[j] = gmul(r[j], root); if (j + 1 < d) r[j] ^= r[j + 1]; }
+      root = gmul(root, 2);
+    }
+    return r;
+  }
+  function rsRemainder(data, div) {
+    var r = div.map(function () { return 0; });
+    data.forEach(function (b) {
+      var f = b ^ r.shift(); r.push(0);
+      for (var i = 0; i < div.length; i++) r[i] ^= gmul(div[i], f);
+    });
+    return r;
+  }
+  function utf8(s) {
+    if (typeof TextEncoder !== 'undefined') return Array.prototype.slice.call(new TextEncoder().encode(s));
+    var e = unescape(encodeURIComponent(s)), a = [];
+    for (var i = 0; i < e.length; i++) a.push(e.charCodeAt(i));
+    return a;
+  }
+  function alignPositions(v, size) {
+    if (v === 1) return [];
+    var na = Math.floor(v / 7) + 2, step = Math.floor((v * 8 + na * 3 + 5) / (na * 4 - 4)) * 2, res = [6];
+    for (var pos = size - 7; res.length < na; pos -= step) res.splice(1, 0, pos);
+    return res;
+  }
+  function maskBit(m, x, y) {
+    switch (m) {
+      case 0: return (x + y) % 2 === 0;
+      case 1: return y % 2 === 0;
+      case 2: return x % 3 === 0;
+      case 3: return (x + y) % 3 === 0;
+      case 4: return (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0;
+      case 5: return x * y % 2 + x * y % 3 === 0;
+      case 6: return (x * y % 2 + x * y % 3) % 2 === 0;
+      default: return ((x + y) % 2 + x * y % 3) % 2 === 0;
+    }
+  }
+  function encode(text, forceMask, minVersion) {
+    var bytes = utf8(text), v, cc;
+    for (v = Math.max(1, minVersion || 1); v <= 40; v++) {
+      cc = v < 10 ? 8 : 16;
+      if (4 + cc + bytes.length * 8 <= dataCodewords(v) * 8) break;
+    }
+    if (v > 40) throw new Error('QR: metin çok uzun');
+    var bits = [], i, j, x, y;
+    function push(val, n) { for (var k = n - 1; k >= 0; k--) bits.push((val >>> k) & 1); }
+    push(4, 4); push(bytes.length, cc);
+    bytes.forEach(function (b) { push(b, 8); });
+    var capBits = dataCodewords(v) * 8;
+    push(0, Math.min(4, capBits - bits.length));
+    push(0, (8 - bits.length % 8) % 8);
+    for (var pad = 0xEC; bits.length < capBits; pad ^= 0xEC ^ 0x11) push(pad, 8);
+    var data = [];
+    for (i = 0; i < bits.length; i += 8) { var b = 0; for (j = 0; j < 8; j++) b = (b << 1) | bits[i + j]; data.push(b); }
+
+    /* Hata düzeltme blokları ve iç içe geçirme */
+    var nb = BLK[v], ecl = ECC[v], raw = Math.floor(rawModules(v) / 8), nShort = nb - raw % nb, shortLen = Math.floor(raw / nb);
+    var div = rsDivisor(ecl), blocks = [], k = 0;
+    for (i = 0; i < nb; i++) {
+      var dat = data.slice(k, k + shortLen - ecl + (i < nShort ? 0 : 1));
+      k += dat.length;
+      var ec = rsRemainder(dat, div);
+      if (i < nShort) dat.push(0);
+      blocks.push(dat.concat(ec));
+    }
+    var all = [];
+    for (i = 0; i < blocks[0].length; i++) for (j = 0; j < nb; j++) if (i !== shortLen - ecl || j >= nShort) all.push(blocks[j][i]);
+
+    /* Matris */
+    var size = v * 4 + 17, M = [], F = [];
+    for (i = 0; i < size; i++) { M.push(new Array(size).fill(0)); F.push(new Array(size).fill(0)); }
+    function setF(x, y, d) { M[y][x] = d ? 1 : 0; F[y][x] = 1; }
+    for (i = 0; i < size; i++) { setF(6, i, i % 2 === 0); setF(i, 6, i % 2 === 0); }
+    function finder(cx, cy) {
+      for (var dy = -4; dy <= 4; dy++) for (var dx = -4; dx <= 4; dx++) {
+        var d = Math.max(Math.abs(dx), Math.abs(dy)), xx = cx + dx, yy = cy + dy;
+        if (xx >= 0 && xx < size && yy >= 0 && yy < size) setF(xx, yy, d !== 2 && d !== 4);
+      }
+    }
+    finder(3, 3); finder(size - 4, 3); finder(3, size - 4);
+    var ap = alignPositions(v, size), na = ap.length;
+    for (i = 0; i < na; i++) for (j = 0; j < na; j++) {
+      if ((i === 0 && j === 0) || (i === 0 && j === na - 1) || (i === na - 1 && j === 0)) continue;
+      for (var dy = -2; dy <= 2; dy++) for (var dx = -2; dx <= 2; dx++) setF(ap[i] + dx, ap[j] + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+    }
+    function drawFormat(mask) {
+      var d = (0 << 3) | mask, rem = d, n; /* M seviyesi = 00 */
+      for (n = 0; n < 10; n++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+      var fb = ((d << 10) | rem) ^ 0x5412;
+      for (n = 0; n <= 5; n++) setF(8, n, (fb >>> n) & 1);
+      setF(8, 7, (fb >>> 6) & 1); setF(8, 8, (fb >>> 7) & 1); setF(7, 8, (fb >>> 8) & 1);
+      for (n = 9; n < 15; n++) setF(14 - n, 8, (fb >>> n) & 1);
+      for (n = 0; n < 8; n++) setF(size - 1 - n, 8, (fb >>> n) & 1);
+      for (n = 8; n < 15; n++) setF(8, size - 15 + n, (fb >>> n) & 1);
+      setF(8, size - 8, 1);
+    }
+    drawFormat(0);
+    if (v >= 7) {
+      var rem = v;
+      for (i = 0; i < 12; i++) rem = (rem << 1) ^ ((rem >>> 11) * 0x1F25);
+      var vb = (v << 12) | rem;
+      for (i = 0; i < 18; i++) { var bt = (vb >>> i) & 1, a = size - 11 + i % 3, c = Math.floor(i / 3); setF(a, c, bt); setF(c, a, bt); }
+    }
+    var bi = 0, total = all.length * 8;
+    for (var right = size - 1; right >= 1; right -= 2) {
+      if (right === 6) right = 5;
+      for (var vert = 0; vert < size; vert++) for (j = 0; j < 2; j++) {
+        x = right - j;
+        y = ((right + 1) & 2) === 0 ? size - 1 - vert : vert;
+        if (!F[y][x] && bi < total) { M[y][x] = (all[bi >>> 3] >>> (7 - (bi & 7))) & 1; bi++; }
+      }
+    }
+    function applyMask(m) { for (var yy = 0; yy < size; yy++) for (var xx = 0; xx < size; xx++) if (!F[yy][xx] && maskBit(m, xx, yy)) M[yy][xx] ^= 1; }
+    function penalty() {
+      var p = 0, dark = 0, run, xx, yy, n;
+      var P1 = [1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0], P2 = [0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1];
+      function get(a, b, col) { return col ? M[b][a] : M[a][b]; }
+      for (var col = 0; col < 2; col++) for (yy = 0; yy < size; yy++) {
+        run = 1;
+        for (xx = 1; xx < size; xx++) {
+          if (get(yy, xx, col) === get(yy, xx - 1, col)) run++;
+          else { if (run >= 5) p += run - 2; run = 1; }
+        }
+        if (run >= 5) p += run - 2;
+        for (xx = 0; xx + 11 <= size; xx++) {
+          var m1 = true, m2 = true;
+          for (n = 0; n < 11; n++) { var cv = get(yy, xx + n, col); if (cv !== P1[n]) m1 = false; if (cv !== P2[n]) m2 = false; if (!m1 && !m2) break; }
+          if (m1) p += 40; if (m2) p += 40;
+        }
+      }
+      for (yy = 0; yy < size; yy++) for (xx = 0; xx < size; xx++) {
+        if (M[yy][xx]) dark++;
+        if (yy < size - 1 && xx < size - 1) { var c0 = M[yy][xx]; if (c0 === M[yy][xx + 1] && c0 === M[yy + 1][xx] && c0 === M[yy + 1][xx + 1]) p += 3; }
+      }
+      p += Math.floor(Math.abs(dark * 100 / (size * size) - 50) / 5) * 10;
+      return p;
+    }
+    var best = (forceMask >= 0 && forceMask < 8) ? forceMask : -1, bestP = Infinity;
+    if (best < 0) for (var m = 0; m < 8; m++) {
+      applyMask(m); drawFormat(m);
+      var pp = penalty();
+      if (pp < bestP) { bestP = pp; best = m; }
+      applyMask(m);
+    }
+    applyMask(best); drawFormat(best);
+    return { version: v, size: size, mask: best, modules: M };
+  }
+  function draw(canvas, qr, scale, quiet, dark) {
+    var q = quiet == null ? 4 : quiet, n = qr.size + q * 2, c = canvas.getContext('2d');
+    canvas.width = canvas.height = n * scale;
+    c.fillStyle = '#fff'; c.fillRect(0, 0, n * scale, n * scale);
+    c.fillStyle = dark || '#111318';
+    for (var y = 0; y < qr.size; y++) {
+      var row = qr.modules[y], x = 0;
+      while (x < qr.size) {
+        if (!row[x]) { x++; continue; }
+        var s = x; while (x < qr.size && row[x]) x++;
+        c.fillRect((s + q) * scale, (y + q) * scale, (x - s) * scale, scale);
+      }
+    }
+  }
+  return { encode: encode, draw: draw, utf8: utf8 };
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  /* =====================================================================
+     KARTVİZİT BİLGİLERİ — yeni bir müşteri için bu bloğu düzenleyin.
+     Müşteri için düzenlerken <head> içindeki <title> ve og:* etiketlerini,
+     #nm / #ibanWho / #avIn / #bgmono içindeki "Deniz Arslan / DA" metinlerini de güncelleyin.
+     Satış önizlemesi (bilgi repoya girmez, yalnızca linkte durur):
+     ?m=Ad+Soyad &u=Unvan &f=Firma &c=Semt,+Şehir &t=gece|krem|zeytin|ege &p=905XXXXXXXXX
+     &ig=instagram_kullanici &w=site.com &e=posta@site.com
+     Önizlemede iddialı rakamlar (yıl, müşteri sayısı, Google puanı) gösterilmez;
+     emlak dışı unvanlarda ilanlar gizlenir, hizmetler sektöre göre seçilir.
+     ===================================================================== */
+  var PRO = {
+    name: 'Deniz Arslan',
+    title: 'Gayrimenkul Danışmanı',
+    company: 'Nova Gayrimenkul',
+    city: 'Efeler, Aydın',
+    phone: '905306284284',          /* arama + WhatsApp, ülke koduyla */
+    email: 'ornek@eystudios.com.tr',
+    web: 'eystudios.com.tr',
+    photo: '',                      /* isteğe bağlı: 'onizleme/foto.jpg' — boşsa baş harfler */
+    bio: 'Satılık–kiralık konut, arsa ve ticari gayrimenkulde 12 yıllık deneyim. Doğru fiyat, şeffaf süreç; tapuya kadar yanınızdayım.',
+    social: { ig: 'https://www.instagram.com/eystudios.tr/', li: '', tt: '', web: 'https://eystudios.com.tr' },  /* boş olan gizlenir */
+    review: '',                     /* Google "yorum yaz" linki (search.google.com/local/writereview?placeid=…); boşsa Haritalar araması */
+    bank: 'Örnek Bank',
+    iban: 'TR00 0000 0000 0000 0000 0000 00',
+    /* JS getDay sırası: 0 Pazar … 6 Cumartesi. null = kapalı. Saatler Türkiye saatine göre. */
+    hours: [null, ['09:00', '19:00'], ['09:00', '19:00'], ['09:00', '19:00'], ['09:00', '19:00'], ['09:00', '19:00'], ['10:00', '16:00']],
+    services: [
+      { t: 'Satılık & kiralık portföy', d: 'Bölgedeki güncel konut, villa ve arsa ilanları; size uygun olanlar tek listede.' },
+      { t: 'Ücretsiz değerleme', d: 'Evinizin piyasa değerini emsal satışlarla 24 saat içinde raporlarım.' },
+      { t: 'Tapu & kredi desteği', d: 'Ekspertizden kredi başvurusuna, tapu randevusuna kadar her adımda yanınızdayım.' },
+      { t: 'Yatırım danışmanlığı', d: 'Kira getirisi ve değer artışı yüksek bölgeler için veriye dayalı öneriler.' }
+    ],
+    portfolio: [
+      { k: 't1', p: '₺7.450.000', t: 'Deniz manzaralı 3+1', d: '145 m² · site içinde', art: '<span class="sun"></span><span class="sea"></span><span class="b1"></span><span class="b2"></span><span class="gr"></span>' },
+      { k: 't2', p: '₺12.900.000', t: 'Bahçeli müstakil villa', d: '4+1 · 600 m² bahçe', art: '<span class="cl"></span><span class="hill"></span><span class="tr2"></span><span class="hb"></span><span class="rf"></span><span class="dr"></span><span class="w1"></span><span class="w2"></span><span class="tr"></span>' },
+      { k: 't3', p: '₺2.150.000', t: 'Zeytinlik arsa', d: '1.250 m² · imarlı yola cepheli', art: '<span class="sn"></span><span class="h1"></span><span class="h2"></span><span class="ol"></span><span class="pin"></span>' },
+      { k: 't4', p: '₺18.500 / ay', t: 'Köşe başı dükkân', d: '85 m² · kiralık', art: '<span class="fc"></span><span class="sg"></span><span class="aw"></span><span class="wn"></span><span class="dr"></span><span class="pl"></span>' }
+    ]
+  };
+  var THEMES = [
+    { id: 'gece', n: 'Gece', sw: 'linear-gradient(135deg,#0D0E12 50%,#D7B47A 50%)', meta: '#0D0E12' },
+    { id: 'krem', n: 'Krem', sw: 'linear-gradient(135deg,#F7F2E9 50%,#A84F2B 50%)', meta: '#EADBC1' },
+    { id: 'zeytin', n: 'Zeytin', sw: 'linear-gradient(135deg,#151912 50%,#C6D16E 50%)', meta: '#151912' },
+    { id: 'ege', n: 'Ege', sw: 'linear-gradient(135deg,#F2F6F8 50%,#1D5F8E 50%)', meta: '#C6DCE9' }
+  ];
+
+  var $ = function (s) { return document.getElementById(s); };
+  var esc = function (t) { return String(t).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
+  function clean(v, max) {
+    return Array.from(String(v || '').replace(/[\u0000-\u001f\u007f-\u009f\u2028\u2029]/g, ' ').replace(/\s+/g, ' ').trim()).slice(0, max).join('').trim();
+  }
+
+  /* Sektöre göre önizleme hizmetleri — iddia/rakam içermez */
+  var SECTORS = [
+    { re: /hekim|doktor|^(dr|op|uzm|dt|psk|dyt|fzt)\b|klinik|diş|dis hek|ortodont|psikolog|psikiyatr|terapist|diyetisyen|fizyoterap|sağlık|saglik|eczac|veteriner/i, s: [
+      { t: 'Randevu & ön görüşme', d: 'Size uygun gün ve saati WhatsApp’tan birlikte belirleyelim.' },
+      { t: 'Muayene & değerlendirme', d: 'İhtiyacınızı dinleyip size uygun planı birlikte oluşturalım.' },
+      { t: 'Tedavi süreci', d: 'Uygulama adımları, süre ve sonrası hakkında merak ettikleriniz.' },
+      { t: 'Ücret & ödeme bilgisi', d: 'Uygulamalar ve ödeme seçenekleri hakkında bilgi alın.' } ] },
+    { re: /avukat|hukuk|^av\b|arabulucu|noter|müşavir|musavir|muhasebe/i, s: [
+      { t: 'Ön görüşme', d: 'Konunuzu kısaca yazın; size uygun görüşme zamanını belirleyelim.' },
+      { t: 'Danışmanlık', d: 'Hak ve seçenekleriniz hakkında açık, anlaşılır bilgi.' },
+      { t: 'Dosya & süreç takibi', d: 'İşleminizin her aşamasında düzenli bilgilendirme.' },
+      { t: 'Sözleşme incelemesi', d: 'İmzalamadan önce belgelerinizi birlikte gözden geçirelim.' } ] },
+    { re: /kuaför|kuafor|berber|güzellik|guzellik|estetisyen|makyaj|tırnak|tirnak|cilt bakım|saç|masaj/i, s: [
+      { t: 'Randevu al', d: 'Size uygun gün ve saati WhatsApp’tan hızlıca ayarlayalım.' },
+      { t: 'Hizmetler & fiyatlar', d: 'Güncel hizmet listesi ve fiyat bilgisi için yazın.' },
+      { t: 'Özel gün hazırlığı', d: 'Düğün, nişan ve davetler için önceden planlanan hazırlık.' },
+      { t: 'Bakım önerisi', d: 'Evde bakım için size uygun ürün ve rutin önerileri.' } ] }
+  ];
+  var GENERIC = [
+    { t: 'Randevu & ön görüşme', d: 'Size uygun gün ve saati WhatsApp’tan birlikte belirleyelim.' },
+    { t: 'Fiyat teklifi', d: 'İhtiyacınızı kısaca yazın; size özel teklifi hazırlayayım.' },
+    { t: 'Danışmanlık', d: 'Kararsız kaldığınız konularda açık, anlaşılır bilgi.' },
+    { t: 'Satış sonrası destek', d: 'İş bittikten sonra da bir mesaj uzağınızdayım.' }
+  ];
+  var RE = /gayrimenkul|emlak|konut|realtor|real estate|tapu/i;
+
+  var personal = false, realEstate = true;
+  try {
+    var q = new URLSearchParams(location.search);
+    var qm = clean(q.get('m'), 48), qu = clean(q.get('u'), 56), qf = clean(q.get('f'), 56), qc = clean(q.get('c'), 48);
+    var qp = String(q.get('p') || '').replace(/\D/g, '').replace(/^00/, '');
+    var qig = String(q.get('ig') || '').replace(/^@/, '').replace(/[^A-Za-z0-9._]/g, '').slice(0, 30);
+    var qw = clean(q.get('w'), 60).replace(/\s/g, ''), qe = clean(q.get('e'), 64).replace(/\s/g, '');
+    personal = !!(qm || qu || qf || qc);
+    if (qm) PRO.name = qm;
+    if (qu) PRO.title = qu;
+    if (qc) PRO.city = qc;
+    if (personal) PRO.company = qf;          /* önizlemede firma yoksa uydurma firma gösterme */
+    if (qp) {
+      if (qp.charAt(0) === '0') qp = '9' + qp;
+      else if (qp.length === 10 && qp.charAt(0) === '5') qp = '90' + qp;
+      if (/^90/.test(qp) ? qp.length === 12 : (qp.length >= 11 && qp.length <= 15)) PRO.phone = qp;
+    }
+    if (personal) {
+      realEstate = RE.test((PRO.title + ' ' + PRO.company).toLocaleLowerCase('tr-TR'));
+      PRO.social.ig = qig ? 'https://www.instagram.com/' + qig + '/' : '';
+      PRO.bio = (PRO.company ? PRO.company + ' adına ' : '') + PRO.city + ' ve çevresinde hizmet veriyorum. Tek dokunuşla arayın, WhatsApp’tan yazın ya da rehberinize ekleyin.';
+      if (!realEstate) {
+        var sec = SECTORS.filter(function (x) { return x.re.test(PRO.name.toLocaleLowerCase('tr-TR').slice(0, 5)) || x.re.test((PRO.title + ' ' + PRO.company).toLocaleLowerCase('tr-TR')); })[0];
+        PRO.services = sec ? sec.s : GENERIC;
+        PRO.portfolio = [];
+      }
+    } else if (qig) PRO.social.ig = 'https://www.instagram.com/' + qig + '/';
+    if (/^[a-z0-9-]+(\.[a-z0-9-]+)+(\/\S*)?$/i.test(qw.replace(/^https?:\/\//i, ''))) { PRO.web = qw.replace(/^https?:\/\//i, ''); PRO.social.web = 'https://' + PRO.web; }
+    if (/^[^@\s<>"']+@[a-z0-9-]+(\.[a-z0-9-]+)+$/i.test(qe)) PRO.email = qe;
+  } catch (e) {}
+
+  /* --- Yardımcılar --- */
+  var HONOR = /^((prof|doç|doc|dr|op|uzm|av|psk|dt|dyt|fzt|mim|müh|arş|ar|gör|öğr)\.?\s+)+/i;
+  function nameParts(full) {
+    var pre = (full.match(HONOR) || [''])[0].trim(), rest = full.slice((full.match(HONOR) || [''])[0].length).trim();
+    var w = rest.split(/\s+/).filter(Boolean);
+    return { prefix: pre, given: w.length > 1 ? w.slice(0, -1).join(' ') : (w[0] || ''), family: w.length > 1 ? w[w.length - 1] : '', words: w };
+  }
+  function first(s) { return (Array.from(s || '')[0] || ''); }
+  function initials(full) {
+    var w = nameParts(full).words;
+    if (!w.length) return '·';
+    return (first(w[0]) + (w.length > 1 ? first(w[w.length - 1]) : '')).toLocaleUpperCase('tr-TR');
+  }
+  function fmtPhone(p) {
+    var m = /^90(\d{3})(\d{3})(\d{2})(\d{2})$/.exec(p);
+    return m ? '+90 ' + m[1] + ' ' + m[2] + ' ' + m[3] + ' ' + m[4] : '+' + p;
+  }
+  function slug(s) {
+    var map = { 'ç': 'c', 'ğ': 'g', 'ı': 'i', 'i̇': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u', 'â': 'a', 'î': 'i', 'û': 'u' };
+    return s.toLocaleLowerCase('tr-TR').replace(/[çğıöşüâîû]/g, function (c) { return map[c]; }).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'kartvizit';
+  }
+  function pageUrl() { return location.href.split('#')[0]; }
+  function mapsUrl() { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent((PRO.company || PRO.name) + ' ' + PRO.city); }
+  function waUrl(msg) { return 'https://wa.me/' + PRO.phone + (msg ? '?text=' + encodeURIComponent(msg) : ''); }
+
+  var toastT;
+  function toast(msg) {
+    var t = $('toast');
+    t.textContent = msg; t.classList.add('on');
+    clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('on'); }, 2600);
+  }
+  function copyText(text) {
+    function legacy() {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;font-size:16px';
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      if (!ok) throw new Error('copy');
+    }
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text).catch(legacy);
+    return new Promise(function (res) { legacy(); res(); });
+  }
+  function download(blob, name) {
+    var u = URL.createObjectURL(blob), a = document.createElement('a');
+    a.href = u; a.download = name; a.rel = 'noopener'; a.style.display = 'none';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
+  }
+
+  /* --- Bilgileri yerleştir --- */
+  var webUrl = /^https?:\/\//.test(PRO.web) ? PRO.web : 'https://' + PRO.web;
+  $('nm').textContent = PRO.name;
+  if (Array.from(PRO.name).length > 24) $('nm').classList.add('long');
+  $('ttl').textContent = PRO.title;
+  $('co').textContent = PRO.company;
+  if (!PRO.company) { $('co').hidden = true; $('co').previousElementSibling.hidden = true; }
+  var brand = PRO.company || PRO.name;
+  $('bnm').textContent = brand;
+  $('bmk').textContent = first(nameParts(brand).words[0] || brand).toLocaleUpperCase('tr-TR') || '•';
+  $('city').textContent = PRO.city;
+  var ini = initials(PRO.name);
+  if (PRO.photo) {
+    var img = new Image(); img.alt = ''; img.src = PRO.photo;
+    img.onerror = function () { $('avIn').textContent = ini; };
+    $('avIn').textContent = ''; $('avIn').appendChild(img);
+  } else $('avIn').textContent = ini;
+  $('bgmono').textContent = ini;
+  $('bio').textContent = PRO.bio;
+  document.title = PRO.name + ' — ' + PRO.title + ' | Dijital Kartvizit';
+  if (personal) {
+    /* Gerçek bir kişinin adıyla iddialı rakamlar gösterilmesin */
+    $('stats').innerHTML = [['QR', 'okut, aç'], ['NFC', 'dokun, aç'], ['vCard', 'rehbere ekle']].map(function (v) {
+      return '<div><b>' + v[0] + '</b><span>' + v[1] + '</span></div>';
+    }).join('');
+    $('rev').hidden = true; $('revNote').hidden = false;
+    $('h-rev').textContent = 'Google yorumu';
+    if (!PRO.portfolio.length) $('h-pf').closest('section').hidden = true;
+    else $('pfHint').textContent = 'Örnek ilanlar · kaydırın →';
+  }
+
+  var tel = 'tel:+' + PRO.phone;
+  $('aCall').href = tel; $('rTel').href = tel; $('telTx').textContent = fmtPhone(PRO.phone);
+  $('aWa').href = waUrl('Merhaba ' + PRO.name + ', dijital kartvizitinizden ulaşıyorum.');
+  $('aMail').href = 'mailto:' + PRO.email; $('rMail').href = 'mailto:' + PRO.email;
+  var at = PRO.email.lastIndexOf('@');
+  $('mailTx').innerHTML = at > 0 ? esc(PRO.email.slice(0, at)) + '<wbr>@' + esc(PRO.email.slice(at + 1)) : esc(PRO.email);
+  $('rWeb').href = webUrl; $('webTx').textContent = PRO.web.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  $('aMap').href = mapsUrl(); $('rMap').href = mapsUrl(); $('adrTx').textContent = (PRO.company ? PRO.company + ' · ' : '') + PRO.city;
+  var SOC = [['ig', 'Instagram', 'i-ig'], ['li', 'LinkedIn', 'i-in'], ['tt', 'TikTok', 'i-tt'], ['web', 'Web sitesi', 'i-globe']].filter(function (x) { return /^https:\/\//.test(PRO.social[x[0]] || ''); });
+  if (SOC.length === 1 && SOC[0][0] === 'web') SOC = [];   /* web zaten İletişim'de */
+  $('soc').style.setProperty('--n', Math.max(1, SOC.length));
+  $('soc').hidden = !SOC.length;
+  $('soc').innerHTML = SOC.map(function (x) {
+    return '<a class="tap" href="' + esc(PRO.social[x[0]]) + '" target="_blank" rel="noopener" aria-label="' + x[1] + '"><svg class="ico" aria-hidden="true"><use href="#' + x[2] + '"/></svg>' + (SOC.length <= 3 ? '<span>' + x[1] + '</span>' : '') + '</a>';
+  }).join('');
+  $('revBtn').href = PRO.review || mapsUrl();
+  $('bankNm').textContent = PRO.bank; $('ibanTx').textContent = PRO.iban; $('ibanWho').textContent = PRO.name;
+  $('order').href = 'https://wa.me/905306284284?text=' + encodeURIComponent('Merhaba EY Studios, dijital kartvizit hakkında bilgi almak istiyorum.');
+
+  $('svc').innerHTML = PRO.services.map(function (s, i) {
+    return '<a class="row tap" target="_blank" rel="noopener" href="' + esc(waUrl('Merhaba ' + PRO.name + ', "' + s.t + '" hakkında bilgi almak istiyorum.')) + '">' +
+      '<span class="no">0' + (i + 1) + '</span><span class="rt"><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></span>' +
+      '<svg class="ico ch"><use href="#i-chev"/></svg></a>';
+  }).join('');
+  $('strip').innerHTML = PRO.portfolio.map(function (p) {
+    return '<a class="tile tap ' + p.k + '" target="_blank" rel="noopener" aria-label="' + esc(p.t + ', ' + p.p) + '" href="' + esc(waUrl('Merhaba ' + PRO.name + ', "' + p.t + '" (' + p.p + ') ilanı hakkında bilgi almak istiyorum.')) + '">' +
+      p.art + '<span class="pr">' + esc(p.p) + '</span><span class="cap"><b>' + esc(p.t) + '</b><em>' + esc(p.d) + '</em></span></a>';
+  }).join('');
+
+  /* --- Çalışma saatleri + canlı rozet (Türkiye saati) --- */
+  var DAYS = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+  function toMin(s) { var a = s.split(':'); return +a[0] * 60 + +a[1]; }
+  function nowTR() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Istanbul', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()), o = {};
+      parts.forEach(function (p) { o[p.type] = p.value; });
+      var d = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(o.weekday);
+      if (d >= 0) return { d: d, m: (+o.hour % 24) * 60 + +o.minute };
+    } catch (e) {}
+    var n = new Date(); return { d: n.getDay(), m: n.getHours() * 60 + n.getMinutes() };
+  }
+  function status() {
+    var n = nowTR(), h = PRO.hours[n.d];
+    if (h && n.m >= toMin(h[0]) && n.m < toMin(h[1])) return { open: true, t: 'Şu an açık', s: 'Kapanış ' + h[1] };
+    if (h && n.m < toMin(h[0])) return { open: false, t: 'Şu an kapalı', s: 'Bugün ' + h[0] };
+    for (var i = 1; i <= 7; i++) {
+      var d = (n.d + i) % 7, hh = PRO.hours[d];
+      if (hh) return { open: false, t: 'Şu an kapalı', s: (i === 1 ? 'Yarın' : DAYS[d]) + ' ' + hh[0] };
+    }
+    return { open: false, t: 'Şu an kapalı', s: '' };
+  }
+  function renderHours() {
+    var n = nowTR(), st = status();
+    $('hrs').innerHTML = [1, 2, 3, 4, 5, 6, 0].map(function (d) {
+      var h = PRO.hours[d];
+      return '<div class="row' + (d === n.d ? ' today' : '') + '"><span>' + DAYS[d] + (d === n.d ? ' · bugün' : '') + '</span><span' + (h ? '' : ' class="cl"') + '>' + (h ? h[0] + ' – ' + h[1] : 'Kapalı') + '</span></div>';
+    }).join('');
+    var label = st.t + (st.s ? ' · ' + (st.open ? st.s : 'Açılış ' + st.s.replace(/^Bugün /, 'bugün ').replace(/^Yarın /, 'yarın ')) : '');
+    ['pillTop', 'pillHrs'].forEach(function (id) {
+      var p = $(id); p.classList.toggle('on', st.open);
+      p.lastElementChild.textContent = id === 'pillTop' ? st.t : label;
+      p.title = label;
+    });
+    $('avSt').classList.toggle('on', st.open);
+  }
+  renderHours(); setInterval(renderHours, 60000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) renderHours(); });
+  addEventListener('pageshow', function (e) { if (e.persisted) renderHours(); });
+
+  /* --- vCard 3.0 --- */
+  function vEsc(s) { return String(s).replace(/\\/g, '\\\\').replace(/\r?\n/g, '\\n').replace(/([,;])/g, '\\$1'); }
+  function fold(line) {
+    var out = '', cur = '', len = 0;
+    Array.from(line).forEach(function (ch) {
+      var b = QRGen.utf8(ch).length;
+      if (len + b > 75) { out += cur + '\r\n '; cur = ''; len = 1; }
+      cur += ch; len += b;
+    });
+    return out + cur;
+  }
+  function vcard() {
+    var np = nameParts(PRO.name), loc = PRO.city.split(',');
+    var locality = loc[0].trim(), region = loc.length > 1 ? loc.slice(1).join(',').trim() : '';
+    var L = [
+      'BEGIN:VCARD', 'VERSION:3.0',
+      'N:' + [vEsc(np.family), vEsc(np.given), '', vEsc(np.prefix), ''].join(';'),
+      'FN:' + vEsc(PRO.name),
+      PRO.company ? 'ORG:' + vEsc(PRO.company) : '',
+      'TITLE:' + vEsc(PRO.title),
+      'TEL;TYPE=CELL,VOICE:+' + PRO.phone,
+      'EMAIL;TYPE=INTERNET,WORK:' + PRO.email,
+      'URL:' + webUrl,
+      'item1.URL:' + pageUrl(), 'item1.X-ABLabel:Dijital kartvizit',
+      PRO.social.ig ? 'X-SOCIALPROFILE;TYPE=instagram:' + PRO.social.ig : '',
+      PRO.social.li ? 'X-SOCIALPROFILE;TYPE=linkedin:' + PRO.social.li : '',
+      'ADR;TYPE=WORK:;;;' + vEsc(locality) + ';' + vEsc(region) + ';;Türkiye',
+      'NOTE:' + vEsc(PRO.bio + ' — Dijital kartvizit: ' + pageUrl()),
+      'END:VCARD'
+    ];
+    return L.filter(Boolean).map(fold).join('\r\n') + '\r\n';
+  }
+  var IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  $('vcf').addEventListener('click', function () {
+    if (IOS) {
+      /* iOS / uygulama içi tarayıcılar: indirme yerine "Yeni Kişi" kartını doğrudan açar */
+      toast('Kişi kartı açılıyor…');
+      location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcard());
+      return;
+    }
+    download(new Blob([vcard()], { type: 'text/vcard;charset=utf-8' }), slug(PRO.name) + '.vcf');
+    toast('Kişi kartı indirildi — açıp “Rehbere ekle”ye dokunun');
+  });
+
+  /* --- Paylaş / kopyala --- */
+  function copyLink() {
+    copyText(pageUrl()).then(function () { toast('Bağlantı kopyalandı'); }, function () { toast('Kopyalanamadı — adres çubuğundan paylaşın'); });
+  }
+  function share() {
+    var data = { title: document.title, text: PRO.name + ' — ' + PRO.title + ', ' + PRO.company, url: pageUrl() };
+    if (navigator.share) navigator.share(data).catch(function (e) { if (!e || e.name !== 'AbortError') copyLink(); });
+    else copyLink();
+  }
+  $('share').addEventListener('click', share);
+  $('shareTop').addEventListener('click', share);
+  $('linkCp').addEventListener('click', copyLink);
+  $('ibanCp').addEventListener('click', function () {
+    copyText(PRO.iban.replace(/\s+/g, '')).then(function () { toast('IBAN kopyalandı'); }, function () { toast('Kopyalanamadı'); });
+  });
+  $('toQr').addEventListener('click', function (e) {
+    e.preventDefault();
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    $('qr').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  });
+
+  /* --- QR --- */
+  var qrData = null;
+  function paintQR(c, max) {
+    var dpr = Math.min(3, Math.max(1, window.devicePixelRatio || 1)), n = qrData.size + 8;
+    var scale = Math.max(1, Math.floor(max * dpr / n)), css = n * scale / dpr;
+    QRGen.draw(c, qrData, scale, 4);
+    c.style.width = css + 'px'; c.style.height = '';
+    c.dataset.version = qrData.version; c.dataset.text = pageUrl();
+  }
+  function renderQR() {
+    var url = pageUrl(), c = $('qrc');
+    $('qrUrl').textContent = url.replace(/^https?:\/\//, '').split(/[?#]/)[0];
+    try { qrData = QRGen.encode(url); } catch (e) { qrData = null; c.style.display = 'none'; return; }
+    /* Kutuya sığan en büyük tam sayı ölçek: modüller net, en-boy oranı bozulmaz */
+    var box = c.closest('.qrbox'), cs = getComputedStyle(box);
+    var avail = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - 24;
+    paintQR(c, Math.max(120, Math.min(216, avail)));
+    var c2 = $('qrc2');
+    if (c2 && c2.offsetParent !== null) paintQR(c2, 200);
+  }
+  renderQR();
+  var rzT, rzW = innerWidth, rzD = window.devicePixelRatio;
+  addEventListener('resize', function () {
+    clearTimeout(rzT);
+    rzT = setTimeout(function () {
+      if (innerWidth === rzW && window.devicePixelRatio === rzD) return;
+      rzW = innerWidth; rzD = window.devicePixelRatio; renderQR();
+    }, 180);
+  }, { passive: true });
+
+  /* --- Portföy okları (masaüstü) --- */
+  var strip = $('strip');
+  function pfState() {
+    var max = strip.scrollWidth - strip.clientWidth - 2;
+    $('pfPrev').disabled = strip.scrollLeft <= 2; $('pfNext').disabled = strip.scrollLeft >= max;
+  }
+  function pfGo(dir) {
+    var t = strip.querySelector('.tile'), step = t ? t.getBoundingClientRect().width + 12 : 260;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    strip.scrollBy({ left: dir * step, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  $('pfPrev').addEventListener('click', function () { pfGo(-1); });
+  $('pfNext').addEventListener('click', function () { pfGo(1); });
+  strip.addEventListener('scroll', function () { requestAnimationFrame(pfState); }, { passive: true });
+  pfState();
+  $('qrDl').addEventListener('click', function () {
+    if (!qrData) return;
+    var s = Math.max(8, Math.ceil(900 / (qrData.size + 8))), W = (qrData.size + 8) * s, capH = Math.round(W * .2);
+    var q = document.createElement('canvas');
+    QRGen.draw(q, qrData, s, 4);
+    var out = document.createElement('canvas'); out.width = W; out.height = W + capH;
+    var x = out.getContext('2d');
+    x.fillStyle = '#fff'; x.fillRect(0, 0, out.width, out.height); x.drawImage(q, 0, 0);
+    x.fillStyle = '#111318'; x.textAlign = 'center'; x.textBaseline = 'alphabetic';
+    var fs = Math.round(W * .055);
+    x.font = '800 ' + fs + 'px Manrope, Inter, system-ui, sans-serif';
+    var nmTx = PRO.name; while (x.measureText(nmTx).width > W * .86 && nmTx.length > 4) nmTx = nmTx.slice(0, -2) + '…';
+    x.fillText(nmTx, W / 2, W + capH * .28);
+    x.font = '600 ' + Math.round(fs * .62) + 'px Manrope, Inter, system-ui, sans-serif'; x.fillStyle = '#5B5E66';
+    var sub = PRO.title + ' · ' + PRO.company; while (x.measureText(sub).width > W * .86 && sub.length > 4) sub = sub.slice(0, -2) + '…';
+    x.fillText(sub, W / 2, W + capH * .58);
+    out.toBlob(function (b) { if (b) { download(b, 'kartvizit-qr-' + slug(PRO.name) + '.png'); toast('QR kod indirildi'); } }, 'image/png');
+  });
+
+  /* --- Tema (demo) --- */
+  function curTheme() { return document.documentElement.getAttribute('data-theme') || 'gece'; }
+  $('themes').innerHTML = THEMES.map(function (t) {
+    return '<button type="button" class="th tap" data-t="' + t.id + '" aria-pressed="false"><i style="background:' + t.sw + '"></i>' + t.n + '</button>';
+  }).join('');
+  function paintThemes() {
+    var cur = curTheme(), th = THEMES.filter(function (t) { return t.id === cur; })[0] || THEMES[0];
+    Array.prototype.forEach.call($('themes').children, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-t') === th.id)); });
+    var m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', th.meta);
+  }
+  paintThemes();
+  $('themes').addEventListener('click', function (e) {
+    var b = e.target.closest('.th'); if (!b) return;
+    var t = b.getAttribute('data-t');
+    document.documentElement.setAttribute('data-theme', t);
+    try {
+      var u = new URL(location.href);
+      if (t === 'gece') u.searchParams.delete('t'); else u.searchParams.set('t', t);
+      history.replaceState(null, '', u.pathname + u.search);
+    } catch (er) {}
+    paintThemes(); renderQR();
+  });
+})();
+</script>
+<script>
+/* Sayfa sonunda footer görünürken "örnek çalışma" düğmesini gizle; footer'daki EY Studios imzasının üstüne binmesin */
+(function () {
+  var b = document.querySelector('.demo-back'), f = document.querySelector('footer');
+  if (!b || !f || !('IntersectionObserver' in window)) return;
+  b.style.transition = 'opacity .35s';
+  new IntersectionObserver(function (e) {
+    var on = e[0].isIntersecting;
+    b.style.opacity = on ? '0' : '';
+    b.style.pointerEvents = on ? 'none' : '';
+    if (on) { b.setAttribute('tabindex', '-1'); b.setAttribute('aria-hidden', 'true'); }
+    else { b.removeAttribute('tabindex'); b.removeAttribute('aria-hidden'); }
+  }).observe(f);
+})();
+</script>
+</body>
+</html>
