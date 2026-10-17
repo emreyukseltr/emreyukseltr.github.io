@@ -791,6 +791,12 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     /* JS getDay sırası: 0 Pazar … 6 Cumartesi. null = kapalı */
     hours: [null, [10, 20], [10, 20], [10, 20], [10, 20], [10, 20], [10, 20]]
   };
+  /* Satış önizlemesi: ?m=Salon+Adı&c=Semt,+Şehir (işletme bilgisi repoya girmez, yalnızca linkte durur) */
+  try {
+    var qp = new URLSearchParams(location.search), qm = (qp.get('m') || '').trim().slice(0, 40), qc = (qp.get('c') || '').trim().slice(0, 40);
+    if (qm) { SALON.name = qm; document.title = qm + ' — Saç & Güzellik'; }
+    if (qc) { SALON.area = qc; SALON.address = qc.replace(/[<>&]/g, ''); SALON.mapsQuery = qc; }
+  } catch (e) {}
   /* Gerçek fotoğraflar: lookbook kartı ya da uzman için 'img' alanına dosya yolu/URL yazın.
      Boş bırakılırsa sayfanın kendi çizimi görünür. */
 
@@ -2380,6 +2386,10 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     var h = $('#hdr');
     h.classList.remove('tight');
     if (h.scrollWidth > h.clientWidth + 1) h.classList.add('tight');
+    /* Uzun salon adları alttaki büyük yazıdan taşmasın */
+    var big = $('.ftr-big');
+    big.style.fontSize = '';
+    if (big.scrollWidth > big.clientWidth + 1) big.style.fontSize = (parseFloat(getComputedStyle(big).fontSize) * big.clientWidth / big.scrollWidth * .97) + 'px';
   }
 
   /* ---------- Salon bilgisini yerleştir ---------- */
