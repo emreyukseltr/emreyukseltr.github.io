@@ -380,6 +380,44 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 
 <a href="index.html" class="ey-demo-back hover-target" data-i18n="EY Studios Geri">← EY Studios örnek çalışma</a>
 
+<!-- Satış önizlemesi: ?m=Dr.+Ad+Soyad&c=Semt,+Şehir&s=estetik (işletme bilgisi repoya girmez, yalnızca linkte durur) -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search), m = (q.get('m') || '').trim().slice(0, 40), c = (q.get('c') || '').trim().slice(0, 40), s = q.get('s');
+    if (!m) return;
+    var $ = function (sel) { return document.querySelector(sel); };
+    /* Değiştirilen metin Türkçe kalsın: sözlük anahtarını kaldır */
+    function set(el, txt, html) { if (!el) return; el.removeAttribute('data-i18n'); if (html) el.innerHTML = txt; else el.textContent = txt; }
+    var w = m.split(' '), last = w.pop(), esc = function (t) { return t.replace(/[&<>"]/g, function (ch) { return '&#' + ch.charCodeAt(0) + ';'; }); };
+    set($('.logo'), esc(w.join(' ')) + (w.length ? ' ' : '') + '<span>' + esc(last) + '</span>', true);
+    set($('.footer-huge-text'), m.toLocaleUpperCase('tr'));
+    set($('[data-i18n="Telif"]'), '© ' + new Date().getFullYear() + ' ' + m + '. Tüm hakları saklıdır.');
+    if (c) set($('[data-i18n="Adres"]'), c);
+    document.title = m + (s === 'estetik' ? ' | Medikal Estetik' : ' | Klinik');
+    /* Gerçek bir hekimin adıyla iddialı rakamlar gösterilmesin */
+    var st = document.querySelectorAll('.trust-bar .stat');
+    [['1:1', 'Kişiye Özel Planlama'], ['Doğal', 'Sonuç Odaklı Yaklaşım'], [c ? c.split(',').pop().trim() : 'Klinik', 'Randevulu Muayene']].forEach(function (v, i) {
+      if (!st[i]) return; set(st[i].querySelector('.stat-num'), v[0]); set(st[i].querySelector('.stat-label'), v[1]);
+    });
+    if (s !== 'estetik') return;
+    set($('[data-i18n="Sanat ve Cerrahinin"]'), 'Bilim ve Doğallığın');
+    set($('[data-i18n="Kusursuz Uyumu"]'), 'Zarif Dengesi');
+    set($('[data-i18n="hero-desc"]'), 'Yüzünüzün doğal ifadesini koruyan, muayene sonrası size özel planlanan medikal estetik uygulamalar.');
+    set($('[data-i18n="Dokunuşun Gücü"]'), 'Doğal Görünüm');
+    set($('[data-i18n="about-1"]'), 'Amacımız sizi değiştirmek değil; cildinizin ve yüzünüzün en sağlıklı, en dinlenmiş halini ortaya çıkarmak.');
+    set($('[data-i18n="about-2"]'), 'Her uygulamadan önce ayrıntılı bir görüşme yapılır; size uygun olan yöntem birlikte belirlenir.');
+    var mq = $('.marquee-content');
+    if (mq) { mq.innerHTML = new Array(3).join('<span>MEDİKAL ESTETİK</span> ✦ <span>DOĞAL SONUÇLAR</span> ✦ <span>KİŞİYE ÖZEL PLAN</span> ✦ '); }
+    [['Laparoskopik Cerrahi', 'srv-1', 'Cilt Yenileme', 'Babylifting, mezoterapi ve cilt kalitesini artıran uygulamalarla daha parlak, dinlenmiş bir görünüm.'],
+     ['Estetik & Rekonstrüktif', 'srv-2', 'Yüz Şekillendirme', 'Yüz hatlarınızla uyumlu, abartısız ve doğal sonuç hedefleyen dolgu uygulamaları.'],
+     ['Endoskopik Tarama', 'srv-3', 'Saç & Cilt Bakımı', 'PRP ve destekleyici tedavilerle saç ve cilt sağlığına yönelik kişiye özel planlar.']].forEach(function (r) {
+      set($('[data-i18n="' + r[0] + '"]'), r[2]); set($('[data-i18n="' + r[1] + '"]'), r[3]);
+    });
+  } catch (e) {}
+})();
+</script>
+
 <!-- 8 DİLLİ SÖZLÜK VE KUSURSUZ MOTOR -->
 <script>
 window.EY_PAGE_DICT = {
