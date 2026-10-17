@@ -507,6 +507,11 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
           <button type="button" data-i="3" aria-pressed="false" data-i18n="p4">Diş kliniği</button>
           <button type="button" data-i="4" aria-pressed="false" data-i18n="p5">Restoran</button>
           <button type="button" data-i="5" aria-pressed="false" data-i18n="p6">Kuaför</button>
+          <button type="button" data-i="6" aria-pressed="false" data-i18n="p7">Berber</button>
+          <button type="button" data-i="7" aria-pressed="false" data-i18n="p8">Tırnak</button>
+          <button type="button" data-i="8" aria-pressed="false" data-i18n="p9">Oto bakım</button>
+          <button type="button" data-i="9" aria-pressed="false" data-i18n="p10">Takı</button>
+          <button type="button" data-i="10" aria-pressed="false" data-i18n="p11">Psikolog</button>
         </div>
         <a class="picker-link" id="pLink" href="avukat.html" data-i18n="p_link">Örneği aç: Avukat →</a>
       </div>
@@ -973,14 +978,19 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     { url: 'kokbeslenme.com', name: 'kök Beslenme', big: 'Beslenmeni kökünden değiştir.', sub: 'Sürdürülebilir, kişiye özel planlar.', btn: 'Ön görüşme talep et', bg: '#16231A', ink: '#EEF1E7', acc: '#D9A441', on: '#16231A', card: '#1F3A24' },
     { url: 'auradental.com', name: 'Aura Dental', big: 'Gülüşün, tasarlandı.', sub: 'İmplant, gülüş tasarımı ve ortodonti.', btn: 'Randevu al', bg: '#EEF3F0', ink: '#09130F', acc: '#0B8F7A', on: '#FFFFFF', card: '#D6E6E0' },
     { url: 'alba-firenze.it', name: 'Alba', big: "Toskana'nın ritmiyle bir sofra.", sub: 'Menü, şef ve WhatsApp rezervasyonu.', btn: 'Rezervasyon', bg: '#190C09', ink: '#F4E8CF', acc: '#F0A92E', on: '#190C09', card: '#2B1511' },
-    { url: 'maisonnova.com', name: 'Maison Nova', big: 'Her tel, bir imza.', sub: 'Renk laboratuvarı ve online randevu.', btn: 'Randevu al', bg: '#0E0B0A', ink: '#F4EEE6', acc: '#D8B88A', on: '#0E0B0A', card: '#1A1411' }
+    { url: 'maisonnova.com', name: 'Maison Nova', big: 'Her tel, bir imza.', sub: 'Renk laboratuvarı ve online randevu.', btn: 'Randevu al', bg: '#0E0B0A', ink: '#F4EEE6', acc: '#D8B88A', on: '#0E0B0A', card: '#1A1411' },
+    { url: 'novabarber.com', name: 'Nova Barber', big: 'Keskin çizgiler, net tarz.', sub: 'Saç, sakal ve VIP bakım.', btn: 'Randevu al', bg: '#0B0A09', ink: '#F4EEE6', acc: '#C9A15A', on: '#0B0A09', card: '#1A1714' },
+    { url: 'novanails.com', name: 'Nova Nails', big: 'Her tırnak, küçük bir sanat.', sub: 'Protez, kalıcı oje ve nail art.', btn: 'Randevu al', bg: '#1A0E12', ink: '#FBEFF2', acc: '#E8A0B4', on: '#1A0E12', card: '#2A1820' },
+    { url: 'novadetailing.com', name: 'Nova Detailing', big: 'Aracınız ilk günkü gibi parlasın.', sub: 'Aracını seç, fiyatını anında gör.', btn: 'Fiyatımı hesapla', bg: '#0A0C0F', ink: '#F2F4F7', acc: '#E5262C', on: '#FFFFFF', card: '#171B21' },
+    { url: 'mirataki.com', name: 'Mira Takı', big: 'Her parça, bir hikâye.', sub: 'Katalog, sepet ve WhatsApp siparişi.', btn: 'Koleksiyonu gör', bg: '#FBF6F1', ink: '#2A1E22', acc: '#7C3A4A', on: '#FFFFFF', card: '#F1E6DE' },
+    { url: 'psikologdenizarslan.com', name: 'Psk. Deniz Arslan', big: 'Kendinizi anlatmak için güvenli bir alan.', sub: 'Çocuk, ergen, yetişkin ve aile.', btn: 'Ön görüşme talep et', bg: '#FBF7F1', ink: '#2B2833', acc: '#E07A62', on: '#FFFFFF', card: '#F4EDE2' }
   ];
   var stage = document.getElementById('stage');
   var urlEl = document.getElementById('hUrl');
   var dataEls = stage ? stage.querySelectorAll('[data-k]') : [];
   var cur = 0, typeTimer = null, cycleTimer = null;
-  var pages = ['avukat.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi.html', 'restoran.html', 'kuafor.html'];
-  var labels = ['Avukat', 'Doktor', 'Diyetisyen', 'Diş kliniği', 'Restoran', 'Kuaför'];
+  var pages = ['avukat.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi.html', 'restoran.html', 'kuafor.html', 'kuafor.html?m=Nova+Barber&s=berber', 'kuafor.html?m=Nova+Nails&s=tirnak', 'oto.html', 'taki.html', 'psikolog.html'];
+  var labels = ['Avukat', 'Doktor', 'Diyetisyen', 'Diş kliniği', 'Restoran', 'Kuaför', 'Berber', 'Tırnak', 'Oto bakım', 'Takı', 'Psikolog'];
   var pBtns = document.querySelectorAll('.picker-btns button');
   var pLink = document.getElementById('pLink');
 
@@ -1574,6 +1584,13 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     it: ["Psicologo e terapeuta", "Aree di intervento, approccio, modulo per un primo colloquio in studio o online e attenzione alla riservatezza.", "Sito per psicologi", "Un sito accogliente dove i pazienti vedono le tue aree di intervento e chiedono un primo colloquio in studio o online."],
     ru: ["Психолог и терапевт", "Направления работы, подход, форма записи на первую встречу очно или онлайн и акцент на конфиденциальность.", "Сайт для психолога", "Тёплый сайт, где клиенты видят направления вашей работы и записываются на первую встречу очно или онлайн."]
   };
+  var PK = {
+    tr: ['Berber', 'Tırnak', 'Oto bakım', 'Takı', 'Psikolog'], en: ['Barber', 'Nails', 'Car care', 'Jewellery', 'Psychologist'],
+    de: ['Barbier', 'Nägel', 'Autopflege', 'Schmuck', 'Psychologe'], es: ['Barbería', 'Uñas', 'Coches', 'Joyería', 'Psicólogo'],
+    nl: ['Barbier', 'Nagels', 'Autopoets', 'Sieraden', 'Psycholoog'], fr: ['Barbier', 'Ongles', 'Auto', 'Bijoux', 'Psychologue'],
+    it: ['Barbiere', 'Unghie', 'Auto', 'Gioielli', 'Psicologo'], ru: ['Барбер', 'Ногти', 'Автоуход', 'Украшения', 'Психолог']
+  };
+  Object.keys(PK).forEach(function (l) { var o = T[l] = T[l] || {}; PK[l].forEach(function (v, n) { o['p' + (n + 7)] = v; }); });
   Object.keys(NEWK2).forEach(function (l) {
     var v = NEWK2[l], o = T[l] = T[l] || {};
     ['c9_t', 'c9_d', 'sek9_t', 'sek9_d'].forEach(function (k, n) { o[k] = v[n]; });
@@ -1590,9 +1607,27 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     it: ["Potere. Prestigio. Difesa impeccabile.", "Diritto penale, commerciale e internazionale.", "Richiedi una consulenza", "La perfetta armonia tra arte e chirurgia.", "Chirurgia laparoscopica ed estetica.", "Prenota una visita", "Cambia la tua alimentazione alla radice.", "Piani sostenibili e personalizzati.", "Richiedi una prima chiamata", "Il tuo sorriso, progettato.", "Impianti, smile design e ortodonzia.", "Prenota una visita", "Una tavola al ritmo della Toscana.", "Menu, chef e prenotazione su WhatsApp.", "Prenota", "Ogni ciocca, una firma.", "Laboratorio colore e prenotazione online.", "Prenota"],
     ru: ["Сила. Престиж. Безупречная защита.", "Уголовное, коммерческое и международное право.", "Получить консультацию", "Идеальная гармония искусства и хирургии.", "Лапароскопическая хирургия и эстетика.", "Записаться", "Измените питание у корня.", "Устойчивые индивидуальные планы.", "Запросить первую беседу", "Ваша улыбка, спроектирована.", "Импланты, дизайн улыбки и ортодонтия.", "Записаться", "Стол в ритме Тосканы.", "Меню, шеф и бронь в WhatsApp.", "Забронировать", "Каждая прядь — подпись.", "Цветовая лаборатория и онлайн-запись.", "Записаться"]
   };
+  /* Yeni örnekler: [başlık, alt metin, düğme] — oto, takı, psikolog, berber, tırnak */
+  var DM2 = {
+    tr: ['Aracınız ilk günkü gibi parlasın.', 'Aracını seç, fiyatını anında gör.', 'Fiyatımı hesapla', 'Her parça, bir hikâye.', 'Katalog, sepet ve WhatsApp siparişi.', 'Koleksiyonu gör', 'Kendinizi anlatmak için güvenli bir alan.', 'Çocuk, ergen, yetişkin ve aile.', 'Ön görüşme talep et', 'Keskin çizgiler, net tarz.', 'Saç, sakal ve VIP bakım.', 'Randevu al', 'Her tırnak, küçük bir sanat.', 'Protez, kalıcı oje ve nail art.', 'Randevu al'],
+    en: ['Make your car shine like new.', 'Pick your car, see the price instantly.', 'Get my price', 'Every piece tells a story.', 'Catalogue, basket and WhatsApp orders.', 'View collection', 'A safe space to be heard.', 'Children, teens, adults and families.', 'Request an intro call', 'Sharp lines, clean style.', 'Hair, beard and VIP grooming.', 'Book now', 'Every nail, a little artwork.', 'Extensions, gel polish and nail art.', 'Book now'],
+    de: ['Ihr Auto glänzt wie neu.', 'Auto wählen, Preis sofort sehen.', 'Preis berechnen', 'Jedes Stück erzählt eine Geschichte.', 'Katalog, Warenkorb und WhatsApp-Bestellung.', 'Kollektion ansehen', 'Ein sicherer Raum, um gehört zu werden.', 'Kinder, Jugendliche, Erwachsene und Familien.', 'Erstgespräch anfragen', 'Scharfe Linien, klarer Stil.', 'Haare, Bart und VIP-Pflege.', 'Termin buchen', 'Jeder Nagel ein kleines Kunstwerk.', 'Modellage, Gel-Lack und Nail Art.', 'Termin buchen'],
+    es: ['Que tu coche brille como nuevo.', 'Elige tu coche y mira el precio al instante.', 'Calcular precio', 'Cada pieza cuenta una historia.', 'Catálogo, cesta y pedidos por WhatsApp.', 'Ver colección', 'Un espacio seguro para ser escuchado.', 'Niños, adolescentes, adultos y familias.', 'Pedir primera consulta', 'Líneas nítidas, estilo limpio.', 'Pelo, barba y cuidado VIP.', 'Reservar', 'Cada uña, una pequeña obra de arte.', 'Extensiones, esmalte semipermanente y nail art.', 'Reservar'],
+    nl: ['Je auto glanst als nieuw.', 'Kies je auto, zie direct de prijs.', 'Bereken prijs', 'Elk stuk vertelt een verhaal.', 'Catalogus, winkelmand en bestellen via WhatsApp.', 'Bekijk collectie', 'Een veilige plek om gehoord te worden.', 'Kinderen, tieners, volwassenen en gezinnen.', 'Kennismaking aanvragen', 'Scherpe lijnen, strakke stijl.', 'Haar, baard en VIP-verzorging.', 'Afspraak maken', 'Elke nagel een klein kunstwerk.', 'Verlenging, gellak en nail art.', 'Afspraak maken'],
+    fr: ['Votre voiture brille comme neuve.', 'Choisissez votre voiture, voyez le prix tout de suite.', 'Calculer mon prix', 'Chaque pièce raconte une histoire.', 'Catalogue, panier et commande WhatsApp.', 'Voir la collection', 'Un espace sûr pour être écouté.', 'Enfants, ados, adultes et familles.', 'Demander un premier rendez-vous', 'Lignes nettes, style soigné.', 'Cheveux, barbe et soins VIP.', 'Réserver', 'Chaque ongle, une petite œuvre d’art.', 'Capsules, vernis semi-permanent et nail art.', 'Réserver'],
+    it: ['La tua auto brilla come nuova.', "Scegli l'auto, vedi subito il prezzo.", 'Calcola il prezzo', 'Ogni pezzo racconta una storia.', 'Catalogo, carrello e ordini su WhatsApp.', 'Vedi la collezione', 'Uno spazio sicuro per essere ascoltati.', 'Bambini, adolescenti, adulti e famiglie.', 'Richiedi un primo colloquio', 'Linee nette, stile pulito.', 'Capelli, barba e cura VIP.', 'Prenota', "Ogni unghia, una piccola opera d'arte.", 'Ricostruzione, semipermanente e nail art.', 'Prenota'],
+    ru: ['Ваш автомобиль сияет как новый.', 'Выберите авто — цена сразу.', 'Рассчитать цену', 'Каждое украшение — история.', 'Каталог, корзина и заказ в WhatsApp.', 'Смотреть коллекцию', 'Безопасное место, где вас услышат.', 'Дети, подростки, взрослые и семьи.', 'Записаться на встречу', 'Чёткие линии, аккуратный стиль.', 'Стрижка, борода и VIP-уход.', 'Записаться', 'Каждый ноготь — маленькое искусство.', 'Наращивание, гель-лак и нейл-арт.', 'Записаться']
+  };
+  Object.keys(DM).forEach(function (l) { DM[l] = DM[l].slice(0, 18).concat((DM2[l] || DM2.en).slice(0, 9)); });
+  /* Seçicideki sıra: 0–5 eski sektörler, 6 berber, 7 tırnak, 8 oto, 9 takı, 10 psikolog */
+  var PICK = [0, 1, 2, 3, 4, 5, 'b', 'n', 6, 7, 8];
   window.eyDemo = function (i, key) {
     var n = { big: 0, sub: 1, btn: 2 }[key];
-    return n === undefined ? null : (DM[cur] || DM.en)[i * 3 + n];
+    if (n === undefined) return null;
+    var p = PICK[i], l = DM[cur] ? cur : 'en';
+    if (p === 'b') return (DM2[l] || DM2.en)[9 + n];
+    if (p === 'n') return (DM2[l] || DM2.en)[12 + n];
+    return DM[l][p * 3 + n];
   };
 
   /* Başlıktaki kısa teklif düğmesi (mobilde sığması için kısa tutulur) */
