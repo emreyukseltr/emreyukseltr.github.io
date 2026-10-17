@@ -2046,6 +2046,45 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     Object.keys(BT).forEach(function (k) { if (T[k]) T[k] = ORDER.map(function (lc) { return lc === 'tr' ? BT[k][0] : BT[k][1]; }); });
   }
 
+  /* Tırnak modu: ?s=tirnak (tırnak / nail art stüdyoları için; renk laboratuvarı ve lookbook gizlenir) */
+  if (/[?&]s=tirnak\b/.test(location.search)) {
+    document.documentElement.classList.add('berber');
+    CATS.length = 0;
+    [{ id: 'hair', tr: 'Protez & Jel', en: 'Extensions & Gel' }, { id: 'art', tr: 'Nail Art', en: 'Nail Art' }, { id: 'care', tr: 'Bakım', en: 'Care' }, { id: 'lash', tr: 'Kirpik & Kaş', en: 'Lashes & Brows' }].forEach(function (c) { CATS.push(c); });
+    SERVICES.length = 0;
+    [
+      { id: 'ext', c: 'hair', m: 120, p: 1600, pop: 1, tr: 'Protez tırnak', en: 'Nail extensions', dtr: 'Jel ile uzatma ve size özel şekillendirme.', den: 'Gel extensions shaped just for you.' },
+      { id: 'refill', c: 'hair', m: 90, p: 1100, tr: 'Protez dolgu', en: 'Extension refill', dtr: 'Uzayan bölgelerin dolgusu ve yeniden şekillendirme.', den: 'Refill of grown-out areas and reshaping.' },
+      { id: 'gel', c: 'hair', m: 60, p: 850, pop: 1, tr: 'Kalıcı oje', en: 'Gel polish', dtr: 'Üç haftaya kadar parlak ve kusursuz.', den: 'Up to three weeks of flawless shine.' },
+      { id: 'build', c: 'hair', m: 75, p: 1000, tr: 'Jel güçlendirme', en: 'Builder gel overlay', dtr: 'Doğal tırnağı güçlendiren şeffaf ya da renkli jel.', den: 'Clear or coloured gel that strengthens natural nails.' },
+      { id: 'cat', c: 'art', m: 30, p: 400, pop: 1, tr: 'Cat eye', en: 'Cat eye', dtr: 'Mıknatısla hareket eden derin ışıltı.', den: 'Magnetic, deep, shifting shine.' },
+      { id: 'design', c: 'art', m: 45, p: 600, tr: 'Kişiye özel tasarım', en: 'Custom design', dtr: 'Çizim, taş, krom ve 3D detaylarla size özel nail art.', den: 'Hand-painted art with stones, chrome and 3D details.' },
+      { id: 'french', c: 'art', m: 30, p: 350, tr: 'French & ombre', en: 'French & ombré', dtr: 'Zamansız, şık ve her kıyafete uyan.', den: 'Timeless and goes with everything.' },
+      { id: 'mani', c: 'care', m: 40, p: 600, tr: 'Manikür', en: 'Manicure', dtr: 'Şekillendirme, kütikül bakımı ve nemlendirme.', den: 'Shaping, cuticle care and hydration.' },
+      { id: 'pedi', c: 'care', m: 50, p: 750, tr: 'Pedikür', en: 'Pedicure', dtr: 'Ayak bakımı, şekillendirme ve masaj.', den: 'Foot care, shaping and massage.' },
+      { id: 'remove', c: 'care', m: 30, p: 300, tr: 'Protez çıkarma', en: 'Extension removal', dtr: 'Doğal tırnağa zarar vermeden güvenli çıkarma.', den: 'Safe removal without harming natural nails.' },
+      { id: 'lashl', c: 'lash', m: 60, p: 1200, tr: 'Kirpik lifting', en: 'Lash lift', dtr: 'Kıvrımlı, uzun görünen doğal kirpikler.', den: 'Naturally curled, longer-looking lashes.' },
+      { id: 'brow', c: 'lash', m: 45, p: 900, tr: 'Kaş laminasyonu', en: 'Brow lamination', dtr: 'Dolgun ve düzenli görünen kaşlar.', den: 'Fuller, groomed-looking brows.' }
+    ].forEach(function (o) { SERVICES.push(o); });
+    PROMO.ids = ['ext', 'design']; PROMO.price = 1900; PROMO.tr = 'Protez tırnak + nail art'; PROMO.en = 'Extensions + nail art';
+    ORDER.forEach(function (lc) { if (lc !== 'tr' && lc !== 'en') delete PROMO[lc]; });
+    STAFF.length = 0;
+    [{ id: 'a', name: 'Nail Artist', c: '#C8924F', yrs: 8, img: '', tr: 'Kurucu · nail art & protez', en: 'Founder · nail art & extensions' },
+     { id: 'b', name: 'Selin Kara', c: '#7A2436', yrs: 5, img: '', tr: 'Kalıcı oje & bakım', en: 'Gel polish & care' },
+     { id: 'c', name: 'Ece Yıldız', c: '#4E3124', yrs: 4, img: '', tr: 'Kirpik & kaş', en: 'Lashes & brows' }].forEach(function (o) { STAFF.push(o); });
+    REVIEWS.length = 0;
+    [{ who: 'Zeynep A.', tr: 'Cat eye tasarımım tam istediğim gibi oldu, üç hafta sonra bile ilk günkü gibi.', en: 'My cat eye design was exactly what I wanted and still looks new after three weeks.' },
+     { who: 'Elif K.', tr: 'Randevuyu siteden iki dakikada aldım, DM bekleme derdi bitti.', en: 'Booked on the site in two minutes, no more waiting on DMs.' },
+     { who: 'Merve T.', tr: 'Kişiye özel tasarımları gerçekten sanat eseri gibi. Herkes nerede yaptırdığımı soruyor.', en: 'The custom designs are true works of art. Everyone asks where I got them done.' }].forEach(function (o) { REVIEWS.push(o); });
+    var NT = { hEy: ['Nail Art Studio', 'Nail Art Studio'], h1a: ['Her tırnak,', 'Every nail,'], h1b: ['küçük bir sanat.', 'a little artwork.'],
+      lede: ['Protez tırnaktan kalıcı ojeye, kişiye özel nail art tasarımlarından bakıma: hizmetinizi seçin, süreyi ve fiyatı görün, randevunuzu tek dokunuşla oluşturun.', 'From extensions to gel polish, custom nail art to care: pick your service, see the time and price, and book in one tap.'],
+      e1d: ['Tırnak yapınızı ve istediğiniz tarzı konuşarak başlarız.', 'We start by talking about your nails and the look you want.'],
+      e2d: ['Hijyenik, steril ekipman ve kaliteli ürünlerle özenli uygulama.', 'Careful work with sterile tools and quality products.'],
+      promoD: ['Protez tırnak ve kişiye özel tasarım tek randevuda. Kampanya bu ay geçerlidir.', 'Extensions and a custom design in one visit. Valid this month.'],
+      title: ['Nail Art Studio', 'Nail Art Studio'] };
+    Object.keys(NT).forEach(function (k) { if (T[k]) T[k] = ORDER.map(function (lc) { return lc === 'tr' ? NT[k][0] : NT[k][1]; }); });
+  }
+
   /* ------------------------------------------------------------------ */
   var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
