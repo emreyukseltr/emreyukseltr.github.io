@@ -413,10 +413,36 @@ footer{border-top:1px solid var(--line);padding:70px 0 calc(34px + env(safe-area
     { id: 'jant', name: 'Jant seramik', price: 900 },
     { id: 'cam', name: 'Cam su itici', price: 300 }
   ];
+  /* Periyodik bakım modu: ?s=bakim (oto servisleri için) */
+  var BAKIM = /[?&]s=bakim\b/.test(location.search);
+  if (BAKIM) {
+    PKGS = [
+      { id: 'yag', name: 'Periyodik Bakım', desc: 'Motor yağı, yağ, hava ve polen filtresi değişimi + 30 nokta kontrol · ~1 saat', price: { sedan: 2500, suv: 3200, pikap: 3600 }, old: { sedan: 3200, suv: 3900, pikap: 4400 }, tag: 'Kampanya' },
+      { id: 'balata', name: 'Ön Balata Değişimi', desc: 'Orijinal / muadil balata, disk kontrolü dahil · ~1 saat', price: { sedan: 1800, suv: 2300, pikap: 2600 } },
+      { id: 'triger', name: 'Triger Seti Değişimi', desc: 'Triger kayışı, gergi ve devirdaim kontrolü · yarım gün', price: { sedan: 6500, suv: 8000, pikap: 8500 } }
+    ];
+    EXTRAS = [
+      { id: 'aku', name: 'Akü testi & değişimi', price: 400 },
+      { id: 'antifriz', name: 'Antifriz yenileme', price: 350 },
+      { id: 'silecek', name: 'Silecek değişimi', price: 300 },
+      { id: 'klima', name: 'Klima gazı & bakım', price: 900 }
+    ];
+    var hk = document.querySelector('.hero .kick'); if (hk) hk.innerHTML = '<span data-o="area"></span> · Periyodik bakım & servis';
+    var h1 = document.querySelector('.hero h1'); if (h1) h1.innerHTML = 'Aracınız güvende, <em>bakımı zamanında.</em>';
+    var hl = document.querySelector('.hero .lead'); if (hl) hl.textContent = 'Aracınızı ve bakım paketini seçin, işçilik dahil fiyatı anında görün; randevunuzu WhatsApp\'tan tek dokunuşla alın.';
+    var hm = document.querySelector('.hero-meta'); if (hm) hm.innerHTML = '<span><b>Orijinal</b> ürün</span><span><b>İşçilik</b> dahil fiyat</span><span><b>Randevulu</b> servis</span>';
+    var faq = document.querySelector('.faq'); if (faq) faq.innerHTML = '<details><summary>Fiyatlara işçilik dahil mi?</summary><p>Evet, gösterilen bakım fiyatlarına malzeme ve işçilik dahildir. Aracınızın modeline göre küçük farklar olabilir.</p></details><details><summary>Orijinal ürün mü kullanıyorsunuz?</summary><p>Yağ ve filtrelerde orijinal ya da onaylı markalar kullanılır; değişen parçalar size gösterilir.</p></details><details><summary>Bakım ne kadar sürer?</summary><p>Periyodik bakım genellikle 1 saat sürer; randevulu geldiğinizde beklemeden işlem yapılır.</p></details><details><summary>Ödemeyi nasıl yapabilirim?</summary><p>Nakit, kredi kartı veya havale ile ödeme yapabilirsiniz.</p></details>';
+    document.querySelectorAll('.card').forEach(function (c, i) {
+      var t = [['Orijinal ürün', 'Yağ ve filtrelerde orijinal ya da onaylı markalar kullanılır.'], ['Randevulu çalışma', 'Sıra beklemezsiniz; aracınız söz verilen saatte hazır olur.'], ['Şeffaf fiyat', 'İşçilik dahil fiyatı önceden bilirsiniz, sürpriz yok.'], ['Değişen parça size', 'Eski parçalarınızı görür, isterseniz geri alırsınız.']][i];
+      if (t) { c.querySelector('h3').textContent = t[0]; c.querySelector('p').textContent = t[1]; }
+    });
+    var ba = document.getElementById('once-sonra'); if (ba) ba.style.display = 'none';
+    var ca = document.querySelector('.hero-cta a[href="#once-sonra"]'); if (ca) ca.style.display = 'none';
+  }
   var DAYS = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
   var MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 
-  var st = { type: 'sedan', pkg: 'seramik', ex: {}, day: null, time: null };
+  var st = { type: 'sedan', pkg: BAKIM ? 'yag' : 'seramik', ex: {}, day: null, time: null };
   var $ = function (s) { return document.querySelector(s); };
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
   var tl = function (n) { return n.toLocaleString('tr-TR') + ' TL'; };
@@ -427,7 +453,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 calc(34px + env(safe-area
   document.querySelectorAll('[data-o="name"]').forEach(function (e) { e.textContent = BIZ.name; });
   document.querySelectorAll('[data-o="area"]').forEach(function (e) { e.textContent = BIZ.area; });
   document.querySelectorAll('[data-o="address"]').forEach(function (e) { e.textContent = BIZ.address; });
-  document.title = BIZ.name + ' — Seramik Kaplama & Oto Bakım';
+  document.title = BIZ.name + (BAKIM ? ' — Periyodik Bakım & Servis' : ' — Seramik Kaplama & Oto Bakım');
   $('#waBtn').href = 'https://wa.me/' + BIZ.wa;
   $('#mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(BIZ.name + ' ' + BIZ.area);
   $('#yr').textContent = new Date().getFullYear();
