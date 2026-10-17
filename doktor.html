@@ -392,6 +392,16 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     var w = m.split(' '), last = w.pop(), esc = function (t) { return t.replace(/[&<>"]/g, function (ch) { return '&#' + ch.charCodeAt(0) + ';'; }); };
     set($('.logo'), esc(w.join(' ')) + (w.length ? ' ' : '') + '<span>' + esc(last) + '</span>', true);
     set($('.footer-huge-text'), m.toLocaleUpperCase('tr'));
+    /* Uzun isimlerde üst bardaki randevu düğmesi taşmasın */
+    var fitNav = function () {
+      var n = $('#navbar'), l = $('.logo'), b = $('.nav-btn');
+      if (!n || !l || !b) return;
+      l.style.fontSize = '';
+      var free = n.clientWidth - parseFloat(getComputedStyle(n).paddingLeft) - parseFloat(getComputedStyle(n).paddingRight) - b.offsetWidth - 12;
+      if (l.scrollWidth > free) l.style.fontSize = Math.max(11, parseFloat(getComputedStyle(l).fontSize) * free / l.scrollWidth) + 'px';
+    };
+    addEventListener('load', fitNav); addEventListener('resize', fitNav);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
     set($('[data-i18n="Telif"]'), '© ' + new Date().getFullYear() + ' ' + m + '. Tüm hakları saklıdır.');
     if (c) set($('[data-i18n="Adres"]'), c);
     document.title = m + (s === 'estetik' ? ' | Medikal Estetik' : ' | Klinik');
@@ -400,6 +410,23 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     [['1:1', 'Kişiye Özel Planlama'], ['Doğal', 'Sonuç Odaklı Yaklaşım'], [c ? c.split(',').pop().trim() : 'Klinik', 'Randevulu Muayene']].forEach(function (v, i) {
       if (!st[i]) return; set(st[i].querySelector('.stat-num'), v[0]); set(st[i].querySelector('.stat-label'), v[1]);
     });
+    if (s === 'burun') {
+      document.title = m + ' | Burun Estetiği & KBB';
+      set($('[data-i18n="Sanat ve Cerrahinin"]'), 'Nefes Alan,');
+      set($('[data-i18n="Kusursuz Uyumu"]'), 'Doğal Bir Burun');
+      set($('[data-i18n="hero-desc"]'), 'Yüz hatlarınızla uyumlu, nefes fonksiyonunu koruyan burun estetiği ve kulak burun boğaz tedavileri.');
+      set($('[data-i18n="Dokunuşun Gücü"]'), 'Estetik ve Fonksiyon');
+      set($('[data-i18n="about-1"]'), 'Burun yalnızca yüzün merkezinde değil, rahat nefes almanın da merkezindedir. Her planlamada görünüm kadar nefes fonksiyonunu da gözetiriz.');
+      set($('[data-i18n="about-2"]'), 'Muayene ve ayrıntılı görüşmenin ardından size uygun yöntem birlikte belirlenir; süreç boyunca her adımda bilgilendirilirsiniz.');
+      var mb = $('.marquee-content');
+      if (mb) { mb.innerHTML = new Array(3).join('<span>BURUN ESTETİĞİ</span> ✦ <span>RAHAT NEFES</span> ✦ <span>DOĞAL GÖRÜNÜM</span> ✦ '); }
+      [['Laparoskopik Cerrahi', 'srv-1', 'Burun Estetiği', 'Yüz oranlarınıza göre planlanan, doğal görünüm hedefleyen rinoplasti.'],
+       ['Estetik & Rekonstrüktif', 'srv-2', 'Septum & Nefes', 'Burun eğriliği, konka büyümesi ve nefes alma güçlüklerinin tedavisi.'],
+       ['Endoskopik Tarama', 'srv-3', 'Kulak Burun Boğaz', 'Sinüzit, geniz eti, horlama ve kulak şikâyetlerinde muayene ve tedavi.']].forEach(function (r) {
+        set($('[data-i18n="' + r[0] + '"]'), r[2]); set($('[data-i18n="' + r[1] + '"]'), r[3]);
+      });
+      return;
+    }
     if (s !== 'estetik') return;
     set($('[data-i18n="Sanat ve Cerrahinin"]'), 'Bilim ve Doğallığın');
     set($('[data-i18n="Kusursuz Uyumu"]'), 'Zarif Dengesi');
