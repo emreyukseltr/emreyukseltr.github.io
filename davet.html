@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maison Lumière — Davet & Organizasyon</title>
+<meta name="description" content="Nişan, söz, kına ve özel davetler için şık bir salon. Tarihinizi ve kişi sayınızı seçin, teklifinizi WhatsApp'tan tek dokunuşla isteyin.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7F3EC">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F7F3EC'/%3E%3Ccircle cx='32' cy='30' r='12' fill='none' stroke='%23B08D57' stroke-width='3'/%3E%3Cpath d='M32 8v10' stroke='%23B08D57' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F3EC; --bg2:#EFE8DC; --card:#FFFDF9; --ink:#2C2A26; --ink2:#5C574F; --mute:#8F887D; --line:rgba(44,42,38,.12);
+  --gold:#B08D57; --gold-d:#8E6F40; --sage:#7D8C76; --sage-d:#56644F; --dark:#23241F;
+  --serif:'Cormorant Garamond', Georgia, serif; --sans:'Jost', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --pad:clamp(16px, 5vw, 64px); --r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.7 var(--sans);overflow-x:hidden;overflow-wrap:break-word}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.wrap{max-width:1160px;margin:0 auto;padding:0 var(--pad)}
+.serif{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.05}
+.kick{font:500 12px/1.3 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--gold-d)}
+h2.serif{font-size:clamp(36px,6vw,62px);margin:14px 0 14px}
+h2 em,h1 em{font-style:italic;color:var(--gold-d)}
+.lead{color:var(--ink2);max-width:620px}
+section{padding:clamp(70px,11vw,124px) 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:99px;font:500 14px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s,transform .2s;-webkit-tap-highlight-color:transparent;text-align:center}
+.btn:active{transform:scale(.97)}
+.btn-d{background:var(--dark);color:var(--bg)}
+.btn-d:hover{background:var(--sage-d)}
+.btn-o{border:1px solid var(--ink)}
+.btn-o:hover{background:var(--ink);color:var(--bg)}
+.btn-g{background:var(--gold);color:#fff}
+.btn-g:hover{background:var(--gold-d)}
+
+.hdr{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:12px;padding:16px var(--pad);transition:background .3s,box-shadow .3s}
+.hdr.solid{background:rgba(247,243,236,.95);box-shadow:0 1px 0 var(--line)}
+.brand{font:500 25px/1 var(--serif);letter-spacing:.04em;text-decoration:none;margin-right:auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand i{color:var(--gold-d)}
+.hdr .btn{min-height:42px;padding:0 18px;font-size:12px;flex:none}
+
+/* Hero */
+.hero{position:relative;padding:130px 0 0;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.hero .wrap{text-align:center}
+.hero h1{font-size:clamp(46px,9.5vw,112px);margin:18px auto 20px;max-width:12ch}
+.hero .lead{margin:0 auto;font-size:clamp(16px,2.2vw,19px)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+.scene{position:relative;margin:56px auto 0;max-width:1100px;aspect-ratio:2.6/1}
+.scene svg{width:100%;height:100%;display:block}
+.glow{animation:glow 4s ease-in-out infinite}
+.glow:nth-of-type(2n){animation-delay:-1.3s}.glow:nth-of-type(3n){animation-delay:-2.6s}
+@keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+.sway{transform-box:fill-box;transform-origin:top center;animation:sway 6s ease-in-out infinite}
+.sway:nth-of-type(2n){animation-delay:-2s;animation-duration:7s}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+.paused .glow,.paused .sway{animation-play-state:paused}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)}
+.stats div{padding:26px 12px;text-align:center;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font:500 clamp(30px,4.5vw,44px)/1 var(--serif);color:var(--gold-d)}
+.stats span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+
+/* Etkinlikler */
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
+.ev{background:var(--card);padding:30px 26px;transition:background .3s}
+.ev:hover{background:#fff}
+.ev .ic{font-size:26px;margin-bottom:16px}
+.ev h3{font:500 26px/1.15 var(--serif);margin-bottom:8px}
+.ev p{color:var(--ink2);font-size:15px}
+
+/* Galeri */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:10px;margin-top:40px}
+.gal div{position:relative;border-radius:var(--r);overflow:hidden;display:flex;align-items:flex-end;padding:14px;color:#fff;font:500 13px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.gal div::before{content:"";position:absolute;inset:0;background:inherit;transition:transform .8s}
+.gal div:hover::before{transform:scale(1.06)}
+.gal div span{position:relative;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.gal .w2{grid-column:span 2}.gal .h2{grid-row:span 2}
+.gnote{font-size:13px;color:var(--mute);margin-top:12px}
+
+/* Paketler */
+.dark{background:var(--dark);color:var(--bg)}
+.dark .kick{color:var(--gold)}
+.dark .lead{color:rgba(247,243,236,.7)}
+.dark h2 em{color:var(--gold)}
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.pkc{border:1px solid rgba(247,243,236,.16);padding:32px 26px;border-radius:var(--r);display:flex;flex-direction:column}
+.pkc.hot{border-color:var(--gold);background:rgba(176,141,87,.08)}
+.pkc h3{font:500 30px/1.1 var(--serif)}
+.pkc .tag{align-self:flex-start;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:#fff;padding:5px 10px;border-radius:99px;margin-bottom:14px}
+.pkc .pr{font:500 40px/1 var(--serif);color:var(--gold);margin:16px 0 4px}
+.pkc .pr small{font:400 14px var(--sans);color:rgba(247,243,236,.6)}
+.pkc ul{list-style:none;margin:18px 0 24px;display:grid;gap:9px;font-size:15px;color:rgba(247,243,236,.85)}
+.pkc li::before{content:"✦";color:var(--gold);margin-right:10px;font-size:12px}
+.pkc .btn{margin-top:auto;border:1px solid rgba(247,243,236,.4)}
+.pkc .btn:hover{background:var(--bg);color:var(--ink)}
+.pnote{font-size:13px;color:rgba(247,243,236,.55);margin-top:18px}
+
+/* Teklif formu */
+.quote{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:40px;align-items:start}
+.quote>*{min-width:0}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,4vw,34px)}
+.fl{display:block;font:500 12px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:24px 0 12px}
+.fl:first-child{margin-top:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--line);border-radius:99px;padding:10px 16px;font-size:15px;transition:all .2s}
+.opt[aria-pressed="true"]{background:var(--dark);border-color:var(--dark);color:var(--bg)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.inp{width:100%;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:14px;font-size:16px;-webkit-appearance:none;appearance:none;min-height:52px}
+.inp:focus{outline:none;border-color:var(--gold)}
+.range{display:flex;align-items:center;gap:16px}
+.range input{flex:1;accent-color:var(--gold);min-width:0}
+.range output{font:500 30px/1 var(--serif);min-width:92px;text-align:right;color:var(--gold-d)}
+.sum{position:sticky;top:92px;background:var(--dark);color:var(--bg);border-radius:var(--r);padding:28px}
+.sum h3{font:500 12px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;font-size:14.5px;margin-bottom:20px}
+.sum dt{color:rgba(247,243,236,.55)}
+.sum dd{text-align:right}
+.tot{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid rgba(247,243,236,.16);padding-top:16px;margin-bottom:20px}
+.tot span{font-size:13px;color:rgba(247,243,236,.6)}
+.tot b{font:500 36px/1 var(--serif);color:var(--gold)}
+.sum .btn{width:100%}
+.err{color:#F2B8A8;font-size:14px;min-height:1.3em;margin-top:10px;text-align:center}
+.sum .note{font-size:12px;color:rgba(247,243,236,.5);text-align:center;margin-top:10px}
+
+.faq{max-width:820px;margin-top:30px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font:500 22px/1.3 var(--serif);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:18px;font:300 28px var(--sans);color:var(--gold-d);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--ink2);padding:0 0 22px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.vc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.vc h3{font:500 26px/1.2 var(--serif);margin-bottom:8px}
+.vc p{color:var(--ink2)}
+.vbt{display:grid;gap:10px;margin-top:20px}
+
+footer{background:var(--dark);color:var(--bg);padding:70px 0 calc(34px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.fbig{font:400 clamp(40px,10vw,140px)/1 var(--serif);letter-spacing:.02em;white-space:nowrap;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(247,243,236,.3);margin-bottom:40px}
+.frow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 28px;font-size:13px;color:rgba(247,243,236,.6);border-top:1px solid rgba(247,243,236,.14);padding-top:22px}
+.frow a{color:var(--bg);text-underline-offset:4px}
+.demo-back{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--dark);color:var(--bg);font:500 12px/1 var(--sans);padding:11px 15px;border-radius:99px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.1,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.glow,.sway{animation:none}html{scroll-behavior:auto}}
+
+@media (max-width:960px){
+  .events,.pk{grid-template-columns:1fr 1fr}
+  .quote,.visit{grid-template-columns:1fr}
+  .sum{position:static}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .scene{aspect-ratio:1.8/1}
+}
+@media (max-width:600px){
+  .events,.pk,.row2{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats div:nth-child(2){border-right:0}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .cta .btn{flex:1 1 100%}
+  .gal .w2{grid-column:span 2}
+  .hdr .btn{padding:0 14px}
+  .brand{font-size:21px}
+}
+@media (max-width:359px){ .hdr .btn{display:none} }
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <a class="brand" href="#top" data-o="brand">Maison <i>Lumière</i></a>
+  <a class="btn btn-d" href="#teklif">Teklif al</a>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap">
+    <p class="kick"><span data-o="area">Beylikdüzü, İstanbul</span> · Davet & Organizasyon</p>
+    <h1 class="serif">En özel gününüz, <em>tam hayal ettiğiniz gibi.</em></h1>
+    <p class="lead">Nişan, söz, kına ve doğum günü davetleriniz için şık bir salon. Tarihinizi ve kişi sayınızı seçin, teklifinizi tek dokunuşla isteyin.</p>
+    <div class="cta">
+      <a class="btn btn-d" href="#teklif">Tarihimi sor →</a>
+      <a class="btn btn-o" href="#paketler">Paketler</a>
+    </div>
+  </div>
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 1100 420" preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <radialGradient id="lg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF6DF"/><stop offset=".6" stop-color="#F3DFB4" stop-opacity=".55"/><stop offset="1" stop-color="#F3DFB4" stop-opacity="0"/></radialGradient>
+        <linearGradient id="tb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9E1D3"/></linearGradient>
+      </defs>
+      <!-- avizeler -->
+      <g stroke="#B08D57" stroke-width="1.2">
+        <g class="sway"><line x1="160" y1="0" x2="160" y2="110"/><circle cx="160" cy="128" r="18" fill="#FFF8E8"/></g>
+        <g class="sway"><line x1="290" y1="0" x2="290" y2="70"/><circle cx="290" cy="88" r="15" fill="#FFF8E8"/></g>
+        <g class="sway"><line x1="420" y1="0" x2="420" y2="130"/><circle cx="420" cy="148" r="20" fill="#FFF8E8"/></g>
+        <g class="sway"><line x1="550" y1="0" x2="550" y2="90"/><circle cx="550" cy="108" r="17" fill="#FFF8E8"/></g>
+        <g class="sway"><line x1="680" y1="0" x2="680" y2="125"/><circle cx="680" cy="143" r="19" fill="#FFF8E8"/></g>
+        <g class="sway"><line x1="810" y1="0" x2="810" y2="75"/><circle cx="810" cy="93" r="15" fill="#FFF8E8"/></g>
+        <g class="sway"><line x1="940" y1="0" x2="940" y2="115"/><circle cx="940" cy="133" r="18" fill="#FFF8E8"/></g>
+      </g>
+      <g>
+        <circle class="glow" cx="160" cy="128" r="60" fill="url(#lg)"/><circle class="glow" cx="290" cy="88" r="50" fill="url(#lg)"/>
+        <circle class="glow" cx="420" cy="148" r="64" fill="url(#lg)"/><circle class="glow" cx="550" cy="108" r="56" fill="url(#lg)"/>
+        <circle class="glow" cx="680" cy="143" r="62" fill="url(#lg)"/><circle class="glow" cx="810" cy="93" r="50" fill="url(#lg)"/>
+        <circle class="glow" cx="940" cy="133" r="58" fill="url(#lg)"/>
+      </g>
+      <!-- uzun masa -->
+      <path d="M90 330 L1010 330 L1060 372 L40 372 Z" fill="url(#tb)" stroke="#D9CDB8"/>
+      <rect x="40" y="372" width="1020" height="10" fill="#E2D8C6"/>
+      <path d="M140 382v38M960 382v38" stroke="#CFC2AB" stroke-width="6"/>
+      <!-- yeşil masa örtüsü şeridi -->
+      <path d="M100 340 L1000 340 L1030 362 L70 362 Z" fill="#7D8C76" opacity=".22"/>
+      <!-- mumlar ve çiçekler -->
+      <g fill="#FFFDF7" stroke="#C9B894">
+        <rect x="250" y="285" width="8" height="45"/><rect x="540" y="275" width="8" height="55"/><rect x="830" y="285" width="8" height="45"/>
+      </g>
+      <g fill="#F6C66B"><ellipse class="glow" cx="254" cy="280" rx="4" ry="8"/><ellipse class="glow" cx="544" cy="270" rx="4" ry="8"/><ellipse class="glow" cx="834" cy="280" rx="4" ry="8"/></g>
+      <g>
+        <circle cx="390" cy="318" r="14" fill="#FFFFFF" stroke="#E4D9C5"/><circle cx="404" cy="312" r="10" fill="#F4E7E2"/><path d="M380 326c8-12 22-14 34-4" stroke="#7D8C76" stroke-width="3" fill="none"/>
+        <circle cx="690" cy="318" r="14" fill="#FFFFFF" stroke="#E4D9C5"/><circle cx="676" cy="312" r="10" fill="#F4E7E2"/><path d="M700 326c-8-12-22-14-34-4" stroke="#7D8C76" stroke-width="3" fill="none"/>
+      </g>
+      <!-- kristal sandalyeler -->
+      <g fill="none" stroke="#C8C2B5" stroke-width="2" opacity=".9">
+        <path d="M170 330c0-40 6-62 22-62s22 22 22 62"/><path d="M330 330c0-40 6-62 22-62s22 22 22 62"/><path d="M470 330c0-40 6-62 22-62s22 22 22 62"/>
+        <path d="M610 330c0-40 6-62 22-62s22 22 22 62"/><path d="M750 330c0-40 6-62 22-62s22 22 22 62"/><path d="M890 330c0-40 6-62 22-62s22 22 22 62"/>
+      </g>
+    </svg>
+  </div>
+  <div class="stats">
+    <div><b>250</b><span>Kişi kapasite</span></div>
+    <div><b>2</b><span>Ayrı salon</span></div>
+    <div><b>7/24</b><span>Teklif talebi</span></div>
+    <div><b>Otopark</b><span>Misafirlere ücretsiz</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick rv">Etkinlikler</p>
+    <h2 class="serif rv">Her kutlamaya <em>özel bir sahne.</em></h2>
+    <p class="lead rv">Süslemeden ikramlara, ses sisteminden fotoğraf köşesine kadar her detayı sizinle birlikte planlıyoruz.</p>
+    <div class="events">
+      <div class="ev rv"><div class="ic">💍</div><h3>Nişan & Söz</h3><p>Çiçek düzenlemesi, nişan masası ve tepsi süslemesiyle unutulmaz bir başlangıç.</p></div>
+      <div class="ev rv"><div class="ic">🕯️</div><h3>Kına Gecesi</h3><p>Geleneksel kına ritüeli, bindallı köşesi ve mum ışığında bir gece.</p></div>
+      <div class="ev rv"><div class="ic">🎂</div><h3>Doğum Günü</h3><p>Çocuklar ve yetişkinler için konsepte özel süsleme ve pasta masası.</p></div>
+      <div class="ev rv"><div class="ic">🍼</div><h3>Baby Shower</h3><p>Cinsiyet partisi ve baby shower için pastel tonlarda zarif bir kurgu.</p></div>
+      <div class="ev rv"><div class="ic">🎓</div><h3>Mezuniyet</h3><p>Sınıf ve aile kutlamaları için müzikli, ikramlı organizasyon.</p></div>
+      <div class="ev rv"><div class="ic">🥂</div><h3>Kurumsal Davet</h3><p>Lansman, yıl sonu yemeği ve toplantılar için profesyonel düzen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kick rv">Galeri</p>
+    <h2 class="serif rv">Salonumuzdan <em>kareler.</em></h2>
+    <div class="gal rv">
+      <div class="w2 h2" style="background:linear-gradient(160deg,#E9DCC6,#C9B48F)"><span>Ana salon</span></div>
+      <div style="background:linear-gradient(160deg,#DDE4D6,#9DAE95)"><span>Nişan masası</span></div>
+      <div style="background:linear-gradient(160deg,#F1E1DA,#D3A99A)"><span>Kına köşesi</span></div>
+      <div class="w2" style="background:linear-gradient(160deg,#EDE6DA,#B9AC97)"><span>Gala düzeni</span></div>
+      <div style="background:linear-gradient(160deg,#E7E1EE,#B5A8C6)"><span>Fotoğraf köşesi</span></div>
+      <div style="background:linear-gradient(160deg,#F3EAD5,#D9BE86)"><span>Pasta masası</span></div>
+    </div>
+    <p class="gnote">Bu bir örnek sitedir; galeride salonunuzun gerçek fotoğrafları ve videoları yer alır.</p>
+  </div>
+</section>
+
+<section class="dark" id="paketler">
+  <div class="wrap">
+    <p class="kick rv">Paketler</p>
+    <h2 class="serif rv">Size uygun <em>paketi seçin.</em></h2>
+    <p class="lead rv">Fiyatlar kişi başıdır; kişi sayısı ve tarih seçerek tahmini teklifinizi aşağıda görebilirsiniz.</p>
+    <div class="pk" id="pk"></div>
+    <p class="pnote">Fiyatlar örnektir. Hafta sonu ve özel günlerde fiyatlar değişebilir.</p>
+  </div>
+</section>
+
+<section id="teklif">
+  <div class="wrap">
+    <p class="kick rv">Teklif al</p>
+    <h2 class="serif rv">Tarihiniz <em>müsait mi?</em></h2>
+    <p class="lead rv">Birkaç seçim yapın; talebiniz tüm detaylarıyla WhatsApp'tan bize ulaşsın. En kısa sürede dönüş yapalım.</p>
+    <div class="quote">
+      <div class="fc rv">
+        <span class="fl">Etkinlik türü</span>
+        <div class="opts" id="evt"></div>
+        <span class="fl">Paket</span>
+        <div class="opts" id="pkg"></div>
+        <span class="fl">Kişi sayısı</span>
+        <div class="range"><input type="range" id="ppl" min="20" max="250" step="10" value="80" aria-label="Kişi sayısı"><output id="pplO">80 kişi</output></div>
+        <span class="fl">Tarih ve iletişim</span>
+        <div class="row2">
+          <input class="inp" id="dt" type="date" aria-label="Etkinlik tarihi">
+          <select class="inp" id="tm" aria-label="Saat"><option value="Gündüz (12:00–17:00)">Gündüz (12:00–17:00)</option><option value="Akşam (18:00–23:00)" selected>Akşam (18:00–23:00)</option></select>
+          <input class="inp" id="nm" autocomplete="name" placeholder="Adınız" aria-label="Adınız">
+          <input class="inp" id="ph" type="tel" inputmode="tel" autocomplete="tel" placeholder="Telefon" aria-label="Telefon">
+        </div>
+      </div>
+      <aside class="sum rv" aria-live="polite">
+        <h3>Teklif özeti</h3>
+        <dl id="sl"></dl>
+        <div class="tot"><span>Tahmini tutar</span><b id="tt">—</b></div>
+        <button class="btn btn-g" id="send" type="button">WhatsApp'tan teklif iste</button>
+        <p class="err" id="err" role="status"></p>
+        <p class="note">Kesin fiyat, tarih ve detaylar netleştikten sonra size iletilir.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kick rv">Sık sorulanlar</p>
+    <h2 class="serif rv">Merak <em>edilenler</em></h2>
+    <div class="faq rv">
+      <details><summary>Kapora ne kadar, nasıl ödenir?</summary><p>Tarihinizi kesinleştirmek için toplam tutarın bir kısmı kapora olarak alınır. Kalan ödeme etkinlikten önce tamamlanır; havale ve kredi kartı kabul edilir.</p></details>
+      <details><summary>Dışarıdan pasta veya ikram getirebilir miyim?</summary><p>Pastanızı dışarıdan getirebilirsiniz. Diğer ikramlar için paketlerimiz ve anlaşmalı firmalarımız hakkında bilgi veriyoruz.</p></details>
+      <details><summary>Süsleme konseptini kendimiz seçebilir miyiz?</summary><p>Elbette. Renk, çiçek ve masa düzenini sizinle birlikte belirliyor, isterseniz örnek kurulum fotoğrafları paylaşıyoruz.</p></details>
+      <details><summary>Salonu önceden gezebilir miyiz?</summary><p>Randevu alarak salonu dilediğiniz gün gezebilir, detayları yüz yüze konuşabilirsiniz.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kick rv">İletişim</p>
+    <h2 class="serif rv">Salonu <em>gezmeye gelin.</em></h2>
+    <div class="visit">
+      <div class="vc rv">
+        <h3>Adres</h3>
+        <p data-o="address">Örnek Mah. Davet Sk. No: 1, Beylikdüzü / İstanbul</p>
+        <div class="vbt">
+          <a class="btn btn-d" id="waBtn" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp'tan yaz</a>
+          <a class="btn btn-o" id="mapBtn" href="#" target="_blank" rel="noopener">Yol tarifi al</a>
+        </div>
+      </div>
+      <div class="vc rv">
+        <h3>Ziyaret saatleri</h3>
+        <p>Salonu gezmek ve görüşmek için her gün 10:00–20:00 arası randevu alabilirsiniz. Etkinlik günlerinde saatler organizasyona göre düzenlenir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="fbig" aria-hidden="true" data-o="name">Maison Lumière</p>
+    <div class="frow">
+      <span>© <span id="yr">2026</span> <span data-o="name">Maison Lumière</span></span>
+      <span>Bu bir örnek sitedir; paketler, fiyatlar ve görseller işletmenize göre düzenlenir.</span>
+      <a href="https://eystudios.com.tr" target="_blank" rel="noopener">Tasarım & geliştirme: EY Studios ↗</a>
+    </div>
+  </div>
+</footer>
+
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function () {
+  'use strict';
+  /* =====================================================================
+     SALON BİLGİLERİ — yeni bir işletme için bu bloğu düzenleyin.
+     Satış önizlemesi: ?m=Salon+Adı&c=Semt,+Şehir (bilgi repoya girmez, yalnızca linkte durur)
+     ===================================================================== */
+  var BIZ = { name: 'Maison Lumière', area: 'Beylikdüzü, İstanbul', address: 'Örnek Mah. Davet Sk. No: 1, Beylikdüzü / İstanbul', wa: '905306284284' };
+  try {
+    var q = new URLSearchParams(location.search), qm = (q.get('m') || '').trim().slice(0, 40), qc = (q.get('c') || '').trim().slice(0, 40);
+    if (qm) BIZ.name = qm;
+    if (qc) { BIZ.area = qc; BIZ.address = qc; }
+  } catch (e) {}
+
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
+  var tl = function (n) { return n.toLocaleString('tr-TR') + ' TL'; };
+
+  var w = BIZ.name.split(' ');
+  $('.brand').innerHTML = esc(w[0]) + (w.length > 1 ? ' <i>' + esc(w.slice(1).join(' ')) + '</i>' : '');
+  document.querySelectorAll('[data-o="name"]').forEach(function (e) { e.textContent = BIZ.name; });
+  document.querySelectorAll('[data-o="area"]').forEach(function (e) { e.textContent = BIZ.area; });
+  document.querySelectorAll('[data-o="address"]').forEach(function (e) { e.textContent = BIZ.address; });
+  document.title = BIZ.name + ' — Davet & Organizasyon';
+  $('#waBtn').href = 'https://wa.me/' + BIZ.wa;
+  $('#mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(BIZ.name + ' ' + BIZ.area);
+  $('#yr').textContent = new Date().getFullYear();
+
+  var PKGS = [
+    { id: 'salon', name: 'Salon', price: 450, feat: ['Salon kullanımı (5 saat)', 'Masa, sandalye ve örtü düzeni', 'Ses sistemi', 'Çay & kahve ikramı'] },
+    { id: 'klasik', name: 'Klasik', price: 750, hot: 1, feat: ['Salon paketi dahil', 'Çiçek ve masa süslemesi', 'Kurabiye & meşrubat ikramı', 'Nişan / kına masası', 'Fotoğraf köşesi'] },
+    { id: 'premium', name: 'Premium', price: 1150, feat: ['Klasik paket dahil', 'Konsepte özel tasarım süsleme', 'Pasta ve zengin ikram menüsü', 'DJ ve ışık şovu', 'Organizasyon sorumlusu'] }
+  ];
+  var EVTS = ['Nişan', 'Söz', 'Kına', 'Doğum günü', 'Baby shower', 'Mezuniyet', 'Diğer'];
+  var st = { evt: null, pkg: 'klasik' };
+
+  $('#pk').innerHTML = PKGS.map(function (p) {
+    return '<div class="pkc rv' + (p.hot ? ' hot' : '') + '">' + (p.hot ? '<span class="tag">En çok tercih edilen</span>' : '') + '<h3>' + p.name + '</h3><p class="pr">' + tl(p.price) + ' <small>/ kişi</small></p><ul>' + p.feat.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul><a class="btn" href="#teklif" data-pick="' + p.id + '">Bu paketi seç</a></div>';
+  }).join('');
+
+  function render() {
+    $('#evt').innerHTML = EVTS.map(function (e, i) { return '<button type="button" class="opt" data-e="' + i + '" aria-pressed="' + (st.evt === i) + '">' + e + '</button>'; }).join('');
+    $('#pkg').innerHTML = PKGS.map(function (p) { return '<button type="button" class="opt" data-p="' + p.id + '" aria-pressed="' + (st.pkg === p.id) + '">' + p.name + ' · ' + tl(p.price) + '</button>'; }).join('');
+    sum();
+  }
+  function fmtDate(v) {
+    if (!v) return '—';
+    var d = new Date(v + 'T12:00:00');
+    return isNaN(d) ? v : d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' });
+  }
+  function pkg() { return PKGS.filter(function (p) { return p.id === st.pkg; })[0]; }
+  function sum() {
+    var n = +$('#ppl').value;
+    $('#pplO').textContent = n + ' kişi';
+    $('#sl').innerHTML = '<dt>Etkinlik</dt><dd>' + (st.evt === null ? '—' : EVTS[st.evt]) + '</dd><dt>Paket</dt><dd>' + pkg().name + '</dd><dt>Kişi</dt><dd>' + n + '</dd><dt>Tarih</dt><dd>' + esc(fmtDate($('#dt').value)) + '</dd><dt>Saat</dt><dd>' + esc($('#tm').value) + '</dd>';
+    $('#tt').textContent = tl(n * pkg().price);
+  }
+  render();
+  (function () { var d = new Date(); d.setDate(d.getDate() + 1); $('#dt').min = d.toISOString().slice(0, 10); })();
+  ['ppl', 'dt', 'tm'].forEach(function (id) { $('#' + id).addEventListener('input', sum); $('#' + id).addEventListener('change', sum); });
+
+  document.addEventListener('click', function (e) {
+    var b;
+    if ((b = e.target.closest('[data-e]'))) { st.evt = +b.dataset.e; render(); $('#err').textContent = ''; return; }
+    if ((b = e.target.closest('[data-p]'))) { st.pkg = b.dataset.p; render(); return; }
+    if ((b = e.target.closest('[data-pick]'))) { st.pkg = b.dataset.pick; render(); }
+  });
+
+  $('#send').addEventListener('click', function () {
+    var err = $('#err'), nm = $('#nm').value.trim(), ph = $('#ph').value.trim(), n = +$('#ppl').value;
+    if (st.evt === null) { err.textContent = 'Lütfen etkinlik türünü seçin.'; $('#evt').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    if (!$('#dt').value) { err.textContent = 'Lütfen bir tarih seçin.'; $('#dt').focus(); return; }
+    if (!nm) { err.textContent = 'Lütfen adınızı yazın.'; $('#nm').focus(); return; }
+    if (ph.replace(/\D/g, '').length < 10) { err.textContent = 'Lütfen geçerli bir telefon numarası yazın.'; $('#ph').focus(); return; }
+    err.textContent = '';
+    var msg = 'Merhaba ' + BIZ.name + ', teklif almak istiyorum:\n\n' +
+      '🎉 Etkinlik: ' + EVTS[st.evt] + '\n' +
+      '✨ Paket: ' + pkg().name + ' (' + tl(pkg().price) + ' / kişi)\n' +
+      '👥 Kişi sayısı: ' + n + '\n' +
+      '📅 Tarih: ' + fmtDate($('#dt').value) + ', ' + $('#tm').value + '\n' +
+      '💰 Tahmini tutar: ' + tl(n * pkg().price) + '\n' +
+      '👤 Ad: ' + nm + '\n📞 Telefon: ' + ph + '\n\nTarih müsaitliği için dönüşünüzü bekliyorum.';
+    window.open('https://wa.me/' + BIZ.wa + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+
+  function fitBig() {
+    var big = $('.fbig');
+    big.style.fontSize = '';
+    if (big.scrollWidth > big.clientWidth + 1) big.style.fontSize = (parseFloat(getComputedStyle(big).fontSize) * big.clientWidth / big.scrollWidth * .97) + 'px';
+  }
+  fitBig(); addEventListener('resize', fitBig);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBig);
+
+  var hdr = $('#hdr');
+  function onScroll() { hdr.classList.toggle('solid', scrollY > 30); }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+    new IntersectionObserver(function (es) { $('#hero').classList.toggle('paused', !es[0].isIntersecting); }).observe($('#hero'));
+  } else document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
+})();
+</script>
+<script>
+/* Sayfa sonunda footer görünürken "örnek çalışma" düğmesini gizle; footer'daki EY Studios imzasının üstüne binmesin */
+(function () {
+  var b = document.querySelector('.demo-back'), f = document.querySelector('footer');
+  if (!b || !f || !('IntersectionObserver' in window)) return;
+  b.style.transition = 'opacity .35s';
+  new IntersectionObserver(function (e) {
+    var on = e[0].isIntersecting;
+    b.style.opacity = on ? '0' : '';
+    b.style.pointerEvents = on ? 'none' : '';
+    if (on) { b.setAttribute('tabindex', '-1'); b.setAttribute('aria-hidden', 'true'); }
+    else { b.removeAttribute('tabindex'); b.removeAttribute('aria-hidden'); }
+  }).observe(f);
+})();
+</script>
+</body>
+</html>
