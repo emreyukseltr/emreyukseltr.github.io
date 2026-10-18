@@ -67,7 +67,11 @@ section{padding:clamp(64px,10vw,116px) 0}
 @keyframes bucket{0%,100%{transform:rotate(0)}45%{transform:rotate(-22deg)}70%{transform:rotate(18deg)}}
 .dust{animation:dust 5s ease-in-out infinite}
 @keyframes dust{0%,35%,100%{opacity:0;transform:translateY(0)}50%{opacity:.6}70%{opacity:0;transform:translateY(-14px)}}
-.paused .arm,.paused .stick,.paused .bucket,.paused .dust{animation-play-state:paused}
+.rod{animation:rod 4s ease-in-out infinite}
+@keyframes rod{0%,100%{transform:translateY(0)}50%{transform:translateY(26px)}}
+.bit{transform-box:fill-box;transform-origin:center;animation:bit .5s linear infinite}
+@keyframes bit{to{transform:scaleX(-1)}}
+.paused .arm,.paused .stick,.paused .bucket,.paused .dust,.paused .rod,.paused .bit{animation-play-state:paused}
 
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
 .stats div{padding:26px 12px;text-align:center;border-right:1px solid var(--line)}
@@ -141,7 +145,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
 
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.1,1)}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.arm,.stick,.bucket,.dust{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.arm,.stick,.bucket,.dust,.rod,.bit{animation:none}html{scroll-behavior:auto}}
 
 @media (max-width:960px){
   .hero .wrap{grid-template-columns:1fr}
@@ -349,7 +353,9 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
      FİRMA BİLGİLERİ — yeni bir firma için bu bloğu düzenleyin.
      Satış önizlemesi: ?m=Firma+Adı&c=İlçe,+Şehir (bilgi repoya girmez, yalnızca linkte durur)
      ===================================================================== */
-  var BIZ = { name: 'Nova Hafriyat', area: 'Efeler, Aydın', address: 'Örnek Mah. Sanayi Cd. No: 10, Efeler / Aydın', wa: '905306284284' };
+  /* Sondaj modu: ?s=sondaj (su kuyusu sondaj firmaları için satış önizlemesi) */
+  var SND = /[?&]s=sondaj\b/.test(location.search);
+  var BIZ = { name: SND ? 'Nova Sondaj' : 'Nova Hafriyat', area: 'Efeler, Aydın', address: 'Örnek Mah. Sanayi Cd. No: 10, Efeler / Aydın', wa: '905306284284' };
   try {
     var q = new URLSearchParams(location.search), qm = (q.get('m') || '').trim().slice(0, 40), qc = (q.get('c') || '').trim().slice(0, 40);
     if (qm) BIZ.name = qm;
@@ -359,18 +365,54 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
   var $ = function (s) { return document.querySelector(s); };
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
 
+  if (SND) {
+    var H = function (s, h) { $(s).innerHTML = h; };
+    document.querySelector('meta[name="description"]').content = 'Tarla, bahçe, ev ve sanayi için su kuyusu sondajı, kuyu temizleme ve dalgıç pompa montajı. Teklifinizi WhatsApp\'tan isteyin.';
+    H('#hero .kick', '<span data-o="area"></span> · Su kuyusu · Sondaj · Pompa');
+    H('#hero h1', 'Suyunuza ulaşana kadar <em>derine iniyoruz.</em>');
+    H('#hero .lead', 'Tarla, bahçe, ev ve sanayi için su kuyusu açıyoruz. Arazi keşfinden sondaja, dalgıç pompa montajından DSİ evraklarına kadar süreci tek elden yürütüyoruz.');
+    H('#hero .cta', '<a class="btn btn-y" href="#teklif">Ücretsiz arazi keşfi →</a><a class="btn btn-o" href="#makineler">Ekipmanlarımız</a>');
+    H('#hero .meta', '<span><b>Ücretsiz</b> arazi keşfi</span><span><b>DSİ</b> belge desteği</span><span><b>Pompa montajı</b> dahil</span>');
+    H('.dig svg', '<path d="M0 330 Q120 310 260 322 T520 318 V385 H0Z" fill="#2A241A"/><g class="dust"><circle cx="300" cy="318" r="12" fill="#8B7A5C" opacity=".5"/><circle cx="322" cy="312" r="8" fill="#8B7A5C" opacity=".4"/><circle cx="282" cy="310" r="7" fill="#8B7A5C" opacity=".35"/></g>' +
+      '<rect x="40" y="262" width="250" height="40" rx="6" fill="#F5B301"/><path d="M290 262h70l40 30v10H290z" fill="#E0A400"/><path d="M302 270h44l26 20h-70z" fill="#2C3E4E" opacity=".9"/>' +
+      '<g fill="#2B2C30" stroke="#45474D" stroke-width="4"><circle cx="90" cy="306" r="20"/><circle cx="140" cy="306" r="20"/><circle cx="350" cy="306" r="20"/></g>' +
+      '<rect x="210" y="250" width="64" height="12" fill="#45474D"/>' +
+      '<g stroke="#F5B301" stroke-width="7" fill="none" stroke-linejoin="round"><path d="M232 252 V30 M268 252 V30 M226 30 H274"/></g><g stroke="#C98F00" stroke-width="3" fill="none"><path d="M232 60 L268 100 L232 140 L268 180 L232 220 M268 60 L232 100 L268 140 L232 180 L268 220"/></g>' +
+      '<g class="rod"><rect x="241" y="40" width="18" height="34" rx="3" fill="#45474D"/><rect x="246" y="74" width="8" height="244" fill="#9B9A94"/></g>' +
+      '<path class="bit" d="M240 318 h20 l-4 14 h-12z" fill="#45474D"/><path d="M250 322 V385" stroke="#3A3020" stroke-width="10" opacity=".6"/>');
+    H('.stats', '<div><b>20 yıl</b><span>Sektör tecrübesi</span></div><div><b>1 gün</b><span>İçinde keşif</span></div><div><b>DSİ</b><span>Belge desteği</span></div><div><b>7/24</b><span>Teklif talebi</span></div>');
+    H('#hizmetler h2', 'Kuyudan pompaya, <em>tek elden.</em>');
+    H('#hizmetler .lead', 'Tarım sulamasından ev ve sanayi ihtiyacına kadar, kuyunun açılmasından suyun yüzeye çıkmasına kadar her aşamayı kendi ekibimiz ve ekipmanımızla yapıyoruz.');
+    H('.svc', [['Su kuyusu açma', 'İhtiyaca ve araziye göre sığ ya da derin su kuyusu; borulama ve filtre yerleşimi.'], ['Artezyen / derin sondaj', 'Derin akiferlere ulaşmak için yüksek kapasiteli ekipmanla sondaj.'], ['Kuyu temizleme & revizyon', 'Debisi düşen veya kumlanan kuyularda temizlik, kompresörle yıkama ve bakım.'], ['Dalgıç pompa satış & montaj', 'Kuyu derinliği ve ihtiyaca uygun pompa seçimi, montajı ve elektrik bağlantısı.'], ['Kuyu ruhsatı (DSİ) başvuru desteği', 'Kuyu belgesi ve kullanım izni başvurularında evrak hazırlığı ve yönlendirme.'], ['Zemin etüdü sondajı', 'Yapı projeleri için numune alma ve zemin etüdüne yönelik sondaj.'], ['Güneş enerjili sulama (GES pompa)', 'Elektriğin olmadığı arazilerde güneş enerjili pompa sistemleri hakkında bilgi ve yönlendirme.']].map(function (c, i) { return '<div class="card rv"><span class="n">0' + (i + 1) + '</span><h3>' + c[0] + '</h3><p>' + c[1] + '</p></div>'; }).join(''));
+    H('#makineler .kick', 'Ekipmanlar');
+    H('#makineler h2', 'Her zemine <em>doğru ekipman.</em>');
+    H('#makineler .fnote', 'Bu bir örnek sitedir; ekipman bölümünde işletmenin kendi makineleri ve fotoğrafları yer alır.');
+    H('#teklif h2', 'Arazinizi anlatın, <em>teklifi biz verelim.</em>');
+    H('#teklif .lead', 'Birkaç seçim yapın; talebiniz WhatsApp\'tan bize ulaşsın. Arazinin konumunu ve fotoğrafını da aynı sohbetten gönderebilirsiniz.');
+    var fls = document.querySelectorAll('#teklif .fl');
+    fls[0].textContent = 'Amaç'; fls[1].textContent = 'Tahmini derinlik bilgisi'; fls[2].textContent = 'Arazi konumu ve istenen tarih';
+    $('#loc').placeholder = 'Arazi konumu (köy / mevki)'; $('#loc').setAttribute('aria-label', 'Arazi konumu');
+    $('#dt').setAttribute('aria-label', 'İstenen tarih');
+    $('#nt').placeholder = 'Örnek: 20 dönüm zeytinlik, komşu kuyular yaklaşık 150 m';
+    $('#send').textContent = 'WhatsApp\'tan sondaj teklifi iste';
+    $('#teklif .note').textContent = 'Arazi keşfi ücretsizdir. Fiyat; derinlik, zemin ve kuyu çapına göre keşiften sonra yazılı olarak verilir.';
+    var li = document.querySelectorAll('.steps li');
+    [['Talep', 'Formu doldurun ya da arayın; arazi konumunu gönderin.'], ['Ücretsiz arazi keşfi', 'Araziyi ve çevredeki kuyuları inceler, uygun noktayı birlikte belirleriz.'], ['Yazılı teklif', 'Metre, zemin ve çapa göre net teklif ve tarih.'], ['Sondaj & montaj', 'Kuyu açılır, borulanır; pompa montajı ve test yapılır.']].forEach(function (x, i) { li[i].innerHTML = '<b>' + x[0] + '</b><p>' + x[1] + '</p>'; });
+    H('.faq', [['Sondaj fiyatı neye göre değişir?', 'Fiyat; kuyunun derinliğine (metre), zeminin yapısına (toprak, çakıl, kaya), kuyu çapına, kullanılacak boru ve filtreye ve pompa ihtiyacına göre değişir. Net fiyat arazi keşfinden sonra yazılı olarak verilir.'], ['Kuyu açmak için ruhsat gerekir mi?', 'Yeraltı suyu kullanımı genellikle DSİ\'nin izin ve belge sürecine tabidir; gereken belgeler bölgeye ve kullanım amacına göre değişir. Başvuru evraklarının hazırlanmasında yönlendirme ve destek sağlıyoruz.'], ['Sondaj ne kadar sürer?', 'Süre; derinliğe, zemin yapısına ve hava koşullarına göre değişir. Keşiften sonra işinize özel tahmini bir süre paylaşırız.'], ['Su çıkmazsa ne olur?', 'Yeraltı suyunun varlığı ve debisi önceden kesin olarak bilinemez. Bu ihtimal ve izlenecek yol, işe başlamadan önce teklifte açıkça konuşulur ve yazılı olarak belirlenir.']].map(function (x) { return '<details><summary>' + x[0] + '</summary><p>' + x[1] + '</p></details>'; }).join(''));
+  }
+
   var w = BIZ.name.split(' ');
   $('.brand').innerHTML = esc(w.length > 1 ? w.slice(0, -1).join(' ') : w[0]) + (w.length > 1 ? ' <i>' + esc(w[w.length - 1]) + '</i>' : '');
   document.querySelectorAll('[data-o="name"]').forEach(function (e) { e.textContent = BIZ.name; });
   document.querySelectorAll('[data-o="area"]').forEach(function (e) { e.textContent = BIZ.area; });
   document.querySelectorAll('[data-o="address"]').forEach(function (e) { e.textContent = BIZ.address; });
-  document.title = BIZ.name + ' — Kazı, Yıkım & İş Makinesi Kiralama';
+  document.title = BIZ.name + (SND ? ' — Su Kuyusu Sondajı & Dalgıç Pompa' : ' — Kazı, Yıkım & İş Makinesi Kiralama');
   $('#waBtn').href = 'https://wa.me/' + BIZ.wa;
   $('#mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(BIZ.name + ' ' + BIZ.area);
   $('#yr').textContent = new Date().getFullYear();
 
   var city = BIZ.area.split(',').pop().trim();
-  $('#areas').innerHTML = [BIZ.area.split(',')[0].trim(), city + ' merkez', 'Tüm ilçeler', 'Çevre iller', 'Sanayi bölgeleri', 'Konut & site projeleri'].filter(function (v, i, a) { return v && a.indexOf(v) === i; }).map(function (a) { return '<span>' + esc(a) + '</span>'; }).join('');
+  $('#areas').innerHTML = [BIZ.area.split(',')[0].trim(), city + ' merkez', 'Tüm ilçeler', 'Çevre iller', 'Sanayi bölgeleri', SND ? 'Tarla & bahçeler' : 'Konut & site projeleri'].filter(function (v, i, a) { return v && a.indexOf(v) === i; }).map(function (a) { return '<span>' + esc(a) + '</span>'; }).join('');
 
   var EXC = '<path d="M10 70h70l-8-16H18z" fill="#F5B301"/><rect x="8" y="70" width="80" height="14" rx="7" fill="#45474D"/><path d="M60 54l26-26 10 8-20 22" stroke="#F5B301" stroke-width="7" fill="none"/><path d="M92 34l8 18-12 4z" fill="#9B9A94"/>';
   var LOAD = '<rect x="18" y="44" width="46" height="26" fill="#F5B301"/><path d="M24 44V26h22l8 18" fill="#F5B301"/><circle cx="28" cy="76" r="10" fill="#45474D"/><circle cx="66" cy="76" r="10" fill="#45474D"/><path d="M64 52l22 4 6 14H74" stroke="#F5B301" stroke-width="6" fill="none"/><path d="M8 50l14 4" stroke="#F5B301" stroke-width="5"/>';
@@ -386,12 +428,30 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
     { s: BREAK, t: 'Kırıcılı ekskavatör', d: 'Beton, kaya ve temel kırımı', tg: 'Operatörlü' },
     { s: CRANE, t: 'Mobil vinç', d: 'Kaldırma ve montaj işleri', tg: 'Saatlik' }
   ];
+  if (SND) {
+    var RIG = '<rect x="8" y="58" width="66" height="14" fill="#F5B301"/><path d="M74 58h14l8 10v4H74z" fill="#E0A400"/><circle cx="20" cy="78" r="7" fill="#45474D"/><circle cx="38" cy="78" r="7" fill="#45474D"/><circle cx="84" cy="78" r="7" fill="#45474D"/><path d="M40 58V8M54 58V8M38 8h18M40 20l14 12-14 12" stroke="#F5B301" stroke-width="4" fill="none"/><path d="M47 14v74" stroke="#9B9A94" stroke-width="3"/>';
+    var TRIG = '<rect x="10" y="66" width="84" height="16" rx="8" fill="#45474D"/><rect x="20" y="52" width="40" height="14" fill="#F5B301"/><path d="M66 66V6M80 66V6M64 6h18M66 20l14 12-14 12" stroke="#F5B301" stroke-width="4" fill="none"/><path d="M73 12v78" stroke="#9B9A94" stroke-width="3"/>';
+    var COMP = '<rect x="14" y="34" width="64" height="34" rx="6" fill="#F5B301"/><path d="M22 42h20M22 50h20M22 58h20" stroke="#C98F00" stroke-width="3"/><circle cx="60" cy="51" r="9" fill="#45474D"/><circle cx="28" cy="76" r="8" fill="#45474D"/><circle cx="64" cy="76" r="8" fill="#45474D"/><path d="M78 51h16" stroke="#9B9A94" stroke-width="4"/>';
+    var TANK = '<rect x="8" y="34" width="62" height="32" rx="16" fill="#9B9A94"/><path d="M20 44c4-6 8 6 12 0s8 6 12 0" stroke="#2C3E4E" stroke-width="3" fill="none"/><path d="M70 42h16l10 12v14H70z" fill="#F5B301"/><circle cx="24" cy="74" r="9" fill="#45474D"/><circle cx="52" cy="74" r="9" fill="#45474D"/><circle cx="84" cy="74" r="9" fill="#45474D"/>';
+    var PUMP = '<rect x="10" y="60" width="54" height="16" fill="#F5B301"/><circle cx="20" cy="80" r="7" fill="#45474D"/><circle cx="54" cy="80" r="7" fill="#45474D"/><path d="M36 60L74 14h10" stroke="#F5B301" stroke-width="6" fill="none"/><path d="M84 14v44" stroke="#9B9A94" stroke-width="2"/><rect x="79" y="58" width="10" height="26" rx="4" fill="#45474D"/>';
+    FLEET = [
+      { s: RIG, t: 'Kamyon üstü sondaj makinesi', d: 'Hızlı kurulum, derin su kuyusu sondajı', tg: 'Su kuyusu' },
+      { s: TRIG, t: 'Paletli sondaj makinesi', d: 'Engebeli ve yumuşak arazide sondaj', tg: 'Zorlu arazi' },
+      { s: COMP, t: 'Kompresör', d: 'Havalı sondaj ve kuyu temizleme', tg: 'Yüksek basınç' },
+      { s: TANK, t: 'Su tankeri', d: 'Sondaj sırasında su ve çamur ihtiyacı', tg: 'Destek' },
+      { s: PUMP, t: 'Pompa / çekme vinci', d: 'Dalgıç pompa indirme, çekme ve revizyon', tg: 'Montaj' }
+    ];
+  }
   $('#fleet').innerHTML = FLEET.map(function (f) {
     return '<div class="mc rv"><div class="pic"><svg viewBox="0 0 104 92" aria-hidden="true">' + f.s + '</svg></div><div class="bd"><h3>' + f.t + '</h3><p>' + f.d + '</p><span class="tg">' + f.tg + '</span></div></div>';
   }).join('');
 
   var JOBS = ['Temel kazısı', 'Bina yıkımı', 'Dolgu & tesviye', 'Kanal kazısı', 'Malzeme (kum/çakıl)', 'Sadece makine kiralama'];
   var MACS = ['Ekskavatör', 'JCB', 'Kamyon', 'Silindir', 'Kırıcı', 'Vinç', 'Emin değilim'];
+  if (SND) {
+    JOBS = ['Tarım sulama', 'Ev / bahçe', 'Sanayi', 'Hayvancılık'];
+    MACS = ['Bilmiyorum', '0–100 m', '100–200 m', '200 m+'];
+  }
   var st = { job: null, mac: {} };
   function render() {
     $('#job').innerHTML = JOBS.map(function (j, i) { return '<button type="button" class="opt" data-j="' + i + '" aria-pressed="' + (st.job === i) + '">' + j + '</button>'; }).join('');
@@ -401,7 +461,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
   function macs() { return MACS.filter(function (m, i) { return st.mac[i]; }); }
   function fmt(v) { if (!v) return '—'; var d = new Date(v + 'T12:00:00'); return isNaN(d) ? v : d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }); }
   function sum() {
-    $('#sl').innerHTML = '<dt>İş</dt><dd>' + (st.job === null ? '—' : JOBS[st.job]) + '</dd><dt>Makine</dt><dd>' + (macs().length ? esc(macs().join(', ')) : '—') + '</dd><dt>Konum</dt><dd>' + (esc($('#loc').value.trim()) || '—') + '</dd><dt>Tarih</dt><dd>' + esc(fmt($('#dt').value)) + '</dd>';
+    $('#sl').innerHTML = '<dt>' + (SND ? 'Amaç' : 'İş') + '</dt><dd>' + (st.job === null ? '—' : JOBS[st.job]) + '</dd><dt>' + (SND ? 'Derinlik' : 'Makine') + '</dt><dd>' + (macs().length ? esc(macs().join(', ')) : '—') + '</dd><dt>Konum</dt><dd>' + (esc($('#loc').value.trim()) || '—') + '</dd><dt>Tarih</dt><dd>' + esc(fmt($('#dt').value)) + '</dd>';
   }
   render();
   (function () { var d = new Date(); $('#dt').min = d.toISOString().slice(0, 10); })();
@@ -409,16 +469,22 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
   document.addEventListener('click', function (e) {
     var b;
     if ((b = e.target.closest('[data-j]'))) { st.job = +b.dataset.j; render(); $('#err').textContent = ''; return; }
-    if ((b = e.target.closest('[data-m]'))) { var i = +b.dataset.m; st.mac[i] = !st.mac[i]; render(); }
+    if ((b = e.target.closest('[data-m]'))) { var i = +b.dataset.m, on = !st.mac[i]; if (SND) st.mac = {}; st.mac[i] = on; render(); }
   });
   $('#send').addEventListener('click', function () {
     var err = $('#err'), nm = $('#nm').value.trim(), ph = $('#ph').value.trim(), loc = $('#loc').value.trim(), nt = $('#nt').value.trim();
-    if (st.job === null) { err.textContent = 'Lütfen iş türünü seçin.'; $('#job').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    if (!loc) { err.textContent = 'Lütfen ilçe / mahalle yazın.'; $('#loc').focus(); return; }
+    if (st.job === null) { err.textContent = SND ? 'Lütfen amacı seçin.' : 'Lütfen iş türünü seçin.'; $('#job').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    if (!loc) { err.textContent = SND ? 'Lütfen arazi konumunu yazın.' : 'Lütfen ilçe / mahalle yazın.'; $('#loc').focus(); return; }
     if (!nm) { err.textContent = 'Lütfen adınızı yazın.'; $('#nm').focus(); return; }
     if (ph.replace(/\D/g, '').length < 10) { err.textContent = 'Lütfen geçerli bir telefon yazın.'; $('#ph').focus(); return; }
     err.textContent = '';
-    var msg = 'Merhaba ' + BIZ.name + ', teklif almak istiyorum:\n\n' +
+    var msg = SND ? 'Merhaba ' + BIZ.name + ', su kuyusu sondajı için teklif almak istiyorum:\n\n' +
+      '💧 Amaç: ' + JOBS[st.job] + '\n' +
+      (macs().length ? '📏 Tahmini derinlik: ' + macs().join(', ') + '\n' : '') +
+      '📍 Arazi konumu: ' + loc + '\n' +
+      ($('#dt').value ? '📅 İstenen tarih: ' + fmt($('#dt').value) + '\n' : '') +
+      (nt ? '📝 Not: ' + nt + '\n' : '') +
+      '👤 Ad: ' + nm + '\n📞 Telefon: ' + ph + '\n\nArazi keşfi ve sondaj teklifi için dönüşünüzü bekliyorum. (Arazinin konumunu ve fotoğrafını bu sohbetten gönderebilirim.)' : 'Merhaba ' + BIZ.name + ', teklif almak istiyorum:\n\n' +
       '🚜 İş: ' + JOBS[st.job] + '\n' +
       (macs().length ? '🔧 Makine: ' + macs().join(', ') + '\n' : '') +
       '📍 Konum: ' + loc + '\n' +
