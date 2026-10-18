@@ -1007,8 +1007,8 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
         var u = x / n, v = y / n, i = y * n + x;
         var c1 = worleyP(u * 11, v * 11, 11, 3), c2 = worleyP(u * 29, v * 29, 29, 7), f = fbmP(u * 4, v * 4, 4, 3, 5), f2 = fbmP(u * 32, v * 32, 32, 2, 9);
         var b1 = sat(1 - c1 * 1.25); b1 = b1 * b1 * (3 - 2 * b1); var b2 = sat(1 - c2 * 1.35); b2 = b2 * b2 * (3 - 2 * b2);
-        hh[i] = b1 * .45 + b2 * .32 + f2 * .3;
-        var a = .74 + (f - .5) * .3 + (f2 - .5) * .12 + b1 * .04 + b2 * .03 - (1 - b1) * (1 - b2) * .08;
+        hh[i] = b1 * .16 + b2 * .2 + f2 * .3 + (hsh(x * 3 + 11, y * 5 + 2) - .5) * .06;
+        var a = .74 + (f - .5) * .26 + (f2 - .5) * .12 + b2 * .025 - (1 - b1) * (1 - b2) * .025;
         if (hsh(x * 7 + 1, y * 13 + 3) > .992) a += .16;
         al[i] = clamp(a, .3, 1.05);
       }
@@ -1016,8 +1016,38 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     job(function () {
       var alb = new Uint8Array(n * n * 4), nm = new Uint8Array(n * n * 4), sum = 0;
       for (var i = 0; i < n * n; i++) { var a = al[i]; alb[i * 4] = a * 243; alb[i * 4 + 1] = a * 236; alb[i * 4 + 2] = a * 224; alb[i * 4 + 3] = 255; sum += Math.pow(a * .93, 2.2); }
-      heightToNormal(hh, n, 1.7 * n / 256, nm);
+      heightToNormal(hh, n, 1.25 * n / 256, nm);
       TX.soilA = dataTex(alb, n, true); TX.soilN = dataTex(nm, n, false); TX.soilAvg = sum / (n * n);
+      return true;
+    });
+  })();
+
+  // 2b) freshly dumped earth: fine crumbs (per-crumb tone, crack shading), normal + roughness — tileable
+  (function () {
+    var n = TQ.soil, G1 = Math.round(n / 6.4), hh = new Float32Array(n * n), al = new Float32Array(n * n), ro = new Float32Array(n * n);
+    job(rows(n, function (y) {
+      for (var x = 0; x < n; x++) {
+        var u = x / n, v = y / n, i = y * n + x, px = u * G1, py = v * G1, ci = Math.floor(px), cj = Math.floor(py), d1 = 9, d2 = 9, id = 0;
+        for (var dj = -1; dj <= 1; dj++) for (var di = -1; di <= 1; di++) {
+          var a = ci + di, b = cj + dj, wa = ((a % G1) + G1) % G1, wb = ((b % G1) + G1) % G1;
+          var fx = a + hsh(wa + 5, wb) - px, fy = b + hsh(wa, wb + 83) - py, d = fx * fx + fy * fy;
+          if (d < d1) { d2 = d1; d1 = d; id = hsh(wa + 17, wb + 29); } else if (d < d2) d2 = d;
+        }
+        d1 = Math.sqrt(d1); d2 = Math.sqrt(d2);
+        var edge = sat((d2 - d1) * 2.4), crumb = Math.sqrt(sat(1 - d1 * 1.2)) * (.55 + id * .6);
+        var c2 = sat(1 - worleyP(u * 9, v * 9, 9, 21) * 1.45), f = fbmP(u * 6, v * 6, 6, 3, 61), f2 = fbmP(u * 48, v * 48, 48, 1, 71);
+        hh[i] = crumb * .3 * (.55 + .45 * edge) + c2 * c2 * .2 + (f2 - .5) * .16 + (f - .5) * .12;
+        var a0 = .76 + (id - .5) * .2 + (f - .5) * .14 - (1 - edge) * .12 + (f2 - .5) * .07;
+        if (id > .965) a0 += .13; else if (id < .035) a0 -= .2;
+        al[i] = clamp(a0, .36, 1.0);
+        ro[i] = clamp(.9 + (id - .5) * .14 - (1 - edge) * .06, .7, 1);
+      }
+    }));
+    job(function () {
+      var alb = new Uint8Array(n * n * 4), nm = new Uint8Array(n * n * 4), rm = new Uint8Array(n * n * 4);
+      for (var i = 0; i < n * n; i++) { var a = al[i]; alb[i * 4] = a * 246; alb[i * 4 + 1] = a * 238; alb[i * 4 + 2] = a * 226; alb[i * 4 + 3] = 255; rm[i * 4] = 255; rm[i * 4 + 1] = ro[i] * 255; rm[i * 4 + 3] = 255; }
+      heightToNormal(hh, n, 2.1 * n / 256, nm);
+      TX.pileA = dataTex(alb, n, true); TX.pileN = dataTex(nm, n, false); TX.pileR = dataTex(rm, n, false);
       return true;
     });
   })();
@@ -1150,7 +1180,19 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     M.steel = new THREE.MeshStandardMaterial({ vertexColors: true, map: TX.paintA, roughnessMap: TX.paintRM, normalMap: TX.paintN, normalScale: new THREE.Vector2(.45, .45), roughness: 1.15, metalness: .62 });
     dirtPatch(M.steel);
     M.chrome = new THREE.MeshStandardMaterial({ color: C('#ebebe8'), roughness: .1, metalness: 1, envMapIntensity: 1.35 });
-    M.glass = new THREE.MeshStandardMaterial({ color: C('#0b1013'), roughness: .04, metalness: .2, envMapIntensity: 1.8 });
+    M.glass = new THREE.MeshStandardMaterial({ color: C('#0b1215'), roughness: .1, metalness: 0, envMapIntensity: .6 });
+    M.pile = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0, map: TX.pileA, normalMap: TX.pileN, roughnessMap: TX.pileR, normalScale: new THREE.Vector2(.85, .85), envMapIntensity: .95 });
+    M.grain = new THREE.MeshStandardMaterial({ roughness: .93, metalness: 0, flatShading: true, envMapIntensity: 1.35 });
+    M.pour = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0, map: TX.pileA, normalMap: TX.pileN, normalScale: new THREE.Vector2(.9, .9), envMapIntensity: 1.3, side: THREE.DoubleSide });
+    M.pour.onBeforeCompile = function (sh) {
+      // the curtain dissolves with age into clumps (then only the grains carry on): noise in material space, so it flows with the earth
+      sh.uniforms.uN = { value: TX.dust };
+      sh.vertexShader = 'attribute vec3 aN;\nvarying vec3 vN;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n\tvN = aN;');
+      sh.fragmentShader = 'uniform sampler2D uN;\nvarying vec3 vN;\n' + sh.fragmentShader.replace('#include <clipping_planes_fragment>', [
+        '#include <clipping_planes_fragment>',
+        'float pn = texture2D( uN, vN.xy ).g * .62 + texture2D( uN, vN.xy * 3.3 + .37 ).r * .38;',
+        'if ( pn < smoothstep( .2, 1., vN.z ) * 1.1 - .07 ) discard;'].join('\n'));
+    };
     M.rubber = new THREE.MeshStandardMaterial({ color: C('#3a3a3a'), roughness: .9, metalness: 0, map: TX.tread });
     M.soil = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0, map: TX.soilA, normalMap: TX.soilN, normalScale: new THREE.Vector2(1.1, 1.1), envMapIntensity: .7 });
     M.rock = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .96, metalness: 0, map: TX.soilA, normalMap: TX.soilN, envMapIntensity: .6 });
@@ -1345,8 +1387,8 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
         if (far > 0) {
           t.lerp(cGrass, far * ss(.3, .62, n2) * .85);
           var sc3 = fbm(X * .05 + 3, Z * .05 - 8, 4), sc4 = vn(X * .31, Z * .31);
-          t.lerp(cOlive, far * ss(.5, .72, sc3) * .9);
-          t.lerp(cScrub, far * ss(.62, .8, sc3 * .6 + sc4 * .5) * .75);
+          t.lerp(cOlive, far * Math.min(.92, ss(.36, .6, sc3) * .75 + ss(2, 16, Y) * .5));
+          t.lerp(cScrub, far * ss(.5, .74, sc3 * .6 + sc4 * .5) * .8);
           t.lerp(cFar, ss(140, 320, r) * .45);
         }
         if (X < -2.0 && X > -26 && pit === 0 && road < .5) {
@@ -1377,7 +1419,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     }));
     job(function () {
       g.setAttribute('color', new THREE.BufferAttribute(col, 3));
-      var mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .97, metalness: 0, map: TX.soilA, normalMap: TX.soilN, normalScale: new THREE.Vector2(.95, .95), envMapIntensity: .7 });
+      var mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .97, metalness: 0, map: TX.soilA, normalMap: TX.soilN, normalScale: new THREE.Vector2(.8, .8), envMapIntensity: .7 });
       soilPatch(mat);
       terrain = mesh(g, mat, scene, TQ.sh > 0, true);
       return true;
@@ -1459,6 +1501,9 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     TP.add(rbox(-.34, .12, 1.32, .98, .8, .96, .07, .03), YEL);
     TS.box(1.5, .015, .02, '#2a2826', .5, .62, 1.37); TS.box(.02, .4, .02, '#2a2826', -.25, .55, 1.37);
     TS.cyl(.018, .018, 1.4, 6, '#2a2826', 'x', .45, 1.3, 1.3); TS.cyl(.018, .018, .32, 6, '#2a2826', 'y', -.2, 1.14, 1.3); TS.cyl(.018, .018, .32, 6, '#2a2826', 'y', 1.1, 1.14, 1.3);
+    // handrails on the hood and the left walkway
+    TS.cyl(.016, .016, 1.05, 6, '#2a2826', 'x', -.95, 1.32, .45); TS.cyl(.016, .016, .3, 6, '#2a2826', 'y', -1.42, 1.18, .45); TS.cyl(.016, .016, .3, 6, '#2a2826', 'y', -.48, 1.18, .45);
+    TS.cyl(.016, .016, .9, 6, '#2a2826', 'x', -.95, 1.32, -.35); TS.cyl(.016, .016, .3, 6, '#2a2826', 'y', -1.35, 1.18, -.35); TS.cyl(.016, .016, .3, 6, '#2a2826', 'y', -.55, 1.18, -.35);
     TS.cyl(.014, .014, .62, 6, '#1e1d1c', 'y', 1.24, 1.28, 1.32); TS.box(.04, .26, .18, '#111', 1.24, 1.62, 1.32);
     TS.box(.55, .82, .06, '#2c2a27', .85, .55, BZ - .33); TS.box(.55, .82, .06, '#2c2a27', .85, .55, BZ + .33);
     TS.box(.36, .5, .06, '#2c2a27', 1.2, .3, BZ - .48); TS.box(.36, .5, .06, '#2c2a27', 1.2, .3, BZ + .48);
@@ -1466,10 +1511,16 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     var cz = -.88, cw2 = .94;
     TG.add(ext(shape([-.33, .62, 1.27, .62, 1.17, 1.86, -.33, 1.9]), cw2, 0, cz), '#ffffff');
     TP.add(ext(shape([-.36, .12, 1.32, .12, 1.32, .66, -.36, .66]), cw2 + .06, .02, cz), YEL);
-    TP.add(ext(shape([-.38, 1.84, 1.21, 1.81, 1.23, 1.95, -.38, 1.98]), cw2 + .08, .02, cz), YEL);
-    var e1 = cz - cw2 / 2 - .005, e2 = cz + cw2 / 2 + .005;
-    [e1, e2].forEach(function (ze) { TP.box(.07, 1.26, .07, YEL_D, -.31, 1.26, ze); TP.beam(1.26, .64, 1.16, 1.85, .07, .07, YEL_D, ze); });
-    TP.box(.06, 1.2, .03, YEL_D, .42, 1.25, e1);
+    TP.add(ext(rrect(-.42, 1.83, 1.27, 1.99, .06), cw2 + .1, .03, cz, 4), YEL);
+    var e1 = cz - cw2 / 2 - .005, e2 = cz + cw2 / 2 + .005, FR = '#262523';
+    // cab frame: dark pillars, door frame, window rail, front sill, wiper, grab bar, mirror
+    [e1, e2].forEach(function (ze) { TS.add(rbox(-.36, .62, -.25, 1.88, .09, ze, .02, .008), FR); TS.beam(1.27, .64, 1.17, 1.86, .085, .09, FR, ze); TS.box(1.55, .06, .085, FR, .45, 1.84, ze); });
+    TS.box(.07, 1.22, .05, FR, .42, 1.25, e1); TS.box(.75, .045, .05, FR, .05, 1.12, e1); TS.box(1.58, .07, .06, FR, .47, .66, e1);
+    TS.box(.05, .1, .03, '#888', .3, 1.02, e1 - .03);
+    TS.cyl(.016, .016, .55, 6, '#1e1d1c', 'y', -.42, 1.05, e1 - .05);
+    TS.box(.08, .08, cw2 + .04, FR, 1.27, .68, cz); TS.box(.05, .045, cw2 + .02, FR, 1.245, 1.0, cz);
+    TS.beam(1.235, .8, 1.19, 1.5, .012, .012, '#111', cz + .12);
+    TS.box(.03, .2, .14, '#1a1918', 1.2, 1.55, e1 - .16); TS.cyl(.01, .01, .2, 5, '#1a1918', 'z', 1.2, 1.52, e1 - .06);
     TS.box(.06, .05, cw2 + .02, '#222', 1.22, 1.4, cz);
     TS.box(.18, .06, .3, '#2a2a2a', 1.12, 1.98, cz);
     TP.cyl(.055, .065, .1, 12, '#ff8a1c', 'y', -.18, 2.03, cz - .3);
@@ -1482,13 +1533,17 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
 
     /* --- boom --- */
     var boom = new THREE.Group(); boom.position.set(KIN.F.x, KIN.F.y, BZ); T.add(boom); EX.boom = boom;
-    var bs = new THREE.Shape();
-    bs.moveTo(-.12, .29); bs.lineTo(.6, .5); bs.lineTo(2.62, 1.38); bs.lineTo(3.1, 1.37); bs.lineTo(5.1, .3);
-    bs.absarc(KIN.TIP.x, KIN.TIP.y, .27, 1.38, -1.75, true);
-    bs.lineTo(3.18, .58); bs.lineTo(2.62, .64); bs.lineTo(.55, -.3);
-    bs.absarc(0, 0, .3, -1.9, -4.3, true);
+    // curved "banana" side profile: top flange rises in a long arc to the knee and falls to the tip, belly follows it
+    function boomTop(p) { p.moveTo(-.13, .29); p.bezierCurveTo(.55, .64, 1.95, 1.24, 2.78, 1.43); p.quadraticCurveTo(3.08, 1.49, 3.34, 1.3); p.bezierCurveTo(4.05, .84, 4.95, .4, 5.44, .14); return p; }
+    var bs = boomTop(new THREE.Shape());
+    bs.absarc(KIN.TIP.x, KIN.TIP.y, .26, 2.0, -1.4, true);
+    bs.bezierCurveTo(4.95, -.1, 3.95, .5, 3.2, .7); bs.quadraticCurveTo(2.88, .76, 2.56, .63); bs.bezierCurveTo(1.75, .3, .95, -.1, .12, -.3);
+    bs.absarc(0, 0, .32, -1.2, -4.3, true);
     var BP = new B({ dirt: { y0: -.6, y1: .3, c: '#806244', k: .25 } }), BS = new B({ mott: .04 });
-    BP.add(ext(bs, .55, .03, 0, 8), YEL);
+    BP.add(ext(bs, .55, .04, 0, 9), YEL);
+    // raised doubler plates over the knee (a second bevelled edge that catches the sun)
+    var dp = new THREE.Shape(); dp.moveTo(2.05, .52); dp.quadraticCurveTo(2.85, .86, 3.6, .62); dp.lineTo(3.78, .82); dp.quadraticCurveTo(3.1, 1.36, 2.5, 1.22); dp.quadraticCurveTo(2.15, 1.05, 2.05, .52);
+    BP.add(ext(dp, .6, .012, 0, 5), YEL);
     BS.cyl(.1, .1, .74, 12, STL2, 'z', 0, 0, 0);
     BS.cyl(.13, .13, .6, 14, '#2c2a27', 'z', 0, 0, 0);
     BS.cyl(.1, .1, .64, 12, STL2, 'z', KIN.TIP.x, KIN.TIP.y, 0);
@@ -1496,13 +1551,14 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     BS.box(.32, .3, .06, '#2c2a27', BOOMCYL.e.x, BOOMCYL.e.y + .05, .3); BS.box(.32, .3, .06, '#2c2a27', BOOMCYL.e.x, BOOMCYL.e.y + .05, -.3);
     BP.box(.42, .34, .06, YEL, STICKCYL.b.x, STICKCYL.b.y - .14, .14); BP.box(.42, .34, .06, YEL, STICKCYL.b.x, STICKCYL.b.y - .14, -.14);
     BS.cyl(.06, .06, .36, 10, STL2, 'z', STICKCYL.b.x, STICKCYL.b.y, 0);
-    var hose = [[.4, .62], [2.5, 1.5], [3.15, 1.5], [5.0, .46], [5.45, .2]];
-    for (var hz = -1; hz <= 1; hz += 2) for (var hi = 0; hi < hose.length - 1; hi++) BS.beam(hose[hi][0], hose[hi][1], hose[hi + 1][0], hose[hi + 1][1], .045, .045, '#151515', hz * .1);
+    var hose = boomTop(new THREE.Path()).getSpacedPoints(16);
+    for (var hz = -1; hz <= 1; hz += 2) for (var hi = 2; hi < hose.length - 1; hi++) BS.beam(hose[hi].x, hose[hi].y + .075, hose[hi + 1].x, hose[hi + 1].y + .075, .05, .05, '#141414', hz * .11);
+    for (var hc = 3; hc < hose.length - 1; hc += 4) BS.box(.05, .05, .34, '#2c2a27', hose[hc].x, hose[hc].y + .06, 0);
     mesh(BP.build(), M.paint, boom); mesh(BS.build(), M.steel, boom);
     var bd = new THREE.PlaneGeometry(2.0, .25), bdg = new B({ mott: 0, keepUV: true });
     var ang1 = Math.atan2(1.38 - .5, 2.62 - .6);
-    bdg.add(bd.clone(), '#fff', 1.62, .63, .31, 0, 0, ang1);
-    bdg.add(bd.clone(), '#fff', 1.62, .63, -.31, 0, PI, -ang1);
+    bdg.add(bd.clone(), '#fff', 1.5, .6, .282, 0, 0, ang1);
+    bdg.add(bd.clone(), '#fff', 1.5, .6, -.282, 0, PI, -ang1);
     boom.add(new THREE.Mesh(bdg.build(), M.decal));
 
     exBoom = boom;
@@ -1512,10 +1568,15 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     /* --- stick --- */
     var stick = new THREE.Group(); stick.position.set(KIN.TIP.x, KIN.TIP.y, 0); boom.add(stick); EX.stick = stick;
     var sk = new THREE.Shape();
-    sk.moveTo(-.3, .52); sk.lineTo(-.24, .88); sk.lineTo(.06, .96); sk.lineTo(.3, .5); sk.lineTo(.36, -.12); sk.lineTo(.52, -.2); sk.lineTo(.5, -.4); sk.lineTo(.32, -.55);
-    sk.lineTo(.2, -2.78); sk.absarc(0, -KIN.LS, .2, .55, -PI - .55, true); sk.lineTo(-.29, -.4); sk.closePath();
+    // tapered arm: deep at the boom pivot (cylinder ear on top), slim at the bucket
+    sk.moveTo(-.3, .55); sk.quadraticCurveTo(-.33, .93, -.05, 1.0); sk.quadraticCurveTo(.23, 1.0, .3, .62); sk.lineTo(.36, .05);
+    sk.quadraticCurveTo(.4, -.12, .55, -.17); sk.quadraticCurveTo(.62, -.4, .36, -.62);
+    sk.bezierCurveTo(.3, -1.4, .24, -2.2, .2, -2.74); sk.absarc(0, -KIN.LS, .2, .55, -PI - .55, true);
+    sk.bezierCurveTo(-.24, -2.0, -.3, -1.0, -.31, -.4); sk.closePath();
     var SP = new B({ dirt: { y0: -2.9, y1: -1.5, c: '#7d5f40', k: .5 } }), SS = new B({ mott: .04 });
-    SP.add(ext(sk, .42, .025, 0, 8), YEL);
+    SP.add(ext(sk, .42, .035, 0, 7), YEL);
+    var sd = new THREE.Shape(); sd.moveTo(-.22, .5); sd.quadraticCurveTo(-.2, .82, .0, .86); sd.quadraticCurveTo(.18, .84, .22, .5); sd.lineTo(.26, -.5); sd.lineTo(.18, -1.3); sd.lineTo(-.2, -1.3); sd.lineTo(-.24, -.4); sd.closePath();
+    SP.add(ext(sd, .45, .01, 0, 6), YEL);
     SS.cyl(.09, .09, .62, 12, STL2, 'z', 0, 0, 0);
     SS.cyl(.07, .07, .4, 10, STL2, 'z', STICKCYL.e.x, STICKCYL.e.y, 0);
     SS.cyl(.09, .09, 1.2, 12, STL2, 'z', 0, -KIN.LS, 0);
@@ -1539,22 +1600,39 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     shell.closePath();
     var KP = new B({ dirt: { y0: -1.3, y1: -.3, c: '#4a4036', k: .75 } }), KS = new B({ mott: .05, dirt: { y0: -1.3, y1: -.8, c: '#5a4a3a', k: .5 } });
     KP.add(ext(shell, 1.08, 0, 0, 2), YEL);
-    var sideS = new THREE.Shape(); sideS.moveTo(cp[0].x, cp[0].y); for (var ck = 1; ck < cp.length; ck++) sideS.lineTo(cp[ck].x, cp[ck].y); sideS.closePath();
-    KP.add(ext(sideS, .04, 0, .56), YEL); KP.add(ext(sideS, .04, 0, -.56), YEL);
-    KS.add(ext(shape([-.82, -1.03, -.42, -1.255, .1, -1.265, .1, -1.215, -.42, -1.205, -.78, -.98]), 1.1, 0, 0), '#3f3c37');
-    var tdir = Math.atan2(-1.0 + 1.2, -.8 + .46);
+    // side plates: follow the shell's outer skin, bevelled; thick side cutters along the front edge
+    var sideS = new THREE.Shape(); for (var ck = 0; ck < cp.length; ck++) { var o2 = cp[Math.min(cp.length - 1, ck + 1)], o1 = cp[Math.max(0, ck - 1)], ql = Math.hypot(o2.x - o1.x, o2.y - o1.y), ox = (o2.y - o1.y) / ql * (th + .012), oy = -(o2.x - o1.x) / ql * (th + .012); if (ck) sideS.lineTo(cp[ck].x + ox, cp[ck].y + oy); else sideS.moveTo(cp[ck].x + ox, cp[ck].y + oy); } sideS.closePath();
+    KP.add(ext(sideS, .05, .014, .565, 2), YEL); KP.add(ext(sideS, .05, .014, -.565, 2), YEL);
+    var sc = shape([-.835, -1.0, -.6, -.34, -.5, -.39, -.72, -1.03]);
+    KS.add(ext(sc, .07, .012, .6), '#45423c'); KS.add(ext(sc, .07, .012, -.6), '#45423c');
+    KP.add(rbox(-.5, -.02, -.32, .13, 1.2, 0, .04, .014), YEL); // box-section top lip
+    KS.add(ext(shape([-.84, -1.04, -.42, -1.27, .1, -1.28, .1, -1.21, -.42, -1.2, -.77, -.97]), 1.12, .01, 0), '#3f3c37');
+    // wear strips along the belly
+    var ws = new THREE.Shape(), wsI = [];
+    for (var wi = 11; wi < cp.length - 2; wi++) { var w1 = cp[wi - 1], w2 = cp[wi + 1], wl = Math.hypot(w2.x - w1.x, w2.y - w1.y), wnx = (w2.y - w1.y) / wl, wny = -(w2.x - w1.x) / wl; if (wi === 11) ws.moveTo(cp[wi].x + wnx * (th + .03), cp[wi].y + wny * (th + .03)); else ws.lineTo(cp[wi].x + wnx * (th + .03), cp[wi].y + wny * (th + .03)); wsI.push([cp[wi].x + wnx * th * .5, cp[wi].y + wny * th * .5]); }
+    for (var wj = wsI.length - 1; wj >= 0; wj--) ws.lineTo(wsI[wj][0], wsI[wj][1]); ws.closePath();
+    [-.32, 0, .32].forEach(function (z) { KS.add(ext(ws, .07, .008, z, 2), '#3d3a35'); });
+    // teeth: cast adapters + tapered, pointed tips
+    var tdir = Math.atan2(-1.0 + 1.2, -.8 + .46), adp = ext(shape([0, -.075, .17, -.05, .17, .05, 0, .075]), .12, .012, 0, 2), tip = ext(shape([.14, -.052, .35, -.01, .36, .006, .14, .046]), .09, .008, 0, 2), tpp = tip.attributes.position;
+    for (var tq = 0; tq < tpp.count; tq++) { var tx0 = tpp.getX(tq); tpp.setZ(tq, tpp.getZ(tq) * lerp(1, .5, sat((tx0 - .14) / .22))); }
+    tip.computeVertexNormals();
     for (var tt = 0; tt < 5; tt++) {
       var tz = -.44 + tt * .22;
-      KS.add(ext(shape([0, -.07, .26, -.015, .26, .015, 0, .06]), .09, .01, tz), '#4a4740', -.8, -1.0, 0, 0, 0, tdir);
+      KS.add(adp.clone(), '#3b3934', -.8, -1.0, tz, 0, 0, tdir);
+      KS.add(tip.clone(), '#58544c', -.8, -1.0, tz, 0, 0, tdir);
     }
-    KS.box(.5, .34, .04, '#3a3733', .14, .02, .21); KS.box(.5, .34, .04, '#3a3733', .14, .02, -.21);
-    KS.cyl(.06, .06, .5, 10, STL2, 'z', LINK.kb.x, LINK.kb.y, 0);
+    adp.dispose(); tip.dispose();
+    // hinge ears (two pairs) with pin bosses
+    var ear = new THREE.Shape(); ear.moveTo(-.2, -.14); ear.lineTo(.52, -.08); ear.quadraticCurveTo(.58, .22, .36, .25); ear.lineTo(.02, .2); ear.quadraticCurveTo(-.24, .16, -.2, -.14);
+    [-.27, -.15, .15, .27].forEach(function (z) { KP.add(ext(ear, .045, .008, z, 3), YEL_D); });
+    KS.cyl(.06, .06, .62, 10, STL2, 'z', LINK.kb.x, LINK.kb.y, 0); KS.cyl(.065, .065, .62, 10, STL2, 'z', 0, 0, 0);
+    [-.3, .3].forEach(function (z) { KS.cyl(.095, .095, .03, 14, '#34322e', 'z', 0, 0, z); KS.cyl(.085, .085, .03, 14, '#34322e', 'z', LINK.kb.x, LINK.kb.y, z); });
     mesh(KP.build(), M.paint, bucket); mesh(KS.build(), M.steel, bucket);
     var lg = new THREE.SphereGeometry(.5, 16, 12), lp = lg.attributes.position;
-    for (var li = 0; li < lp.count; li++) { var lx = lp.getX(li), ly = lp.getY(li), lz = lp.getZ(li), f = 1 + (vn(lx * 5 + 3, (ly + lz) * 5) - .5) * .4 + (vn(lx * 13, lz * 13 + ly * 7) - .5) * .12; lp.setXYZ(li, lx * f * .78, ly * f * .9, lz * f * 1.02); }
+    for (var li = 0; li < lp.count; li++) { var lx = lp.getX(li), ly = lp.getY(li), lz = lp.getZ(li), f = 1 + (vn(lx * 4 + 3, (ly + lz) * 4) - .5) * .22 + (vn(lx * 11, lz * 11 + ly * 7) - .5) * .05; lp.setXYZ(li, lx * f * .78, ly * f * .9, lz * f * 1.02); }
     lg.computeVertexNormals();
-    var LB2 = new B({ mott: .14, uvS: 1.4 }); LB2.add(lg, '#75573d', -.2, -.6, 0, 0, 0, .5);
-    EX.load = mesh(LB2.build(), M.soil, bucket);
+    var LB2 = new B({ mott: .08, uvS: 1.05 }); LB2.add(lg, '#9c7550', -.2, -.6, 0, 0, 0, .5);
+    EX.load = mesh(LB2.build(), M.pile, bucket);
 
     /* --- linkage --- */
     var DG = new B(); DG.box(LINK.l1, .12, .05, '#3a3733', LINK.l1 / 2, 0, .17); DG.box(LINK.l1, .12, .05, '#3a3733', LINK.l1 / 2, 0, -.17);
@@ -1811,29 +1889,33 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
   }
 
   /* ---------------- the fresh spoil pile the intro dumps onto ---------------- */
-  var PC = new THREE.Vector3(0, 0, 7), PILE = { R: 2.75, H: 1.4, base: 0, mesh: null };
+  var PC = new THREE.Vector3(0, 0, 7), PILE = { R: 2.75, H: 1.5, base: 0, mesh: null };
+  // angle-of-repose cone (~34°): rounded crest, straight flank, flared toe (C1-continuous); u = r / (R / 1.25)
+  function pileProf(u) { if (u < .24) return .88 - u * u / .48; if (u < .75) return 1 - u; if (u < 1.25) { var d = u - .75; return .25 - d + d * d; } return 0; }
   function pileH(x, z) {
     var dx = x - PC.x, dz = z - PC.z, r = Math.sqrt(dx * dx + dz * dz), a = Math.atan2(dz, dx);
-    var R = PILE.R * (1 + (vn(Math.cos(a) * 1.4 + 5, Math.sin(a) * 1.4 + 2) - .5) * .32);
+    var R = PILE.R * (1 + (vn(Math.cos(a) * 1.3 + 5, Math.sin(a) * 1.3 + 2) - .5) * .16);
     if (r >= R) return 0;
-    var s = r / R, h = PILE.H * Math.pow(1 - s * s, 1.25) * (1 - .1 * s);
-    h += ((fbm(x * 1.9 + 3, z * 1.9, 3) - .5) * .34 + (vn(x * 6.5, z * 6.5) - .5) * .08) * (1 - s) * Math.min(1, s * 4 + .3);
+    var h = PILE.H * pileProf(r / R * 1.25);
+    h += ((fbm(x * 1.25 + 3, z * 1.25, 3) - .5) * .13 + (vn(x * 4.2, z * 4.2) - .5) * .035) * ss(0, .35, h);
     return Math.max(0, h);
   }
   function buildPile() {
-    var RN = 20, AN = 56, nv = (RN + 1) * AN + 1;
+    var RN = 22, AN = 60, nv = (RN + 1) * AN + 1;
     var pos = new Float32Array(nv * 3), uv = new Float32Array(nv * 2), col = new Float32Array(nv * 3), idx = [];
     PILE.base = terrainH(PC.x, PC.z);
-    var cWet = C('#6b4a32'), cDry = C('#97724f'), cBase = C('#86654a'), t = new THREE.Color(), k = 0;
+    // same earth as the site, a touch darker and moister at the foot, drier crumbs on the crest
+    var cBase = C('#7b5335'), cMid = C('#9a6d43'), cTop = C('#a9794b'), cDry = C('#b98958'), t = new THREE.Color(), k = 0;
     function put(x, z) {
-      var h = pileH(x, z), y = terrainH(x, z) - PILE.base + h - .03;
+      var h = pileH(x, z), y = terrainH(x, z) - PILE.base + h - .03, hn = h / (PILE.H * .88);
       pos[k * 3] = x - PC.x; pos[k * 3 + 1] = y; pos[k * 3 + 2] = z - PC.z; uv[k * 2] = x * 1.05; uv[k * 2 + 1] = z * 1.05;
-      var n = vn(x * 2.7, z * 2.7);
-      t.copy(cWet).lerp(cDry, sat(h / PILE.H * .6 + (n - .5) * .5)); t.lerp(cBase, 1 - ss(0, .25, h));
+      var n = vn(x * 2.3, z * 2.3), n2 = fbm(x * .9 + 4, z * .9, 2);
+      t.copy(cBase).lerp(cMid, ss(0, .3, hn)).lerp(cTop, ss(.35, .95, hn)).lerp(cDry, ss(.5, .75, n2) * .4 * ss(.2, .6, hn));
+      t.multiplyScalar(.93 + n * .14);
       col[k * 3] = t.r; col[k * 3 + 1] = t.g; col[k * 3 + 2] = t.b; k++;
     }
     put(PC.x, PC.z);
-    for (var r = 1; r <= RN; r++) for (var a = 0; a < AN; a++) { var rr = Math.pow(r / RN, 1.1) * PILE.R * 1.25, an = a / AN * TAU; put(PC.x + Math.cos(an) * rr, PC.z + Math.sin(an) * rr); }
+    for (var r = 1; r <= RN; r++) for (var a = 0; a < AN; a++) { var rr = Math.pow(r / RN, 1.05) * PILE.R * 1.1, an = a / AN * TAU; put(PC.x + Math.cos(an) * rr, PC.z + Math.sin(an) * rr); }
     for (var a2 = 0; a2 < AN; a2++) idx.push(0, 1 + (a2 + 1) % AN, 1 + a2);
     for (var r2 = 1; r2 < RN; r2++) for (var a3 = 0; a3 < AN; a3++) {
       var i0 = 1 + (r2 - 1) * AN + a3, i1 = 1 + (r2 - 1) * AN + (a3 + 1) % AN, j0 = i0 + AN, j1 = i1 + AN;
@@ -1842,7 +1924,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     var g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.BufferAttribute(uv, 2)); g.setAttribute('color', new THREE.BufferAttribute(col, 3));
     g.setIndex(idx); g.computeVertexNormals();
-    PILE.mesh = mesh(g, M.soil, scene);
+    PILE.mesh = mesh(g, M.pile, scene);
     PILE.mesh.position.set(PC.x, PILE.base, PC.z);
   }
   function pileTop(x, z, sc) { return terrainH(x, z) + pileH(x, z) * (sc === undefined ? 1 : sc); }
@@ -1935,7 +2017,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
      Animated tileable FBM inside each sprite, erosion as it thins, forward
      (Henyey-Greenstein) sun scattering + fake self-shadowing, soft at the ground.
      ======================================================================= */
-  var NI = TQ.dust, NSM = 6, NF = TQ.film, NS = NI + NSM + NF, F0 = NI + NSM;
+  var NI = TQ.dust, NSM = 6, NPD = [6, 10, 14][tier], NF = TQ.film, NS = NI + NSM + NPD + NF, F0 = NI + NSM + NPD;
   var SX = new Float32Array(NS), SY = new Float32Array(NS), SZ = new Float32Array(NS), SS = new Float32Array(NS), SA = new Float32Array(NS), SR = new Float32Array(NS), SD = new Float32Array(NS), SG = new Float32Array(NS);
   var FV = new Float32Array(NS * 3), FL = new Float32Array(NS), FM = new Float32Array(NS), FS0 = new Float32Array(NS), FS1 = new Float32Array(NS), FA0 = new Float32Array(NS), FRV = new Float32Array(NS);
   var ORD = new Uint16Array(NS), DEP = new Float32Array(NS), fHead = F0, dustAlive = 0, dustShown = 0;
@@ -2028,10 +2110,9 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
   }
 
   /* ---------------- clods: instanced low-poly rocks (lit + shadowed) ---------------- */
-  var NR = TQ.rocks, NRI = Math.round(NR * .72), rockMesh, rockAlive = 0, rHead = NRI;
+  var NR = TQ.rocks, NRI = 0, rockMesh, rockAlive = 0, rHead = NRI;
   var RKX = new Float32Array(NR), RKY = new Float32Array(NR), RKZ = new Float32Array(NR), RKS = new Float32Array(NR), RKR = new Float32Array(NR * 3);
   var RV = new Float32Array(NR * 3), RL = new Float32Array(NR), RM_ = new Float32Array(NR), RKY0 = new Float32Array(NR);
-  var RI = { tr: new Float32Array(NR), x: new Float32Array(NR), y: new Float32Array(NR), z: new Float32Array(NR), vx: new Float32Array(NR), vy: new Float32Array(NR), vz: new Float32Array(NR), tl: new Float32Array(NR), fx: new Float32Array(NR), fy: new Float32Array(NR), fz: new Float32Array(NR), ly: new Float32Array(NR), spin: new Float32Array(NR) };
   var _rs = new THREE.Vector3(), _rq = new THREE.Quaternion(), _re = new THREE.Euler();
   function buildRocks() {
     var g = new THREE.IcosahedronGeometry(1, 1), p = g.attributes.position;
@@ -2039,7 +2120,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     g.computeVertexNormals();
     rockMesh = new THREE.InstancedMesh(g, M.rock, NR); rockMesh.castShadow = TQ.sh > 0; rockMesh.receiveShadow = TQ.sh > 0; rockMesh.frustumCulled = false;
     var c = new THREE.Color(); seed = 777;
-    for (var k = 0; k < NR; k++) { c.copy(C(rnd() < .75 ? '#86684d' : '#9a8268')).multiplyScalar(.85 + rnd() * .3); rockMesh.setColorAt(k, c); _m4.makeScale(0, 0, 0); rockMesh.setMatrixAt(k, _m4); RKR[k * 3] = rnd() * 6; RKR[k * 3 + 1] = rnd() * 6; RKR[k * 3 + 2] = rnd() * 6; }
+    for (var k = 0; k < NR; k++) { c.copy(C(rnd() < .75 ? '#9c7752' : '#a88c6c')).multiplyScalar(.85 + rnd() * .3); rockMesh.setColorAt(k, c); _m4.makeScale(0, 0, 0); rockMesh.setMatrixAt(k, _m4); RKR[k * 3] = rnd() * 6; RKR[k * 3 + 1] = rnd() * 6; RKR[k * 3 + 2] = rnd() * 6; }
     scene.add(rockMesh);
   }
   function rockMat(i, x, y, z, s, a) {
@@ -2061,6 +2142,144 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
       rockMat(i, RKX[i], RKY[i], RKZ[i], RKS[i], RL[i] * 6);
     }
     return true;
+  }
+
+  /* ---------------- the pour: a cohesive curtain of loose earth leaves the bucket lip, dissolves into
+     hundreds of small grains (one instanced draw) and sheds fine dust. Analytic in t: seekable / skippable. ---------------- */
+  var NG = [400, 720, 1200][tier], NPB = 10, NRW = [12, 16, 20][tier], NRG = 8;
+  var PO = { c0: 1.25, c1: 1.6, g1: 1.95, v: new THREE.Vector3(0, -.45, .62), n: 42, t0: 1.12, dt: .022, end: 0 };
+  var LIPC = new THREE.Vector3(-.68, -.92, 0), LPS = {}, GR = {}, DP = {}, grainMesh, pourMesh;
+  ['lx', 'ly', 'lz', 'mx', 'my', 'mz', 'ax', 'ay', 'az', 'sx', 'sy', 'sz', 'tl'].forEach(function (k) { LPS[k] = new Float32Array(PO.n); });
+  function pileGrow(t) { return ease(ss(IN.TIMP - .02, IN.TIMP + .5, t)); }
+  function pileSurf(x, z, g) { // height of the (growing) pile mesh surface at (x, z)
+    var sy = lerp(.72, 1, g), sxz = lerp(.9, 1, g), xu = PC.x + (x - PC.x) / sxz, zu = PC.z + (z - PC.z) / sxz;
+    return PILE.base + (terrainH(xu, zu) - PILE.base + pileH(xu, zu) - .03) * sy;
+  }
+  function landT(x, y, z, vx, vy, vz, t0, rad, g) {
+    var tl = .5;
+    for (var it = 0; it < 5; it++) { var h = pileSurf(x + vx * tl, z + vz * tl, g >= 0 ? g : pileGrow(t0 + tl)) + rad, dy = y - h; tl = dy > 0 ? (vy + Math.sqrt(vy * vy + 19.6 * dy)) / 9.8 : 0; }
+    return tl;
+  }
+  function lsI(tr) { var f = clamp((tr - PO.t0) / PO.dt, 0, PO.n - 1.001), i = Math.floor(f); LPS.i = i; return f - i; }
+  function lsL(k, u) { return lerp(LPS[k][LPS.i], LPS[k][LPS.i + 1], u); }
+  // samples the bucket lip through the dump (poses the machine: build time only)
+  function pourSample() {
+    for (var k = 0; k < PO.n; k++) {
+      introRaw(PO.t0 + k * PO.dt); setPose(IP.yaw, IP.x, IP.y, IP.k); EX.root.updateMatrixWorld(true);
+      _v1.copy(LIPC); EX.bucket.localToWorld(_v1); _v2.copy(MOUTH); EX.bucket.localToWorld(_v2); _v3.set(0, 0, 1).transformDirection(EX.bucket.matrixWorld);
+      LPS.lx[k] = _v1.x; LPS.ly[k] = _v1.y; LPS.lz[k] = _v1.z; LPS.mx[k] = _v2.x; LPS.my[k] = _v2.y; LPS.mz[k] = _v2.z; LPS.ax[k] = _v3.x; LPS.ay[k] = _v3.y; LPS.az[k] = _v3.z;
+      LPS.sx[k] = lerp(_v1.x, _v2.x, .28); LPS.sy[k] = lerp(_v1.y, _v2.y, .28); LPS.sz[k] = lerp(_v1.z, _v2.z, .28);
+    }
+    var u = lsI(PO.c0), v = PO.v;
+    IN.TIMP = PO.c0 + landT(lsL('sx', u), lsL('sy', u), lsL('sz', u), v.x, v.y, v.z, PO.c0, .05, 0) + .03;
+    for (var j = 0; j < PO.n; j++) LPS.tl[j] = landT(LPS.sx[j], LPS.sy[j], LPS.sz[j], v.x, v.y, v.z, PO.t0 + j * PO.dt, .05, -1);
+  }
+  function spineAt(tr, a, out) { var u = lsI(tr); out.set(lsL('sx', u) + PO.v.x * a, lsL('sy', u) + PO.v.y * a - 4.9 * a * a, lsL('sz', u) + PO.v.z * a); return lsL('tl', u); }
+  function buildPour() {
+    var nv = NRW * (NRG + 1), g = new THREE.BufferGeometry(), idx = [], col = new Float32Array(nv * 3), c = new THREE.Color(), cA = C('#ad8459'), cB = C('#97704b');
+    function dyn(n, k) { var a = new THREE.BufferAttribute(new Float32Array(n * k), k); a.setUsage(THREE.DynamicDrawUsage); return a; }
+    g.setAttribute('position', dyn(nv, 3)); g.setAttribute('normal', dyn(nv, 3)); g.setAttribute('uv', dyn(nv, 2)); g.setAttribute('aN', dyn(nv, 3));
+    for (var j = 0; j < NRW; j++) for (var i = 0; i <= NRG; i++) { var q = j * (NRG + 1) + i; c.copy(cA).lerp(cB, hsh(i % NRG, j + 7) * .6).multiplyScalar(.9 + hsh(j, i % NRG + 3) * .18); col[q * 3] = c.r; col[q * 3 + 1] = c.g; col[q * 3 + 2] = c.b; }
+    g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    for (var j2 = 0; j2 < NRW - 1; j2++) for (var i2 = 0; i2 < NRG; i2++) { var a = j2 * (NRG + 1) + i2, b = a + 1, cc = a + NRG + 1, d = cc + 1; idx.push(a, b, cc, b, d, cc); }
+    g.setIndex(idx); g.boundingSphere = new THREE.Sphere(new THREE.Vector3(), 50);
+    pourMesh = new THREE.Mesh(g, M.pour); pourMesh.frustumCulled = false; pourMesh.receiveShadow = TQ.sh > 0; pourMesh.visible = false; scene.add(pourMesh);
+    // grains: a jittered icosahedron, flat-shaded; per-instance non-uniform scale + tumble make every one different
+    var gg = new THREE.OctahedronGeometry(1, 0), gp = gg.attributes.position;
+    for (var k = 0; k < gp.count; k++) { var x = gp.getX(k), y = gp.getY(k), z = gp.getZ(k), f = .78 + vn(x * 3.1 + 7, (y + z) * 3.1) * .44; gp.setXYZ(k, x * f, y * f, z * f); }
+    gg.computeVertexNormals();
+    grainMesh = new THREE.InstancedMesh(gg, M.grain, NG); grainMesh.frustumCulled = false; grainMesh.receiveShadow = TQ.sh > 0; grainMesh.count = NPB;
+    var Z = new THREE.Matrix4().makeScale(0, 0, 0); for (var m = 0; m < NG; m++) grainMesh.setMatrixAt(m, Z);
+    scene.add(grainMesh);
+  }
+  function pourParams() {
+    var keys = ['tr', 'x', 'y', 'z', 'vx', 'vy', 'vz', 'tl', 'ly', 's', 'kx', 'ky', 'kz', 'rx', 'ry', 'rz', 'sp', 'fx', 'fy', 'fz', 'hx', 'hy', 'hz', 'th'];
+    keys.forEach(function (k) { GR[k] = new Float32Array(NG); });
+    var cg = [C('#a47b52'), C('#94694a'), C('#b48e64'), C('#7d5b3e')], cp = [C('#8f877b'), C('#9b8b75'), C('#7f7468')], c = new THREE.Color(), v = PO.v;
+    seed = 9090; PO.end = 0;
+    for (var g = 0; g < NG; g++) {
+      var peb = g < NPB, r0 = rnd(), tr;
+      // release: the bulk while the bucket opens, a thin tail while it shakes out
+      tr = r0 < .86 ? PO.c0 + (PO.c1 - PO.c0) * Math.pow(r0 / .86, 1.25) : PO.c1 + (PO.g1 - PO.c1) * Math.pow((r0 - .86) / .14, 1.5);
+      if (peb) tr = PO.c0 + .06 + rnd() * .3;
+      var u = lsI(tr), w = .08 + rnd() * .34, zc = (rnd() * 2 - 1) * .42 * (rnd() < .75 ? .85 : 1.2), ax = lsL('ax', u), ay = lsL('ay', u), az = lsL('az', u);
+      var x0 = lerp(lsL('lx', u), lsL('mx', u), w) + ax * zc, y0 = lerp(lsL('ly', u), lsL('my', u), w) + ay * zc, z0 = lerp(lsL('lz', u), lsL('mz', u), w) + az * zc;
+      var s = peb ? .024 + rnd() * .016 : (rnd() < .9 ? .0055 + Math.pow(rnd(), 2) * .0085 : .013 + rnd() * .01);
+      var lat = zc * .35 + (rnd() - .5) * .2;
+      var vx = v.x + ax * lat + (rnd() - .5) * .2, vy = v.y - rnd() * .35, vz = v.z + az * lat + (rnd() - .5) * .2;
+      var tl = landT(x0, y0, z0, vx, vy, vz, tr, s * .6, -1), lx = x0 + vx * tl, lz = z0 + vz * tl;
+      GR.tr[g] = tr; GR.x[g] = x0; GR.y[g] = y0; GR.z[g] = z0; GR.vx[g] = vx; GR.vy[g] = vy; GR.vz[g] = vz; GR.tl[g] = tl; GR.ly[g] = y0 + vy * tl - 4.9 * tl * tl;
+      GR.s[g] = s; GR.kx[g] = .75 + rnd() * .5; GR.ky[g] = .55 + rnd() * .45; GR.kz[g] = .7 + rnd() * .5;
+      GR.rx[g] = rnd() * 6.3; GR.ry[g] = rnd() * 6.3; GR.rz[g] = rnd() * 6.3; GR.sp[g] = 5 + rnd() * 14;
+      var ox = lx - PC.x, oz = lz - PC.z, ol = Math.hypot(ox, oz) || 1; ox /= ol; oz /= ol;
+      if (peb) { // pebbles roll a little way down the flank and stay
+        var rl = (.2 + rnd() * .55) * (ol / PILE.R + .4); GR.fx[g] = lx + ox * rl; GR.fz[g] = lz + oz * rl; GR.fy[g] = pileSurf(GR.fx[g], GR.fz[g], 1) + s * .4; GR.th[g] = .55;
+      } else if (rnd() < .42) { // splash: a short hop outwards, shrinking into the pile
+        var hs = .3 + rnd() * .9, hy = .45 + rnd() * 1.0; GR.hx[g] = ox * hs + (rnd() - .5) * .4; GR.hz[g] = oz * hs + (rnd() - .5) * .4; GR.hy[g] = hy; GR.th[g] = 2 * hy / 9.8;
+      } else GR.th[g] = .18 + rnd() * .22;
+      PO.end = Math.max(PO.end, tr + tl + GR.th[g]);
+      if (peb) c.copy(cp[g % 3]).multiplyScalar(.8 + rnd() * .3);
+      else { var pc = rnd(); c.copy(cg[pc < .5 ? 0 : pc < .74 ? 1 : pc < .9 ? 2 : 3]).multiplyScalar(.86 + rnd() * .24); }
+      grainMesh.setColorAt(g, c);
+    }
+    grainMesh.instanceColor.needsUpdate = true;
+    // dust that peels off the stream as it falls
+    ['t', 'x', 'y', 'z', 'vx', 'vy', 'vz', 's0', 's1', 'a0', 'r0', 'rv', 'sd'].forEach(function (k) { DP[k] = new Float32Array(NPD); });
+    for (var d = 0; d < NPD; d++) {
+      var tr2 = PO.c0 + .04 + (PO.c1 - PO.c0) * (d + rnd() * .8) / NPD, ap = .12 + rnd() * .3;
+      var tl2 = spineAt(tr2, 0, _v1); ap = Math.min(ap, tl2 * .8); spineAt(tr2, ap, _v1); var u2 = lsI(tr2), sd2 = (rnd() - .5) * .8;
+      DP.t[d] = tr2 + ap; DP.x[d] = _v1.x + lsL('ax', u2) * sd2; DP.y[d] = _v1.y; DP.z[d] = _v1.z + lsL('az', u2) * sd2;
+      DP.vx[d] = v.x * .3; DP.vy[d] = (v.y - 9.8 * ap) * .12; DP.vz[d] = v.z * .3;
+      DP.s0[d] = .2 + rnd() * .14; DP.s1[d] = 1.1 + rnd() * 1.0; DP.a0[d] = .24 + rnd() * .14; DP.r0[d] = rnd() * TAU; DP.rv[d] = (rnd() - .5) * .5; DP.sd[d] = rnd() * .99;
+    }
+  }
+  var _pT = new THREE.Vector3(), _pE1 = new THREE.Vector3(), _pE2 = new THREE.Vector3(), _pP = new THREE.Vector3(), _gq = new THREE.Quaternion(), _ge = new THREE.Euler(), _gs = new THREE.Vector3();
+  function pourAt(t, pop) {
+    // curtain: rows of material released in [lo, hi] that has not landed yet
+    var hi = Math.min(t, PO.c1), lo = PO.c0;
+    if (!pop) { var tg = t - .6; for (var it = 0; it < 3; it++) tg = t - spineAt(clamp(tg, PO.c0, PO.c1), 0, _pP); lo = Math.max(PO.c0, tg); }
+    var on = !pop && hi - lo > .012;
+    pourMesh.visible = on;
+    if (on) {
+      var G = pourMesh.geometry, P = G.attributes.position.array, N = G.attributes.normal.array, U = G.attributes.uv.array, A = G.attributes.aN.array;
+      for (var j = 0; j < NRW; j++) {
+        var tr = hi - (hi - lo) * Math.pow(j / (NRW - 1), .8), a = t - tr, tl = spineAt(tr, a, _pP), uu = lsI(tr);
+        var f = Math.max(sat(a / Math.max(tl, .05)), (1 - ss(PO.c0, PO.c0 + .1, tr)) * .85, ss(PO.c1 - .22, PO.c1, tr) * ss(PO.c1, PO.c1 + .1, t) * .97);
+        _pT.set(PO.v.x, PO.v.y - 9.8 * a, PO.v.z).normalize();
+        _pE1.set(lsL('ax', uu), lsL('ay', uu), lsL('az', uu)); _pE1.addScaledVector(_pT, -_pE1.dot(_pT)).normalize(); _pE2.crossVectors(_pT, _pE1);
+        var wx = .27 + .38 * a, wd = .12 + .2 * a;
+        _pP.x += (vn(tr * 23, 3.1) - .5) * .12 * f; _pP.z += (vn(tr * 23, 7.7) - .5) * .12 * f;
+        for (var i = 0; i <= NRG; i++) {
+          var q = j * (NRG + 1) + i, an = i / NRG * TAU, cs = Math.cos(an), sn = Math.sin(an), jt = 1 + (vn((i % NRG) * 1.9 + tr * 37, tr * 29 + 5) - .5) * (.25 + .6 * f);
+          var ex = cs * wx * jt, ey = sn * wd * jt;
+          P[q * 3] = _pP.x + _pE1.x * ex + _pE2.x * ey; P[q * 3 + 1] = _pP.y + _pE1.y * ex + _pE2.y * ey; P[q * 3 + 2] = _pP.z + _pE1.z * ex + _pE2.z * ey;
+          var nx = cs / wx, ny = sn / wd, nl = Math.hypot(nx, ny); nx /= nl; ny /= nl;
+          N[q * 3] = _pE1.x * nx + _pE2.x * ny; N[q * 3 + 1] = _pE1.y * nx + _pE2.y * ny; N[q * 3 + 2] = _pE1.z * nx + _pE2.z * ny;
+          U[q * 2] = i / NRG * 4; U[q * 2 + 1] = tr * 5;
+          A[q * 3] = i / NRG * 3; A[q * 3 + 1] = tr * 4.5; A[q * 3 + 2] = Math.min(1, f + .35 * Math.pow(Math.abs(cs), 6));
+        }
+      }
+      G.attributes.position.needsUpdate = true; G.attributes.normal.needsUpdate = true; G.attributes.uv.needsUpdate = true; G.attributes.aN.needsUpdate = true;
+    }
+    // grains
+    var live = !pop && t > PO.c0 - .01 && t < PO.end, n = live ? NG : NPB;
+    grainMesh.count = n;
+    for (var g = 0; g < n; g++) {
+      var b = pop ? 99 : t - GR.tr[g], tl2 = GR.tl[g], s = GR.s[g], x, y, z, rot;
+      if (b < 0) { _m4.makeScale(0, 0, 0); grainMesh.setMatrixAt(g, _m4); continue; }
+      if (b < tl2) { x = GR.x[g] + GR.vx[g] * b; y = GR.y[g] + GR.vy[g] * b - 4.9 * b * b; z = GR.z[g] + GR.vz[g] * b; rot = b * GR.sp[g]; }
+      else {
+        var c2 = b - tl2, lx = GR.x[g] + GR.vx[g] * tl2, lz = GR.z[g] + GR.vz[g] * tl2, th = GR.th[g]; rot = tl2 * GR.sp[g];
+        if (g < NPB) { var k = sat(c2 / th); k = 1 - (1 - k) * (1 - k); x = lerp(lx, GR.fx[g], k); z = lerp(lz, GR.fz[g], k); y = lerp(GR.ly[g], GR.fy[g], k) + Math.sin(k * PI) * .03; rot += k * 3; }
+        else {
+          if (c2 >= th) { _m4.makeScale(0, 0, 0); grainMesh.setMatrixAt(g, _m4); continue; }
+          var kk = c2 / th; x = lx + GR.hx[g] * c2; z = lz + GR.hz[g] * c2; y = GR.ly[g] + GR.hy[g] * c2 - (GR.hy[g] ? 4.9 * c2 * c2 : c2 * .12); s *= 1 - kk * kk; rot += c2 * GR.sp[g] * .5;
+        }
+      }
+      _m4.compose(_v1.set(x, y, z), _gq.setFromEuler(_ge.set(GR.rx[g] + rot, GR.ry[g] + rot * .7, GR.rz[g])), _gs.set(s * GR.kx[g], s * GR.ky[g], s * GR.kz[g]));
+      grainMesh.setMatrixAt(g, _m4);
+    }
+    grainMesh.instanceMatrix.needsUpdate = true;
   }
 
   /* ---------------- fullscreen pass: dust "whiteout", scrim, vignette, grain ---------------- */
@@ -2103,7 +2322,6 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
   var IN = { on: false, t: 0, t0: -1, frozen: -1, hw: 1, e: 0, skipAt: -1, popped: false, TREL: 1.28, TIMP: 1.9, TEND: 5.75, TREV: 3.1 };
   var YD = -PI / 2, DUMP = { x: 6.4, y: 3.0 };
   var IP = { yaw: 0, x: 0, y: 0, k: 0, fill: 1 }, FP = { yaw: 0, x: 0, y: 0, k: 0 };
-  var SL = { mesh: null, p0: new THREE.Vector3(), v0: new THREE.Vector3(0, -.3, .9) };
   var DI = {}, SM = { ts: [.1, .4, .72, 1.0, 1.24, 1.5], x: [], y: [], z: [] };
   function introRaw(t) {
     var sw = ease(sat(t / 1.05));
@@ -2122,11 +2340,8 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
   function introSetup() {
     setPose(YD, DUMP.x + .12, DUMP.y + .1, 60 * DEG); EX.root.updateMatrixWorld(true);
     _v1.copy(MOUTH); EX.bucket.localToWorld(_v1);
-    PC.set(_v1.x, 0, _v1.z + .35);
-    introRaw(IN.TREL); setPose(IP.yaw, IP.x, IP.y, IP.k); EX.root.updateMatrixWorld(true);
-    SL.p0.copy(MOUTH); EX.bucket.localToWorld(SL.p0);
-    var top = terrainH(PC.x, PC.z) + PILE.H * .72, dy = SL.p0.y - top, vy = SL.v0.y;
-    IN.TIMP = IN.TREL + (vy + Math.sqrt(vy * vy + 19.6 * Math.max(.3, dy))) / 9.8;
+    PC.set(_v1.x, 0, _v1.z + .35); PILE.base = terrainH(PC.x, PC.z);
+    pourSample(); // impact time = when the front of the pour reaches the pile
     IN.TEND = IN.TIMP + 3.85; IN.TREV = IN.TIMP + 1.2;
     for (var j = 0; j < NSM; j++) {
       introRaw(SM.ts[j]); var c = Math.cos(IP.yaw), s = Math.sin(IP.yaw);
@@ -2150,49 +2365,21 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
       var dx = Math.cos(ang), dz = Math.sin(ang);
       if (toCam) { dx = lerp(dx, cdx, .75); dz = lerp(dz, cdz, .75); var l = Math.hypot(dx, dz); dx /= l; dz /= l; sp *= 1.25; }
       DI.ts[i] = IN.TIMP - .05 + Math.pow(rnd(), 2.1) * .75;
-      DI.x[i] = PC.x + Math.cos(ang) * r0; DI.z[i] = PC.z + Math.sin(ang) * r0; DI.y[i] = PILE.base + .35 + rnd() * .8;
+      DI.x[i] = PC.x + Math.cos(ang) * r0; DI.z[i] = PC.z + Math.sin(ang) * r0; DI.y[i] = PILE.base + .55 + rnd() * .85;
       DI.vx[i] = dx * sp; DI.vz[i] = dz * sp; DI.vy[i] = .45 + rnd() * 1.7; DI.dr[i] = .9 + rnd() * .9;
       DI.s0[i] = (.9 + rnd() * 1.3) * big; DI.s1[i] = (3.6 + rnd() * 5.2) * big * (toCam ? 1.15 : 1);
       DI.a0[i] = (.5 + rnd() * .4) * (tier === 0 ? 1.15 : 1); DI.r0[i] = rnd() * TAU; DI.rv[i] = (rnd() - .5) * .45; DI.sd[i] = rnd() * .99;
     }
-    // clods: precomputed release point (bucket mouth at release time), ballistic flight, landing + roll on the pile
-    seed = 555;
-    for (var k = 0; k < NRI; k++) {
-      var tr = IN.TREL - .08 + (k / NRI) * .46 + rnd() * .05, s = .035 + Math.pow(rnd(), 2.2) * .12;
-      introRaw(tr); setPose(IP.yaw, IP.x, IP.y, IP.k); EX.root.updateMatrixWorld(true);
-      _v1.set(MOUTH.x + (rnd() - .5) * .35, MOUTH.y + rnd() * .25, (rnd() - .5) * .95); EX.bucket.localToWorld(_v1);
-      var vx = (rnd() - .5) * .9, vz = .45 + rnd() * 1.1, vy = -.2 - rnd() * .6, tl = .5;
-      for (var it = 0; it < 4; it++) { var h = pileTop(_v1.x + vx * tl, _v1.z + vz * tl, 1) + s * .55, dy = _v1.y - h; tl = dy > 0 ? (vy + Math.sqrt(vy * vy + 19.6 * dy)) / 9.8 : 0; }
-      var lx = _v1.x + vx * tl, lz = _v1.z + vz * tl, ox = lx - PC.x, oz = lz - PC.z, ol = Math.hypot(ox, oz) || 1, rl = (.12 + rnd() * .6) * (ol / PILE.R + .35);
-      RI.tr[k] = tr; RI.x[k] = _v1.x; RI.y[k] = _v1.y; RI.z[k] = _v1.z; RI.vx[k] = vx; RI.vy[k] = vy; RI.vz[k] = vz; RI.tl[k] = tl;
-      RI.ly[k] = _v1.y + vy * tl - 4.9 * tl * tl;
-      RI.fx[k] = lx + ox / ol * rl; RI.fz[k] = lz + oz / ol * rl; RI.fy[k] = pileTop(RI.fx[k], RI.fz[k], 1) + s * .45; RI.spin[k] = 4 + rnd() * 8;
-      RKS[k] = s;
-    }
+    pourParams();
     setPose(FP.yaw, FP.x, FP.y, FP.k);
   }
   function introObjects(t) {
     var pop = IN.popped, k, i;
     // pile grows on impact
-    var g = pop ? 1 : ease(ss(IN.TIMP - .02, IN.TIMP + .5, t)), sy = lerp(.72, 1, g), sxz = lerp(.9, 1, g);
+    var g = pop ? 1 : pileGrow(t), sy = lerp(.72, 1, g), sxz = lerp(.9, 1, g);
     PILE.mesh.scale.set(sxz, sy, sxz);
-    // the falling slug of soil
-    var a = t - IN.TREL, tf = IN.TIMP - IN.TREL;
-    if (!pop && a > 0 && a < tf + .04) {
-      var f = sat(a / tf);
-      SL.mesh.visible = true;
-      SL.mesh.position.set(SL.p0.x + SL.v0.x * a, SL.p0.y + SL.v0.y * a - 4.9 * a * a, SL.p0.z + SL.v0.z * a);
-      var sc0 = .78 * (1 - .35 * f); SL.mesh.scale.set(sc0 * (1 - .3 * f), sc0 * (1 + .7 * f), sc0 * (1 - .3 * f));
-      SL.mesh.rotation.set(a * 1.3, a * .7, 0);
-    } else SL.mesh.visible = false;
-    // clods
-    for (k = 0; k < NRI; k++) {
-      var b = pop ? 99 : t - RI.tr[k];
-      if (b < 0) { _m4.makeScale(0, 0, 0); rockMesh.setMatrixAt(k, _m4); continue; }
-      if (b < RI.tl[k]) rockMat(k, RI.x[k] + RI.vx[k] * b, RI.y[k] + RI.vy[k] * b - 4.9 * b * b, RI.z[k] + RI.vz[k] * b, RKS[k], b * RI.spin[k]);
-      else { var u = sat((b - RI.tl[k]) / .42); u = 1 - (1 - u) * (1 - u); var lx = RI.x[k] + RI.vx[k] * RI.tl[k], lz = RI.z[k] + RI.vz[k] * RI.tl[k]; rockMat(k, lerp(lx, RI.fx[k], u), lerp(RI.ly[k], RI.fy[k], u), lerp(lz, RI.fz[k], u), RKS[k], RI.tl[k] * RI.spin[k] + u * 2.5); }
-    }
-    rockMesh.instanceMatrix.needsUpdate = true;
+    // the pour (curtain + grains)
+    pourAt(t, pop);
     // dust sprites (analytic) + exhaust smoke
     var fadeAll = (1 - ss(IN.TIMP + 1.0, IN.TIMP + 3.1, t)) * IN.hw;
     for (i = 0; i < NI; i++) {
@@ -2211,6 +2398,14 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
       SX[q] = SM.x[j] + .35 * as; SY[q] = SM.y[j] + 1.5 * fr2 + .25 * as; SZ[q] = SM.z[j] + .12 * as;
       SS[q] = .25 + 1.5 * (1 - Math.exp(-as / 1.1)); SA[q] = .3 * ss(0, .12, as) * Math.exp(-as / 1.1) * IN.hw; SR[q] = j * 1.7 + as * .3; SD[q] = .37 * j % 1 + 10; SG[q] = -50;
     }
+    for (var d = 0; d < NPD; d++) {
+      var qd = NI + NSM + d, ad = t - DP.t[d];
+      if (ad <= 0 || ad > 3.6 || IN.hw <= 0) { SA[qd] = 0; continue; }
+      var frd = (1 - Math.exp(-2.5 * ad)) / 2.5;
+      SX[qd] = DP.x[d] + DP.vx[d] * frd + .3 * ad; SY[qd] = DP.y[d] + DP.vy[d] * frd + .16 * ad; SZ[qd] = DP.z[d] + DP.vz[d] * frd - .08 * ad;
+      SS[qd] = DP.s0[d] + (DP.s1[d] - DP.s0[d]) * (1 - Math.exp(-ad / .9)); SA[qd] = DP.a0[d] * ss(0, .14, ad) * Math.exp(-ad / 1.3) * IN.hw;
+      SR[qd] = DP.r0[d] + DP.rv[d] * ad; SD[qd] = DP.sd[d]; SG[qd] = PILE.base + pileH(SX[qd], SZ[qd]) * sy;
+    }
   }
   var ICP = new THREE.Vector3(), ICT = new THREE.Vector3(), ICF = 38, _vb = new THREE.Vector3();
   function introCam(t) {
@@ -2226,7 +2421,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
   function finalizeIntro() {
     IN.popped = true; IN.hw = 0;
     introObjects(99);
-    for (var i = 0; i < NI + NSM; i++) SA[i] = 0;
+    for (var i = 0; i < F0; i++) SA[i] = 0;
     IN.on = false; dirty = 2;
   }
   function skipIntro() {
@@ -2257,8 +2452,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
   });
   [2, 3, 4, 5, 6].forEach(function (k) { job(function () { buildProps(camSegs, k); return true; }); });
   job(function () {
-    buildFoundation();
-    var sg = EX.load.geometry.clone(); sg.center(); SL.mesh = mesh(sg, M.soil, scene); SL.mesh.visible = false;
+    buildFoundation(); buildPour();
     return true;
   });
   job(function () { buildDust(); buildRocks(); buildOverlay(); introParams(); return true; });
@@ -2378,7 +2572,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
     }
     pLast = p;
     stepDust(dt);
-    var rk = stepRocks(dt);
+    var rk = stepRocks(dt); rockMesh.visible = rockAlive > 0;
     if (rk) rockMesh.instanceMatrix.needsUpdate = true;
     writeDust();
     dMat.uniforms.uTime.value = nowT / 1000;
