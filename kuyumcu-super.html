@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Aurum Kuyumculuk — Alyans, Tektaş & Altın · Aydın</title>
+<meta name="description" content="Alyans, tektaş pırlanta, set, bilezik ve çeyrek–gram altın. Alyansını tasarla, ölçünü al, iç yazını seç; talebini WhatsApp'tan gönder.">
+<meta name="theme-color" content="#0b0a09">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0a09;--ink2:#110f0d;--ink3:#191612;--iv:#f3ece0;--iv2:#cdc4b4;--mu:#968d7f;--ch:#dcc394;--go:#c9a35e;
+  --ln:rgba(243,236,224,.13);--ln2:rgba(243,236,224,.22);
+  --serif:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --g1:#fff2c8;--g2:#dcae5a;--g3:#7d5119;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--iv);font:400 15px/1.65 var(--sans);overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,p{margin:0;overflow-wrap:break-word;hyphens:auto;-webkit-hyphens:auto}
+h1,h2,h3{overflow-wrap:anywhere}
+a{color:inherit}
+em{font-style:italic;color:var(--ch)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ch);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- sahne: tuval + afiş (yedek) ---------- */
+#gl{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;display:block;z-index:0;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.gl #gl{opacity:1}
+#poster{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(120% 70% at 50% 30%,#2a231b 0%,#15120f 38%,#0b0a09 70%),#0b0a09;transition:opacity .9s ease}
+.gl #poster{opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
+#poster .pr{position:absolute;left:50%;top:max(76px,9vh);width:min(66vw,36vh);transform:translateX(-50%)}
+.pr svg,.cfg-fb svg{display:block;width:100%;height:auto;overflow:visible}
+.m0{--g1:#fff2c8;--g2:#dcae5a;--g3:#7d5119}
+.m1{--g1:#ffffff;--g2:#c9ccd0;--g3:#5d6166}
+.m2{--g1:#ffe3d6;--g2:#dc9a80;--g3:#7a4031}
+.f1 .hl{opacity:.22}
+.s0 .dia,.s2 .dia{display:none}
+.row{display:none}.s2 .row{display:inline}
+
+/* ---------- üst bar ---------- */
+.hdr{position:fixed;left:0;right:0;top:0;z-index:50;height:64px;padding:0 16px;padding-top:env(safe-area-inset-top,0px);display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:linear-gradient(rgba(11,10,9,.88),rgba(11,10,9,.55) 60%,rgba(11,10,9,0))}
+#brand{display:block;min-width:0;flex:1 1 auto;font:400 23px/1.1 var(--serif);letter-spacing:.01em;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#brand i{color:var(--ch)}
+.hbtn{flex:0 0 auto;display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1px solid rgba(220,195,148,.55);border-radius:99px;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ch);white-space:nowrap}
+.hbtn .l{display:none}
+
+/* ---------- butonlar ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:99px;font:600 12px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:0;transition:transform .2s ease,background-color .2s ease,border-color .2s}
+.btn:active{transform:scale(.98)}
+.btn-p{background:var(--ch);color:#15110b}
+.btn-p:hover{background:#e8d2a7}
+.btn-g{border:1px solid var(--ln2);color:var(--iv);background:rgba(11,10,9,.35)}
+.btn-g:hover{border-color:var(--ch)}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+.kick{display:block;font:600 11px/1.4 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--ch);margin-bottom:16px}
+
+/* ---------- hero ---------- */
+main{position:relative;z-index:1}
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:96px 16px calc(96px + env(safe-area-inset-bottom,0px));
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y;cursor:grab}
+.hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(to top,rgba(11,10,9,.92),rgba(11,10,9,.66) 46%,rgba(11,10,9,0));pointer-events:none}
+.hero-in{position:relative;max-width:40rem}
+.hero .eyb{display:block;font:600 11px/1.5 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--iv2);margin-bottom:14px}
+.hero .eyb b{color:var(--ch);font-weight:600}
+.hero h1{font:300 clamp(46px,13.2vw,128px)/.92 var(--serif);letter-spacing:-.015em;margin-bottom:18px}
+.hero h1 em{font-weight:300}
+.hero p{max-width:31rem;color:var(--iv2);font-size:15px;margin-bottom:24px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.hint{display:flex;align-items:center;gap:10px;margin-top:22px;font:500 11px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--mu)}
+.hint svg{width:30px;height:16px;flex:0 0 auto}
+.nogl .hint{display:none}
+
+/* ---------- bölümler (sabitlenen anlatı) ---------- */
+.ch{position:relative;height:170vh}
+.ch-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:flex-end;padding:0 16px calc(92px + env(safe-area-inset-bottom,0px))}
+.ch-pin::before{content:"";position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(to top,rgba(11,10,9,.94),rgba(11,10,9,.7) 48%,rgba(11,10,9,0));pointer-events:none}
+.ch-txt{position:relative;max-width:34rem;will-change:opacity,transform}
+.ch h2,.sec h2,.kol h2,.cfg h2{font:300 clamp(38px,10.4vw,86px)/.98 var(--serif);letter-spacing:-.01em;margin-bottom:18px}
+.ch p{color:var(--iv2);max-width:30rem}
+.specs{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;padding-top:16px;border-top:1px solid var(--ln);font:500 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mu)}
+.specs b{color:var(--iv);font-weight:600}
+
+/* ---------- koleksiyonlar ---------- */
+.kol{position:relative;height:430vh}
+.kol-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:84px 0 calc(84px + env(safe-area-inset-bottom,0px))}
+.kol-head{padding:0 16px;max-width:40rem}
+.kol h2{font-size:clamp(34px,9.4vw,76px);margin-bottom:14px}
+.mets{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;margin:0;padding:0;font:600 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mu)}
+.mets li{display:flex;align-items:center;gap:8px;transition:color .3s}
+.mets li i{width:10px;height:10px;border-radius:50%;flex:0 0 auto;box-shadow:0 0 0 1px rgba(255,255,255,.2) inset}
+.mets li.on{color:var(--iv)}
+.mets li.on i{box-shadow:0 0 0 2px var(--ink),0 0 0 3px var(--ch)}
+.sw0{background:linear-gradient(135deg,#fbe3a3,#c8973f)}.sw1{background:linear-gradient(135deg,#ffffff,#a9adb3)}.sw2{background:linear-gradient(135deg,#fbd6c6,#c9806a)}
+.kol-track{display:flex;gap:12px;padding:0 16px;will-change:transform}
+.kc{flex:0 0 min(76vw,330px);display:flex;flex-direction:column;gap:8px;padding:20px;border:1px solid var(--ln);border-radius:18px;background:rgba(15,13,11,.88)}
+.kc .top{display:flex;align-items:center;justify-content:space-between;color:var(--mu);font:600 11px/1 var(--sans);letter-spacing:.2em}
+.kc svg{width:40px;height:40px;fill:none;stroke:var(--ch);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.kc h3{font:400 28px/1.05 var(--serif)}
+.kc p{color:var(--iv2);font-size:13.5px;line-height:1.55;flex:1}
+.kc a{align-self:flex-start;font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ch);text-decoration:none;padding:10px 0;min-height:36px;display:inline-flex;align-items:center}
+
+/* ---------- yapılandırıcı ---------- */
+.cfg{position:relative}
+.cfg-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "win" "form"}
+.cfg-head{grid-area:head;padding:96px 16px 8px}
+.cfg-head p{color:var(--iv2);max-width:30rem}
+.cfg-win{grid-area:win;position:relative;height:clamp(250px,46svh,440px)}
+.cfg-fb{display:none;position:absolute;left:50%;top:50%;width:min(64%,40vh);transform:translate(-50%,-50%)}
+.nogl .cfg-win{background:radial-gradient(60% 60% at 50% 45%,#262019,#0b0a09 75%)}
+.nogl .cfg-fb{display:block}
+.cfg-tag{position:absolute;left:16px;right:16px;bottom:10px;text-align:center;font:600 10.5px/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--iv2)}
+.cfg-form{grid-area:form;background:var(--ink);padding:18px 16px 80px;display:flex;flex-direction:column;gap:22px;min-width:0}
+.grp{border:0;margin:0;padding:0;min-width:0}
+.grp>legend,.lb{display:flex;justify-content:space-between;gap:12px;width:100%;padding:0;margin-bottom:10px;font:600 11px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+.lb output{color:var(--iv);letter-spacing:.08em}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 15px;border:1px solid var(--ln2);border-radius:99px;font-size:13.5px;color:var(--iv2);transition:border-color .2s,background-color .2s,color .2s}
+.chip span i{width:12px;height:12px;border-radius:50%}
+.chip input:checked+span{border-color:var(--ch);background:rgba(220,195,148,.12);color:var(--iv)}
+.chip input:focus-visible+span{outline:2px solid var(--ch);outline-offset:2px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--ch) var(--p,33%),var(--ln2) var(--p,33%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-11px;border-radius:50%;background:var(--ch);box-shadow:0 0 0 5px rgba(220,195,148,.18)}
+input[type=range]::-moz-range-track{height:2px;background:var(--ln2)}
+input[type=range]::-moz-range-progress{height:2px;background:var(--ch)}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radius:50%;background:var(--ch)}
+.rng{display:flex;justify-content:space-between;font-size:11px;color:var(--mu);margin-top:-4px}
+.fld input[type=text],.fld select{width:100%;min-height:50px;padding:0 2px;background:transparent;border:0;border-bottom:1px solid var(--ln2);border-radius:0;font-size:16px;color:var(--iv);outline:none;-webkit-appearance:none;appearance:none}
+.fld input::placeholder{color:#6f675b}
+.fld input:focus,.fld select:focus{border-bottom-color:var(--ch)}
+.fld select{background-image:linear-gradient(45deg,transparent 50%,var(--ch) 50%),linear-gradient(135deg,var(--ch) 50%,transparent 50%);background-position:calc(100% - 14px) 22px,calc(100% - 9px) 22px;background-size:5px 5px;background-repeat:no-repeat;padding-right:28px}
+.fld select option{background:#14110e;color:var(--iv)}
+.note{font-size:12.5px;color:var(--mu);margin-top:8px}
+details.hlp{margin-top:10px;border:1px solid var(--ln);border-radius:14px;padding:0 14px}
+details.hlp summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ch)}
+details.hlp summary::-webkit-details-marker{display:none}
+details.hlp summary::before{content:"?";display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid var(--ch);border-radius:50%;font-size:11px}
+details.hlp p{font-size:13.5px;color:var(--iv2);padding-bottom:14px}
+.chk{display:flex;align-items:center;gap:12px;min-height:44px;cursor:pointer;font-size:14px;color:var(--iv2)}
+.chk input{width:20px;height:20px;accent-color:var(--ch);flex:0 0 auto}
+.sum{white-space:pre-wrap;font-size:12.5px;line-height:1.6;color:var(--iv2);background:var(--ink2);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:0;overflow-wrap:anywhere;max-height:240px;overflow:auto}
+.send{width:100%}
+
+/* ---------- alt bölümler ---------- */
+.sec{position:relative;z-index:1;background:var(--ink);padding:96px 16px}
+.wrap{max-width:1180px;margin:0 auto}
+.sec .lead{color:var(--iv2);max-width:34rem}
+.gold{margin-top:30px;border:1px solid var(--ln);border-radius:22px;background:linear-gradient(160deg,#17130f,#0e0c0a 60%);padding:22px 18px;max-width:760px}
+.gold-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:12px}
+.gold-h h3{font:400 30px/1.1 var(--serif)}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:99px;border:1px dashed rgba(220,195,148,.55);font:600 10.5px/1.35 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ch)}
+.gt{width:100%;border-collapse:collapse;font-size:14px}
+.gt th{font:600 10.5px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--mu);text-align:right;padding:10px 0;border-bottom:1px solid var(--ln)}
+.gt th:first-child,.gt td:first-child{text-align:left}
+.gt td{padding:13px 0;border-bottom:1px solid var(--ln);text-align:right;color:#7d7568;font-variant-numeric:tabular-nums}
+.gt td:first-child{color:var(--iv);padding-right:10px}
+.gt td small{display:block;color:var(--mu);font-size:11.5px}
+.gold-f{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.gold .fine{font-size:12.5px;color:var(--mu);margin-top:14px}
+.svc{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;margin-top:34px;background:var(--ln);border:1px solid var(--ln);border-radius:22px;overflow:hidden}
+.svc>div{background:var(--ink);padding:24px 20px}
+.svc svg{width:38px;height:38px;fill:none;stroke:var(--ch);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px}
+.svc h3{font:400 27px/1.1 var(--serif);margin-bottom:8px}
+.svc p{color:var(--iv2);font-size:14px}
+.visit{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;margin-top:30px}
+.city{font:300 clamp(54px,17vw,170px)/.9 var(--serif);color:var(--ch);letter-spacing:-.02em;overflow-wrap:anywhere}
+.vi{border-top:1px solid var(--ln);padding-top:18px;display:flex;flex-direction:column;gap:14px}
+.vi dl{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.vi dt{font:600 10.5px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+.vi dd{margin:2px 0 0;color:var(--iv)}
+.faq{margin-top:28px;max-width:860px;border-top:1px solid var(--ln)}
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px;padding:14px 0;font:400 22px/1.25 var(--serif)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:0 0 auto;font:300 26px/1 var(--sans);color:var(--ch);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--iv2);padding:0 0 20px;max-width:44rem}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+
+footer{position:relative;z-index:1;background:var(--ink);border-top:1px solid var(--ln);padding:64px 16px calc(34px + env(safe-area-inset-bottom,0px))}
+.fbig{font:300 clamp(40px,11vw,120px)/.95 var(--serif);letter-spacing:-.015em;margin-bottom:28px;overflow-wrap:anywhere}
+.frow{display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--mu)}
+.frow a{color:var(--iv2);text-decoration:none}
+.frow a:hover{color:var(--ch)}
+.demo-back{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:rgba(243,236,224,.95);color:#15110b;font:600 12px/1 var(--sans);padding:11px 15px;border-radius:99px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+
+/* ---------- geniş ekran ---------- */
+@media (min-width:900px) and (orientation:landscape){
+  .hdr{height:76px;padding:0 4vw}
+  #brand{font-size:27px}
+  .hbtn .s{display:none}.hbtn .l{display:inline}
+  #poster .pr{left:70%;top:50%;width:min(40vw,64vh);transform:translate(-50%,-50%)}
+  #poster{background:radial-gradient(60% 80% at 70% 46%,#2a231b 0%,#15120f 40%,#0b0a09 72%),#0b0a09}
+  .hero{justify-content:center;padding:110px 6vw 90px}
+  .hero::before{top:0;height:auto;right:auto;width:62%;background:linear-gradient(to right,rgba(11,10,9,.82),rgba(11,10,9,.45) 60%,rgba(11,10,9,0))}
+  .hero-in{max-width:min(46vw,640px)}
+  .hero p{font-size:16.5px}
+  .ch-pin{align-items:center;padding:0 6vw}
+  .ch-pin::before{top:0;height:auto;right:auto;width:60%;background:linear-gradient(to right,rgba(11,10,9,.88),rgba(11,10,9,.5) 62%,rgba(11,10,9,0))}
+  .ch.r .ch-pin{justify-content:flex-end}
+  .ch.r .ch-pin::before{left:auto;right:0;background:linear-gradient(to left,rgba(11,10,9,.88),rgba(11,10,9,.5) 62%,rgba(11,10,9,0))}
+  .ch-txt{max-width:min(40vw,560px)}
+  .ch p{font-size:16.5px}
+  .kol-pin{padding:13vh 0 9vh}
+  .kol-head{padding:0 6vw}
+  .kol-track{padding:0 6vw;gap:16px}
+  .kc{flex-basis:300px}
+  .cfg-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);grid-template-areas:"win head" "win form";align-items:start}
+  .cfg-win{grid-row:1 / span 2;position:sticky;top:0;height:100vh}
+  .cfg-fb{width:min(56%,56vh)}
+  .cfg-head{padding:17vh 6vw 0 2vw;background:var(--ink)}
+  .cfg-form{padding:28px 6vw 16vh 2vw}
+  .sec{padding:130px 6vw}
+  .gold{padding:30px 32px}
+  .svc{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .svc>div{padding:30px 26px}
+  .visit{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:end}
+  .vi dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  footer{padding:80px 6vw calc(36px + env(safe-area-inset-bottom,0px))}
+  .frow{flex-direction:row;flex-wrap:wrap;justify-content:space-between}
+}
+@media (min-width:600px) and (max-width:899px){.svc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}#gl,#poster{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="poster" aria-hidden="true"><div class="pr m0" id="pr"></div></div>
+
+<header class="hdr">
+  <a id="brand" href="#hero">Aurum <i>Kuyumculuk</i></a>
+  <a class="hbtn" href="#tasarla"><span class="s">Tasarla</span><span class="l">Alyansını tasarla</span></a>
+</header>
+
+<main id="story-top">
+  <div id="story">
+    <section class="hero" id="hero" aria-label="Giriş">
+      <div class="hero-in" id="heroIn">
+        <span class="eyb"><b data-o="name">Aurum Kuyumculuk</b> · <span data-o="city">Aydın</span></span>
+        <h1>Bir ömür <em>ışıldasın.</em></h1>
+        <p>Alyanstan tektaşa her parça; ölçüsü, ayarı ve iç yazısıyla sana göre hazırlanır.</p>
+        <div class="cta">
+          <a class="btn btn-p" href="#tasarla">Alyansını tasarla</a>
+          <a class="btn btn-g" id="waHero" href="https://wa.me/905306284284" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp'tan sor</a>
+        </div>
+        <div class="hint" aria-hidden="true"><svg viewBox="0 0 30 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M6 8h18M6 8l3-3M6 8l3 3M24 8l-3-3M24 8l-3 3"/></svg>Yüzüğü çevirmek için sürükle</div>
+      </div>
+    </section>
+
+    <section class="ch" id="c1" aria-labelledby="c1h">
+      <div class="ch-pin"><div class="ch-txt">
+        <span class="kick">01 · Pırlanta</span>
+        <h2 id="c1h">Elli yedi faset, <em>tek bir ışık.</em></h2>
+        <p>Bir pırlantanın parlaklığı kesiminde saklıdır. Her taşı karat, renk ve berraklık bilgisiyle tanıtıyor, büyüteçle birlikte inceliyoruz.</p>
+        <div class="specs"><span><b>Kesim</b></span><span><b>Renk</b></span><span><b>Berraklık</b></span><span><b>Karat</b></span></div>
+      </div></div>
+    </section>
+
+    <section class="ch r" id="c2" aria-labelledby="c2h">
+      <div class="ch-pin"><div class="ch-txt">
+        <span class="kick">02 · Altın</span>
+        <h2 id="c2h">Ayarı belli, <em>gramı ortada.</em></h2>
+        <p>Her parça 14 ya da 22 ayar damgasıyla, faturalı teslim edilir. Tartıyı birlikte okuruz; işçilik ayrı ve açıkça yazılır.</p>
+        <div class="specs"><span><b>14</b> ayar</span><span><b>18</b> ayar</span><span><b>22</b> ayar</span></div>
+      </div></div>
+    </section>
+
+    <section class="ch" id="c3" aria-labelledby="c3h">
+      <div class="ch-pin"><div class="ch-txt">
+        <span class="kick">03 · Atölye</span>
+        <h2 id="c3h">Parmağa göre <em>şekillenir.</em></h2>
+        <p>İç yüzeyi hafif bombeli konfor profil, gün boyu takılsa da rahatsız etmez. Ölçü değişimi, gravür ve tamir kendi atölyemizde yapılır.</p>
+      </div></div>
+    </section>
+
+    <section class="kol" id="kol" aria-labelledby="kolh">
+      <div class="kol-pin">
+        <div class="kol-head">
+          <span class="kick">Koleksiyonlar</span>
+          <h2 id="kolh">Üç renk altın, <em>tek ustalık.</em></h2>
+          <ul class="mets" id="mets">
+            <li class="on"><i class="sw0"></i>Sarı altın</li>
+            <li><i class="sw1"></i>Beyaz altın</li>
+            <li><i class="sw2"></i>Rose altın</li>
+          </ul>
+        </div>
+        <div class="kol-track" id="track">
+          <article class="kc"><div class="top"><span>01</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="15" cy="21" r="9"/><circle cx="25" cy="21" r="9"/></svg></div><h3>Alyans</h3><p>Düz, taşlı ya da mat–parlak kombin; çift olarak ölçülür, iç yazısıyla teslim edilir.</p><a href="#" data-msg="Alyans modellerinizi görmek istiyorum. Fotoğraf ve fiyat bilgisi alabilir miyim?">Modelleri sor →</a></article>
+          <article class="kc"><div class="top"><span>02</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="27" r="9"/><path d="M15 9.5h10l3 4-8 6.5-8-6.5z"/><path d="M12 13.5h16M18 9.5l-1 4 3 6.5 3-6.5-1-4"/></svg></div><h3>Tektaş</h3><p>Klasik altı tırnaktan modern yuvaya; taşı ve yuvayı birlikte seçiyoruz.</p><a href="#" data-msg="Tektaş modellerinizi görmek istiyorum. Fotoğraf ve fiyat bilgisi alabilir miyim?">Modelleri sor →</a></article>
+          <article class="kc"><div class="top"><span>03</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 7c1 13 25 13 26 0"/><path d="M20 19.5l3.2 3.6L20 28l-3.2-4.9z"/><circle cx="8" cy="31" r="2.2"/><circle cx="32" cy="31" r="2.2"/></svg></div><h3>Set</h3><p>Kolye, küpe ve yüzük uyumu; söz, nişan ve düğün için hazır takımlar.</p><a href="#" data-msg="Set (kolye, küpe, yüzük) modellerinizi görmek istiyorum. Fotoğraf ve fiyat bilgisi alabilir miyim?">Modelleri sor →</a></article>
+          <article class="kc"><div class="top"><span>04</span><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="20" rx="15" ry="9"/><ellipse cx="20" cy="20" rx="10.5" ry="5.4"/><path d="M8 16.5l3 2M13 13l2 3M20 11v3.4M27 13l-2 3M32 16.5l-3 2"/></svg></div><h3>Bilezik</h3><p>22 ayar burma, hasır ve Trabzon örgü; gramına göre farklı seçenekler.</p><a href="#" data-msg="22 ayar bilezik modellerinizi görmek istiyorum. Gram ve fiyat bilgisi alabilir miyim?">Modelleri sor →</a></article>
+          <article class="kc"><div class="top"><span>05</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13"/><circle cx="20" cy="20" r="9.5" stroke-dasharray="1.4 2.2"/><path d="M20 14.6l1.6 3.4 3.7.4-2.8 2.5.8 3.7-3.3-1.9-3.3 1.9.8-3.7-2.8-2.5 3.7-.4z"/></svg></div><h3>Çeyrek &amp; gram altın</h3><p>Düğün, doğum ve birikim için çeyrek, yarım, tam ve gram altın.</p><a href="#" data-msg="Bugünkü çeyrek ve gram altın fiyatlarını öğrenebilir miyim?">Fiyat sor →</a></article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="cfg" id="tasarla" aria-labelledby="cfgh">
+    <div class="cfg-grid">
+      <div class="cfg-head">
+        <span class="kick">Alyansını tasarla</span>
+        <h2 id="cfgh">Seç, gör, <em>gönder.</em></h2>
+        <p>Seçimlerin yüzükte anında görünür. Hazır olunca talebini WhatsApp'tan gönder; ustamız fiyat ve teslim süresiyle dönsün.</p>
+      </div>
+      <div class="cfg-win" id="cfgWin">
+        <div class="cfg-fb m0 s1" id="cfgFb"></div>
+        <p class="cfg-tag" id="cfgTag" aria-live="polite">Sarı altın · 4 mm · Parlak · Tek taş</p>
+      </div>
+      <form class="cfg-form" id="cfgForm" onsubmit="return false" novalidate>
+        <fieldset class="grp"><legend>Metal</legend>
+          <div class="opts">
+            <label class="chip"><input type="radio" name="metal" value="0" checked><span><i class="sw0"></i>Sarı altın</span></label>
+            <label class="chip"><input type="radio" name="metal" value="1"><span><i class="sw1"></i>Beyaz altın</span></label>
+            <label class="chip"><input type="radio" name="metal" value="2"><span><i class="sw2"></i>Rose altın</span></label>
+          </div>
+        </fieldset>
+        <div class="grp">
+          <label class="lb" for="fW"><span>Genişlik</span><output id="oW" for="fW">4 mm</output></label>
+          <input type="range" id="fW" min="2" max="8" step="0.5" value="4" aria-describedby="rW">
+          <div class="rng" id="rW"><span>2 mm · ince</span><span>8 mm · geniş</span></div>
+        </div>
+        <fieldset class="grp"><legend>Yüzey</legend>
+          <div class="opts">
+            <label class="chip"><input type="radio" name="fin" value="0" checked><span>Parlak</span></label>
+            <label class="chip"><input type="radio" name="fin" value="1"><span>Mat</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="grp"><legend>Taş</legend>
+          <div class="opts">
+            <label class="chip"><input type="radio" name="stone" value="0"><span>Taşsız</span></label>
+            <label class="chip"><input type="radio" name="stone" value="1" checked><span>Tek taş</span></label>
+            <label class="chip"><input type="radio" name="stone" value="2"><span>Sıra taş</span></label>
+          </div>
+        </fieldset>
+        <div class="grp fld">
+          <label class="lb" for="fT"><span>İç yüzey yazısı</span><output id="oT" for="fT">0 / 22</output></label>
+          <input type="text" id="fT" maxlength="22" placeholder="Örn. A &amp; M · 14.02.2027" autocomplete="off">
+          <p class="note">İsim, tarih ya da kısa bir not; yüzüğün içine işlenir.</p>
+        </div>
+        <div class="grp fld">
+          <label class="lb" for="fS"><span>Parmak ölçüsü</span></label>
+          <select id="fS"><option value="">Seç</option><option value="?">Ölçümü bilmiyorum</option></select>
+          <details class="hlp"><summary>Ölçünü bilmiyor musun?</summary>
+            <p>İnce bir kâğıt şeridi parmağının en kalın yerine sar, birleştiği noktayı işaretle ve cetvelle ölç. Bulduğun çevreden (mm) 40 çıkarırsan yaklaşık numaran çıkar; örneğin 54 mm ≈ 14 numara. Kesin ölçü için mağazada ölçü halkasıyla ücretsiz ölçüyoruz.</p>
+          </details>
+        </div>
+        <label class="chk"><input type="checkbox" id="fP"> Çift olarak hazırlansın (iki yüzük)</label>
+        <div class="grp fld">
+          <label class="lb" for="fN"><span>Adın (isteğe bağlı)</span></label>
+          <input type="text" id="fN" maxlength="40" autocomplete="name" placeholder="Adın soyadın">
+        </div>
+        <div class="grp">
+          <span class="lb"><span>Gönderilecek mesaj</span></span>
+          <pre class="sum" id="sum"></pre>
+        </div>
+        <a class="btn btn-p send" id="send" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp'tan gönder</a>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec" id="altin" aria-labelledby="alth">
+    <div class="wrap">
+      <span class="kick">Piyasa</span>
+      <h2 id="alth" class="rv">Bugünkü <em>altın</em></h2>
+      <p class="lead rv">Altın fiyatı gün içinde değişir. En güncel alış ve satış için bizi ara ya da yaz; tartıyı ve işçiliği ayrı ayrı söyleyelim.</p>
+      <div class="gold rv">
+        <div class="gold-h"><h3>Bugünkü altın</h3><span class="badge">Örnek gösterim — güncel fiyat için arayın</span></div>
+        <table class="gt">
+          <thead><tr><th scope="col">Ürün</th><th scope="col">Alış</th><th scope="col">Satış</th></tr></thead>
+          <tbody>
+            <tr><td>Gram altın<small>24 ayar</small></td><td>— ₺</td><td>— ₺</td></tr>
+            <tr><td>Bilezik<small>22 ayar · gram</small></td><td>— ₺</td><td>— ₺</td></tr>
+            <tr><td>Çeyrek altın</td><td>— ₺</td><td>— ₺</td></tr>
+            <tr><td>Yarım altın</td><td>— ₺</td><td>— ₺</td></tr>
+            <tr><td>Tam altın</td><td>— ₺</td><td>— ₺</td></tr>
+            <tr><td>Ata lira<small>Cumhuriyet</small></td><td>— ₺</td><td>— ₺</td></tr>
+          </tbody>
+        </table>
+        <p class="fine">Bu kart örnek gösterimdir; burada canlı fiyat yer almaz. Güncel fiyat için arayın.</p>
+        <div class="gold-f">
+          <a class="btn btn-p" id="waGold" href="https://wa.me/905306284284" target="_blank" rel="noopener">Güncel fiyatı sor</a>
+          <a class="btn btn-g" href="tel:+905306284284">Hemen ara</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="hizmet" aria-labelledby="hzh" style="padding-top:0">
+    <div class="wrap">
+      <span class="kick">Hizmetler</span>
+      <h2 id="hzh" class="rv">Aldığın günden <em>sonra da</em> yanındayız.</h2>
+      <div class="svc rv">
+        <div><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="10"/><path d="M20 4v5M20 31v5M4 20h5M31 20h5"/><path d="M14 27l-2.5 2.5M26 13l2.5-2.5"/></svg><h3>Ölçü</h3><p>Yüzük ölçünü ölçü halkasıyla ücretsiz alırız; büyütme ve küçültme atölyede yapılır.</p></div>
+        <div><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 31l2.2-6.6L26.5 9.1a3 3 0 0 1 4.3 4.3L15.6 28.8z"/><path d="M24 11.6l4.4 4.4M9 31h22"/></svg><h3>Gravür</h3><p>Alyansın içine isim, tarih ya da kısa bir not; dilersen el yazını işleyelim.</p></div>
+        <div><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M24.5 8.5a7 7 0 0 0-8.4 9.3L8 25.9a2.6 2.6 0 0 0 3.7 3.7l8.1-8.1a7 7 0 0 0 9.3-8.4l-4.1 4.1-3.6-1-1-3.6z"/></svg><h3>Tamir</h3><p>Kopan zincir, gevşeyen taş, kırılan klips; lehim, taş tespiti ve parlatma.</p></div>
+        <div><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6l2.2 7.8L30 16l-7.8 2.2L20 26l-2.2-7.8L10 16l7.8-2.2z"/><path d="M30 25l1 3 3 1-3 1-1 3-1-3-3-1 3-1zM10 27l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><h3>Temizlik</h3><p>Ultrasonik temizlik ve parlatmayla takıların ilk günkü ışıltısına döner.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ziyaret" aria-labelledby="zyh" style="padding-top:0">
+    <div class="wrap">
+      <span class="kick">Ziyaret</span>
+      <h2 id="zyh" class="sr">Mağazamız</h2>
+      <div class="visit">
+        <p class="city rv" data-o="city">Aydın</p>
+        <div class="vi rv">
+          <dl>
+            <div><dt>Adres</dt><dd data-o="address">Kuyumcular Çarşısı, Efeler / Aydın</dd></div>
+            <div><dt>Saatler</dt><dd>Pazartesi – Cumartesi<br>09.30 – 19.30</dd></div>
+          </dl>
+          <div class="cta">
+            <a class="btn btn-p" id="mapBtn" href="https://www.google.com/maps" target="_blank" rel="noopener">Yol tarifi al</a>
+            <a class="btn btn-g" id="waVisit" href="https://wa.me/905306284284" target="_blank" rel="noopener">Randevu iste</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="sss" aria-labelledby="sssh" style="padding-top:0">
+    <div class="wrap">
+      <span class="kick">Sık sorulanlar</span>
+      <h2 id="sssh" class="rv">Merak <em>ettiklerin</em></h2>
+      <div class="faq">
+        <details><summary>Altın alırken nelere dikkat etmeliyim?</summary><p>Ayar damgasına, faturaya ve gram ile işçiliğin ayrı yazılmasına bak. Her satışta tartıyı birlikte okur, faturayı ürünle birlikte veririz.</p></details>
+        <details><summary>Alyans ne kadar sürede hazır olur?</summary><p>Stoktaki modeller ölçü ayarıyla genellikle aynı gün, özel tasarımlar ise model ve taşa göre birkaç iş gününde hazırlanır. Kesin süreyi siparişte yazılı olarak bildiririz.</p></details>
+        <details><summary>Eski altınımı değerlendirebilir miyim?</summary><p>Evet. Eski altınını tartıp ayarını kontrol ederiz; günün fiyatından bozdurabilir ya da yeni bir parçaya dönüştürebilirsin.</p></details>
+        <details><summary>Yüzük ölçüsü sonradan değişebilir mi?</summary><p>Çoğu modelde büyütme ya da küçültme yapılabilir. Sıra taşlı modellerde sınır taş dizilimine göre değişir; önce birlikte bakarız.</p></details>
+        <details><summary>Pırlantanın özellikleri belgeli mi?</summary><p>Pırlantalı ürünlerde taşın karat, renk ve berraklık bilgisini içeren ürün belgesi veririz.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="fbig" data-o="name">Aurum Kuyumculuk</p>
+  <div class="frow">
+    <span>© <span id="yr">2026</span> <span data-o="name">Aurum Kuyumculuk</span> · <span data-o="city">Aydın</span></span>
+    <span>Bu bir örnek sitedir; ürünler, metinler ve görseller işletmenize göre düzenlenir.</span>
+    <a href="https://eystudios.com.tr" target="_blank" rel="noopener">Tasarım &amp; geliştirme: EY Studios ↗</a>
+  </div>
+</footer>
+
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function () {
+  'use strict';
+  var D = document, W = window, H = D.documentElement;
+  var $ = function (s, r) { return (r || D).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); };
+
+  /* =====================================================================
+     FİRMA BİLGİLERİ — yeni bir firma için bu bloğu düzenleyin.
+     Satış önizlemesi: ?m=Firma+Adı&c=İlçe,+Şehir (bilgi repoya girmez, yalnızca linkte durur)
+     ===================================================================== */
+  var BIZ = { name: 'Aurum Kuyumculuk', city: 'Aydın', address: 'Kuyumcular Çarşısı, Efeler / Aydın', wa: '905306284284' };
+  try {
+    var clean = function (v, n) { v = (v || '').replace(/[<>]/g, '').replace(/\s+/g, ' ').trim(); var a = Array.from(v); if (a.length <= n) return v; v = a.slice(0, n).join(''); var k = v.lastIndexOf(' '); return (k > n * .6 ? v.slice(0, k) : v).trim(); };
+    var q = new URLSearchParams(location.search), qm = clean(q.get('m'), 48), qc = clean(q.get('c'), 48).split(',').map(function (x) { return x.trim(); }).filter(Boolean).join(', ');
+    if (qm) BIZ.name = qm;
+    if (qc) { BIZ.city = qc; BIZ.address = qc; }
+  } catch (e) {}
+
+  var esc = function (t) { return String(t).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
+  var wa = function (msg) { return 'https://wa.me/' + BIZ.wa + '?text=' + encodeURIComponent(msg); };
+  var hi = 'Merhaba ' + BIZ.name + ', ';
+
+  var words = BIZ.name.split(/\s+/), brand = $('#brand');
+  brand.innerHTML = esc(words.length > 1 ? words.slice(0, -1).join(' ') : words[0]) + (words.length > 1 ? ' <i>' + esc(words[words.length - 1]) + '</i>' : '');
+  brand.setAttribute('aria-label', BIZ.name + ' — başa dön');
+  $$('[data-o="name"]').forEach(function (e) { e.textContent = BIZ.name; });
+  $$('[data-o="city"]').forEach(function (e) { e.textContent = BIZ.city; });
+  $$('[data-o="address"]').forEach(function (e) { e.textContent = BIZ.address; });
+  D.title = BIZ.name + ' — Alyans, Tektaş & Altın · ' + BIZ.city;
+  $('#yr').textContent = new Date().getFullYear();
+  $('#waHero').href = wa(hi + 'web sitenizden yazıyorum. Alyans ve takılarınız hakkında bilgi almak istiyorum.');
+  $('#waGold').href = wa(hi + 'bugünkü altın fiyatlarını (gram, çeyrek, bilezik) öğrenebilir miyim?');
+  $('#waVisit').href = wa(hi + 'mağazanızı ziyaret etmek istiyorum. Uygun bir saat önerebilir misiniz?');
+  $('#mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(BIZ.name + ' ' + BIZ.address);
+  $$('.kc a[data-msg]').forEach(function (a) { a.href = wa(hi + a.getAttribute('data-msg')); a.target = '_blank'; a.rel = 'noopener'; });
+
+  /* Uzun firma adları 320 px'te de sığsın: yazıyı küçült */
+  var hbtn = $('.hbtn');
+  function fitBrand() {
+    brand.style.cssText = 'flex:0 0 auto';
+    var base = parseFloat(getComputedStyle(brand).fontSize);
+    var avail = brand.parentNode.clientWidth - parseFloat(getComputedStyle(brand.parentNode).paddingLeft) * 2 - hbtn.offsetWidth - 12;
+    var need = brand.scrollWidth, fs = base * avail / need;
+    brand.style.cssText = '';
+    if (need <= avail || avail <= 0) return;
+    if (fs >= 14) brand.style.fontSize = Math.floor(fs * 10) / 10 + 'px';
+    else brand.style.cssText = 'font-size:16px;white-space:normal;line-height:1.05;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical';
+  }
+  fitBrand();
+  if (D.fonts && D.fonts.ready) D.fonts.ready.then(function () { fitBrand(); layout(); });
+
+  /* ---------- Çizim (yedek afiş + yapılandırıcı önizlemesi) ---------- */
+  function ringSVG(id) {
+    var i, xs = [], tx = [], lx = [], N = 8;
+    for (i = 0; i <= N; i++) xs.push(132 + 136 * (0.5 - 0.5 * Math.cos(Math.PI * i / N)));
+    for (i = 0; i <= 4; i++) tx.push(170 + 60 * (0.5 - 0.5 * Math.cos(Math.PI * i / 4)));
+    for (i = 0; i <= 4; i++) lx.push(200 + (xs[2 * i] - 200) * 0.42);
+    var yG = 128, yB = 131, yT = 100, yL = 160, yC = 190;
+    var pal = ['#f4f7fa', '#9fadb9', '#323a42', '#dfe7ee', '#5f6b77', '#ffffff', '#1f252b', '#c3ced7', '#ffe2b8', '#aad6ff'];
+    var f = '';
+    var pt = function (x, y) { return x.toFixed(1) + ',' + y; };
+    var tri = function (a, b, c, col) { f += '<path d="M' + a + 'L' + b + 'L' + c + 'Z" fill="' + col + '"/>'; };
+    for (i = 0; i < 8; i++) tri(pt(xs[i], yG), pt(xs[i + 1], yG), pt(tx[Math.floor((i + 1) / 2)], yT), pal[(i * 3) % 8]);
+    for (i = 0; i < 4; i++) tri(pt(tx[i], yT), pt(tx[i + 1], yT), pt(xs[2 * i + 1], yG), pal[(i * 5 + 1) % 8]);
+    for (i = 0; i < 8; i++) tri(pt(xs[i], yB), pt(xs[i + 1], yB), pt(lx[Math.floor((i + 1) / 2)], yL), pal[(i * 3 + 2) % 10]);
+    for (i = 0; i < 4; i++) tri(pt(lx[i], yL), pt(lx[i + 1], yL), pt(xs[2 * i + 1], yB), pal[(i * 7 + 4) % 8]);
+    for (i = 0; i < 4; i++) tri(pt(lx[i], yL), pt(lx[i + 1], yL), pt(200, yC), pal[(i * 3 + 5) % 10]);
+    var star = function (x, y, r) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r * 1.6 + '" fill="url(#' + id + 'g)"/><path d="M' + x + ',' + (y - r) + 'Q' + x + ',' + y + ' ' + (x + r) + ',' + y + 'Q' + x + ',' + y + ' ' + x + ',' + (y + r) + 'Q' + x + ',' + y + ' ' + (x - r) + ',' + y + 'Q' + x + ',' + y + ' ' + x + ',' + (y - r) + 'Z" fill="#fff"/>'; };
+    var row = '';
+    for (i = -4; i <= 4; i++) { var t = i * 0.15; row += '<circle cx="' + (200 + 126 * Math.sin(t)).toFixed(1) + '" cy="' + (292 - 128 * Math.cos(t) + 2).toFixed(1) + '" r="7.5" fill="url(#' + id + 'd)" stroke="var(--g3)" stroke-width="1.5"/>'; }
+    return '<svg viewBox="0 0 400 440" aria-hidden="true"><defs>' +
+      '<linearGradient id="' + id + 'b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--g1)"/><stop offset=".32" style="stop-color:var(--g2)"/><stop offset=".6" style="stop-color:var(--g3)"/><stop offset=".84" style="stop-color:var(--g2)"/><stop offset="1" style="stop-color:var(--g1)"/></linearGradient>' +
+      '<linearGradient id="' + id + 'w" x1="0" y1="1" x2="0" y2="0"><stop offset="0" style="stop-color:var(--g2)"/><stop offset="1" style="stop-color:var(--g3)"/></linearGradient>' +
+      '<radialGradient id="' + id + 's"><stop offset="0" stop-color="#000" stop-opacity=".75"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="' + id + 'g"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".3" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="' + id + 'd" cx=".35" cy=".35"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#b9c4cd"/><stop offset="1" stop-color="#3a434c"/></radialGradient>' +
+      '</defs>' +
+      '<ellipse cx="200" cy="426" rx="140" ry="12" fill="url(#' + id + 's)"/>' +
+      '<path fill-rule="evenodd" fill="url(#' + id + 'w)" d="M98,286a102,104 0 1,0 204,0a102,104 0 1,0 -204,0Z M100,274a100,98 0 1,0 200,0a100,98 0 1,0 -200,0Z"/>' +
+      '<g class="dia"><path d="M182,176 160,128M218,176 240,128M193,178 186,128M207,178 214,128" stroke="url(#' + id + 'b)" stroke-width="6" stroke-linecap="round" fill="none"/>' +
+      '<ellipse cx="200" cy="168" rx="26" ry="5" fill="none" stroke="url(#' + id + 'b)" stroke-width="4"/>' +
+      '<g stroke="rgba(255,255,255,.28)" stroke-width=".6">' + f + '</g>' +
+      '<rect x="132" y="127.5" width="136" height="3.5" fill="#b6c0c8"/><ellipse cx="200" cy="100" rx="30" ry="3" fill="#eef3f7"/>' +
+      '<path d="M160,128 156,120M240,128 244,120M186,128 184,104M214,128 216,104" stroke="url(#' + id + 'b)" stroke-width="5" stroke-linecap="round"/>' +
+      star(168, 106, 11) + star(236, 114, 8) + star(152, 132, 14) + star(204, 150, 7) + '</g>' +
+      '<path fill-rule="evenodd" fill="url(#' + id + 'b)" d="M74,292a126,128 0 1,0 252,0a126,128 0 1,0 -252,0Z M98,286a102,104 0 1,0 204,0a102,104 0 1,0 -204,0Z"/>' +
+      '<g class="row">' + row + '</g>' +
+      '<path class="hl" d="M84,262A122,124 0 0 1 168,170" stroke="#fff" stroke-opacity=".6" stroke-width="3.2" fill="none" stroke-linecap="round"/>' +
+      '<path class="hl" d="M126,396A116,104 0 0 0 292,372" stroke="#fff" stroke-opacity=".28" stroke-width="2" fill="none" stroke-linecap="round"/>' +
+      '<path class="hl" d="M300,236A100,100 0 0 0 262,196" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none" stroke-linecap="round"/>' +
+      '</svg>';
+  }
+  $('#pr').innerHTML = ringSVG('pa');
+  $('#cfgFb').innerHTML = ringSVG('pb');
+
+  /* ---------- Alyans yapılandırıcı ---------- */
+  var MET = ['Sarı altın', 'Beyaz altın', 'Rose altın'], FIN = ['Parlak', 'Mat'], STN = ['Taşsız', 'Tek taş', 'Sıra taş'];
+  var CFG = { metal: 0, width: 4, fin: 0, stone: 1, text: '', size: '', pair: false, name: '', rev: 0 };
+  var fS = $('#fS');
+  for (var n = 6; n <= 28; n++) { var o = D.createElement('option'); o.value = String(n); o.textContent = n + ' numara'; fS.appendChild(o); }
+  var form = $('#cfgForm'), fW = $('#fW'), fT = $('#fT'), fN = $('#fN'), fP = $('#fP'), fb = $('#cfgFb');
+  function readCfg() {
+    var g = function (nm) { var c = form.querySelector('input[name="' + nm + '"]:checked'); return c ? +c.value : 0; };
+    CFG.metal = g('metal'); CFG.fin = g('fin'); CFG.stone = g('stone');
+    CFG.width = +fW.value; CFG.text = fT.value.trim(); CFG.size = fS.value; CFG.pair = fP.checked; CFG.name = fN.value.trim();
+    CFG.rev++;
+    $('#oW').textContent = String(CFG.width).replace('.', ',') + ' mm';
+    fW.style.setProperty('--p', ((CFG.width - 2) / 6 * 100) + '%');
+    $('#oT').textContent = Array.from(fT.value).length + ' / 22';
+    $('#cfgTag').textContent = MET[CFG.metal] + ' · ' + String(CFG.width).replace('.', ',') + ' mm · ' + FIN[CFG.fin] + ' · ' + STN[CFG.stone];
+    fb.className = 'cfg-fb m' + CFG.metal + ' s' + CFG.stone + ' f' + CFG.fin;
+    var size = CFG.size === '?' ? 'Bilmiyorum, mağazada ölçtürmek istiyorum' : CFG.size ? CFG.size + ' numara' : 'Belirtmedim';
+    var msg = hi + 'sitenizdeki tasarım aracından alyans talebi göndermek istiyorum.\n' +
+      '• Metal: ' + MET[CFG.metal] + '\n' +
+      '• Genişlik: ' + String(CFG.width).replace('.', ',') + ' mm\n' +
+      '• Yüzey: ' + FIN[CFG.fin] + '\n' +
+      '• Taş: ' + STN[CFG.stone] + '\n' +
+      '• İç yazı: ' + (CFG.text ? '"' + CFG.text + '"' : 'Yok') + '\n' +
+      '• Ölçü: ' + size + '\n' +
+      '• Adet: ' + (CFG.pair ? 'Çift (iki yüzük)' : 'Tek') + '\n' +
+      (CFG.name ? 'Adım: ' + CFG.name + '\n' : '') +
+      'Fiyat ve teslim süresi hakkında bilgi alabilir miyim?';
+    $('#sum').textContent = msg;
+    $('#send').href = wa(msg);
+    wake();
+  }
+  form.addEventListener('input', readCfg);
+  form.addEventListener('change', readCfg);
+
+  /* ---------- Kaydırma düzeni ---------- */
+  var MQ = W.matchMedia('(min-width: 900px) and (orientation: landscape)');
+  var hero = $('#hero'), heroIn = $('#heroIn'), chs = [$('#c1'), $('#c2'), $('#c3')], chT = chs.map(function (c) { return $('.ch-txt', c); });
+  var kol = $('#kol'), track = $('#track'), mets = $$('#mets li'), cfgSec = $('#tasarla'), cfgWin = $('#cfgWin');
+  var L = { vw: 0, vh: 0, A: [0, 0, 0, 0, 0, 0], kolS: 0, kolE: 1, cfgT: 0, trackMax: 0, land: false };
+  function layout() {
+    var y0 = W.pageYOffset || 0, top = function (el) { return el.getBoundingClientRect().top + y0; };
+    L.vw = H.clientWidth; L.vh = W.innerHeight; L.land = MQ.matches;
+    L.A[0] = 0;
+    for (var i = 0; i < 3; i++) L.A[i + 1] = top(chs[i]) + chs[i].offsetHeight / 2 - L.vh / 2;
+    L.kolS = top(kol); L.kolE = L.kolS + Math.max(1, kol.offsetHeight - L.vh);
+    L.A[4] = L.kolS; L.A[5] = L.kolE;
+    L.cfgT = top(cfgSec);
+    L.trackMax = Math.max(0, track.scrollWidth - track.clientWidth);
+    fitBrand();
+    wake();
+  }
+  /* sahne zaman çizelgesi: anchor noktaları arasında konum (0..5) */
+  function storyPos(y) {
+    var A = L.A;
+    if (y <= A[0]) return 0;
+    for (var i = 0; i < 5; i++) if (y < A[i + 1]) return i + (y - A[i]) / Math.max(1, A[i + 1] - A[i]);
+    return 5;
+  }
+  var lastUi = { a: [-1, -1, -1, -1], tr: -1, met: -1 };
+  function ui(y, glOn) {
+    var cf = storyPos(y), i, a;
+    if (glOn) {
+      a = Math.max(0, Math.min(1, 1 - cf * 1.7));
+      if (Math.abs(a - lastUi.a[0]) > 0.004) { heroIn.style.opacity = a.toFixed(3); heroIn.style.transform = 'translate3d(0,' + (-(1 - a) * 30).toFixed(1) + 'px,0)'; lastUi.a[0] = a; }
+      for (i = 1; i <= 3; i++) {
+        a = Math.max(0, Math.min(1, 1 - Math.abs(cf - i) * 2.2));
+        if (Math.abs(a - lastUi.a[i]) > 0.004) { chT[i - 1].style.opacity = a.toFixed(3); chT[i - 1].style.transform = 'translate3d(0,' + ((1 - a) * (cf < i ? 28 : -28)).toFixed(1) + 'px,0)'; lastUi.a[i] = a; }
+      }
+    }
+    var p = Math.max(0, Math.min(1, (y - L.kolS) / (L.kolE - L.kolS)));
+    var tr = Math.round(Math.max(0, Math.min(1, (p - 0.04) / 0.92)) * L.trackMax);
+    if (tr !== lastUi.tr) { track.style.transform = 'translate3d(' + (-tr) + 'px,0,0)'; lastUi.tr = tr; }
+    var m = Math.round(metalOf(p));
+    if (m !== lastUi.met) { mets.forEach(function (li, j) { li.classList.toggle('on', j === m); }); lastUi.met = m; if (!glOn) $('#pr').className = 'pr m' + m; }
+  }
+  function metalOf(p) { return Math.max(0, Math.min(1, (p - 0.14) / 0.28)) + Math.max(0, Math.min(1, (p - 0.58) / 0.28)); }
+
+  var fallbackTick = false;
+  function onScroll() { wake(); if (!GL.on && !fallbackTick) { fallbackTick = true; requestAnimationFrame(function () { fallbackTick = false; ui(W.pageYOffset, false); }); } }
+  W.addEventListener('scroll', onScroll, { passive: true });
+  var rzT = 0;
+  W.addEventListener('resize', function () { clearTimeout(rzT); rzT = setTimeout(function () { layout(); if (GL.resize) GL.resize(); ui(W.pageYOffset, GL.on); }, 120); }, { passive: true });
+  W.addEventListener('load', function () { layout(); ui(W.pageYOffset, GL.on); });
+
+  /* ---------- Ortaya çıkış ---------- */
+  if ('IntersectionObserver' in W) {
+    var rio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    $$('.rv').forEach(function (el) { rio.observe(el); });
+  } else $$('.rv').forEach(function (el) { el.classList.add('in'); });
+
+  /* Sayfa sonunda footer görünürken "örnek çalışma" düğmesini gizle; footer'daki EY Studios imzasının üstüne binmesin */
+  (function () {
+    var b = $('.demo-back'), f = $('footer');
+    if (!b || !f || !('IntersectionObserver' in W)) return;
+    b.style.transition = 'opacity .35s';
+    new IntersectionObserver(function (e) {
+      var on = e[0].isIntersecting;
+      b.style.opacity = on ? '0' : '';
+      b.style.pointerEvents = on ? 'none' : '';
+      if (on) { b.setAttribute('tabindex', '-1'); b.setAttribute('aria-hidden', 'true'); }
+      else { b.removeAttribute('tabindex'); b.removeAttribute('aria-hidden'); }
+    }).observe(f);
+  })();
+
+  /* =====================================================================
+     3B SAHNE — three.js r128, tek WebGL bağlamı, kademeli kalite
+     ===================================================================== */
+  var GL = { on: false, resize: null, wake: null };
+  var activeAt = 0;
+  function wake() { activeAt = performance.now(); if (GL.wake) GL.wake(); }
+  var cv = $('#gl');
+  function fallback() { H.classList.add('nogl'); H.classList.remove('gl'); GL.on = false; cv.style.display = 'none'; ui(W.pageYOffset, false); }
+
+  readCfg();
+  layout();
+  ui(0, false);
+
+  var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coarse = W.matchMedia && W.matchMedia('(pointer: coarse)').matches;
+  var mobile = coarse || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  var glc = null, AA = !mobile && (W.devicePixelRatio || 1) < 1.5;
+  if (!RM) {
+    var attrs = { antialias: AA, alpha: false, depth: true, stencil: false, premultipliedAlpha: true, preserveDrawingBuffer: false, powerPreference: 'high-performance', failIfMajorPerformanceCaveat: true };
+    try { glc = cv.getContext('webgl', attrs) || cv.getContext('experimental-webgl', attrs); } catch (e) { glc = null; }
+  }
+  if (!glc) { fallback(); return; }
+
+  (function load() {
+    var s = D.createElement('script'), done = false;
+    var to = setTimeout(function () { if (!done) { done = true; fallback(); } }, 10000);
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    s.async = true; s.crossOrigin = 'anonymous';
+    s.onload = function () { if (done) return; done = true; clearTimeout(to); if (!W.THREE) { fallback(); return; } try { boot(W.THREE); } catch (e) { if (W.console) console.warn('3B sahne açılamadı', e); fallback(); } };
+    s.onerror = function () { if (done) return; done = true; clearTimeout(to); fallback(); };
+    D.head.appendChild(s);
+  })();
+
+  function boot(THREE) {
+    /* ---- kalite kademesi ---- */
+    var gpu = '';
+    try { var dbg = glc.getExtension('WEBGL_debug_renderer_info'); if (dbg) gpu = String(glc.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || ''); } catch (e) {}
+    var mem = navigator.deviceMemory || 8, cores = navigator.hardwareConcurrency || 8;
+    var weak = /swiftshader|llvmpipe|softpipe|mali-4|mali-t[0-9]|adreno \(tm\) [1-4][0-9]{2}\b|powervr sgx|intel.*(gma|hd graphics [2-5][0-9]{2,3}\b)/i.test(gpu);
+    var TIERS = {
+      hi: { dpr: 2, px: 2.6e6, seg: 192, prof: 56, b: 3, gl: 26, tube: 36 },
+      mid: { dpr: 1.6, px: 1.25e6, seg: 140, prof: 44, b: 2, gl: 22, tube: 28 },
+      lo: { dpr: 1, px: 0.7e6, seg: 96, prof: 32, b: 1, gl: 14, tube: 20 }
+    };
+    var tierName = (weak || mem <= 2 || cores <= 2) ? 'lo' : (mobile || mem <= 4 || cores <= 4) ? 'mid' : 'hi';
+    var Q = TIERS[tierName];
+
+    var renderer = new THREE.WebGLRenderer({ canvas: cv, context: glc, antialias: AA, alpha: false, powerPreference: 'high-performance' });
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+    renderer.setClearColor(0x0b0a09, 1);
+    renderer.info.autoReset = true;
+    var scene = new THREE.Scene();
+    scene.autoUpdate = false;
+    var FOV = 26, CAMZ = 12, VIS = 2 * CAMZ * Math.tan(FOV / 2 * Math.PI / 180);
+    var camera = new THREE.PerspectiveCamera(FOV, 1, 1, 40);
+    camera.position.set(0, 0, CAMZ);
+
+    /* ---- stüdyo ortamı (yansımalar) ---- */
+    var env = new THREE.Scene(), envMats = [];
+    (function buildEnv() {
+      var sg = new THREE.SphereGeometry(18, 32, 16), cols = [], p = sg.attributes.position;
+      for (var i = 0; i < p.count; i++) {
+        var y = p.getY(i) / 18, c = y > 0 ? 0.03 + 0.05 * Math.pow(y, 3) : 0.016 + 0.02 * (1 + y);
+        cols.push(c * 1.08, c * 0.98, c * 0.86);
+      }
+      sg.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
+      var bm = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, toneMapped: false });
+      bm.userData.k = 1; envMats.push(bm); env.add(new THREE.Mesh(sg, bm));
+      function card(w, h, x, y, z, r, g, b, k) {
+        var m = new THREE.MeshBasicMaterial({ color: new THREE.Color(r * k, g * k, b * k), side: THREE.DoubleSide, toneMapped: false });
+        m.userData.base = m.color.clone(); envMats.push(m);
+        var me = new THREE.Mesh(new THREE.PlaneGeometry(w, h), m); me.position.set(x, y, z); me.lookAt(0, 0, 0); env.add(me);
+      }
+      card(16, 5, 0, 13, 1, 1, 1, 1, 3.4);          /* tepe softbox */
+      card(2.2, 13, -12, 1, 3.5, 1, .98, .95, 2.6);  /* sol şerit */
+      card(2.2, 13, 12, 2, -2.5, .95, .98, 1, 2.2);  /* sağ şerit */
+      card(7, 2.2, 2, 4, 13, 1, .93, .82, 1.3);      /* ön dolgu */
+      card(9, 3, -3, -3, -13, .9, .78, .58, .9);     /* arka sıcak */
+      card(10, 1.4, 0, -11, 6, .8, .7, .55, .55);    /* zemin sekmesi */
+      var sp = new THREE.SphereGeometry(0.42, 8, 6), rnd = 7;
+      var R = function () { rnd = (rnd * 16807) % 2147483647; return rnd / 2147483647; };
+      for (var j = 0; j < 16; j++) {
+        var th = R() * Math.PI * 2, ph = 0.25 + R() * 1.9, k = 5 + R() * 6;
+        var m = new THREE.MeshBasicMaterial({ color: new THREE.Color(k, k * .97, k * .92), toneMapped: false }); m.userData.base = m.color.clone(); envMats.push(m);
+        var s = new THREE.Mesh(sp, m); s.position.set(Math.sin(ph) * Math.cos(th) * 14, Math.cos(ph) * 14, Math.sin(ph) * Math.sin(th) * 14); env.add(s);
+      }
+    })();
+    function envScale(k) { envMats.forEach(function (m) { if (m.userData.base) m.color.copy(m.userData.base).multiplyScalar(k); else m.color.setScalar(k); }); }
+    var cubeRT = new THREE.WebGLCubeRenderTarget(tierName === 'lo' ? 128 : 256, { format: THREE.RGBFormat, generateMipmaps: false, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
+    var cubeCam = new THREE.CubeCamera(0.1, 40, cubeRT);
+    env.updateMatrixWorld(true);
+    envScale(0.25); envMats[0].color.setScalar(1.9); cubeCam.update(renderer, env); envScale(1);
+    var pmrem = new THREE.PMREMGenerator(renderer);
+    var envTex = pmrem.fromScene(env, 0.03).texture;
+    pmrem.dispose();
+
+    /* ---- malzemeler ---- */
+    var METAL = [[0.97, 0.68, 0.31], [0.84, 0.83, 0.80], [0.97, 0.60, 0.47]];
+    var metal = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 1, roughness: 0.12, envMap: envTex, envMapIntensity: 1.15 });
+    var keyL = new THREE.DirectionalLight(0xfff4e6, 2.1); keyL.position.set(-4, 6, 5);
+    var rimL = new THREE.DirectionalLight(0xeef3ff, 1.5); rimL.position.set(5, 3, -4);
+    var fillL = new THREE.DirectionalLight(0xffe2c0, 0.5); fillL.position.set(0, -4, 6);
+    scene.add(keyL, rimL, fillL);
+
+    /* ---- yüzük gövdesi: süperelips kesitli, iç yüzeyi konfor profil ---- */
+    var RC = 1.09, RA = 0.09, RB = 0.235;
+    function bandGeo(seg, prof) {
+      var pr = [], i, j;
+      for (j = 0; j <= prof; j++) {
+        var t = Math.PI + j / prof * Math.PI * 2, c = Math.cos(t), s = Math.sin(t), nn = c >= 0 ? 2.5 : 3.6, e = 2 / nn;
+        var ac = Math.abs(c), as = Math.abs(s);
+        var x = RA * Math.sign(c) * Math.pow(ac, e), y = RB * Math.sign(s) * Math.pow(as, e);
+        var gx = Math.sign(c) * Math.pow(ac, e * (nn - 1)) / RA, gy = Math.sign(s) * Math.pow(as, e * (nn - 1)) / RB, gl = Math.hypot(gx, gy) || 1;
+        pr.push([x, y, gx / gl, gy / gl]);
+      }
+      var P = new Float32Array((seg + 1) * (prof + 1) * 3), N = new Float32Array(P.length), I = [];
+      for (i = 0; i <= seg; i++) {
+        var ph = i / seg * Math.PI * 2, cp = Math.cos(ph), sp = Math.sin(ph);
+        for (j = 0; j <= prof; j++) {
+          var q = pr[j], r = RC + q[0], o = (i * (prof + 1) + j) * 3;
+          P[o] = r * cp; P[o + 1] = r * sp; P[o + 2] = q[1];
+          N[o] = q[2] * cp; N[o + 1] = q[2] * sp; N[o + 2] = q[3];
+        }
+      }
+      for (i = 0; i < seg; i++) for (j = 0; j < prof; j++) {
+        var a = i * (prof + 1) + j, b = a + prof + 1;
+        I.push(a, a + 1, b, b, a + 1, b + 1);
+      }
+      var g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(P, 3));
+      g.setAttribute('normal', new THREE.BufferAttribute(N, 3));
+      g.setIndex(I);
+      /* sarım yönü dışa baksın */
+      var v0 = new THREE.Vector3().fromArray(P, I[0] * 3), v1 = new THREE.Vector3().fromArray(P, I[1] * 3), v2 = new THREE.Vector3().fromArray(P, I[2] * 3), nn0 = new THREE.Vector3().fromArray(N, I[0] * 3);
+      if (v1.sub(v0).cross(v2.sub(v0)).dot(nn0) < 0) { for (i = 0; i < I.length; i += 3) { var tmp = I[i + 1]; I[i + 1] = I[i + 2]; I[i + 2] = tmp; } g.setIndex(I); }
+      return g;
+    }
+    function merge(list) {
+      var np = 0, ni = 0;
+      list.forEach(function (g) { np += g.attributes.position.count; ni += g.index ? g.index.count : g.attributes.position.count; });
+      var P = new Float32Array(np * 3), N = new Float32Array(np * 3), I = new (np > 65535 ? Uint32Array : Uint16Array)(ni), op = 0, oi = 0;
+      list.forEach(function (g) {
+        var c = g.attributes.position.count, k;
+        P.set(g.attributes.position.array, op * 3); N.set(g.attributes.normal.array, op * 3);
+        if (g.index) { var ix = g.index.array; for (k = 0; k < ix.length; k++) I[oi + k] = ix[k] + op; oi += ix.length; }
+        else { for (k = 0; k < c; k++) I[oi + k] = op + k; oi += c; }
+        op += c; g.dispose();
+      });
+      var out = new THREE.BufferGeometry();
+      out.setAttribute('position', new THREE.BufferAttribute(P, 3));
+      out.setAttribute('normal', new THREE.BufferAttribute(N, 3));
+      out.setIndex(new THREE.BufferAttribute(I, 1));
+      return out;
+    }
+
+    /* ---- pırlanta: yuvarlak brilyant kesim (57 faset) ---- */
+    var DG = 0.02, TA = Math.tan(34.5 * Math.PI / 180), PA = Math.tan(40.75 * Math.PI / 180), RT = 0.57, RS = 0.80, RH = 0.22, C22 = Math.cos(Math.PI / 8);
+    var yT = DG + (1 - RT) * TA, yS = DG + TA * (1 - RS * C22), yH = -DG - PA * (1 - RH * C22), yC = -DG - PA;
+    var pt = function (r, a, y) { return [r * Math.cos(a), y, r * Math.sin(a)]; };
+    var glintPts = [];
+    function diamondGeo() {
+      var tris = [], k;
+      for (k = 0; k < 8; k++) {
+        var a = k * Math.PI / 4, a2 = a + Math.PI / 8, a3 = a + Math.PI / 4, am = a - Math.PI / 8;
+        var Tk = pt(RT, a, yT), Tk1 = pt(RT, a3, yT), Sk = pt(RS, a2, yS), Sm = pt(RS, am, yS);
+        var G0 = pt(1, a, DG), G1 = pt(1, a2, DG), G2 = pt(1, a3, DG), B0 = pt(1, a, -DG), B1 = pt(1, a2, -DG), B2 = pt(1, a3, -DG);
+        var Hk = pt(RH, a2, yH), Hm = pt(RH, am, yH), TC = [0, yT, 0], CU = [0, yC, 0];
+        tris.push([TC, Tk, Tk1], [Tk, Tk1, Sk], [Tk, Sm, G0], [Tk, G0, Sk], [Sk, G0, G1], [Sk, G1, G2],
+          [G0, G1, B1], [G0, B1, B0], [G1, G2, B2], [G1, B2, B1],
+          [Hk, B0, B1], [Hk, B1, B2], [CU, Hk, B0], [CU, B0, Hm]);
+        glintPts.push(Tk, Sk, G1);
+      }
+      var P = new Float32Array(tris.length * 9), N = new Float32Array(tris.length * 9);
+      var va = new THREE.Vector3(), vb = new THREE.Vector3(), vc = new THREE.Vector3(), nn = new THREE.Vector3(), cen = new THREE.Vector3();
+      tris.forEach(function (t, i) {
+        va.fromArray(t[0]); vb.fromArray(t[1]); vc.fromArray(t[2]);
+        cen.copy(va).add(vb).add(vc);
+        nn.copy(vb).sub(va).cross(vc.clone().sub(va)).normalize();
+        var order = nn.dot(cen) < 0 ? [0, 2, 1] : [0, 1, 2];
+        if (order[1] === 2) nn.negate();
+        for (var j = 0; j < 3; j++) { var v = t[order[j]]; P.set(v, i * 9 + j * 3); N[i * 9 + j * 3] = nn.x; N[i * 9 + j * 3 + 1] = nn.y; N[i * 9 + j * 3 + 2] = nn.z; }
+      });
+      var g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(P, 3));
+      g.setAttribute('normal', new THREE.BufferAttribute(N, 3));
+      return g;
+    }
+    /* iç yansıma için dışbükey düzlemler: tabla + 8 yıldız + 8 taç + 8 pavyon */
+    var planes = [], sa = Math.sin(34.5 * Math.PI / 180), ca = Math.cos(34.5 * Math.PI / 180), sb = Math.sin(40.75 * Math.PI / 180), cb = Math.cos(40.75 * Math.PI / 180);
+    planes.push(new THREE.Vector4(0, 1, 0, yT));
+    (function () {
+      for (var k = 0; k < 8; k++) {
+        var a = k * Math.PI / 4, c = Math.cos(a), s = Math.sin(a);
+        planes.push(new THREE.Vector4(sa * c, ca, sa * s, sa + DG * ca));
+        planes.push(new THREE.Vector4(sb * c, -cb, sb * s, sb + DG * cb));
+        var T0 = new THREE.Vector3().fromArray(pt(RT, a, yT)), T1 = new THREE.Vector3().fromArray(pt(RT, a + Math.PI / 4, yT)), S0 = new THREE.Vector3().fromArray(pt(RS, a + Math.PI / 8, yS));
+        var nrm = T1.clone().sub(T0).cross(S0.clone().sub(T0)).normalize(); if (nrm.y < 0) nrm.negate();
+        planes.push(new THREE.Vector4(nrm.x, nrm.y, nrm.z, nrm.dot(T0)));
+      }
+    })();
+
+    var dVert = 'varying vec3 vP;varying vec3 vN;void main(){vP=position;vN=normal;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}';
+    var dFrag = [
+      'uniform samplerCube envMap;uniform vec3 uCamL;uniform mat3 uL2W;uniform vec4 uPl[NPL];uniform float uGain;',
+      'varying vec3 vP;varying vec3 vN;',
+      'vec3 envL(vec3 d){return textureCube(envMap,normalize(uL2W*d)).rgb*uGain;}',
+      'void main(){',
+      ' vec3 n=normalize(vN);vec3 v=normalize(vP-uCamL);',
+      ' float ci=clamp(-dot(v,n),0.0,1.0);float F=0.172+0.828*pow(1.0-ci,5.0);',
+      ' vec3 col=envL(reflect(v,n))*F;',
+      ' vec3 r=refract(v,n,0.41322);vec3 p=vP;vec3 inner=vec3(0.0);bool outd=false;',
+      ' for(int b=0;b<BOUNCES;b++){',
+      '  float tm=100.0;vec3 nh=vec3(0.0,1.0,0.0);',
+      '  for(int j=0;j<NPL;j++){vec4 pl=uPl[j];float dn=dot(r,pl.xyz);if(dn>0.0001){float t=(pl.w-dot(p,pl.xyz))/dn;if(t>0.0001&&t<tm){tm=t;nh=pl.xyz;}}}',
+      '  if(tm>50.0)break;',
+      '  p+=r*tm;float c=dot(r,nh);float k=1.0-5.8564*(1.0-c*c);',
+      '  if(k<0.0){r=reflect(r,nh);}',
+      '  else{vec3 eG=refract(r,-nh,2.42);vec3 eR=refract(r,-nh,2.37);vec3 eB=refract(r,-nh,2.49);',
+      '   if(dot(eB,eB)<0.5)eB=eG;if(dot(eR,eR)<0.5)eR=eG;',
+      '   inner=vec3(envL(eR).r,envL(eG).g,envL(eB).b);outd=true;break;}',
+      ' }',
+      ' if(!outd)inner=envL(r)*0.75;',
+      ' col+=inner*(1.0-F)*vec3(1.08,1.07,1.06);',
+      ' gl_FragColor=vec4(col,1.0);',
+      ' #include <tonemapping_fragment>',
+      ' #include <encodings_fragment>',
+      '}'].join('\n');
+    var diaMat = new THREE.ShaderMaterial({
+      defines: { BOUNCES: Q.b, NPL: planes.length },
+      uniforms: { envMap: { value: cubeRT.texture }, uCamL: { value: new THREE.Vector3() }, uL2W: { value: new THREE.Matrix3() }, uPl: { value: planes }, uGain: { value: 4.0 } },
+      vertexShader: dVert, fragmentShader: dFrag
+    });
+    /* küçük sıra taşlar: ucuz tek kırılma */
+    var sMat = new THREE.ShaderMaterial({
+      uniforms: { envMap: { value: cubeRT.texture }, uGain: { value: 4.0 } },
+      vertexShader: 'varying vec3 vW;varying vec3 vNw;void main(){vec4 w=modelMatrix*vec4(position,1.0);vW=w.xyz;vNw=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*w;}',
+      fragmentShader: ['uniform samplerCube envMap;uniform float uGain;varying vec3 vW;varying vec3 vNw;',
+        'void main(){vec3 n=normalize(vNw);vec3 v=normalize(vW-cameraPosition);float ci=clamp(-dot(v,n),0.0,1.0);float F=0.172+0.828*pow(1.0-ci,5.0);',
+        'vec3 col=textureCube(envMap,reflect(v,n)).rgb*uGain*F;vec3 e=reflect(refract(v,n,0.41322),n);',
+        'col+=vec3(textureCube(envMap,e+vec3(0.04,0.0,0.0)).r,textureCube(envMap,e).g,textureCube(envMap,e-vec3(0.04,0.0,0.0)).b)*uGain*(1.0-F)*0.85;',
+        'gl_FragColor=vec4(col,1.0);',
+        '#include <tonemapping_fragment>', '#include <encodings_fragment>', '}'].join('\n')
+    });
+
+    /* ---- sahne ağacı ---- */
+    var rig = new THREE.Group(), spin = new THREE.Group(), focus = new THREE.Group();
+    scene.add(rig); rig.add(spin); spin.add(focus);
+    var band = new THREE.Mesh(bandGeo(Q.seg, Q.prof), metal); focus.add(band);
+
+    var GY = 1.52, GR = 0.36; /* taşın kuşak yüksekliği ve yarıçapı */
+    var headParts = [];
+    for (var k = 0; k < 6; k++) {
+      var ps = k * Math.PI / 3 + Math.PI / 6, dx = Math.cos(ps), dz = Math.sin(ps);
+      var V = function (r, y) { return new THREE.Vector3(dx * r, y, dz * r); };
+      var curve = new THREE.CatmullRomCurve3([V(0.10, 1.08), V(0.2, 1.3), V(0.35, 1.465), V(0.385, 1.535), V(0.355, 1.585), V(0.322, 1.598)]);
+      headParts.push(new THREE.TubeGeometry(curve, Q.tube, 0.027, 8, false));
+      var tip = new THREE.SphereGeometry(0.03, 10, 8); tip.translate(dx * 0.322, 1.598, dz * 0.322); headParts.push(tip);
+    }
+    var gal1 = new THREE.TorusGeometry(0.212, 0.018, 8, 56); gal1.rotateX(Math.PI / 2); gal1.translate(0, 1.30, 0); headParts.push(gal1);
+    var gal2 = new THREE.TorusGeometry(0.135, 0.016, 8, 40); gal2.rotateX(Math.PI / 2); gal2.translate(0, 1.18, 0); headParts.push(gal2);
+    var head = new THREE.Mesh(merge(headParts), metal); focus.add(head);
+
+    var dGeo = diamondGeo();
+    var diamond = new THREE.Mesh(dGeo, diaMat); diamond.position.y = GY; diamond.scale.setScalar(GR); focus.add(diamond);
+
+    /* ışıltı yıldızları */
+    var gN = Math.min(Q.gl, glintPts.length), gp = new Float32Array(gN * 3), gnrm = new Float32Array(gN * 3), gph = new Float32Array(gN);
+    for (var gi = 0; gi < gN; gi++) {
+      var src = glintPts[(gi * 7) % glintPts.length];
+      gp[gi * 3] = src[0] * 1.03; gp[gi * 3 + 1] = src[1] * 1.03 + 0.01; gp[gi * 3 + 2] = src[2] * 1.03;
+      var nv = new THREE.Vector3(src[0], src[1] * 3 + 0.35, src[2]).normalize(); gnrm[gi * 3] = nv.x; gnrm[gi * 3 + 1] = nv.y; gnrm[gi * 3 + 2] = nv.z;
+      gph[gi] = (Math.sin(gi * 12.9898) * 43758.5453) % 1;
+    }
+    var gGeo = new THREE.BufferGeometry();
+    gGeo.setAttribute('position', new THREE.BufferAttribute(gp, 3));
+    gGeo.setAttribute('aN', new THREE.BufferAttribute(gnrm, 3));
+    gGeo.setAttribute('aPh', new THREE.BufferAttribute(gph, 1));
+    var gMat = new THREE.ShaderMaterial({
+      uniforms: { uT: { value: 0 }, uS: { value: 30 }, uL1: { value: new THREE.Vector3(0, 0.95, 0.3).normalize() }, uL2: { value: new THREE.Vector3(-0.8, 0.2, 0.4).normalize() } },
+      vertexShader: ['attribute vec3 aN;attribute float aPh;uniform float uT;uniform float uS;uniform vec3 uL1;uniform vec3 uL2;varying float vI;',
+        'void main(){vec4 wp=modelMatrix*vec4(position,1.0);vec3 n=normalize(mat3(modelMatrix)*aN);vec3 v=normalize(cameraPosition-wp.xyz);',
+        'float s=pow(max(dot(n,normalize(v+uL1)),0.0),70.0)+pow(max(dot(n,normalize(v+uL2)),0.0),70.0);',
+        'float tw=pow(0.5+0.5*sin(uT*(1.1+abs(aPh)*2.3)+aPh*40.0),22.0);',
+        'vI=clamp(s*1.4+tw*0.75,0.0,1.4)*step(0.05,dot(n,v));',
+        'gl_Position=projectionMatrix*viewMatrix*wp;gl_PointSize=uS*(0.25+vI);}'].join('\n'),
+      fragmentShader: ['varying float vI;void main(){vec2 p=gl_PointCoord*2.0-1.0;float r=length(p);',
+        'float core=exp(-r*r*22.0);float rays=exp(-abs(p.x)*30.0)*exp(-abs(p.y)*2.6)+exp(-abs(p.y)*30.0)*exp(-abs(p.x)*2.6);',
+        'float dg=(exp(-abs(p.x+p.y)*34.0)+exp(-abs(p.x-p.y)*34.0))*exp(-r*3.5)*0.3;',
+        'float a=(core+rays*0.75+dg)*vI*(1.0-smoothstep(0.75,1.0,r));gl_FragColor=vec4(vec3(1.0,0.97,0.92),a);}'].join('\n'),
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    var glints = new THREE.Points(gGeo, gMat); glints.frustumCulled = false; diamond.add(glints);
+
+    /* sıra taş */
+    var rowParts = [], m4 = new THREE.Matrix4(), qz = new THREE.Quaternion(), zAx = new THREE.Vector3(0, 0, 1);
+    for (var ri = -4; ri <= 4; ri++) {
+      var th = ri * 0.16, sc = 0.082, rr = 1.185;
+      qz.setFromAxisAngle(zAx, -th);
+      m4.compose(new THREE.Vector3(Math.sin(th) * rr, Math.cos(th) * rr, 0), qz, new THREE.Vector3(sc, sc, sc));
+      rowParts.push(dGeo.clone().applyMatrix4(m4));
+    }
+    var row = new THREE.Mesh(merge(rowParts), sMat); row.visible = false; focus.add(row);
+
+    /* iç yüzey yazısı */
+    var ec = D.createElement('canvas'); ec.width = 1024; ec.height = 64;
+    var ex = ec.getContext('2d'), etex = new THREE.CanvasTexture(ec);
+    etex.wrapS = THREE.RepeatWrapping; etex.repeat.set(-1, 1); etex.offset.set(0.5, 0);
+    var eMat = new THREE.MeshStandardMaterial({ color: 0x777777, metalness: 1, roughness: 0.62, envMap: envTex, envMapIntensity: 0.9, transparent: true, alphaMap: etex, side: THREE.BackSide, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+    var eGeo = new THREE.CylinderGeometry(0.997, 0.997, 0.39, Q.seg, 1, true); eGeo.rotateX(Math.PI / 2);
+    var engr = new THREE.Mesh(eGeo, eMat); engr.visible = false; band.add(engr);
+    var engrText = null;
+    function drawEngr(t) {
+      ex.fillStyle = '#000'; ex.fillRect(0, 0, 1024, 64);
+      ex.fillStyle = '#fff'; ex.font = 'italic 400 40px "Cormorant Garamond", Georgia, serif'; ex.textAlign = 'center'; ex.textBaseline = 'middle';
+      ex.fillText(t, 512, 34); etex.needsUpdate = true; engrText = t;
+    }
+
+    /* arka plan: kadife sahne + yumuşak spot + gölge (tek çizim) */
+    var bgMat = new THREE.ShaderMaterial({
+      uniforms: { uRes: { value: new THREE.Vector2(1, 1) }, uC: { value: new THREE.Vector2(0, 0) }, uR: { value: 400 }, uSh: { value: new THREE.Vector4(0, 0, 100, 10) }, uShA: { value: 1 }, uSpot: { value: 1 }, uT: { value: 0 } },
+      vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}',
+      fragmentShader: ['uniform vec2 uRes;uniform vec2 uC;uniform float uR;uniform vec4 uSh;uniform float uShA;uniform float uSpot;uniform float uT;varying vec2 vUv;',
+        'float hash(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}',
+        'void main(){vec2 px=vec2(vUv.x*uRes.x,(1.0-vUv.y)*uRes.y);vec2 d=(px-uC)/uR;float r2=dot(d,d);',
+        'vec3 col=vec3(0.043,0.039,0.035)+vec3(0.15,0.125,0.098)*uSpot*exp(-r2*1.5)+vec3(0.05,0.04,0.03)*exp(-r2*0.35);',
+        'col*=0.97+0.03*sin(vUv.x*5.0+vUv.y*3.0+sin(vUv.y*9.0)*0.6);',
+        'vec2 q=vUv-0.5;col*=1.0-dot(q,q)*0.85;',
+        'vec2 s=(px-uSh.xy)/uSh.zw;col*=1.0-uShA*0.6*exp(-dot(s,s)*2.0);',
+        'col+=(hash(px+fract(uT))-0.5)/255.0;gl_FragColor=vec4(col,1.0);}'].join('\n'),
+      depthTest: false, depthWrite: false, toneMapped: false
+    });
+    var bg = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMat); bg.frustumCulled = false; bg.renderOrder = -10; scene.add(bg);
+
+    /* ---- sahne durumları ---- */
+    var KEYS = ['cx', 'cy', 'sz', 'rx', 'rz', 'ry', 'f', 'sp', 'sh', 'spot'];
+    function S(cx, cy, sz, rx, rz, ry, f, sp, sh, spot) { return { cx: cx, cy: cy, sz: sz, rx: rx, rz: rz, ry: ry, f: f, sp: sp, sh: sh, spot: spot }; }
+    var KD = [S(.70, .50, .58, .30, -.12, 0, 0, .32, 1, 1), S(.64, .50, 1.9, .66, .02, .5, 1, .1, 0, .8), S(.33, .50, .80, -.08, .45, 1.4, .12, .18, .5, 1), S(.68, .50, .74, 1.12, .12, 2.2, 0, .16, .35, 1), S(.66, .42, .48, .32, -.06, 3.1, 0, .28, 1, 1)];
+    var KM = [S(.5, .285, .62, .30, -.12, 0, 0, .32, 1, 1), S(.5, .33, 2.2, .66, .02, .5, 1, .1, 0, .8), S(.52, .33, .84, -.08, .45, 1.4, .12, .18, .5, 1), S(.5, .33, .80, 1.12, .12, 2.2, 0, .16, .35, 1), S(.5, .44, .62, .32, -.06, 3.1, 0, .28, 1, 1)];
+    var CF = S(0, 0, 0, .5, -.16, 3.1, 0, .22, .7, 1);
+    var cur = S(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), tgt = S(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), first = true;
+    var mCur = 0, rCur = 0.12, wCur = 1, dCur = 1, rowCur = 0, turn = 0, dragV = 0, mx = 0, my = 0, mxC = 0, myC = 0;
+    var smooth = function (t) { return t * t * (3 - 2 * t); };
+    var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+
+    function sample(y) {
+      var K = L.land ? KD : KM, sp = storyPos(y), i = Math.min(4, Math.floor(sp)), t = sp - i, A, B, j;
+      A = K[Math.min(i, 4)]; B = K[Math.min(i + 1, 4)];
+      if (i >= 4) { A = K[4]; B = K[4]; t = 0; }
+      t = smooth(cl(t, 0, 1));
+      for (j = 0; j < KEYS.length; j++) tgt[KEYS[j]] = A[KEYS[j]] + (B[KEYS[j]] - A[KEYS[j]]) * t;
+    }
+
+    /* ---- boyut ---- */
+    var CW = 1, CH = 1, dpr = 1, dprScale = 1;
+    function resize() {
+      CW = Math.max(1, H.clientWidth); CH = Math.max(1, cv.clientHeight || W.innerHeight);
+      var want = Math.min(W.devicePixelRatio || 1, Q.dpr) * dprScale;
+      var cap = Math.sqrt(Q.px / (CW * CH));
+      dpr = Math.max(0.5, Math.min(want, cap));
+      renderer.setPixelRatio(dpr);
+      renderer.setSize(CW, CH, false);
+      camera.aspect = CW / CH; camera.updateProjectionMatrix();
+      bgMat.uniforms.uRes.value.set(CW, CH);
+      wake();
+    }
+    var lastW = 0, lastH = 0;
+    GL.resize = function () { var w = H.clientWidth, h = cv.clientHeight || W.innerHeight; if (w !== lastW || Math.abs(h - lastH) > 140) { lastW = w; lastH = h; resize(); } };
+    lastW = H.clientWidth; lastH = cv.clientHeight || W.innerHeight; resize();
+
+    /* ---- etkileşim: sürükleyerek çevirme (pasif dinleyiciler, kaydırma serbest) ---- */
+    var dragging = false, lx = 0, lt = 0;
+    hero.addEventListener('pointerdown', function (e) { if (e.target.closest('a,button')) return; dragging = true; lx = e.clientX; lt = performance.now(); dragV = 0; wake(); }, { passive: true });
+    W.addEventListener('pointermove', function (e) {
+      if (!coarse) { mx = e.clientX / CW * 2 - 1; my = e.clientY / CH * 2 - 1; }
+      if (!dragging) return;
+      var now = performance.now(), dx = e.clientX - lx, dtt = Math.max(8, now - lt);
+      turn += dx * 0.0085; dragV = dx * 0.0085 / (dtt / 1000); lx = e.clientX; lt = now; wake();
+    }, { passive: true });
+    var endDrag = function () { dragging = false; };
+    W.addEventListener('pointerup', endDrag, { passive: true });
+    W.addEventListener('pointercancel', endDrag, { passive: true });
+
+    /* ---- döngü: yalnızca sahne görünürken çalışır ---- */
+    var raf = 0, running = false, lastT = 0, odd = 0, perfN = 0, perfSum = 0, perfStep = 0;
+    var inv = new THREE.Matrix4(), tmpV = new THREE.Vector3(), metalCol = metal.color, mc = [0, 0, 0];
+    var visStory = true, visCfg = false;
+
+    function update(dt, now) {
+      var y = W.pageYOffset || 0, i;
+      sample(y);
+      var mn = Math.min(CW, L.vh || CH);
+      tgt.cx *= CW; tgt.cy *= (L.vh || CH); tgt.sz *= mn;
+      /* yapılandırıcı: yüzük pencereye bağlanır */
+      var kk = cl(((L.vh || CH) - (L.cfgT - y)) / ((L.vh || CH) * 0.85), 0, 1); kk = smooth(kk);
+      if (kk > 0) {
+        var rc = cfgWin.getBoundingClientRect();
+        var ax = rc.left + rc.width / 2, ay = rc.top + rc.height * 0.52, as = Math.min(rc.width * 0.56, rc.height * 0.44);
+        tgt.cx += (ax - tgt.cx) * kk; tgt.cy += (ay - tgt.cy) * kk; tgt.sz += (as - tgt.sz) * kk;
+        for (i = 3; i < KEYS.length; i++) { var kn = KEYS[i]; tgt[kn] += (CF[kn] - tgt[kn]) * kk; }
+      }
+      var a = 1 - Math.exp(-dt * 5.2), aP = a + (1 - a) * Math.pow(kk, 4);
+      if (first) { for (i = 0; i < KEYS.length; i++) cur[KEYS[i]] = tgt[KEYS[i]]; first = false; }
+      for (i = 0; i < KEYS.length; i++) { var key = KEYS[i]; cur[key] += (tgt[key] - cur[key]) * (i < 3 ? aP : a); }
+
+      /* metal rengi: koleksiyonlarda sarı → beyaz → rose, yapılandırıcıda seçime göre */
+      var p = cl((y - L.kolS) / (L.kolE - L.kolS), 0, 1), mT = y < L.kolS ? 0 : metalOf(p);
+      mT += (CFG.metal - mT) * kk;
+      mCur += (mT - mCur) * a;
+      var m0 = Math.min(1, Math.floor(mCur)), f = smooth(cl(mCur - m0, 0, 1));
+      for (i = 0; i < 3; i++) mc[i] = METAL[m0][i] + (METAL[m0 + 1][i] - METAL[m0][i]) * f;
+      metalCol.setRGB(mc[0], mc[1], mc[2]);
+      eMat.color.setRGB(mc[0] * 0.5, mc[1] * 0.5, mc[2] * 0.5);
+      rCur += ((CFG.fin ? 0.4 : 0.12) * kk + 0.12 * (1 - kk) - rCur) * a; metal.roughness = rCur;
+      wCur += ((CFG.width / 4) * kk + (1 - kk) - wCur) * a; band.scale.z = wCur;
+      var showD = kk < 0.5 || CFG.stone === 1, showR = kk >= 0.5 && CFG.stone === 2;
+      dCur += ((showD ? 1 : 0) - dCur) * Math.min(1, a * 1.6); rowCur += ((showR ? 1 : 0) - rowCur) * Math.min(1, a * 1.6);
+      head.visible = diamond.visible = dCur > 0.02; head.scale.setScalar(Math.max(0.001, dCur)); head.position.y = (1 - dCur) * 1.1;
+      diamond.scale.setScalar(GR * Math.max(0.001, dCur)); diamond.position.y = GY * dCur + (1 - dCur) * 1.18;
+      row.visible = rowCur > 0.02; row.scale.setScalar(0.4 + 0.6 * rowCur);
+      if (CFG.text && kk > 0.5) { if (engrText !== CFG.text && ex.font !== undefined) drawEngr(CFG.text); engr.visible = true; } else engr.visible = false;
+
+      /* dönüş */
+      if (!dragging) { turn += dragV * dt; dragV *= Math.exp(-dt * 2.6); }
+      turn += dt * cur.sp;
+      mxC += (mx - mxC) * a; myC += (my - myC) * a;
+      rig.rotation.set(cur.rx + myC * 0.07, 0, cur.rz - mxC * 0.05);
+      spin.rotation.y = turn + cur.ry + y * 0.0008;
+      focus.position.y = -(0.25 + cur.f * 1.25);
+      var s = cur.sz / CH * VIS / 2.36; rig.scale.setScalar(s);
+      camera.setViewOffset(CW, CH, CW / 2 - cur.cx, CH / 2 - cur.cy, CW, CH);
+
+      /* arka plan */
+      bgMat.uniforms.uC.value.set(cur.cx, cur.cy - cur.sz * 0.08);
+      bgMat.uniforms.uR.value = Math.max(220, cur.sz * 0.95);
+      bgMat.uniforms.uSh.value.set(cur.cx, cur.cy + cur.sz * 0.62, cur.sz * 0.6, cur.sz * 0.07);
+      bgMat.uniforms.uShA.value = cur.sh;
+      bgMat.uniforms.uSpot.value = cur.spot;
+      bgMat.uniforms.uT.value = (now / 1000) % 100;
+
+      scene.updateMatrixWorld();
+      inv.copy(diamond.matrixWorld).invert();
+      diaMat.uniforms.uCamL.value.copy(camera.position).applyMatrix4(inv);
+      diaMat.uniforms.uL2W.value.setFromMatrix4(diamond.matrixWorld);
+      var dpx = s * GR * 2 * CH / VIS * dCur;
+      gMat.uniforms.uS.value = cl(dpx * 0.3, 4, 70) * dpr;
+      gMat.uniforms.uT.value = (now / 1000) % 1000;
+      ui(y, true);
+    }
+
+    function frame(now) {
+      raf = requestAnimationFrame(frame);
+      var idle = now - activeAt > 2200 && !dragging;
+      if (idle && (odd++ & 1)) return;           /* boştayken 30 fps */
+      var dt = lastT ? Math.min(0.05, (now - lastT) / 1000) : 0.016;
+      var gap = now - lastT; lastT = now;
+      update(dt, now);
+      renderer.render(scene, camera);
+      if (!H.classList.contains('gl')) H.classList.add('gl');
+      /* yavaş cihazda çözünürlüğü kademeli düşür */
+      if (!idle && gap > 0 && gap < 200) {
+        perfN++; perfSum += gap;
+        if (perfN >= 90) {
+          var avg = perfSum / perfN; perfN = 0; perfSum = 0;
+          if (avg > 27 && perfStep < 3) {
+            perfStep++;
+            if (perfStep === 3 && Q.b > 1) { diaMat.defines.BOUNCES = 1; diaMat.needsUpdate = true; }
+            else { dprScale *= 0.78; resize(); }
+          }
+        }
+      }
+    }
+    function start() { if (running) return; running = true; cv.style.visibility = ''; lastT = 0; raf = requestAnimationFrame(frame); }
+    function stop() { if (!running) return; running = false; cancelAnimationFrame(raf); cv.style.visibility = 'hidden'; }
+    GL.wake = function () {};
+    GL.on = true;
+    if ('IntersectionObserver' in W) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.target.id === 'story') visStory = e.isIntersecting; else visCfg = e.isIntersecting; });
+        if (visStory || visCfg) start(); else stop();
+      });
+      io.observe($('#story')); io.observe(cfgSec);
+    }
+    D.addEventListener('visibilitychange', function () { if (D.hidden) stop(); else if (visStory || visCfg) start(); });
+    cv.addEventListener('webglcontextlost', function (e) { e.preventDefault(); stop(); fallback(); }, false);
+    start();
+  }
+})();
+</script>
+</body>
+</html>
