@@ -1170,8 +1170,52 @@
     }
 
     .dir {
-        text-align:center;
-        margin-top:3rem
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px;
+        margin-top:2.4rem
+    }
+
+    .btn.ghost {
+        background:transparent;
+        color:var(--gold)
+    }
+
+    .btn.ghost:hover {
+        background:rgba(212,175,55,.08)
+    }
+
+    .map {
+        margin-top:1px;
+        border:1px solid var(--line);
+        border-top:0;
+        height:320px;
+        overflow:hidden
+    }
+
+    .map iframe {
+        width:100%;
+        height:100%;
+        border:0;
+        display:block;
+        filter:invert(.92) hue-rotate(180deg) grayscale(.35) contrast(.9)
+    }
+
+    .fab {
+        transition:opacity .35s,transform .35s
+    }
+
+    .fab.hide {
+        opacity:0;
+        transform:translateY(20px);
+        pointer-events:none
+    }
+
+    .legal {
+        font-size:.72rem!important;
+        opacity:.75;
+        margin-top:-1.6rem!important
     }
 
     @media(max-width:900px) {
@@ -1484,7 +1528,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   </div>
   <div class="stats rv" style="--d:.15s" id="stats">
    <div class="stat"><b class="gold-text"><span class="ct" data-to="12">0</span></b><span>Yıllık deneyim</span></div>
-   <div class="stat"><b class="gold-text"><span class="ct" data-to="500">0</span>+</b><span>Başarılı Dosya</span></div>
+   <div class="stat"><b class="gold-text"><span class="ct" data-to="12">0</span></b><span>Uzmanlık alanı</span></div>
    <div class="stat"><b class="gold-text"><span class="ct" data-to="2020">0</span></b><span>'den Beri Arabulucu</span></div>
    <div class="stat"><b class="gold-text"><span class="ct" data-to="81">0</span></b><span>İlde temsil</span></div>
   </div>
@@ -1535,13 +1579,15 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
    <div><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><h3>Telefon</h3><p><a href="tel:+905549278712">+90 554 927 87 12</a></p></div>
    <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Çalışma düzeni</h3><p>Yalnızca randevu ile</p></div>
   </div>
-  <div class="dir rv"><a class="btn" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14b92bf81b1a9689:0x8723c2691341c6e9?sa=X&amp;ved=1t:8290&amp;ictx=111" target="_blank" rel="noopener">Yol Tarifi Al</a></div>
+  <div class="map rv"><iframe title="Alkoç Hukuk Bürosu konumu" src="https://www.google.com/maps?q=Veysipa%C5%9Fa%2C%201623.%20Sk.%2C%2009100%20Efeler%2FAyd%C4%B1n&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  <div class="dir rv"><a class="btn" href="tel:+905549278712">Hemen Ara</a><a class="btn ghost" href="https://wa.me/905549278712" target="_blank" rel="noopener">WhatsApp'tan Yaz</a><a class="btn ghost" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14b92bf81b1a9689:0x8723c2691341c6e9?sa=X&amp;ved=1t:8290&amp;ictx=111" target="_blank" rel="noopener">Yol Tarifi Al</a></div>
  </div>
 </section>
 
 <footer>
  <div class="fl">ALKOÇ <span>HUKUK</span></div>
  <p>Hukuki uyuşmazlıklarınızda güvenilir, şeffaf ve sonuç odaklı temsil. Danışmanlık hizmetleri yalnızca önceden oluşturulan randevu ile verilmektedir.</p>
+ <p class="legal">Bu internet sitesi, Avukatlık Kanunu ve Türkiye Barolar Birliği Meslek Kuralları çerçevesinde yalnızca bilgilendirme amacıyla hazırlanmıştır; reklam niteliği taşımaz.</p>
  <div class="fb"><span>&copy; 2026 Alkoç Hukuk Bürosu</span><span>Dijital Mimari ve Tasarım: <a href="https://eystudios.com.tr" target="_blank" rel="noopener">Emre Yüksel | EY STUDIOS</a></span></div>
 </footer>
 
@@ -1618,18 +1664,21 @@ const so = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
         so.disconnect();
         $$('.ct').forEach(counter => {
-            const target = Number(counter.dataset.to);
+            const target = Number(counter.dataset.to), from = target > 1900 ? target - 25 : 0;
             const startTime = performance.now();
 
             (function update(now) {
                 const progress = Math.min((now - startTime) / 1600, 1);
-                counter.textContent = Math.round(target * (1 - Math.pow(1 - progress, 3)));
+                counter.textContent = Math.round(from + (target - from) * (1 - Math.pow(1 - progress, 3)));
                 if (progress < 1) requestAnimationFrame(update);
             })(startTime);
         });
     }
 }, { threshold: 0.4 });
 if ($('#stats')) so.observe($('#stats'));
+
+// Alt bilgi görünürken yüzen butonlar gizlenir
+new IntersectionObserver(e => $('.fab').classList.toggle('hide', e[0].isIntersecting)).observe($('footer'));
 
 // 8. Kart ışığı ve eğim efekti
 $$('.card').forEach(c => {
