@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-title" id="amt" content="Luna Bijuteri">
 <script>
 /* Önizleme markası varsa uygulama simgesi ve adı ona göre (onizleme/<lg>.webmanifest, onizleme/<lg>-180.png) */
-(function(){try{var q=new URLSearchParams('m=Luna+Bijuteri&ig=luna_bijuteri_bursa&c=Bursa&y=1&t=pembe&pati=1&lg=luna'),lg=(q.get('lg')||'').replace(/[^a-z0-9-]/g,'').slice(0,40),m=(q.get('m')||'').replace(/[<>{}\\]/g,'').trim().slice(0,40);
+(function(){try{var q=new URLSearchParams('m=Luna+Bijuteri&ig=luna_bijuteri_bursa&c=Bursa&y=0&t=pembe&pati=1&lg=luna'),lg=(q.get('lg')||'').replace(/[^a-z0-9-]/g,'').slice(0,40),m=(q.get('m')||'').replace(/[<>{}\\]/g,'').trim().slice(0,40);
 if(lg){document.getElementById('mf').href='onizleme/'+lg+'.webmanifest';document.getElementById('ati').href='onizleme/'+lg+'-180.png'}
 if(m)document.getElementById('amt').content=m}catch(e){}})();
 </script>
@@ -154,7 +154,7 @@ img,svg{display:block;max-width:100%}
 .card{position:relative;min-width:0;animation:in .5s var(--ease) both}
 @keyframes in{from{opacity:0;transform:translateY(10px)}}
 .card .pic{display:block;width:100%;padding:0;border:0;border-radius:var(--r);overflow:hidden;aspect-ratio:1/1;background:var(--blush);transition:transform .35s var(--ease)}
-.card .pic svg{width:100%;height:100%;transition:transform .5s var(--ease)}
+.card .pic svg,.card .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
 @media (hover:hover){.card .pic:hover svg{transform:scale(1.05)}}
 .badge{position:absolute;top:10px;left:10px;z-index:1;padding:5px 9px;border-radius:99px;background:rgba(255,253,250,.92);font-size:11px;font-weight:700;letter-spacing:.02em;pointer-events:none}
 .badge.hot{background:var(--berry);color:#fff}
@@ -236,7 +236,9 @@ footer a{font-weight:600}
 .x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;flex:none}
 .x svg{width:16px;height:16px}
 .d-pic{margin:0 16px;border-radius:var(--r);overflow:hidden;height:34vh;height:34dvh;min-height:200px;background:var(--blush)}
-.d-pic svg{width:100%;height:100%}
+.d-pic svg,.d-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-v img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.ci .th img{width:100%;height:100%;object-fit:cover;display:block}
 .d-body{padding:16px 20px 0}
 .d-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .d-body h3{font-size:30px}
@@ -324,7 +326,7 @@ html.soon .has-bar .demo-back{transform:none}
   <div class="wrap">
     <div>
       <img class="lh-logo" src="onizleme/luna-cream.png" alt="Luna Bijuteri" width="560" height="347">
-      <p class="eyebrow" id="hEy">El yapımı · Kararmaz · Hediye paketli</p>
+      <p class="eyebrow" id="hEy">El yapımı · Bursa'dan tüm Türkiye'ye</p>
       <h1 id="hT">Her gün takılacak <em>küçük ışıltılar.</em></h1>
       <p class="lead" id="hL">Beğendiğiniz takıyı seçin, sepete ekleyin; siparişiniz ürün adı ve fiyatıyla tek dokunuşta WhatsApp'tan bize gelsin.</p>
       <div class="cta">
@@ -338,14 +340,14 @@ html.soon .has-bar .demo-back{transform:none}
   </div>
 </section>
 
-<div class="mq" aria-hidden="true"><div class="mq-in"><span>El yapımı ✦ Kararmaz çelik ✦ Hediye paketli ✦ Her alışveriş, bir cana destek 🐾 ✦ Bursa'dan tüm Türkiye'ye ✦ </span><span>El yapımı ✦ Kararmaz çelik ✦ Hediye paketli ✦ Her alışveriş, bir cana destek 🐾 ✦ Bursa'dan tüm Türkiye'ye ✦ </span></div></div>
+<div class="mq" aria-hidden="true"><div class="mq-in"><span>El yapımı ✦ Bursa'dan ✦ Her alışveriş, bir cana destek 🐾 ✦ Bursa'dan tüm Türkiye'ye ✦ </span><span>El yapımı ✦ Bursa'dan ✦ Her alışveriş, bir cana destek 🐾 ✦ Bursa'dan tüm Türkiye'ye ✦ </span></div></div>
 
 <div class="wrap">
   <ul class="trust">
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4 7.2 18l.9-5.4L4.2 8.7l5.4-.8z"/></svg><span>Kararmaz, suya dayanıklı</span></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1.5S10 8 12 8zm0 0c2-4 6-4 6-1.5S14 8 12 8z"/></svg><span>Ücretsiz hediye paketi</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4 7.2 18l.9-5.4L4.2 8.7l5.4-.8z"/></svg><span>Tek tek el yapımı</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1.5S10 8 12 8zm0 0c2-4 6-4 6-1.5S14 8 12 8z"/></svg><span>Siparişiniz WhatsApp'tan</span></li>
     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><span id="shipTxt">Türkiye'nin her yerine kargo</span></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span>Kapıda ödeme · Havale/EFT</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span>Bursa'dan gönderim</span></li>
   </ul>
   <div class="pati" id="pati" hidden>
     <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><ellipse cx="13" cy="20" rx="4.6" ry="6"/><ellipse cx="21" cy="12" rx="4.6" ry="6.2"/><ellipse cx="31" cy="12" rx="4.6" ry="6.2"/><ellipse cx="38" cy="21" rx="4.4" ry="5.8"/><path d="M25 22c-7 0-13 8-13 14 0 4 3 6 6 6 3 0 4.5-1.6 7-1.6s4 1.6 7 1.6c3 0 6-2 6-6 0-6-6-14-13-14z"/></svg>
@@ -456,7 +458,7 @@ html.soon .has-bar .demo-back{transform:none}
   var $ = function (s) { return document.querySelector(s); };
 
   /* Linkten kişiselleştirme: ?m=Marka&ig=instagram_kullanici&c=Şehir */
-  var q = new URLSearchParams('m=Luna+Bijuteri&ig=luna_bijuteri_bursa&c=Bursa&y=1&t=pembe&pati=1&lg=luna');
+  var q = new URLSearchParams('m=Luna+Bijuteri&ig=luna_bijuteri_bursa&c=Bursa&y=0&t=pembe&pati=1&lg=luna');
   function clean(v, n) { return (v || '').replace(/[<>{}\\]/g, '').replace(/\s+/g, ' ').trim().slice(0, n); }
   var BRAND = clean(q.get('m'), 40) || 'Mira Takı';
   var IG = (q.get('ig') || '').replace(/[^A-Za-z0-9._]/g, '').slice(0, 30);
@@ -505,7 +507,8 @@ html.soon .has-bar .demo-back{transform:none}
   var MET = {
     gold: { n: 'Altın', c: ['#FFF6D6', '#EDC874', '#BE8B32', '#7A561A'] },
     silver: { n: 'Gümüş', c: ['#FFFFFF', '#DCE0E6', '#A6ACB6', '#69707A'] },
-    rose: { n: 'Rose', c: ['#FFE9E0', '#EBAE98', '#BA7765', '#7E4636'] }
+    rose: { n: 'Rose', c: ['#FFE9E0', '#EBAE98', '#BA7765', '#7E4636'] },
+    antik: { n: 'Eskitme altın', c: ['#F1E2B8', '#C9A55B', '#8E6B2C', '#5B4219'] }
   };
   var uid = 0;
   function defs(m) {
@@ -630,30 +633,23 @@ html.soon .has-bar .demo-back{transform:none}
   }
 
   /* ---------- Ürünler ---------- */
-  var CATS = [['all', 'Tümü'], ['kolye', 'Kolye'], ['kupe', 'Küpe'], ['yuzuk', 'Yüzük'], ['bileklik', 'Bileklik'], ['set', 'Hediye seti']];
+  var CATS = [['all', 'Tümü'], ['kupe', 'Küpe'], ['bileklik', 'Bileklik'], ['tesettur', 'Tesettür']];
   var TINTS = q.get('t') === 'pembe' ? ['#F7E3EB', '#F3E7EE', '#FAEEF0', '#EFE2EC'] : ['#F4E6DF', '#EFE7DA', '#E7ECE4', '#EEE5EC'];
-  var MAT = '316L çelik, 18 ayar altın kaplama. Kararmaz, suya ve tere dayanıklı.';
+  var MAT = 'El yapımı.';
+  var IMG = 'onizleme/luna/';
   var P = [
-    { id: 'ay', n: 'Ay Kolye', c: 'kolye', p: 449, t: 'necklace', o: { pend: 'moon' }, b: 'Çok satan', hot: 1, m: ['gold', 'silver', 'rose'], d: 'İnce zincire asılı küçük hilal. Tek başına sade, katmanlı kombinde çok şık.' },
-    { id: 'harf', n: 'Harf Kolye', c: 'kolye', p: 399, t: 'necklace', o: { pend: 'letter' }, b: 'Kişiye özel', m: ['gold', 'silver', 'rose'], letter: 1, d: 'Seçtiğiniz harf, madalyonun üstüne işlenir. Sevdiklerinize en güzel hediye.' },
-    { id: 'kalp', n: 'Kalp Kolye', c: 'kolye', p: 379, t: 'necklace', o: { pend: 'heart' }, m: ['gold', 'rose', 'silver'], d: 'Parlak yüzeyli minik kalp; her gün takılacak kadar zarif.' },
-    { id: 'inci-kolye', n: 'İnci Dizi Kolye', c: 'kolye', p: 549, t: 'strand', b: 'Yeni', m: ['gold', 'silver'], d: 'Ortaya doğru büyüyen inci dizisi. Klasik ama modern.', mat: 'Tatlı su incisi görünümlü boncuk, çelik klips.' },
-    { id: 'inci-kupe', n: 'İnci Damla Küpe', c: 'kupe', p: 329, t: 'drop', m: ['gold', 'silver'], d: 'İnce çubuğun ucunda inci damla. Gelin ve davet kombinlerinin favorisi.' },
-    { id: 'halka', n: 'Burgu Halka Küpe', c: 'kupe', p: 289, t: 'hoop', b: 'Çok satan', hot: 1, m: ['gold', 'silver', 'rose'], d: 'Burgu desenli orta boy halka. Hafif, gün boyu rahat.' },
-    { id: 'yildiz', n: 'Yıldız Sallantılı Küpe', c: 'kupe', p: 259, t: 'stars', m: ['gold', 'silver'], d: 'Küçük yıldız çivi, ucunda sallanan büyük yıldız.' },
-    { id: 'tektas', n: 'Tektaş Yüzük', c: 'yuzuk', p: 349, t: 'solitaire', m: ['silver', 'gold', 'rose'], d: 'Zirkon taşlı ince tektaş. Ayarlanabilir, her parmağa uyar.' },
-    { id: 'uclu', n: 'Üçlü Yüzük Seti', c: 'yuzuk', p: 429, t: 'stack', b: 'Yeni', m: ['gold', 'silver'], d: 'Biri taşlı üç ince yüzük. Birlikte ya da ayrı ayrı takın.' },
-    { id: 'zincir', n: 'Zincir Bileklik', c: 'bileklik', p: 299, t: 'chainb', m: ['gold', 'silver', 'rose'], d: 'Kalp plakalı ince zincir bileklik, uzatma zincirli.' },
-    { id: 'tas', n: 'Doğal Taş Bileklik', c: 'bileklik', p: 249, t: 'beads', m: ['gold'], d: 'Pembe kuvars, ametist ve aventurin taşları; esnek ip.', mat: 'Doğal taş, altın kaplama ara boncuk.' },
-    { id: 'nazar', n: 'Nazar Bileklik', c: 'bileklik', p: 229, t: 'nazar', b: 'Son 3 adet', m: ['gold', 'silver'], d: 'İnce zincire tek nazar boncuğu. Kötü gözlerden korusun.' },
-    { id: 'set', n: 'Ay & Yıldız Hediye Seti', c: 'set', p: 699, t: 'set', o: { pend: 'moon' }, b: 'Avantajlı', hot: 1, m: ['gold', 'silver'], d: 'Ay kolye ve yıldız küpe birlikte, kadife kutusunda hediye paketiyle. Ayrı almaktan daha avantajlı.' }
+    { id: 'papatya', n: 'Papatyalı Bileklik / Halhal', c: 'bileklik', p: 200, img: 'papatyali-inci-bileklik-halhal.jpg', nm: 1, b: 'Yeni', hot: 1, m: ['gold'], d: 'İnci ve altın renk boncuklar, ortasında küçük papatya. Uzatma zincirli; bilekte ya da ayak bileğinde kullanabilirsiniz.' },
+    { id: 'altin-top', n: 'Altın Top Bileklik', c: 'bileklik', p: 200, img: 'altin-top-bileklik.jpg', nm: 1, m: ['gold'], d: 'Altın renk küçük toplardan, uzatma zincirli sade bileklik.' },
+    { id: 'damla-kupe', n: 'Damla Küpe · Fuşya & Mint', c: 'kupe', p: 200, img: 'damla-kupe-fusya-mint.jpg', nm: 1, b: 'Yeni', m: ['gold'], d: 'Fuşya ve mint renk boncuklardan damla şeklinde, altın renk kancalı küpe. Fiyat çift içindir.' },
+    { id: 'halka-kupe', n: 'Halka Küpe · Zümrüt', c: 'kupe', p: 200, img: 'halka-kupe-zumrut.jpg', nm: 1, b: 'Yeni', m: ['gold'], d: 'Zümrüt yeşili boncuklar ve beyaz ara parçalardan halka küpe, gümüş renk kancalı. Fiyat çift içindir.' },
+    { id: 'igne', n: 'Tesettür İğnesi', c: 'tesettur', p: 30, img: 'tesettur-ignesi-4-renk.jpg', b: 'Adet fiyatı', m: ['antik', 'rose', 'silver', 'gold'], d: 'Eşarp ve bone için tesettür iğnesi. Fiyat tek adet içindir, dilediğiniz adedi ve rengi seçebilirsiniz.' }
   ];
   var LETTERS = 'A B C Ç D E F G H I İ J K L M N O Ö P R S Ş T U Ü V Y Z'.split(' ');
   var byId = {}; P.forEach(function (x, i) { byId[x.id] = x; x.tint = TINTS[i % TINTS.length]; });
 
   function tl(n) { return n.toLocaleString('tr-TR') + ' TL'; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function pic(x, metal, letter, hero) { var o = {}; for (var k in (x.o || {})) o[k] = x.o[k]; o.letter = letter; o.hero = hero; return draw(x.t, metal, o); }
+  function pic(x, metal, letter, hero) { if (x.img) return '<img src="' + IMG + x.img + '" alt="' + esc(x.n) + '" loading="lazy" decoding="async">'; var o = {}; for (var k in (x.o || {})) o[k] = x.o[k]; o.letter = letter; o.hero = hero; return draw(x.t, metal, o); }
 
   /* Kategoriler */
   var cat = 'all';
@@ -674,11 +670,11 @@ html.soon .has-bar .demo-back{transform:none}
         '<div class="picbox">' + (SOON ? '<span class="badge">Yakında</span>' : x.b ? '<span class="badge' + (x.hot ? ' hot' : '') + '">' + x.b + '</span>' : '') +
         '<button class="pic" type="button" data-open="' + x.id + '" style="background:' + x.tint + '" aria-label="' + esc(x.n) + ' detayını aç">' + pic(x, x.m[0], 'E') + '</button>' +
         '<button class="plus" type="button" data-add="' + x.id + '" aria-label="' + esc(x.n) + ' sepete ekle">' + PLUS + '</button></div>' +
-        '<div class="meta"><h3>' + esc(x.n) + '<span class="mat" role="img" aria-label="' + x.m.map(function (m) { return MET[m].n; }).join(', ') + '">' + x.m.map(function (m) { var c = MET[m].c; return '<i style="background:linear-gradient(135deg,' + c[0] + ',' + c[2] + ')"></i>'; }).join('') + '</span></h3><span class="price">' + (SOON ? '' : tl(x.p)) + '</span></div></article>';
+        '<div class="meta"><h3>' + esc(x.n) + (x.nm ? '' : '<span class="mat" role="img" aria-label="' + x.m.map(function (m) { return MET[m].n; }).join(', ') + '">' + x.m.map(function (m) { var c = MET[m].c; return '<i style="background:linear-gradient(135deg,' + c[0] + ',' + c[2] + ')"></i>'; }).join('') + '</span>') + '</h3><span class="price">' + (SOON ? '' : tl(x.p)) + '</span></div></article>';
     }).join('');
   }
   render();
-  $('#heroV').innerHTML = draw('necklace', 'gold', { pend: 'moon', hero: true }).replace('</svg>', spark(40, 60, 7, 'd2') + spark(160, 120, 6, 'd3') + spark(150, 40, 5) + '</svg>');
+  $('#heroV').innerHTML = '<img src="' + IMG + 'damla-kupe-fusya-mint.jpg" alt="" decoding="async">';
 
   /* ---------- Sepet ---------- */
   var cart = [];
@@ -695,10 +691,10 @@ html.soon .has-bar .demo-back{transform:none}
   }
   function totals() {
     var sub = cart.reduce(function (s, i) { return s + byId[i.id].p * i.q; }, 0), n = cart.reduce(function (s, i) { return s + i.q; }, 0);
-    var ship = sub === 0 || sub >= 750 ? 0 : 99;
+    var ship = 0;
     return { sub: sub, n: n, ship: ship, tot: sub + ship };
   }
-  function label(i) { return MET[i.m].n + (i.l ? ' · Harf: ' + i.l : ''); }
+  function label(i) { if (byId[i.id].nm) return 'El yapımı'; return MET[i.m].n + (i.l ? ' · Harf: ' + i.l : ''); }
   function upd() {
     var t = totals();
     $('#cnt').textContent = t.n;
@@ -722,23 +718,20 @@ html.soon .has-bar .demo-back{transform:none}
     }).join('');
     var left = 750 - t.sub;
     $('#cartSum').innerHTML =
-      '<p class="ship">' + (left > 0 ? 'Kargonun ücretsiz olması için ' + tl(left) + ' kaldı' : 'Kargo bizden 🎉') + '</p>' +
-      '<div class="meter"><i style="width:' + Math.min(100, t.sub / 7.5) + '%"></i></div>' +
       '<div class="row"><span>Ara toplam</span><span>' + tl(t.sub) + '</span></div>' +
-      '<div class="row"><span>Kargo</span><span>' + (t.ship ? tl(t.ship) : 'Ücretsiz') + '</span></div>' +
+      '<div class="row"><span>Kargo</span><span>Onayda bildirilir</span></div>' +
       '<div class="row tot"><span>Toplam</span><span>' + tl(t.tot) + '</span></div>' +
-      '<label class="chk"><input type="checkbox" id="gift"' + (gift ? ' checked' : '') + '> Hediye paketi olsun (ücretsiz)</label>' +
       '<div class="fld"><input id="fName" autocomplete="name" placeholder="Ad Soyad (isteğe bağlı)" value="' + esc(form.n) + '"><input id="fCity" autocomplete="address-level2" placeholder="İl / İlçe (isteğe bağlı)" value="' + esc(form.c) + '"><textarea id="fNote" placeholder="Not: harf, hediye kartı mesajı…">' + esc(form.t) + '</textarea></div>' +
       '<a class="btn wa block" id="order" href="#" target="_blank" rel="noopener" style="margin-top:14px">' +
       '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>' +
-      "WhatsApp'tan sipariş ver</a><p class=\"fine\">Ödeme sipariş onayından sonra: kapıda ya da havale/EFT.</p>";
+      "WhatsApp'tan sipariş ver</a><p class=\"fine\">Ödeme ve kargo bilgisi sipariş onayında netleşir.</p>";
     setOrder();
   }
   var form = { n: '', c: '', t: '' };
   function msg() {
     var t = totals(), L = ['Merhaba ' + BRAND + ', sitenizden sipariş vermek istiyorum:', ''];
     cart.forEach(function (i, k) { var x = byId[i.id]; L.push((k + 1) + ') ' + x.n + ' – ' + label(i) + ' × ' + i.q + ' = ' + tl(x.p * i.q)); });
-    L.push('', 'Ara toplam: ' + tl(t.sub), 'Kargo: ' + (t.ship ? tl(t.ship) : 'Ücretsiz'), 'Toplam: ' + tl(t.tot), 'Hediye paketi: ' + (gift ? 'İstiyorum' : 'İstemiyorum'));
+    L.push('', 'Ara toplam: ' + tl(t.sub), 'Kargo: sipariş onayında bildirilsin', 'Toplam: ' + tl(t.tot));
     if (form.n) L.push('', 'Ad Soyad: ' + form.n);
     if (form.c) L.push((form.n ? '' : '\n') + 'İl / İlçe: ' + form.c);
     if (form.t) L.push('Not: ' + form.t);
@@ -793,7 +786,7 @@ html.soon .has-bar .demo-back{transform:none}
     $('#dPrice').textContent = SOON ? 'Yakında' : tl(cur.p);
     $('#dAdd').textContent = SOON ? 'Çıkınca haber ver' : 'Sepete ekle · ' + tl(cur.p * dq);
     $('#dMetal').querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-m') === dm); });
-    $('#dAsk').href = waUrl('Merhaba ' + BRAND + ', "' + cur.n + ' (' + MET[dm].n + (cur.letter ? ', harf: ' + dl : '') + ')" hakkında bilgi almak istiyorum. Stokta var mı?');
+    $('#dAsk').href = waUrl('Merhaba ' + BRAND + ', "' + cur.n + ' (' + (cur.nm ? 'ürün' : MET[dm].n) + (cur.letter ? ', harf: ' + dl : '') + ')" hakkında bilgi almak istiyorum. Stokta var mı?');
     $('#dAsk').target = '_blank'; $('#dAsk').rel = 'noopener';
   }
   function openDetail(id) {
