@@ -29,7 +29,7 @@ self-contained HTML file in the repo root.
   not in the sitemap) until the client's own domain is bought.
 - `luna.html` (served at eystudios.com.tr/luna) is Luna Bijuteri's client page, built from `taki.html`
   with its config baked in (pink theme, coming-soon mode, the shop's own WhatsApp). noindex, not in the
-  sitemap; its assets live in `onizleme/`. Its own domain is lunabijuteri.com, the link the shop shares everywhere (Instagram bio, WhatsApp profile). Deal: 8.500 TL total, 3.500 paid, 5.000 due when the shop opens
+  sitemap; its assets live in `onizleme/`. Its own domain is lunabijuteri.com, the link the shop shares everywhere (Instagram bio, WhatsApp profile). lunabijuteri.com is served from the separate repo `emreyukseltr/lunabijuteri` (index.html = luna.html with `onizleme/` paths → `img/`, no noindex, canonical/og URLs on lunabijuteri.com). Every luna.html change must be mirrored there. Deal: 8.500 TL total, 3.500 paid, 5.000 due when the shop opens
   (owner Yağmur makes 8–10 products first, incl. a Tesettür category; 2 free bulk updates, then 500 TL per bulk update, or a one-time 2.000 TL self-service product panel (e.g. a Google Sheet she edits) so she updates products herself and approves with her husband before launch).
 
 ## Workflow
