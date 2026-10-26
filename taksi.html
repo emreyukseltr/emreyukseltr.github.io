@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Örnek Taksi — Taksi &amp; Transfer</title>
+<meta name="description" content="Taksi ve havalimanı transferi. Arayın, WhatsApp'tan konum gönderin ya da transfer talebi bırakın. TR, EN, DE, FR, NL.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#101214">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🚖%3C/text%3E%3C/svg%3E">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<script>document.documentElement.className='js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#101214;--bg2:#181b1f;--line:#2a2f35;--tx:#f4f1e8;--mut:#a9afb7;--y:#ffc400;--y2:#ffd84d;--ink:#14110a;--r:18px}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow-x:hidden;overflow-wrap:anywhere}
+h1,h2,h3{font-family:Outfit,Inter,system-ui,sans-serif;line-height:1.08;font-weight:800;letter-spacing:-.01em}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* üst bar */
+header{position:sticky;top:0;z-index:40;background:rgba(16,18,20,.92);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
+.logo{font:800 19px/1 Outfit,sans-serif;display:flex;align-items:center;gap:9px;min-width:0;text-decoration:none}
+.logo b{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--y);color:var(--ink);font-size:18px;flex:none}
+.logo span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav.l{display:none;gap:22px;font-size:15px;color:var(--mut)}
+nav.l a{text-decoration:none}nav.l a:hover{color:var(--tx)}
+.lang{appearance:none;-webkit-appearance:none;background:var(--bg2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23a9afb7' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 12px center;color:var(--tx);border:1px solid var(--line);border-radius:12px;padding:0 30px 0 14px;height:42px;min-height:0;width:auto;font:600 14px Inter,sans-serif;flex:none}
+/* düğmeler */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:16px;font:700 17px/1.2 Outfit,Inter,sans-serif;text-decoration:none;border:0;cursor:pointer;text-align:center;touch-action:manipulation}
+.btn.y{background:var(--y);color:var(--ink)}.btn.y:hover{background:var(--y2)}
+.btn.g{background:#25d366;color:#06220f}
+.btn.o{background:transparent;color:var(--tx);border:1.5px solid var(--line)}
+.btn:focus-visible,.lang:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--y2);outline-offset:2px}
+/* hero */
+.hero{padding:44px 0 36px;position:relative}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,var(--y) 0 22px,transparent 22px 44px);height:10px;top:0;opacity:.9}
+.chip{display:inline-block;font:600 13px Inter,sans-serif;color:var(--y);border:1px solid #4a3d0a;background:#241d05;border-radius:99px;padding:6px 14px;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,9vw,64px);max-width:14ch}
+.hero p{color:var(--mut);font-size:18px;max-width:34ch;margin:16px 0 26px}
+.acts{display:grid;gap:12px;max-width:430px}
+/* bölümler */
+section{padding:46px 0}
+section h2{font-size:clamp(26px,6.4vw,40px);margin-bottom:10px}
+.sub{color:var(--mut);max-width:56ch;margin-bottom:24px}
+.grid{display:grid;gap:14px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.card h3{font-size:20px;margin-bottom:6px}.card p{color:var(--mut);font-size:15px}
+.ic{font-size:26px;margin-bottom:10px;display:block}
+.steps{counter-reset:s;display:grid;gap:12px}
+.steps li{list-style:none;display:flex;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.steps li:before{counter-increment:s;content:counter(s);flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--y);color:var(--ink);font:800 18px Outfit,sans-serif}
+/* form */
+form{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;gap:14px}
+.row{display:grid;gap:14px}.row.k{grid-template-columns:1fr 1fr}
+section[id]{scroll-margin-top:72px}
+label{display:grid;gap:6px;font:600 14px Inter,sans-serif;color:var(--mut)}
+input,select,textarea{width:100%;min-height:50px;background:var(--bg);color:var(--tx);border:1.5px solid var(--line);border-radius:13px;padding:12px 14px;font:400 16px Inter,sans-serif}
+textarea{min-height:84px;resize:vertical}
+input[type=date],input[type=number]{appearance:none;-webkit-appearance:none}
+.err{display:none;color:#ff9a8a;font-size:14px}.err.on{display:block}
+/* fiyat */
+.pr{display:grid;gap:10px}
+.pr div{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.pr span{font-weight:600;min-width:0}
+.pr button{flex:none;min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid var(--y);background:transparent;color:var(--y);font:700 14px Outfit,sans-serif;cursor:pointer}
+/* iletişim + footer */
+.ct{display:grid;gap:12px;max-width:430px}
+footer{border-top:1px solid var(--line);padding:26px 0 104px;color:var(--mut);font-size:14px}
+footer a{color:var(--tx)}
+/* yüzen düğmeler */
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:50;display:grid;gap:10px;transition:opacity .3s}
+.fab a{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;font-size:24px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.fab .c{background:var(--y);color:var(--ink)}.fab .w{background:#25d366;color:#06220f}
+.demo-back{position:fixed;left:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:50;background:var(--bg2);color:var(--tx);border:1px solid var(--line);border-radius:99px;padding:11px 16px;font:600 13px Inter,sans-serif;text-decoration:none;transition:opacity .3s}
+/* görünme */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}}
+@media (min-width:700px){
+  nav.l{display:flex}
+  .acts{grid-template-columns:1fr 1fr;max-width:640px}
+  .grid.g4{grid-template-columns:repeat(2,1fr)}
+  .row.r2{grid-template-columns:1fr 1fr}.row.r3{grid-template-columns:1fr 1fr 1fr}
+  .steps{grid-template-columns:repeat(3,1fr)}.steps li{flex-direction:column;text-align:center;padding:22px 16px}
+  form{padding:30px}
+}
+@media (min-width:1000px){.grid.g4{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top" id="logo"><b>🚖</b><span id="nm">Örnek Taksi</span></a>
+  <nav class="l"><a href="#hizmet" data-i="n1">Hizmetler</a><a href="#transfer" data-i="n2">Transfer talebi</a><a href="#fiyat" data-i="n3">Fiyatlar</a><a href="#iletisim" data-i="n4">İletişim</a></nav>
+  <select class="lang" id="lang" aria-label="Language"><option value="tr">TR</option><option value="en">EN</option><option value="de">DE</option><option value="fr">FR</option><option value="nl">NL</option></select>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <span class="chip" data-i="chip">Yaz sezonu ve gurbetçi transferleri için önceden rezervasyon</span>
+  <h1 data-i="h1">Taksi ve havalimanı transferi</h1>
+  <p data-i="hs">Arayın ya da konumunuzu WhatsApp'tan gönderin.</p>
+  <div class="acts">
+    <a class="btn y" id="callA" href="tel:+905306284284">📞 <span data-i="call">Hemen ara</span></a>
+    <a class="btn g" id="locA" href="https://wa.me/905306284284">📍 <span data-i="loc">Konumumu WhatsApp'tan gönder</span></a>
+  </div>
+</div></section>
+
+<section id="hizmet"><div class="wrap">
+  <h2 class="rv" data-i="sh">Hizmetler</h2>
+  <div class="grid g4">
+    <div class="card rv"><span class="ic">✈️</span><h3 data-i="s1">Havalimanı karşılama</h3><p data-i="s1d">Uçuş bilginizi paylaşın, sizi karşılamak için hazır olalım.</p></div>
+    <div class="card rv"><span class="ic">🏠</span><h3 data-i="s2">Şehir içi</h3><p data-i="s2d">Durak, ev, otel ya da iş yeri: adres vermeniz yeterli.</p></div>
+    <div class="card rv"><span class="ic">🛣️</span><h3 data-i="s3">Şehirlerarası</h3><p data-i="s3d">Yakın şehirlere ve havalimanlarına rahat yolculuk.</p></div>
+    <div class="card rv"><span class="ic">🎓</span><h3 data-i="s4">Öğrenci ve yurt</h3><p data-i="s4d">Yerleşke, yurt ve otogar arasında ulaşım.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="rv" data-i="wh">Nasıl çalışır?</h2>
+  <ol class="steps rv">
+    <li data-i="w1">Formu doldurun ya da arayın</li>
+    <li data-i="w2">WhatsApp'tan teyit alın</li>
+    <li data-i="w3">Aracınız sizi bekler</li>
+  </ol>
+</div></section>
+
+<section id="transfer"><div class="wrap">
+  <h2 class="rv" data-i="fh">Transfer talebi</h2>
+  <p class="sub rv" data-i="fs">Bilgileri doldurun, talebiniz WhatsApp'a hazır mesaj olarak düşer.</p>
+  <form id="f" class="rv" novalidate>
+    <div class="row r2">
+      <label><span data-i="ff">Nereden</span><input id="from" list="places" autocomplete="off" required></label>
+      <label><span data-i="ft">Nereye</span><input id="to" list="places" autocomplete="off" required></label>
+    </div>
+    <datalist id="places"><option value="Antalya Havalimanı"><option value="Isparta Süleyman Demirel Havalimanı"><option value="İzmir Adnan Menderes Havalimanı"><option value="Konya Havalimanı"></datalist>
+    <div class="row r2">
+      <label><span data-i="fd">Tarih</span><input id="date" type="date"></label>
+      <label><span data-i="fm">Saat ya da uçuş no</span><input id="time" autocomplete="off"></label>
+    </div>
+    <div class="row k">
+      <label><span data-i="fp">Kişi sayısı</span><input id="pax" type="number" min="1" max="20" value="2" inputmode="numeric"></label>
+      <label><span data-i="fb">Bagaj</span><input id="bag" type="number" min="0" max="30" value="2" inputmode="numeric"></label>
+    </div>
+    <div class="row r2">
+      <label><span data-i="fn">Ad soyad</span><input id="name" autocomplete="name" required></label>
+      <label><span data-i="fe">Telefon</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel" required></label>
+    </div>
+    <label><span data-i="fo">Not</span><textarea id="note"></textarea></label>
+    <p class="err" id="err" role="alert" data-i="fr">Lütfen güzergâhı, adınızı ve telefonunuzu doldurun.</p>
+    <button class="btn g" type="submit">💬 <span data-i="fz">WhatsApp'tan gönder</span></button>
+  </form>
+</div></section>
+
+<section id="fiyat"><div class="wrap">
+  <h2 class="rv" data-i="ph">Transfer fiyatları</h2>
+  <p class="sub rv" data-i="ps">Güzergâhı seçin, fiyatı sorun. Güncel fiyatı işletme sahibi yazar.</p>
+  <div class="pr rv" id="pr"></div>
+</div></section>
+
+<section id="iletisim"><div class="wrap">
+  <h2 class="rv" data-i="ch">İletişim</h2>
+  <p class="sub rv" id="cs"></p>
+  <div class="ct rv">
+    <a class="btn y" id="call2" href="tel:+905306284284">📞 <span data-i="call">Hemen ara</span></a>
+    <a class="btn g" href="https://wa.me/905306284284">💬 WhatsApp</a>
+    <a class="btn o" id="map" target="_blank" rel="noopener" href="#">🗺️ <span data-i="map">Haritada aç</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span id="cr"></span> · <span data-i="by">Tasarım &amp; geliştirme:</span> <a href="index.html">EY Studios</a></div></footer>
+
+<div class="fab"><a class="c" id="fc" href="tel:+905306284284" aria-label="Call">📞</a><a class="w" href="https://wa.me/905306284284" aria-label="WhatsApp">💬</a></div>
+<a class="demo-back" href="index.html" data-i="back">← EY Studios örnek çalışma</a>
+
+<script>
+(function(){
+var WA='905306284284',TEL='+905306284284';
+var T={
+tr:{n1:'Hizmetler',n2:'Transfer talebi',n3:'Fiyatlar',n4:'İletişim',chip:'Yaz sezonu ve gurbetçi transferleri için önceden rezervasyon',h1:'Taksi ve havalimanı transferi',hs:'Arayın ya da konumunuzu WhatsApp\'tan gönderin.',call:'Hemen ara',loc:'Konumumu WhatsApp\'tan gönder',sh:'Hizmetler',s1:'Havalimanı karşılama',s1d:'Uçuş bilginizi paylaşın, sizi karşılamak için hazır olalım.',s2:'Şehir içi',s2d:'Durak, ev, otel ya da iş yeri: adres vermeniz yeterli.',s3:'Şehirlerarası',s3d:'Yakın şehirlere ve havalimanlarına rahat yolculuk.',s4:'Öğrenci ve yurt',s4d:'Yerleşke, yurt ve otogar arasında ulaşım.',wh:'Nasıl çalışır?',w1:'Formu doldurun ya da arayın',w2:'WhatsApp\'tan teyit alın',w3:'Aracınız sizi bekler',fh:'Transfer talebi',fs:'Bilgileri doldurun, talebiniz WhatsApp\'a hazır mesaj olarak düşer.',ff:'Nereden',ft:'Nereye',fd:'Tarih',fm:'Saat ya da uçuş no',fp:'Kişi sayısı',fb:'Bagaj',fn:'Ad soyad',fe:'Telefon',fo:'Not',fr:'Lütfen güzergâhı, adınızı ve telefonunuzu doldurun.',fz:'WhatsApp\'tan gönder',ph:'Transfer fiyatları',ps:'Güzergâhı seçin, fiyatı sorun. Güncel fiyatı işletme sahibi yazar.',pq:'Fiyat sor',ch:'İletişim',cs:'{city} ve çevresi.',map:'Haritada aç',by:'Tasarım & geliştirme:',back:'← EY Studios örnek çalışma',r1:'Antalya Havalimanı',r2:'Isparta Havalimanı',r3:'Konya Havalimanı',r4:'Diğer şehirler'},
+en:{n1:'Services',n2:'Transfer request',n3:'Prices',n4:'Contact',chip:'Book ahead for summer and visiting-family transfers',h1:'Taxi and airport transfers',hs:'Call us or send your location on WhatsApp.',call:'Call now',loc:'Send my location on WhatsApp',sh:'Services',s1:'Airport pick-up',s1d:'Share your flight details and we will be ready to meet you.',s2:'In town',s2d:'Taxi rank, home, hotel or office: just give us the address.',s3:'Intercity',s3d:'Comfortable rides to nearby cities and airports.',s4:'Students and dorms',s4d:'Rides between campus, dorms and the bus station.',wh:'How it works',w1:'Fill in the form or call us',w2:'Get a confirmation on WhatsApp',w3:'Your car is waiting',fh:'Transfer request',fs:'Fill in the details and your request opens in WhatsApp as a ready message.',ff:'From',ft:'To',fd:'Date',fm:'Time or flight no.',fp:'Passengers',fb:'Luggage',fn:'Full name',fe:'Phone',fo:'Note',fr:'Please fill in the route, your name and your phone.',fz:'Send on WhatsApp',ph:'Transfer prices',ps:'Pick a route and ask for the price. The owner writes the current price.',pq:'Ask price',ch:'Contact',cs:'{city} and surroundings.',map:'Open in maps',by:'Design & development:',back:'← EY Studios sample work',r1:'Antalya Airport',r2:'Isparta Airport',r3:'Konya Airport',r4:'Other cities'},
+de:{n1:'Leistungen',n2:'Transferanfrage',n3:'Preise',n4:'Kontakt',chip:'Im Voraus buchen: Sommer- und Familienbesuch-Transfers',h1:'Taxi und Flughafentransfer',hs:'Rufen Sie an oder senden Sie Ihren Standort per WhatsApp.',call:'Jetzt anrufen',loc:'Standort per WhatsApp senden',sh:'Leistungen',s1:'Flughafenabholung',s1d:'Teilen Sie Ihre Flugdaten mit, wir holen Sie ab.',s2:'Innerorts',s2d:'Taxistand, Zuhause, Hotel oder Büro: Adresse genügt.',s3:'Überland',s3d:'Bequeme Fahrten in nahe Städte und zu Flughäfen.',s4:'Studierende und Wohnheime',s4d:'Fahrten zwischen Campus, Wohnheim und Busbahnhof.',wh:'So funktioniert es',w1:'Formular ausfüllen oder anrufen',w2:'Bestätigung per WhatsApp erhalten',w3:'Ihr Fahrzeug wartet auf Sie',fh:'Transferanfrage',fs:'Füllen Sie die Angaben aus, Ihre Anfrage öffnet sich als fertige Nachricht in WhatsApp.',ff:'Von',ft:'Nach',fd:'Datum',fm:'Uhrzeit oder Flugnr.',fp:'Personen',fb:'Gepäck',fn:'Vor- und Nachname',fe:'Telefon',fo:'Hinweis',fr:'Bitte Strecke, Namen und Telefonnummer ausfüllen.',fz:'Per WhatsApp senden',ph:'Transferpreise',ps:'Strecke wählen und Preis anfragen. Den aktuellen Preis nennt der Inhaber.',pq:'Preis anfragen',ch:'Kontakt',cs:'{city} und Umgebung.',map:'In Karten öffnen',by:'Design & Entwicklung:',back:'← EY Studios Beispielarbeit',r1:'Flughafen Antalya',r2:'Flughafen Isparta',r3:'Flughafen Konya',r4:'Andere Städte'},
+fr:{n1:'Services',n2:'Demande de transfert',n3:'Tarifs',n4:'Contact',chip:'Réservez à l\'avance pour l\'été et les familles en visite',h1:'Taxi et transferts aéroport',hs:'Appelez-nous ou envoyez votre position sur WhatsApp.',call:'Appeler',loc:'Envoyer ma position sur WhatsApp',sh:'Services',s1:'Accueil à l\'aéroport',s1d:'Partagez vos informations de vol, nous serons prêts à vous accueillir.',s2:'En ville',s2d:'Station de taxi, domicile, hôtel ou bureau : l\'adresse suffit.',s3:'Interurbain',s3d:'Trajets confortables vers les villes proches et les aéroports.',s4:'Étudiants et résidences',s4d:'Trajets entre campus, résidences et gare routière.',wh:'Comment ça marche',w1:'Remplissez le formulaire ou appelez',w2:'Recevez une confirmation sur WhatsApp',w3:'Votre voiture vous attend',fh:'Demande de transfert',fs:'Remplissez les informations, votre demande s\'ouvre dans WhatsApp sous forme de message prêt.',ff:'De',ft:'À',fd:'Date',fm:'Heure ou n° de vol',fp:'Passagers',fb:'Bagages',fn:'Nom et prénom',fe:'Téléphone',fo:'Remarque',fr:'Veuillez indiquer le trajet, votre nom et votre téléphone.',fz:'Envoyer sur WhatsApp',ph:'Tarifs des transferts',ps:'Choisissez un trajet et demandez le prix. Le tarif actuel est indiqué par le propriétaire.',pq:'Demander le prix',ch:'Contact',cs:'{city} et alentours.',map:'Ouvrir dans la carte',by:'Conception et développement :',back:'← Exemple EY Studios',r1:'Aéroport d\'Antalya',r2:'Aéroport d\'Isparta',r3:'Aéroport de Konya',r4:'Autres villes'},
+nl:{n1:'Diensten',n2:'Transferaanvraag',n3:'Prijzen',n4:'Contact',chip:'Reserveer vooraf voor zomer- en familiebezoek',h1:'Taxi en luchthaventransfers',hs:'Bel ons of stuur uw locatie via WhatsApp.',call:'Nu bellen',loc:'Locatie sturen via WhatsApp',sh:'Diensten',s1:'Ophalen op de luchthaven',s1d:'Deel uw vluchtgegevens, dan staan wij klaar om u op te halen.',s2:'In de stad',s2d:'Taxistandplaats, thuis, hotel of kantoor: een adres is genoeg.',s3:'Tussen steden',s3d:'Comfortabele ritten naar nabije steden en luchthavens.',s4:'Studenten en studentenhuizen',s4d:'Ritten tussen campus, studentenhuis en busstation.',wh:'Zo werkt het',w1:'Vul het formulier in of bel',w2:'Ontvang bevestiging via WhatsApp',w3:'Uw auto staat klaar',fh:'Transferaanvraag',fs:'Vul de gegevens in, uw aanvraag opent in WhatsApp als kant-en-klaar bericht.',ff:'Van',ft:'Naar',fd:'Datum',fm:'Tijd of vluchtnr.',fp:'Personen',fb:'Bagage',fn:'Voor- en achternaam',fe:'Telefoon',fo:'Opmerking',fr:'Vul de route, uw naam en telefoonnummer in.',fz:'Versturen via WhatsApp',ph:'Transferprijzen',ps:'Kies een route en vraag de prijs. De actuele prijs wordt door de eigenaar vermeld.',pq:'Prijs vragen',ch:'Contact',cs:'{city} en omgeving.',map:'Openen in kaarten',by:'Ontwerp en ontwikkeling:',back:'← Voorbeeld EY Studios',r1:'Luchthaven Antalya',r2:'Luchthaven Isparta',r3:'Luchthaven Konya',r4:'Andere steden'}
+};
+var q=new URLSearchParams(location.search),M=(q.get('m')||'').trim().slice(0,40)||'Örnek Taksi',C=(q.get('c')||'').trim().slice(0,40)||'Isparta';
+var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)},cur='tr';
+$('#nm').textContent=M;document.title=M+' — Taksi & Transfer';
+$('#map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(M+' '+C);
+$('#cr').textContent='© '+new Date().getFullYear()+' '+M;
+var places=[['r1','Antalya Havalimanı'],['r2','Isparta Havalimanı'],['r3','Konya Havalimanı'],['r4','']];
+function build(){var d=T[cur],h='';places.forEach(function(p,i){h+='<div><span>'+d['r'+(i+1)]+'</span><button type="button" data-p="'+i+'">'+d.pq+'</button></div>'});$('#pr').innerHTML=h;$('#cs').textContent=d.cs.replace('{city}',C)}
+function setLang(l){if(!T[l])l='tr';cur=l;document.documentElement.lang=l;var d=T[l];$$('[data-i]').forEach(function(e){var k=e.getAttribute('data-i');if(d[k]!=null)e.textContent=d[k]});$('#lang').value=l;build();try{localStorage.setItem('ey-lang',l)}catch(e){}}
+$('#lang').addEventListener('change',function(e){setLang(e.target.value)});
+var init='tr';try{var s=localStorage.getItem('ey-lang');if(s&&T[s])init=s}catch(e){}
+setLang(init);
+/* fiyat sor: güzergâhı forma taşır */
+$('#pr').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var p=places[+b.getAttribute('data-p')][1];if(p)$('#from').value=p;$('#to').value=M===''?'':C;$('#transfer').scrollIntoView({behavior:'smooth'});setTimeout(function(){$('#to').focus({preventScroll:true})},500)});
+/* konum: izin verilirse harita bağlantısı mesaja eklenir, yoksa düz mesaj */
+$('#locA').addEventListener('click',function(e){e.preventDefault();var base='Merhaba, taksi istiyorum.',go=function(t){location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(t)};if(!navigator.geolocation)return go(base+' Konumumu paylaşıyorum.');navigator.geolocation.getCurrentPosition(function(p){go(base+' Konumum: https://maps.google.com/?q='+p.coords.latitude+','+p.coords.longitude)},function(){go(base+' Konumumu paylaşıyorum.')},{timeout:6000,maximumAge:60000})});
+/* form: işletmeye mesaj her zaman Türkçe gider */
+$('#f').addEventListener('submit',function(e){e.preventDefault();var v=function(i){return $('#'+i).value.trim()},err=$('#err');if(!v('from')||!v('to')||!v('name')||!v('tel')){err.classList.add('on');return}err.classList.remove('on');
+var t='Merhaba, transfer talebi:\nGüzergâh: '+v('from')+' → '+v('to')+'\nTarih: '+(v('date')||'-')+'\nSaat/Uçuş: '+(v('time')||'-')+'\nKişi: '+(v('pax')||'-')+', Bagaj: '+(v('bag')||'-')+'\nAd: '+v('name')+'\nTelefon: '+v('tel')+(v('note')?'\nNot: '+v('note'):'');
+window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank','noopener')});
+$('#f').addEventListener('input',function(){$('#err').classList.remove('on')});
+/* tarih bugünden başlasın */
+try{var n=new Date(),z=function(x){return(x<10?'0':'')+x};$('#date').min=n.getFullYear()+'-'+z(n.getMonth()+1)+'-'+z(n.getDate())}catch(e){}
+/* görünme */
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});$$('.rv').forEach(function(el){io.observe(el)})}else{$$('.rv').forEach(function(el){el.classList.add('in')})}
+/* footer görünürken "örnek çalışma" düğmesi gizlensin; imzanın üstüne binmesin */
+var hid=[$('.demo-back'),$('.fab')],f=$('footer');if(f&&'IntersectionObserver' in window){new IntersectionObserver(function(e){var on=e[0].isIntersecting;hid.forEach(function(b){if(!b)return;b.style.opacity=on?'0':'';b.style.pointerEvents=on?'none':''})}).observe(f)}
+})();
+</script>
+</body>
+</html>
