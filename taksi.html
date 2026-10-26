@@ -139,7 +139,7 @@ footer a{color:var(--tx)}
       <label><span data-i="ff">Nereden</span><input id="from" list="places" autocomplete="off" required></label>
       <label><span data-i="ft">Nereye</span><input id="to" list="places" autocomplete="off" required></label>
     </div>
-    <datalist id="places"><option value="Antalya Havalimanı"><option value="Isparta Süleyman Demirel Havalimanı"><option value="İzmir Adnan Menderes Havalimanı"><option value="Konya Havalimanı"></datalist>
+    <datalist id="places"></datalist>
     <div class="row r2">
       <label><span data-i="fd">Tarih</span><input id="date" type="date"></label>
       <label><span data-i="fm">Saat ya da uçuş no</span><input id="time" autocomplete="off"></label>
@@ -195,8 +195,11 @@ var $=function(s){return document.querySelector(s)},$$=function(s){return docume
 $('#nm').textContent=M;document.title=M+' — Taksi & Transfer';
 $('#map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(M+' '+C);
 $('#cr').textContent='© '+new Date().getFullYear()+' '+M;
-var places=[['r1','Antalya Havalimanı'],['r2','Isparta Havalimanı'],['r3','Konya Havalimanı'],['r4','']];
-function build(){var d=T[cur],h='';places.forEach(function(p,i){h+='<div><span>'+d['r'+(i+1)]+'</span><button type="button" data-p="'+i+'">'+d.pq+'</button></div>'});$('#pr').innerHTML=h;$('#cs').textContent=d.cs.replace('{city}',C)}
+/* güzergâh önerileri şehre göre: ?c=Konya gibi; bilinmeyen şehirde genel liste */
+var AP=/konya/i.test(C)?['Konya','Antalya','Ankara Esenboğa']:/isparta|yalvaç/i.test(C)?['Antalya','Isparta','Konya']:['Antalya','İzmir Adnan Menderes','İstanbul'];
+var places=AP.map(function(x){return[x,x+' Havalimanı']}).concat([['','']]);
+function apName(x,l){return l==='en'?x+' Airport':l==='de'?'Flughafen '+x:l==='fr'?(/^[AEIOUÉİ]/i.test(x)?'Aéroport d\'':'Aéroport de ')+x:l==='nl'?'Luchthaven '+x:x+' Havalimanı'}
+function build(){var d=T[cur],h='';places.forEach(function(p,i){h+='<div><span>'+(p[0]?apName(p[0],cur):d.r4)+'</span><button type="button" data-p="'+i+'">'+d.pq+'</button></div>'});$('#pr').innerHTML=h;$('#cs').textContent=d.cs.replace('{city}',C);$('#places').innerHTML=places.filter(function(p){return p[1]}).map(function(p){return'<option value="'+p[1]+'">'}).join('')+'<option value="'+C.replace(/"/g,'')+'">'}
 function setLang(l){if(!T[l])l='tr';cur=l;document.documentElement.lang=l;var d=T[l];$$('[data-i]').forEach(function(e){var k=e.getAttribute('data-i');if(d[k]!=null)e.textContent=d[k]});$('#lang').value=l;build();try{localStorage.setItem('ey-lang',l)}catch(e){}}
 $('#lang').addEventListener('change',function(e){setLang(e.target.value)});
 var init='tr';try{var s=localStorage.getItem('ey-lang');if(s&&T[s])init=s}catch(e){}
