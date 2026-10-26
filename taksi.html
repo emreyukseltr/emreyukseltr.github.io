@@ -45,6 +45,13 @@ nav.l a{text-decoration:none}nav.l a:hover{color:var(--tx)}
 .hero h1{font-size:clamp(34px,9vw,64px);max-width:14ch}
 .hero p{color:var(--mut);font-size:18px;max-width:34ch;margin:16px 0 26px}
 .acts{display:grid;gap:12px;max-width:430px}
+.hg{display:grid;gap:28px;align-items:center}
+.car{display:block;width:100%;max-width:420px;height:auto;margin:0 auto;overflow:visible}
+.car .bob{animation:bob 2.6s ease-in-out infinite}.car .dash{animation:roll .9s linear infinite}
+@keyframes bob{50%{transform:translateY(-2px)}}@keyframes roll{to{stroke-dashoffset:-48}}
+@media (prefers-reduced-motion:reduce){.car .bob,.car .dash{animation:none}}
+.hero:after{content:"";position:absolute;right:-6%;top:6%;width:44vw;max-width:440px;aspect-ratio:1;background:radial-gradient(circle,rgba(255,196,0,.14),transparent 68%);pointer-events:none;z-index:-1}
+.hero{isolation:isolate;overflow:hidden}
 /* bölümler */
 section{padding:46px 0}
 section h2{font-size:clamp(26px,6.4vw,40px);margin-bottom:10px}
@@ -91,7 +98,7 @@ footer a{color:var(--tx)}
   .steps{grid-template-columns:repeat(3,1fr)}.steps li{flex-direction:column;text-align:center;padding:22px 16px}
   form{padding:30px}
 }
-@media (min-width:1000px){.grid.g4{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1000px){.grid.g4{grid-template-columns:repeat(4,1fr)}.hg{grid-template-columns:1.1fr .9fr;gap:40px}}
 </style>
 </head>
 <body>
@@ -102,7 +109,8 @@ footer a{color:var(--tx)}
 </div></header>
 
 <main id="top">
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="wrap hg">
+  <div>
   <span class="chip" data-i="chip">Yaz sezonu ve gurbetçi transferleri için önceden rezervasyon</span>
   <h1 data-i="h1">Taksi ve havalimanı transferi</h1>
   <p data-i="hs">Arayın ya da konumunuzu WhatsApp'tan gönderin.</p>
@@ -110,6 +118,21 @@ footer a{color:var(--tx)}
     <a class="btn y" id="callA" href="tel:+905306284284">📞 <span data-i="call">Hemen ara</span></a>
     <a class="btn g" id="locA" href="https://wa.me/905306284284">📍 <span data-i="loc">Konumumu WhatsApp'tan gönder</span></a>
   </div>
+  </div>
+  <svg class="car" viewBox="0 0 360 150" role="img" aria-label="Taxi">
+    <rect x="0" y="139" width="360" height="3" fill="#2a2f35"/>
+    <path class="dash" d="M0 147H360" stroke="#ffc400" stroke-width="3" stroke-dasharray="26 22" fill="none"/>
+    <g class="bob">
+      <rect x="28" y="88" width="304" height="38" rx="13" fill="#ffc400"/>
+      <path d="M82 90L110 54Q116 47 125 47H236Q246 47 252 54L282 90Z" fill="#ffc400"/>
+      <path d="M113 85L131 58H180V85Z" fill="#17202a"/><path d="M190 58H231L257 85H190Z" fill="#17202a"/>
+      <rect x="158" y="36" width="44" height="13" rx="3" fill="#fff"/><text x="180" y="46" text-anchor="middle" font-family="Outfit,Inter,sans-serif" font-weight="800" font-size="9" fill="#14110a">TAKSİ</text>
+      <rect x="40" y="104" width="280" height="4" fill="#14110a" opacity=".16"/>
+      <rect x="320" y="98" width="14" height="10" rx="3" fill="#fff6c8"/><rect x="26" y="98" width="10" height="10" rx="3" fill="#ff5a4d"/>
+      <circle cx="102" cy="126" r="18" fill="#0b0d0f" stroke="#3a4048" stroke-width="3"/><circle cx="102" cy="126" r="7" fill="#8a9099"/>
+      <circle cx="262" cy="126" r="18" fill="#0b0d0f" stroke="#3a4048" stroke-width="3"/><circle cx="262" cy="126" r="7" fill="#8a9099"/>
+    </g>
+  </svg>
 </div></section>
 
 <section id="hizmet"><div class="wrap">
@@ -195,12 +218,23 @@ var $=function(s){return document.querySelector(s)},$$=function(s){return docume
 $('#nm').textContent=M;document.title=M+' — Taksi & Transfer';
 $('#map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(M+' '+C);
 $('#cr').textContent='© '+new Date().getFullYear()+' '+M;
+/* ?s=hastane: hastane, tıp fakültesi ve klinik çevresindeki duraklar için metinler */
+var HM=q.get('s')==='hastane',HI=['🏥','🤝','🎓','✈️'];
+var H={
+tr:{chip:'Hastane, randevu ve kontrol ulaşımı için önceden rezervasyon',h1:'Hastaneye ve havalimanına rahat ulaşım',hs:'Randevu saatinize göre sizi alırız. Arayın ya da konumunuzu WhatsApp\'tan gönderin.',s1:'Hastane ve randevu',s1d:'Muayene, kontrol ve tetkik için kapıdan kapıya ulaşım.',s2:'Hasta ve refakatçi',s2d:'Acele etmeden; bagaj ve yardıma ihtiyaç duyanlar için rahat yolculuk.',s3:'Öğrenci ve personel',s3d:'Yerleşke, yurt, hastane ve otogar arasında ulaşım.',s4:'Havalimanı ve şehirlerarası',s4d:'Havalimanlarına ve yakın şehirlere önceden ayırtılabilir transfer.'},
+en:{chip:'Book ahead for hospital visits, appointments and check-ups',h1:'Easy rides to the hospital and the airport',hs:'We pick you up in time for your appointment. Call us or send your location on WhatsApp.',s1:'Hospital and appointments',s1d:'Door-to-door rides for exams, check-ups and tests.',s2:'Patients and companions',s2d:'Unhurried rides, also for those who need help with luggage.',s3:'Students and staff',s3d:'Rides between campus, dorms, hospital and the bus station.',s4:'Airport and intercity',s4d:'Transfers to airports and nearby cities that you can book ahead.'},
+de:{chip:'Im Voraus buchen: Krankenhaus-, Termin- und Kontrollfahrten',h1:'Entspannt zum Krankenhaus und zum Flughafen',hs:'Wir holen Sie rechtzeitig zu Ihrem Termin ab. Rufen Sie an oder senden Sie Ihren Standort per WhatsApp.',s1:'Krankenhaus und Termine',s1d:'Fahrten von Tür zu Tür für Untersuchungen, Kontrollen und Tests.',s2:'Patienten und Begleitpersonen',s2d:'Ohne Hektik, auch für alle, die Hilfe mit dem Gepäck brauchen.',s3:'Studierende und Personal',s3d:'Fahrten zwischen Campus, Wohnheim, Krankenhaus und Busbahnhof.',s4:'Flughafen und Überland',s4d:'Im Voraus buchbare Transfers zu Flughäfen und in nahe Städte.'},
+fr:{chip:'Réservez à l\'avance : hôpital, rendez-vous et contrôles',h1:'Un trajet serein vers l\'hôpital et l\'aéroport',hs:'Nous venons vous chercher à temps pour votre rendez-vous. Appelez-nous ou envoyez votre position sur WhatsApp.',s1:'Hôpital et rendez-vous',s1d:'Trajets de porte à porte pour consultations, contrôles et examens.',s2:'Patients et accompagnants',s2d:'Sans précipitation, y compris pour ceux qui ont besoin d\'aide avec les bagages.',s3:'Étudiants et personnel',s3d:'Trajets entre campus, résidences, hôpital et gare routière.',s4:'Aéroport et interurbain',s4d:'Transferts réservables à l\'avance vers les aéroports et les villes proches.'},
+nl:{chip:'Reserveer vooraf: ziekenhuis, afspraken en controles',h1:'Rustig naar het ziekenhuis en de luchthaven',hs:'Wij halen u op tijd op voor uw afspraak. Bel ons of stuur uw locatie via WhatsApp.',s1:'Ziekenhuis en afspraken',s1d:'Ritten van deur tot deur voor onderzoeken, controles en testen.',s2:'Patiënten en begeleiders',s2d:'Zonder haast, ook voor wie hulp nodig heeft met bagage.',s3:'Studenten en personeel',s3d:'Ritten tussen campus, studentenhuis, ziekenhuis en busstation.',s4:'Luchthaven en tussen steden',s4d:'Vooraf te boeken transfers naar luchthavens en nabije steden.'}
+};
+function D(l){return HM?Object.assign({},T[l],H[l]):T[l]}
+if(HM)$$('.ic').forEach(function(e,i){e.textContent=HI[i]||e.textContent});
 /* güzergâh önerileri şehre göre: ?c=Konya gibi; bilinmeyen şehirde genel liste */
 var AP=/konya/i.test(C)?['Konya','Antalya','Ankara Esenboğa']:/isparta|yalvaç/i.test(C)?['Antalya','Isparta','Konya']:['Antalya','İzmir Adnan Menderes','İstanbul'];
 var places=AP.map(function(x){return[x,x+' Havalimanı']}).concat([['','']]);
 function apName(x,l){return l==='en'?x+' Airport':l==='de'?'Flughafen '+x:l==='fr'?(/^[AEIOUÉİ]/i.test(x)?'Aéroport d\'':'Aéroport de ')+x:l==='nl'?'Luchthaven '+x:x+' Havalimanı'}
-function build(){var d=T[cur],h='';places.forEach(function(p,i){h+='<div><span>'+(p[0]?apName(p[0],cur):d.r4)+'</span><button type="button" data-p="'+i+'">'+d.pq+'</button></div>'});$('#pr').innerHTML=h;$('#cs').textContent=d.cs.replace('{city}',C);$('#places').innerHTML=places.filter(function(p){return p[1]}).map(function(p){return'<option value="'+p[1]+'">'}).join('')+'<option value="'+C.replace(/"/g,'')+'">'}
-function setLang(l){if(!T[l])l='tr';cur=l;document.documentElement.lang=l;var d=T[l];$$('[data-i]').forEach(function(e){var k=e.getAttribute('data-i');if(d[k]!=null)e.textContent=d[k]});$('#lang').value=l;build();try{localStorage.setItem('ey-lang',l)}catch(e){}}
+function build(){var d=D(cur),h='';places.forEach(function(p,i){h+='<div><span>'+(p[0]?apName(p[0],cur):d.r4)+'</span><button type="button" data-p="'+i+'">'+d.pq+'</button></div>'});$('#pr').innerHTML=h;$('#cs').textContent=d.cs.replace('{city}',C);$('#places').innerHTML=places.filter(function(p){return p[1]}).map(function(p){return'<option value="'+p[1]+'">'}).join('')+'<option value="'+C.replace(/"/g,'')+'">'}
+function setLang(l){if(!T[l])l='tr';cur=l;document.documentElement.lang=l;var d=D(l);$$('[data-i]').forEach(function(e){var k=e.getAttribute('data-i');if(d[k]!=null)e.textContent=d[k]});$('#lang').value=l;build();try{localStorage.setItem('ey-lang',l)}catch(e){}}
 $('#lang').addEventListener('change',function(e){setLang(e.target.value)});
 var init='tr';try{var s=localStorage.getItem('ey-lang');if(s&&T[s])init=s}catch(e){}
 setLang(init);
