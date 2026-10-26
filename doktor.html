@@ -427,6 +427,37 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       });
       return;
     }
+    var alan = {
+      dis: { t: ' | Ağız ve Diş Sağlığı', h1: 'Sağlıklı Bir Gülüşün', h2: 'Doğal Hali', d: 'Muayene sonrası size özel planlanan, konforlu ve ayrıntılı diş sağlığı ve estetik diş hekimliği uygulamaları.', k: 'Özenli Yaklaşım',
+        a1: 'Her tedavi, ayrıntılı bir muayene ve sizinle yapılan görüşmeyle başlar. Size uygun plan birlikte belirlenir.',
+        a2: 'Süreç boyunca her adımda bilgilendirilir, sorularınıza sade bir dille cevap alırsınız.',
+        mq: ['DİŞ SAĞLIĞI', 'ESTETİK GÜLÜŞ', 'KİŞİYE ÖZEL PLAN'],
+        r: [['Diş Sağlığı ve Dolgu', 'Muayene, diş taşı temizliği, dolgu ve kanal tedavisi gibi koruyucu ve tedavi edici uygulamalar.'],
+            ['Estetik Diş Hekimliği', 'Gülüş tasarımı, diş beyazlatma ve kaplama uygulamaları muayene sonrası birlikte planlanır.'],
+            ['İmplant ve Ortodonti', 'İmplant, şeffaf plak ve tel tedavileri için muayene ve planlama.']] },
+      gastro: { t: ' | Gastroenteroloji', h1: 'Doğru Tanı,', h2: 'Özenli Takip', d: 'Mide, bağırsak ve karaciğer sağlığında muayene, endoskopi ve kolonoskopi ile kişiye özel planlama.', k: 'Sade Bilgilendirme',
+        a1: 'Her işlemden önce ayrıntılı bir görüşme yapılır; hazırlık süreci ve işlem adım adım anlatılır.',
+        a2: 'Sorularınıza sade bir dille cevap alır, takip planınızı birlikte belirlersiniz.',
+        mq: ['ENDOSKOPİ', 'KOLONOSKOPİ', 'KİŞİYE ÖZEL TAKİP'],
+        r: [['Endoskopi', 'Mide ve yemek borusu şikâyetlerinde muayene ve endoskopik inceleme.'],
+            ['Kolonoskopi', 'Kalın bağırsak şikâyetleri ve tarama için muayene ve işlem öncesi bilgilendirme.'],
+            ['Mide, Bağırsak ve Karaciğer', 'Hazımsızlık, reflü, karın ağrısı ve karaciğer sağlığı konularında muayene ve takip.']] }
+    }[s];
+    if (alan) {
+      document.title = m + alan.t;
+      set($('[data-i18n="Sanat ve Cerrahinin"]'), alan.h1);
+      set($('[data-i18n="Kusursuz Uyumu"]'), alan.h2);
+      set($('[data-i18n="hero-desc"]'), alan.d);
+      set($('[data-i18n="Dokunuşun Gücü"]'), alan.k);
+      set($('[data-i18n="about-1"]'), alan.a1);
+      set($('[data-i18n="about-2"]'), alan.a2);
+      var ma = $('.marquee-content');
+      if (ma) { ma.innerHTML = new Array(3).join(alan.mq.map(function (x) { return '<span>' + x + '</span>'; }).join(' ✦ ') + ' ✦ '); }
+      [['Laparoskopik Cerrahi', 'srv-1'], ['Estetik & Rekonstrüktif', 'srv-2'], ['Endoskopik Tarama', 'srv-3']].forEach(function (k, i) {
+        set($('[data-i18n="' + k[0] + '"]'), alan.r[i][0]); set($('[data-i18n="' + k[1] + '"]'), alan.r[i][1]);
+      });
+      return;
+    }
     if (s !== 'estetik') return;
     set($('[data-i18n="Sanat ve Cerrahinin"]'), 'Bilim ve Doğallığın');
     set($('[data-i18n="Kusursuz Uyumu"]'), 'Zarif Dengesi');
