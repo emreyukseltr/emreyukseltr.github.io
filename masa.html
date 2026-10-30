@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Örnek Kafe — Masadan Sipariş</title>
+<meta name="description" content="QR kodu okutun, menüden seçin, siparişiniz doğrudan işletmeye ulaşsın. Ödeme kasada.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1b1410">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E☕%3C/text%3E%3C/svg%3E">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1b1410;--bg2:#251c16;--line:#3a2d24;--tx:#f6ede3;--mut:#b9a99a;--acc:#e3a857;--acc2:#f0be78;--ink:#1b1208;--ok:#25d366}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.5 "Work Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow-x:hidden;overflow-wrap:anywhere;padding-bottom:120px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+header{padding:26px 0 8px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font:700 24px/1.1 Fraunces,Georgia,serif;min-width:0}
+.lang{appearance:none;-webkit-appearance:none;background:var(--bg2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23b9a99a' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 11px center;color:var(--tx);border:1px solid var(--line);border-radius:12px;padding:0 28px 0 12px;height:42px;font:600 14px "Work Sans",sans-serif;flex:none}
+.hero{padding:22px 0 6px}
+.hero h1{font-size:clamp(30px,8vw,44px)}
+.hero p{color:var(--mut);margin-top:8px;max-width:38ch}
+.tbl{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:#33261c;border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:600;color:var(--acc2)}
+.how{display:grid;gap:8px;margin:18px 0 4px;padding:0;list-style:none;counter-reset:s}
+.how li{display:flex;gap:12px;align-items:center;color:var(--mut);font-size:15px}
+.how li:before{counter-increment:s;content:counter(s);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--ink);font:700 14px "Work Sans",sans-serif}
+nav.cats{position:sticky;top:0;z-index:30;background:rgba(27,20,16,.96);border-bottom:1px solid var(--line);margin-top:18px}
+nav.cats .in{display:flex;gap:8px;overflow-x:auto;padding:10px 18px;max-width:760px;margin:0 auto;scrollbar-width:none}
+nav.cats .in::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:44px;padding:0 18px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--tx);font:600 15px "Work Sans",sans-serif;cursor:pointer;touch-action:manipulation}
+.chip.on{background:var(--acc);border-color:var(--acc);color:var(--ink)}
+section.cat{padding-top:26px;scroll-margin-top:72px}
+section.cat h2{font-size:26px;margin-bottom:12px}
+.item{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px}
+.item .t{min-width:0}.item b{display:block;font-size:17px;font-weight:600}.item small{color:var(--mut);font-size:14px}.item .p{color:var(--acc2);font-weight:600;margin-top:2px}
+.qty{display:flex;align-items:center;gap:6px;flex:none}
+.qty button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--acc);background:transparent;color:var(--acc);font:600 22px/1 "Work Sans",sans-serif;cursor:pointer;touch-action:manipulation}
+.qty button.add{background:var(--acc);color:var(--ink)}
+.qty span{min-width:22px;text-align:center;font-weight:600}
+.note{color:var(--mut);font-size:13px;margin:22px 0 0}
+/* alt çubuk */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 40%)}
+.bar button{width:100%;max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:0 22px;border:0;border-radius:18px;background:var(--acc);color:var(--ink);font:700 17px "Work Sans",sans-serif;cursor:pointer;touch-action:manipulation}
+.bar button[disabled]{background:#4a3a2c;color:#9b8a7a;cursor:default}
+.demo-back{position:fixed;left:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:60;background:rgba(37,28,22,.92);color:var(--tx);border:1px solid var(--line);border-radius:99px;padding:9px 14px;font:600 12px "Work Sans",sans-serif;text-decoration:none;transition:opacity .3s}
+/* sepet */
+.ov{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.6);display:none}
+.ov.on{display:block}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:var(--bg2);border-radius:24px 24px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom));max-width:760px;margin:0 auto}
+.sheet h2{font-size:26px;margin:0 56px 12px 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row .n{min-width:0;font-weight:500}
+.sum{display:flex;justify-content:space-between;font:700 19px "Work Sans",sans-serif;padding:14px 0 4px}
+.pay{color:var(--mut);font-size:14px;margin-bottom:14px}
+label{display:grid;gap:6px;font:600 14px "Work Sans",sans-serif;color:var(--mut);margin-top:12px}
+input,textarea{width:100%;min-height:50px;background:var(--bg);color:var(--tx);border:1.5px solid var(--line);border-radius:13px;padding:12px 14px;font:400 16px "Work Sans",sans-serif}
+textarea{min-height:76px;resize:vertical}
+input:focus-visible,textarea:focus-visible,.chip:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+.err{display:none;color:#ff9a8a;font-size:14px;margin-top:8px}.err.on{display:block}
+.go{margin-top:16px;width:100%;min-height:56px;border:0;border-radius:16px;background:var(--ok);color:#06220f;font:700 17px "Work Sans",sans-serif;cursor:pointer;touch-action:manipulation}
+.x{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--tx);font-size:20px;cursor:pointer}
+footer{padding:30px 0 20px;color:var(--mut);font-size:14px}footer a{color:var(--tx)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="demo-back" href="index.html" data-i="back">← EY Studios örnek çalışma</a>
+<div class="wrap">
+<header>
+  <div class="top"><div class="brand" id="nm">Örnek Kafe</div>
+    <select class="lang" id="lang" aria-label="Language"><option value="tr">TR</option><option value="en">EN</option><option value="de">DE</option></select></div>
+  <div class="hero">
+    <h1 data-i="h1">Masandan sipariş ver</h1>
+    <p data-i="hs">Menüden seç, siparişin doğrudan bize ulaşsın. Ödeme kasada.</p>
+    <div class="tbl" id="tbl" hidden>🪑 <span id="tblT"></span></div>
+    <ol class="how"><li data-i="w1">Ürünleri seç</li><li data-i="w2">Siparişi gönder, WhatsApp açılır</li><li data-i="w3">Kasada öde, masana gelsin</li></ol>
+  </div>
+</header>
+</div>
+<nav class="cats" aria-label="Menu"><div class="in" id="cats"></div></nav>
+<main class="wrap" id="menu"></main>
+<div class="wrap"><p class="note" data-i="note">Menü ve fiyatlar örnektir; işletme kendi menüsünü ve fiyatlarını verir.</p>
+<footer><span id="cr"></span> · <span data-i="by">Tasarım &amp; geliştirme:</span> <a href="index.html">EY Studios</a></footer></div>
+
+<div class="bar" id="barW"><button id="bar" type="button" disabled><span id="barL"></span><span id="barT"></span></button></div>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="sh">
+  <div class="sheet">
+    <button class="x" id="x" type="button" aria-label="Close">✕</button>
+    <h2 id="sh" data-i="cart">Siparişin</h2>
+    <div id="lines"></div>
+    <div class="sum"><span data-i="tot">Toplam</span><span id="tot"></span></div>
+    <p class="pay" data-i="pay">Ödeme kasada yapılır.</p>
+    <label id="tblLab"><span data-i="tn">Masa numarası</span><input id="tn" inputmode="numeric" autocomplete="off" maxlength="6"></label>
+    <label><span data-i="nt">Not (acısız, buzsuz...)</span><textarea id="nt"></textarea></label>
+    <p class="err" id="err" role="alert" data-i="er">Lütfen masa numaranızı yazın.</p>
+    <button class="go" id="go" type="button">💬 <span data-i="send">Siparişi WhatsApp'tan gönder</span></button>
+  </div>
+</div>
+
+<script>
+(function(){
+var WA='905306284284';
+var T={
+tr:{h1:'Masandan sipariş ver',hs:'Menüden seç, siparişin doğrudan bize ulaşsın. Ödeme kasada.',w1:'Ürünleri seç',w2:'Siparişi gönder, WhatsApp açılır',w3:'Kasada öde, masana gelsin',note:'Menü ve fiyatlar örnektir; işletme kendi menüsünü ve fiyatlarını verir.',by:'Tasarım & geliştirme:',back:'← EY Studios örnek çalışma',cart:'Siparişin',tot:'Toplam',pay:'Ödeme kasada yapılır.',tn:'Masa numarası',nt:'Not (acısız, buzsuz...)',er:'Lütfen masa numaranızı yazın.',send:'Siparişi WhatsApp\'tan gönder',view:'Siparişi gör',empty:'Sepet boş',tbl:'Masa'},
+en:{h1:'Order from your table',hs:'Pick from the menu and your order reaches us directly. Pay at the counter.',w1:'Pick your items',w2:'Send the order, WhatsApp opens',w3:'Pay at the counter, we bring it to your table',note:'Menu and prices are samples; the business provides its own menu and prices.',by:'Design & development:',back:'← EY Studios sample work',cart:'Your order',tot:'Total',pay:'You pay at the counter.',tn:'Table number',nt:'Note (no spice, no ice...)',er:'Please enter your table number.',send:'Send order on WhatsApp',view:'View order',empty:'Cart is empty',tbl:'Table'},
+de:{h1:'Bestellen Sie am Tisch',hs:'Wählen Sie aus der Karte, Ihre Bestellung erreicht uns direkt. Bezahlt wird an der Kasse.',w1:'Artikel wählen',w2:'Bestellung senden, WhatsApp öffnet sich',w3:'An der Kasse zahlen, wir bringen es an den Tisch',note:'Karte und Preise sind Beispiele; das Lokal nennt seine eigene Karte und Preise.',by:'Design & Entwicklung:',back:'← EY Studios Beispielarbeit',cart:'Ihre Bestellung',tot:'Summe',pay:'Bezahlt wird an der Kasse.',tn:'Tischnummer',nt:'Hinweis (ohne Eis, nicht scharf...)',er:'Bitte Tischnummer eingeben.',send:'Bestellung per WhatsApp senden',view:'Bestellung ansehen',empty:'Warenkorb leer',tbl:'Tisch'}
+};
+/* [kategori adı tr/en/de, [ürün tr/en/de, açıklama tr/en/de, örnek fiyat]] */
+var M=[
+{c:['Sıcak içecekler','Hot drinks','Heißgetränke'],i:[
+ [['Espresso','Espresso','Espresso'],80],[['Latte','Latte','Latte'],120],[['Cappuccino','Cappuccino','Cappuccino'],120],[['Filtre kahve','Filter coffee','Filterkaffee'],90],[['Çay','Tea','Tee'],40]]},
+{c:['Soğuk içecekler','Cold drinks','Kaltgetränke'],i:[
+ [['Limonata','Lemonade','Limonade'],100],[['Buzlu latte','Iced latte','Eis-Latte'],130],[['Soda','Sparkling water','Mineralwasser'],60]]},
+{c:['Tatlılar','Desserts','Desserts'],i:[
+ [['Cheesecake','Cheesecake','Käsekuchen'],160],[['Tiramisu','Tiramisu','Tiramisu'],170],[['Brownie','Brownie','Brownie'],140]]},
+{c:['Yiyecekler','Food','Speisen'],i:[
+ [['Tost','Toastie','Toast'],150],[['Sandviç','Sandwich','Sandwich'],180],[['Makarna','Pasta','Pasta'],220],[['Mevsim salata','Seasonal salad','Saisonsalat'],190]]}
+];
+var q=new URLSearchParams(location.search),NAME=(q.get('m')||'').trim().slice(0,40)||'Örnek Kafe',TB=(q.get('masa')||'').replace(/[^0-9A-Za-zÇĞİÖŞÜçğıöşü\- ]/g,'').trim().slice(0,6);
+var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)},cur='tr',cart={};
+function d(){return T[cur]}
+function tl(n){return n.toLocaleString('tr-TR')+' TL'}
+$('#nm').textContent=NAME;document.title=NAME+' — Masadan Sipariş';$('#cr').textContent='© '+new Date().getFullYear()+' '+NAME;
+if(TB){$('#tn').value=TB;$('#tblLab').style.display='none'}
+function key(ci,ii){return ci+'_'+ii}
+function render(){
+  var li=cur==='tr'?0:cur==='en'?1:2,h='',cs='';
+  M.forEach(function(c,ci){
+    cs+='<button class="chip" type="button" data-c="'+ci+'">'+c.c[li]+'</button>';
+    h+='<section class="cat" id="c'+ci+'"><h2>'+c.c[li]+'</h2>';
+    c.i.forEach(function(it,ii){var k=key(ci,ii),n=cart[k]||0;
+      h+='<div class="item"><div class="t"><b>'+it[0][li]+'</b><div class="p">'+tl(it[1])+'</div></div><div class="qty">'+(n?'<button type="button" data-a="-" data-k="'+k+'" aria-label="-">−</button><span>'+n+'</span><button type="button" data-a="+" data-k="'+k+'" aria-label="+">+</button>':'<button class="add" type="button" data-a="+" data-k="'+k+'" aria-label="+">+</button>')+'</div></div>'});
+    h+='</section>'});
+  $('#menu').innerHTML=h;$('#cats').innerHTML=cs;bar();
+}
+function items(){var li=cur==='tr'?0:cur==='en'?1:2,o=[];M.forEach(function(c,ci){c.i.forEach(function(it,ii){var n=cart[key(ci,ii)]||0;if(n)o.push({n:n,name:it[0][li],tr:it[0][0],p:it[1]})})});return o}
+function total(){return items().reduce(function(s,x){return s+x.n*x.p},0)}
+function count(){return items().reduce(function(s,x){return s+x.n},0)}
+function bar(){var n=count(),b=$('#bar');b.disabled=!n;$('#barL').textContent=n?d().view+' ('+n+')':d().empty;$('#barT').textContent=n?tl(total()):''}
+function lines(){var h='';items().forEach(function(x){h+='<div class="row"><span class="n">'+x.n+'× '+x.name+'</span><span>'+tl(x.n*x.p)+'</span></div>'});$('#lines').innerHTML=h;$('#tot').textContent=tl(total())}
+function setLang(l){if(!T[l])l='tr';cur=l;document.documentElement.lang=l;$$('[data-i]').forEach(function(e){var k=e.getAttribute('data-i');if(d()[k]!=null)e.textContent=d()[k]});$('#lang').value=l;
+  if(TB){$('#tblT').textContent=d().tbl+' '+TB;$('#tbl').hidden=false}
+  render();if($('#ov').classList.contains('on'))lines();try{localStorage.setItem('ey-lang',l)}catch(e){}}
+$('#lang').addEventListener('change',function(e){setLang(e.target.value)});
+document.addEventListener('click',function(e){
+  var b=e.target.closest('button[data-a]');
+  if(b){var k=b.getAttribute('data-k');cart[k]=Math.max(0,(cart[k]||0)+(b.getAttribute('data-a')==='+'?1:-1));if(!cart[k])delete cart[k];
+    var y=window.scrollY;render();window.scrollTo(0,y);return}
+  var c=e.target.closest('.chip');if(c){var s=$('#c'+c.getAttribute('data-c'));if(s)s.scrollIntoView({behavior:'smooth'})}
+});
+$('#bar').addEventListener('click',function(){lines();$('#ov').classList.add('on')});
+$('#x').addEventListener('click',function(){$('#ov').classList.remove('on')});
+$('#ov').addEventListener('click',function(e){if(e.target.id==='ov')$('#ov').classList.remove('on')});
+addEventListener('keydown',function(e){if(e.key==='Escape')$('#ov').classList.remove('on')});
+/* işletmeye giden mesaj her zaman Türkçe */
+$('#go').addEventListener('click',function(){
+  var tn=$('#tn').value.trim();if(!tn||!count()){$('#err').classList.add('on');return}$('#err').classList.remove('on');
+  var t='Merhaba, sipariş:\nMasa: '+tn+'\n'+items().map(function(x){return x.n+'x '+x.tr}).join('\n')+($('#nt').value.trim()?'\nNot: '+$('#nt').value.trim():'')+'\nToplam: '+tl(total())+' (ödeme kasada)';
+  location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(t)});
+$('#tn').addEventListener('input',function(){$('#err').classList.remove('on')});
+/* kategori çubuğunda görünen bölüm vurgulansın */
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){var i=x.target.id.slice(1);$$('.chip').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-c')===i)})}})},{rootMargin:'-80px 0px -65% 0px'}):null;
+var _r=render;render=function(){_r();if(io)$$('section.cat').forEach(function(s){io.observe(s)})};
+var init='tr';try{var s=localStorage.getItem('ey-lang');if(s&&T[s])init=s}catch(e){}
+setLang(init);
+/* footer görününce "örnek çalışma" düğmesi gizlensin; imzanın üstüne binmesin */
+var db=$('.demo-back'),f=$('footer');if(db&&f&&'IntersectionObserver' in window){new IntersectionObserver(function(e){var on=e[0].isIntersecting;db.style.opacity=on?'0':'';db.style.pointerEvents=on?'none':''}).observe(f)}
+})();
+</script>
+</body>
+</html>
