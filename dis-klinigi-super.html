@@ -460,6 +460,12 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     scrollTo(0, scrollY + mv);
     raf = requestAnimationFrame(step);
   }
+  /* Film dışına çıkıldı (başta yukarı, sonda aşağı): kendi animasyonumuzu iptal et.
+     Yoksa step() sayfayı geri durağa çeker ve tarayıcının normal kaydırmasıyla çekişip titretir. */
+  function release() {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0; target = null; acc = 0; clearTimeout(gTimer);
+  }
   function startGesture() {
     /* Film hâlâ bir önceki durağa kayıyorsa yeni hareket ona eklenmez: aynı durakta kalır. */
     if (target !== null && Math.abs(target - scrollY) > 40) return;
@@ -470,7 +476,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     var dy = e.deltaY * (e.deltaMode === 1 ? 40 : e.deltaMode === 2 ? innerHeight : 1), now = performance.now();
     if (now - gWheel > 240) startGesture();
     gWheel = now;
-    if (!inFilm(g0, acc + dy || dy)) return;
+    if (!inFilm(g0, acc + dy || dy)) { release(); return; }
     e.preventDefault();
     acc += dy; aim(false);
     clearTimeout(gTimer); gTimer = setTimeout(function () { aim(true); }, 240);
@@ -482,7 +488,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   addEventListener('touchmove', function (e) {
     if (!touching || e.touches.length !== 1) return;
     var y = e.touches[0].clientY, dy = ty - y, now = performance.now();
-    if (!inFilm(g0, acc + dy || dy)) { ty = y; return; }
+    if (!inFilm(g0, acc + dy || dy)) { release(); ty = y; return; }
     if (e.cancelable) e.preventDefault();
     tv = 0.75 * tv + 0.25 * (dy / Math.max(1, now - tlast));
     ty = y; tlast = now; acc += dy; aim(false);
