@@ -3,27 +3,285 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OkeyBul · Masaya 4. kişi mi lazım?</title>
-<meta name="description" content="OkeyBul ile bu akşam okey oynamak isteyenleri bul, kafeye çağır, masayı doldur. 81 ilde, her ilçede.">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<title>OkeyBul · Proje | EY Studios TR</title>
+<meta name="description" content="OkeyBul: kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz uygulama. Fikirden yayına EY Studios tarafından tasarlandı ve geliştirildi.">
+<meta name="theme-color" content="#0D1311">
+<link rel="canonical" href="https://eystudios.com.tr/okeybul/">
 <link rel="icon" href="icon-192.png" type="image/png">
-<link rel="stylesheet" href="sayfa.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EY Studios TR">
+<meta property="og:url" content="https://eystudios.com.tr/okeybul/">
+<meta property="og:title" content="OkeyBul · EY Studios'un kendi ürünü">
+<meta property="og:description" content="Okeye bir kişi mi eksik? Kahvehane oyunları için eksik oyuncu bulma uygulaması. 81 ilde, ücretsiz.">
+<meta property="og:image" content="https://eystudios.com.tr/okeybul/medya/og.png">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1311; --surface:#151D1A; --ink:#E6EDE9; --muted:#9AA8A1; --line:#29352F;
+    --felt:#43A585; --felt-ink:#0D1311; --tile:#ECE8DC; --red:#E0464E;
+    --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+    --body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    color-scheme:dark;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-wrap:anywhere;hyphens:auto}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--felt);outline-offset:3px;border-radius:4px}
+  img,video{display:block;max-width:100%}
+  .wrap{width:min(1120px,100% - 2rem);margin-inline:auto}
+
+  .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0}
+  .back{font-weight:600;font-size:.95rem;text-decoration:none;color:var(--muted)}
+  .back:hover{color:var(--ink)}
+  .langs{display:flex;gap:.3rem}
+  .langs button{font:600 .8rem var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:8px;padding:.35rem .6rem;cursor:pointer;min-height:36px}
+  .langs button[aria-pressed="true"]{color:var(--felt-ink);background:var(--felt);border-color:var(--felt)}
+
+  .hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,5vw,4rem);align-items:center;padding:clamp(1.5rem,5vw,4rem) 0 clamp(3rem,7vw,5rem)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:var(--felt);margin:0 0 1rem}
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--felt);box-shadow:0 0 0 4px rgba(67,165,133,.2);animation:pulse 2s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 8px rgba(67,165,133,0)}}
+  .brandrow{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+  .brandrow img{width:56px;height:56px;border-radius:14px}
+  .brandrow span{font:800 1.8rem/1 var(--display);letter-spacing:-.02em}
+  .brandrow b{color:var(--felt)}
+  h1{font:800 clamp(2.3rem,6.4vw,4.4rem)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 1.2rem}
+  h1 em{font-style:normal;color:var(--felt)}
+  .lede{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--muted);max-width:52ch;margin:0 0 1.8rem}
+  .btns{display:flex;flex-wrap:wrap;gap:.7rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:50px;padding:.7rem 1.3rem;border-radius:10px;font:600 1rem/1.2 var(--body);text-decoration:none;background:var(--felt);color:var(--felt-ink);border:1.5px solid var(--felt);transition:transform .2s,filter .2s}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--ink)}
+
+  .phone{justify-self:center;width:min(300px,78vw);aspect-ratio:9/16;border-radius:34px;padding:9px;background:#05080A;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.55);position:relative;transform:rotate(2.5deg)}
+  .phone video{width:100%;height:100%;object-fit:cover;border-radius:26px;background:#0D1311}
+  .phone .snd{position:absolute;right:16px;bottom:16px;font:600 .78rem var(--body);background:rgba(13,19,17,.85);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.45rem .75rem;cursor:pointer;min-height:36px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+  .stat{padding:1.4rem 1rem;text-align:center;border-inline-end:1px solid var(--line)}
+  .stat:last-child{border-inline-end:0}
+  .stat b{display:block;font:800 clamp(1.8rem,4vw,2.6rem)/1 var(--display);letter-spacing:-.03em;color:var(--tile)}
+  .stat span{font-size:.9rem;color:var(--muted)}
+
+  section.block{padding:clamp(3.5rem,8vw,6rem) 0}
+  .kicker{font-weight:600;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--felt);margin:0 0 .6rem}
+  h2{font:800 clamp(1.8rem,4.2vw,2.8rem)/1.08 var(--display);letter-spacing:-.03em;margin:0 0 1rem;max-width:22ch}
+  .sub{color:var(--muted);max-width:60ch;margin:0}
+
+  .pc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:2.2rem}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.5rem}
+  .card h3{font:700 1.25rem/1.2 var(--display);margin:0 0 .5rem}
+  .card p{margin:0;color:var(--muted)}
+  .card.pro{background:linear-gradient(160deg,#16352B,#151D1A 70%);border-color:#2E5A4A}
+
+  .feats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:2.2rem}
+  .feat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.2rem;transition:border-color .25s,transform .25s}
+  .feat:hover{border-color:var(--felt);transform:translateY(-3px)}
+  .feat i{font-style:normal;font-size:1.6rem;display:block;margin-bottom:.6rem}
+  .feat h3{font:700 1.05rem/1.25 var(--display);margin:0 0 .35rem}
+  .feat p{margin:0;color:var(--muted);font-size:.95rem}
+
+  .shots{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:2rem 0 1rem;margin-top:.5rem;scrollbar-width:thin}
+  .shots figure{flex:0 0 min(230px,62vw);margin:0;scroll-snap-align:start}
+  .shots img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:18px;border:1px solid var(--line)}
+  .shots figcaption{font-size:.88rem;color:var(--muted);margin-top:.5rem}
+
+  .did{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2.2rem;counter-reset:d}
+  .did .card{position:relative;padding-top:2.6rem}
+  .did .card::before{counter-increment:d;content:"0" counter(d);position:absolute;top:1.1rem;left:1.5rem;font:800 .85rem var(--display);color:var(--felt);letter-spacing:.06em}
+  .stack{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+  .stack span{font-size:.85rem;font-weight:600;padding:.4rem .8rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+
+  .cta{background:var(--tile);color:#12100B;border-radius:24px;padding:clamp(2rem,6vw,3.5rem);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:center;position:relative;overflow:hidden}
+  .cta h2{color:#12100B;margin:0 0 .5rem}
+  .cta p{margin:0;color:#4A463B;max-width:52ch}
+  .cta .btn{background:#12100B;color:var(--tile);border-color:#12100B}
+  .cta .tile4{position:absolute;right:-18px;top:-22px;width:92px;height:122px;border-radius:12px;background:#FFFDF6;border:2px solid #CFC8B4;transform:rotate(14deg);display:grid;place-items:center;font:800 3.4rem var(--display);color:var(--red);pointer-events:none}
+  .cta > div{position:relative}
+
+  footer{padding:3rem 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center;border-top:1px solid var(--line);margin-top:clamp(3rem,7vw,5rem)}
+  footer a{color:var(--ink)}
+  footer .links{margin-top:.5rem;font-size:.85rem}
+
+  .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .js .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.eyebrow::before{animation:none}html{scroll-behavior:auto}}
+
+  @media (max-width:960px){.feats{grid-template-columns:repeat(2,minmax(0,1fr))}.did{grid-template-columns:minmax(0,1fr)}}
+  @media (max-width:760px){
+    .hero{grid-template-columns:minmax(0,1fr)}
+    .phone{transform:none;width:min(260px,72vw)}
+    .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .stat:nth-child(2){border-inline-end:0}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .pc{grid-template-columns:minmax(0,1fr)}
+    .cta{grid-template-columns:minmax(0,1fr);padding-top:3.5rem}
+  }
+  @media (max-width:420px){.feats{grid-template-columns:minmax(0,1fr)}.hero .btn{width:100%}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<main class="doc">
-  <a class="brand" href="./"><img src="icon-192.png" alt="" width="36" height="36"><span>Okey<b>Bul</b></span></a>
-  <section class="hero">
-    <h1>Masaya 4. kişi mi lazım?</h1>
-    <p class="lede">OkeyBul ile ilçende bu akşam okey oynamak isteyenleri bul, kafeye çağır, masayı doldur. Uygulamada okey oynanmaz; sadece buluşulur.</p>
-    <p class="soon"><span>Çok yakında açılıyor</span></p>
-    <a class="btn" href="https://www.instagram.com/okeybultr/" target="_blank" rel="noopener">Instagram'da takip et · @okeybultr</a>
-  </section>
-  <div class="steps">
-    <div class="step"><b>1. Bul</b><span>Şehrini ve ilçeni seç, haritada açık masaları ve oyuncu arayanları gör.</span></div>
-    <div class="step"><b>2. Çağır</b><span>"Saat 19.00, şu kafedeyiz, gelir misin?" diye teklif at ya da masaya katıl.</span></div>
-    <div class="step"><b>3. Buluş</b><span>Masa 4 kişi olunca herkes yeri ve saati görür, kafede buluşursunuz.</span></div>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="../">← EY Studios</a>
+    <div class="langs" role="group" aria-label="Dil">
+      <button type="button" data-l="tr" aria-pressed="true">TR</button>
+      <button type="button" data-l="en" aria-pressed="false">EN</button>
+      <button type="button" data-l="de" aria-pressed="false">DE</button>
+    </div>
   </div>
-  <p>Google hesabınla tek dokunuşla girersin. 18 yaş ve üstü içindir. Kafe sahibiysen <a href="mailto:okeybultr@gmail.com">bize yaz</a>, masalarına QR afişi getirelim.</p>
-  <footer>OkeyBul bir <a href="https://eystudios.com.tr">EY Studios</a> ürünüdür · <a href="gizlilik.html">Gizlilik Politikası</a> · <a href="kosullar.html">Kullanım Koşulları</a> · Instagram: @okeybultr</footer>
-</main>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow" data-i18n="eye">Kendi ürünümüz · Yayında</p>
+      <div class="brandrow"><img src="medya/icon-512.png" alt="OkeyBul logosu" width="56" height="56"><span>Okey<b>Bul</b></span></div>
+      <h1 data-i18n-html="h1">Okeye bir kişi mi eksik? <em>Uygulamasını yaptık.</em></h1>
+      <p class="lede" data-i18n="lede">OkeyBul, kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz bir uygulama. Fikrinden logosuna, sunucusundan tanıtım videosuna kadar her şeyini EY Studios olarak biz yaptık.</p>
+      <div class="btns">
+        <a class="btn" href="https://okeybul.com.tr" target="_blank" rel="noopener" data-i18n="b1">Uygulamayı aç →</a>
+        <a class="btn ghost" href="https://www.instagram.com/okeybultr/" target="_blank" rel="noopener">Instagram · @okeybultr</a>
+      </div>
+    </div>
+    <div class="phone">
+      <video id="reel" src="medya/okeybul-reel.mp4" poster="medya/reel-kapak.jpg" muted loop playsinline preload="metadata" aria-label="OkeyBul tanıtım videosu"></video>
+      <button class="snd" type="button" id="snd">🔈 Sesi aç</button>
+    </div>
+  </header>
+</div>
+
+<div class="wrap">
+  <div class="stats rv">
+    <div class="stat"><b>81</b><span data-i18n="s1">il, her ilçe</span></div>
+    <div class="stat"><b>6</b><span data-i18n="s2">oyun</span></div>
+    <div class="stat"><b>0 ₺</b><span data-i18n="s3">tamamen ücretsiz</span></div>
+    <div class="stat"><b>1 dk</b><span data-i18n="s4">masa açmak</span></div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="kicker rv" data-i18n="k1">Fikir</p>
+    <h2 class="rv" data-i18n="h2a">Herkesin yaşadığı küçük bir dert.</h2>
+    <div class="pc">
+      <div class="card rv">
+        <h3 data-i18n="p_t">Sorun</h3>
+        <p data-i18n="p_d">Kafede masa hazır, çay geldi, üç kişisiniz. Dördüncüyü bulmak için WhatsApp grupları tek tek yazılır, çoğu zaman oyun hiç başlamaz.</p>
+      </div>
+      <div class="card pro rv">
+        <h3 data-i18n="c_t">Çözüm</h3>
+        <p data-i18n="c_d">OkeyBul'da masanı aç, ilçendeki oyuncular görsün ve katılsın. Masa dolunca herkes yeri ve saati görür, kafede buluşursunuz. Oyun uygulamada değil, masada oynanır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker rv" data-i18n="k2">Özellikler</p>
+    <h2 class="rv" data-i18n="h2b">Masayı doldurmak için gereken her şey.</h2>
+    <div class="feats">
+      <div class="feat rv"><i>⚡</i><h3 data-i18n="f1t">Şimdi masası</h3><p data-i18n="f1d">"Hemen başlıyoruz" de, yakındakiler anında görsün.</p></div>
+      <div class="feat rv"><i>🔔</i><h3 data-i18n="f2t">Bana haber ver</h3><p data-i18n="f2d">İlçende masa açılınca telefonuna bildirim gelir.</p></div>
+      <div class="feat rv"><i>🪑</i><h3 data-i18n="f3t">Yedek listesi</h3><p data-i18n="f3d">Masa doluysa yedek ol; biri gelemezse sıra sana geçer.</p></div>
+      <div class="feat rv"><i>💬</i><h3 data-i18n="f4t">Masa sohbeti</h3><p data-i18n="f4d">"Yoldayım", "Geldim, hangi masadasınız?" gibi hızlı mesajlar.</p></div>
+      <div class="feat rv"><i>🧭</i><h3 data-i18n="f5t">Yol tarifi</h3><p data-i18n="f5d">Kafeye tek dokunuşla harita üzerinden yol tarifi.</p></div>
+      <div class="feat rv"><i>🎲</i><h3 data-i18n="f6t">6 oyun</h3><p data-i18n="f6d">Okey, 101, tavla, batak, king ve pişti.</p></div>
+      <div class="feat rv"><i>🤝</i><h3 data-i18n="f7t">Söz tutma oranı</h3><p data-i18n="f7d">Gelmeyenler belli olur; engelleme ve şikayetle güvenli ortam.</p></div>
+      <div class="feat rv"><i>🚫</i><h3 data-i18n="f8t">Kumar yok</h3><p data-i18n="f8d">Paralı oyun teklifleri otomatik engellenir. Keyfine oynanır.</p></div>
+    </div>
+
+    <div class="shots" aria-label="Uygulama ekranları">
+      <figure><img src="medya/d-simdi.jpg" alt="" loading="lazy" width="540" height="960"><figcaption data-i18n="g1">Şimdi masasına katıl</figcaption></figure>
+      <figure><img src="medya/e-alert.jpg" alt="" loading="lazy" width="540" height="960"><figcaption data-i18n="g2">Masa açılınca bildirim</figcaption></figure>
+      <figure><img src="medya/f-wait.jpg" alt="" loading="lazy" width="540" height="960"><figcaption data-i18n="g3">Yedek listesi</figcaption></figure>
+      <figure><img src="medya/g-chat.jpg" alt="" loading="lazy" width="540" height="960"><figcaption data-i18n="g4">Hızlı mesajlar</figcaption></figure>
+      <figure><img src="medya/h-route.jpg" alt="" loading="lazy" width="540" height="960"><figcaption data-i18n="g5">Kafeye yol tarifi</figcaption></figure>
+      <figure><img src="medya/i-games.jpg" alt="" loading="lazy" width="540" height="960"><figcaption data-i18n="g6">6 oyun tek yerde</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker rv" data-i18n="k3">Neler yaptık</p>
+    <h2 class="rv" data-i18n="h2c">Sadece bir web sitesi değil, baştan sona bir ürün.</h2>
+    <p class="sub rv" data-i18n="h2c_s">Bu projede bir ajansın ve bir yazılım ekibinin yaptığı her işi tek elden yürüttük.</p>
+    <div class="did">
+      <div class="card rv"><h3 data-i18n="d1t">Ürün ve tasarım</h3><p data-i18n="d1d">Kullanıcı akışları, ekran tasarımları, logo ve marka kimliği.</p></div>
+      <div class="card rv"><h3 data-i18n="d2t">Telefona kurulan uygulama</h3><p data-i18n="d2d">Mağazaya gerek kalmadan ana ekrana eklenen, bildirim gönderen bir web uygulaması (PWA).</p></div>
+      <div class="card rv"><h3 data-i18n="d3t">Sunucu ve veritabanı</h3><p data-i18n="d3d">Google ile giriş, masalar, sohbet, harita ve 81 ilin bütün ilçeleri.</p></div>
+      <div class="card rv"><h3 data-i18n="d4t">Güvenlik ve kurallar</h3><p data-i18n="d4d">18 yaş sınırı, şikayet ve engelleme, kumar filtresi, KVKK'ya uygun gizlilik metinleri.</p></div>
+      <div class="card rv"><h3 data-i18n="d5t">Yönetim paneli</h3><p data-i18n="d5d">Kullanıcıları, masaları ve şikayetleri tek ekrandan izleyen panel ve istatistikler.</p></div>
+      <div class="card rv"><h3 data-i18n="d6t">Tanıtım</h3><p data-i18n="d6d">Instagram reels videoları, el ilanları ve kafeler için QR afişleri.</p></div>
+    </div>
+    <div class="stack rv" aria-label="Kullanılan teknolojiler">
+      <span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>PWA</span><span>Web Push</span><span>MapLibre</span><span>Google Sign-In</span><span>Heroku</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cta rv">
+    <div class="tile4" aria-hidden="true">4</div>
+    <div>
+      <h2 data-i18n="cta_h">Aklınızda bir uygulama mı var?</h2>
+      <p data-i18n="cta_d">Rezervasyon, sipariş, üyelik ya da bambaşka bir fikir. OkeyBul'u nasıl yaptıysak sizinkini de öyle yapalım: fikirden yayına, tek elden.</p>
+    </div>
+    <div class="btns">
+      <a class="btn" id="wa" href="https://wa.me/905306284284" target="_blank" rel="noopener" data-i18n="cta_b">WhatsApp'tan yaz</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div data-i18n-html="foot">OkeyBul bir <a href="https://eystudios.com.tr">EY Studios</a> ürünüdür</div>
+    <div class="links"><a href="gizlilik.html" data-i18n="gz">Gizlilik Politikası</a> · <a href="kosullar.html" data-i18n="kk">Kullanım Koşulları</a> · <a href="mailto:okeybultr@gmail.com">okeybultr@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var D={
+    en:{eye:"Our own product · Live",h1:"One player short for okey? <em>We built the app.</em>",lede:"OkeyBul is a free app that finds the missing player for Turkish café games. From the idea and logo to the server and the promo video, EY Studios built all of it.",b1:"Open the app →",s1:"provinces, every district",s2:"games",s3:"completely free",s4:"to open a table",k1:"The idea",h2a:"A small problem everyone knows.",p_t:"The problem",p_d:"The table is set at the café, tea is here, there are three of you. You message WhatsApp groups one by one to find a fourth, and often the game never starts.",c_t:"The solution",c_d:"Open your table on OkeyBul, players in your district see it and join. When the table is full, everyone sees the place and time, and you meet at the café. The game is played at the table, not in the app.",k2:"Features",h2b:"Everything you need to fill the table.",f1t:"Play now",f1d:"Say \"starting now\" and nearby players see it instantly.",f2t:"Notify me",f2d:"Get a notification when a table opens in your district.",f3t:"Waitlist",f3d:"Table full? Join the waitlist; if someone drops out, it's your turn.",f4t:"Table chat",f4d:"Quick messages like \"On my way\" or \"I'm here, which table?\"",f5t:"Directions",f5d:"One-tap directions to the café on the map.",f6t:"6 games",f6d:"Okey, 101, backgammon, batak, king and pişti.",f7t:"Reliability score",f7d:"No-shows become visible; blocking and reporting keep it safe.",f8t:"No gambling",f8d:"Offers to play for money are blocked automatically.",g1:"Join a play-now table",g2:"Notified when a table opens",g3:"Waitlist",g4:"Quick messages",g5:"Directions to the café",g6:"6 games in one place",k3:"What we did",h2c:"Not just a website, a product from start to finish.",h2c_s:"On this project we handled everything an agency and a software team would do, in one place.",d1t:"Product and design",d1d:"User flows, screen design, logo and brand identity.",d2t:"An installable app",d2d:"A web app (PWA) that installs on the home screen and sends notifications, no app store needed.",d3t:"Server and database",d3d:"Google sign-in, tables, chat, maps and every district of all 81 provinces.",d4t:"Safety and rules",d4d:"18+ only, report and block, a gambling filter and privacy policies under Turkish data law.",d5t:"Admin panel",d5d:"A panel with statistics to monitor users, tables and reports in one place.",d6t:"Promotion",d6d:"Instagram reels, flyers and QR posters for cafés.",cta_h:"Have an app in mind?",cta_d:"Booking, ordering, memberships or something completely different. We'll build yours the way we built OkeyBul: from idea to launch, in one place.",cta_b:"Message on WhatsApp",foot:"OkeyBul is an <a href=\"https://eystudios.com.tr\">EY Studios</a> product",gz:"Privacy Policy",kk:"Terms of Use"},
+    de:{eye:"Unser eigenes Produkt · Live",h1:"Fehlt beim Okey ein Spieler? <em>Wir haben die App gebaut.</em>",lede:"OkeyBul ist eine kostenlose App, die den fehlenden Mitspieler für türkische Kaffeehausspiele findet. Von der Idee und dem Logo bis zum Server und Werbevideo hat EY Studios alles selbst gemacht.",b1:"App öffnen →",s1:"Provinzen, jeder Bezirk",s2:"Spiele",s3:"komplett kostenlos",s4:"für einen neuen Tisch",k1:"Die Idee",h2a:"Ein kleines Problem, das jeder kennt.",p_t:"Das Problem",p_d:"Der Tisch im Café ist bereit, der Tee ist da, ihr seid zu dritt. Um den Vierten zu finden, schreibt man WhatsApp-Gruppen einzeln an, und oft beginnt das Spiel nie.",c_t:"Die Lösung",c_d:"Öffne deinen Tisch bei OkeyBul, Spieler in deinem Bezirk sehen ihn und machen mit. Ist der Tisch voll, sehen alle Ort und Uhrzeit, und ihr trefft euch im Café. Gespielt wird am Tisch, nicht in der App.",k2:"Funktionen",h2b:"Alles, um den Tisch voll zu bekommen.",f1t:"Jetzt spielen",f1d:"Sag \"wir fangen gleich an\" und Spieler in der Nähe sehen es sofort.",f2t:"Benachrichtige mich",f2d:"Eine Nachricht, sobald in deinem Bezirk ein Tisch öffnet.",f3t:"Warteliste",f3d:"Tisch voll? Auf die Warteliste; sagt jemand ab, bist du dran.",f4t:"Tisch-Chat",f4d:"Schnellnachrichten wie \"Bin unterwegs\" oder \"Bin da, welcher Tisch?\"",f5t:"Wegbeschreibung",f5d:"Mit einem Tippen zum Café navigieren.",f6t:"6 Spiele",f6d:"Okey, 101, Tavla, Batak, King und Pişti.",f7t:"Zuverlässigkeit",f7d:"Wer nicht kommt, wird sichtbar; Blockieren und Melden sorgen für Sicherheit.",f8t:"Kein Glücksspiel",f8d:"Angebote, um Geld zu spielen, werden automatisch blockiert.",g1:"Einem Jetzt-Tisch beitreten",g2:"Benachrichtigung bei neuem Tisch",g3:"Warteliste",g4:"Schnellnachrichten",g5:"Weg zum Café",g6:"6 Spiele an einem Ort",k3:"Was wir gemacht haben",h2c:"Nicht nur eine Website, sondern ein komplettes Produkt.",h2c_s:"Bei diesem Projekt haben wir alles übernommen, was sonst eine Agentur und ein Softwareteam machen, aus einer Hand.",d1t:"Produkt und Design",d1d:"Nutzerabläufe, Screendesign, Logo und Markenidentität.",d2t:"Installierbare App",d2d:"Eine Web-App (PWA), die auf dem Startbildschirm landet und Benachrichtigungen sendet, ganz ohne App Store.",d3t:"Server und Datenbank",d3d:"Google-Anmeldung, Tische, Chat, Karte und jeder Bezirk aller 81 Provinzen.",d4t:"Sicherheit und Regeln",d4d:"Ab 18, Melden und Blockieren, Glücksspielfilter und Datenschutztexte nach türkischem Recht.",d5t:"Admin-Panel",d5d:"Ein Panel mit Statistiken für Nutzer, Tische und Meldungen.",d6t:"Werbung",d6d:"Instagram-Reels, Flyer und QR-Poster für Cafés.",cta_h:"Sie haben eine App-Idee?",cta_d:"Reservierung, Bestellung, Mitgliedschaft oder etwas ganz anderes. Wir bauen Ihre App so wie OkeyBul: von der Idee bis zum Start, aus einer Hand.",cta_b:"Auf WhatsApp schreiben",foot:"OkeyBul ist ein Produkt von <a href=\"https://eystudios.com.tr\">EY Studios</a>",gz:"Datenschutz",kk:"Nutzungsbedingungen"}
+  };
+  var TR={},els=document.querySelectorAll('[data-i18n],[data-i18n-html]');
+  els.forEach(function(e){var k=e.getAttribute('data-i18n');if(k)TR[k]=e.textContent;else{k=e.getAttribute('data-i18n-html');TR[k]=e.innerHTML}});
+  var WA={tr:"Merhaba, OkeyBul'u gördüm. Benim de bir uygulama fikrim var.",en:"Hi, I saw OkeyBul. I have an app idea too.",de:"Hallo, ich habe OkeyBul gesehen. Ich habe auch eine App-Idee."};
+  var SND={on:{tr:"🔊 Sesi kapat",en:"🔊 Sound off",de:"🔊 Ton aus"},off:{tr:"🔈 Sesi aç",en:"🔈 Sound on",de:"🔈 Ton an"}};
+  var v=document.getElementById('reel'),s=document.getElementById('snd'),cur='tr';
+  function sndLabel(){s.textContent=SND[v.muted?'off':'on'][cur]}
+  function set(l){
+    if(l!=='en'&&l!=='de')l='tr';cur=l;var d=l==='tr'?TR:D[l];
+    document.documentElement.lang=l;
+    els.forEach(function(e){var k=e.getAttribute('data-i18n');if(k){if(d[k]!=null)e.textContent=d[k]}else{k=e.getAttribute('data-i18n-html');if(d[k]!=null)e.innerHTML=d[k]}});
+    document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-l')===l?'true':'false')});
+    document.getElementById('wa').href='https://wa.me/905306284284?text='+encodeURIComponent(WA[l]);
+    sndLabel();
+    try{localStorage.setItem('ey-lang',l)}catch(e){}
+  }
+  document.querySelectorAll('.langs button').forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-l'))})});
+  s.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted)v.currentTime=0;v.play().catch(function(){});sndLabel()});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)v.play().catch(function(){});else v.pause()})},{threshold:.35}).observe(v);
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+  }else{document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});v.play().catch(function(){})}
+  var saved;try{saved=localStorage.getItem('ey-lang')}catch(e){}
+  set(saved||'tr');
+})();
+</script>
 </body>
 </html>
