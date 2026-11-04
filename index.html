@@ -386,6 +386,7 @@
     .note { width: 70%; }
   }
 
+  @media (max-width: 860px) { nav ul li:not(:last-child):not(.keep) { display: none; } }
   @media (max-width: 620px) {
     nav ul li:not(:last-child):not(.keep) { display: none; }
     nav ul li.keep { display: block; }
@@ -415,6 +416,24 @@
   .sectors h3 a { text-decoration: none; }
   .sectors h3 a:hover { color: var(--accent); }
   .sectors p { margin: 0; color: var(--muted); }
+  .pj { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); border: 1px solid var(--line); border-radius: calc(var(--radius) * 1.6); background: var(--surface); overflow: hidden; }
+  .pj-txt { padding: clamp(1.5rem, 4vw, 3rem); display: flex; flex-direction: column; gap: 1rem; }
+  .pj-brand { display: flex; align-items: center; gap: .8rem; }
+  .pj-brand img { width: 52px; height: 52px; border-radius: 14px; }
+  .pj-brand b { display: block; font-family: var(--display); font-size: 1.35rem; line-height: 1.1; }
+  .pj-brand span { font-size: .88rem; color: #2E8E6E; font-weight: 600; }
+  .pj-brand span::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #43A585; margin-right: .4rem; vertical-align: middle; }
+  .pj h3 { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 3.4vw, 2.4rem); line-height: 1.05; letter-spacing: -0.03em; margin: .4rem 0 0; }
+  .pj-txt > p { margin: 0; color: var(--muted); max-width: 52ch; }
+  .pj-chips { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; margin: 0; padding: 0; }
+  .pj-chips li { font-size: .85rem; font-weight: 600; padding: .35rem .75rem; border: 1px solid var(--line); border-radius: 999px; }
+  .pj-btns { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .4rem; }
+  .pj-vis { display: grid; place-items: center; padding: clamp(1.5rem, 3vw, 2.5rem); background: radial-gradient(120% 90% at 70% 20%, #1E4A3B 0%, #0D1311 70%); }
+  .pj-vis img { width: min(240px, 100%); height: auto; border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,.45); transform: rotate(3deg); transition: transform .35s ease; }
+  .pj:hover .pj-vis img { transform: rotate(0deg) translateY(-4px); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pj-brand span { color: #6FD0AE; } }
+  :root[data-theme="dark"] .pj-brand span { color: #6FD0AE; }
+  @media (max-width: 760px) { .pj { grid-template-columns: minmax(0, 1fr); } .pj-vis { order: -1; } .pj-vis img { width: min(200px, 60%); } }
   @media (max-width: 960px) { .sectors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 620px) { .sectors { grid-template-columns: minmax(0, 1fr); } }
 
@@ -449,6 +468,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         <ul>
          <li><a href="#surec" data-i18n="nav1">Süreç</a></li>
          <li><a href="#calismalar" data-i18n="nav2">Çalışmalar</a></li>
+         <li><a href="#projeler" data-i18n="nav5">Projeler</a></li>
          <li><a href="#paketler" data-i18n="nav3">Paketler</a></li>
           <li class="keep"><button class="tbtn" id="themeBtn" type="button" aria-label="Açık ya da koyu temayı değiştir"><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></g></svg></button></li>
           
@@ -650,20 +670,6 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       <p class="sub" data-i18n="cal_s">Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.</p>
 
       <div class="works">
-        <a class="work live reveal" href="okeybul/">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>okeybul.com.tr</span></div>
-            <div class="scr" style="--s-bg:#0D1311;--s-ink:#E6EDE9;--s-acc:#43A585;--s-on:#0D1311">
-              <div class="n"><span>OkeyBul</span><em>Kendi ürünümüz · Canlı</em></div>
-              <div class="big">Okeye bir kişi mi eksik?</div>
-              <div class="t">Okey, 101, tavla, batak, king ve pişti. 81 ilde, ücretsiz.</div>
-              <div class="b">Masa bul</div>
-            </div>
-          </div>
-          <h3 data-i18n="c0_t">OkeyBul · Kendi ürünümüz</h3>
-          <p data-i18n="c0_d">Kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz uygulama. Fikirden yayına tamamen EY Studios işi.</p>
-          <span class="tag" data-i18n="c0_btn">Projeyi incele →</span>
-        </a>
 
         <a class="work live reveal" href="avukat.html">
           <div class="frame" aria-hidden="true">
@@ -832,6 +838,32 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       <div class="hbar" aria-hidden="true"><i id="hbarFill"></i></div>
     </div>
     </div></div>
+  </section>
+
+  <section class="block" id="projeler" aria-labelledby="proje-baslik">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="pj_k">Projeler</p>
+      <h2 id="proje-baslik" data-i18n="pj_h">Kendi ürünlerimiz.</h2>
+      <p class="sub" data-i18n="pj_s">Müşteri sitelerinin yanında kendi fikirlerimizi de baştan sona ürüne dönüştürüyoruz. İlki yayında.</p>
+
+      <article class="pj reveal">
+        <div class="pj-txt">
+          <div class="pj-brand"><img src="okeybul/medya/icon-512.png" alt="" width="52" height="52" loading="lazy"><div><b>OkeyBul</b><span data-i18n="pj1_live">Yayında · okeybul.com.tr</span></div></div>
+          <h3 data-i18n="pj1_t">Okeye bir kişi mi eksik?</h3>
+          <p data-i18n="pj1_d">Kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz uygulama. Masanı aç, ilçendeki oyuncular katılsın, kafede buluşun. Fikir, tasarım, logo, sunucu ve tanıtım videosu tamamen EY Studios işi.</p>
+          <ul class="pj-chips">
+            <li data-i18n="pj1_c1">81 il</li><li data-i18n="pj1_c2">6 oyun</li><li data-i18n="pj1_c3">Anlık bildirim</li><li data-i18n="pj1_c4">Telefona kurulur</li><li data-i18n="pj1_c5">Ücretsiz</li>
+          </ul>
+          <div class="pj-btns">
+            <a class="btn" href="okeybul/" data-i18n="pj1_b1">Projeyi incele</a>
+            <a class="btn ghost" href="https://okeybul.com.tr" target="_blank" rel="noopener" data-i18n="pj1_b2">Uygulamayı aç ↗</a>
+          </div>
+        </div>
+        <a class="pj-vis" href="okeybul/" aria-label="OkeyBul projesini incele">
+          <img src="okeybul/medya/d-simdi.jpg" alt="" width="540" height="960" loading="lazy">
+        </a>
+      </article>
+    </div>
   </section>
 
   <section class="block" id="sektorler" aria-labelledby="sektor-baslik">
@@ -1363,7 +1395,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   // --- ÇEVİRİ ALTYAPISI VE GERÇEK BAYRAKLAR ---
   const i18n = {
     "tr": { 
-      "nav1": "Süreç", "nav2": "Çalışmalar", "nav3": "Paketler", "nav4": "Teklif iste",
+      "nav1": "Süreç", "nav2": "Çalışmalar", "nav3": "Paketler", "nav5": "Projeler", "pj_k": "Projeler", "pj_h": "Kendi ürünlerimiz.", "pj_s": "Müşteri sitelerinin yanında kendi fikirlerimizi de baştan sona ürüne dönüştürüyoruz. İlki yayında.", "pj1_live": "Yayında · okeybul.com.tr", "pj1_t": "Okeye bir kişi mi eksik?", "pj1_d": "Kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz uygulama. Masanı aç, ilçendeki oyuncular katılsın, kafede buluşun. Fikir, tasarım, logo, sunucu ve tanıtım videosu tamamen EY Studios işi.", "pj1_c1": "81 il", "pj1_c2": "6 oyun", "pj1_c3": "Anlık bildirim", "pj1_c4": "Telefona kurulur", "pj1_c5": "Ücretsiz", "pj1_b1": "Projeyi incele", "pj1_b2": "Uygulamayı aç ↗", "nav4": "Teklif iste",
       "hero1": "İşletmenize yakışan, ilk bakışta güven veren web siteleri.", 
       "hero2": "Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.",
       "h_btn1": "Teklif iste", "h_btn2": "Çalışmalara bak",
@@ -1381,7 +1413,6 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "su_3t": "3. Yayın", "su_3d": "Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.",
       "su_4t": "4. Destek", "su_4d": "Yayından sonra değişiklik gerekirse bana yazarsınız.",
       "cal_k": "Çalışmalar", "cal_h": "Sektörünüze göre hazır örnekler.", "cal_s": "Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.",
-      "c0_t": "OkeyBul · Kendi ürünümüz", "c0_d": "Kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz uygulama. Fikirden yayına tamamen EY Studios işi.", "c0_btn": "Projeyi incele →",
       "c1_t": "Avukat ve hukuk bürosu", "c1_d": "Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.",
       "c2_t": "Doktor ve özel klinik", "c2_d": "Lacivert ve altın tonlarında; uzmanlık alanları, güven göstergeleri ve WhatsApp'a düşen randevu formu.",
       "c3_t": "Diyetisyen ve danışmanlık", "c3_d": "Koyu orman yeşili ve hardal tonlarıyla, premium hissiyatlı lüks danışmanlık konsepti.",
@@ -1410,7 +1441,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "foot1": "© 2026 EY Studios TR. Tüm hakları saklıdır.", "foot2": "Türkiye geneli, uzaktan hizmet"
     },
     "en": { 
-      "nav1": "Process", "nav2": "Portfolio", "nav3": "Packages", "nav4": "Get Quote",
+      "nav1": "Process", "nav2": "Portfolio", "nav3": "Packages", "nav5": "Projects", "pj_k": "Projects", "pj_h": "Our own products.", "pj_s": "Alongside client sites, we turn our own ideas into complete products. The first one is live.", "pj1_live": "Live · okeybul.com.tr", "pj1_t": "One player short for okey?", "pj1_d": "A free app that finds the missing player for Turkish café games. Open a table, players in your district join, you meet at the café. Idea, design, logo, server and promo video all by EY Studios.", "pj1_c1": "81 provinces", "pj1_c2": "6 games", "pj1_c3": "Push notifications", "pj1_c4": "Installable app", "pj1_c5": "Free", "pj1_b1": "View the project", "pj1_b2": "Open the app ↗", "nav4": "Get Quote",
       "hero1": "Websites that suit your business and inspire trust.", 
       "hero2": "I build mobile-friendly, SEO-ready sites for local businesses, clinics, and firms. Working globally: remote meetings, digital delivery.",
       "h_btn1": "Get Quote", "h_btn2": "View Work",
@@ -1428,7 +1459,6 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "su_3t": "3. Publish", "su_3d": "Connected to your domain and tested on all devices.",
       "su_4t": "4. Support", "su_4d": "Contact me for any post-launch changes.",
       "cal_k": "Portfolio", "cal_h": "Ready templates for your industry.", "cal_s": "We don't start from scratch. We adapt the right template with your brand's colors and content.",
-      "c0_t": "OkeyBul · Our own product", "c0_d": "A free app that finds the missing player for Turkish café games. Built end to end by EY Studios.", "c0_btn": "View the project →",
       "c1_t": "Lawyer & Law Firm", "c1_d": "A serious look, service cards, and consultation form.",
       "c2_t": "Doctor & Clinic", "c2_d": "Navy and gold; practice areas, trust signals and a WhatsApp appointment form.",
       "c3_t": "Dietitian & Consulting", "c3_d": "Premium feel luxury consulting concept.",
@@ -1457,7 +1487,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "foot1": "© 2026 EY Studios TR. All rights reserved.", "foot2": "Global Digital Solutions"
     },
     "de": { 
-      "nav1": "Prozess", "nav2": "Portfolio", "nav3": "Pakete", "nav4": "Angebot",
+      "nav1": "Prozess", "nav2": "Portfolio", "nav3": "Pakete", "nav5": "Projekte", "pj_k": "Projekte", "pj_h": "Unsere eigenen Produkte.", "pj_s": "Neben Kundenseiten machen wir aus eigenen Ideen komplette Produkte. Das erste ist online.", "pj1_live": "Online · okeybul.com.tr", "pj1_t": "Fehlt beim Okey ein Spieler?", "pj1_d": "Kostenlose App, die den fehlenden Mitspieler für türkische Kaffeehausspiele findet. Tisch öffnen, Spieler aus dem Bezirk machen mit, Treffen im Café. Idee, Design, Logo, Server und Werbevideo komplett von EY Studios.", "pj1_c1": "81 Provinzen", "pj1_c2": "6 Spiele", "pj1_c3": "Push-Nachrichten", "pj1_c4": "Installierbare App", "pj1_c5": "Kostenlos", "pj1_b1": "Projekt ansehen", "pj1_b2": "App öffnen ↗", "nav4": "Angebot",
       "hero1": "Websites, die passen und Vertrauen schaffen.", 
       "hero2": "Ich erstelle mobilfreundliche, SEO-bereite Websites für lokale Unternehmen und Kliniken. Weltweite Remote-Arbeit.",
       "h_btn1": "Angebot anfordern", "h_btn2": "Arbeiten ansehen",
@@ -1475,7 +1505,6 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "su_3t": "3. Veröffentlichung", "su_3d": "Mit Ihrer Domain verbunden und getestet.",
       "su_4t": "4. Support", "su_4d": "Kontaktieren Sie mich für Änderungen.",
       "cal_k": "Portfolio", "cal_h": "Fertige Vorlagen für Ihre Branche.", "cal_s": "Wir passen die richtige Vorlage mit Ihren Farben und Inhalten an.",
-      "c0_t": "OkeyBul · Unser eigenes Produkt", "c0_d": "Kostenlose App, die den fehlenden Mitspieler für türkische Kaffeehausspiele findet. Komplett von EY Studios entwickelt.", "c0_btn": "Projekt ansehen →",
       "c1_t": "Anwalt & Kanzlei", "c1_d": "Ein seriöser Look mit Servicekarten.",
       "c2_t": "Arzt & Klinik", "c2_d": "Navy und Gold; Fachgebiete, Vertrauenssignale und Terminformular per WhatsApp.",
       "c3_t": "Ernährungsberater", "c3_d": "Premium-Luxus-Beratungskonzept.",
@@ -1545,6 +1574,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   ['es','nl','fr','it','ru'].forEach(function (l) {
     var o = {}; K.forEach(function (k, n) { o[k] = T[l][n]; });
     o.su_k = o.nav1; o.cal_k = o.nav2; o.pak_k = o.nav3;
+    o.nav5 = o.pj_k = {es:'Proyectos',nl:'Projecten',fr:'Projets',it:'Progetti',ru:'Проекты'}[l];
     T[l] = o;
   });
 
