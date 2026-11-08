@@ -27,9 +27,8 @@
 <meta property="og:image:alt" content="EY Studios TR - Web tasarım ve dijital çözümler">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="media/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="media/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{var _t=localStorage.getItem('ey-theme');if(_t==='dark'||_t==='light'){document.documentElement.setAttribute('data-theme',_t);}}catch(e){}</script>
 <script type="application/ld+json">
 {
@@ -49,6 +48,12 @@
 }
 </script>
 <style>
+  /* Fontlar sitede barındırılır: Latin + Türkçe karakterler, tek dosya, değişken kalınlık */
+  @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 500 800; font-display: swap; src: url(media/fonts/bricolage.woff2) format('woff2'); }
+  /* Font gelene kadar ölçüleri eşitlenmiş sistem fontu: yüklenince satırlar kaymasın */
+  @font-face { font-family: 'Bricolage Fallback'; font-weight: 500 800; src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('Roboto Bold'), local('Liberation Sans Bold'); size-adjust: 103%; ascent-override: 90.3%; descent-override: 26.2%; line-gap-override: 0%; }
+  @font-face { font-family: 'Hanken Fallback'; font-weight: 400 600; src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Roboto'), local('Liberation Sans'); size-adjust: 100.4%; ascent-override: 99.6%; descent-override: 30.2%; line-gap-override: 0%; }
+  @font-face { font-family: 'Hanken Grotesk'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(media/fonts/hanken.woff2) format('woff2'); }
   :root {
     --bg: #F4F5F8;
     --surface: #FFFFFF;
@@ -65,8 +70,8 @@
     --tick-ink: #FFFFFF;
     --tick-dot: #8F9BFF;
     color-scheme: light;
-    --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
-    --body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --display: 'Bricolage Grotesque', 'Bricolage Fallback', 'Segoe UI', system-ui, sans-serif;
+    --body: 'Hanken Grotesk', 'Hanken Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     --radius: 12px;
   }
   @media (prefers-color-scheme: dark) {
@@ -376,7 +381,7 @@
     .pack + .pack { border-top: 1px solid var(--line); }
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .story-pin { height: 380vh; }
+    .story-pin { height: 300vh; }
     .pin-grid { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
     .pin h2 { font-size: 1.7rem; }
     .story-steps { margin-top: .8rem; }
@@ -445,6 +450,34 @@
     .btn, .frame, body { transition: none; }
     .js .story-pin { display: none; }
     .js .story-static { display: block; }
+  }
+  /* ---- Öne çıkan işler ---- */
+  .vit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.6rem, 3.5vw, 2.6rem) clamp(1.2rem, 3vw, 2.2rem); }
+  @media (min-width: 1100px) { .vit { grid-template-columns: repeat(3, minmax(0, 1fr)); } .vcard h3 { font-size: 1.25rem; } }
+  .vcard { display: flex; flex-direction: column; text-decoration: none; color: inherit; min-width: 0; }
+  .vshot { position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line); border-radius: calc(var(--radius) + 4px); overflow: hidden; background: var(--surface); transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+  .vshot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+  .vcard:hover .vshot, .vcard:focus-visible .vshot { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 22px 48px rgba(12, 16, 32, .18); }
+  .vcard:hover .vshot img { transform: scale(1.035); }
+  .vcard:focus-visible { outline: none; }
+  .vlab { position: absolute; left: .75rem; top: .75rem; max-width: calc(100% - 1.5rem); background: rgba(12, 16, 32, .8); color: #fff; font: 600 .8rem/1.2 var(--body); padding: .45rem .7rem; border-radius: 99px; }
+  .vcard h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; margin: 1.1rem 0 .35rem; }
+  .vcard p { margin: 0 0 .7rem; color: var(--muted); }
+  .vcard .tag { margin-top: auto; color: var(--accent); }
+  /* Telefon ve tablette uzun listeler yerine yana kaydırılan şerit */
+  @media (max-width: 960px) {
+    .vit, #calismalar:not(.hmode) .works { display: flex; gap: 1rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 1.25rem; margin-inline: -1.25rem; padding: .5rem 1.25rem 1.1rem; scrollbar-width: none; }
+    .vit::-webkit-scrollbar, #calismalar .works::-webkit-scrollbar { display: none; }
+    .vcard, #calismalar:not(.hmode) .work { flex: 0 0 46%; scroll-snap-align: start; }
+    #calismalar:not(.hmode) .hbar { display: block; }
+    #calismalar:not(.hmode) .work.reveal { opacity: 1; transform: none; }
+  }
+  @media (max-width: 620px) {
+    .vcard, #calismalar:not(.hmode) .work { flex-basis: 84%; }
+    .sectors { gap: 0; }
+    .sectors article { border-top: 1px solid var(--line); padding: .85rem 0; }
+    .sectors h3 { font-size: 1.1rem; margin: 0; }
+    .sectors p { display: none; }
   }
 </style>
 <script>
@@ -545,10 +578,10 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 <div class="ticker">
   <div class="ticker-track">
     <ul>
-      <li>Avukat</li><li>Doktor</li><li>Diş hekimi</li><li>Diyetisyen</li><li>Psikolog</li><li>Veteriner</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Güzellik salonu</li><li>Oto servis</li><li>Emlak</li><li>Otel</li><li>Mali müşavir</li><li>Fotoğrafçı</li>
+      <li>Avukat</li><li>Doktor</li><li>Diş kliniği</li><li>Diyetisyen</li><li>Psikolog</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Berber</li><li>Tırnak</li><li>Oto bakım</li><li>Kuyumcu</li><li>Davet salonu</li><li>Hafriyat</li><li>Taksi</li>
     </ul>
     <ul aria-hidden="true">
-      <li>Avukat</li><li>Doktor</li><li>Diş hekimi</li><li>Diyetisyen</li><li>Psikolog</li><li>Veteriner</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Güzellik salonu</li><li>Oto servis</li><li>Emlak</li><li>Otel</li><li>Mali müşavir</li><li>Fotoğrafçı</li>
+      <li>Avukat</li><li>Doktor</li><li>Diş kliniği</li><li>Diyetisyen</li><li>Psikolog</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Berber</li><li>Tırnak</li><li>Oto bakım</li><li>Kuyumcu</li><li>Davet salonu</li><li>Hafriyat</li><li>Taksi</li>
     </ul>
   </div>
 </div>
@@ -557,7 +590,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   <div class="wrap">
     <dl class="strip" aria-label="Her sitede bulunanlar">
       <div><dt data-i18n="s1_t">Çalışma</dt><dd data-i18n="s1_d">Uzaktan, Türkiye'nin her yerinden</dd></div>
-      <div><dt data-i18n="s2_t">Altyapı</dt><dd data-i18n="s2_d">Statik sayfalar, sunucu kirası yok</dd></div>
+      <div><dt data-i18n="s2_t">Altyapı</dt><dd data-i18n="s2_d">Aylık sunucu ücreti yok</dd></div>
       <div><dt data-i18n="s3_t">Cihazlar</dt><dd data-i18n="s3_d">Telefon, tablet ve bilgisayarda düzgün</dd></div>
       <div><dt data-i18n="s4_t">Arama</dt><dd data-i18n="s4_d">Başlık, açıklama ve konum bilgisi hazır</dd></div>
       <div><dt data-i18n="s5_t">Maliyet</dt><dd data-i18n="s5_d">Yalnızca alan adı yıllık ücretlidir</dd></div>
@@ -587,7 +620,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 
               <div class="layer chat on" id="lChat">
                 <div class="chat-head">EY Studios TR</div>
-                <div class="bub me" data-at="0.08">Merhaba, kliniğim için bir web sitesi istiyorum.</div>
+                <div class="bub me" data-at="0">Merhaba, kliniğim için bir web sitesi istiyorum.</div>
                 <div class="bub you" data-at="0.3">Merhaba! Hangi hizmetleri öne çıkaralım?</div>
                 <div class="bub me" data-at="0.55">Tedaviler, çalışma saatleri ve randevu formu.</div>
                 <div class="bub you" data-at="0.8">Anladım, ilk taslağı hazırlıyorum.</div>
@@ -659,6 +692,52 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         <li><h3 data-i18n="su_3t">Yayın</h3><p data-i18n="su_3d">Alan adınıza bağlar, telefonda ve bilgisayarda test ederiz.</p></li>
         <li><h3 data-i18n="su_4t">Destek</h3><p data-i18n="su_4d">Yayından sonra değişiklik gerekirse bana yazarsınız.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="block" id="vitrin" aria-labelledby="vitrin-baslik">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="vit_k">Öne çıkanlar</p>
+      <h2 id="vitrin-baslik" data-i18n="vit_h">Özel tasarım işler.</h2>
+      <p class="sub" data-i18n="vit_s">Hazır örneklerin ötesinde: animasyonlu, çok dilli, tek bir işletme için kurgulanmış sayfalar. Açın, telefonunuzda deneyin.</p>
+      <div class="vit reveal">
+        <a class="vcard" href="dis-klinigi-super.html">
+          <div class="vshot"><img src="media/vitrin/inci.webp" alt="İNCİ Diş Atölyesi ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v1_l">Diş kliniği · 3D film</span></div>
+          <h3>İNCİ Diş Atölyesi</h3>
+          <p data-i18n="v1_d">Kaydırdıkça ilerleyen 3D sahne, 8 dil ve WhatsApp'a düşen randevu formu.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+        <a class="vcard" href="avukat-super.html">
+          <div class="vshot"><img src="media/vitrin/avukat.webp" alt="Defne & Kaya Hukuk ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v2_l">Hukuk bürosu</span></div>
+          <h3>Defne &amp; Kaya Hukuk</h3>
+          <p data-i18n="v2_d">Çalışma alanları, ön görüşme süreci ve bilgi notları; meslek kurallarına uygun, sade bir dil.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+        <a class="vcard" href="kuyumcu-super.html">
+          <div class="vshot"><img src="media/vitrin/kuyumcu.webp" alt="Aurum Kuyumculuk ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v3_l">Kuyumcu</span></div>
+          <h3>Aurum Kuyumculuk</h3>
+          <p data-i18n="v3_d">Alyansını tasarla: model, ölçü, ayar ve iç yazı seçilir, talep WhatsApp'tan gelir.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+        <a class="vcard" href="hafriyat-super.html">
+          <div class="vshot"><img src="media/vitrin/hafriyat.webp" alt="Nova Hafriyat ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v4_l">Hafriyat · iş makinesi</span></div>
+          <h3>Nova Hafriyat</h3>
+          <p data-i18n="v4_d">Videolu açılış, makine parkı ve tek dokunuşla keşif ve teklif talebi.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+        <a class="vcard" href="taksi.html?m=Nova+Taksi&amp;c=Aydın">
+          <div class="vshot"><img src="media/vitrin/taksi.webp" alt="Taksi sitesi ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v5_l">Taksi durağı</span></div>
+          <h3><span data-i18n="v5_t">Taksi ve transfer</span></h3>
+          <p data-i18n="v5_d">5 dil, WhatsApp'tan konum gönderme ve havalimanı transfer formu.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+        <a class="vcard" href="masa.html?m=Nova+Kafe&amp;masa=7">
+          <div class="vshot"><img src="media/vitrin/masa.webp" alt="QR menü sitesi ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v6_l">Kafe ve restoran</span></div>
+          <h3><span data-i18n="v6_t">QR menü ve masadan sipariş</span></h3>
+          <p data-i18n="v6_d">QR'ı okutan müşteri menüden seçer, sipariş masa numarasıyla WhatsApp'a düşer; ödeme kasada.</p>
+          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -843,7 +922,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   <section class="block" id="projeler" aria-labelledby="proje-baslik">
     <div class="wrap">
       <p class="eyebrow" data-i18n="pj_k">Projeler</p>
-      <h2 id="proje-baslik" data-i18n="pj_h">Kendi ürünlerimiz.</h2>
+      <h2 id="proje-baslik" data-i18n="pj_h">Kendi ürünümüz.</h2>
       <p class="sub" data-i18n="pj_s">Müşteri sitelerinin yanında kendi fikirlerimizi de baştan sona ürüne dönüştürüyoruz. İlki yayında.</p>
 
       <article class="pj reveal">
@@ -1306,6 +1385,12 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     if (hfill) hfill.style.width = (p * 100) + '%';
   }
   if (gal && worksEl) {
+    /* Telefonda/tablette şerit yana kaydırılır: çubuk kaydırma oranını gösterir */
+    worksEl.addEventListener('scroll', function () {
+      if (hOn || !hfill) return;
+      var m = worksEl.scrollWidth - worksEl.clientWidth;
+      hfill.style.width = (m > 0 ? worksEl.scrollLeft / m * 100 : 0) + '%';
+    }, { passive: true });
     window.addEventListener('scroll', function () { if (hOn && !hTick) { hTick = true; requestAnimationFrame(hRender); } }, { passive: true });
     window.addEventListener('resize', hLayout);
     window.addEventListener('load', hLayout);
@@ -1395,7 +1480,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   // --- ÇEVİRİ ALTYAPISI VE GERÇEK BAYRAKLAR ---
   const i18n = {
     "tr": { 
-      "nav1": "Süreç", "nav2": "Çalışmalar", "nav3": "Paketler", "nav5": "Projeler", "pj_k": "Projeler", "pj_h": "Kendi ürünlerimiz.", "pj_s": "Müşteri sitelerinin yanında kendi fikirlerimizi de baştan sona ürüne dönüştürüyoruz. İlki yayında.", "pj1_live": "Yayında · okeybul.com.tr", "pj1_t": "Okeye bir kişi mi eksik?", "pj1_d": "Kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz uygulama. Masanı aç, ilçendeki oyuncular katılsın, kafede buluşun. Fikir, tasarım, logo, sunucu ve tanıtım videosu tamamen EY Studios işi.", "pj1_c1": "81 il", "pj1_c2": "6 oyun", "pj1_c3": "Anlık bildirim", "pj1_c4": "Telefona kurulur", "pj1_c5": "Ücretsiz", "pj1_b1": "Projeyi incele", "pj1_b2": "Uygulamayı aç ↗", "nav4": "Teklif iste",
+      "nav1": "Süreç", "nav2": "Çalışmalar", "nav3": "Paketler", "nav5": "Projeler", "pj_k": "Projeler", "pj_h": "Kendi ürünümüz.", "pj_s": "Müşteri sitelerinin yanında kendi fikirlerimizi de baştan sona ürüne dönüştürüyoruz. İlki yayında.", "pj1_live": "Yayında · okeybul.com.tr", "pj1_t": "Okeye bir kişi mi eksik?", "pj1_d": "Kahvehane oyunlarında eksik oyuncuyu bulan ücretsiz uygulama. Masanı aç, ilçendeki oyuncular katılsın, kafede buluşun. Fikir, tasarım, logo, sunucu ve tanıtım videosu tamamen EY Studios işi.", "pj1_c1": "81 il", "pj1_c2": "6 oyun", "pj1_c3": "Anlık bildirim", "pj1_c4": "Telefona kurulur", "pj1_c5": "Ücretsiz", "pj1_b1": "Projeyi incele", "pj1_b2": "Uygulamayı aç ↗", "nav4": "Teklif iste",
       "hero1": "İşletmenize yakışan, ilk bakışta güven veren web siteleri.", 
       "hero2": "Esnaf, klinik ve büro sahipleri için telefonda düzgün açılan, arama sonuçlarında bulunmaya hazır siteler kuruyorum. Türkiye'nin her yerinden çalışıyorum: görüşme telefonda, teslim internette.",
       "h_btn1": "Teklif iste", "h_btn2": "Çalışmalara bak",
@@ -1403,7 +1488,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "p1": "Avukat", "p2": "Doktor", "p3": "Diyetisyen", "p4": "Diş kliniği", "p5": "Restoran", "p6": "Kuaför",
       "p_link": "Örneği aç: Avukat →",
       "s1_t": "Çalışma", "s1_d": "Uzaktan, Türkiye'nin her yerinden",
-      "s2_t": "Altyapı", "s2_d": "Statik sayfalar, sunucu kirası yok",
+      "s2_t": "Altyapı", "s2_d": "Aylık sunucu ücreti yok",
       "s3_t": "Cihazlar", "s3_d": "Telefon, tablet ve bilgisayarda düzgün",
       "s4_t": "Arama", "s4_d": "Başlık, açıklama ve konum bilgisi hazır",
       "s5_t": "Maliyet", "s5_d": "Yalnızca alan adı yıllık ücretlidir",
@@ -1441,7 +1526,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "foot1": "© 2026 EY Studios TR. Tüm hakları saklıdır.", "foot2": "Türkiye geneli, uzaktan hizmet"
     },
     "en": { 
-      "nav1": "Process", "nav2": "Portfolio", "nav3": "Packages", "nav5": "Projects", "pj_k": "Projects", "pj_h": "Our own products.", "pj_s": "Alongside client sites, we turn our own ideas into complete products. The first one is live.", "pj1_live": "Live · okeybul.com.tr", "pj1_t": "One player short for okey?", "pj1_d": "A free app that finds the missing player for Turkish café games. Open a table, players in your district join, you meet at the café. Idea, design, logo, server and promo video all by EY Studios.", "pj1_c1": "81 provinces", "pj1_c2": "6 games", "pj1_c3": "Push notifications", "pj1_c4": "Installable app", "pj1_c5": "Free", "pj1_b1": "View the project", "pj1_b2": "Open the app ↗", "nav4": "Get Quote",
+      "nav1": "Process", "nav2": "Portfolio", "nav3": "Packages", "nav5": "Projects", "pj_k": "Projects", "pj_h": "Our own product.", "pj_s": "Alongside client sites, we turn our own ideas into complete products. The first one is live.", "pj1_live": "Live · okeybul.com.tr", "pj1_t": "One player short for okey?", "pj1_d": "A free app that finds the missing player for Turkish café games. Open a table, players in your district join, you meet at the café. Idea, design, logo, server and promo video all by EY Studios.", "pj1_c1": "81 provinces", "pj1_c2": "6 games", "pj1_c3": "Push notifications", "pj1_c4": "Installable app", "pj1_c5": "Free", "pj1_b1": "View the project", "pj1_b2": "Open the app ↗", "nav4": "Get Quote",
       "hero1": "Websites that suit your business and inspire trust.", 
       "hero2": "I build mobile-friendly, SEO-ready sites for local businesses, clinics, and firms. Working globally: remote meetings, digital delivery.",
       "h_btn1": "Get Quote", "h_btn2": "View Work",
@@ -1449,7 +1534,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "p1": "Lawyer", "p2": "Doctor", "p3": "Dietitian", "p4": "Dental Clinic", "p5": "Restaurant", "p6": "Salon",
       "p_link": "Open demo: Lawyer →",
       "s1_t": "Work", "s1_d": "Remote, available worldwide",
-      "s2_t": "Infrastructure", "s2_d": "Static pages, no server rent",
+      "s2_t": "Infrastructure", "s2_d": "No monthly server fees",
       "s3_t": "Devices", "s3_d": "Perfect on phone, tablet & PC",
       "s4_t": "Search", "s4_d": "SEO ready with meta & location",
       "s5_t": "Cost", "s5_d": "Only annual domain fee applies",
@@ -1487,7 +1572,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "foot1": "© 2026 EY Studios TR. All rights reserved.", "foot2": "Global Digital Solutions"
     },
     "de": { 
-      "nav1": "Prozess", "nav2": "Portfolio", "nav3": "Pakete", "nav5": "Projekte", "pj_k": "Projekte", "pj_h": "Unsere eigenen Produkte.", "pj_s": "Neben Kundenseiten machen wir aus eigenen Ideen komplette Produkte. Das erste ist online.", "pj1_live": "Online · okeybul.com.tr", "pj1_t": "Fehlt beim Okey ein Spieler?", "pj1_d": "Kostenlose App, die den fehlenden Mitspieler für türkische Kaffeehausspiele findet. Tisch öffnen, Spieler aus dem Bezirk machen mit, Treffen im Café. Idee, Design, Logo, Server und Werbevideo komplett von EY Studios.", "pj1_c1": "81 Provinzen", "pj1_c2": "6 Spiele", "pj1_c3": "Push-Nachrichten", "pj1_c4": "Installierbare App", "pj1_c5": "Kostenlos", "pj1_b1": "Projekt ansehen", "pj1_b2": "App öffnen ↗", "nav4": "Angebot",
+      "nav1": "Prozess", "nav2": "Portfolio", "nav3": "Pakete", "nav5": "Projekte", "pj_k": "Projekte", "pj_h": "Unser eigenes Produkt.", "pj_s": "Neben Kundenseiten machen wir aus eigenen Ideen komplette Produkte. Das erste ist online.", "pj1_live": "Online · okeybul.com.tr", "pj1_t": "Fehlt beim Okey ein Spieler?", "pj1_d": "Kostenlose App, die den fehlenden Mitspieler für türkische Kaffeehausspiele findet. Tisch öffnen, Spieler aus dem Bezirk machen mit, Treffen im Café. Idee, Design, Logo, Server und Werbevideo komplett von EY Studios.", "pj1_c1": "81 Provinzen", "pj1_c2": "6 Spiele", "pj1_c3": "Push-Nachrichten", "pj1_c4": "Installierbare App", "pj1_c5": "Kostenlos", "pj1_b1": "Projekt ansehen", "pj1_b2": "App öffnen ↗", "nav4": "Angebot",
       "hero1": "Websites, die passen und Vertrauen schaffen.", 
       "hero2": "Ich erstelle mobilfreundliche, SEO-bereite Websites für lokale Unternehmen und Kliniken. Weltweite Remote-Arbeit.",
       "h_btn1": "Angebot anfordern", "h_btn2": "Arbeiten ansehen",
@@ -1495,7 +1580,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       "p1": "Anwalt", "p2": "Arzt", "p3": "Ernährungsberater", "p4": "Zahnklinik", "p5": "Restaurant", "p6": "Friseur",
       "p_link": "Demo öffnen: Anwalt →",
       "s1_t": "Arbeit", "s1_d": "Remote, weltweit verfügbar",
-      "s2_t": "Infrastruktur", "s2_d": "Statische Seiten, keine Servermiete",
+      "s2_t": "Infrastruktur", "s2_d": "Keine monatlichen Serverkosten",
       "s3_t": "Geräte", "s3_d": "Perfekt auf Handy, Tablet & PC",
       "s4_t": "Suche", "s4_d": "SEO-bereit mit Meta & Standort",
       "s5_t": "Kosten", "s5_d": "Nur jährliche Domain-Gebühr",
@@ -1612,19 +1697,19 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   /* ===== Kalan tüm metinler: ES / NL / FR / IT / RU + EN & DE SSS ===== */
   var KS = ['hero2','s1_t','s1_d','s2_t','s2_d','s3_t','s3_d','s4_t','s4_d','s5_t','s5_d','su_sub','cal_s','c1_t','c2_t','c3_t','c4_t','c5_t','c6_t','sek_s','sek1_t','sek2_t','sek3_t','sek4_t','sek5_t','sek6_t','sek1_d','sek2_d','sek3_d','sek4_d','sek5_d','sek6_d','pak_s','sss_s','ilet_s','f_tw','f_td','fm_h','foot2'];
   var FULL = {
-    es: { k: ['Creo sitios para comercios, clínicas y despachos que se ven bien en el móvil y están listos para aparecer en las búsquedas. Trabajo en remoto desde cualquier lugar: reunión por teléfono, entrega por internet.','Trabajo','En remoto, desde cualquier lugar','Infraestructura','Páginas estáticas, sin alquiler de servidor','Dispositivos','Perfecto en móvil, tablet y ordenador','Búsqueda','Título, descripción y ubicación listos','Coste','Solo se paga el dominio anual','Todo el proceso se hace por teléfono, WhatsApp y correo. No hace falta reunirse en persona.','No empezamos de cero. Abro el ejemplo de tu sector y adapto colores y contenido a tu negocio.','Abogados y despachos','Médicos y clínicas privadas','Dietistas y consultoría','Clínica dental','Restaurantes y cafés','Peluquerías y salones de belleza','Si quieres una web para abogado, médico, dietista, dentista, restaurante o peluquería, empiezo con un ejemplo de tu profesión. Contenido, color y logo se adaptan a tu negocio.','Web para abogados','Web para médicos','Web para dietistas','Web para dentistas','Web para restaurantes y cafés','Web para peluquerías y salones','Un sitio sobrio que muestra tus áreas de práctica, contacto y solicitud de consulta.','Áreas de atención, horarios y citas en una sola página, cómoda de leer en el móvil.','Una web cercana que presenta la consulta online y presencial, con formulario de contacto.','Muestra tratamientos, horarios y ubicación, y permite llamar con un toque.','Carta, horarios y botones de llamada y WhatsApp para reservar.','Lista de servicios y precios con solicitud de cita por WhatsApp.','Alcance claro, presupuesto por escrito. Sabes lo que recibes antes de empezar.','Si tu pregunta no está aquí, escríbela en el formulario o por WhatsApp.','Cuéntame brevemente el tipo de negocio y lo que necesitas. Intento responder el mismo día.','Enviar mensaje','En remoto, desde cualquier lugar','Al enviar, tu mensaje nos llega directamente. También puedes escribirme por WhatsApp.','Servicio en remoto'],
+    es: { k: ['Creo sitios para comercios, clínicas y despachos que se ven bien en el móvil y están listos para aparecer en las búsquedas. Trabajo en remoto desde cualquier lugar: reunión por teléfono, entrega por internet.','Trabajo','En remoto, desde cualquier lugar','Infraestructura','Sin cuota mensual de servidor','Dispositivos','Perfecto en móvil, tablet y ordenador','Búsqueda','Título, descripción y ubicación listos','Coste','Solo se paga el dominio anual','Todo el proceso se hace por teléfono, WhatsApp y correo. No hace falta reunirse en persona.','No empezamos de cero. Abro el ejemplo de tu sector y adapto colores y contenido a tu negocio.','Abogados y despachos','Médicos y clínicas privadas','Dietistas y consultoría','Clínica dental','Restaurantes y cafés','Peluquerías y salones de belleza','Si quieres una web para abogado, médico, dietista, dentista, restaurante o peluquería, empiezo con un ejemplo de tu profesión. Contenido, color y logo se adaptan a tu negocio.','Web para abogados','Web para médicos','Web para dietistas','Web para dentistas','Web para restaurantes y cafés','Web para peluquerías y salones','Un sitio sobrio que muestra tus áreas de práctica, contacto y solicitud de consulta.','Áreas de atención, horarios y citas en una sola página, cómoda de leer en el móvil.','Una web cercana que presenta la consulta online y presencial, con formulario de contacto.','Muestra tratamientos, horarios y ubicación, y permite llamar con un toque.','Carta, horarios y botones de llamada y WhatsApp para reservar.','Lista de servicios y precios con solicitud de cita por WhatsApp.','Alcance claro, presupuesto por escrito. Sabes lo que recibes antes de empezar.','Si tu pregunta no está aquí, escríbela en el formulario o por WhatsApp.','Cuéntame brevemente el tipo de negocio y lo que necesitas. Intento responder el mismo día.','Enviar mensaje','En remoto, desde cualquier lugar','Al enviar, tu mensaje nos llega directamente. También puedes escribirme por WhatsApp.','Servicio en remoto'],
       pk: [['Una página','Para negocios nuevos, comercios y autónomos.',['Presentación, servicios y contacto en una página','Diseño adaptado al móvil','Botones de llamada y WhatsApp','Ajustes básicos para buscadores']],['Web corporativa','Para clínicas, despachos y empresas.',['Hasta 5 páginas: inicio, nosotros, servicios, galería, contacto','Formulario de contacto y Google Maps','Datos de ubicación para búsquedas locales','Publicación en tu propio dominio']],['Proyecto a medida','Para necesidades fuera de los paquetes estándar.',['Conexión con servicios de citas o reservas','Páginas de productos y catálogo','Renovación de un sitio existente','Alcance y plazo se definen en la reunión']]],
       faq: [['Estoy en otra ciudad, ¿cómo trabajamos?','Todo el proceso es remoto. Hablamos por teléfono o WhatsApp y ves el borrador por internet. No hace falta vernos.'],['¿Tendré que pagar hosting y dominio?','Mis sitios son estáticos y no necesitan alquiler de servidor. Solo el dominio (.com, .com.tr…) tiene cuota anual. Te recomiendo registrarlo a tu nombre.'],['¿Saldré primero en Google?','Nadie puede garantizar posiciones. Preparo la base técnica para los buscadores; el ranking depende de la competencia y del tiempo.'],['¿Cuánto tarda?','Depende del número de páginas y de cuándo esté listo el contenido. Te doy la fecha por escrito en el presupuesto.'],['¿Qué debo preparar?','Tu logo, algunas fotos, la lista de servicios y tus datos de contacto. Si no los tienes, lo planificamos juntos.'],['¿Puedo hacer cambios después de publicar?','Puedes pedirme actualizar textos, fotos o teléfono. Lo incluido en cada paquete se indica en el presupuesto.']] },
-    nl: { k: ['Ik bouw websites voor ondernemers, klinieken en kantoren die goed werken op de telefoon en klaar zijn voor zoekmachines. Ik werk op afstand vanuit overal: gesprek per telefoon, oplevering online.','Werkwijze','Op afstand, overal beschikbaar','Infrastructuur',"Statische pagina's, geen serverhuur",'Apparaten','Perfect op telefoon, tablet en computer','Zoeken','Titel, beschrijving en locatie klaar','Kosten','Alleen het domein kost jaarlijks','Het hele proces loopt via telefoon, WhatsApp en e-mail. Persoonlijk afspreken hoeft niet.','We beginnen niet bij nul. Ik open het voorbeeld voor jouw branche en pas kleuren en inhoud aan.','Advocaat en kantoor','Arts en privékliniek','Diëtist en advies','Tandartspraktijk','Restaurant en café','Kapper en schoonheidssalon','Wil je een website voor advocaat, arts, diëtist, tandarts, restaurant of kapper, dan start ik met een voorbeeld voor jouw beroep. Inhoud, kleur en logo pas ik aan.','Website voor advocaten','Website voor artsen','Website voor diëtisten','Website voor tandartsen','Website voor restaurants en cafés','Website voor kappers en salons','Een strakke site met je specialisaties, contactgegevens en aanvraag voor een eerste gesprek.','Specialisaties, spreekuren en afspraakinfo op één pagina, prettig te lezen op de telefoon.','Een warme site over online en persoonlijk advies, met contactformulier.','Toont behandelingen, openingstijden en locatie, met bellen met één tik.','Menu, openingstijden en knoppen voor bellen en WhatsApp om te reserveren.','Dienstenlijst met prijzen en afspraken via WhatsApp.','Duidelijk bereik, schriftelijke offerte. Je weet vooraf wat je krijgt.','Staat je vraag er niet bij? Stel hem via het formulier of WhatsApp.','Beschrijf kort je bedrijf en wat je nodig hebt. Ik probeer dezelfde dag te reageren.','Bericht sturen','Op afstand, overal','Na verzenden komt je bericht direct bij ons binnen. Je kunt ook via WhatsApp contact opnemen.','Dienstverlening op afstand'],
+    nl: { k: ['Ik bouw websites voor ondernemers, klinieken en kantoren die goed werken op de telefoon en klaar zijn voor zoekmachines. Ik werk op afstand vanuit overal: gesprek per telefoon, oplevering online.','Werkwijze','Op afstand, overal beschikbaar','Infrastructuur',"Geen maandelijkse serverkosten",'Apparaten','Perfect op telefoon, tablet en computer','Zoeken','Titel, beschrijving en locatie klaar','Kosten','Alleen het domein kost jaarlijks','Het hele proces loopt via telefoon, WhatsApp en e-mail. Persoonlijk afspreken hoeft niet.','We beginnen niet bij nul. Ik open het voorbeeld voor jouw branche en pas kleuren en inhoud aan.','Advocaat en kantoor','Arts en privékliniek','Diëtist en advies','Tandartspraktijk','Restaurant en café','Kapper en schoonheidssalon','Wil je een website voor advocaat, arts, diëtist, tandarts, restaurant of kapper, dan start ik met een voorbeeld voor jouw beroep. Inhoud, kleur en logo pas ik aan.','Website voor advocaten','Website voor artsen','Website voor diëtisten','Website voor tandartsen','Website voor restaurants en cafés','Website voor kappers en salons','Een strakke site met je specialisaties, contactgegevens en aanvraag voor een eerste gesprek.','Specialisaties, spreekuren en afspraakinfo op één pagina, prettig te lezen op de telefoon.','Een warme site over online en persoonlijk advies, met contactformulier.','Toont behandelingen, openingstijden en locatie, met bellen met één tik.','Menu, openingstijden en knoppen voor bellen en WhatsApp om te reserveren.','Dienstenlijst met prijzen en afspraken via WhatsApp.','Duidelijk bereik, schriftelijke offerte. Je weet vooraf wat je krijgt.','Staat je vraag er niet bij? Stel hem via het formulier of WhatsApp.','Beschrijf kort je bedrijf en wat je nodig hebt. Ik probeer dezelfde dag te reageren.','Bericht sturen','Op afstand, overal','Na verzenden komt je bericht direct bij ons binnen. Je kunt ook via WhatsApp contact opnemen.','Dienstverlening op afstand'],
       pk: [['Eén pagina',"Voor starters, ondernemers en zzp'ers.",['Introductie, diensten en contact op één pagina','Telefoonvriendelijk ontwerp','Bel- en WhatsApp-knoppen','Basisinstellingen voor zoekmachines']],['Zakelijke site','Voor klinieken, kantoren en bedrijven.',["Tot 5 pagina's: home, over ons, diensten, galerij, contact",'Contactformulier en Google Maps','Locatiegegevens voor lokaal zoeken','Online op je eigen domein']],['Maatwerk','Voor wensen buiten de standaardpakketten.',['Koppeling met afspraak- of reserveringssysteem',"Product- en cataloguspagina's",'Vernieuwing van een bestaande site','Bereik en doorlooptijd bepalen we in het gesprek']]],
       faq: [['Ik woon in een andere stad, hoe werken we samen?','Alles gaat op afstand. We bellen of appen en je ziet het ontwerp online. Persoonlijk afspreken hoeft niet.'],['Betaal ik voor hosting en domein?','Mijn sites zijn statisch en hebben geen serverhuur nodig. Alleen het domein (.com, .com.tr) kost jaarlijks. Registreer het op je eigen naam.'],['Sta ik eerst in Google?','Niemand kan posities garanderen. Ik zorg voor de technische basis; de positie hangt af van concurrentie en tijd.'],['Hoe lang duurt het?',"Dat hangt af van het aantal pagina's en wanneer de inhoud klaar is. De datum staat in de offerte."],['Wat moet ik voorbereiden?',"Je logo, enkele foto's, je dienstenlijst en contactgegevens. Heb je die niet, dan plannen we het samen."],['Kan ik na livegang wijzigingen laten doen?',"Teksten, foto's en telefoonnummer kun je laten aanpassen. Wat inbegrepen is staat in de offerte."]] },
-    fr: { k: ["Je crée des sites pour commerçants, cliniques et cabinets, lisibles sur mobile et prêts pour les moteurs de recherche. Je travaille à distance, de n'importe où : échange par téléphone, livraison en ligne.",'Travail','À distance, partout','Infrastructure','Pages statiques, pas de location de serveur','Appareils','Parfait sur mobile, tablette et ordinateur','Recherche','Titre, description et localisation prêts','Coût','Seul le nom de domaine est payant chaque année',"Tout se passe par téléphone, WhatsApp et e-mail. Aucune rencontre en personne n'est nécessaire.","Nous ne partons pas de zéro. J'ouvre l'exemple de votre secteur et j'adapte couleurs et contenu à votre activité.",'Avocats et cabinets','Médecins et cliniques privées','Diététiciens et conseil','Clinique dentaire','Restaurants et cafés','Coiffeurs et instituts de beauté',"Pour un site d'avocat, de médecin, de diététicien, de dentiste, de restaurant ou de coiffeur, je pars d'un exemple adapté à votre métier. Contenu, couleurs et logo sont personnalisés.",'Site pour avocats','Site pour médecins','Site pour diététiciens','Site pour dentistes','Site pour restaurants et cafés','Site pour coiffeurs et instituts','Un site sobre qui présente vos domaines, vos coordonnées et la demande de premier rendez-vous.','Domaines de soins, horaires et rendez-vous sur une page, agréable à lire sur mobile.','Un site chaleureux qui présente le suivi en ligne et en cabinet, avec formulaire.','Présente soins, horaires et localisation, avec appel en un geste.',"Carte, horaires et boutons d'appel et WhatsApp pour réserver.",'Liste de services et de prix, rendez-vous par WhatsApp.','Périmètre clair, devis écrit. Vous savez ce que vous recevez avant de commencer.','Si votre question n\'est pas ici, posez-la par le formulaire ou sur WhatsApp.',"Décrivez brièvement votre activité et votre besoin. J'essaie de répondre le jour même.",'Envoyer un message','À distance, partout',"En envoyant, votre message nous parvient directement. Vous pouvez aussi m'écrire sur WhatsApp.",'Service à distance'],
+    fr: { k: ["Je crée des sites pour commerçants, cliniques et cabinets, lisibles sur mobile et prêts pour les moteurs de recherche. Je travaille à distance, de n'importe où : échange par téléphone, livraison en ligne.",'Travail','À distance, partout','Infrastructure','Pas de frais de serveur mensuels','Appareils','Parfait sur mobile, tablette et ordinateur','Recherche','Titre, description et localisation prêts','Coût','Seul le nom de domaine est payant chaque année',"Tout se passe par téléphone, WhatsApp et e-mail. Aucune rencontre en personne n'est nécessaire.","Nous ne partons pas de zéro. J'ouvre l'exemple de votre secteur et j'adapte couleurs et contenu à votre activité.",'Avocats et cabinets','Médecins et cliniques privées','Diététiciens et conseil','Clinique dentaire','Restaurants et cafés','Coiffeurs et instituts de beauté',"Pour un site d'avocat, de médecin, de diététicien, de dentiste, de restaurant ou de coiffeur, je pars d'un exemple adapté à votre métier. Contenu, couleurs et logo sont personnalisés.",'Site pour avocats','Site pour médecins','Site pour diététiciens','Site pour dentistes','Site pour restaurants et cafés','Site pour coiffeurs et instituts','Un site sobre qui présente vos domaines, vos coordonnées et la demande de premier rendez-vous.','Domaines de soins, horaires et rendez-vous sur une page, agréable à lire sur mobile.','Un site chaleureux qui présente le suivi en ligne et en cabinet, avec formulaire.','Présente soins, horaires et localisation, avec appel en un geste.',"Carte, horaires et boutons d'appel et WhatsApp pour réserver.",'Liste de services et de prix, rendez-vous par WhatsApp.','Périmètre clair, devis écrit. Vous savez ce que vous recevez avant de commencer.','Si votre question n\'est pas ici, posez-la par le formulaire ou sur WhatsApp.',"Décrivez brièvement votre activité et votre besoin. J'essaie de répondre le jour même.",'Envoyer un message','À distance, partout',"En envoyant, votre message nous parvient directement. Vous pouvez aussi m'écrire sur WhatsApp.",'Service à distance'],
       pk: [['Une page','Pour les nouvelles activités, commerçants et indépendants.',['Présentation, services et contact sur une page','Design adapté au mobile',"Boutons d'appel et WhatsApp",'Réglages de base pour les moteurs de recherche']],['Site corporate','Pour cliniques, cabinets et entreprises.',["Jusqu'à 5 pages : accueil, à propos, services, galerie, contact",'Formulaire de contact et Google Maps','Données de localisation pour la recherche locale','Mise en ligne sur votre propre domaine']],['Projet sur mesure','Pour les besoins hors forfaits standards.',['Connexion à un service de rendez-vous ou de réservation','Pages produits et catalogue',"Refonte d'un site existant","Périmètre et délai définis lors de l'échange"]]],
       faq: [['Je suis dans une autre ville, comment travaille-t-on ?','Tout se fait à distance. Nous échangeons par téléphone ou WhatsApp et vous voyez la maquette en ligne. Aucune rencontre nécessaire.'],["Dois-je payer l'hébergement et le domaine ?","Mes sites sont statiques et n'exigent pas de location de serveur. Seul le nom de domaine (.com, .com.tr) est payant chaque année. Je conseille de l'enregistrer à votre nom."],['Serai-je premier sur Google ?','Personne ne peut garantir un classement. Je prépare la base technique pour les moteurs de recherche ; le classement dépend de la concurrence et du temps.'],['Combien de temps cela prend-il ?','Cela dépend du nombre de pages et de la disponibilité des contenus. La date est indiquée par écrit dans le devis.'],['Que dois-je préparer ?','Votre logo, quelques photos, la liste de vos services et vos coordonnées. Sinon, nous planifions ensemble.'],['Puis-je demander des modifications après la mise en ligne ?','Vous pouvez me demander de mettre à jour textes, photos et numéro de téléphone. Ce qui est inclus est précisé dans le devis.']] },
-    it: { k: ['Creo siti per negozianti, cliniche e studi professionali che si vedono bene sul telefono e sono pronti per i motori di ricerca. Lavoro da remoto, ovunque: incontro per telefono, consegna online.','Lavoro','Da remoto, ovunque','Infrastruttura','Pagine statiche, nessun affitto di server','Dispositivi','Perfetto su telefono, tablet e computer','Ricerca','Titolo, descrizione e posizione pronti','Costo','Solo il dominio ha un costo annuale','Tutto avviene per telefono, WhatsApp ed e-mail. Non serve incontrarsi di persona.',"Non partiamo da zero. Apro l'esempio del tuo settore e adatto colori e contenuti alla tua attività.",'Avvocati e studi legali','Medici e cliniche private','Dietisti e consulenza','Studio dentistico','Ristoranti e caffè','Parrucchieri e centri estetici','Se vuoi un sito per avvocato, medico, dietista, dentista, ristorante o parrucchiere, parto da un esempio adatto alla tua professione. Contenuti, colori e logo si adattano alla tua attività.','Sito per avvocati','Sito per medici','Sito per dietisti','Sito per dentisti','Sito per ristoranti e caffè','Sito per parrucchieri e centri estetici','Un sito sobrio con le aree di attività, i contatti e la richiesta di primo colloquio.','Aree di cura, orari e appuntamenti in una pagina, comoda da leggere su telefono.','Un sito caldo che presenta la consulenza online e di persona, con modulo di contatto.','Mostra trattamenti, orari e posizione, con chiamata in un tocco.','Menu, orari e pulsanti di chiamata e WhatsApp per prenotare.','Elenco di servizi e prezzi con richiesta di appuntamento via WhatsApp.','Ambito chiaro, preventivo scritto. Sai cosa ricevi prima di iniziare.','Se la tua domanda non è qui, scrivila dal modulo o su WhatsApp.','Descrivi in breve il tipo di attività e cosa ti serve. Cerco di rispondere in giornata.','Invia messaggio','Da remoto, ovunque','Inviando, il messaggio ci arriva direttamente. Puoi anche scrivermi su WhatsApp.','Servizio da remoto'],
+    it: { k: ['Creo siti per negozianti, cliniche e studi professionali che si vedono bene sul telefono e sono pronti per i motori di ricerca. Lavoro da remoto, ovunque: incontro per telefono, consegna online.','Lavoro','Da remoto, ovunque','Infrastruttura','Nessun costo mensile di server','Dispositivi','Perfetto su telefono, tablet e computer','Ricerca','Titolo, descrizione e posizione pronti','Costo','Solo il dominio ha un costo annuale','Tutto avviene per telefono, WhatsApp ed e-mail. Non serve incontrarsi di persona.',"Non partiamo da zero. Apro l'esempio del tuo settore e adatto colori e contenuti alla tua attività.",'Avvocati e studi legali','Medici e cliniche private','Dietisti e consulenza','Studio dentistico','Ristoranti e caffè','Parrucchieri e centri estetici','Se vuoi un sito per avvocato, medico, dietista, dentista, ristorante o parrucchiere, parto da un esempio adatto alla tua professione. Contenuti, colori e logo si adattano alla tua attività.','Sito per avvocati','Sito per medici','Sito per dietisti','Sito per dentisti','Sito per ristoranti e caffè','Sito per parrucchieri e centri estetici','Un sito sobrio con le aree di attività, i contatti e la richiesta di primo colloquio.','Aree di cura, orari e appuntamenti in una pagina, comoda da leggere su telefono.','Un sito caldo che presenta la consulenza online e di persona, con modulo di contatto.','Mostra trattamenti, orari e posizione, con chiamata in un tocco.','Menu, orari e pulsanti di chiamata e WhatsApp per prenotare.','Elenco di servizi e prezzi con richiesta di appuntamento via WhatsApp.','Ambito chiaro, preventivo scritto. Sai cosa ricevi prima di iniziare.','Se la tua domanda non è qui, scrivila dal modulo o su WhatsApp.','Descrivi in breve il tipo di attività e cosa ti serve. Cerco di rispondere in giornata.','Invia messaggio','Da remoto, ovunque','Inviando, il messaggio ci arriva direttamente. Puoi anche scrivermi su WhatsApp.','Servizio da remoto'],
       pk: [['Pagina singola','Per nuove attività, negozianti e liberi professionisti.',['Presentazione, servizi e contatti in una pagina','Design adatto al telefono','Pulsanti di chiamata e WhatsApp','Impostazioni base per i motori di ricerca']],['Sito aziendale','Per cliniche, studi e aziende.',['Fino a 5 pagine: home, chi sono, servizi, galleria, contatti','Modulo di contatto e Google Maps','Dati di posizione per le ricerche locali','Pubblicazione sul tuo dominio']],['Progetto su misura','Per esigenze fuori dai pacchetti standard.',['Collegamento a servizi di prenotazione','Pagine prodotto e catalogo','Rinnovo di un sito esistente','Ambito e tempi definiti nel colloquio']]],
       faq: [["Sono in un'altra città, come lavoriamo?",'Tutto avviene da remoto. Parliamo per telefono o WhatsApp e vedi la bozza online. Non serve incontrarsi.'],['Devo pagare hosting e dominio?','I miei siti sono statici e non richiedono affitto di server. Solo il dominio (.com, .com.tr) ha un costo annuale. Ti consiglio di registrarlo a tuo nome.'],['Sarò primo su Google?','Nessuno può garantire le posizioni. Preparo la base tecnica per i motori di ricerca; la posizione dipende da concorrenza e tempo.'],['Quanto ci vuole?','Dipende dal numero di pagine e da quando i contenuti sono pronti. La data è scritta nel preventivo.'],['Cosa devo preparare?','Logo, alcune foto, elenco dei servizi e contatti. Se non li hai, li pianifichiamo insieme.'],['Posso fare modifiche dopo la pubblicazione?','Puoi chiedermi di aggiornare testi, foto e numero di telefono. Cosa è incluso è indicato nel preventivo.']] },
-    ru: { k: ['Создаю сайты для магазинов, клиник и офисов: удобные на телефоне и готовые к поиску. Работаю удалённо откуда угодно: встреча по телефону, сдача онлайн.','Работа','Удалённо, откуда угодно','Инфраструктура','Статические страницы, без аренды сервера','Устройства','Отлично на телефоне, планшете и компьютере','Поиск','Заголовок, описание и адрес готовы','Расходы','Платно только годовое продление домена','Весь процесс идёт по телефону, в WhatsApp и по почте. Встречаться лично не нужно.','Мы не начинаем с нуля. Открываю пример для вашей сферы и подстраиваю цвета и содержание под ваш бизнес.','Юристы и адвокатские бюро','Врачи и частные клиники','Диетологи и консультации','Стоматология','Рестораны и кафе','Парикмахерские и салоны красоты','Нужен сайт для юриста, врача, диетолога, стоматолога, ресторана или парикмахерской — начну с готового примера для вашей профессии. Содержание, цвета и логотип подстраиваются под вас.','Сайт для юриста','Сайт для врача','Сайт для диетолога','Сайт для стоматолога','Сайт для ресторана и кафе','Сайт для парикмахерской и салона','Строгий сайт с направлениями практики, контактами и заявкой на первую консультацию.','Направления, часы приёма и запись на одной странице, удобно читать на телефоне.','Тёплый сайт об онлайн- и очных консультациях с формой заявки.','Показывает лечение, часы работы и адрес, звонок в одно касание.','Меню, часы работы и кнопки звонка и WhatsApp для брони.','Список услуг с ценами и запись через WhatsApp.','Чёткий объём, письменное предложение. Вы знаете, что получите, до начала работы.','Не нашли свой вопрос? Задайте его через форму или в WhatsApp.','Коротко опишите бизнес и что нужно. Стараюсь ответить в тот же день.','Написать','Удалённо, откуда угодно','После отправки сообщение приходит напрямую мне. Можно также написать в WhatsApp.','Удалённая работа'],
+    ru: { k: ['Создаю сайты для магазинов, клиник и офисов: удобные на телефоне и готовые к поиску. Работаю удалённо откуда угодно: встреча по телефону, сдача онлайн.','Работа','Удалённо, откуда угодно','Инфраструктура','Без ежемесячной оплаты сервера','Устройства','Отлично на телефоне, планшете и компьютере','Поиск','Заголовок, описание и адрес готовы','Расходы','Платно только годовое продление домена','Весь процесс идёт по телефону, в WhatsApp и по почте. Встречаться лично не нужно.','Мы не начинаем с нуля. Открываю пример для вашей сферы и подстраиваю цвета и содержание под ваш бизнес.','Юристы и адвокатские бюро','Врачи и частные клиники','Диетологи и консультации','Стоматология','Рестораны и кафе','Парикмахерские и салоны красоты','Нужен сайт для юриста, врача, диетолога, стоматолога, ресторана или парикмахерской — начну с готового примера для вашей профессии. Содержание, цвета и логотип подстраиваются под вас.','Сайт для юриста','Сайт для врача','Сайт для диетолога','Сайт для стоматолога','Сайт для ресторана и кафе','Сайт для парикмахерской и салона','Строгий сайт с направлениями практики, контактами и заявкой на первую консультацию.','Направления, часы приёма и запись на одной странице, удобно читать на телефоне.','Тёплый сайт об онлайн- и очных консультациях с формой заявки.','Показывает лечение, часы работы и адрес, звонок в одно касание.','Меню, часы работы и кнопки звонка и WhatsApp для брони.','Список услуг с ценами и запись через WhatsApp.','Чёткий объём, письменное предложение. Вы знаете, что получите, до начала работы.','Не нашли свой вопрос? Задайте его через форму или в WhatsApp.','Коротко опишите бизнес и что нужно. Стараюсь ответить в тот же день.','Написать','Удалённо, откуда угодно','После отправки сообщение приходит напрямую мне. Можно также написать в WhatsApp.','Удалённая работа'],
       pk: [['Одна страница','Для новых проектов, магазинов и самозанятых.',['Описание, услуги и контакты на одной странице','Дизайн для телефона','Кнопки звонка и WhatsApp','Базовая настройка для поиска']],['Корпоративный сайт','Для клиник, бюро и компаний.',['До 5 страниц: главная, о нас, услуги, галерея, контакты','Форма связи и Google Карты','Данные о местоположении для местного поиска','Публикация на вашем домене']],['Индивидуальный проект','Для задач вне стандартных пакетов.',['Подключение сервиса записи или бронирования','Страницы товаров и каталог','Обновление существующего сайта','Объём и сроки определяются на встрече']]],
       faq: [['Я в другом городе, как мы работаем?','Весь процесс удалённый. Общаемся по телефону или в WhatsApp, черновик вы смотрите в интернете. Встречаться не нужно.'],['Нужно ли платить за хостинг и домен?','Мои сайты статические, аренда сервера не нужна. Платно только продление домена (.com, .com.tr). Советую оформить его на себя.'],['Буду ли я первым в Google?','Позиции никто не гарантирует. Я готовлю техническую основу для поиска; место зависит от конкуренции и времени.'],['Сколько времени занимает?','Зависит от числа страниц и готовности материалов. Срок указывается в предложении письменно.'],['Что нужно подготовить?','Логотип, несколько фото, список услуг и контакты. Если их нет, спланируем вместе.'],['Можно ли вносить правки после запуска?','Тексты, фото и номер телефона можно обновлять через меня. Что входит в пакет, указано в предложении.']] }
   };
@@ -1720,6 +1805,27 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   };
 
   /* Başlıktaki kısa teklif düğmesi (mobilde sığması için kısa tutulur) */
+  /* Öne çıkan işler: 8 dil (anahtarı olmayan diller İngilizceye düşer) */
+  var NV = {
+    tr: { vit_k: 'Öne çıkanlar', vit_h: 'Özel tasarım işler.', vit_s: 'Hazır örneklerin ötesinde: animasyonlu, çok dilli, tek bir işletme için kurgulanmış sayfalar. Açın, telefonunuzda deneyin.', v1_l: 'Diş kliniği · 3D film', v2_l: 'Hukuk bürosu', v3_l: 'Kuyumcu', v4_l: 'Hafriyat · iş makinesi', v5_l: 'Taksi durağı', v6_l: 'Kafe ve restoran', v5_t: 'Taksi ve transfer', v6_t: 'QR menü ve masadan sipariş',
+      v1_d: "Kaydırdıkça ilerleyen 3D sahne, 8 dil ve WhatsApp'a düşen randevu formu.", v2_d: 'Çalışma alanları, ön görüşme süreci ve bilgi notları; meslek kurallarına uygun, sade bir dil.', v3_d: "Alyansını tasarla: model, ölçü, ayar ve iç yazı seçilir, talep WhatsApp'tan gelir.", v4_d: 'Videolu açılış, makine parkı ve tek dokunuşla keşif ve teklif talebi.', v5_d: "5 dil, WhatsApp'tan konum gönderme ve havalimanı transfer formu.", v6_d: "QR'ı okutan müşteri menüden seçer, sipariş masa numarasıyla WhatsApp'a düşer; ödeme kasada." },
+    en: { vit_k: 'Highlights', vit_h: 'Custom-built work.', vit_s: 'Beyond templates: animated, multilingual pages built around a single business. Open them and try them on your phone.', v1_l: 'Dental clinic · 3D film', v2_l: 'Law firm', v3_l: 'Jeweller', v4_l: 'Excavation · machinery', v5_l: 'Taxi rank', v6_l: 'Cafe and restaurant', v5_t: 'Taxi and transfers', v6_t: 'QR menu and table ordering',
+      v1_d: 'A 3D scene that moves as you scroll, 8 languages and an appointment form that lands in WhatsApp.', v2_d: 'Practice areas, the consultation process and information notes, in plain language that follows bar rules.', v3_d: 'Design your wedding ring: pick the model, size, karat and engraving; the request arrives on WhatsApp.', v4_d: 'Video intro, machine fleet and a one-tap site visit and quote request.', v5_d: 'Five languages, location sharing on WhatsApp and an airport transfer form.', v6_d: 'Guests scan the QR code, order from the menu and the order reaches WhatsApp with the table number; payment at the counter.' },
+    de: { vit_k: 'Highlights', vit_h: 'Maßgeschneiderte Arbeiten.', vit_s: 'Mehr als Vorlagen: animierte, mehrsprachige Seiten, gebaut für ein einzelnes Unternehmen. Öffnen und auf dem Handy ausprobieren.', v1_l: 'Zahnklinik · 3D-Film', v2_l: 'Kanzlei', v3_l: 'Juwelier', v4_l: 'Erdbau · Baumaschinen', v5_l: 'Taxistand', v6_l: 'Café und Restaurant', v5_t: 'Taxi und Transfer', v6_t: 'QR-Menü und Bestellung am Tisch',
+      v1_d: '3D-Szene, die beim Scrollen mitläuft, 8 Sprachen und ein Terminformular direkt in WhatsApp.', v2_d: 'Tätigkeitsbereiche, Ablauf des Erstgesprächs und Infotexte, in klarer Sprache nach Berufsrecht.', v3_d: 'Ehering gestalten: Modell, Größe, Legierung und Gravur wählen, die Anfrage kommt per WhatsApp.', v4_d: 'Video-Intro, Maschinenpark und Besichtigungs- und Angebotsanfrage mit einem Tippen.', v5_d: 'Fünf Sprachen, Standort per WhatsApp senden und ein Formular für Flughafentransfers.', v6_d: 'Gäste scannen den QR-Code, bestellen aus der Karte, die Bestellung kommt mit Tischnummer per WhatsApp; bezahlt wird an der Kasse.' },
+    es: { vit_k: 'Destacados', vit_h: 'Trabajos a medida.', vit_s: 'Más allá de las plantillas: páginas animadas y multilingües pensadas para un solo negocio. Ábrelas y pruébalas en el móvil.', v1_l: 'Clínica dental · película 3D', v2_l: 'Despacho de abogados', v3_l: 'Joyería', v4_l: 'Excavación · maquinaria', v5_l: 'Parada de taxi', v6_l: 'Café y restaurante', v5_t: 'Taxi y traslados', v6_t: 'Menú QR y pedido desde la mesa',
+      v1_d: 'Escena 3D que avanza al desplazarte, 8 idiomas y formulario de cita que llega a WhatsApp.', v2_d: 'Áreas de práctica, proceso de consulta y notas informativas, con un lenguaje sencillo y conforme a la deontología.', v3_d: 'Diseña tu alianza: modelo, talla, quilates y grabado; la solicitud llega por WhatsApp.', v4_d: 'Intro en vídeo, parque de maquinaria y solicitud de visita y presupuesto con un toque.', v5_d: 'Cinco idiomas, envío de ubicación por WhatsApp y formulario de traslado al aeropuerto.', v6_d: 'El cliente escanea el QR, elige del menú y el pedido llega a WhatsApp con el número de mesa; se paga en caja.' },
+    nl: { vit_k: 'Uitgelicht', vit_h: 'Werk op maat.', vit_s: "Meer dan sjablonen: geanimeerde, meertalige pagina's, gebouwd rond één bedrijf. Open ze en probeer ze op je telefoon.", v1_l: 'Tandartspraktijk · 3D-film', v2_l: 'Advocatenkantoor', v3_l: 'Juwelier', v4_l: 'Grondwerk · machines', v5_l: 'Taxistandplaats', v6_l: 'Café en restaurant', v5_t: 'Taxi en transfers', v6_t: 'QR-menu en bestellen aan tafel',
+      v1_d: '3D-scène die meebeweegt als je scrolt, 8 talen en een afspraakformulier dat in WhatsApp binnenkomt.', v2_d: 'Rechtsgebieden, het verloop van het kennismakingsgesprek en informatie, in heldere taal volgens de beroepsregels.', v3_d: 'Ontwerp je trouwring: model, maat, gehalte en gravure kiezen; de aanvraag komt via WhatsApp.', v4_d: 'Video-intro, machinepark en met één tik een bezichtiging en offerte aanvragen.', v5_d: 'Vijf talen, locatie delen via WhatsApp en een formulier voor luchthaventransfers.', v6_d: 'Gasten scannen de QR-code, bestellen uit het menu en de bestelling komt met tafelnummer in WhatsApp; betalen aan de kassa.' },
+    fr: { vit_k: 'À la une', vit_h: 'Réalisations sur mesure.', vit_s: 'Au-delà des modèles : des pages animées et multilingues, conçues pour une seule entreprise. Ouvrez-les et testez-les sur votre téléphone.', v1_l: 'Cabinet dentaire · film 3D', v2_l: "Cabinet d'avocats", v3_l: 'Bijouterie', v4_l: 'Terrassement · engins', v5_l: 'Station de taxi', v6_l: 'Café et restaurant', v5_t: 'Taxi et transferts', v6_t: 'Menu QR et commande à table',
+      v1_d: 'Scène 3D qui avance au défilement, 8 langues et formulaire de rendez-vous reçu sur WhatsApp.', v2_d: 'Domaines de pratique, déroulé du premier rendez-vous et notes d\'information, dans un langage simple et conforme à la déontologie.', v3_d: 'Créez votre alliance : modèle, taille, carats et gravure ; la demande arrive sur WhatsApp.', v4_d: 'Intro vidéo, parc de machines et demande de visite et de devis en un geste.', v5_d: 'Cinq langues, envoi de la position sur WhatsApp et formulaire de transfert aéroport.', v6_d: 'Le client scanne le QR, choisit dans le menu et la commande arrive sur WhatsApp avec le numéro de table ; paiement en caisse.' },
+    it: { vit_k: 'In evidenza', vit_h: 'Lavori su misura.', vit_s: "Oltre i modelli: pagine animate e multilingue, costruite per una sola attività. Aprile e provale sul telefono.", v1_l: 'Studio dentistico · film 3D', v2_l: 'Studio legale', v3_l: 'Gioielleria', v4_l: 'Scavi · macchine', v5_l: 'Posteggio taxi', v6_l: 'Caffè e ristorante', v5_t: 'Taxi e transfer', v6_t: 'Menu QR e ordine al tavolo',
+      v1_d: 'Scena 3D che avanza scorrendo, 8 lingue e modulo appuntamenti che arriva su WhatsApp.', v2_d: 'Aree di attività, percorso del primo colloquio e note informative, con un linguaggio semplice e deontologico.', v3_d: "Disegna la tua fede: modello, misura, carati e incisione; la richiesta arriva su WhatsApp.", v4_d: 'Intro video, parco macchine e richiesta di sopralluogo e preventivo con un tocco.', v5_d: "Cinque lingue, invio della posizione su WhatsApp e modulo per il transfer dall'aeroporto.", v6_d: "Il cliente scansiona il QR, sceglie dal menu e l'ordine arriva su WhatsApp con il numero del tavolo; si paga alla cassa." },
+    ru: { vit_k: 'Избранное', vit_h: 'Работы на заказ.', vit_s: 'Больше, чем шаблоны: анимированные многоязычные страницы под конкретный бизнес. Откройте и попробуйте на телефоне.', v1_l: 'Стоматология · 3D-фильм', v2_l: 'Юридическая фирма', v3_l: 'Ювелир', v4_l: 'Земляные работы · техника', v5_l: 'Стоянка такси', v6_l: 'Кафе и ресторан', v5_t: 'Такси и трансферы', v6_t: 'QR-меню и заказ со стола',
+      v1_d: '3D-сцена, которая движется при прокрутке, 8 языков и форма записи прямо в WhatsApp.', v2_d: 'Направления практики, порядок первой консультации и справочные материалы простым языком, по правилам профессии.', v3_d: 'Создайте обручальное кольцо: модель, размер, проба и гравировка; заявка приходит в WhatsApp.', v4_d: 'Видео-заставка, парк техники и заявка на выезд и расчёт одним касанием.', v5_d: 'Пять языков, отправка геолокации в WhatsApp и форма трансфера из аэропорта.', v6_d: 'Гость сканирует QR, выбирает из меню, заказ приходит в WhatsApp с номером стола; оплата на кассе.' }
+  };
+  Object.keys(NV).forEach(function (l) { T[l] = Object.assign(T[l] || {}, NV[l]); });
+
   var NAVCTA = { tr: 'Teklif iste', en: 'Get a quote', de: 'Angebot', es: 'Presupuesto', nl: 'Offerte', fr: 'Devis', it: 'Preventivo', ru: 'Заявка' };
 
   var OPEN = { tr: 'Örneği aç', en: 'Open demo', de: 'Demo öffnen', es: 'Abrir ejemplo', nl: 'Voorbeeld openen', fr: "Ouvrir l'exemple", it: 'Apri esempio', ru: 'Открыть пример' };
@@ -1727,17 +1833,17 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   /* Anahtarı olmayan kısımlar: sektör şeridi, form seçenekleri, placeholder */
   var EX = {
     tr: {
-      tick: ['Avukat', 'Doktor', 'Diş hekimi', 'Diyetisyen', 'Psikolog', 'Veteriner', 'Restoran', 'Kafe', 'Kuaför', 'Güzellik salonu', 'Oto servis', 'Emlak', 'Otel', 'Mali müşavir', 'Fotoğrafçı'],
+      tick: ['Avukat', 'Doktor', 'Diş kliniği', 'Diyetisyen', 'Psikolog', 'Restoran', 'Kafe', 'Kuaför', 'Berber', 'Tırnak', 'Oto bakım', 'Kuyumcu', 'Davet salonu', 'Hafriyat', 'Taksi'],
       types: ['Avukat / hukuk bürosu', 'Doktor / klinik', 'Diyetisyen / danışmanlık', 'Diş kliniği', 'Restoran / kafe', 'Kuaför / güzellik salonu', 'Diğer'],
       ph: 'Örnek: Yeni açtığım işletme için tanıtım sitesi istiyorum.'
     },
     en: {
-      tick: ['Lawyer', 'Doctor', 'Dentist', 'Dietitian', 'Psychologist', 'Veterinarian', 'Restaurant', 'Cafe', 'Hairdresser', 'Beauty salon', 'Auto repair', 'Real estate', 'Hotel', 'Accountant', 'Photographer'],
+      tick: ['Lawyer', 'Doctor', 'Dental clinic', 'Dietitian', 'Psychologist', 'Restaurant', 'Cafe', 'Hair salon', 'Barber', 'Nail studio', 'Car care', 'Jeweller', 'Event venue', 'Excavation', 'Taxi'],
       types: ['Lawyer / law firm', 'Doctor / clinic', 'Dietitian / consulting', 'Dental clinic', 'Restaurant / cafe', 'Hair / beauty salon', 'Other'],
       ph: 'Example: I need an introduction website for my new business.'
     },
     de: {
-      tick: ['Anwalt', 'Arzt', 'Zahnarzt', 'Ernährungsberater', 'Psychologe', 'Tierarzt', 'Restaurant', 'Café', 'Friseur', 'Schönheitssalon', 'Autowerkstatt', 'Immobilien', 'Hotel', 'Steuerberater', 'Fotograf'],
+      tick: ['Anwalt', 'Arzt', 'Zahnklinik', 'Ernährungsberater', 'Psychologe', 'Restaurant', 'Café', 'Friseur', 'Barbier', 'Nagelstudio', 'Autopflege', 'Juwelier', 'Eventlocation', 'Erdbau', 'Taxi'],
       types: ['Anwalt / Kanzlei', 'Arzt / Klinik', 'Ernährungsberater / Beratung', 'Zahnklinik', 'Restaurant / Café', 'Friseur / Beautysalon', 'Sonstiges'],
       ph: 'Beispiel: Ich brauche eine Vorstellungswebsite für mein neues Unternehmen.'
     }
