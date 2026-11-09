@@ -44,3 +44,7 @@ self-contained HTML file in the repo root.
   read the log, say which angle worked and update its status. Never put prospect data in this repo.
   Exception: a prospect's own logo for a sales preview may go in `onizleme/` (loaded by `taki.html?lg=`);
   delete it if the deal does not happen.
+- Every offer message includes both the prospect's own demo link and a live client site as proof
+  ("şu an yayında olan bir müşterimizin sitesi", e.g. lunabijuteri.com for shops/jewellery), plus
+  eystudios.com.tr and @eystudios.tr. Write to people the owner already knows from his personal
+  Instagram account; to strangers from @eystudios.tr.
