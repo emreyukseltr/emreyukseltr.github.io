@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tarhan Gıda — 1926'dan bu güne değişmeyen lezzet · Nazilli</title>
+<meta name="description" content="Tahin helvası, köpük helva, tahin, lokum, kurabiye ve bal. 1926'dan bu güne Nazilli'de. Sepetinizi oluşturun, siparişinizi WhatsApp'tan gönderin.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#24170F">
+<link rel="icon" href="onizleme/tarhan/icon.png">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<script>document.documentElement.className='js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="onizleme/tarhan/hero.webp">
+<style>
+:root{
+  --cream:#F7F0E4; --paper:#EFE3CF; --kraft:#E3D2B6; --ink:#24170F; --brown:#4A3020; --muted:#6E5644;
+  --gold:#E8B511; --gold-d:#A9800A; --line:#D8C6A8; --green:#1F7A4D; --wa:#25D366;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'Work Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font:400 16px/1.6 var(--sans);overflow-x:hidden;overflow-wrap:anywhere;padding-bottom:96px}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.08;letter-spacing:-.015em}
+.wrap{width:min(1160px,100% - 2.5rem);margin-inline:auto}
+.eyebrow{font:600 .8rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.9rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:52px;padding:0 1.5rem;border-radius:99px;font:600 1rem var(--sans);text-decoration:none;border:0;cursor:pointer;touch-action:manipulation;transition:transform .2s ease,background .2s ease}
+.btn:active{transform:scale(.98)}
+.btn.gold{background:var(--gold);color:var(--ink)}.btn.gold:hover{background:#F4C531}
+.btn.ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(247,240,228,.45)}
+.btn.wa{background:var(--wa);color:#06220F}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.note{background:var(--ink);color:#E9DCC6;text-align:center;font:500 .8rem/1.4 var(--sans);padding:.55rem 1rem}
+
+/* üst bar */
+header{position:sticky;top:0;z-index:40;background:rgba(36,23,15,.94);color:var(--cream)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;min-width:0}
+.brand img{width:40px;height:40px;flex:none}
+.brand b{font:700 1.15rem/1 var(--serif);white-space:nowrap}
+.brand small{display:block;font:500 .7rem/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+nav.top{display:none;gap:1.6rem;font-size:.95rem}
+nav.top a{text-decoration:none;opacity:.85}nav.top a:hover{opacity:1;color:var(--gold)}
+.hwa{display:inline-flex;align-items:center;gap:.45rem;min-height:42px;padding:0 1rem;border-radius:99px;background:var(--wa);color:#06220F;font:600 .9rem var(--sans);text-decoration:none;flex:none}
+
+/* açılış: dedenin fotoğrafı */
+.hero{position:relative;background:var(--ink);color:var(--cream);overflow:hidden;isolation:isolate}
+.hero-img{position:relative;aspect-ratio:4/5;max-height:72vh;width:100%;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:sepia(.35) contrast(1.05);transform-origin:50% 35%;animation:kb 18s ease-in-out infinite alternate}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,23,15,0) 45%,rgba(36,23,15,.85) 85%,var(--ink))}
+@keyframes kb{to{transform:scale(1.08)}}
+.year{position:absolute;right:-.06em;bottom:.02em;font:700 clamp(7rem,34vw,22rem)/.8 var(--serif);color:rgba(232,181,17,.12);letter-spacing:-.04em;pointer-events:none;z-index:-1}
+.hero-txt{position:relative;padding:0 0 3.2rem;margin-top:-6.5rem}
+.hero .badge{width:76px;height:76px;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.4rem,9.5vw,4.6rem);max-width:12ch}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.hero p{color:#DCCDB6;font-size:1.1rem;max-width:36ch;margin:1rem 0 1.6rem}
+.acts{display:flex;flex-wrap:wrap;gap:.7rem}
+.cap{font:italic 500 .85rem var(--serif);color:#BFAE95;margin-top:1.6rem}
+
+/* şerit */
+.band{background:var(--gold);color:var(--ink);overflow:hidden;white-space:nowrap}
+.band-t{display:inline-flex;animation:slide 40s linear infinite}
+.band ul{display:flex;list-style:none;padding:0}
+.band li{font:700 1.05rem var(--serif);padding:.85rem 0 .85rem 1.6rem;display:flex;align-items:center;gap:1.6rem}
+.band li::after{content:"✦";font-size:.8rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:4.2rem 0}
+.sh{max-width:40rem;margin-bottom:2.2rem}
+.sh h2{font-size:clamp(2rem,7vw,3.2rem)}
+.sh p{color:var(--muted);margin-top:.9rem;font-size:1.05rem}
+
+/* hakkımızda */
+.about{display:grid;gap:2.2rem;align-items:center}
+.about-txt p{color:var(--brown);font-size:1.08rem;margin-bottom:1rem}
+.about-txt .lead::first-letter{font:700 3.6rem/.9 var(--serif);float:left;padding:.3rem .6rem 0 0;color:var(--gold-d)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.6rem;border-top:1px solid var(--line);padding-top:1.4rem}
+.stats b{display:block;font:700 1.9rem/1 var(--serif);color:var(--ink)}
+.stats span{font-size:.85rem;color:var(--muted)}
+.collage{position:relative;padding:0 1.2rem 2.4rem 0}
+.collage .a{border-radius:var(--r);overflow:hidden;box-shadow:0 24px 50px rgba(36,23,15,.25)}
+.collage .b{position:absolute;right:0;bottom:0;width:46%;border:6px solid var(--cream);border-radius:14px;overflow:hidden;box-shadow:0 14px 30px rgba(36,23,15,.25);transform:rotate(3deg)}
+.collage img{width:100%;height:100%;object-fit:cover;filter:sepia(.25)}
+
+/* zaman çizelgesi */
+.time{background:var(--ink);color:var(--cream)}
+.time .sh p{color:#CDBDA4}
+.track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-inline:-1.25rem;padding:.4rem 1.25rem 1.2rem;scroll-padding-inline:1.25rem;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.tc{flex:0 0 78%;scroll-snap-align:start}
+.tc figure{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:#3A281C}
+.tc img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) sepia(.5) contrast(1.05);transition:filter 1.2s ease,transform 1.2s ease}
+.tc.in img{filter:grayscale(.15) sepia(.2)}
+.tc:last-child.in img{filter:none}
+.tc .k{font:700 .78rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:1rem 0 .35rem}
+.tc h3{font-size:1.45rem}
+.tc p{color:#CDBDA4;margin-top:.35rem}
+.hint{font-size:.85rem;color:#A8977E;margin-top:.4rem}
+
+/* köpük helva */
+.foam{display:grid;gap:2rem;align-items:center}
+.foam-v{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:9/14;max-height:78vh;background:#E9E2D6;box-shadow:0 30px 60px rgba(36,23,15,.22);margin-inline:auto;width:min(100%,420px)}
+.foam-v video{width:100%;height:100%;object-fit:cover}
+.foam-txt h2{font-size:clamp(2rem,7vw,3rem)}
+.foam-txt p{color:var(--muted);font-size:1.08rem;margin:1rem 0 1.4rem;max-width:34ch}
+.foam-txt .price{font:700 1.6rem var(--serif);margin-bottom:1rem}
+.foam-txt .price small{font:500 .9rem var(--sans);color:var(--muted)}
+
+/* ürünler */
+.cats{position:sticky;top:64px;z-index:30;background:rgba(247,240,228,.96);border-bottom:1px solid var(--line);margin-bottom:1.6rem}
+.cats .in{display:flex;gap:.5rem;overflow-x:auto;padding:.7rem 1.25rem;max-width:1160px;margin:0 auto;scrollbar-width:none}
+.cats .in::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:42px;padding:0 1.1rem;border-radius:99px;border:1.5px solid var(--line);background:#FBF7F0;color:var(--brown);font:600 .92rem var(--sans);cursor:pointer;touch-action:manipulation}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem .8rem}
+.card{display:flex;flex-direction:column;min-width:0}
+.card figure{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:var(--paper)}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.card:hover img{transform:scale(1.04)}
+.card .w{position:absolute;left:.55rem;top:.55rem;background:rgba(36,23,15,.82);color:var(--cream);font:600 .72rem var(--sans);padding:.3rem .55rem;border-radius:99px}
+.card h3{font:600 1rem/1.3 var(--sans);margin:.7rem 0 .2rem;letter-spacing:0}
+.card .p{font:700 1.15rem var(--serif);color:var(--ink)}
+.add{margin-top:.6rem;display:flex;align-items:center;justify-content:space-between;gap:.4rem;min-height:44px;border-radius:99px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:600 .9rem var(--sans);cursor:pointer;padding:0 .4rem;touch-action:manipulation}
+.add.one{justify-content:center;background:var(--ink);color:var(--cream)}
+.add button{width:36px;height:36px;border-radius:50%;border:0;background:var(--ink);color:var(--cream);font:600 1.2rem/1 var(--sans);cursor:pointer;touch-action:manipulation}
+.cat-h{grid-column:1/-1;font-size:1.6rem;margin:1.2rem 0 .2rem;scroll-margin-top:130px}
+.cat-h:first-child{margin-top:0}
+
+/* değerler */
+.vals{display:grid;gap:1rem}
+.val{background:#FBF7F0;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem}
+.val b{display:block;font:700 1.3rem var(--serif);margin-bottom:.3rem}
+.val p{color:var(--muted)}
+
+/* mağaza */
+.shop{display:grid;gap:1.8rem;align-items:center}
+.shop figure{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3}
+.shop figure img{width:100%;height:100%;object-fit:cover}
+.shop dl{display:grid;gap:1rem;margin:1.2rem 0 1.6rem}
+.shop dt{font:600 .78rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d)}
+.shop dd{margin:.2rem 0 0;font-size:1.05rem}
+
+footer{background:var(--ink);color:#CDBDA4;padding:2.6rem 0 1rem;font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+footer img{width:54px;height:54px}
+footer a{color:var(--cream)}
+
+/* sepet çubuğu */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:.6rem .9rem calc(.6rem + env(safe-area-inset-bottom));transform:translateY(120%);transition:transform .35s ease}
+.bar.on{transform:none}
+.bar button{width:100%;max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:58px;padding:0 1.3rem;border:0;border-radius:18px;background:var(--ink);color:var(--cream);font:600 1rem var(--sans);cursor:pointer;box-shadow:0 12px 30px rgba(36,23,15,.35);touch-action:manipulation}
+.bar .n{display:inline-grid;place-items:center;min-width:28px;height:28px;border-radius:99px;background:var(--gold);color:var(--ink);font-weight:700;margin-right:.5rem}
+.bar .t{font:700 1.15rem var(--serif);color:var(--gold)}
+
+/* sepet penceresi */
+.ov{position:fixed;inset:0;z-index:70;background:rgba(20,12,7,.55);display:none}
+.ov.on{display:block}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;overscroll-behavior:contain;background:var(--cream);border-radius:26px 26px 0 0;padding:1.4rem 1.2rem calc(1.4rem + env(safe-area-inset-bottom));max-width:760px;margin:0 auto}
+.sheet h2{font-size:1.8rem;margin:0 3.2rem 1rem 0}
+.x{position:absolute;right:1rem;top:1rem;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#FBF7F0;font-size:1.1rem;cursor:pointer}
+.ln{display:grid;grid-template-columns:56px 1fr auto;gap:.8rem;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.ln img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.ln b{display:block;font-weight:600;font-size:.95rem}
+.ln span{font-size:.85rem;color:var(--muted)}
+.ln .q{display:flex;align-items:center;gap:.35rem}
+.ln .q button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;font:600 1.05rem/1 var(--sans);cursor:pointer}
+.sum{display:flex;justify-content:space-between;font:700 1.3rem var(--serif);padding:1rem 0 .3rem}
+.sub2{font-size:.88rem;color:var(--muted);margin-bottom:.6rem}
+fieldset{border:0;padding:0;margin:1rem 0 0}
+legend{font:600 .9rem var(--sans);margin-bottom:.5rem}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.seg label{display:flex;align-items:center;justify-content:center;min-height:48px;border:1.5px solid var(--line);border-radius:14px;background:#FBF7F0;font-weight:600;cursor:pointer;text-align:center;padding:0 .5rem}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){border-color:var(--ink);background:var(--ink);color:var(--cream)}
+.f{display:grid;gap:.4rem;margin-top:.9rem;font:600 .88rem var(--sans);color:var(--brown)}
+.f input,.f textarea{width:100%;min-height:50px;border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:.75rem .9rem;font:400 16px var(--sans);color:var(--ink)}
+.f textarea{min-height:84px;resize:vertical}
+.err{display:none;color:#B3261E;font-size:.9rem;margin-top:.7rem}.err.on{display:block}
+.send{width:100%;margin-top:1.1rem}
+.empty{color:var(--muted);padding:1rem 0}
+
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+
+@media (min-width:700px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.8rem 1.4rem}
+  .tc{flex-basis:42%}
+  .vals{grid-template-columns:repeat(3,1fr)}
+  .stats b{font-size:2.3rem}
+}
+@media (min-width:960px){
+  nav.top{display:flex}
+  .hero{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:min(86vh,820px)}
+  .hero-img{order:2;aspect-ratio:auto;max-height:none;height:100%}
+  .hero-img::after{background:linear-gradient(90deg,var(--ink),rgba(36,23,15,0) 40%)}
+  .hero-txt{margin:0;padding:4rem 0 4rem max(2.5rem,calc((100vw - 1160px)/2));align-self:center}
+  .hero .badge{width:92px;height:92px}
+  .about{grid-template-columns:1.05fr .95fr;gap:4rem}
+  .tc{flex-basis:30%}
+  .foam{grid-template-columns:.9fr 1.1fr;gap:4rem}
+  .foam-v{margin:0}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .shop{grid-template-columns:1.1fr .9fr;gap:4rem}
+  .sheet{bottom:auto;top:50%;transform:translateY(-50%);border-radius:26px;max-height:88vh}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-img img,.band-t{animation:none}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .tc img{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="note">Önizleme · ürün adları, fiyatlar ve metinler örnektir, işletme onayından sonra güncellenecek.</div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Tarhan Gıda"><img src="onizleme/tarhan/logo.webp" alt="" width="40" height="40"><span><b>Tarhan Gıda</b><small>1926'dan beri</small></span></a>
+    <nav class="top" aria-label="Menü"><a href="#hikaye">Hikâyemiz</a><a href="#urunler">Ürünler</a><a href="#magaza">Mağaza</a></nav>
+    <a class="hwa" id="hWa" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1" style="padding:0">
+  <div class="hero-img"><img src="onizleme/tarhan/hero.webp" alt="Tarhan Gıda'nın kurucusu, 1920'ler" width="1286" height="2048" fetchpriority="high"></div>
+  <div class="wrap hero-txt">
+    <div class="year" aria-hidden="true">1926</div>
+    <img class="badge" src="onizleme/tarhan/logo.webp" alt="" width="92" height="92">
+    <h1 id="h1">Yüz yıllık <em>helva</em> ustalığı.</h1>
+    <p>1926'dan bu güne değişmeyen lezzet. Tahin helvası, köpük helva, tahin ve lokum; Nazilli'den sofranıza.</p>
+    <div class="acts"><a class="btn gold" href="#urunler">Ürünleri gör</a><a class="btn ghost" href="#hikaye">Hikâyemiz</a></div>
+    <p class="cap">Kurucumuz, ilk yıllar.</p>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="band-t"><ul><li>Tahin helvası</li><li>Köpük helva</li><li>Tahin</li><li>Lokum</li><li>Kurabiye</li><li>Bal</li><li>Susam</li></ul><ul><li>Tahin helvası</li><li>Köpük helva</li><li>Tahin</li><li>Lokum</li><li>Kurabiye</li><li>Bal</li><li>Susam</li></ul></div></div>
+
+<section id="hikaye">
+  <div class="wrap about">
+    <div class="about-txt rv">
+      <p class="eyebrow">Hakkımızda</p>
+      <h2 style="font-size:clamp(2rem,7vw,3.2rem);margin-bottom:1.2rem">Tarif kâğıda değil, ustanın eline yazıldı.</h2>
+      <p class="lead">Tarhan Gıda'nın hikâyesi 1926'da, bir helva tezgâhında başladı. O günden bu yana tahin helvası, köpük helva, tahin ve lokum aynı anlayışla hazırlanıyor: önce kalite.</p>
+      <p>Ustalık dededen babaya, babadan oğula geçti. Bakır kazanların başında öğrenilen sabır, bugün Nazilli'deki dükkânımızda aynı özenle sürüyor.</p>
+      <div class="stats"><div><b>1926</b><span>kuruluş</span></div><div><b>3</b><span>kuşak</span></div><div><b>30+</b><span>çeşit ürün</span></div></div>
+    </div>
+    <div class="collage rv">
+      <div class="a"><img src="onizleme/tarhan/h20.webp" alt="Üç kuşak, aile fotoğrafı" width="1000" height="1395" loading="lazy"></div>
+      <div class="b"><img src="onizleme/tarhan/h12.webp" alt="Usta ile çırağı" width="1000" height="1630" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="time" aria-labelledby="th">
+  <div class="wrap">
+    <div class="sh"><p class="eyebrow">Kuşaktan kuşağa</p><h2 id="th">Bir asırlık yolculuk.</h2><p>Sararmış fotoğraflardan bugüne: aynı tezgâh, aynı emek.</p></div>
+    <div class="track" id="track">
+      <article class="tc"><figure><img src="onizleme/tarhan/h33.webp" alt="Kurucu, 1920'ler" width="1000" height="1592" loading="lazy"></figure><p class="k">1926</p><h3>İlk tezgâh</h3><p>Hikâye bir ustanın elinde, bir kazan helvayla başladı.</p></article>
+      <article class="tc"><figure><img src="onizleme/tarhan/h12.webp" alt="Usta ve çırağı" width="1000" height="1630" loading="lazy"></figure><p class="k">Usta ile çırak</p><h3>Elden ele</h3><p>Tarif yazılmadı; ustadan çırağa, sabırla öğretildi.</p></article>
+      <article class="tc"><figure><img src="onizleme/tarhan/h17.webp" alt="Bakır kazanda helva" width="1000" height="654" loading="lazy"></figure><p class="k">Bakır kazan</p><h3>Sabırla karıştırılır</h3><p>Helva, bakır kazanın başında, acele etmeden pişti.</p></article>
+      <article class="tc"><figure><img src="onizleme/tarhan/h20.webp" alt="Üç kuşak" width="1000" height="1395" loading="lazy"></figure><p class="k">Kuşaktan kuşağa</p><h3>Dededen torununa</h3><p>Aynı isim, aynı emek, üç kuşak boyunca.</p></article>
+      <article class="tc"><figure><img src="onizleme/tarhan/h55.webp" alt="İmalathanede çalışma" width="1000" height="1523" loading="lazy"></figure><p class="k">İmalathane</p><h3>Aynı özen</h3><p>Yıllar değişti, işin ciddiyeti değişmedi.</p></article>
+      <article class="tc"><figure><img src="onizleme/tarhan/h45.webp" alt="Bugün ustamız" width="1000" height="1426" loading="lazy"></figure><p class="k">Bugün</p><h3>Değişmeyen lezzet</h3><p>Bir asırlık bilgi, bugün de aynı tezgâhta.</p></article>
+    </div>
+    <p class="hint">Yana kaydırın →</p>
+  </div>
+</section>
+
+<section aria-labelledby="fh">
+  <div class="wrap foam">
+    <div class="foam-v rv"><video id="foamV" src="onizleme/tarhan/kopuk.mp4" poster="onizleme/tarhan/kopuk.webp" muted loop playsinline preload="none" aria-label="Köpük helva kaseye akıyor"></video></div>
+    <div class="foam-txt rv">
+      <p class="eyebrow">Öne çıkan</p>
+      <h2 id="fh">Köpük helva</h2>
+      <p>Bembeyaz, ipeksi ve hafif. Kaşıkla yenir, tahinle buluşunca bambaşka olur.</p>
+      <p class="price" id="foamP">180 TL <small>/ 500 g</small></p>
+      <button class="btn gold" type="button" data-addone="p15">Sepete ekle</button>
+    </div>
+  </div>
+</section>
+
+<section id="urunler" aria-labelledby="uh" style="padding-top:2rem">
+  <div class="wrap"><div class="sh"><p class="eyebrow">Ürünlerimiz</p><h2 id="uh">Sepetinizi oluşturun.</h2><p>Ürünleri seçin, siparişiniz hazır mesajla WhatsApp'tan bize ulaşsın. Onaylayıp size dönüyoruz.</p></div></div>
+  <nav class="cats" aria-label="Kategoriler"><div class="in" id="cats"></div></nav>
+  <div class="wrap"><div class="grid" id="grid"></div></div>
+</section>
+
+<section aria-label="Neden Tarhan Gıda" style="padding-top:1rem">
+  <div class="wrap vals">
+    <div class="val rv"><b>1926'dan beri</b><p>Bir asırlık ustalık, kuşaktan kuşağa aktarılan tarifler.</p></div>
+    <div class="val rv"><b>Önce kalite</b><p>Etiketimizdeki söz: önce kalite. Aynı lezzet, her seferinde.</p></div>
+    <div class="val rv"><b>Kolay sipariş</b><p>Sepetinizi oluşturun, WhatsApp'tan gönderin; siparişinizi onaylayıp size dönelim.</p></div>
+  </div>
+</section>
+
+<section id="magaza" aria-labelledby="mh" style="background:var(--paper)">
+  <div class="wrap shop">
+    <figure class="rv"><img src="onizleme/tarhan/h44.webp" alt="Tarhan Gıda dükkânı" width="1000" height="855" loading="lazy"></figure>
+    <div class="rv">
+      <p class="eyebrow">Mağazamız</p>
+      <h2 id="mh" style="font-size:clamp(2rem,7vw,3rem)">Nazilli'de sizi bekliyoruz.</h2>
+      <dl>
+        <div><dt>Adres</dt><dd>Nazilli, Aydın <span style="color:var(--muted)">(açık adres eklenecek)</span></dd></div>
+        <div><dt>Telefon ve WhatsApp</dt><dd><a href="https://wa.me/905306284284" id="sWa">Mesaj gönder</a></dd></div>
+        <div><dt>Sipariş</dt><dd>Mağazadan teslim ya da kargo, sipariş onayında netleşir.</dd></div>
+      </dl>
+      <div class="acts"><a class="btn gold" href="https://www.google.com/maps/search/?api=1&amp;query=Tarhan+G%C4%B1da+Nazilli" target="_blank" rel="noopener">Haritada aç</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:.8rem"><img src="onizleme/tarhan/logo.webp" alt="" width="54" height="54" loading="lazy"><div><b style="color:var(--cream);font-family:var(--serif)">Tarhan Gıda</b><br>1926'dan bu güne değişmeyen lezzet</div></div>
+    <div>© <span id="yr">2026</span> Tarhan Gıda · Tasarım &amp; geliştirme: <a href="https://eystudios.com.tr">EY Studios</a></div>
+  </div>
+</footer>
+
+<div class="bar" id="bar"><button type="button" id="barB"><span><span class="n" id="barN">0</span>Sepeti gör</span><span class="t" id="barT">0 TL</span></button></div>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="sh">
+  <div class="sheet">
+    <button class="x" id="x" type="button" aria-label="Kapat">✕</button>
+    <h2 id="sh">Sepetiniz</h2>
+    <div id="lines"></div>
+    <div class="sum"><span>Toplam</span><span id="tot">0 TL</span></div>
+    <p class="sub2">Kargo ücreti ve ödeme, sipariş onayında bildirilir.</p>
+    <fieldset><legend>Teslimat</legend>
+      <div class="seg"><label><input type="radio" name="dl" value="kargo" checked><span>Kargo ile</span></label><label><input type="radio" name="dl" value="magaza"><span>Mağazadan alırım</span></label></div>
+    </fieldset>
+    <label class="f">Ad soyad<input id="fn" autocomplete="name"></label>
+    <label class="f">Telefon<input id="ft" type="tel" inputmode="tel" autocomplete="tel"></label>
+    <label class="f" id="adrL">Teslimat adresi<textarea id="fa" autocomplete="street-address"></textarea></label>
+    <label class="f">Not (isteğe bağlı)<input id="fo"></label>
+    <p class="err" id="err" role="alert"></p>
+    <button class="btn wa send" id="send" type="button">WhatsApp'tan sipariş ver</button>
+  </div>
+</div>
+
+<script>
+(function(){
+var WA='905306284284';
+var CATS=[['helva','Tahin Helvası'],['kopuk','Köpük Helva'],['tahin','Tahin & Susam'],['kurabiye','Kurabiye & Çörek'],['lokum','Lokum'],['bal','Bal']];
+/* [kimlik, kategori, ad, gramaj, fiyat (örnek)] */
+var P=[
+['p01','helva','Fıstıklı Tahin Helvası','500 g',320],['p02','helva','Sade Tahin Helvası','500 g',220],['p28','helva','Kakaolu Tahin Helvası','500 g',250],['p29','helva','Cevizli Tahin Helvası','500 g',300],
+['p36','helva','Çikolatalı Cevizli Helva','500 g',320],['p35','helva','Kırmızı Cevizli Helva','500 g',300],['p04','helva','Paket Tahin Helvası','250 g',120],['p51','helva','Kase Tahin Helvası','1 kg',420],
+['p15','kopuk','Köpük Helva','500 g',180],['p23','kopuk','Köpük Helva','1 kg',330],
+['p25','tahin','Susam Tahini','900 g',280],['p50','tahin','Tahin Kavanoz','650 g',210],['p46','tahin','Tahin Şişe','1 kg',290],['p37','tahin','Tahin Kova','2 kg',560],['p47','tahin','Kavrulmuş Susam','500 g',120],
+['p42','kurabiye','Antep Fıstıklı Kurabiye','500 g',280],['p03','kurabiye','Fındıklı Kurabiye','500 g',240],['p41','kurabiye','Yer Fıstıklı Kakaolu Kurabiye','500 g',200],['p09','kurabiye','Susamlı Kurabiye','500 g',190],
+['p00','kurabiye','Susamlı Halka','500 g',160],['p07','kurabiye','Tahinli Rulo','6 adet',220],['p05','kurabiye','Tahinli Pide','1 adet',60],['p21','kurabiye','Tahinli Çörek','1 adet',60],
+['p43','lokum','Gül ve Sade Lokum','500 g',190],['p18','lokum','Meyveli Lokum','500 g',170],['p19','lokum','Hindistan Cevizli Lokum','500 g',170],['p06','lokum','Kayısılı Lokum','500 g',200],['p13','lokum','Sarma Lokum','500 g',220],
+['p38','bal','Süzme Çiçek Balı','850 g',650],['p40','bal','Süzme Çam Balı','850 g',700],['p53','bal','Süzme Çiçek Balı','450 g',360],['p56','bal','Süzme Çam Balı','450 g',390],['p32','bal','Erzincan Çiçek Balı','1 kg',750],['p52','bal','Petek Bal','1 kg',900]
+];
+var BY={};P.forEach(function(p){BY[p[0]]=p});
+var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
+var tl=function(n){return n.toLocaleString('tr-TR')+' TL'};
+var cart={};try{var s=JSON.parse(localStorage.getItem('tarhan-cart')||'{}');Object.keys(s).forEach(function(k){if(BY[k]&&s[k]>0)cart[k]=Math.min(99,s[k]|0)})}catch(e){}
+function save(){try{localStorage.setItem('tarhan-cart',JSON.stringify(cart))}catch(e){}}
+function count(){return Object.keys(cart).reduce(function(a,k){return a+cart[k]},0)}
+function total(){return Object.keys(cart).reduce(function(a,k){return a+cart[k]*BY[k][4]},0)}
+function ctrl(id){var n=cart[id]||0;return n?'<div class="add" data-id="'+id+'"><button type="button" data-a="-" aria-label="Azalt">−</button><span>'+n+' adet</span><button type="button" data-a="+" aria-label="Arttır">+</button></div>':'<button class="add one" type="button" data-id="'+id+'" data-a="+">Sepete ekle</button>'}
+/* katalog */
+var h='',c='';CATS.forEach(function(k){c+='<button class="chip" type="button" data-c="'+k[0]+'">'+k[1]+'</button>';h+='<h3 class="cat-h" id="c-'+k[0]+'">'+k[1]+'</h3>';
+  P.filter(function(p){return p[1]===k[0]}).forEach(function(p){h+='<article class="card"><figure><img src="onizleme/tarhan/'+p[0]+'.webp" alt="'+p[2]+'" width="600" height="750" loading="lazy" decoding="async"><span class="w">'+p[3]+'</span></figure><h3>'+p[2]+'</h3><div class="p">'+tl(p[4])+'</div><div class="ctl" id="k-'+p[0]+'">'+ctrl(p[0])+'</div></article>'})});
+$('#grid').innerHTML=h;$('#cats').innerHTML=c;
+function refresh(id){if(id){var e=$('#k-'+id);if(e)e.innerHTML=ctrl(id)}else P.forEach(function(p){$('#k-'+p[0]).innerHTML=ctrl(p[0])});
+  var n=count();$('#bar').classList.toggle('on',n>0);$('#barN').textContent=n;$('#barT').textContent=tl(total());save();if($('#ov').classList.contains('on'))lines()}
+function change(id,d){cart[id]=Math.max(0,Math.min(99,(cart[id]||0)+d));if(!cart[id])delete cart[id];refresh(id)}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-a]');if(b){var id=b.getAttribute('data-id')||b.closest('[data-id]').getAttribute('data-id');change(id,b.getAttribute('data-a')==='+'?1:-1);return}
+  var o=e.target.closest('[data-addone]');if(o){change(o.getAttribute('data-addone'),1);o.textContent='Sepete eklendi ✓';setTimeout(function(){o.textContent='Sepete ekle'},1600);return}
+  var ch=e.target.closest('.chip');if(ch){var t=$('#c-'+ch.getAttribute('data-c'));if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+});
+/* görünen kategori vurgulansın */
+if('IntersectionObserver' in window){var co=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){var id=x.target.id.slice(2);$$('.chip').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-c')===id)})}})},{rootMargin:'-140px 0px -70% 0px'});$$('.cat-h').forEach(function(e){co.observe(e)})}
+/* sepet */
+function lines(){var ks=Object.keys(cart);if(!ks.length){$('#lines').innerHTML='<p class="empty">Sepetiniz boş.</p>'}else{$('#lines').innerHTML=ks.map(function(k){var p=BY[k];return '<div class="ln"><img src="onizleme/tarhan/'+k+'.webp" alt=""><div><b>'+p[2]+'</b><span>'+p[3]+' · '+tl(p[4])+'</span></div><div class="q" data-id="'+k+'"><button type="button" data-a="-" aria-label="Azalt">−</button><span>'+cart[k]+'</span><button type="button" data-a="+" aria-label="Arttır">+</button></div></div>'}).join('')}
+  $('#tot').textContent=tl(total())}
+function openC(){lines();$('#ov').classList.add('on');document.body.style.overflow='hidden';setTimeout(function(){$('#x').focus()},50)}
+function closeC(){$('#ov').classList.remove('on');document.body.style.overflow='';$('#barB').focus()}
+$('#barB').addEventListener('click',openC);$('#x').addEventListener('click',closeC);
+$('#ov').addEventListener('click',function(e){if(e.target.id==='ov')closeC()});
+addEventListener('keydown',function(e){if(e.key==='Escape'&&$('#ov').classList.contains('on'))closeC()});
+function dl(){return (document.querySelector('input[name=dl]:checked')||{}).value}
+$$('input[name=dl]').forEach(function(r){r.addEventListener('change',function(){$('#adrL').style.display=dl()==='kargo'?'':'none'})});
+['#fn','#ft','#fa'].forEach(function(s){$(s).addEventListener('input',function(){$('#err').classList.remove('on')})});
+/* işletmeye giden mesaj her zaman Türkçe */
+$('#send').addEventListener('click',function(){
+  var n=$('#fn').value.trim(),t=$('#ft').value.trim(),a=$('#fa').value.trim(),o=$('#fo').value.trim(),err=$('#err'),k=dl()==='kargo';
+  var m=!count()?'Sepetiniz boş.':!n?'Lütfen adınızı yazın.':t.replace(/\D/g,'').length<10?'Lütfen geçerli bir telefon numarası yazın.':(k&&a.length<10)?'Lütfen teslimat adresini yazın.':'';
+  if(m){err.textContent=m;err.classList.add('on');return}
+  var msg='Merhaba Tarhan Gıda, sipariş vermek istiyorum.\n\n'+Object.keys(cart).map(function(id){var p=BY[id];return cart[id]+' x '+p[2]+' ('+p[3]+') - '+tl(cart[id]*p[4])}).join('\n')+
+    '\n\nToplam: '+tl(total())+'\nTeslimat: '+(k?'Kargo':'Mağazadan teslim alacağım')+'\nAd: '+n+'\nTelefon: '+t+(k?'\nAdres: '+a:'')+(o?'\nNot: '+o:'')+'\n\nSiparişimi onaylıyor musunuz?';
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener');
+});
+refresh();
+/* köpük helva fiyatı katalogdan */
+$('#foamP').innerHTML=tl(BY.p15[4])+' <small>/ '+BY.p15[3]+'</small>';
+/* video ve görünme efektleri */
+var v=$('#foamV');
+if('IntersectionObserver' in window){
+  var vo=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){if(v.preload!=='auto'){v.preload='auto'}var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.25});
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)vo.observe(v);
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.15});
+  $$('.rv,.tc').forEach(function(e){io.observe(e)});
+}else{$$('.rv,.tc').forEach(function(e){e.classList.add('in')})}
+$('#yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
