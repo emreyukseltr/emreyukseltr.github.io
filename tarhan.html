@@ -168,6 +168,9 @@ section{padding:4.2rem 0}
 .shop dl{display:grid;gap:1rem;margin:1.2rem 0 1.6rem}
 .shop dt{font:600 .78rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d)}
 .shop dd{margin:.2rem 0 0;font-size:1.05rem}
+.soc{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem!important}
+.soc a{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border:1px solid rgba(36,23,15,.25);border-radius:999px;text-decoration:none;color:var(--ink);font:500 .95rem var(--sans)}
+.soc a:hover{background:var(--ink);color:var(--cream)}
 
 footer{background:var(--ink);color:#CDBDA4;padding:2.8rem 0 1.2rem;font-size:.92rem}
 .fgrid{display:grid;gap:1.8rem}
@@ -331,6 +334,8 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4a20 20 0 0 0-2.3-.1c-2.3 0-3.8 1.4-3.8 3.9v2.3H9v3h2.5V21"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.2z"/><path d="M9.2 8.6c.3 2.6 2.4 4.9 5.2 5.3l.9-1.3-1.8-.9-.8.8a4.3 4.3 0 0 1-2-2l.8-.8-.9-1.8z"/></symbol>
 </svg>
 <div class="note">Önizleme · ürün adları, fiyatlar ve metinler örnektir. Ödeme test modunda, gerçek ödeme alınmaz.</div>
@@ -394,7 +399,7 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
       <article class="tc"><figure class="warm"><img src="onizleme/tarhan/h-vitrin.webp" alt="Ali İhsan Tarhan dükkânın tezgâhında" width="1000" height="902" loading="lazy"></figure><p class="k">Tezgâhın başında</p><h3>Ali İhsan Tarhan</h3><p>Babasından devraldığı ustalıkla dükkânın tezgâhında; helva aynı elden, aynı özenle.</p></article>
       <article class="tc"><figure><img src="onizleme/tarhan/h20.webp" alt="Aile, kuşaktan kuşağa" width="1000" height="1395" loading="lazy"></figure><p class="k">Kuşaktan kuşağa</p><h3>Mehmet Güder</h3><p>Ali İhsan Tarhan'ın ardından meslek damadı Mehmet Güder'e geçti; emek ve tarif aynı kaldı.</p></article>
       <article class="tc"><figure><img src="onizleme/tarhan/h17.webp" alt="Bakır kazanda helva" width="1000" height="654" loading="lazy"></figure><p class="k">Bakır kazan</p><h3>Sabırla karıştırılır</h3><p>Helva, bakır kazanın başında, acele etmeden pişti.</p></article>
-      <article class="tc"><figure><img src="onizleme/tarhan/h55.webp" alt="Tahsin Güder imalathanede" width="1000" height="1523" loading="lazy"></figure><p class="k">Bugün işin başında</p><h3>Tahsin Güder</h3><p>Yıllar değişti, işin ciddiyeti değişmedi. Bugün imalathanenin başında dördüncü kuşaktan Tahsin Güder var.</p></article>
+      <article class="tc"><figure><img src="onizleme/tarhan/h-tahsin.webp" alt="Tahsin Güder dükkânda, masasının başında" width="1000" height="1250" loading="lazy"></figure><p class="k">Bugün işin başında</p><h3>Tahsin Güder</h3><p>Gençliği bu dükkânda, helvanın başında geçti. Yıllar değişti, işin ciddiyeti değişmedi; bugün dördüncü kuşak olarak Tarhan Gıda'nın başında o var.</p></article>
       <article class="tc"><figure><img src="onizleme/tarhan/h45.webp" alt="Mehmet Güder elinde helvayla" width="1000" height="1426" loading="lazy"></figure><p class="k">Bir ömür helva</p><h3>Mehmet Güder</h3><p>Yıllar geçti; elindeki helva da, işine duyduğu sevgi de hiç değişmedi.</p></article>
     </div>
     <p class="hint">Yana kaydırın →</p>
@@ -434,7 +439,8 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
         <div><dt>Fabrika</dt><dd>Prof. Muammer Aksoy Mah. Gıda Çarşısı C Blok No:6<br>Nazilli / Aydın</dd></div>
         <div><dt>Telefon</dt><dd><a href="tel:+902563131572">0256 313 15 72</a></dd></div>
         <div><dt>WhatsApp</dt><dd><a id="sWa" href="#">Mesaj gönder</a></dd></div>
-        <div><dt>Kargo</dt><dd id="kInfo">Siparişler 1-2 iş günü içinde kargoya verilir.</dd></div>
+        <div><dt>Kargo</dt><dd id="kInfo">Siparişler aynı gün kargoya verilir.</dd></div>
+        <div><dt>Bizi takip edin</dt><dd class="soc"><a id="sIg" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-ig"/></svg>Instagram</a><a id="sFb" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-fb"/></svg>Facebook</a></dd></div>
       </dl>
       <a class="btn dark" href="https://www.google.com/maps/search/?api=1&amp;query=Alt%C4%B1nta%C5%9F+Mah.+K%C4%B1br%C4%B1s+Cad.+No%3A10%2FA+Nazilli+Ayd%C4%B1n" target="_blank" rel="noopener">Haritada aç</a>
     </div>
@@ -552,6 +558,7 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
 /* ===== Ayarlar: işletme bilgileri gelince burası güncellenir ===== */
 var CFG={
   wa:'905306284284',               /* işletmenin WhatsApp numarası (şimdilik EY Studios demo) */
+  ig:'', fb:'',                    /* Instagram ve Facebook sayfa linkleri (gelince yazılacak) */
   kargo:120, ucretsizEsik:1500,    /* örnek kargo ücreti ve ücretsiz kargo sınırı */
   odeme:{mod:'test', api:''}       /* 'paytr': PayTR hesabı ve sunucu tarafı bağlanınca; 'test': gerçek ödeme alınmaz */
 };
@@ -699,6 +706,7 @@ $('#dHome').addEventListener('click',function(){closeOv('ovCo');var u=$('#urunle
 
 /* ---- başlangıç ---- */
 render();sync();
+[['#sIg',CFG.ig],['#sFb',CFG.fb]].forEach(function(x){var a=$(x[0]);if(x[1])a.href=x[1];else a.addEventListener('click',function(e){e.preventDefault()})});
 var waUrl='https://wa.me/'+CFG.wa;$('#sWa').href=waUrl;$('#fWa').href=waUrl;
 $('#trFree').textContent=tl(CFG.ucretsizEsik)+' üzeri ücretsiz';
 $('#foamP').innerHTML=tl(BY.p15[4])+' <small>/ '+BY.p15[3]+'</small>';
