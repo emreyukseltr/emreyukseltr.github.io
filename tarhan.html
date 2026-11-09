@@ -117,7 +117,10 @@ section{padding:4.2rem 0}
 .tc figure{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:#3A281C}
 .tc img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) sepia(.5) contrast(1.05);transition:filter 1.2s ease}
 .tc.in img{filter:grayscale(.15) sepia(.2)}
-.tc:last-child.in img{filter:none}
+.tc:last-child.in img,.tc .warm img{filter:none}
+.tc .warm{position:relative;display:grid;place-items:center}
+.tc .warm::before{content:"";position:absolute;inset:-20px;background:url(onizleme/tarhan/h-vitrin.webp) center/cover;filter:blur(18px) brightness(.55)}
+.tc .warm img{position:relative;height:auto;object-fit:contain;box-shadow:0 10px 30px rgba(0,0,0,.45)}
 .tc .k{font:700 .78rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:1rem 0 .35rem}
 .tc h3{font-size:1.45rem}
 .tc p{color:#CDBDA4;margin-top:.35rem}
@@ -386,7 +389,7 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
   <div class="wrap">
     <div class="sh"><p class="eyebrow">Kuşaktan kuşağa</p><h2 id="th">Bir asırlık yolculuk.</h2><p>Sararmış fotoğraflardan bugüne: aynı tezgâh, aynı emek.</p></div>
     <div class="track">
-      <article class="tc"><figure><img src="onizleme/tarhan/h33.webp" alt="Ahmet Tarhan, ilk yıllar" width="1000" height="1592" loading="lazy"></figure><p class="k">Akşehir'den Nazilli'ye</p><h3>Ahmet Tarhan</h3><p>Helva ve tahin ustalığını sürdürmek için Akşehir'den Nazilli'ye geldi; hikâye böyle başladı.</p></article>
+      <article class="tc"><figure class="warm"><img src="onizleme/tarhan/h-vitrin.webp" alt="Dükkânın ilk yıllarından, vitrinin ardında ustalar" width="1000" height="902" loading="lazy"></figure><p class="k">Akşehir'den Nazilli'ye</p><h3>Ahmet Tarhan</h3><p>Helva ve tahin ustalığını sürdürmek için Akşehir'den Nazilli'ye geldi; hikâye böyle başladı.</p></article>
       <article class="tc"><figure><img src="onizleme/tarhan/h12.webp" alt="Usta ve çırağı" width="1000" height="1630" loading="lazy"></figure><p class="k">Usta ile çırak</p><h3>Elden ele</h3><p>Tarif yazılmadı; ustadan çırağa, sabırla öğretildi.</p></article>
       <article class="tc"><figure><img src="onizleme/tarhan/h17.webp" alt="Bakır kazanda helva" width="1000" height="654" loading="lazy"></figure><p class="k">Bakır kazan</p><h3>Sabırla karıştırılır</h3><p>Helva, bakır kazanın başında, acele etmeden pişti.</p></article>
       <article class="tc"><figure><img src="onizleme/tarhan/h20.webp" alt="Aile, kuşaktan kuşağa" width="1000" height="1395" loading="lazy"></figure><p class="k">Kuşaktan kuşağa</p><h3>Ali İhsan Tarhan, Mehmet Güder</h3><p>Usta oğula, sonra damada geçti; emek ve tarif aynı kaldı.</p></article>
