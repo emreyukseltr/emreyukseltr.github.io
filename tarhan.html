@@ -91,6 +91,23 @@ nav.top a{text-decoration:none;opacity:.85}nav.top a:hover{opacity:1;color:var(-
 
 section{padding:4.2rem 0}
 .sh{max-width:40rem;margin-bottom:2rem}
+.revs{padding-bottom:2rem}
+.rv-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 2rem;margin-bottom:1.6rem}
+.rv-top .sh{margin:0}
+.score{display:flex;align-items:center;gap:.8rem}
+.score>b{font:700 3rem/1 var(--serif)}
+.score small{display:block;color:var(--muted);font-size:.85rem}
+.st{color:var(--gold);letter-spacing:.12em;font-size:1.05rem;line-height:1}
+.rv-list{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.2rem 1.25rem 1.2rem;margin:0 -1.25rem 1rem;scrollbar-width:none;scroll-padding-inline:1.25rem}
+.score .of{font:600 1.1rem var(--sans)}
+.rv-list::-webkit-scrollbar{display:none}
+.rvw{flex:0 0 84%;scroll-snap-align:start;display:flex;flex-direction:column;gap:.9rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem}
+.rvw blockquote{margin:0;flex:1;font-size:1rem;line-height:1.6}
+.rvw figcaption{display:flex;align-items:center;gap:.7rem}
+.rvw .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font:600 1.05rem var(--sans);flex:none}
+.rvw b{display:block;font-weight:600}
+.rvw small{color:var(--muted);font-size:.82rem}
+@media(min-width:900px){.rv-list{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0 0 1.6rem;padding:0}.rvw{flex:none}}
 .sh h2{font-size:clamp(2rem,7vw,3.2rem)}
 .sh p{color:var(--muted);margin-top:.9rem;font-size:1.05rem}
 
@@ -417,6 +434,14 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
       <p class="price" id="foamP"></p>
       <button class="btn gold" type="button" data-one="p15">Sepete ekle</button>
     </div>
+  </div>
+</section>
+
+<section class="revs" aria-labelledby="rh">
+  <div class="wrap">
+    <div class="rv-top"><div class="sh"><p class="eyebrow">Google yorumları</p><h2 id="rh">Müşterilerimiz ne diyor?</h2></div><div class="score"><b>4,6</b><span><span class="of">/ 5</span><small>Google puanı</small></span></div></div>
+    <div class="rv-list"><figure class="rvw"><div class="st" aria-label="5 üzerinden 5 yıldız">★★★★★</div><blockquote>Ürünler, çok güzel, çok kaliteli. Ailemle ürünlerin içinde en çok saray helvasını beğendik. İşletme sahipleri de çok ilgili, bize çok yardımcı oldular. Gönül rahatlığıyla alışveriş yapabilirsiniz.</blockquote><figcaption><span class="av" style="background:#7A4A3A" aria-hidden="true">Z</span><span><b>Zeren Savaş</b><small>Google yorumu</small></span></figcaption></figure><figure class="rvw"><div class="st" aria-label="5 üzerinden 5 yıldız">★★★★★</div><blockquote>Ürünlerinizi gerçekten severek tüketiyoruz. Yılların helvacısı olduğunuzu duyarak gelmiştik, çok memnun kaldık. Antep fıstıklı helvalarınızı ailecek çok seviyoruz.</blockquote><figcaption><span class="av" style="background:#1F5E46" aria-hidden="true">S</span><span><b>Sümeyye Yılmaz</b><small>Google yorumu</small></span></figcaption></figure><figure class="rvw"><div class="st" aria-label="5 üzerinden 5 yıldız">★★★★★</div><blockquote>İlk önce işletmenin temizliği ve gelenekselliğinden çok memnun kaldığımı belirtmek isterim. Nazilli'de hem en köklü hem de en güzel ürünlere sahip bir işletmedir. Severek tükettiğimiz ürünleri helvalarıdır, çünkü kendi üretimleri olduğu için gönül rahatlığıyla tüketiyoruz.</blockquote><figcaption><span class="av" style="background:#4F5BB0" aria-hidden="true">D</span><span><b>Dilan Korkmaz</b><small>Google yorumu</small></span></figcaption></figure><figure class="rvw"><div class="st" aria-label="5 üzerinden 5 yıldız">★★★★★</div><blockquote>Geleneksel lezzet helvayı almak için uğradık. İçindekiler ve nasıl yapıldığı hakkında çok güzel bilgi aldık; oğlum çok ilgilendiği için ona fazladan tatlı bile verdiler. Bu içten ve sıcak misafirperverlik için çok teşekkürler!</blockquote><figcaption><span class="av" style="background:#8E3FA8" aria-hidden="true">S</span><span><b>Salih</b><small>Google yorumu · Almancadan çevrildi</small></span></figcaption></figure></div>
+    <a class="btn dark" href="https://www.google.com/search?kgmid=/g/11r3lf6m4h&amp;q=Tarhan+Tahin+%26+Helva+Nazilli" target="_blank" rel="noopener">Tüm yorumları Google'da gör</a>
   </div>
 </section>
 
