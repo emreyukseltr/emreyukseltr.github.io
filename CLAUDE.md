@@ -31,7 +31,7 @@ self-contained HTML file in the repo root.
   (index.html, images in `img/`). Make every Luna change there. `luna.html` here is just a redirect to
   lunabijuteri.com (noindex). Deal: 8.500 TL total, 3.500 paid, 5.000 due when the shop opens; 2 free bulk
   updates, then 500 TL per bulk update, or a one-time 2.000 TL self-service product panel. Products follow
-  Yağmur's stock table: each has a code (e.g. ELK003KK) shown in the product window and in WhatsApp messages.
+  Yağmur's stock table: each has a code (e.g. ELK003KK) kept in the data only; customers and WhatsApp messages see product names, never codes. Product names come from Yağmur herself.
 
 ## Workflow
 
