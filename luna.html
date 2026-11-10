@@ -634,18 +634,37 @@ html.soon .has-bar .demo-back{transform:none}
   }
 
   /* ---------- Ürünler ---------- */
-  var CATS = [['all', 'Tümü'], ['kupe', 'Küpe'], ['bileklik', 'Bileklik'], ['set', 'Set'], ['tesettur', 'Tesettür']];
+  var CATS = [['all', 'Tümü'], ['kupe', 'Küpe'], ['bileklik', 'Bileklik'], ['halhal', 'Hal Hal'], ['yuzuk', 'Yüzük'], ['set', 'Set'], ['tesbih', 'Tesbih'], ['tesettur', 'Tesettür']];
   var TINTS = q.get('t') === 'pembe' ? ['#F7E3EB', '#F3E7EE', '#FAEEF0', '#EFE2EC'] : ['#F4E6DF', '#EFE7DA', '#E7ECE4', '#EEE5EC'];
   var MAT = 'El yapımı.';
   var IMG = 'onizleme/luna/';
   var P = [
-    { id: 'papatya', n: 'Papatyalı Bileklik / Halhal', c: 'bileklik', p: 200, img: 'papatyali-inci-bileklik-halhal.jpg', nm: 1, b: 'Yeni', hot: 1, m: ['gold'], d: 'İnci ve altın renk boncuklar, ortasında küçük papatya. Uzatma zincirli; bilekte ya da ayak bileğinde kullanabilirsiniz.' },
+    { id: 'papatya', n: 'Papatyalı Hal Hal', c: 'halhal', p: 250, img: 'papatyali-inci-bileklik-halhal.jpg', nm: 1, m: ['gold'], d: 'İnci ve altın renk boncuklar, ortasında küçük papatya. Uzatma zincirli; ayak bileğinde ya da bilekte kullanabilirsiniz.', k: 'ELK0018PHH', b: 'Çok sevilen', hot: 1 },
+    { id: 'turuncu-kelebek', n: 'Turuncu Boncuklu Kelebek Hal Hal', c: 'halhal', p: 250, img: 'turuncu-kelebek-halhal.jpg', nm: 1, m: ['gold'], d: 'Turuncu boncuklar ve ortasında altın renk kelebek. Uzatma zincirli hal hal.', k: 'ELK0020TBKHH' },
+    { id: 'turkuaz-kelebek', n: 'Turkuaz Kelebek Detaylı Hal Hal', c: 'halhal', p: 250, img: 'turkuaz-kelebek-halhal.jpg', nm: 1, m: ['gold'], d: 'Turkuaz boncuklar ve ortasında kelebek detay. Uzatma zincirli hal hal.', k: 'ELK0017TKDHH' },
+    { id: 'kirmizi-beyaz', n: 'Kırmızı ve Beyaz Boncuklu Hal Hal', c: 'halhal', p: 250, img: 'kirmizi-beyaz-halhal.jpg', nm: 1, m: ['silver'], d: 'Kırmızı ve beyaz boncuklar sırayla dizili, uzatma zincirli hal hal.', k: 'ELK0016KBBHH' },
+    { id: 'kalpli', n: 'Kalpli Altın Görünümlü Küpe', c: 'kupe', p: 200, img: 'kalpli-kupe.jpg', nm: 1, m: ['gold'], d: 'Altın renk küçük kalp, altın renk kancalı sallantılı küpe. Fiyat çift içindir.', k: 'ELK003KK' },
+    { id: 'petrol', n: 'Koyu Yeşil Damla Küpe', c: 'kupe', p: 200, img: 'koyu-yesil-damla-kupe.jpg', nm: 1, m: ['gold'], d: 'Koyu yeşil boncuklardan damla şeklinde, altın renk kancalı küpe. Fiyat çift içindir.', k: 'ELK005KYDK' },
+    { id: 'inci-mavi', n: 'İnci ve Açık Mavi Halka Küpe', c: 'kupe', p: 200, img: 'inci-acik-mavi-halka-kupe.jpg', nm: 1, m: ['silver'], d: 'İnci ve açık mavi boncuklardan halka küpe, gümüş renk kancalı. Fiyat çift içindir.', k: 'ELK006İAMHK' },
+    { id: 'yesil-beyaz-uzun', n: 'Yeşil Beyaz Uzun Küpe', c: 'kupe', p: 200, img: 'yesil-beyaz-uzun-kupe.jpg', nm: 1, m: ['silver'], d: 'Fıstık yeşili boncuklar ve beyaz ara pullardan uzun sallantılı küpe, gümüş renk kancalı. Fiyat çift içindir.', k: 'ELK008YBUK' },
+    { id: 'yesil-kirmizi', n: 'Koyu Yeşil ve Kırmızı Küpe', c: 'kupe', p: 200, img: 'koyu-yesil-kirmizi-kupe.jpg', nm: 1, m: ['gold'], d: 'Koyu yeşil ve kırmızı boncuklardan halka küpe, altın renk kancalı. Fiyat çift içindir.', k: 'ELK0010YPHK' },
+    { id: 'mor-pembe', n: 'Şeffaf Mor ve Pembe Küpe', c: 'kupe', p: 200, img: 'seffaf-mor-pembe-kupe.jpg', nm: 1, m: ['silver'], d: 'Şeffaf mor ve pembe boncuklardan halka küpe, gümüş renk kancalı. Fiyat çift içindir.', k: 'ELK0011ŞMPK' },
+    { id: 'mor-beyaz', n: 'Şeffaf Mor ve Beyaz Küpe', c: 'kupe', p: 200, img: 'seffaf-mor-beyaz-kupe.jpg', nm: 1, m: ['gold'], d: 'Şeffaf mor ve beyaz boncuklardan damla küpe, altın renk kancalı. Fiyat çift içindir.', k: 'ELK0012ŞMBK' },
+    { id: 'mavi-beyaz', n: 'Mavi Beyaz Boncuklu Küpe', c: 'kupe', p: 200, img: 'mavi-beyaz-boncuk-kupe.jpg', nm: 1, m: ['gold'], d: 'Mavi ve beyaz boncuklardan minik halka küpe, altın renk kancalı. Fiyat çift içindir.', k: 'ELK0028MBBK' },
+    { id: 'halka-kupe', n: 'Yeşil Beyaz Halka Küpe', c: 'kupe', p: 200, img: 'yesil-beyaz-halka-kupe.jpg', nm: 1, m: ['silver'], d: 'Yeşil boncuklar ve beyaz ara pullardan büyük halka küpe, gümüş renk kancalı. Fiyat çift içindir.', k: 'ELK0029YBHK' },
+    { id: 'damla-kupe', n: 'Fuşya ve Mint Küpe', c: 'kupe', p: 200, img: 'fusya-mint-kupe.jpg', nm: 1, m: ['gold'], d: 'Fuşya ve mint boncuklardan damla küpe, altın renk kancalı. Fiyat çift içindir.', k: 'ELK0030FMK' },
+    { id: 'fusya-yesil', n: 'Fuşya Yeşil Halka Küpe', c: 'kupe', p: 200, img: 'fusya-yesil-halka-kupe.jpg', nm: 1, m: ['gold'], d: 'Fuşya ve yeşil boncuklardan halka küpe, altın renk kancalı. Fiyat çift içindir.' },
+    { id: 'sari-yesil', n: 'Sarı Yeşil Halka Küpe', c: 'kupe', p: 250, img: 'sari-yesil-halka-kupe.jpg', nm: 1, m: ['gold'], d: 'Sarı ve koyu yeşil boncuklardan halka küpe, altın renk kancalı. Fiyat çift içindir.' },
+    { id: 'mor-kirmizi', n: 'Mor ve Kırmızı Boncuklu Bileklik', c: 'bileklik', p: 250, img: 'mor-kirmizi-bileklik.jpg', nm: 1, m: ['gold'], d: 'Mor ve kırmızı inci boncuklar, uzatma zincirli bileklik.', k: 'ELK0023MKBB' },
+    { id: 'erkek', n: 'Yetişkin Erkek Bileklik', c: 'bileklik', p: 250, img: 'lacivert-gri-bileklik.jpg', nm: 1, m: ['silver'], d: 'Lacivert ve gri inci boncuklar, uzatma zincirli bileklik.', k: 'ELK0021YEB' },
     { id: 'altin-top', n: 'Altın Top Bileklik', c: 'bileklik', p: 200, img: 'altin-top-bileklik.jpg', nm: 1, m: ['gold'], d: 'Altın renk küçük toplardan, uzatma zincirli sade bileklik.' },
-    { id: 'damla-kupe', n: 'Damla Küpe · Fuşya & Mint', c: 'kupe', p: 200, img: 'damla-kupe-fusya-mint.jpg', nm: 1, b: 'Yeni', m: ['gold'], d: 'Fuşya ve mint renk boncuklardan damla şeklinde, altın renk kancalı küpe. Fiyat çift içindir.' },
-    { id: 'halka-kupe', n: 'Halka Küpe · Zümrüt', c: 'kupe', p: 200, img: 'halka-kupe-zumrut.jpg', nm: 1, b: 'Yeni', m: ['gold'], d: 'Zümrüt yeşili boncuklar ve beyaz ara parçalardan halka küpe, gümüş renk kancalı. Fiyat çift içindir.' },
-    { id: 'inci-mavi', n: 'Damla Küpe · İnci & Mavi', c: 'kupe', p: 200, img: 'inci-mavi-damla-kupe.jpg', nm: 1, b: 'Yeni', m: ['gold'], d: 'İnci ve mavi boncuklardan damla şeklinde, gümüş renk kancalı küpe. Fiyat çift içindir.' },
-    { id: 'petrol', n: 'Damla Küpe · Petrol Yeşili', c: 'kupe', p: 200, img: 'petrol-yesil-damla-kupe.jpg', nm: 1, b: 'Yeni', m: ['gold'], d: 'Petrol yeşili boncuklardan küçük damla küpe, altın renk kancalı. Fiyat çift içindir.' },
-    { id: 'inci-set', n: 'İnci Takı Seti', c: 'set', p: 600, img: 'inci-takim-seti.jpg', nm: 1, b: 'Set', m: ['silver'], d: 'İnci boncuklu kolye, küpe ve yüzükten oluşan takı seti. Kolye uzatma zincirli, gümüş renk. Parçalar birlikte fiyatlandırılmıştır.' },
+    { id: 'yuzuk-pembe', n: 'Açık Pembe ve Koyu Pembe Yüzük', c: 'yuzuk', p: 150, img: 'acik-koyu-pembe-yuzuk.jpg', nm: 1, m: ['silver'], d: 'Açık ve koyu pembe inci boncuklardan esnek yüzük.', k: 'ELK0024APKPY' },
+    { id: 'yuzuk-lacivert', n: 'Gri ve Lacivert Yüzük', c: 'yuzuk', p: 150, img: 'gri-lacivert-yuzuk.jpg', nm: 1, m: ['silver'], d: 'Gri ve lacivert inci boncuklardan esnek yüzük.', k: 'ELK0025GLY' },
+    { id: 'yuzuk-kirmizi', n: 'Kırmızı ve Açık Pembe Yüzük', c: 'yuzuk', p: 150, img: 'kirmizi-acik-pembe-yuzuk.jpg', nm: 1, m: ['silver'], d: 'Kırmızı ve açık pembe inci boncuklardan esnek yüzük.', k: 'ELK0026KAPY' },
+    { id: 'yuzuk-gri', n: 'Gri ve Kırmızı Boncuklu Yüzük', c: 'yuzuk', p: 150, img: 'gri-kirmizi-yuzuk.jpg', nm: 1, m: ['silver'], d: 'Gri ve kırmızı inci boncuklardan esnek yüzük.', k: 'ELK0027GKBY' },
+    { id: 'inci-set', n: 'İnci Kolye Seti', c: 'set', p: 650, img: 'inci-kolye-seti.jpg', nm: 1, m: ['silver'], d: 'İnci boncuklu kolye, küpe ve yüzükten oluşan takı seti. Kolye uzatma zincirli, gümüş renk. Parçalar birlikte fiyatlandırılmıştır.', k: 'ELK004İKS', b: 'Set' },
+    { id: 'mavi-set', n: 'Mavi Beyaz Küpe ve Bileklik Seti', c: 'set', p: 650, img: 'mavi-beyaz-kupe-bileklik-seti.jpg', nm: 1, m: ['silver'], d: 'Mavi ve beyaz inci boncuklu bileklik ile küpeden oluşan set. Bileklik uzatma zincirli. Parçalar birlikte fiyatlandırılmıştır.', k: 'ELK007MBKBS', b: 'Set' },
+    { id: 'tesbih', n: 'Kadın 33\'lük Tesbih', c: 'tesbih', p: 250, img: 'kadin-33luk-tesbih.jpg', nm: 1, m: ['silver'], d: 'Kırmızı inci boncuklar ve gümüş renk ara başlıklarla 33\'lük tesbih.', k: 'ELK001KT' },
     { id: 'igne', n: 'Tesettür İğnesi', c: 'tesettur', p: 30, img: 'tesettur-ignesi-4-renk.jpg', b: 'Adet fiyatı', m: ['antik', 'rose', 'silver', 'gold'], d: 'Eşarp ve bone için tesettür iğnesi. Fiyat tek adet içindir, dilediğiniz adedi ve rengi seçebilirsiniz.' }
   ];
   var LETTERS = 'A B C Ç D E F G H I İ J K L M N O Ö P R S Ş T U Ü V Y Z'.split(' ');
@@ -734,7 +753,7 @@ html.soon .has-bar .demo-back{transform:none}
   var form = { n: '', c: '', t: '' };
   function msg() {
     var t = totals(), L = ['Merhaba ' + BRAND + ', sitenizden sipariş vermek istiyorum:', ''];
-    cart.forEach(function (i, k) { var x = byId[i.id]; L.push((k + 1) + ') ' + x.n + ' – ' + label(i) + ' × ' + i.q + ' = ' + tl(x.p * i.q)); });
+    cart.forEach(function (i, k) { var x = byId[i.id]; L.push((k + 1) + ') ' + x.n + (x.k ? ' [' + x.k + ']' : '') + ' – ' + label(i) + ' × ' + i.q + ' = ' + tl(x.p * i.q)); });
     L.push('', 'Ara toplam: ' + tl(t.sub), 'Kargo: sipariş onayında bildirilsin', 'Toplam: ' + tl(t.tot));
     if (form.n) L.push('', 'Ad Soyad: ' + form.n);
     if (form.c) L.push((form.n ? '' : '\n') + 'İl / İlçe: ' + form.c);
@@ -790,12 +809,12 @@ html.soon .has-bar .demo-back{transform:none}
     $('#dPrice').textContent = SOON ? 'Yakında' : tl(cur.p);
     $('#dAdd').textContent = SOON ? 'Çıkınca haber ver' : 'Sepete ekle · ' + tl(cur.p * dq);
     $('#dMetal').querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-m') === dm); });
-    $('#dAsk').href = waUrl('Merhaba ' + BRAND + ', "' + cur.n + ' (' + (cur.nm ? 'ürün' : MET[dm].n) + (cur.letter ? ', harf: ' + dl : '') + ')" hakkında bilgi almak istiyorum. Stokta var mı?');
+    $('#dAsk').href = waUrl('Merhaba ' + BRAND + ', "' + cur.n + (cur.k ? ' [' + cur.k + ']' : '') + ' (' + (cur.nm ? 'ürün' : MET[dm].n) + (cur.letter ? ', harf: ' + dl : '') + ')" hakkında bilgi almak istiyorum. Stokta var mı?');
     $('#dAsk').target = '_blank'; $('#dAsk').rel = 'noopener';
   }
   function openDetail(id) {
     cur = byId[id]; dm = cur.m[0]; dq = 1; dl = $('#dLetter').value || 'E';
-    $('#dName').textContent = cur.n; $('#dDesc').textContent = cur.d; $('#dMat').textContent = cur.mat || MAT;
+    $('#dName').textContent = cur.n; $('#dDesc').textContent = cur.d; $('#dMat').textContent = (cur.mat || MAT) + (cur.k ? ' · Ürün kodu: ' + cur.k : '');
     $('#dMetal').innerHTML = cur.m.map(function (m) { var c = MET[m].c; return '<button type="button" data-m="' + m + '"><i style="background:linear-gradient(135deg,' + c[0] + ',' + c[1] + ' 45%,' + c[2] + ')"></i>' + MET[m].n + '</button>'; }).join('');
     $('#dMetalWrap').hidden = cur.m.length < 2;
     $('#dLetterWrap').hidden = !cur.letter;
