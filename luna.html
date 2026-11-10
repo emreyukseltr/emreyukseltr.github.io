@@ -634,7 +634,7 @@ html.soon .has-bar .demo-back{transform:none}
   }
 
   /* ---------- Ürünler ---------- */
-  var CATS = [['all', 'Tümü'], ['kupe', 'Küpe'], ['bileklik', 'Bileklik'], ['halhal', 'Hal Hal'], ['yuzuk', 'Yüzük'], ['set', 'Set'], ['tesbih', 'Tesbih'], ['tesettur', 'Tesettür']];
+  var CATS = [['all', 'Tümü'], ['kupe', 'Küpe'], ['bileklik', 'Bileklik'], ['halhal', 'Hal Hal'], ['yuzuk', 'Yüzük'], ['set', 'Set'], ['tesbih', 'Tesbih']];
   var TINTS = q.get('t') === 'pembe' ? ['#F7E3EB', '#F3E7EE', '#FAEEF0', '#EFE2EC'] : ['#F4E6DF', '#EFE7DA', '#E7ECE4', '#EEE5EC'];
   var MAT = 'El yapımı.';
   var IMG = 'onizleme/luna/';
@@ -664,8 +664,7 @@ html.soon .has-bar .demo-back{transform:none}
     { id: 'yuzuk-gri', n: 'Gri ve Kırmızı Boncuklu Yüzük', c: 'yuzuk', p: 150, img: 'gri-kirmizi-yuzuk.jpg', nm: 1, m: ['silver'], d: 'Gri ve kırmızı inci boncuklardan esnek yüzük.', k: 'ELK0027GKBY' },
     { id: 'inci-set', n: 'İnci Kolye Seti', c: 'set', p: 650, img: 'inci-kolye-seti.jpg', nm: 1, m: ['silver'], d: 'İnci boncuklu kolye, küpe ve yüzükten oluşan takı seti. Kolye uzatma zincirli, gümüş renk. Parçalar birlikte fiyatlandırılmıştır.', k: 'ELK004İKS', b: 'Set' },
     { id: 'mavi-set', n: 'Mavi Beyaz Küpe ve Bileklik Seti', c: 'set', p: 650, img: 'mavi-beyaz-kupe-bileklik-seti.jpg', nm: 1, m: ['silver'], d: 'Mavi ve beyaz inci boncuklu bileklik ile küpeden oluşan set. Bileklik uzatma zincirli. Parçalar birlikte fiyatlandırılmıştır.', k: 'ELK007MBKBS', b: 'Set' },
-    { id: 'tesbih', n: 'Kadın 33\'lük Tesbih', c: 'tesbih', p: 250, img: 'kadin-33luk-tesbih.jpg', nm: 1, m: ['silver'], d: 'Kırmızı inci boncuklar ve gümüş renk ara başlıklarla 33\'lük tesbih.', k: 'ELK001KT' },
-    { id: 'igne', n: 'Tesettür İğnesi', c: 'tesettur', p: 30, img: 'tesettur-ignesi-4-renk.jpg', b: 'Adet fiyatı', m: ['antik', 'rose', 'silver', 'gold'], d: 'Eşarp ve bone için tesettür iğnesi. Fiyat tek adet içindir, dilediğiniz adedi ve rengi seçebilirsiniz.' }
+    { id: 'tesbih', n: 'Kadın 33\'lük Tesbih', c: 'tesbih', p: 250, img: 'kadin-33luk-tesbih.jpg', nm: 1, m: ['silver'], d: 'Kırmızı inci boncuklar ve gümüş renk ara başlıklarla 33\'lük tesbih.', k: 'ELK001KT' }
   ];
   var LETTERS = 'A B C Ç D E F G H I İ J K L M N O Ö P R S Ş T U Ü V Y Z'.split(' ');
   var byId = {}; P.forEach(function (x, i) { byId[x.id] = x; x.tint = TINTS[i % TINTS.length]; });
