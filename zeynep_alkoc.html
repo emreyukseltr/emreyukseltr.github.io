@@ -919,12 +919,12 @@
 
 
     /* --- SIKIŞTIRILMIŞ UZMANLIK ALANLARI TASARIMI --- */
-    #uzmanlik {
+    #alanlar {
         padding-top: 100px;
         padding-bottom: 80px;
         min-height: unset;
     }
-    #uzmanlik .head {
+    #alanlar .head {
         margin-bottom: 2.5rem;
     }
     .grid {
@@ -1464,6 +1464,92 @@
         }
     }
 
+
+    /* bilgi kutucukları (rakam yerine) */
+    .stats.words .stat { padding:2.2rem 1.2rem }
+    .stats.words svg { width:30px; height:30px; stroke:var(--gold); fill:none; stroke-width:1.2; margin:0 auto .9rem; display:block }
+    .stats.words b { font-size:clamp(1.25rem,2.2vw,1.6rem); margin-bottom:.35rem }
+
+    /* arabuluculuk */
+    .arb, .prep, .appt { min-height:unset }
+    .arb { background:var(--bg2); border-block:1px solid var(--line) }
+    .arb-g { display:grid; grid-template-columns:1.15fr .85fr; gap:4rem; align-items:start }
+    .arb-p { color:#d8dce6; font-weight:300; font-size:1.08rem; margin-bottom:2rem }
+    .arb-h { font-family:'Cinzel',serif; font-weight:600; font-size:.95rem; letter-spacing:.08em; color:var(--gold); margin-bottom:1rem }
+    .arb-l { list-style:none; display:grid; gap:.1rem; border-top:1px solid var(--line) }
+    .arb-l li { position:relative; padding:.85rem 0 .85rem 1.8rem; border-bottom:1px solid var(--line); color:#d8dce6; font-weight:300; font-size:.95rem; line-height:1.5 }
+    .arb-l li::before { content:""; position:absolute; left:2px; top:1.3rem; width:7px; height:7px; background:var(--gold); transform:rotate(45deg) }
+    .arb-n { color:var(--muted); font-size:.8rem; margin-top:1rem; font-weight:300 }
+    .arb-f { list-style:none; counter-reset:f; position:relative; display:grid; gap:2.2rem; padding-left:3.6rem }
+    .arb-f::before { content:""; position:absolute; left:21px; top:8px; bottom:8px; width:1px; background:linear-gradient(var(--gold),transparent) }
+    .arb-f li { position:relative; counter-increment:f }
+    .arb-f li::before { content:""; position:absolute; left:-3.6rem; top:-2px; width:44px; height:44px; border:1px solid var(--gold); background:var(--bg2); transform:rotate(45deg) }
+    .arb-f li::after { content:counter(f); position:absolute; left:-3.6rem; top:-2px; width:44px; height:44px; display:grid; place-items:center; color:var(--gold); font-family:'Cinzel',serif; font-size:1.1rem }
+    .arb-f b { display:block; font-family:'Cinzel',serif; font-weight:600; font-size:1.1rem; margin-bottom:.35rem }
+    .arb-f span { color:var(--muted); font-weight:300; font-size:.92rem; line-height:1.6; display:block }
+
+    /* terazi */
+    .scale { width:110px; height:92px; margin:0 auto 2rem; fill:none; stroke:var(--gold); stroke-width:1.3; stroke-linecap:round; stroke-linejoin:round; overflow:visible }
+    .scale path { stroke-dasharray:320; stroke-dashoffset:320; transition:stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1) }
+    .scale.in path { stroke-dashoffset:0 }
+    .scale.in { animation:sway 6s 2.4s ease-in-out infinite; transform-origin:60px 8px }
+    @keyframes sway { 0%,100% { transform:rotate(0) } 25% { transform:rotate(1.6deg) } 75% { transform:rotate(-1.6deg) } }
+
+    /* ortak seçim düğmeleri */
+    .chips { display:flex; flex-wrap:wrap; gap:.6rem }
+    .chip { font:500 .8rem 'Montserrat',sans-serif; letter-spacing:.04em; color:#d8dce6; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.12); padding:.7rem 1.1rem; min-height:44px; transition:.25s; text-align:center; line-height:1.3 }
+    .chip:hover { border-color:var(--gold); color:var(--gold) }
+    .chip[aria-pressed="true"] { background:var(--gold); border-color:var(--gold); color:#000 }
+    .chip small { display:block; font-size:.68rem; opacity:.75; letter-spacing:.08em; text-transform:uppercase }
+
+    /* görüşmeye hazırlık */
+    .prep-box { max-width:900px; margin:0 auto; border:1px solid var(--line); background:linear-gradient(160deg,#0d0e14,#08080b); padding:2.4rem }
+    .prep-box .chips { justify-content:center; margin-bottom:2rem }
+    .prep-l { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:.7rem }
+    .prep-l button { width:100%; display:flex; gap:.9rem; align-items:flex-start; text-align:left; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.07); color:#d8dce6; font:300 .92rem/1.5 'Montserrat',sans-serif; padding:.9rem 1rem; transition:.25s }
+    .prep-l button:hover { border-color:var(--line) }
+    .prep-l i { flex:none; width:20px; height:20px; border:1px solid var(--gold); margin-top:1px; position:relative; transition:.25s }
+    .prep-l button[aria-pressed="true"] { color:var(--muted) }
+    .prep-l button[aria-pressed="true"] i { background:var(--gold) }
+    .prep-l button[aria-pressed="true"] i::after { content:""; position:absolute; left:6px; top:2px; width:5px; height:10px; border:solid #000; border-width:0 2px 2px 0; transform:rotate(45deg) }
+    .prep-l button[aria-pressed="true"] span { text-decoration:line-through; text-decoration-color:rgba(212,175,55,.6) }
+    .prep-f { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.8rem; padding-top:1.4rem; border-top:1px solid var(--line) }
+    .prep-f span { color:var(--gold); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase }
+    .prep-n { color:var(--muted); font-size:.8rem; font-weight:300; margin-top:1.2rem }
+
+    /* randevu */
+    .appt { background:var(--bg2); border-top:1px solid var(--line) }
+    .appt-f { max-width:900px; margin:0 auto; border:1px solid var(--line); background:var(--bg); padding:2.4rem; display:grid; gap:1.8rem }
+    .appt-f fieldset { border:0; min-width:0 }
+    .appt-f legend { font-family:'Cinzel',serif; font-weight:600; font-size:.85rem; letter-spacing:.12em; color:var(--gold); margin-bottom:.9rem }
+    .days { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)) }
+    .days .chip { padding:.6rem .3rem; min-width:0 }
+    .days .chip small { letter-spacing:.02em; font-size:.62rem }
+    .row2 { display:grid; grid-template-columns:1fr 1fr; gap:1.8rem }
+    .appt-f label { display:grid; gap:.5rem; font-family:'Cinzel',serif; font-weight:600; font-size:.85rem; letter-spacing:.12em; color:var(--gold) }
+    .appt-f input { font:400 1rem 'Montserrat',sans-serif; color:#fff; background:#0d0e14; border:1px solid rgba(255,255,255,.12); padding:.95rem 1rem; outline:none; transition:border-color .25s; width:100%; letter-spacing:0 }
+    .appt-f input:focus { border-color:var(--gold) }
+    .appt-f input[aria-invalid="true"] { border-color:#e0707a }
+    .appt-n { color:var(--muted); font-size:.8rem; font-weight:300; line-height:1.6 }
+    .appt-e { color:#ec8a92; font-size:.88rem; min-height:1.2em; margin-top:-1rem }
+    .appt-f .btn { justify-self:start }
+    .faq a, .prep-n a { color:var(--gold) }
+    .logo, .links a { white-space:nowrap }
+    @media(min-width:901px) { .links { gap:clamp(1rem,1.7vw,2.4rem) } .links a { letter-spacing:.1em } }
+    @media(min-width:901px) and (max-width:1180px) { .links a { font-size:.7rem } .links .cta { padding:.6rem 1rem } .logo { font-size:1.2rem } }
+
+    @media(max-width:900px) {
+        .arb-g { grid-template-columns:1fr; gap:3rem }
+        .prep-l, .row2 { grid-template-columns:1fr }
+        .days { grid-template-columns:repeat(3,minmax(0,1fr)) }
+        .prep-box, .appt-f { padding:1.6rem 1.2rem }
+        .appt-f .btn { justify-self:stretch; justify-content:center }
+        .prep-f .btn { width:100%; justify-content:center }
+    }
+    @media(max-width:380px) {
+        .days { grid-template-columns:repeat(2,minmax(0,1fr)) }
+        .chip { padding:.65rem .8rem }
+    }
     </style>
 <script>
 /* Sayfa yenilenince her zaman en baştan açılsın: tarayıcının kaydırma konumunu hatırlamasını kapat */
@@ -1480,13 +1566,13 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 <nav id="nav">
  <a href="#hero" class="logo">ALKOÇ <span>HUKUK</span></a>
  <ul class="links" id="links">
-  <li><a href="#hero" class="nl on">Ana Sayfa</a></li>
   <li><a href="#hakkimda" class="nl">Hakkımda</a></li>
-  <li><a href="#surec" class="nl">Süreç</a></li>
-  <li><a href="#uzmanlik" class="nl">Uzmanlık</a></li>
+  <li><a href="#alanlar" class="nl">Alanlar</a></li>
+  <li><a href="#arabuluculuk" class="nl">Arabuluculuk</a></li>
+  <li><a href="#hazirlik" class="nl">Hazırlık</a></li>
   <li><a href="#faq" class="nl">SSS</a></li>
   <li><a href="#iletisim" class="nl">Büro</a></li>
-  <li><a href="https://wa.me/905549278712" class="cta" target="_blank" rel="noopener">Randevu Talep Et</a></li>
+  <li><a href="#randevu" class="cta">Randevu Talep Et</a></li>
  </ul>
  <button type="button" class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="links"><span></span><span></span></button>
 </nav>
@@ -1496,15 +1582,16 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
  <div class="wrap">
   <div>
    <div class="badge">AYDIN BAROSU</div>
-   <h1><span class="line"><span>Adalette <em class="gold-text">prestij,</em></span></span><span class="line"><span>savunmada güç.</span></span></h1>
-   <p class="lead">En karmaşık uyuşmazlıklarda dahi, 12 yıllık meslek tecrübesi ve mutlak gizlilik ilkesiyle; yalnızca yasal temsil değil, hesaplanmış stratejiyle yanınızdayız.</p>
+   <h1><span class="line"><span>Hukuk, <em class="gold-text">anlaşılır</em></span></span><span class="line"><span>olduğunda güven verir.</span></span></h1>
+   <p class="lead">Aile, ceza, iş, miras ve gayrimenkul başta olmak üzere hukuki danışmanlık ve temsil. Sürecin her adımını açık bir dille anlatır, sizi düzenli olarak bilgilendiririz.</p>
    <div class="btns">
-    <a href="https://wa.me/905549278712" class="btn" target="_blank" rel="noopener">Randevu Talep Et</a>
+    <a href="#randevu" class="btn">Randevu Talep Et</a>
+    <a href="#hazirlik" class="btn ghost">Görüşmeye Hazırlık</a>
    </div>
    <div class="meta">
-    <div><b>12 Yıl</b>Meslek tecrübesi</div>
-    <div><b>81 İl</b>Temsil imkânı</div>
-    <div><b>Mutlak</b>Gizlilik</div>
+    <div><b>Aydın Barosu</b>Kayıtlı avukat</div>
+    <div><b>Arabulucu</b>Adalet Bakanlığı sicili</div>
+    <div><b>Randevu ile</b>Gizlilik esaslı görüşme</div>
    </div>
   </div>
   <div class="portrait">
@@ -1521,56 +1608,116 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 <section class="about" id="hakkimda">
  <div class="wrap">
   <div class="rv">
-   <h2 class="t">Adalete adanmış <span class="gold-text">12 yıl.</span></h2>
-   <p>Hukuk, benim için yalnızca kanun maddelerinden ibaret değil; insan hayatına dokunan, mutlak güven gerektiren hassas bir sanattır. Selçuk Üniversitesi Hukuk Fakültesi'nden mezun olduğum günden bu yana mesleğimi tutkuyla sürdürüyorum.</p>
-   <p>Aydın Barosu bünyesinde sayısız zorlu uyuşmazlıkta müvekkillerimi temsil etmenin yanı sıra, <strong>2020 yılından itibaren Uzman Arabulucu</strong> olarak alternatif uyuşmazlık çözüm yollarında da aktif olarak görev almaktayım. Çalışma prensibim nettir: <strong>nitelikli temsil ve şeffaf süreç yönetimi.</strong></p>
+   <h2 class="t">Her dosya, bir insanın <span class="gold-text">hikâyesi.</span></h2>
+   <p>Hukuk, benim için yalnızca kanun maddelerinden ibaret değil; insan hayatına dokunan, güven gerektiren hassas bir alandır. Selçuk Üniversitesi Hukuk Fakültesi'nden mezun olduğum günden bu yana mesleğimi tutkuyla sürdürüyorum.</p>
+   <p>Aydın Barosu'na kayıtlı avukat olarak müvekkillerimi temsil ediyor, aynı zamanda <strong>Adalet Bakanlığı Arabulucular Siciline kayıtlı arabulucu</strong> olarak uyuşmazlıkların mahkeme dışında çözümüne yönelik süreçlerde görev alıyorum. Çalışma ilkem nettir: <strong>açık iletişim, düzenli bilgilendirme ve gizlilik.</strong></p>
    <div class="quote">“Her dosya bir insanın hikâyesidir; özenle dinler, titizlikle savunurum.”</div>
   </div>
-  <div class="stats rv" style="--d:.15s" id="stats">
-   <div class="stat"><b class="gold-text"><span class="ct" data-to="12">0</span></b><span>Yıllık deneyim</span></div>
-   <div class="stat"><b class="gold-text"><span class="ct" data-to="12">0</span></b><span>Uzmanlık alanı</span></div>
-   <div class="stat"><b class="gold-text"><span class="ct" data-to="2020">0</span></b><span>'den Beri Arabulucu</span></div>
-   <div class="stat"><b class="gold-text"><span class="ct" data-to="81">0</span></b><span>İlde temsil</span></div>
+  <div class="stats words rv" style="--d:.15s">
+   <div class="stat"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></svg><b class="gold-text">Avukat</b><span>Aydın Barosu</span></div>
+   <div class="stat"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><b class="gold-text">Arabulucu</b><span>Adalet Bakanlığı sicili</span></div>
+   <div class="stat"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><b class="gold-text">Selçuk Ü.</b><span>Hukuk Fakültesi</span></div>
+   <div class="stat"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><b class="gold-text">Gizlilik</b><span>Randevu ile görüşme</span></div>
   </div>
  </div>
 </section>
 
 <section class="process" id="surec">
  <div class="wrap">
-  <div class="head c rv"><h2 class="t">Hukuki <span class="gold-text">sürecimiz</span></h2><p class="sub">Şeffaf ve sonuç odaklı dört aşamalı çalışma düzeni.</p></div>
+  <div class="head c rv"><h2 class="t">Hukuki <span class="gold-text">sürecimiz</span></h2><p class="sub">Dosyanız dört adımda nasıl ilerler?</p></div>
   <div class="steps">
-   <div class="step rv"><div class="n"><b>1</b></div><h3>Ön Görüşme</h3><p>Uyuşmazlığın ana hatları belirlenir; hukuki risk ve avantaj analizi yapılır.</p></div>
-   <div class="step rv" style="--d:.1s"><div class="n"><b>2</b></div><h3>Delil Tespiti</h3><p>Dava sürecinde lehinize olacak tüm yasal deliller titizlikle toplanır.</p></div>
-   <div class="step rv" style="--d:.2s"><div class="n"><b>3</b></div><h3>Yasal Müdahale</h3><p>Gerekli davalar açılır, duruşmalarda güçlü bir savunma yürütülür.</p></div>
-   <div class="step rv" style="--d:.3s"><div class="n"><b>4</b></div><h3>Raporlama</h3><p>Sürecin her aşamasında müvekkil bilgilendirilir.</p></div>
+   <div class="step rv"><div class="n"><b>1</b></div><h3>Ön Görüşme</h3><p>Durumunuz dinlenir; hukuki seçenekler ve olası süreç açıkça anlatılır.</p></div>
+   <div class="step rv" style="--d:.1s"><div class="n"><b>2</b></div><h3>Belge ve Delil</h3><p>Dosyaya ilişkin belge ve deliller birlikte gözden geçirilir.</p></div>
+   <div class="step rv" style="--d:.2s"><div class="n"><b>3</b></div><h3>Hukuki Süreç</h3><p>Gerekli başvurular ve davalar yürütülür, duruşmalara katılım sağlanır.</p></div>
+   <div class="step rv" style="--d:.3s"><div class="n"><b>4</b></div><h3>Bilgilendirme</h3><p>Duruşma tarihleri ve ara kararlar hakkında düzenli bilgi verilir.</p></div>
   </div>
  </div>
 </section>
 
-<section id="uzmanlik">
+<section id="alanlar">
  <div class="wrap">
-  <div class="head rv"><h2 class="t">Uzmanlık <span class="gold-text">alanları</span></h2><p class="sub">Yargıtay içtihatları ışığında yürütülen profesyonel süreçler.</p></div>
+  <div class="head rv"><h2 class="t">Çalışma <span class="gold-text">alanları</span></h2><p class="sub">Danışmanlık ve temsil verilen başlıca hukuk alanları.</p></div>
   <div class="grid" id="grid"></div>
  </div>
 </section>
 
+<section class="arb" id="arabuluculuk">
+ <div class="wrap">
+  <div class="head rv"><h2 class="t">Arabuluculuk <span class="gold-text">nedir?</span></h2><p class="sub">Uyuşmazlığı mahkemeye taşımadan, tarafsız bir arabulucu eşliğinde çözmenin yolu.</p></div>
+  <div class="arb-g">
+   <div class="rv">
+    <p class="arb-p">Arabuluculukta taraflar, eğitim almış ve sicile kayıtlı tarafsız bir arabulucunun eşliğinde bir araya gelir ve çözümü kendileri belirler. Görüşmeler gizlidir; anlaşma sağlanamazsa dava yolu açık kalır.</p>
+    <h3 class="arb-h">Dava açmadan önce arabulucuya başvurmanın zorunlu olduğu başlıca uyuşmazlıklar</h3>
+    <ul class="arb-l">
+     <li>İşçi ve işveren arasındaki alacak, tazminat ve işe iade uyuşmazlıkları</li>
+     <li>Ticari davalarda para alacağı ve tazminat talepleri</li>
+     <li>Tüketici uyuşmazlıkları (kanundaki parasal sınırın üzerindekiler)</li>
+     <li>Kira ilişkisinden doğan uyuşmazlıklar</li>
+     <li>Ortaklığın giderilmesi (paydaşlar arasında)</li>
+     <li>Kat mülkiyeti ve komşu hukukundan doğan uyuşmazlıklar</li>
+    </ul>
+    <p class="arb-n">Kapsam ve istisnalar mevzuata göre değişebilir; dosyanız için görüşmede bilgi alabilirsiniz.</p>
+   </div>
+   <ol class="arb-f rv" style="--d:.15s">
+    <li><b>Başvuru</b><span>Taraflardan biri adliyedeki arabuluculuk bürosuna ya da taraflar birlikte seçtikleri bir arabulucuya başvurur.</span></li>
+    <li><b>Görüşmeler</b><span>Arabulucu tarafları dinler, ortak ya da ayrı toplantılar yapar. Söylenenler gizlidir, davada delil olarak kullanılamaz.</span></li>
+    <li><b>Sonuç</b><span>Anlaşma ya da anlaşamama son tutanağı düzenlenir. Anlaşma belgesi, kanundaki şartlarla ilam niteliğinde belge sayılır.</span></li>
+   </ol>
+  </div>
+ </div>
+</section>
 <div class="band">
+ <svg class="scale rv" viewBox="0 0 120 100" aria-hidden="true"><path d="M60 8v78M38 92h44M22 24h76M60 8l-4 6h8z"/><path d="M22 24l-14 30h28zM98 24l-14 30h28z"/><path d="M8 54a14 7 0 0028 0M84 54a14 7 0 0028 0"/></svg>
  <blockquote class="rv">Hak, ancak <span class="gold-text">doğru savunulduğunda</span> yerini bulur.</blockquote>
  <cite class="rv">AV. ZEYNEP ALKOÇ</cite>
 </div>
 
+<section class="prep" id="hazirlik">
+ <div class="wrap">
+  <div class="head c rv"><h2 class="t">Görüşmeye <span class="gold-text">hazırlık</span></h2><p class="sub">Konunuzu seçin; ilk görüşmede yanınızda bulunması faydalı olacak belgeleri görün, işaretleyin, telefonunuza kaydedin.</p></div>
+  <div class="prep-box rv">
+   <div class="chips" id="pTabs" role="tablist" aria-label="Konu seçin"></div>
+   <ul class="prep-l" id="pList"></ul>
+   <div class="prep-f"><span id="pCount"></span><button type="button" class="btn ghost" id="pShare">Listeyi telefonuma gönder</button></div>
+   <p class="prep-n">Liste genel bilgilendirme amaçlıdır; dosyanıza göre değişebilir. Elinizde olmayan belgeler için endişelenmeyin, görüşmede birlikte değerlendiririz.</p>
+  </div>
+ </div>
+</section>
 <section class="faq" id="faq">
  <div class="wrap">
   <div class="head c rv"><h2 class="t">Sıkça sorulan <span class="gold-text">sorular</span></h2></div>
   <div class="rv">
-   <div class="ac"><button type="button" aria-expanded="false">Ücretsiz hukuki danışmanlık veriyor musunuz?<i aria-hidden="true"></i></button><div class="b"><div><p>Avukatlık Kanunu ve Baro meslek kuralları gereği büromuzda ücretsiz hukuki danışmanlık veya evrak incelemesi yapılmamaktadır. Tüm süreçler resmi ücret karşılığında yürütülür.</p></div></div></div>
+   <div class="ac"><button type="button" aria-expanded="false">Ücretsiz hukuki danışmanlık veriyor musunuz?<i aria-hidden="true"></i></button><div class="b"><div><p>Büromuzda ücretsiz hukuki danışmanlık veya evrak incelemesi yapılmamaktadır. Danışmanlık ve takip ücretleri, Avukatlık Asgari Ücret Tarifesi esas alınarak belirlenir.</p></div></div></div>
    <div class="ac"><button type="button" aria-expanded="false">Dava sürecinde bilgilendirme nasıl yapılıyor?<i aria-hidden="true"></i></button><div class="b"><div><p>Davanın açılmasından karara bağlanmasına kadar duruşma tarihleri ve ara kararlar hakkında size düzenli olarak bilgi verilir.</p></div></div></div>
-   <div class="ac"><button type="button" aria-expanded="false">Sadece Aydın bölgesinde mi hizmet veriyorsunuz?<i aria-hidden="true"></i></button><div class="b"><div><p>Merkezimiz Aydın'dır; ancak Türkiye'nin tüm illerinde görülen ağır ceza, miras ve aile hukuku davalarında müvekkillerimizi temsil ediyoruz.</p></div></div></div>
-   <div class="ac"><button type="button" aria-expanded="false">Görüşme için nasıl randevu alabilirim?<i aria-hidden="true"></i></button><div class="b"><div><p>“Randevu Talep Et” butonuna dokunarak bürodan WhatsApp üzerinden randevu alabilirsiniz. Danışmanlık yalnızca önceden oluşturulan randevu ile verilmektedir.</p></div></div></div>
+   <div class="ac"><button type="button" aria-expanded="false">Sadece Aydın bölgesinde mi hizmet veriyorsunuz?<i aria-hidden="true"></i></button><div class="b"><div><p>Büromuz Aydın'dadır. Dosyanın niteliğine göre başka illerde görülen davalarda da temsil mümkündür; bunu ilk görüşmede birlikte değerlendiririz.</p></div></div></div>
+   <div class="ac"><button type="button" aria-expanded="false">Görüşme için nasıl randevu alabilirim?<i aria-hidden="true"></i></button><div class="b"><div><p>Sayfadaki randevu formundan konu ve gün seçerek talebinizi WhatsApp üzerinden iletebilir ya da büroyu arayabilirsiniz. Danışmanlık yalnızca önceden oluşturulan randevu ile verilmektedir.</p></div></div></div>
+   <div class="ac"><button type="button" aria-expanded="false">İlk görüşmeye hangi belgelerle gelmeliyim?<i aria-hidden="true"></i></button><div class="b"><div><p>Konunuza göre getirmeniz faydalı olacak belgeleri sayfadaki <a href="#hazirlik">Görüşmeye hazırlık</a> bölümünde bulabilirsiniz. Elinizde olmayan belgeler için endişelenmeyin; görüşmede birlikte değerlendiririz.</p></div></div></div>
+   <div class="ac"><button type="button" aria-expanded="false">Avukatlık ücreti nasıl belirlenir?<i aria-hidden="true"></i></button><div class="b"><div><p>Ücret; işin niteliği ve kapsamına göre, Avukatlık Asgari Ücret Tarifesi'nin altında olmamak üzere yazılı avukatlık sözleşmesiyle belirlenir. Yargılama giderleri ayrıca hesaplanır.</p></div></div></div>
+   <div class="ac"><button type="button" aria-expanded="false">Arabuluculuk ile dava arasındaki fark nedir?<i aria-hidden="true"></i></button><div class="b"><div><p>Arabuluculukta taraflar, tarafsız bir arabulucu eşliğinde kendi çözümlerini bulmaya çalışır; görüşmeler gizlidir. Bazı uyuşmazlıklarda dava açmadan önce arabulucuya başvurmak zorunludur. Ayrıntılar için <a href="#arabuluculuk">Arabuluculuk</a> bölümüne bakabilirsiniz.</p></div></div></div>
   </div>
  </div>
 </section>
 
+<section class="appt" id="randevu">
+ <div class="wrap">
+  <div class="head c rv"><h2 class="t">Randevu <span class="gold-text">talebi</span></h2><p class="sub">Konuyu ve size uygun günü seçin; talebiniz WhatsApp üzerinden büroya hazır mesaj olarak iletilir. Randevu, büro tarafından teyit edildikten sonra kesinleşir.</p></div>
+  <form class="appt-f rv" id="aForm" novalidate>
+   <fieldset><legend>1 · Görüşme konusu</legend><div class="chips" id="aTopic"></div></fieldset>
+   <fieldset><legend>2 · Tercih ettiğiniz gün</legend><div class="chips days" id="aDay"></div></fieldset>
+   <div class="row2">
+    <fieldset><legend>3 · Zaman aralığı</legend><div class="chips" id="aTime"></div></fieldset>
+    <fieldset><legend>4 · Görüşme şekli</legend><div class="chips" id="aWay"></div></fieldset>
+   </div>
+   <div class="row2">
+    <label>Ad Soyad<input id="aName" autocomplete="name" placeholder="Adınız ve soyadınız"></label>
+    <label>Telefon<input id="aTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="05XX XXX XX XX"></label>
+   </div>
+   <p class="appt-n">Gizliliğiniz için lütfen dosyanızın ayrıntılarını buraya yazmayın; görüşmede konuşulur. Bu form bilgilerinizi kaydetmez, yalnızca WhatsApp mesajı olarak iletir.</p>
+   <p class="appt-e" id="aErr" role="alert"></p>
+   <button type="submit" class="btn">Talebi WhatsApp ile gönder</button>
+  </form>
+ </div>
+</section>
 <section class="contact" id="iletisim">
  <div class="wrap">
   <div class="head c rv"><h2 class="t">Büromuz <span class="gold-text">Aydın'da</span></h2><p class="sub">Danışmanlık hizmetleri yalnızca önceden oluşturulan randevu ile verilmektedir.</p></div>
@@ -1580,13 +1727,13 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
    <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Çalışma düzeni</h3><p>Yalnızca randevu ile</p></div>
   </div>
   <div class="map rv"><iframe title="Alkoç Hukuk Bürosu konumu" src="https://www.google.com/maps?q=Veysipa%C5%9Fa%2C%201623.%20Sk.%2C%2009100%20Efeler%2FAyd%C4%B1n&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-  <div class="dir rv"><a class="btn" href="tel:+905549278712">Hemen Ara</a><a class="btn ghost" href="https://wa.me/905549278712" target="_blank" rel="noopener">WhatsApp'tan Yaz</a><a class="btn ghost" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14b92bf81b1a9689:0x8723c2691341c6e9?sa=X&amp;ved=1t:8290&amp;ictx=111" target="_blank" rel="noopener">Yol Tarifi Al</a></div>
+  <div class="dir rv"><a class="btn" href="tel:+905549278712">Büroyu Ara</a><a class="btn ghost" href="https://wa.me/905549278712" target="_blank" rel="noopener">WhatsApp'tan Yaz</a><a class="btn ghost" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14b92bf81b1a9689:0x8723c2691341c6e9?sa=X&amp;ved=1t:8290&amp;ictx=111" target="_blank" rel="noopener">Yol Tarifi Al</a></div>
  </div>
 </section>
 
 <footer>
  <div class="fl">ALKOÇ <span>HUKUK</span></div>
- <p>Hukuki uyuşmazlıklarınızda güvenilir, şeffaf ve sonuç odaklı temsil. Danışmanlık hizmetleri yalnızca önceden oluşturulan randevu ile verilmektedir.</p>
+ <p>Hukuki danışmanlık, temsil ve arabuluculuk. Danışmanlık hizmetleri yalnızca önceden oluşturulan randevu ile verilmektedir.</p>
  <p class="legal">Bu internet sitesi, Avukatlık Kanunu ve Türkiye Barolar Birliği Meslek Kuralları çerçevesinde yalnızca bilgilendirme amacıyla hazırlanmıştır; reklam niteliği taşımaz.</p>
  <div class="fb"><span>&copy; 2026 Alkoç Hukuk Bürosu</span><span>Dijital Mimari ve Tasarım: <a href="https://eystudios.com.tr" target="_blank" rel="noopener">Emre Yüksel | EY STUDIOS</a></span></div>
 </footer>
@@ -1604,32 +1751,32 @@ const ready=()=>{if(document.body.classList.contains('ready'))return;$('#pre').c
 addEventListener('load',()=>setTimeout(ready,1300));
 setTimeout(ready,4000);
 
-// 2. içerik üretimi (12 Uzmanlık Alanı)
+// 2. içerik üretimi (çalışma alanları)
 const areas=[
-    ['Aile Hukuku','Evlilik birliğinde edinilen malların tasfiyesi ve katılma alacağı davalarında koruma tedbirleri.','<path d="M12 21s-8-5-8-11a4.500 4.500 0 018-2.800A4.500 4.500 0 0120 10c0 6-8 11-8 11z"/>'],
-    ['Ağır Ceza','CMK kapsamında haksız tutuklamalara itiraz, delillerin denetimi ve özgürlük savunması.','<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/>'],
-    ['İş Hukuku','Kıdem tazminatı ve hizmet tespiti davalarında Yargıtay içtihatlarına uyumlu çözümler.','<rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V4h6v3M3 13h18"/>'],
-    ['Miras Hukuku','Muvazaalı devirler ve saklı pay ihlallerinde yasal mirasçıların haklarını güvence altına alıyoruz.','<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/>'],
-    ['Şirketler Hukuku','Ticari uyuşmazlıkların tahkim yoluyla çözümü ve kurumsal firmalara önleyici danışmanlık.','<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M8 11h.01M16 11h.01"/>'],
-    ['Gayrimenkul','Tapu iptal, kentsel dönüşüm ve istihkak süreçlerinde malik haklarının korunması.','<path d="M3 11l9-8 9 8v10H3zM10 21v-6h4v6"/>'],
-    ['Yabancılar Hukuku','Yatırım yoluyla Türk vatandaşlığı kazanımı ve oturma izni başvurularının eksiksiz takibi.','<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'],
-    ['Arabuluculuk','İş, ticaret ve tüketici uyuşmazlıklarında mahkeme dışı, hızlı ve gizli çözüm süreçleri.','<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'],
-    ['Bilişim Hukuku','Bilişim sistemlerine girme ve dijital dolandırıcılık suçlamalarına karşı modern müdafaa.','<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4M9 10l-2 2 2 2M15 10l2 2-2 2"/>'],
+    ['Aile Hukuku','Boşanma, nafaka, velayet, mal rejiminin tasfiyesi ve koruma tedbirleri.','<path d="M12 21s-8-5-8-11a4.500 4.500 0 018-2.800A4.500 4.500 0 0120 10c0 6-8 11-8 11z"/>'],
+    ['Ağır Ceza','Soruşturma ve kovuşturma aşamalarında müdafilik ve katılan vekilliği.','<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/>'],
+    ['İş Hukuku','Kıdem ve ihbar tazminatı, işçilik alacakları, işe iade ve hizmet tespiti.','<rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V4h6v3M3 13h18"/>'],
+    ['Miras Hukuku','Mirasçılık belgesi, tenkis, muris muvazaası ve mirasın paylaşımı.','<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/>'],
+    ['Şirketler Hukuku','Şirket kuruluşu, sözleşmeler, ticari uyuşmazlıklar ve şirketlere danışmanlık.','<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M8 11h.01M16 11h.01"/>'],
+    ['Gayrimenkul','Tapu iptal ve tescil, kira, kentsel dönüşüm ve ortaklığın giderilmesi.','<path d="M3 11l9-8 9 8v10H3zM10 21v-6h4v6"/>'],
+    ['Yabancılar Hukuku','Oturma izni, çalışma izni ve vatandaşlık başvurularına ilişkin işlemler.','<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'],
+    ['Arabuluculuk','İş, ticaret, tüketici ve kira uyuşmazlıklarında mahkeme dışı, gizli çözüm süreci.','<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'],
+    ['Bilişim Hukuku','Bilişim suçları, kişisel verilerin korunması ve internet içeriklerine ilişkin süreçler.','<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4M9 10l-2 2 2 2M15 10l2 2-2 2"/>'],
     ['İdare Hukuku','İdari işlemlerin iptali, tam yargı davaları ve memur disiplin cezalarına karşı hukuki süreçler.','<path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 3l9 7H3z"/>'],
     ['Tüketici Hukuku','Ayıplı mal ve hizmetlerden doğan uyuşmazlıkların Tüketici Hakem Heyeti ve mahkemelerde çözümü.','<path d="M9 20a1 1 0 100-2 1 1 0 000 2zM20 20a1 1 0 100-2 1 1 0 000 2z"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>'],
-    ['İcra ve İflas','Alacak tahsili, ihtiyati haciz kararları ve şirketlerin iflas/konkordato süreçlerinin takibi.','<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 3v18M14 8h5M14 12h5M14 16h5"/>']
+    ['İcra ve İflas','Alacak takibi, ihtiyati haciz, itirazın iptali ve konkordato süreçleri.','<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 3v18M14 8h5M14 12h5M14 16h5"/>']
 ];
 
 $('#grid').innerHTML=areas.map((a,i)=>`<div class="card rv" style="--d:${(i%4)*.08}s"><svg viewBox="0 0 24 24">${a[2]}</svg><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join('');
 const mq=areas.map(a=>`<span>${a[0]}</span>`).join('');$('#mq').innerHTML=mq+mq+mq+mq;
-$('#dots').innerHTML=[['hero','Ana Sayfa'],['hakkimda','Hakkımda'],['surec','Süreç'],['uzmanlik','Uzmanlık'],['faq','SSS'],['iletisim','Büro']].map(d=>`<a href="#${d[0]}" title="${d[1]}" aria-label="${d[1]}"></a>`).join('');
+$('#dots').innerHTML=[['hero','Ana Sayfa'],['hakkimda','Hakkımda'],['surec','Süreç'],['alanlar','Alanlar'],['arabuluculuk','Arabuluculuk'],['hazirlik','Hazırlık'],['faq','SSS'],['randevu','Randevu'],['iletisim','Büro']].map(d=>`<a href="#${d[0]}" title="${d[1]}" aria-label="${d[1]}"></a>`).join('');
 
 // 3. imleç
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 if(fine){
     const cu=$('#cur');
     addEventListener('mousemove',e=>{cu.style.transform=`translate3d(${e.clientX}px,${e.clientY}px,0)`},{passive:true});
-    document.addEventListener('mouseover',e=>cu.classList.toggle('hover',!!e.target.closest('a,button,.card,select')));
+    document.addEventListener('mouseover',e=>cu.classList.toggle('hover',!!e.target.closest('a,button,.card,select,input')));
     $$('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.16}px,${(e.clientY-r.top-r.height/2)*.28}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
     const pt=$('.portrait');$('#hero').addEventListener('mousemove',e=>{pt.style.transform=`translate3d(${(e.clientX/innerWidth-.5)*-14}px,${(e.clientY/innerHeight-.5)*-14}px,0)`},{passive:true});
 }
@@ -1701,6 +1848,65 @@ $$('.ac button').forEach(button => {
     });
 });
 
+
+// 12. Görüşmeye hazırlık listeleri
+const PREP={
+ 'Aile':['Nüfus cüzdanı','Evlilik cüzdanı','Nüfus kayıt örneği (e-Devlet)','Varsa önceki mahkeme kararları ve dilekçeler','Gelir belgesi ya da maaş bordroları','Ortak mal varlığına ilişkin tapu, ruhsat bilgileri','Konuyla ilgili yazışma, mesaj ve belgeler'],
+ 'Ceza':['Nüfus cüzdanı','Varsa ifade tutanakları','Size gelen tebligat, çağrı kâğıdı ve yazılar','Varsa iddianame ya da mahkeme yazıları','Olayla ilgili belge, fotoğraf ve kayıtlar','Varsa tanıkların iletişim bilgileri'],
+ 'İş':['Nüfus cüzdanı','SGK hizmet dökümü (e-Devlet)','İş sözleşmesi','Maaş bordroları ve banka hesap dökümleri','Fesih bildirimi ya da işten çıkış belgesi','Varsa arabuluculuk son tutanağı'],
+ 'Miras':['Nüfus cüzdanı','Mirasçılık belgesi (veraset ilamı), varsa','Murisin nüfus kayıt örneği','Tapu kayıtları ve malvarlığı bilgileri','Varsa vasiyetname','Banka hesapları ve borçlara ilişkin belgeler'],
+ 'Gayrimenkul ve Kira':['Nüfus cüzdanı','Tapu belgesi ya da tapu kaydı','Kira sözleşmesi','Kira ödeme dekontları','Varsa ihtarname ve yazışmalar','İmar ve yapı ruhsatı belgeleri, varsa'],
+ 'Tüketici':['Nüfus cüzdanı','Fatura ya da satış fişi','Garanti belgesi ve satış sözleşmesi','Satıcı ile yazışmalar ve başvuru kayıtları','Ayıbı gösteren fotoğraf ya da raporlar'],
+ 'İcra':['Nüfus cüzdanı','Ödeme emri ve icra dosya numarası','Alacağı gösteren senet, fatura ya da sözleşme','Ödeme dekontları','Varsa haciz ve tebligat evrakı'],
+ 'Ticari':['Yetkili kişinin kimliği ve imza sirküleri','Ticaret sicil gazetesi kayıtları','İlgili sözleşmeler','Faturalar ve cari hesap ekstresi','Yazışmalar ve ihtarnameler']
+};
+const PK=Object.keys(PREP),done={};let pCur=PK[0];
+const chip=(v,on,extra)=>`<button type="button" class="chip" data-v="${v}" aria-pressed="${on}">${extra||v}</button>`;
+function drawPrep(){
+  $('#pTabs').innerHTML=PK.map(k=>chip(k,k===pCur)).join('');
+  const d=done[pCur]||(done[pCur]={});
+  $('#pList').innerHTML=PREP[pCur].map((t,i)=>`<li><button type="button" data-i="${i}" aria-pressed="${!!d[i]}"><i aria-hidden="true"></i><span>${t}</span></button></li>`).join('');
+  const n=Object.values(d).filter(Boolean).length;$('#pCount').textContent=n+' / '+PREP[pCur].length+' hazır';
+}
+$('#pTabs').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;pCur=b.dataset.v;drawPrep()});
+$('#pList').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const d=done[pCur];d[b.dataset.i]=!d[b.dataset.i];drawPrep()});
+$('#pShare').addEventListener('click',()=>{
+  const d=done[pCur]||{};
+  const t='Alkoç Hukuk Bürosu · Görüşmeye hazırlık ('+pCur+')\n\n'+PREP[pCur].map((x,i)=>(d[i]?'✓ ':'☐ ')+x).join('\n')+'\n\nBüro: Köprülü - Veysipaşa, 1623. Sk., Efeler / Aydın · 0554 927 87 12';
+  if(navigator.share){navigator.share({title:'Görüşmeye hazırlık',text:t}).catch(()=>{})}
+  else window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank','noopener');
+});
+drawPrep();
+
+// 13. Randevu formu
+const TOPICS=['Aile','Ceza','İş','Miras','Gayrimenkul ve Kira','Tüketici','İcra','Ticari','Arabuluculuk','Diğer'];
+const TIMES=[['Sabah','09.00 – 12.00'],['Öğleden sonra','13.00 – 17.00'],['Fark etmez','']];
+const WAYS=['Büroda','Telefonla','Görüntülü'];
+const days=[];{const t=new Date();t.setHours(12,0,0,0);while(days.length<10){t.setDate(t.getDate()+1);const w=t.getDay();if(w&&w<6)days.push(new Date(t))}}
+const fmtD=d=>d.toLocaleDateString('tr-TR',{day:'numeric',month:'long'}),fmtW=d=>d.toLocaleDateString('tr-TR',{weekday:'long'});
+const A={topic:'',day:'',time:'Fark etmez',way:'Büroda'};
+function drawAppt(){
+  $('#aTopic').innerHTML=TOPICS.map(t=>chip(t,A.topic===t)).join('');
+  $('#aDay').innerHTML=days.map((d,i)=>chip(i,A.day===String(i),fmtD(d)+'<small>'+fmtW(d)+'</small>')).join('');
+  $('#aTime').innerHTML=TIMES.map(t=>chip(t[0],A.time===t[0],t[0]+(t[1]?'<small>'+t[1]+'</small>':''))).join('');
+  $('#aWay').innerHTML=WAYS.map(t=>chip(t,A.way===t)).join('');
+}
+[['#aTopic','topic'],['#aDay','day'],['#aTime','time'],['#aWay','way']].forEach(([s,k])=>$(s).addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;A[k]=b.dataset.v;drawAppt();$('#aErr').textContent=''}));
+drawAppt();
+$('#aForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const nm=$('#aName').value.trim(),tl=$('#aTel').value.replace(/\D/g,'');
+  $('#aName').setAttribute('aria-invalid',nm.length<3);$('#aTel').setAttribute('aria-invalid',!/^(90)?0?5\d{9}$/.test(tl));
+  let err='';
+  if(!A.topic)err='Lütfen görüşme konusunu seçin.';
+  else if(A.day==='')err='Lütfen size uygun bir gün seçin.';
+  else if(nm.length<3)err='Lütfen adınızı ve soyadınızı yazın.';
+  else if(!/^(90)?0?5\d{9}$/.test(tl))err='Lütfen geçerli bir cep telefonu numarası yazın (05XX XXX XX XX).';
+  $('#aErr').textContent=err;if(err)return;
+  const d=days[+A.day],t=TIMES.find(x=>x[0]===A.time);
+  const msg=['Merhaba Zeynep Hanım, web sitenizden randevu talebinde bulunmak istiyorum.','','Ad Soyad: '+nm,'Telefon: '+$('#aTel').value.trim(),'Konu: '+A.topic,'Tercih ettiğim gün: '+fmtD(d)+' '+fmtW(d),'Zaman: '+A.time+(t&&t[1]?' ('+t[1]+')':''),'Görüşme şekli: '+A.way,'','Uygun olup olmadığını bildirirseniz sevinirim.'].join('\n');
+  window.open('https://wa.me/905549278712?text='+encodeURIComponent(msg),'_blank','noopener');
+});
 // 11. altın tozu
 (()=>{
     const c=$('#dust'); if(!c) return;
