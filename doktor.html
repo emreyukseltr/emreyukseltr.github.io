@@ -380,7 +380,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 
 <a href="index.html" class="ey-demo-back hover-target" data-i18n="EY Studios Geri">← EY Studios örnek çalışma</a>
 
-<!-- Satış önizlemesi: ?m=Dr.+Ad+Soyad&c=Semt,+Şehir&s=estetik (işletme bilgisi repoya girmez, yalnızca linkte durur) -->
+<!-- Satış önizlemesi: ?m=Dr.+Ad+Soyad&c=Semt,+Şehir&s=estetik|burun|dis|gastro|cocukcerrahi|pediatri|psikiyatri|cocukpsikiyatri|noroloji (işletme bilgisi repoya girmez, yalnızca linkte durur) -->
 <script>
 (function () {
   try {
@@ -442,9 +442,47 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         r: [['Endoskopi', 'Mide ve yemek borusu şikâyetlerinde muayene ve endoskopik inceleme.'],
             ['Kolonoskopi', 'Kalın bağırsak şikâyetleri ve tarama için muayene ve işlem öncesi bilgilendirme.'],
             ['Mide, Bağırsak ve Karaciğer', 'Hazımsızlık, reflü, karın ağrısı ve karaciğer sağlığı konularında muayene ve takip.']] }
+      ,
+      cocukcerrahi: { t: ' | Çocuk Cerrahisi', h1: 'Çocuğunuz İçin', h2: 'Özenli Bir Yol', d: 'Bebeklik döneminden ergenliğe çocukların cerrahi hastalıklarında muayene, planlama ve aileyle adım adım ilerleyen bir süreç.', k: 'Aileyle Birlikte',
+        a1: 'Her muayene, çocuğunuzu ve sizi dinlemekle başlar. Tanı ve olası tedavi seçenekleri aileye sade bir dille anlatılır.',
+        a2: 'Ameliyat gerekiyorsa hazırlıktan taburculuğa kadar her adım önceden konuşulur; sorularınıza cevap almadan karar vermezsiniz.',
+        mq: ['ÇOCUK CERRAHİSİ', 'AİLEYLE BİLGİLENDİRME', 'KİŞİYE ÖZEL PLAN'],
+        r: [['Fıtık ve İnmemiş Testis', 'Kasık ve göbek fıtığı, inmemiş testis ve hidrosel için muayene ve planlama.'],
+            ['Sünnet ve Ürolojik Sorunlar', 'Sünnet, idrar yolu ve böbrek sorunlarında değerlendirme ve tedavi planı.'],
+            ['Karın ve Yenidoğan Cerrahisi', 'Apandisit, karın ağrısı ve yenidoğan dönemine özgü cerrahi durumlarda muayene.']] },
+      pediatri: { t: ' | Çocuk Sağlığı ve Hastalıkları', h1: 'Büyürken', h2: 'Her Adımında', d: 'Yenidoğandan ergenliğe çocuğunuzun sağlıklı büyümesi için muayene, aşı takibi ve gelişim izlemi.', k: 'Sakin Bir Muayene',
+        a1: 'Çocuklar için muayene sakin ve acele etmeden yapılır; ebeveynlerin sorularına zaman ayrılır.',
+        a2: 'Büyüme, beslenme ve aşı takibi düzenli kontrollerle izlenir; her ziyarette bir sonraki adım konuşulur.',
+        mq: ['ÇOCUK SAĞLIĞI', 'AŞI TAKİBİ', 'GELİŞİM İZLEMİ'],
+        r: [['Sağlam Çocuk Takibi', 'Düzenli kontroller, büyüme ve gelişim izlemi, beslenme önerileri.'],
+            ['Aşı Takvimi', 'Aşı takviminin planlanması ve aşı öncesi bilgilendirme.'],
+            ['Hastalık Muayenesi', 'Ateş, öksürük, karın ağrısı ve sık görülen çocukluk hastalıklarında muayene.']] },
+      psikiyatri: { t: ' | Psikiyatri', h1: 'Kendinizi Anlatmak İçin', h2: 'Güvenli Bir Alan', d: 'Kaygı, depresyon, uyku ve dikkat sorunları gibi ruh sağlığı konularında değerlendirme ve kişiye özel tedavi planı.', k: 'Gizlilik ve Saygı',
+        a1: 'Görüşmeler sakin bir ortamda, acele etmeden yapılır. Paylaştıklarınız tıbbi gizlilik çerçevesinde korunur.',
+        a2: 'Tanı ve tedavi seçenekleri size açıkça anlatılır; takip planı birlikte belirlenir.',
+        mq: ['PSİKİYATRİ', 'GİZLİLİK', 'KİŞİYE ÖZEL TAKİP'],
+        r: [['Kaygı ve Depresyon', 'Kaygı bozuklukları, panik, depresyon ve duygu durum sorunlarında değerlendirme ve takip.'],
+            ['Uyku ve Dikkat', 'Uyku sorunları, dikkat eksikliği ve odaklanma güçlüklerinde muayene ve tedavi planı.'],
+            ['Stres ve Yaşam Dönemleri', 'İş, ilişki ve kayıp gibi zorlu dönemlerde psikiyatrik destek.']] },
+      cocukpsikiyatri: { t: ' | Çocuk ve Ergen Psikiyatrisi', h1: 'Çocuğunuzu', h2: 'Birlikte Anlayalım', d: 'Okul öncesinden ergenliğe dikkat, davranış, duygu ve gelişim konularında değerlendirme ve aileyle birlikte yürütülen takip.', k: 'Aileyle Birlikte',
+        a1: 'Değerlendirme çocukla ve aileyle yapılan görüşmelerle başlar; gerektiğinde okulla iş birliği planlanır.',
+        a2: 'Tanı ve tedavi seçenekleri aileye sade bir dille anlatılır, takip planı birlikte belirlenir.',
+        mq: ['ÇOCUK VE ERGEN', 'AİLE GÖRÜŞMESİ', 'GELİŞİM TAKİBİ'],
+        r: [['Dikkat ve Davranış', 'Dikkat eksikliği, hareketlilik ve davranış sorunlarında değerlendirme ve takip.'],
+            ['Kaygı ve Duygu Durumu', 'Okul kaygısı, korkular, içe kapanma ve ergenlik dönemi duygu durum sorunları.'],
+            ['Gelişim ve Öğrenme', 'Konuşma, gelişim ve öğrenme güçlüklerinde değerlendirme ve yönlendirme.']] },
+      noroloji: { t: ' | Nöroloji', h1: 'Doğru Tanı,', h2: 'Dikkatli Takip', d: 'Baş ağrısı, baş dönmesi, uyuşma ve hafıza şikâyetleri gibi sinir sistemi hastalıklarında muayene ve kişiye özel takip.', k: 'Sade Bilgilendirme',
+        a1: 'Muayene ayrıntılı bir dinlemeyle başlar; gerekli tetkikler ve sebepleri size açıkça anlatılır.',
+        a2: 'Tanı ve tedavi seçenekleri birlikte konuşulur, düzenli kontrollerle takip edilir.',
+        mq: ['NÖROLOJİ', 'EMG', 'KİŞİYE ÖZEL TAKİP'],
+        r: [['Baş Ağrısı ve Baş Dönmesi', 'Migren, gerilim tipi baş ağrısı ve baş dönmesi şikâyetlerinde muayene ve takip.'],
+            ['Uyuşma ve Kas Güçsüzlüğü', 'El ve ayaklarda uyuşma, karıncalanma ve sinir sıkışmalarında değerlendirme.'],
+            ['Hafıza ve Epilepsi', 'Unutkanlık, epilepsi ve hareket bozukluklarında muayene ve uzun dönem takip.']] }
     }[s];
     if (alan) {
       document.title = m + alan.t;
+      var st2 = document.querySelectorAll('.trust-bar .stat');
+      if (st2[1]) { set(st2[1].querySelector('.stat-num'), 'Özenli'); set(st2[1].querySelector('.stat-label'), 'Sade Bilgilendirme'); }
       set($('[data-i18n="Sanat ve Cerrahinin"]'), alan.h1);
       set($('[data-i18n="Kusursuz Uyumu"]'), alan.h2);
       set($('[data-i18n="hero-desc"]'), alan.d);

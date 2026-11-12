@@ -337,7 +337,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
   'use strict';
   /* =====================================================================
      DANIŞMAN BİLGİLERİ — yeni bir danışan için bu bloğu düzenleyin.
-     Satış önizlemesi: ?m=Psk.+Ad+Soyad&c=Semt,+Şehir&s=oyun (bilgi repoya girmez, yalnızca linkte durur)
+     Satış önizlemesi: ?m=Psk.+Ad+Soyad&c=Semt,+Şehir&s=oyun|ergo (bilgi repoya girmez, yalnızca linkte durur)
      ===================================================================== */
   var PRO = {
     name: 'Psk. Deniz Arslan',
@@ -348,12 +348,13 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     /* JS getDay sırası: 0 Pazar … 6 Cumartesi. null = kapalı */
     hours: [null, [10, 19], [10, 19], [10, 19], [10, 19], [10, 19], [10, 15]]
   };
-  var play = false;
+  var play = false, ergo = false;
   try {
     var q = new URLSearchParams(location.search), qm = (q.get('m') || '').trim().slice(0, 40), qc = (q.get('c') || '').trim().slice(0, 40);
     if (qm) PRO.name = qm;
     if (qc) { PRO.area = qc; PRO.address = qc; }
     play = q.get('s') === 'oyun';
+    ergo = q.get('s') === 'ergo';
   } catch (e) {}
 
   var $ = function (s) { return document.querySelector(s); };
@@ -368,12 +369,20 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     { ic: '👪', bg: '#FBE3DB', t: 'Ebeveyn rehberliği', d: 'Sınır koyma, ekran süresi ve olumlu disiplin konularında ebeveynlere yol haritası.', f: 'Ebeveyn' }
   ];
   if (!play) { var s0 = SERVICES.shift(); SERVICES.splice(3, 0, s0); }
+  if (ergo) SERVICES = [
+    { ic: '🧩', bg: '#FBE3DB', t: 'Duyu bütünleme', d: 'Dokunma, ses, hareket gibi duyusal uyaranlara aşırı ya da az tepki veren çocuklar için oyun temelli çalışma.', f: 'Çocuk' },
+    { ic: '✋', bg: '#E3EEE5', t: 'İnce motor beceriler', d: 'Kalem tutma, makas kullanma, düğme ilikleme gibi günlük ve okul becerilerinin desteklenmesi.', f: 'Okul öncesi & okul' },
+    { ic: '🌱', bg: '#E2ECF7', t: 'Gelişimsel destek', d: 'Otizm spektrum bozukluğu, DEHB ve gelişim geriliği olan çocuklarda günlük yaşam becerilerine yönelik çalışma.', f: 'Çocuk & aile' },
+    { ic: '🏡', bg: '#F6ECD6', t: 'Günlük yaşam aktiviteleri', d: 'Giyinme, yemek yeme, öz bakım gibi aktivitelerde bağımsızlığı artırmaya yönelik planlama.', f: 'Her yaş' },
+    { ic: '💪', bg: '#EDE5F4', t: 'Rehabilitasyon', d: 'İnme, el yaralanmaları ve ortopedik sorunlar sonrası günlük hayata dönüşü destekleyen çalışmalar.', f: 'Yetişkin' },
+    { ic: '👪', bg: '#FBE3DB', t: 'Ev ve okul önerileri', d: 'Çocuğun evde ve okulda daha rahat etmesi için aileye ve öğretmenlere pratik öneriler.', f: 'Ebeveyn' }
+  ];
 
   /* Bilgiler */
   document.querySelectorAll('[data-o="name"]').forEach(function (e) { e.textContent = PRO.name; });
   document.querySelectorAll('[data-o="area"]').forEach(function (e) { e.textContent = PRO.area; });
   document.querySelectorAll('[data-o="address"]').forEach(function (e) { e.textContent = PRO.address; });
-  var parts = PRO.name.replace(/^(Psk\.|Uzm\.|Dr\.|Psikolog)\s*/i, '').split(/\s+/).filter(Boolean);
+  var parts = PRO.name.replace(/^(Psk\.|Uzm\.|Dr\.|Psikolog|Ergoterapist|Erg\.)\s*/i, '').split(/\s+/).filter(Boolean);
   $('#mk').textContent = (parts[0] || 'P').charAt(0).toLocaleUpperCase('tr');
   $('#ini').textContent = parts.map(function (w) { return w.charAt(0).toLocaleUpperCase('tr'); }).join('').slice(0, 2);
   document.querySelectorAll('[data-o="first"]').forEach(function (e) { e.textContent = (parts[0] || '') + '.'; });
@@ -386,8 +395,23 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     $('#apH').innerHTML = 'Sizin hızınızda, <em>sizin hikâyeniz.</em>';
     $('#apP').textContent = 'Terapi, birinin size ne yapmanız gerektiğini söylediği bir yer değil; kendinizi daha iyi anlayıp kendi yolunuzu bulduğunuz güvenli bir alandır. Çocuklarla oyun, yetişkinlerle konuşma temelli, bilimsel yöntemlerle çalışırım.';
   }
+  if (ergo) {
+    PRO.role = 'Ergoterapi';
+    $('#h1').innerHTML = 'Günlük hayatta <em>daha bağımsız adımlar.</em>';
+    $('#lede').textContent = 'Çocuklarda duyu bütünleme, ince motor ve gelişimsel destek; yetişkinlerde günlük yaşama dönüş. Aileyle birlikte, kişiye özel bir planla.';
+    $('#chips').innerHTML = '<span>Duyu bütünleme</span><span>İnce motor</span><span>Gelişimsel destek</span><span>Rehabilitasyon</span>';
+    $('#apH').innerHTML = 'Oyunla öğrenilen <em>beceriler.</em>';
+    $('#apP').textContent = 'Ergoterapide amaç, kişinin evde, okulda ve sosyal hayatta yapmak istediği ya da yapması gereken işleri daha kolay ve bağımsız yapabilmesidir. Çocuklarla çalışmalar çoğunlukla oyun temelli ilerler.';
+    $('#ticks').innerHTML = '<li>Değerlendirmeyle başlayan, kişiye özel plan</li><li>Ailelerle düzenli bilgilendirme ve ev programı</li><li>Gerektiğinde okul ve diğer uzmanlarla iş birliği</li>';
+    var qt = document.querySelector('.quote'); if (qt) qt.innerHTML = '<p>“Küçük bir beceri, günlük hayatta büyük bir özgürlüktür.”</p>';
+    var hk = document.querySelector('#hakkimda .lead, .about .lead'); if (hk) hk.textContent = 'Ergoterapi eğitimimin ardından çocuklar ve aileleriyle çalışmaya odaklandım. Her çocuğun kendi hızında ilerlediğine inanıyor, aileleri sürecin bir parçası olarak görüyorum.';
+    var cr = document.querySelector('.creds'); if (cr) cr.innerHTML = '<div><b>Ergoterapi</b>Lisans eğitimi</div><div><b>Duyu Bütünleme</b>Eğitim programı</div><div><b>Gelişimsel Destek</b>Çocuk ve aile</div><div><b>Rehabilitasyon</b>Yetişkin</div>';
+    var sm = document.querySelectorAll('details');
+    if (sm[0]) sm[0].innerHTML = '<summary>Bir seans ne kadar sürer?</summary><p>Seanslar genellikle 40–50 dakika sürer; sıklığı değerlendirme sonrasında birlikte belirlenir.</p>';
+    if (sm[2]) sm[2].innerHTML = '<summary>İlk görüşmede ne yapılır?</summary><p>İlk görüşmede çocuğunuzun gelişimini ve günlük hayattaki güçlüklerini konuşur, gerekirse değerlendirme planlarız.</p>';
+  }
   $('[data-o="role"]').textContent = PRO.role;
-  document.title = PRO.name + ' — ' + (play ? 'Oyun Terapisi & Çocuk Danışmanlığı' : 'Psikolojik Danışmanlık');
+  document.title = PRO.name + ' — ' + (ergo ? 'Ergoterapi' : play ? 'Oyun Terapisi & Çocuk Danışmanlığı' : 'Psikolojik Danışmanlık');
   $('#waBtn').href = 'https://wa.me/' + PRO.wa;
   $('#mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(PRO.name + ' ' + PRO.area);
   $('#yr').textContent = new Date().getFullYear();
@@ -407,7 +431,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
 
   /* Ön görüşme formu */
   var OPTS = {
-    who: play ? ['Çocuğum için', 'Ergen çocuğum için', 'Kendim için', 'Ailemiz için'] : ['Kendim için', 'Çocuğum için', 'Ergen çocuğum için', 'Çift / aile'],
+    who: ergo ? ['Çocuğum için', 'Kendim için', 'Yakınım için'] : play ? ['Çocuğum için', 'Ergen çocuğum için', 'Kendim için', 'Ailemiz için'] : ['Kendim için', 'Çocuğum için', 'Ergen çocuğum için', 'Çift / aile'],
     how: ['Yüz yüze', 'Online', 'Fark etmez'],
     when: ['Hafta içi gündüz', 'Hafta içi akşam', 'Cumartesi']
   };
