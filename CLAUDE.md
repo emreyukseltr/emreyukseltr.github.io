@@ -26,7 +26,9 @@ self-contained HTML file in the repo root.
   stored in localStorage under `ey-lang`, and the default language is Turkish. Booking messages go
   to the business in Turkish.
 - `zeynep_alkoc.html` uses CRLF line endings — preserve them. It is a client preview (noindex,
-  not in the sitemap) until the client's own domain is bought.
+  not in the sitemap) until the client's own domain is bought. Her requests (13 Nov): no quotes/aphorisms, no script
+  signature of her name, title written as "Arabulucu Avukat", address "1. Noterliğin yanı, No: 2". She buys the .av.tr domain
+  herself (isimtescil); a professional photo is coming to replace zeynep.jpg.
 - Luna Bijuteri's shop lives only at lunabijuteri.com, served from the separate repo `emreyukseltr/lunabijuteri`
   (index.html, images in `img/`). Make every Luna change there. `luna.html` here is just a redirect to
   lunabijuteri.com (noindex). Deal: 8.500 TL total, 3.500 paid, 5.000 due when the shop opens; 2 free bulk
