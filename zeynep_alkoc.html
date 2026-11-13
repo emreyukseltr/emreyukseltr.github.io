@@ -34,7 +34,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
     :root {
         --bg:#050507;
@@ -1550,6 +1550,98 @@
         .days { grid-template-columns:repeat(2,minmax(0,1fr)) }
         .chip { padding:.65rem .8rem }
     }
+
+    /* ===== v2: editoryal lüks katman ===== */
+    body { counter-reset:sec }
+    h2.t { counter-increment:sec }
+    h2.t::before { content:"— " counter(sec, upper-roman) " —"; display:block; font:500 .72rem/1 'Montserrat',sans-serif; letter-spacing:.42em; color:var(--gold); margin-bottom:1.4rem; opacity:.9 }
+    .hero h1 { letter-spacing:-.02em }
+    .hero h1 em { font-style:italic }
+
+    /* monogram */
+    .logo { display:inline-flex; align-items:center; gap:.75rem }
+    .mono-l { width:34px; height:34px; flex:none; overflow:visible }
+    .mono-l path { fill:none; stroke:var(--gold); stroke-width:1.2 }
+    .mono-l text { font:600 11px 'Cinzel',serif; fill:var(--gold); text-anchor:middle; letter-spacing:.02em }
+
+    /* hero: mimari sütunlar ve ışık */
+    .cols { position:absolute; inset:0; pointer-events:none; opacity:.55;
+        background:repeating-linear-gradient(90deg,transparent 0 calc(12.5% - 1px),rgba(212,175,55,.07) calc(12.5% - 1px) 12.5%);
+        -webkit-mask:radial-gradient(70% 80% at 70% 40%,#000,transparent 75%); mask:radial-gradient(70% 80% at 70% 40%,#000,transparent 75%) }
+    .hero::after { content:""; position:absolute; left:0; right:0; bottom:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:.5 }
+
+    /* kendini yazan imza */
+    .sig { position:absolute; z-index:4; left:-10%; bottom:-9%; width:100%; overflow:visible; pointer-events:none }
+    .sig text { font-family:'Pinyon Script',cursive; font-size:84px; fill:transparent; stroke:var(--gold2); stroke-width:1.1; stroke-dasharray:1600; stroke-dashoffset:1600; filter:drop-shadow(0 0 10px rgba(212,175,55,.35)) }
+    body.ready .sig text { animation:sign 3.4s .9s cubic-bezier(.45,0,.2,1) forwards }
+    @keyframes sign { 70% { fill:transparent } 100% { stroke-dashoffset:0; fill:rgba(243,226,160,.92) } }
+    .tag { bottom:20% }
+
+    /* fildişi bölümler */
+    .lite { --text:#17140f; --muted:#5f574a; --line:rgba(150,112,30,.26); --bg:#f6f1e7; --bg2:#ece4d5; --gold:#a8822a; --gold2:#c9a24a; --glow:rgba(168,130,42,.25); background:var(--bg); color:var(--text) }
+    .lite::before { content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(800px 400px at 85% 0%,rgba(201,162,74,.12),transparent 70%) }
+    .lite .gold-text { background:linear-gradient(100deg,#8a6a1c,#c9a24a 30%,#a8822a 55%,#7d5f17 80%,#c9a24a); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent }
+    .lite .stat:hover, .lite .loc>div:hover { background:#efe7d8 }
+    .lite .arb-p, .lite .arb-l li { color:#2b2620 }
+    .lite .quote { color:#7d5f17 }
+    .lite .arb-f li::before { background:var(--bg) }
+    .lite .stats.words svg { stroke:var(--gold) }
+    .faq.lite .ac button:hover { color:#7d5f17 }
+    .faq.lite .ac.on i::before, .faq.lite .ac.on i::after { background:#fff }
+    .arb.lite { border-block:0 }
+    .drop::first-letter { float:left; font:600 4.6rem/.82 'Cormorant Garamond',serif; color:var(--gold); padding:.35rem .6rem 0 0 }
+
+    /* süreç çizgisi */
+    .steps.rv { opacity:1; transform:none }
+    .steps::before { transform:scaleX(0); transform-origin:left; transition:transform 2.2s cubic-bezier(.4,0,.2,1) .2s; opacity:.8 }
+    .steps.in::before { transform:scaleX(1) }
+    .step .n { box-shadow:0 0 0 6px var(--bg2) }
+
+    /* çalışma alanları listesi */
+    .alist { display:grid; grid-template-columns:1fr 1fr; column-gap:4rem; border-top:1px solid var(--line) }
+    .ar { display:grid; grid-template-columns:3.2rem 1fr 30px; gap:1.2rem; align-items:start; padding:1.6rem 0 1.5rem; border-bottom:1px solid var(--line); position:relative }
+    .ar::after { content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0; background:linear-gradient(90deg,var(--gold),var(--gold2)); transition:width .7s cubic-bezier(.2,.8,.2,1) }
+    .ar:hover::after { width:100% }
+    .ar-n { font:500 .85rem 'Cinzel',serif; color:var(--gold); letter-spacing:.12em; padding-top:.55rem }
+    .ar h3 { font:500 clamp(1.45rem,2.2vw,1.85rem)/1.15 'Cormorant Garamond',serif; color:#fff; transition:color .4s,transform .5s cubic-bezier(.2,.8,.2,1) }
+    .ar p { color:var(--muted); font-weight:300; font-size:.88rem; line-height:1.6; margin-top:.4rem; max-width:34rem }
+    .ar svg { width:26px; height:26px; stroke:var(--gold); fill:none; stroke-width:1.1; opacity:.45; margin-top:.45rem; transition:opacity .4s,transform .5s }
+    .ar:hover h3 { color:var(--gold2); transform:translateX(6px) }
+    .ar:hover svg { opacity:1; transform:rotate(-8deg) }
+
+    /* butonlarda ışık süzmesi */
+    .btn { position:relative; overflow:hidden }
+    .btn::after { content:""; position:absolute; top:0; bottom:0; left:-60%; width:40%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg); transition:left .8s cubic-bezier(.2,.8,.2,1); pointer-events:none }
+    .btn:hover::after { left:130% }
+    .btn.ghost::after { background:linear-gradient(100deg,transparent,rgba(212,175,55,.25),transparent) }
+
+    /* alıntı bandı */
+    .band blockquote { font-size:clamp(2rem,5vw,4rem) }
+    .band::before { content:"“"; position:absolute; top:12%; left:50%; transform:translateX(-50%); font:400 16rem/1 'Cormorant Garamond',serif; color:rgba(212,175,55,.07); pointer-events:none }
+    .band { position:relative; overflow:hidden }
+
+    /* kartların üst kenarında ince altın çizgi */
+    .prep-box, .appt-f { box-shadow:inset 0 1px 0 rgba(212,175,55,.35), 0 30px 80px -40px rgba(0,0,0,.8) }
+
+    /* footer imzası */
+    .fsig { font:400 clamp(3rem,9vw,6rem)/1 'Pinyon Script',cursive; color:var(--gold); opacity:.9; margin-bottom:.6rem; text-shadow:0 0 30px rgba(212,175,55,.25) }
+
+    @media(max-width:900px) {
+        .alist { grid-template-columns:1fr }
+        .sig { left:4%; bottom:0; width:92% }
+        .tag { bottom:21% }
+        .drop::first-letter { font-size:3.8rem }
+    }
+    @media(max-width:420px) {
+        .ar { grid-template-columns:2.4rem 1fr; gap:.8rem }
+        .ar svg { display:none }
+        .mono-l { width:28px; height:28px }
+        .logo { gap:.55rem }
+    }
+    @media(prefers-reduced-motion:reduce) {
+        .sig text { stroke-dashoffset:0; fill:rgba(243,226,160,.92) }
+        .steps::before { transform:none }
+    }
     </style>
 <script>
 /* Sayfa yenilenince her zaman en baştan açılsın: tarayıcının kaydırma konumunu hatırlamasını kapat */
@@ -1564,7 +1656,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 <div class="dots" id="dots"></div>
 
 <nav id="nav">
- <a href="#hero" class="logo">ALKOÇ <span>HUKUK</span></a>
+ <a href="#hero" class="logo"><svg class="mono-l" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 38 20 20 38 2 20z"/><text x="20" y="25.5">ZA</text></svg>ALKOÇ <span>HUKUK</span></a>
  <ul class="links" id="links">
   <li><a href="#hakkimda" class="nl">Hakkımda</a></li>
   <li><a href="#alanlar" class="nl">Alanlar</a></li>
@@ -1578,6 +1670,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 </nav>
 
 <header class="hero" id="hero">
+ <div class="cols" aria-hidden="true"></div>
  <canvas id="dust" aria-hidden="true"></canvas>
  <div class="wrap">
   <div>
@@ -1598,6 +1691,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
    <div class="halo"></div>
    <div class="frame"><div class="pic"><span class="mono">Z</span><img src="zeynep.jpg" alt="Av. Zeynep Alkoç" onerror="this.remove()"></div></div>
    <div class="tag"><b>Av. Arb. Zeynep Alkoç</b><span>Selçuk Üniv. Hukuk Fakültesi</span></div>
+   <svg class="sig" viewBox="0 0 520 150" aria-hidden="true"><text x="12" y="105">Zeynep Alkoç</text></svg>
   </div>
  </div>
  <div class="scroll-cue"></div>
@@ -1605,11 +1699,11 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 
 <div class="marq" aria-hidden="true"><div id="mq"></div></div>
 
-<section class="about" id="hakkimda">
+<section class="about lite" id="hakkimda">
  <div class="wrap">
   <div class="rv">
    <h2 class="t">Her dosya, bir insanın <span class="gold-text">hikâyesi.</span></h2>
-   <p>Hukuk, benim için yalnızca kanun maddelerinden ibaret değil; insan hayatına dokunan, güven gerektiren hassas bir alandır. Selçuk Üniversitesi Hukuk Fakültesi'nden mezun olduğum günden bu yana mesleğimi tutkuyla sürdürüyorum.</p>
+   <p class="drop">Hukuk, benim için yalnızca kanun maddelerinden ibaret değil; insan hayatına dokunan, güven gerektiren hassas bir alandır. Selçuk Üniversitesi Hukuk Fakültesi'nden mezun olduğum günden bu yana mesleğimi tutkuyla sürdürüyorum.</p>
    <p>Aydın Barosu'na kayıtlı avukat olarak müvekkillerimi temsil ediyor, aynı zamanda <strong>Adalet Bakanlığı Arabulucular Siciline kayıtlı arabulucu</strong> olarak uyuşmazlıkların mahkeme dışında çözümüne yönelik süreçlerde görev alıyorum. Çalışma ilkem nettir: <strong>açık iletişim, düzenli bilgilendirme ve gizlilik.</strong></p>
    <div class="quote">“Her dosya bir insanın hikâyesidir; özenle dinler, titizlikle savunurum.”</div>
   </div>
@@ -1625,7 +1719,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 <section class="process" id="surec">
  <div class="wrap">
   <div class="head c rv"><h2 class="t">Hukuki <span class="gold-text">sürecimiz</span></h2><p class="sub">Dosyanız dört adımda nasıl ilerler?</p></div>
-  <div class="steps">
+  <div class="steps rv">
    <div class="step rv"><div class="n"><b>1</b></div><h3>Ön Görüşme</h3><p>Durumunuz dinlenir; hukuki seçenekler ve olası süreç açıkça anlatılır.</p></div>
    <div class="step rv" style="--d:.1s"><div class="n"><b>2</b></div><h3>Belge ve Delil</h3><p>Dosyaya ilişkin belge ve deliller birlikte gözden geçirilir.</p></div>
    <div class="step rv" style="--d:.2s"><div class="n"><b>3</b></div><h3>Hukuki Süreç</h3><p>Gerekli başvurular ve davalar yürütülür, duruşmalara katılım sağlanır.</p></div>
@@ -1637,11 +1731,11 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 <section id="alanlar">
  <div class="wrap">
   <div class="head rv"><h2 class="t">Çalışma <span class="gold-text">alanları</span></h2><p class="sub">Danışmanlık ve temsil verilen başlıca hukuk alanları.</p></div>
-  <div class="grid" id="grid"></div>
+  <div class="alist" id="grid"></div>
  </div>
 </section>
 
-<section class="arb" id="arabuluculuk">
+<section class="arb lite" id="arabuluculuk">
  <div class="wrap">
   <div class="head rv"><h2 class="t">Arabuluculuk <span class="gold-text">nedir?</span></h2><p class="sub">Uyuşmazlığı mahkemeye taşımadan, tarafsız bir arabulucu eşliğinde çözmenin yolu.</p></div>
   <div class="arb-g">
@@ -1683,7 +1777,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   </div>
  </div>
 </section>
-<section class="faq" id="faq">
+<section class="faq lite" id="faq">
  <div class="wrap">
   <div class="head c rv"><h2 class="t">Sıkça sorulan <span class="gold-text">sorular</span></h2></div>
   <div class="rv">
@@ -1732,6 +1826,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 </section>
 
 <footer>
+ <div class="fsig" aria-hidden="true">Zeynep Alkoç</div>
  <div class="fl">ALKOÇ <span>HUKUK</span></div>
  <p>Hukuki danışmanlık, temsil ve arabuluculuk. Danışmanlık hizmetleri yalnızca önceden oluşturulan randevu ile verilmektedir.</p>
  <p class="legal">Bu internet sitesi, Avukatlık Kanunu ve Türkiye Barolar Birliği Meslek Kuralları çerçevesinde yalnızca bilgilendirme amacıyla hazırlanmıştır; reklam niteliği taşımaz.</p>
@@ -1767,7 +1862,7 @@ const areas=[
     ['İcra ve İflas','Alacak takibi, ihtiyati haciz, itirazın iptali ve konkordato süreçleri.','<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 3v18M14 8h5M14 12h5M14 16h5"/>']
 ];
 
-$('#grid').innerHTML=areas.map((a,i)=>`<div class="card rv" style="--d:${(i%4)*.08}s"><svg viewBox="0 0 24 24">${a[2]}</svg><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join('');
+$('#grid').innerHTML=areas.map((a,i)=>`<div class="ar rv" style="--d:${(i%2)*.08}s"><span class="ar-n">${String(i+1).padStart(2,'0')}</span><div class="ar-t"><h3>${a[0]}</h3><p>${a[1]}</p></div><svg viewBox="0 0 24 24" aria-hidden="true">${a[2]}</svg></div>`).join('');
 const mq=areas.map(a=>`<span>${a[0]}</span>`).join('');$('#mq').innerHTML=mq+mq+mq+mq;
 $('#dots').innerHTML=[['hero','Ana Sayfa'],['hakkimda','Hakkımda'],['surec','Süreç'],['alanlar','Alanlar'],['arabuluculuk','Arabuluculuk'],['hazirlik','Hazırlık'],['faq','SSS'],['randevu','Randevu'],['iletisim','Büro']].map(d=>`<a href="#${d[0]}" title="${d[1]}" aria-label="${d[1]}"></a>`).join('');
 
