@@ -2,6 +2,22 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
+<!-- ey-guard: eski tarayıcı ve bağlantı dalgalanması koruması -->
+<script>
+(function(){
+  /* IntersectionObserver olmayan eski tarayıcılarda her şeyi görünür say; içerik gizli kalmasın */
+  if(typeof window.IntersectionObserver!=='function'){window.IntersectionObserver=function(cb){var self=this;self.observe=function(el){setTimeout(function(){cb([{isIntersecting:true,intersectionRatio:1,target:el,boundingClientRect:el.getBoundingClientRect(),intersectionRect:el.getBoundingClientRect(),rootBounds:null,time:Date.now()}],self)},0)};self.unobserve=self.disconnect=function(){};self.takeRecords=function(){return[]}}}
+  /* Yüklenemeyen görseli 1,5 ve 4 sn sonra tekrar dene (bağlantı anlık koptuysa) */
+  function retry(t){var n=+(t.getAttribute('data-eyr')||0),s=t.getAttribute('src');if(!s||s.indexOf('data:')===0)return;if(n>=2){t.style.opacity='0';return}t.setAttribute('data-eyr',n+1);setTimeout(function(){var u=s.replace(/([?&])eyr=\d+&?/,'$1').replace(/[?&]$/,'');var h=u.indexOf('#');var base=h<0?u:u.slice(0,h),hash=h<0?'':u.slice(h);t.src=base+(base.indexOf('?')<0?'?':'&')+'eyr='+(n+1)+hash;var ss=t.getAttribute('srcset');if(ss)t.setAttribute('srcset',ss)},n?4000:1500)}
+  addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')retry(t);else if(t&&(t.tagName==='VIDEO'||t.tagName==='SOURCE')){var v=t.tagName==='SOURCE'?t.parentNode:t;if(v&&!v.getAttribute('data-eyr')){v.setAttribute('data-eyr','1');setTimeout(function(){try{v.load()}catch(_){}},2000)}}},true);
+  /* Bağlantı geri gelince hâlâ boş kalan görselleri yenile */
+  addEventListener('online',function(){[].forEach.call(document.images,function(i){if(i.complete&&!i.naturalWidth&&i.getAttribute('src')){i.removeAttribute('data-eyr');retry(i)}})});
+  /* Service worker: sayfa açılırken bağlantı giderse tekrar dener, gerekirse kayıttaki kopyayı gösterir */
+  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});
+})();
+</script>
+<noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
+<!-- /ey-guard -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Psk. Deniz Arslan — Psikolojik Danışmanlık</title>
 <meta name="description" content="Çocuk, ergen, yetişkin ve aile danışmanlığı. Yüz yüze ya da online ön görüşme talebinizi WhatsApp'tan tek dokunuşla iletin.">

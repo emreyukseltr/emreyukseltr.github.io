@@ -12,6 +12,11 @@ self-contained HTML file in the repo root.
   addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
   </script>
   ```
+- **Resilience block.** Every page carries the `<!-- ey-guard -->` block right after `<meta charset>` (copy it from
+  any page): IntersectionObserver fallback for old browsers, image retry after a connection blip, service worker
+  registration, and a `<noscript>` style that un-hides `.rv` reveals and preloaders. `/sw.js` retries page loads for
+  ~4 s, then serves the last cached copy or a Turkish 'bağlantı bekleniyor' page; bump `VER` when changing it. Its
+  header comment has a one-line kill switch. Reveal/preloader content must never stay hidden if a script fails.
 - **Mobile first.** Test at 320, 360, 390 (touch, @2–3x) and desktop widths: no horizontal overflow,
   no clipped or overlapping text, and long words in every language must wrap.
 - **Touch must work without a long press.** Use passive `touchstart`/`touchmove` for canvas effects,
