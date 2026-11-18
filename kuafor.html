@@ -812,6 +812,8 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   try {
     var qp = new URLSearchParams(location.search), qm = (qp.get('m') || '').trim().slice(0, 40), qc = (qp.get('c') || '').trim().slice(0, 40);
     if (qm) { SALON.name = qm; document.title = qm + ' — Saç & Güzellik'; }
+    /* Gerçek işletme adıyla uydurma Google puanı gösterilmesin */
+    if (qm) document.addEventListener('DOMContentLoaded', function () { [].forEach.call(document.querySelectorAll('[data-i="rating"]'), function (e) { var p = e.parentNode; (p && p.querySelector('.stars') ? p : e).style.display = 'none'; }); });
     if (qc) { SALON.area = qc; SALON.address = qc.replace(/[<>&]/g, ''); SALON.mapsQuery = qc; }
   } catch (e) {}
   /* Gerçek fotoğraflar: lookbook kartı ya da uzman için 'img' alanına dosya yolu/URL yazın.
@@ -2099,6 +2101,41 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       promoD: ['Protez tırnak ve kişiye özel tasarım tek randevuda. Kampanya bu ay geçerlidir.', 'Extensions and a custom design in one visit. Valid this month.'],
       title: ['Nail Art Studio', 'Nail Art Studio'] };
     Object.keys(NT).forEach(function (k) { if (T[k]) T[k] = ORDER.map(function (lc) { return lc === 'tr' ? NT[k][0] : NT[k][1]; }); });
+  }
+
+  /* İncelme ve vücut bakım modu: ?s=incelme (zayıflama ve vücut şekillendirme merkezleri için; sağlık ve kilo iddiası içermez) */
+  if (/[?&]s=incelme\b/.test(location.search)) {
+    document.documentElement.classList.add('berber');
+    CATS.length = 0;
+    [{ id: 'hair', tr: 'Cihaz uygulamaları', en: 'Device treatments' }, { id: 'art', tr: 'Bölgesel bakım', en: 'Targeted care' }, { id: 'care', tr: 'Rahatlama', en: 'Relaxation' }, { id: 'lash', tr: 'Paketler', en: 'Packages' }].forEach(function (c) { CATS.push(c); });
+    SERVICES.length = 0;
+    [
+      { id: 'vacu', c: 'hair', m: 30, p: 900, pop: 1, tr: 'Vacu Activ seansı', en: 'Vacu Activ session', dtr: 'Vakum ve kızılötesi destekli, yürüyüş bandında yapılan seans.', den: 'Treadmill session with vacuum and infrared support.' },
+      { id: 'roll', c: 'hair', m: 30, p: 800, pop: 1, tr: 'Rollshape seansı', en: 'Rollshape session', dtr: 'Silindir masaj ve kızılötesi ile vücut bakımı.', den: 'Roller massage with infrared body care.' },
+      { id: 'ir', c: 'hair', m: 30, p: 600, tr: 'Infrared kabin', en: 'Infrared cabin', dtr: 'Isıyla rahatlatan kızılötesi kabin seansı.', den: 'Relaxing infrared cabin session.' },
+      { id: 'sel', c: 'art', m: 45, p: 1000, pop: 1, tr: 'Selülit bakımı', en: 'Cellulite care', dtr: 'Basen ve bacak bölgesine yönelik bakım uygulaması.', den: 'Care for hips and legs.' },
+      { id: 'bolge', c: 'art', m: 45, p: 1000, tr: 'Bölgesel bakım', en: 'Targeted body care', dtr: 'Karın, bel ve kol bölgesine yönelik uygulama.', den: 'Care for abdomen, waist and arms.' },
+      { id: 'lenf', c: 'care', m: 50, p: 1100, tr: 'Lenf drenaj masajı', en: 'Lymphatic drainage', dtr: 'Hafif ritmik hareketlerle uygulanan rahatlatıcı masaj.', den: 'Gentle rhythmic relaxing massage.' },
+      { id: 'aroma', c: 'care', m: 30, p: 500, tr: 'Aromaterapi', en: 'Aromatherapy', dtr: 'Bitkisel yağlarla rahatlama seansı.', den: 'Relaxation session with plant oils.' },
+      { id: 'p8', c: 'lash', m: 30, p: 6000, tr: '8 seanslık paket', en: '8-session package', dtr: 'Seçtiğiniz cihaz uygulamasından 8 seans.', den: '8 sessions of your chosen device treatment.' },
+      { id: 'p12', c: 'lash', m: 30, p: 8400, pop: 1, tr: '12 seanslık paket', en: '12-session package', dtr: 'Seçtiğiniz cihaz uygulamasından 12 seans.', den: '12 sessions of your chosen device treatment.' }
+    ].forEach(function (o) { SERVICES.push(o); });
+    PROMO.ids = ['vacu', 'roll']; PROMO.price = 1500; PROMO.tr = 'Vacu Activ + Rollshape'; PROMO.en = 'Vacu Activ + Rollshape';
+    ORDER.forEach(function (lc) { if (lc !== 'tr' && lc !== 'en') delete PROMO[lc]; });
+    STAFF.length = 0;
+    [{ id: 'a', name: 'Uzman', c: '#C8924F', yrs: 6, img: '', tr: 'Vücut bakım uzmanı', en: 'Body care specialist' },
+     { id: 'b', name: 'Uzman', c: '#7A2436', yrs: 4, img: '', tr: 'Cihaz uygulamaları', en: 'Device treatments' }].forEach(function (o) { STAFF.push(o); });
+    REVIEWS.length = 0;
+    [{ who: 'Ayşe K.', tr: 'Ortam çok temiz ve rahat, ekip her seansta ilgileniyor.', en: 'Very clean and calm place; the team cares every session.' },
+     { who: 'Derya T.', tr: 'Randevuyu siteden aldım, telefonla uğraşmadım.', en: 'Booked on the site, no phone calls needed.' },
+     { who: 'Gül M.', tr: 'Paket seçeneklerini ve fiyatları önceden görmek çok iyi oldu.', en: 'Great to see packages and prices upfront.' }].forEach(function (o) { REVIEWS.push(o); });
+    var IT = { hEy: ['Vücut Bakım Merkezi', 'Body Care Studio'], h1a: ['Kendinize ayırdığınız', 'Time you give'], h1b: ['en iyi yarım saat.', 'to yourself.'],
+      lede: ['Vacu Activ, Rollshape ve bölgesel bakım uygulamaları: hizmetinizi ya da paketinizi seçin, süreyi ve fiyatı görün, randevunuzu tek dokunuşla oluşturun.', 'Vacu Activ, Rollshape and targeted care: pick a service or package, see time and price, book in one tap.'],
+      e1d: ['İlk görüşmede beklentinizi konuşur, size uygun programı birlikte belirleriz.', 'We start by talking about your goals and choosing a programme together.'],
+      e2d: ['Hijyenik ortamda, her seans öncesi temizlenen cihazlarla uygulama.', 'Hygienic studio, devices cleaned before every session.'],
+      promoD: ['Vacu Activ ve Rollshape aynı gün, tek randevuda. Kampanya bu ay geçerlidir.', 'Vacu Activ and Rollshape in one visit. Valid this month.'],
+      title: ['Vücut Bakım Merkezi', 'Body Care Studio'] };
+    Object.keys(IT).forEach(function (k) { if (T[k]) T[k] = ORDER.map(function (lc) { return lc === 'tr' ? IT[k][0] : IT[k][1]; }); });
   }
 
   /* ------------------------------------------------------------------ */

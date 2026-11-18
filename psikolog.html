@@ -353,7 +353,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
   'use strict';
   /* =====================================================================
      DANIŞMAN BİLGİLERİ — yeni bir danışan için bu bloğu düzenleyin.
-     Satış önizlemesi: ?m=Psk.+Ad+Soyad&c=Semt,+Şehir&s=oyun|ergo (bilgi repoya girmez, yalnızca linkte durur)
+     Satış önizlemesi: ?m=Psk.+Ad+Soyad&c=Semt,+Şehir&s=oyun|ergo|fizyo (bilgi repoya girmez, yalnızca linkte durur)
      ===================================================================== */
   var PRO = {
     name: 'Psk. Deniz Arslan',
@@ -364,13 +364,14 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     /* JS getDay sırası: 0 Pazar … 6 Cumartesi. null = kapalı */
     hours: [null, [10, 19], [10, 19], [10, 19], [10, 19], [10, 19], [10, 15]]
   };
-  var play = false, ergo = false;
+  var play = false, ergo = false, fizyo = false;
   try {
     var q = new URLSearchParams(location.search), qm = (q.get('m') || '').trim().slice(0, 40), qc = (q.get('c') || '').trim().slice(0, 40);
     if (qm) PRO.name = qm;
     if (qc) { PRO.area = qc; PRO.address = qc; }
     play = q.get('s') === 'oyun';
     ergo = q.get('s') === 'ergo';
+    fizyo = q.get('s') === 'fizyo';
   } catch (e) {}
 
   var $ = function (s) { return document.querySelector(s); };
@@ -385,6 +386,14 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     { ic: '👪', bg: '#FBE3DB', t: 'Ebeveyn rehberliği', d: 'Sınır koyma, ekran süresi ve olumlu disiplin konularında ebeveynlere yol haritası.', f: 'Ebeveyn' }
   ];
   if (!play) { var s0 = SERVICES.shift(); SERVICES.splice(3, 0, s0); }
+  if (fizyo) SERVICES = [
+    { ic: '🦴', bg: '#E2ECF7', t: 'Bel ve boyun ağrısı', d: 'Bel, boyun ve sırt ağrılarında değerlendirme, manuel terapi ve kişiye özel egzersiz programı.', f: 'Yetişkin' },
+    { ic: '⚽', bg: '#E3EEE5', t: 'Spor yaralanmaları', d: 'Bağ, kas ve eklem yaralanmalarından sonra spora güvenli dönüş için rehabilitasyon.', f: 'Sporcu' },
+    { ic: '🩹', bg: '#FBE3DB', t: 'Ameliyat sonrası', d: 'Diz, omuz, kalça ve bel ameliyatlarından sonra hareket ve güç kazanımı.', f: 'Her yaş' },
+    { ic: '🧍', bg: '#F6ECD6', t: 'Duruş bozuklukları', d: 'Postür değerlendirmesi ve masa başı çalışanlara yönelik egzersiz önerileri.', f: 'Yetişkin & genç' },
+    { ic: '🙌', bg: '#EDE5F4', t: 'Manuel terapi', d: 'Eklem ve yumuşak dokuya yönelik elle uygulanan tedavi teknikleri.', f: 'Yetişkin' },
+    { ic: '🏠', bg: '#FBE3DB', t: 'Ev egzersiz programı', d: 'Seanslar arasında evde uygulayacağınız, size özel hazırlanmış egzersizler.', f: 'Her yaş' }
+  ];
   if (ergo) SERVICES = [
     { ic: '🧩', bg: '#FBE3DB', t: 'Duyu bütünleme', d: 'Dokunma, ses, hareket gibi duyusal uyaranlara aşırı ya da az tepki veren çocuklar için oyun temelli çalışma.', f: 'Çocuk' },
     { ic: '✋', bg: '#E3EEE5', t: 'İnce motor beceriler', d: 'Kalem tutma, makas kullanma, düğme ilikleme gibi günlük ve okul becerilerinin desteklenmesi.', f: 'Okul öncesi & okul' },
@@ -398,7 +407,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
   document.querySelectorAll('[data-o="name"]').forEach(function (e) { e.textContent = PRO.name; });
   document.querySelectorAll('[data-o="area"]').forEach(function (e) { e.textContent = PRO.area; });
   document.querySelectorAll('[data-o="address"]').forEach(function (e) { e.textContent = PRO.address; });
-  var parts = PRO.name.replace(/^(Psk\.|Uzm\.|Dr\.|Psikolog|Ergoterapist|Erg\.)\s*/i, '').split(/\s+/).filter(Boolean);
+  var parts = PRO.name.replace(/^(Psk\.|Uzm\.|Dr\.|Psikolog|Ergoterapist|Erg\.|Fizyoterapist|Fzt\.|Uzm\. Fzt\.)\s*/i, '').split(/\s+/).filter(Boolean);
   $('#mk').textContent = (parts[0] || 'P').charAt(0).toLocaleUpperCase('tr');
   $('#ini').textContent = parts.map(function (w) { return w.charAt(0).toLocaleUpperCase('tr'); }).join('').slice(0, 2);
   document.querySelectorAll('[data-o="first"]').forEach(function (e) { e.textContent = (parts[0] || '') + '.'; });
@@ -426,8 +435,24 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     if (sm[0]) sm[0].innerHTML = '<summary>Bir seans ne kadar sürer?</summary><p>Seanslar genellikle 40–50 dakika sürer; sıklığı değerlendirme sonrasında birlikte belirlenir.</p>';
     if (sm[2]) sm[2].innerHTML = '<summary>İlk görüşmede ne yapılır?</summary><p>İlk görüşmede çocuğunuzun gelişimini ve günlük hayattaki güçlüklerini konuşur, gerekirse değerlendirme planlarız.</p>';
   }
+  if (fizyo) {
+    PRO.role = 'Fizyoterapi';
+    $('#h1').innerHTML = 'Ağrısız hareket, <em>adım adım.</em>';
+    $('#lede').textContent = 'Bel ve boyun ağrısı, spor yaralanmaları ve ameliyat sonrası rehabilitasyon. Değerlendirmeyle başlayan, size özel bir egzersiz ve tedavi planı.';
+    $('#chips').innerHTML = '<span>Manuel terapi</span><span>Egzersiz programı</span><span>Spor yaralanmaları</span><span>Ameliyat sonrası</span>';
+    $('#apH').innerHTML = 'Önce değerlendirme, <em>sonra plan.</em>';
+    $('#apP').textContent = 'Her seans, şikâyetinizi ve hareketlerinizi dinleyip değerlendirmekle başlar. Tedavi planı ve egzersizler size göre hazırlanır, ilerledikçe birlikte güncellenir.';
+    $('#ticks').innerHTML = '<li>Ayrıntılı değerlendirme ve kişiye özel program</li><li>Seanslar arasında uygulanacak ev egzersizleri</li><li>Gerektiğinde hekiminizle iş birliği</li>';
+    var qt2 = document.querySelector('.quote'); if (qt2) qt2.style.display = 'none';
+    var hk2 = document.querySelector('.about .lead'); if (hk2) hk2.textContent = 'Fizyoterapi ve rehabilitasyon eğitimimin ardından ağrı, yaralanma ve ameliyat sonrası süreçlerde danışanlarımla çalışıyorum. Her danışanın günlük hayatına ve hedefine uygun bir plan hazırlamayı önemsiyorum.';
+    var cr2 = document.querySelector('.creds'); if (cr2) cr2.innerHTML = '<div><b>Fizyoterapi</b>Lisans eğitimi</div><div><b>Manuel Terapi</b>Eğitim programı</div><div><b>Egzersiz</b>Kişiye özel program</div><div><b>Rehabilitasyon</b>Ameliyat sonrası</div>';
+    var sm2 = document.querySelectorAll('details');
+    if (sm2[0]) sm2[0].innerHTML = '<summary>Bir seans ne kadar sürer?</summary><p>Seanslar genellikle 45–60 dakika sürer; sıklığı değerlendirme sonrasında birlikte belirlenir.</p>';
+    if (sm2[1]) sm2[1].innerHTML = '<summary>İlk seansa ne getirmeliyim?</summary><p>Varsa doktor raporunuzu, MR ya da röntgen sonuçlarınızı ve rahat hareket edebileceğiniz bir kıyafet getirmeniz yeterli.</p>';
+    if (sm2[2]) sm2[2].innerHTML = '<summary>Doktor raporu gerekli mi?</summary><p>Tanı hekim tarafından konur. Elinizde rapor ya da tetkik yoksa ilk görüşmede durumunuzu konuşur, gerekirse sizi hekime yönlendiririz.</p>';
+  }
   $('[data-o="role"]').textContent = PRO.role;
-  document.title = PRO.name + ' — ' + (ergo ? 'Ergoterapi' : play ? 'Oyun Terapisi & Çocuk Danışmanlığı' : 'Psikolojik Danışmanlık');
+  document.title = PRO.name + ' — ' + (fizyo ? 'Fizyoterapi' : ergo ? 'Ergoterapi' : play ? 'Oyun Terapisi & Çocuk Danışmanlığı' : 'Psikolojik Danışmanlık');
   $('#waBtn').href = 'https://wa.me/' + PRO.wa;
   $('#mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(PRO.name + ' ' + PRO.area);
   $('#yr').textContent = new Date().getFullYear();
@@ -447,7 +472,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
 
   /* Ön görüşme formu */
   var OPTS = {
-    who: ergo ? ['Çocuğum için', 'Kendim için', 'Yakınım için'] : play ? ['Çocuğum için', 'Ergen çocuğum için', 'Kendim için', 'Ailemiz için'] : ['Kendim için', 'Çocuğum için', 'Ergen çocuğum için', 'Çift / aile'],
+    who: fizyo ? ['Kendim için', 'Yakınım için', 'Sporcu olarak'] : ergo ? ['Çocuğum için', 'Kendim için', 'Yakınım için'] : play ? ['Çocuğum için', 'Ergen çocuğum için', 'Kendim için', 'Ailemiz için'] : ['Kendim için', 'Çocuğum için', 'Ergen çocuğum için', 'Çift / aile'],
     how: ['Yüz yüze', 'Online', 'Fark etmez'],
     when: ['Hafta içi gündüz', 'Hafta içi akşam', 'Cumartesi']
   };
