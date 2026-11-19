@@ -176,6 +176,13 @@ section{padding:4.2rem 0}
 .srch .ico{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);color:var(--muted);width:20px;height:20px}
 .chips{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
+.cwrap{position:relative;min-width:0;flex:1}
+.carr{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:38px;height:38px;border-radius:50%;border:0;background:var(--ink);color:var(--cream);font:700 1.4rem/1 var(--sans);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(36,23,15,.25);transition:opacity .2s;touch-action:manipulation}
+.carr.l{left:0}.carr.r{right:0}
+.cwrap::before,.cwrap::after{content:"";position:absolute;top:0;bottom:0;width:56px;z-index:1;pointer-events:none;transition:opacity .2s}
+.cwrap::before{left:0;background:linear-gradient(90deg,rgba(247,240,228,1) 40%,rgba(247,240,228,0))}
+.cwrap::after{right:0;background:linear-gradient(270deg,rgba(247,240,228,1) 40%,rgba(247,240,228,0))}
+.cwrap.at-s .carr.l,.cwrap.at-s::before,.cwrap.at-e .carr.r,.cwrap.at-e::after{opacity:0;pointer-events:none}
 .chip{flex:none;min-height:40px;padding:0 1.05rem;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--brown);font:600 .9rem var(--sans);cursor:pointer;touch-action:manipulation}
 .chip.on{background:var(--ink);border-color:var(--ink);color:var(--cream)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem .8rem}
@@ -470,7 +477,7 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
   <div class="wrap"><div class="sh"><p class="eyebrow">Ürünlerimiz</p><h2 id="uh">Alışverişe başlayın.</h2><p>Ürünleri sepete ekleyin, kartla güvenle ödeyin; siparişiniz özenle paketlenip kargoya verilsin.</p></div></div>
   <div class="tools"><div class="in">
     <label class="srch"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Ürün ara</span><svg class="ico"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Ürün ara: helva, lokum, bal…" autocomplete="off"></label>
-    <div class="chips" id="cats"></div>
+    <div class="cwrap" id="cwrap"><button class="carr l" type="button" data-sc="-1" aria-label="Kategorileri sola kaydır">‹</button><div class="chips" id="cats"></div><button class="carr r" type="button" data-sc="1" aria-label="Kategorileri sağa kaydır">›</button></div>
   </div></div>
   <div class="wrap"><div class="grid" id="grid"></div></div>
 </section>
@@ -614,22 +621,24 @@ var DESC={helva:'Kalıp tahin helvası. Kahvaltıda, çayın yanında ya da tatl
 /* [kimlik, kategori, ad, gramaj, fiyat, kilo fiyatı (varsa 500 g / 1 kg seçilerek satılır)] */
 var P=[
 ['p01','helva','Antep Fıstıklı Tahin Helvası','500 g · 1 kg',330,660],['p02','helva','Sade Tahin Helvası','500 g · 1 kg',200,400],['p28','helva','Kakaolu Tahin Helvası','500 g · 1 kg',200,400],['p29','helva','Sade Cevizli Helva','500 g · 1 kg',230,460],
-['p36','helva','Kakaolu Cevizli Helva','500 g · 1 kg',230,460],['p35','helva','Kırmızı Cevizli Helva','500 g · 1 kg',230,460],['p04','helva','Paket Tahin Helvası','250 g',120],['p51','helva','Kase Tahin Helvası','1 kg',420],
-['p15','kopuk','Köpük Helva','500 g',180],['p23','kopuk','Köpük Helva','1 kg',330],
-['p25','tahin','Tek Kavrulmuş Tahin','500 g · 1 kg',180,360],['p50','tahin','Tahin Kavanoz','650 g',210],['p46','tahin','Çifte Kavrulmuş Tahin','500 g · 1 kg',190,380],['p37','tahin','Tahin Kova','2 kg',560],['p47','tahin','Kavrulmuş Susam','500 g',120],
-['p42','kurabiye','Antep Fıstıklı Kurabiye','500 g',280],['p03','kurabiye','Fındıklı Kurabiye','500 g',240],['p41','kurabiye','Yer Fıstıklı Kakaolu Kurabiye','500 g',200],['p09','kurabiye','Susamlı Kurabiye','500 g',190],
-['p00','kurabiye','Susamlı Halka','500 g',160],['p07','susamli','Çikolatalı Susamlı Saray Helvası','6 adet',220],['p05','susamli','Susamlı Helva','1 adet',60],['p21','susamli','Susamlı Helva','1 adet',60],
-['p43','lokum','Gül ve Sade Lokum','500 g',190],['p18','lokum','Meyveli Lokum','500 g',170],['p19','lokum','Hindistan Cevizli Lokum','500 g',170],['p06','lokum','Kayısılı Lokum','500 g',200],['p13','lokum','Sarma Lokum','500 g',220],
+['p36','helva','Kakaolu Cevizli Helva','500 g · 1 kg',230,460],['p35','helva','Kırmızı Cevizli Helva','500 g · 1 kg',230,460],['p04','helva','Paketli Küçük Helva','100 g · 250 g',60,[['100 g',60],['150 g',80],['200 g',100],['250 g',120]]],['p51','helva','Kase Tahin Helvası','1 kg',420],
+['p15','kopuk','Köpük Helva (Gencer Macunu)','500 g · 1 kg',125,250],
+['p25','tahin','Tek Kavrulmuş Tahin','500 g · 1 kg',180,360],['p50','tahin','Tahin Kavanoz','650 g',210],['p46','tahin','Çifte Kavrulmuş Tahin','500 g · 1 kg',190,380],['p37','tahin','Tahin Kova','2 kg',560],['p47','tahin','Kavrulmuş Susam','500 g · 1 kg',125,250,'Yerli susam, Muğla\'dan geliyor. Kavrulmuş olarak; çiğ susam seçeneği de mevcut.'],['p47c','tahin','Çiğ Susam','500 g · 1 kg',125,250,'Yerli susam, Muğla\'dan geliyor. Çiğ olarak; kavrulmuş susam seçeneği de mevcut.'],
+['p42','kurabiye','Antep Fıstıklı Kurabiye','500 g · 1 kg',200,400],['p03','kurabiye','Fındıklı Kurabiye','500 g · 1 kg',200,400],['p41','kurabiye','Yer Fıstıklı Kakaolu Kurabiye','500 g · 1 kg',200,400],['p09','kurabiye','Susamlı Kurabiye','500 g · 1 kg',200,400],
+['p00','kurabiye','Susamlı Halka','500 g · 1 kg',200,400],['p07','susamli','Çikolatalı Susamlı Saray Helvası','6 adet',220],['p05','susamli','Susamlı Helva','1 adet',60],['p21','susamli','Susamlı Helva','1 adet',60],
+['p43','lokum','Güllü ve Sade Lokum','500 g · 1 kg',110,220],['p18','lokum','Meyveli Lokum','500 g · 1 kg',150,300],['p19','lokum','Hindistan Cevizli Lokum','500 g · 1 kg',150,300],['p06','lokum','Kayısılı Lokum','500 g · 1 kg',150,300],['p13','lokum','Sarma Lokum','500 g · 1 kg',150,300],
 ['p38','bal','Süzme Çiçek Balı','850 g',650],['p40','bal','Süzme Çam Balı','850 g',700],['p53','bal','Süzme Çiçek Balı','450 g',360],['p56','bal','Süzme Çam Balı','450 g',390],['p32','bal','Erzincan Çiçek Balı','1 kg',750],['p52','bal','Petek Bal','1 kg',900]
 ];
 var BY={};P.forEach(function(p){BY[p[0]]=p});
 /* Gramaj seçimi: kilo fiyatı olan ürünlerde sepet anahtarı ürün~h (500 g) ya da ürün~k (1 kg) */
-var SZ={h:['500 g',.5],k:['1 kg',1]},sel={};
+var sel={};
 function base(k){return String(k).split('~')[0]}
 function isVar(id){return !!(BY[id]&&BY[id][5])}
-function keyOf(id){return isVar(id)?id+'~'+(sel[id]||'h'):id}
-function wOf(k){var s=String(k).split('~')[1];return s&&SZ[s]?SZ[s][0]:BY[base(k)][3]}
-function prOf(k){var p=BY[base(k)],s=String(k).split('~')[1];return s&&SZ[s]&&p[5]?Math.round(p[5]*SZ[s][1]):p[4]}
+function sizes(id){var v=BY[id]&&BY[id][5];if(!v)return [];if(typeof v==='number')return [['h','500 g',Math.round(v/2)],['k','1 kg',v]];return v.map(function(x,i){return [String(i),x[0],x[1]]})}
+function sizeOf(k){var s=String(k).split('~')[1];return sizes(base(k)).filter(function(x){return x[0]===s})[0]}
+function keyOf(id){var z=sizes(id);return z.length?id+'~'+(sel[id]||z[0][0]):id}
+function wOf(k){var z=sizeOf(k);return z?z[1]:BY[base(k)][3]}
+function prOf(k){var z=sizeOf(k);return z?z[2]:BY[base(k)][4]}
 var CN={};CATS.forEach(function(c){CN[c[0]]=c[1]});
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
 var tl=function(n){return n.toLocaleString('tr-TR')+' TL'};
@@ -639,14 +648,14 @@ var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 
 /* ---- sepet ---- */
-var cart={};var sv=store('tarhan-cart')||{};Object.keys(sv).forEach(function(k){var b=base(k),s=String(k).split('~')[1];if(BY[b]&&sv[k]>0&&(isVar(b)?SZ[s]:!s))cart[k]=Math.min(99,sv[k]|0)});
+var cart={};var sv=store('tarhan-cart')||{};Object.keys(sv).forEach(function(k){var b=base(k),s=String(k).split('~')[1];if(BY[b]&&sv[k]>0&&(isVar(b)?sizeOf(k):!s))cart[k]=Math.min(99,sv[k]|0)});
 function count(){return Object.keys(cart).reduce(function(a,k){return a+cart[k]},0)}
 function sub(){return Object.keys(cart).reduce(function(a,k){return a+cart[k]*prOf(k)},0)}
 function ship(){var s=sub();return !s||s>=CFG.ucretsizEsik?0:CFG.kargo}
 function grand(){return sub()+ship()}
 function totHTML(){var s=sub(),k=ship(),kalan=CFG.ucretsizEsik-s;
   return '<div class="tot"><div><span>Ara toplam</span><span>'+tl(s)+'</span></div><div><span>Kargo</span><span>'+(k?tl(k):'Ücretsiz')+'</span></div><div class="g"><span>Toplam</span><span>'+tl(s+k)+'</span></div><small>Fiyatlara KDV dahildir.</small>'+(s&&kalan>0?'<div class="free">'+tl(kalan)+' daha ekleyin, kargo ücretsiz olsun.</div>':'')+'</div>'}
-function szHTML(id){return isVar(id)?'<div class="sz" data-sz="'+id+'" role="group" aria-label="Gramaj">'+Object.keys(SZ).map(function(s){return '<button type="button" data-s="'+s+'" aria-pressed="'+((sel[id]||'h')===s)+'">'+SZ[s][0]+'</button>'}).join('')+'</div>':''}
+function szHTML(id){var z=sizes(id);if(!z.length)return '';var cur=sel[id]||z[0][0];return '<div class="sz" data-sz="'+id+'" role="group" aria-label="Gramaj">'+z.map(function(x){return '<button type="button" data-s="'+x[0]+'" aria-pressed="'+(cur===x[0])+'">'+x[1]+'</button>'}).join('')+'</div>'}
 function ctrl(pid){var id=keyOf(pid),n=cart[id]||0;return szHTML(pid)+(n?'<div class="add" data-id="'+id+'"><button type="button" data-a="-" aria-label="Azalt">−</button><span>'+n+' adet</span><button type="button" data-a="+" aria-label="Arttır">+</button></div>':'<button class="add one" type="button" data-id="'+id+'" data-a="+">Sepete ekle</button>')}
 function lineHTML(k,edit){var p=BY[base(k)];return '<div class="ln"><img src="'+img(base(k))+'" alt="" width="60" height="60" loading="lazy"><div><b>'+esc(p[2])+'</b><span>'+wOf(k)+' · '+tl(prOf(k))+'</span></div>'+(edit?'<div class="q" data-id="'+k+'"><button type="button" data-a="-" aria-label="Azalt">−</button><span>'+cart[k]+'</span><button type="button" data-a="+" aria-label="Arttır">+</button></div>':'<span style="font-weight:600">'+cart[k]+' × </span>')+'</div>'}
 function sync(id){
@@ -667,9 +676,13 @@ function render(filter){
     list.forEach(function(p){h+='<article class="card"><button class="pic" type="button" data-qv="'+p[0]+'" aria-label="'+esc(p[2])+' ayrıntı"><img src="'+img(p[0])+'" alt="'+esc(p[2])+'" width="600" height="750" loading="lazy" decoding="async"><span class="w">'+p[3]+'</span></button><h3>'+esc(p[2])+'</h3><div class="p" id="pr-'+p[0]+'">'+tl(prOf(keyOf(p[0])))+'</div><div id="k-'+p[0]+'">'+ctrl(p[0])+'</div></article>'})});
   $('#grid').innerHTML=h||'<p class="none">"'+esc(filter)+'" için ürün bulunamadı.</p>';observeCats();
 }
+(function(){var w=$('#cwrap'),c=$('#cats');function edge(){var m=c.scrollWidth-c.clientWidth;w.classList.toggle('at-s',c.scrollLeft<4);w.classList.toggle('at-e',c.scrollLeft>m-4)}
+  c.addEventListener('scroll',edge,{passive:true});addEventListener('resize',edge);setTimeout(edge,0);setTimeout(edge,600);
+  w.addEventListener('click',function(e){var b=e.target.closest('[data-sc]');if(!b)return;c.scrollBy({left:+b.getAttribute('data-sc')*c.clientWidth*.7,behavior:RM?'auto':'smooth'})});
+  window.chipIntoView=function(ch){if(!ch)return;var l=ch.offsetLeft-c.offsetLeft-48,r=l+ch.offsetWidth+96;if(l<c.scrollLeft||r>c.scrollLeft+c.clientWidth)c.scrollTo({left:Math.max(0,l),behavior:RM?'auto':'smooth'})};})();
 $('#cats').innerHTML=CATS.map(function(k){return '<button class="chip" type="button" data-c="'+k[0]+'">'+k[1]+'</button>'}).join('');
 var qT;$('#q').addEventListener('input',function(e){clearTimeout(qT);qT=setTimeout(function(){render(e.target.value)},150)});
-var co=null;function observeCats(){if(!('IntersectionObserver' in window))return;if(co)co.disconnect();co=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){var id=x.target.id.slice(2);$$('.chip').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-c')===id)})}})},{rootMargin:'-180px 0px -65% 0px'});$$('.cat-h').forEach(function(e){co.observe(e)})}
+var co=null;function observeCats(){if(!('IntersectionObserver' in window))return;if(co)co.disconnect();co=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){var id=x.target.id.slice(2);$$('.chip').forEach(function(c){var on=c.getAttribute('data-c')===id;c.classList.toggle('on',on);if(on&&window.chipIntoView)chipIntoView(c)})}})},{rootMargin:'-180px 0px -65% 0px'});$$('.cat-h').forEach(function(e){co.observe(e)})}
 
 /* ---- katmanlar ---- */
 var lastFocus=null;
@@ -684,7 +697,7 @@ function openCart(){drawCart();openOv('ovCart')}
 
 /* ürün penceresi */
 var qvId=null,qvN=1;
-function openQv(pid){var id=keyOf(pid),p=BY[pid];qvId=id;qvN=1;$('#qvImg').src=img(pid);$('#qvImg').alt=p[2];$('#qvCat').textContent=CN[p[1]];$('#qvH').textContent=p[2];$('#qvW').textContent=wOf(id);$('#qvP').textContent=tl(prOf(id));$('#qvD').textContent=DESC[p[1]];$('#qvN').textContent=1;openOv('ovQv')}
+function openQv(pid){var id=keyOf(pid),p=BY[pid];qvId=id;qvN=1;$('#qvImg').src=img(pid);$('#qvImg').alt=p[2];$('#qvCat').textContent=CN[p[1]];$('#qvH').textContent=p[2];$('#qvW').textContent=wOf(id);$('#qvP').textContent=tl(prOf(id));$('#qvD').textContent=p[6]||DESC[p[1]];$('#qvN').textContent=1;openOv('ovQv')}
 $('#qvM').addEventListener('click',function(){qvN=Math.max(1,qvN-1);$('#qvN').textContent=qvN});
 $('#qvPl').addEventListener('click',function(){qvN=Math.min(99,qvN+1);$('#qvN').textContent=qvN});
 $('#qvAdd').addEventListener('click',function(){change(qvId,qvN);closeOv('ovQv');toast(BY[base(qvId)][2]+' ('+wOf(qvId)+') sepete eklendi')});
