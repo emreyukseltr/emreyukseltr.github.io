@@ -398,7 +398,6 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
 <section class="hero" aria-labelledby="h1" style="padding:0">
   <div class="hero-img"><img src="onizleme/tarhan/hero.webp" alt="Üç kuşak Tarhan ailesi" width="1200" height="1674" fetchpriority="high"></div>
   <div class="wrap hero-txt">
-    <div class="year" aria-hidden="true">1926</div>
     <img class="badge" src="onizleme/tarhan/logo.webp" alt="" width="92" height="92">
     <h1 id="h1">Yüz yılı aşkın <em>helva</em> ustalığı.</h1>
     <p>1926'dan bu güne değişmeyen lezzet. Tahin helvası, köpük helva, tahin ve lokum; Nazilli'den kapınıza.</p>
@@ -415,7 +414,7 @@ footer a:hover,footer button.lk:hover{color:var(--gold)}
   </div>
 </div>
 
-<div class="band" aria-hidden="true"><div class="band-t"><ul><li>Tahin helvası</li><li>Köpük helva</li><li>Tahin</li><li>Lokum</li><li>Kurabiye</li><li>Bal</li><li>Baklava</li><li>Susam</li></ul><ul><li>Tahin helvası</li><li>Köpük helva</li><li>Tahin</li><li>Lokum</li><li>Kurabiye</li><li>Bal</li><li>Baklava</li><li>Susam</li></ul></div></div>
+<div class="band" aria-hidden="true"><div class="band-t"><ul><li>Tahin helvası</li><li>Köpük helva</li><li>Tahin</li><li>Lokum</li><li>Kurabiye</li><li>Bal</li><li>Baklava</li><li>Haşhaş</li><li>Susam</li></ul><ul><li>Tahin helvası</li><li>Köpük helva</li><li>Tahin</li><li>Lokum</li><li>Kurabiye</li><li>Bal</li><li>Baklava</li><li>Haşhaş</li><li>Susam</li></ul></div></div>
 
 <section id="hikaye">
   <div class="wrap about">
@@ -617,16 +616,17 @@ var CFG={
   kargo:120, ucretsizEsik:1500,    /* örnek kargo ücreti ve ücretsiz kargo sınırı */
   odeme:{mod:'test', api:''}       /* 'paytr': PayTR hesabı ve sunucu tarafı bağlanınca; 'test': gerçek ödeme alınmaz */
 };
-var CATS=[['helva','Tahin Helvası'],['kopuk','Köpük Helva'],['tahin','Tahin & Susam'],['susamli','Susamlı Helvalar'],['kurabiye','Kurabiye'],['lokum','Lokum'],['bal','Bal']];
-var DESC={helva:'Kalıp tahin helvası. Kahvaltıda, çayın yanında ya da tatlı niyetine.',kopuk:'İpeksi kıvamlı köpük helva. Kaşıkla ya da tahinle.',tahin:'Kahvaltıda pekmezle, tatlılarda ve yemeklerde.',kurabiye:'Çayın ve kahvenin yanına.',lokum:'Geleneksel lokum; ikramlık ve hediyelik.',bal:'Kahvaltıların vazgeçilmezi.'};
+var CATS=[['tahin','Tahin & Susam'],['helva','Tahin Helvası'],['kopuk','Gencer Macunu'],['susamli','Susamlı Helva & Saray'],['hashas','Haşhaş'],['baklava','Baklava'],['lokum','Lokum'],['bal','Bal'],['kurabiye','Kurabiye']];
+var DESC={susamli:'Susamlı helva ve saray helvası; çayın yanına.',hashas:'Haşhaş ezmesi; ekmeğe sürmelik ya da tatlılarda.',baklava:'Baklavalarımızın hepsi cevizli ve el açmasıdır.',helva:'Kalıp tahin helvası. Kahvaltıda, çayın yanında ya da tatlı niyetine.',kopuk:'İpeksi kıvamlı köpük helva. Kaşıkla ya da tahinle.',tahin:'Kahvaltıda pekmezle, tatlılarda ve yemeklerde.',kurabiye:'Çayın ve kahvenin yanına.',lokum:'Geleneksel lokum; ikramlık ve hediyelik.',bal:'Kahvaltıların vazgeçilmezi.'};
 /* [kimlik, kategori, ad, gramaj, fiyat, kilo fiyatı (varsa 500 g / 1 kg seçilerek satılır)] */
 var P=[
+['h1','hashas','Haşhaş Ezmesi','500 g · 1 kg',200,400],['b1','baklava','Cevizli Kare Baklava','1 kg',350],['b3','baklava','El Sarması Cevizli Kadayıf','1 kg',350],['b7','baklava','Diyarbakır Sarması Kadayıf','1 kg',400],['b4','baklava','Şöbiyet','1 kg',450],['b5','baklava','Bülbül Yuvası','1 kg',450],['b8','baklava','Cevizli Sarma Baklava','1 kg',450],['b2','baklava','Şambali','1 kg',350],['b6','baklava','Kalburabastı','1 kg',350],['b9','baklava','Tulumba (El Basması)','1 kg',350],
 ['p01','helva','Antep Fıstıklı Tahin Helvası','500 g · 1 kg',330,660],['p02','helva','Sade Tahin Helvası','500 g · 1 kg',200,400],['p28','helva','Kakaolu Tahin Helvası','500 g · 1 kg',200,400],['p29','helva','Sade Cevizli Helva','500 g · 1 kg',230,460],
 ['p36','helva','Kakaolu Cevizli Helva','500 g · 1 kg',230,460],['p35','helva','Kırmızı Cevizli Helva','500 g · 1 kg',230,460],['p04','helva','Paketli Küçük Helva (Gümüş)','100 g · 250 g',60,[['100 g',60],['150 g',80],['200 g',100],['250 g',120]]],['p04b','helva','Paketli Küçük Helva (Altın)','100 g · 250 g',60,[['100 g',60],['150 g',80],['200 g',100],['250 g',120]]],['p51','helva','Kase Tahin Helvası (Sade)','250 g · 1 kg',100,[['250 g',100],['500 g',200],['1 kg',400]]],['p51c','helva','Kase Tahin Helvası (Kakaolu)','250 g · 1 kg',100,[['250 g',100],['500 g',200],['1 kg',400]]],
 ['p15','kopuk','Köpük Helva (Gencer Macunu)','500 g · 1 kg',125,250],
-['p25','tahin','Tek Kavrulmuş Tahin','500 g · 1 kg',180,360],['p50','tahin','Tahin Kavanoz','650 g',210],['p46','tahin','Çifte Kavrulmuş Tahin','500 g · 1 kg',190,380],['p37','tahin','Tahin Kova','2 kg',560],['p47','tahin','Kavrulmuş Susam','500 g · 1 kg',125,250,'Yerli susam, Muğla\'dan geliyor. Kavrulmuş olarak; çiğ susam seçeneği de mevcut.'],['p47c','tahin','Çiğ Susam','500 g · 1 kg',125,250,'Yerli susam, Muğla\'dan geliyor. Çiğ olarak; kavrulmuş susam seçeneği de mevcut.'],
+['p25','tahin','Tek Kavrulmuş Tahin','500 g · 1 kg',180,360],['p50','tahin','Çifte Kavrulmuş Tahin (Kavanoz)','1 kg',380],['p46','tahin','Çifte Kavrulmuş Tahin (Şişe)','500 g · 1 kg',190,380],['p37','tahin','Tahin Kova','2 kg',560],['p47','tahin','Kavrulmuş Susam','500 g · 1 kg',125,250,'Yerli susam, Muğla\'dan geliyor. Kavrulmuş olarak; çiğ susam seçeneği de mevcut.'],['p47c','tahin','Çiğ Susam','500 g · 1 kg',125,250,'Yerli susam, Muğla\'dan geliyor. Çiğ olarak; kavrulmuş susam seçeneği de mevcut.'],
 ['p42','kurabiye','Antep Fıstıklı Kurabiye','500 g · 1 kg',200,400],['p03','kurabiye','Fındıklı Kurabiye','500 g · 1 kg',200,400],['p41','kurabiye','Yer Fıstıklı Kakaolu Kurabiye','500 g · 1 kg',200,400],['p09','kurabiye','Susamlı Kurabiye','500 g · 1 kg',200,400],
-['p00','kurabiye','Susamlı Halka','500 g · 1 kg',200,400],['p07','susamli','Çikolatalı Susamlı Saray Helvası','6 adet',220],['p05','susamli','Susamlı Helva','1 adet',60],['p21','susamli','Susamlı Helva','1 adet',60],
+['p00','kurabiye','Susamlı Halka','500 g · 1 kg',200,400],['p07','susamli','Çikolatalı Susamlı Saray Helvası','500 g',280],['p05','susamli','Susamlı Helva','250 g',120],['p21','susamli','Susamlı Helva (Yuvarlak)','250 g',120],
 ['p43','lokum','Güllü ve Sade Lokum','500 g · 1 kg',110,220],['p18','lokum','Meyveli Lokum','500 g · 1 kg',150,300],['p19','lokum','Hindistan Cevizli Lokum','500 g · 1 kg',150,300],['p06','lokum','Kayısılı Lokum','500 g · 1 kg',150,300],['p13','lokum','Sarma Lokum','500 g · 1 kg',150,300],
 ['p53','bal','Süzme Çiçek Balı','500 g · 1 kg',300,600],['p56','bal','Süzme Çam Balı','500 g · 1 kg',300,600],['p32','bal','Erzincan Çiçek Balı','1 kg',550],['p52','bal','Petek Bal','500 g',300]
 ];
