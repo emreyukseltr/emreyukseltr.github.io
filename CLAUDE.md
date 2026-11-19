@@ -42,6 +42,10 @@ self-contained HTML file in the repo root.
 
 ## Workflow
 
+- **Start of every session:** read the private handover note in the Teklif Defteri artifact (collection `notes`,
+  doc `handover`) with ArtifactData before answering. It holds open jobs and client context; never ask the owner
+  to repeat it, and keep it updated there (never in this public repo) when a job moves forward.
+
 - Develop on the working branch, then fast-forward `main` (the owner approved direct publishing).
 - Talk to the owner in Turkish. When writing messages in another language for them, always add a
   Turkish translation below.
