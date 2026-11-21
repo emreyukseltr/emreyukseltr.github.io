@@ -233,7 +233,16 @@ footer a{color:var(--ink)}
   document.querySelectorAll('.wal').forEach(function(a){a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(hi)});
 
   var S=[['Saç kesimi','Makas & makine, yıkama ve şekillendirme dahil',350,'40 dk'],['Sakal tıraşı','Hat çizimi, ustura ve sıcak havlu',200,'20 dk'],['Saç + sakal','En çok tercih edilen paket',500,'60 dk'],['Çocuk tıraşı','12 yaş altı',250,'25 dk'],['Cilt bakımı','Temizlik, maske ve buhar',400,'30 dk'],['Damat tıraşı','Saç, sakal, cilt bakımı ve fön',1500,'2 sa']];
-  document.getElementById('menu').innerHTML=S.map(function(s){return '<div class="it rv"><h3>'+s[0]+'</h3><span class="dots"></span><span class="p">'+s[2].toLocaleString('tr-TR')+' ₺</span><p class="d">'+s[1]+' · '+s[3]+'</p></div>'}).join('');
+  /* pb=ülke kodu (ge, az, ae, de, gb...): fiyatlar o ülkenin para birimiyle. Kurlar yaklaşık, fiyatlar zaten örnek.
+     [sembol, 1 TL karşılığı, sembol başta mı] */
+  var EU=['€',.019,1],PB={tr:['₺',1],ge:['₾',.06],az:['₼',.038],ae:['AED',.08],sa:['SAR',.083],qa:['QAR',.08],kw:['KWD',.0068],iq:['IQD',29],
+    us:['$',.022,1],ca:['C$',.031,1],au:['A$',.034,1],nz:['NZ$',.038,1],gb:['£',.017,1],ch:['CHF',.018],se:['kr',.21],no:['kr',.23],dk:['kr',.14],
+    pl:['zł',.08],ro:['lei',.1],rs:['din',2.2],ba:['KM',.037],mk:['den',1.15],al:['L',1.9],ru:['₽',1.8],kz:['₸',11],ua:['₴',.92],uz:["so'm",270],
+    de:EU,at:EU,nl:EU,be:EU,fr:EU,it:EU,es:EU,pt:EU,gr:EU,cy:EU,ie:EU,fi:EU,lu:EU,mt:EU,ee:EU,lv:EU,lt:EU,sk:EU,si:EU,hr:EU,bg:EU,xk:EU,me:EU};
+  var CUR=PB[(q.get('pb')||'').toLowerCase()]||PB.tr;
+  function fp(s){var v=s[2]*CUR[1],st=v>=1000?50:v>=100?10:v>=20?5:1;v=Math.max(st,Math.round(v/st)*st);
+    var n=v.toLocaleString('tr-TR');return CUR[2]?CUR[0]+n:n+' '+CUR[0]}
+  document.getElementById('menu').innerHTML=S.map(function(s){return '<div class="it rv"><h3>'+s[0]+'</h3><span class="dots"></span><span class="p">'+fp(s)+'</span><p class="d">'+s[1]+' · '+s[3]+'</p></div>'}).join('');
 
   var st={s:2,d:0,t:null};
   function chips(id,arr,key,fmt){var el=document.getElementById(id);el.innerHTML=arr.map(function(x,i){return '<button type="button" class="chip" data-i="'+i+'" aria-pressed="'+(st[key]===i)+'">'+fmt(x)+'</button>'}).join('');
@@ -245,7 +254,7 @@ footer a{color:var(--ink)}
   function times(){var d=days[st.d],end=d.getDay()===0?18:(d.getDay()===6?22:21),start=d.getDay()===0?10:9;slots=[];
     for(var h=start;h<end;h++)['00','30'].forEach(function(m){var x=new Date(d);x.setHours(h,+m,0,0);if(x-new Date()>30*60000)slots.push(('0'+h).slice(-2)+':'+m)});
     if(!slots.length)slots=['Yarın için seçin'];chips('ft',slots,'t',function(x){return x})}
-  chips('fs',S,'s',function(x){return x[0]+'<small>'+x[2].toLocaleString('tr-TR')+' ₺</small>'});
+  chips('fs',S,'s',function(x){return x[0]+'<small>'+fp(x)+'</small>'});
   chips('fd',days,'d',function(d){return dl(d)+'<small>'+d.getDate()+'.'+(d.getMonth()+1)+'</small>'});
   times();
   function sum(){var s=S[st.s],d=days[st.d],t=st.t!==null&&/\d/.test(slots[st.t])?slots[st.t]:null;
