@@ -518,5 +518,35 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   layout();
 })();
 </script>
+<script>
+/* Kişiselleştirme: ?m=Klinik Adı &c=Semt. Verilince sahte puan/yorum/hekim kısımları gizlenir,
+   "ücretsiz muayene" ifadeleri (TDB reklam kuralları) nötr hale gelir. */
+(function(){
+  var q=new URLSearchParams(location.search),M=(q.get('m')||'').trim().slice(0,40),C=(q.get('c')||'').trim().slice(0,30);
+  if(!M&&!C)return;
+  var R=[];
+  if(M)R.push(['İNCİ Diş Atölyesi',M],['İNCİ Dental Atelier',M],['Merhaba İNCİ','Merhaba '+M],['Hello İNCİ','Hello '+M],['(İNCİ demo sitesinden gönderildi)','(web sitesinden gönderildi)'],['(Sent from the İNCİ demo site)','(Sent from the website)'],
+    ['İnci Muayenesi','İlk Muayene'],['The Pearl Consultation','First Consultation'],
+    ['ücretsiz ön muayene için','muayene için'],['Ücretsiz ön muayene','Muayene randevusu'],['ücretsiz ön muayene','muayene randevusu'],['Ücretsiz muayene,','İlk muayene,'],
+    ['Complimentary consultation','Book a consultation'],['complimentary consultation','consultation'],['Complimentary exam,','First exam,'],['get a free','get a']);
+  if(C)R.push(["Nişantaşı'nda butik bir diş atölyesi.",'Butik bir diş kliniği.'],['A boutique dental atelier in Nişantaşı.','A boutique dental clinic.'],['Nişantaşı · İstanbul',C],['Nişantaşı · Istanbul',C],['Nişantaşı, İstanbul',C],['Nişantaşı, Istanbul',C],['Teşvikiye Mah. İnci Sk. No: 7',C],['Nişantaşı',C]);
+  function fix(s){if(!s)return s;for(var i=0;i<R.length;i++)if(s.indexOf(R[i][0])>-1)s=s.split(R[i][0]).join(R[i][1]);return s}
+  var busy=false;
+  function apply(){if(busy)return;busy=true;
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;
+    while((n=w.nextNode())){var t=fix(n.nodeValue);if(t!==n.nodeValue)n.nodeValue=t}
+    document.querySelectorAll('[aria-label],[title],[placeholder]').forEach(function(e){['aria-label','title','placeholder'].forEach(function(a){var v=e.getAttribute(a);if(v){var f=fix(v);if(f!==v)e.setAttribute(a,f)}})});
+    document.title=fix(document.title);
+    if(M){var wm=document.querySelector('.wordmark>span');if(wm&&wm.textContent!==M){wm.textContent=M;wm.style.cssText='font-size:clamp(15px,2.4vw,20px);letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw;display:inline-block;vertical-align:middle'}
+      ['#yorumlar','#hekimler','#counters','[data-t=c1_chip]','.card-price','.pl_free_row'].forEach(function(s){document.querySelectorAll(s).forEach(function(e){e.style.display='none'})});
+      document.querySelectorAll('a[href="#yorumlar"],a[href="#hekimler"]').forEach(function(a){(a.closest('li')||a).style.display='none'});
+      var c1=document.querySelector('[data-t=c1_chip]');if(c1&&c1.parentNode&&c1.parentNode!==document.body)c1.parentNode.style.display='none';
+      var f1=document.querySelector('[data-t=faq_1_q]');if(f1)(f1.closest('details')||f1).style.display='none';
+      var pf=document.querySelector('[data-t=pl_free]');if(pf&&pf.parentNode)pf.parentNode.style.display='none'}
+    busy=false}
+  apply();addEventListener('load',apply);
+  var tm;new MutationObserver(function(){if(busy)return;clearTimeout(tm);tm=setTimeout(apply,30)}).observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>
 </body>
 </html>

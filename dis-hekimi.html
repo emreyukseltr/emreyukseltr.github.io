@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<!-- ey-guard: eski tarayıcı ve bağlantı dalgalanması koruması -->
+<script>
+(function(){
+  /* IntersectionObserver olmayan eski tarayıcılarda her şeyi görünür say; içerik gizli kalmasın */
+  if(typeof window.IntersectionObserver!=='function'){window.IntersectionObserver=function(cb){var self=this;self.observe=function(el){setTimeout(function(){cb([{isIntersecting:true,intersectionRatio:1,target:el,boundingClientRect:el.getBoundingClientRect(),intersectionRect:el.getBoundingClientRect(),rootBounds:null,time:Date.now()}],self)},0)};self.unobserve=self.disconnect=function(){};self.takeRecords=function(){return[]}}}
+  /* Yüklenemeyen görseli 1,5 ve 4 sn sonra tekrar dene (bağlantı anlık koptuysa) */
+  function retry(t){var n=+(t.getAttribute('data-eyr')||0),s=t.getAttribute('src');if(!s||s.indexOf('data:')===0)return;if(n>=2){t.style.opacity='0';return}t.setAttribute('data-eyr',n+1);setTimeout(function(){var u=s.replace(/([?&])eyr=\d+&?/,'$1').replace(/[?&]$/,'');var h=u.indexOf('#');var base=h<0?u:u.slice(0,h),hash=h<0?'':u.slice(h);t.src=base+(base.indexOf('?')<0?'?':'&')+'eyr='+(n+1)+hash;var ss=t.getAttribute('srcset');if(ss)t.setAttribute('srcset',ss)},n?4000:1500)}
+  addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')retry(t);else if(t&&(t.tagName==='VIDEO'||t.tagName==='SOURCE')){var v=t.tagName==='SOURCE'?t.parentNode:t;if(v&&!v.getAttribute('data-eyr')){v.setAttribute('data-eyr','1');setTimeout(function(){try{v.load()}catch(_){}},2000)}}},true);
+  /* Bağlantı geri gelince hâlâ boş kalan görselleri yenile */
+  addEventListener('online',function(){[].forEach.call(document.images,function(i){if(i.complete&&!i.naturalWidth&&i.getAttribute('src')){i.removeAttribute('data-eyr');retry(i)}})});
+  /* Service worker: sayfa açılırken bağlantı giderse tekrar dener, gerekirse kayıttaki kopyayı gösterir */
+  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});
+})();
+</script>
+<noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
+<!-- /ey-guard -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diş Kliniği — örnek site</title>
+<meta name="description" content="Diş hekimi: muayene, implant, ortodonti, estetik diş hekimliği. WhatsApp'tan randevu.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f2a3d">
+<meta property="og:title" content="Diş Kliniği — örnek site">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f4ef;--paper:#fffdf9;--navy:#0f2a3d;--navy2:#173a52;--ink:#14212b;--mut:#5b6872;--sky:#9cc3e0;--sky2:#dcebf6;--coral:#e07a5f;--line:rgba(15,42,61,.12);--serif:'Fraunces',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--sans);overflow-x:hidden;overflow-wrap:anywhere}
+svg{display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+.k{font:700 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--coral)}
+h1,h2,h3{font-family:var(--serif);font-weight:450;letter-spacing:-.015em;line-height:1.05}
+h2{font-size:clamp(2.2rem,6.5vw,3.6rem);margin:.4em 0 .35em}
+h2 em,h1 em{font-style:italic;color:var(--coral)}
+.lead{color:var(--mut);max-width:560px;font-size:1.05rem}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{animation:none!important}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:99px;padding:15px 24px;font:700 15px/1 var(--sans);text-decoration:none;background:var(--coral);color:#fff;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 10px 24px rgba(224,122,95,.3)}
+.btn:hover{background:#d06a4f}.btn:active{transform:scale(.97)}
+.btn.o{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+
+/* nav */
+.top{position:fixed;inset:12px 12px auto;z-index:50;border-radius:99px;transition:background .3s,box-shadow .3s}
+.top.s{background:rgba(255,253,249,.94);box-shadow:0 8px 30px rgba(15,42,61,.12)}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px;padding:0 10px 0 20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;color:#fff;transition:color .3s}
+.top.s .logo{color:var(--navy)}
+.logo b{font:500 1.2rem/1 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo svg{flex:0 0 26px}
+.nav{display:flex;gap:24px;font-weight:600;font-size:14px;color:rgba(255,255,255,.8)}
+.top.s .nav{color:var(--mut)}
+.nav a{text-decoration:none}.nav a:hover{color:var(--coral)}
+.top .btn{padding:12px 18px;font-size:14px;box-shadow:none}
+@media (max-width:860px){.nav{display:none}}
+
+/* hero */
+.hero{position:relative;background:var(--navy);color:#fff;padding:130px 0 90px;overflow:hidden;border-radius:0 0 36px 36px;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.hero::before{content:"";position:absolute;width:900px;height:900px;right:-300px;top:-300px;background:radial-gradient(circle,rgba(156,195,224,.28),transparent 60%)}
+.hero::after{content:"";position:absolute;width:600px;height:600px;left:-260px;bottom:-320px;background:radial-gradient(circle,rgba(224,122,95,.22),transparent 60%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero .k{color:var(--sky)}
+.hero h1{font-size:clamp(2.9rem,9.5vw,5.4rem);margin:.3em 0 .3em}
+.hero h1 em{color:var(--sky)}
+.hero p{color:rgba(255,255,255,.75);font-size:1.1rem;max-width:480px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.ticks{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:14px;color:rgba(255,255,255,.8);list-style:none}
+.ticks li{display:flex;align-items:center;gap:8px}
+.ticks li::before{content:"";width:18px;height:18px;border-radius:50%;background:rgba(156,195,224,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.5 2.5L13 6.5' fill='none' stroke='%239cc3e0' stroke-width='2'/%3E%3C/svg%3E")}
+.art{position:relative;justify-self:center;width:min(420px,80vw);aspect-ratio:1}
+.art .orb{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#e8f1f8 30%,#9cc3e0 75%,#5d8fb5 100%);box-shadow:0 40px 90px rgba(0,0,0,.35),inset -20px -30px 60px rgba(15,42,61,.25);animation:float 7s ease-in-out infinite}
+.art svg.tooth{position:absolute;inset:24%;width:52%;height:52%;color:var(--navy)}
+.art svg.tooth path{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.4s .4s var(--ease) forwards}
+.art .ring{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(255,255,255,.25);animation:spin 40s linear infinite}
+.chipf{position:absolute;background:rgba(255,253,249,.96);color:var(--navy);border-radius:14px;padding:10px 14px;font:700 13px/1.2 var(--sans);box-shadow:0 14px 30px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;animation:float 6s ease-in-out infinite}
+.chipf i{width:10px;height:10px;border-radius:50%;background:var(--coral)}
+.chipf.a{top:6%;left:-4%}.chipf.b{bottom:14%;right:-6%;animation-delay:-2s}.chipf.c{bottom:2%;left:8%;animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:110px}.art{width:min(300px,78vw);margin-top:10px}.chipf.a{left:0}.chipf.b{right:0}}
+
+section{padding:90px 0}
+/* tedaviler */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:38px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;transition:transform .3s var(--ease),box-shadow .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(15,42,61,.1)}
+.card .ic{width:52px;height:52px;border-radius:16px;background:var(--sky2);display:grid;place-items:center;color:var(--navy);margin-bottom:18px}
+.card .ic svg{width:28px;height:28px}
+.card h3{font-size:1.45rem;margin-bottom:8px}
+.card p{color:var(--mut);font-size:15px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+/* süreç */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:38px;counter-reset:s;list-style:none}
+.steps li{position:relative;padding:26px 22px;border-radius:22px;background:var(--navy);color:#fff}
+.steps li::before{counter-increment:s;content:"0" counter(s);font:italic 500 2.4rem/1 var(--serif);color:var(--sky);display:block;margin-bottom:14px}
+.steps h3{font-size:1.3rem;margin-bottom:6px}
+.steps p{color:rgba(255,255,255,.7);font-size:14.5px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* hekim */
+.doc{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.mono{aspect-ratio:4/5;border-radius:28px;background:linear-gradient(160deg,var(--sky2),#bcd6ea 60%,var(--sky));display:grid;place-items:center;position:relative;overflow:hidden}
+.mono span{font:italic 400 clamp(5rem,16vw,9rem)/1 var(--serif);color:var(--navy);opacity:.9}
+.mono small{position:absolute;left:18px;bottom:16px;right:18px;background:rgba(255,253,249,.9);border-radius:14px;padding:10px 14px;font:600 13px/1.4 var(--sans);color:var(--mut)}
+.doc ul{list-style:none;margin-top:22px;display:grid;gap:10px}
+.doc li{display:flex;gap:12px;color:var(--mut)}
+.doc li b{color:var(--ink);min-width:110px}
+@media (max-width:860px){.doc{grid-template-columns:1fr;gap:30px}.mono{max-width:360px}}
+
+/* sss */
+.faq{margin-top:30px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font:500 1.2rem/1.35 var(--serif);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:18px;font:400 1.6rem/1 var(--sans);color:var(--coral);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--mut);padding:0 0 22px;max-width:720px}
+
+/* randevu */
+.book{background:var(--navy);color:#fff;border-radius:36px;margin:0 12px}
+.book .k{color:var(--sky)}
+.bk{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.book .lead{color:rgba(255,255,255,.7)}
+.form{background:var(--paper);color:var(--ink);border-radius:24px;padding:26px}
+.form label{display:block;font:700 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:20px 0 10px}
+.form label:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:10px 14px;font-size:14px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip small{font-size:11px;opacity:.7;margin-left:4px}
+.form input{width:100%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;font:500 16px var(--sans);color:var(--ink)}
+.form input:focus{outline:2px solid var(--sky);outline-offset:1px}
+.form .btn{width:100%;margin-top:22px;padding:17px}
+.sum{color:var(--mut);font-size:14px;margin-top:12px;min-height:1.4em}
+@media (max-width:860px){.bk{grid-template-columns:1fr}.book{margin:0 8px;border-radius:28px}}
+
+/* iletişim */
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.info div{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px}
+.info h3{font-size:1.35rem;margin-bottom:10px}
+.info p,.info li{color:var(--mut);font-size:15px;list-style:none}
+.info li{display:flex;justify-content:space-between;gap:10px}
+.info a{color:var(--coral);font-weight:700;text-decoration:none}
+@media (max-width:860px){.info{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:36px 0 110px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--navy);font-weight:700}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+.wa svg{width:28px;height:28px}
+.demo-back{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;background:rgba(255,253,249,.96);color:var(--navy);font:700 12px/1 var(--sans);padding:12px 15px;border-radius:99px;text-decoration:none;box-shadow:0 8px 24px rgba(15,42,61,.2)}
+</style>
+</head>
+<body>
+<header class="top" id="top"><div class="in">
+  <a class="logo" href="#"><svg viewBox="0 0 26 26" fill="none" stroke="#e07a5f" stroke-width="1.8" aria-hidden="true"><path d="M7 3c-3 0-4.5 2.5-4 6 .4 3 1.6 5 2.2 8.5C5.8 21 6.5 23 8 23c1.8 0 1.8-5.5 5-5.5s3.2 5.5 5 5.5c1.5 0 2.2-2 2.8-5.5.6-3.5 1.8-5.5 2.2-8.5.5-3.5-1-6-4-6-2.2 0-3.4 1.4-6 1.4S9.2 3 7 3z"/></svg><b class="bn">Diş Kliniği</b></a>
+  <nav class="nav"><a href="#tedaviler">Tedaviler</a><a href="#hekim">Hekim</a><a href="#sss">SSS</a><a href="#iletisim">İletişim</a></nav>
+  <a class="btn" href="#randevu">Randevu</a>
+</div></header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="k rv"><span class="cy">İzmir</span> · Diş hekimi</div>
+      <h1 class="rv">Rahat bir koltuk,<br><em>sağlıklı</em> bir gülüş.</h1>
+      <p class="rv">Muayeneden tedaviye kadar her adımı önceden konuşuyor, planı birlikte yapıyoruz. Randevunuzu WhatsApp'tan bir dakikada alın.</p>
+      <div class="cta rv"><a class="btn" href="#randevu">Randevu al</a><a class="btn o" href="#tedaviler">Tedaviler</a></div>
+      <ul class="ticks rv"><li>Randevulu çalışma</li><li>Dijital röntgen</li><li>Tedavi planı önceden</li></ul>
+    </div>
+    <div class="art rv" aria-hidden="true">
+      <div class="ring"></div><div class="orb"></div>
+      <svg class="tooth" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M28 12c-12 0-17 10-15 23 1.6 11 6 19 8 32 2 13 5 21 11 21 7 0 7-21 18-21s11 21 18 21c6 0 9-8 11-21 2-13 6.4-21 8-32 2-13-3-23-15-23-8.5 0-13 5.5-22 5.5S36.5 12 28 12z"/></svg>
+      <div class="chipf a"><i></i>İmplant</div><div class="chipf b"><i></i>Şeffaf plak</div><div class="chipf c"><i></i>Beyazlatma</div>
+    </div>
+  </div>
+</section>
+
+<section id="tedaviler">
+  <div class="wrap">
+    <div class="k rv">Tedaviler</div>
+    <h2 class="rv">İhtiyacınız olan <em>her şey</em>,<br>tek klinikte.</h2>
+    <div class="grid" id="tx"></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="k rv">İlk ziyaret</div>
+    <h2 class="rv">Nasıl <em>ilerliyoruz?</em></h2>
+    <ol class="steps">
+      <li class="rv"><h3>Muayene</h3><p>Ağız içi kontrol ve gerekirse dijital röntgen.</p></li>
+      <li class="rv"><h3>Plan</h3><p>Seçenekleri, süreyi ve ücreti başlamadan önce açıkça konuşuruz.</p></li>
+      <li class="rv"><h3>Tedavi</h3><p>Randevulu, beklemesiz ve size uygun saatlerde.</p></li>
+      <li class="rv"><h3>Kontrol</h3><p>Tedavi sonrası takip ve düzenli kontrol hatırlatması.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="hekim" style="padding-top:0">
+  <div class="wrap doc">
+    <div class="mono rv"><span class="ini">DK</span><small>Hekim fotoğrafınız buraya gelecek</small></div>
+    <div>
+      <div class="k rv">Hekim</div>
+      <h2 class="rv bn">Diş Kliniği</h2>
+      <p class="lead rv">Her hastayı dinleyerek başlıyoruz. Tedaviyi acele etmeden, her adımı anlatarak ve sizin onayınızla yapıyoruz.</p>
+      <ul class="rv"><li><b>Eğitim</b><span>Üniversite ve uzmanlık bilgileri</span></li><li><b>Çalışma alanları</b><span>Genel diş hekimliği, estetik, implant</span></li><li><b>Konum</b><span class="cy">İzmir</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="sss" style="padding-top:0">
+  <div class="wrap">
+    <div class="k rv">Sık sorulanlar</div>
+    <h2 class="rv">Merak <em>edilenler</em></h2>
+    <div class="faq rv">
+      <details><summary>Randevuyu nasıl alırım?</summary><p>Aşağıdaki formdan tedaviyi, günü ve saati seçin; WhatsApp'ta mesajınız hazır açılır. Gönderdiğinizde size dönüş yapıp saati onaylıyoruz.</p></details>
+      <details><summary>Tedavi ücretini ne zaman öğrenirim?</summary><p>Muayeneden sonra tedavi seçeneklerini ve ücretleri, başlamadan önce yazılı olarak paylaşıyoruz.</p></details>
+      <details><summary>Acil durumlarda ne yapmalıyım?</summary><p>Ağrı, kırık ya da şişlik gibi durumlarda WhatsApp'tan yazın veya arayın; aynı gün için uygun saati birlikte bulalım.</p></details>
+      <details><summary>Çocuklara da bakıyor musunuz?</summary><p>Evet. Çocukların ilk diş hekimi deneyiminin rahat geçmesine özen gösteriyoruz.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="randevu">
+  <div class="wrap bk">
+    <div>
+      <div class="k rv">Randevu</div>
+      <h2 class="rv">Size uygun saati <em>seçin.</em></h2>
+      <p class="lead rv">Tedaviyi, günü ve saati seçin; WhatsApp'ta mesajınız hazır açılır. Gönderin, saati onaylayalım.</p>
+    </div>
+    <form class="form rv" id="f" novalidate>
+      <label>Konu</label><div class="chips" id="fs"></div>
+      <label>Gün</label><div class="chips" id="fd"></div>
+      <label>Saat</label><div class="chips" id="ft"></div>
+      <label for="fn">Adınız</label><input id="fn" autocomplete="name" placeholder="Adınız Soyadınız" maxlength="50">
+      <button class="btn" type="submit">WhatsApp'tan randevu iste</button>
+      <p class="sum" id="sum" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section id="iletisim">
+  <div class="wrap">
+    <div class="k rv">İletişim</div>
+    <h2 class="rv">Bize <em>ulaşın</em></h2>
+    <div class="info">
+      <div class="rv"><h3>Adres</h3><p><span class="bn">Diş Kliniği</span><br><span class="cy">İzmir</span></p><p style="margin-top:12px"><a id="map" href="#" target="_blank" rel="noopener">Haritada aç →</a></p></div>
+      <div class="rv"><h3>Çalışma saatleri</h3><ul><li>Pazartesi–Cuma<span>09:00–19:00</span></li><li>Cumartesi<span>09:00–14:00</span></li><li>Pazar<span>Kapalı</span></li></ul></div>
+      <div class="rv"><h3>Ulaşın</h3><p><a class="wal" href="#" target="_blank" rel="noopener">WhatsApp'tan yazın →</a></p><p style="margin-top:8px">Acil durumlarda aynı gün için yer açmaya çalışıyoruz.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© <span class="bn">Diş Kliniği</span> · <span class="cy">İzmir</span></span><span>Tasarım & geliştirme: <a href="https://eystudios.com.tr">EY Studios</a></span></div></footer>
+
+<a class="wa wal" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6a10.6 10.6 0 0 1-5.4-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8.9 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4z"/></svg></a>
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function(){
+  var WA='905306284284',q=new URLSearchParams(location.search);
+  var M=(q.get('m')||'').trim().slice(0,40),C=(q.get('c')||'').trim().slice(0,30);
+  var NAME=M||'Diş Kliniği',CITY=C||'İzmir';
+  document.querySelectorAll('.bn').forEach(function(e){e.textContent=NAME});
+  document.querySelectorAll('.cy').forEach(function(e){e.textContent=CITY});
+  document.title=NAME+' — '+CITY;
+  var ini=NAME.split(/\s+/).filter(function(w){return w&&!/^(dt|dr|uzm|prof|doç|diş|hekimi|kliniği|klinik|dental|clinic|ağız|ve|sağlığı|polikliniği|merkezi)\.?$/i.test(w)}).map(function(w){return w[0].toLocaleUpperCase('tr')}).slice(0,2).join('');
+  document.querySelector('.ini').textContent=ini||'DK';
+  document.getElementById('map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(NAME+' '+CITY);
+  var hi='Merhaba, '+NAME+' web sitesinden yazıyorum.';
+  document.querySelectorAll('.wal').forEach(function(a){a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(hi)});
+
+  var I={
+    ins:'<path d="M12 3c-2 0-3 1.5-3 4v3h6V7c0-2.5-1-4-3-4zM9 10v3l3 8 3-8v-3"/><path d="M8 13h8"/>',
+    ali:'<rect x="3" y="8" width="18" height="8" rx="4"/><path d="M7 8v8M11 8v8M15 8v8"/>',
+    sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
+    sml:'<path d="M4 10c2 5 5 7 8 7s6-2 8-7"/><path d="M6 11h12"/>',
+    rt:'<path d="M8 3c-2.5 0-3.5 2-3 5 .4 2.5 1.5 4 2 7 .5 3 1 6 2.5 6S11 15 12 15s1 6 2.5 6 2-3 2.5-6c.5-3 1.6-4.5 2-7 .5-3-.5-5-3-5-1.8 0-2.6 1-4 1S9.8 3 8 3z"/><path d="M12 6v6"/>',
+    kid:'<circle cx="12" cy="8" r="4"/><path d="M5 21c1-4 4-6 7-6s6 2 7 6"/>'};
+  var T=[['ins','İmplant','Eksik dişler için kalıcı ve doğal görünen çözüm.'],['ali','Şeffaf plak & ortodonti','Çapraşık dişler için tel ya da şeffaf plak seçenekleri.'],['sun','Diş beyazlatma','Klinikte ya da evde uygulanan beyazlatma.'],['sml','Gülüş tasarımı','Lamina ve estetik dolgularla doğal bir görünüm.'],['rt','Kanal & dolgu','Ağrılı dişi korumaya yönelik tedaviler.'],['kid','Çocuk diş hekimliği','Çocuklar için rahat ve sakin bir ilk deneyim.']];
+  document.getElementById('tx').innerHTML=T.map(function(t){return '<article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+I[t[0]]+'</svg></div><h3>'+t[1]+'</h3><p>'+t[2]+'</p></article>'}).join('');
+
+  var S=['Muayene','İmplant','Ortodonti / plak','Beyazlatma','Dolgu / kanal','Diş ağrısı'];
+  var st={s:0,d:0,t:null};
+  function chips(id,arr,key,fmt){var el=document.getElementById(id);el.innerHTML=arr.map(function(x,i){return '<button type="button" class="chip" data-i="'+i+'" aria-pressed="'+(st[key]===i)+'">'+fmt(x)+'</button>'}).join('');
+    el.onclick=function(e){var b=e.target.closest('.chip');if(!b)return;st[key]=+b.getAttribute('data-i');if(key==='d'){st.t=null;times()}[].forEach.call(el.children,function(c){c.setAttribute('aria-pressed',c===b)});sum()}}
+  var GN=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],days=[],now=new Date();
+  for(var i=0;days.length<6&&i<10;i++){var d=new Date(now);d.setDate(now.getDate()+i);if(d.getDay()!==0)days.push(d)}
+  function dl(d){return d.toDateString()===new Date().toDateString()?'Bugün':GN[d.getDay()]}
+  var slots=[];
+  function times(){var d=days[st.d],end=d.getDay()===6?14:19;slots=[];
+    for(var h=9;h<end;h++)['00','30'].forEach(function(m){var x=new Date(d);x.setHours(h,+m,0,0);if(x-new Date()>60*60000)slots.push(('0'+h).slice(-2)+':'+m)});
+    if(!slots.length)slots=['Başka gün seçin'];chips('ft',slots,'t',function(x){return x})}
+  chips('fs',S,'s',function(x){return x});
+  chips('fd',days,'d',function(d){return dl(d)+'<small>'+d.getDate()+'.'+(d.getMonth()+1)+'</small>'});
+  times();
+  function sum(){var d=days[st.d],t=st.t!==null&&/\d/.test(slots[st.t])?slots[st.t]:null;
+    document.getElementById('sum').textContent=S[st.s]+' · '+dl(d)+' '+d.getDate()+'.'+(d.getMonth()+1)+(t?' · '+t:' · saat seçin');return t}
+  sum();
+  document.getElementById('f').onsubmit=function(e){e.preventDefault();var t=sum();if(!t){document.getElementById('sum').textContent='Lütfen bir saat seçin.';return}
+    var d=days[st.d],n=document.getElementById('fn').value.trim();
+    var msg='Merhaba '+NAME+', randevu almak istiyorum.\nKonu: '+S[st.s]+'\nGün: '+GN[d.getDay()]+' '+d.getDate()+'.'+(d.getMonth()+1)+'\nSaat: '+t+(n?'\nAd Soyad: '+n:'');
+    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener')};
+
+  var top=document.getElementById('top');function sc(){top.classList.toggle('s',scrollY>40)}addEventListener('scroll',sc,{passive:true});sc();
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+})();
+(function(){var b=document.querySelector('.demo-back'),f=document.querySelector('footer');if(!b||!f||!('IntersectionObserver' in window))return;b.style.transition='opacity .35s';
+  new IntersectionObserver(function(e){var on=e[0].isIntersecting;b.style.opacity=on?'0':'';b.style.pointerEvents=on?'none':'';if(on){b.setAttribute('tabindex','-1');b.setAttribute('aria-hidden','true')}else{b.removeAttribute('tabindex');b.removeAttribute('aria-hidden')}}).observe(f)})();
+</script>
+</body>
+</html>
