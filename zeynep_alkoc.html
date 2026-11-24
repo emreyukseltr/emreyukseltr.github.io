@@ -2031,7 +2031,7 @@ drawPrep();
 // 13. Randevu formu
 const TOPICS=['Aile','Ceza','İş','Miras','Gayrimenkul ve Kira','Tüketici','İcra','Ticari','Arabuluculuk','Diğer'];
 const TIMES=[['Sabah','09.00 – 12.00'],['Öğleden sonra','13.00 – 17.00'],['Fark etmez','']];
-const WAYS=['Büroda','Telefonla','Görüntülü'];
+const WAYS=['Büroda','Telefonla'];
 const days=[];{const t=new Date();t.setHours(12,0,0,0);while(days.length<10){t.setDate(t.getDate()+1);const w=t.getDay();if(w&&w<6)days.push(new Date(t))}}
 const fmtD=d=>d.toLocaleDateString('tr-TR',{day:'numeric',month:'long'}),fmtW=d=>d.toLocaleDateString('tr-TR',{weekday:'long'});
 const A={topic:'',day:'',time:'Fark etmez',way:'Büroda'};
