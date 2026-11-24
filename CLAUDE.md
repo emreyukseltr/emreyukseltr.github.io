@@ -35,7 +35,9 @@ self-contained HTML file in the repo root.
   signature of her name, title written as "Arabulucu Avukat", address "1. Noterliğin yanı, No: 2". She buys the .av.tr domain
   herself (isimtescil); a professional photo is coming to replace zeynep.jpg.
 - Luna Bijuteri's shop lives only at lunabijuteri.com, served from the separate repo `emreyukseltr/lunabijuteri`
-  (index.html, images in `img/`). Make every Luna change there. `luna.html` here is just a redirect to
+  (index.html, images in `img/`). Make every Luna change there. Products live in `products.json` (index.html keeps an inline
+  fallback list); Yağmur edits them herself at lunabijuteri.com/panel.html, which writes to the repo through the GitHub API with a
+  fine-grained token the owner set up on her phone (never handle or store that token). `luna.html` here is just a redirect to
   lunabijuteri.com (noindex). Deal: 8.500 TL total, fully paid (last 3.000 on 10 Nov 2026); 2 free bulk
   updates (one used on 10 Nov), then 500 TL per bulk update, or a one-time 2.000 TL self-service product panel. Products follow
   Yağmur's stock table: each has a code (e.g. ELK003KK) kept in the data only; customers and WhatsApp messages see product names, never codes. Product names come from Yağmur herself.
