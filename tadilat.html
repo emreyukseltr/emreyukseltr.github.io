@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<!-- ey-guard: eski tarayıcı ve bağlantı dalgalanması koruması -->
+<script>
+(function(){
+  /* IntersectionObserver olmayan eski tarayıcılarda her şeyi görünür say; içerik gizli kalmasın */
+  if(typeof window.IntersectionObserver!=='function'){window.IntersectionObserver=function(cb){var self=this;self.observe=function(el){setTimeout(function(){cb([{isIntersecting:true,intersectionRatio:1,target:el,boundingClientRect:el.getBoundingClientRect(),intersectionRect:el.getBoundingClientRect(),rootBounds:null,time:Date.now()}],self)},0)};self.unobserve=self.disconnect=function(){};self.takeRecords=function(){return[]}}}
+  /* Yüklenemeyen görseli 1,5 ve 4 sn sonra tekrar dene (bağlantı anlık koptuysa) */
+  function retry(t){var n=+(t.getAttribute('data-eyr')||0),s=t.getAttribute('src');if(!s||s.indexOf('data:')===0)return;if(n>=2){t.style.opacity='0';return}t.setAttribute('data-eyr',n+1);setTimeout(function(){var u=s.replace(/([?&])eyr=\d+&?/,'$1').replace(/[?&]$/,'');var h=u.indexOf('#');var base=h<0?u:u.slice(0,h),hash=h<0?'':u.slice(h);t.src=base+(base.indexOf('?')<0?'?':'&')+'eyr='+(n+1)+hash;var ss=t.getAttribute('srcset');if(ss)t.setAttribute('srcset',ss)},n?4000:1500)}
+  addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')retry(t);else if(t&&(t.tagName==='VIDEO'||t.tagName==='SOURCE')){var v=t.tagName==='SOURCE'?t.parentNode:t;if(v&&!v.getAttribute('data-eyr')){v.setAttribute('data-eyr','1');setTimeout(function(){try{v.load()}catch(_){}},2000)}}},true);
+  /* Bağlantı geri gelince hâlâ boş kalan görselleri yenile */
+  addEventListener('online',function(){[].forEach.call(document.images,function(i){if(i.complete&&!i.naturalWidth&&i.getAttribute('src')){i.removeAttribute('data-eyr');retry(i)}})});
+  /* Service worker: sayfa açılırken bağlantı giderse tekrar dener, gerekirse kayıttaki kopyayı gösterir */
+  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});
+})();
+</script>
+<noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
+<!-- /ey-guard -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Komple Tadilat — Ücretsiz Keşif ve Fiyat Teklifi · Aydın</title>
+<meta name="description" content="Aydın'da komple tadilat: kırım ve altyapı, elektrik ve sıhhi tesisat, mutfak ve banyo yenileme, anahtar teslim uygulama. Fotoğraf gönderin, ücretsiz keşif ve teklif alın.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0A08">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0A08'/%3E%3Cpath d='M12 40 32 22l20 18' fill='none' stroke='%23D4A84B' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='27' y='36' width='10' height='10' fill='%23D4A84B'/%3E%3C/svg%3E">
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0A08;--bg2:#14120E;--card:#1A1712;--line:rgba(212,168,75,.22);--gold:#D4A84B;--gold2:#F1D58A;--ink:#F4EEE2;--mut:#B6AC99;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;--g:linear-gradient(135deg,#F1D58A,#C9952F 55%,#9A6B1C)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);overflow-x:hidden;overflow-wrap:anywhere}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 16px}
+.gold{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 22px;border-radius:12px;font:700 15px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .2s,box-shadow .2s}
+.btn-g{background:var(--g);color:#1A1206;box-shadow:0 10px 30px rgba(212,168,75,.28)}
+.btn-o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:active{transform:scale(.98)}
+.btn svg{width:18px;height:18px;flex:none}
+.k{font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.08;letter-spacing:.005em}
+h2{font-size:clamp(32px,7vw,52px);margin:12px 0 14px}
+.lead{color:var(--mut);max-width:620px}
+section{padding:76px 0}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.s{background:rgba(11,10,8,.94);border-color:var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand img{width:44px;height:36px;object-fit:contain}
+.brand .ic{width:40px;height:40px;flex:none}
+.brand b{font:700 19px/1 var(--serif);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{display:block;font:600 9.5px/1 var(--sans);letter-spacing:.3em;color:var(--gold);margin-top:4px}
+nav.links{display:none;gap:26px}
+nav.links a{text-decoration:none;font-size:14px;color:var(--mut)}
+nav.links a:hover{color:var(--ink)}
+.hcall{min-height:42px;padding:0 14px;font-size:14px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:110px 0 46px;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background:url(media/tadilat/ev.webp) center/cover no-repeat;transform:scale(1.04)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,8,.55) 0%,rgba(11,10,8,.25) 30%,rgba(11,10,8,.82) 68%,var(--bg) 100%)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(50px,14vw,104px);margin:14px 0 10px}
+.hero h1 span{display:block;font-size:.5em;color:var(--ink);font-weight:600;letter-spacing:.02em}
+.hero p{color:#D9D0BF;max-width:560px;font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 26px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:99px;background:rgba(212,168,75,.12);border:1px solid var(--line);font:600 14px/1.2 var(--sans)}
+.chip svg{width:16px;height:16px;color:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.cta .btn{flex:1 1 200px}
+
+/* services */
+.svc{display:grid;gap:14px;margin-top:34px}
+.sv{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;gap:16px;align-items:flex-start}
+.sv .i{width:48px;height:48px;border-radius:14px;background:rgba(212,168,75,.12);display:grid;place-items:center;flex:none}
+.sv .i svg{width:24px;height:24px;color:var(--gold)}
+.sv h3{font-size:24px;margin-bottom:4px}
+.sv p{color:var(--mut);font-size:15px}
+
+/* before after */
+.ba-grid{display:grid;gap:22px;margin-top:34px;align-items:center}
+.ba{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:330/262;border:1px solid var(--line);user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .af{clip-path:inset(0 0 0 50%)}
+.ba .bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold2);transform:translateX(-1px);pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--g);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.5);pointer-events:none}
+.ba .knob svg{width:22px;height:22px;color:#1A1206}
+.ba .tg{position:absolute;top:12px;padding:6px 11px;border-radius:99px;background:rgba(11,10,8,.8);font:700 11px/1 var(--sans);letter-spacing:.14em;pointer-events:none}
+.ba .tg.l{left:12px}.ba .tg.r{right:12px;color:var(--gold2)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.gal figure{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gal figure:first-child{grid-column:1/-1}
+.gal figure:first-child img{aspect-ratio:16/9}
+.gal figcaption{position:absolute;left:10px;bottom:10px;padding:6px 11px;border-radius:99px;background:rgba(11,10,8,.82);font:600 12.5px/1.2 var(--sans)}
+
+/* steps */
+.steps{display:grid;gap:14px;margin-top:34px;counter-reset:s}
+.st{position:relative;padding:22px 22px 22px 78px;border-radius:18px;background:var(--bg2);border:1px solid var(--line)}
+.st:before{counter-increment:s;content:counter(s);position:absolute;left:20px;top:20px;width:40px;height:40px;border-radius:12px;background:var(--g);color:#1A1206;font:700 20px/40px var(--serif);text-align:center}
+.st h3{font-size:23px;margin-bottom:3px}
+.st p{color:var(--mut);font-size:15px}
+
+/* form */
+#teklif{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+form{margin-top:30px;display:grid;gap:18px;max-width:760px}
+.row{display:grid;gap:18px}
+label.f{display:grid;gap:8px;font:600 14px/1.3 var(--sans)}
+label.f small{color:var(--mut);font-weight:400}
+input[type=text],input[type=tel],input[type=date],select,textarea{width:100%;min-height:52px;padding:13px 15px;border-radius:12px;border:1px solid rgba(212,168,75,.3);background:#0F0E0B;color:var(--ink);font:400 16px/1.4 var(--sans);-webkit-appearance:none;appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A84B' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:42px}
+input[type=date]{color-scheme:dark}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.fs{border:0;display:grid;gap:10px}
+.fs legend{font:600 14px/1.3 var(--sans);margin-bottom:10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:inline-flex;align-items:center;min-height:42px;padding:0 15px;border-radius:99px;border:1px solid rgba(212,168,75,.3);font:500 14px/1.2 var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.opt input:checked+span{background:var(--g);color:#1A1206;border-color:transparent;font-weight:700}
+.opt input:focus-visible+span{outline:2px solid var(--gold2);outline-offset:2px}
+.up{display:grid;place-items:center;gap:6px;padding:26px 16px;border:1.5px dashed rgba(212,168,75,.45);border-radius:16px;text-align:center;cursor:pointer;background:rgba(212,168,75,.04)}
+.up svg{width:34px;height:34px;color:var(--gold)}
+.up b{font-size:16px}
+.up small{color:var(--mut);font-size:13.5px}
+.up input{position:absolute;width:1px;height:1px;opacity:0}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:8px}
+.thumbs div{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.thumbs button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.75);color:#fff;font:700 15px/26px var(--sans);cursor:pointer}
+.note{font-size:13.5px;color:var(--mut)}
+.err{color:#F2A08B;font-size:14px;min-height:1em}
+.ok{display:none;padding:20px;border-radius:16px;background:rgba(212,168,75,.1);border:1px solid var(--line)}
+.ok.on{display:block}
+.ok h3{font-size:26px;margin-bottom:6px}
+
+/* contact */
+.cg{display:grid;gap:14px;margin-top:30px}
+.cc{display:flex;align-items:center;gap:14px;padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-decoration:none}
+.cc .i{width:46px;height:46px;border-radius:50%;background:var(--g);display:grid;place-items:center;flex:none}
+.cc .i svg{width:21px;height:21px;color:#1A1206}
+.cc small{display:block;color:var(--mut);font-size:13px}
+.cc b{font-size:18px}
+
+footer{padding:38px 0 110px;border-top:1px solid var(--line);color:var(--mut);font-size:13.5px}
+footer .fw{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+footer a{color:var(--gold2)}
+
+/* mobile action bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(11,10,8,.96);border-top:1px solid var(--line);transition:transform .3s}
+.mbar .btn{min-height:46px;padding:0 10px;font-size:14px}
+.mbar.h{transform:translateY(110%)}
+.demo-back{position:fixed;left:12px;bottom:calc(78px + env(safe-area-inset-bottom,0px));z-index:56;background:rgba(244,238,226,.96);color:#14120E;font:600 12px/1 var(--sans);padding:10px 14px;border-radius:99px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+
+@media (min-width:720px){
+  .svc{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:1fr 1fr}
+  .cg{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:repeat(3,1fr)}
+  .gal figure:first-child{grid-column:auto}
+  .gal figure:first-child img{aspect-ratio:4/3}
+}
+@media (min-width:960px){
+  nav.links{display:flex}
+  section{padding:110px 0}
+  .svc{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(4,1fr)}
+  .ba-grid{grid-template-columns:1.15fr 1fr;gap:48px}
+  .mbar{display:none}
+  .demo-back{bottom:calc(16px + env(safe-area-inset-bottom,0px));left:16px}
+  footer{padding-bottom:40px}
+  .hero{align-items:center}
+}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="m8 12.5 2.7 2.7L16.5 9.5"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></symbol>
+  <symbol id="i-ham" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 4 6 6-3 3-6-6z"/><path d="M11 7 3 15l3 3 8-8"/><path d="m3.5 20.5 2-2"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-bath" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18v3a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"/><path d="M6 12V5a2 2 0 0 1 3.6-1.2"/><path d="m7 20-1 2M17 20l1 2"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></symbol>
+  <symbol id="i-roll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h3v5h-9v3"/><rect x="10.5" y="14" width="3" height="8" rx="1"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M14.5 8.5l2 2"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-lr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+</svg>
+
+<header id="hd">
+  <div class="wrap hd">
+    <a class="brand" href="#top" aria-label="Ana sayfa">
+      <svg class="ic" id="brIc" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F1D58A"/><stop offset="1" stop-color="#B07F25"/></linearGradient></defs><path d="M5 24 20 11l15 13" fill="none" stroke="url(#bg1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 30V8h4v8M24 30V5h4v12" fill="none" stroke="url(#bg1)" stroke-width="2.4"/><rect x="17.5" y="24" width="5" height="5" fill="url(#bg1)"/></svg>
+      <img id="brLogo" alt="" hidden>
+      <span><b id="brName">Kaya Yapı</b><small>TADİLAT · AYDIN</small></span>
+    </a>
+    <nav class="links" aria-label="Bölümler"><a href="#hizmetler">Hizmetler</a><a href="#isler">İşlerimiz</a><a href="#nasil">Nasıl Çalışırız</a><a href="#teklif">Teklif Al</a><a href="#iletisim">İletişim</a></nav>
+    <a class="btn btn-g hcall telA" href="tel:+905306284284"><svg><use href="#i-tel"/></svg>Hemen Ara</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="k" style="letter-spacing:.1em;line-height:1.4">Hayallerinizdeki yapılar için güvenilir çözüm</p>
+    <h1><span>Komple</span><em class="gold" style="font-style:normal">Tadilat</em></h1>
+    <p>Yaşam alanlarınızı baştan sona yeniliyor, işlevsel ve estetik çözümlerle anahtar teslim uygulamalar sunuyoruz.</p>
+    <div class="chips"><span class="chip"><svg><use href="#i-ok"/></svg>Ücretsiz Keşif</span><span class="chip"><svg><use href="#i-ok"/></svg>Ücretsiz Fiyat Teklifi</span></div>
+    <div class="cta">
+      <a class="btn btn-g" href="#teklif"><svg><use href="#i-cam"/></svg>Fotoğraf Gönder, Teklif Al</a>
+      <a class="btn btn-o telA" href="tel:+905306284284"><svg><use href="#i-tel"/></svg><span class="telT">0530 628 42 84</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="hizmetler">
+  <div class="wrap">
+    <p class="k rv">Hizmetlerimiz</p>
+    <h2 class="rv">Kırımdan anahtar teslime,<br><span class="gold">tek ekip.</span></h2>
+    <p class="lead rv">Birden fazla usta aramakla uğraşmayın. Söküm, tesisat, ince işler ve son temizlik dahil işin tamamını biz üstleniyoruz.</p>
+    <div class="svc">
+      <div class="sv rv"><div class="i"><svg><use href="#i-ham"/></svg></div><div><h3>Kırım ve Altyapı</h3><p>Duvar kaldırma, söküm, moloz tahliyesi, sıva ve altyapı hazırlığı.</p></div></div>
+      <div class="sv rv"><div class="i"><svg><use href="#i-bolt"/></svg></div><div><h3>Elektrik ve Sıhhi Tesisat</h3><p>Yeni hat çekimi, sigorta panosu, su ve gider tesisatı yenileme.</p></div></div>
+      <div class="sv rv"><div class="i"><svg><use href="#i-bath"/></svg></div><div><h3>Mutfak ve Banyo Yenileme</h3><p>Dolap, tezgâh, seramik, vitrifiye ve duşakabin; ölçüden montaja.</p></div></div>
+      <div class="sv rv"><div class="i"><svg><use href="#i-grid"/></svg></div><div><h3>Zemin, Duvar ve Tavan</h3><p>Parke, seramik, alçı, asma tavan, spot aydınlatma ve boya.</p></div></div>
+      <div class="sv rv"><div class="i"><svg><use href="#i-key"/></svg></div><div><h3>Anahtar Teslim Uygulama</h3><p>Tek fiyat, tek takvim. İş bitince temizlenmiş haliyle teslim.</p></div></div>
+      <div class="sv rv"><div class="i"><svg><use href="#i-house"/></svg></div><div><h3>Dış Cephe ve Yapı</h3><p>Mantolama, cephe yenileme, kaba inşaattan ince işlere kadar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="isler" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="ba-grid">
+      <div>
+        <p class="k rv">Önce / Sonra</p>
+        <h2 class="rv">Farkı kendiniz<br><span class="gold">kaydırıp görün.</span></h2>
+        <p class="lead rv">Kaba inşaattan teslim gününe. Çizgiyi parmağınızla sağa sola kaydırın; her yeni işimizi buraya önce ve sonra fotoğraflarıyla ekliyoruz.</p>
+      </div>
+      <div class="ba rv" id="ba" aria-label="Önce ve sonra karşılaştırması">
+        <img src="media/tadilat/once.webp" alt="Tadilat öncesi: kaba inşaat" width="330" height="262">
+        <img class="af" src="media/tadilat/sonra.webp" alt="Tadilat sonrası: tamamlanmış ev" width="330" height="262">
+        <span class="tg l">ÖNCE</span><span class="tg r">SONRA</span>
+        <span class="bar"></span><span class="knob"><svg><use href="#i-lr"/></svg></span>
+        <input type="range" min="0" max="100" value="50" aria-label="Karşılaştırma çizgisini kaydır">
+      </div>
+    </div>
+    <div class="gal">
+      <figure class="rv"><img src="media/tadilat/salon.webp" alt="Yenilenen salon" loading="lazy"><figcaption>Salon · komple yenileme</figcaption></figure>
+      <figure class="rv"><img src="media/tadilat/mutfak.webp" alt="Yenilenen mutfak" loading="lazy"><figcaption>Mutfak · ada tezgâh</figcaption></figure>
+      <figure class="rv"><img src="media/tadilat/ev.webp" alt="Anahtar teslim villa" loading="lazy"><figcaption>Villa · anahtar teslim</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="nasil">
+  <div class="wrap">
+    <p class="k rv">Nasıl çalışırız</p>
+    <h2 class="rv">Dört adımda <span class="gold">yeni eviniz.</span></h2>
+    <div class="steps">
+      <div class="st rv"><h3>Fotoğraf gönderin</h3><p>Yenilemek istediğiniz yerin birkaç fotoğrafını formdan yükleyin.</p></div>
+      <div class="st rv"><h3>Ücretsiz keşif</h3><p>Seçtiğiniz gün yerinde ölçü alıp sizinle birlikte planlıyoruz.</p></div>
+      <div class="st rv"><h3>Net fiyat teklifi</h3><p>Malzeme ve işçilik kalem kalem yazılı; sürpriz masraf yok.</p></div>
+      <div class="st rv"><h3>Anahtar teslim</h3><p>Söz verdiğimiz tarihte, temizlenmiş ve kullanıma hazır teslim.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="teklif">
+  <div class="wrap">
+    <p class="k rv">Teklif al</p>
+    <h2 class="rv">Fotoğrafı gönderin,<br><span class="gold">keşif gününü seçin.</span></h2>
+    <p class="lead rv">Birkaç bilgi ve fotoğraf yeterli. Talebiniz doğrudan WhatsApp'ımıza düşer, aynı gün dönüş yaparız.</p>
+    <form id="fm" novalidate>
+      <div class="row">
+        <label class="f">Adınız soyadınız<input type="text" id="fAd" autocomplete="name" required></label>
+        <label class="f">Telefonunuz<input type="tel" id="fTel" autocomplete="tel" inputmode="tel" placeholder="05xx xxx xx xx" required></label>
+      </div>
+      <div class="row">
+        <label class="f">İlçe<select id="fIlce"></select></label>
+        <label class="f">Mekân<select id="fMek"><option>Daire</option><option>Müstakil ev / villa</option><option>İş yeri / dükkân</option><option>Ofis</option><option>Diğer</option></select></label>
+      </div>
+      <fieldset class="fs"><legend>Ne yaptırmak istiyorsunuz? <small style="color:var(--mut);font-weight:400">(birden fazla seçebilirsiniz)</small></legend>
+        <div class="opts" id="fIs"></div>
+      </fieldset>
+      <div class="fs">
+        <span style="font:600 14px/1.3 var(--sans)">Fotoğraflar <small style="color:var(--mut);font-weight:400">(en fazla 8)</small></span>
+        <label class="up"><svg><use href="#i-cam"/></svg><b>Fotoğraf ekle</b><small>Odanın genel görüntüsü ve değişmesini istediğiniz yerler</small><input type="file" id="fFoto" accept="image/*" multiple></label>
+        <div class="thumbs" id="th"></div>
+      </div>
+      <div class="row">
+        <label class="f">Keşif için uygun gün<input type="date" id="fGun"></label>
+        <fieldset class="fs"><legend>Saat aralığı</legend><div class="opts" id="fSaat"></div></fieldset>
+      </div>
+      <label class="f">Kısaca anlatın <small>(isteğe bağlı)</small><textarea id="fNot" placeholder="Örn. 3+1 dairede mutfak ve banyo yenilenecek, yaklaşık 12 m² mutfak."></textarea></label>
+      <p class="err" id="fErr" role="alert"></p>
+      <button class="btn btn-g" type="submit" style="width:100%"><svg><use href="#i-wa"/></svg>Talebi WhatsApp ile gönder</button>
+      <p class="note">Sohbet açıldığında seçtiğiniz fotoğrafları aynı mesaja ekleyip gönderin. Bilgileriniz yalnızca teklif için kullanılır.</p>
+      <div class="ok" id="ok"><h3>Talebiniz hazır</h3><p class="note" style="color:var(--ink)">WhatsApp açıldı. Fotoğrafları ekleyip gönderin; en kısa sürede keşif saatini teyit edeceğiz.</p></div>
+    </form>
+  </div>
+</section>
+
+<section id="iletisim">
+  <div class="wrap">
+    <p class="k rv">İletişim</p>
+    <h2 class="rv">Arayın, <span class="gold">hemen gelelim.</span></h2>
+    <div class="cg" id="cg">
+      <a class="cc rv telA" href="tel:+905306284284"><span class="i"><svg><use href="#i-tel"/></svg></span><span><small>Telefon</small><b class="telT">0530 628 42 84</b></span></a>
+      <a class="cc rv waA" href="https://wa.me/905306284284" target="_blank" rel="noopener"><span class="i"><svg><use href="#i-wa"/></svg></span><span><small>WhatsApp</small><b>Mesaj gönderin</b></span></a>
+      <div class="cc rv"><span class="i"><svg><use href="#i-pin"/></svg></span><span><small>Hizmet bölgesi</small><b>Aydın ve tüm ilçeleri</b></span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap fw">
+    <span>© 2026 <span id="ftName">Kaya Yapı</span> · Komple tadilat, Aydın. Bu sayfa örnek çalışmadır.</span>
+    <span>Tasarım &amp; geliştirme: <a href="https://eystudios.com.tr">EY Studios</a></span>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <a class="btn btn-o telA" href="tel:+905306284284"><svg><use href="#i-tel"/></svg>Ara</a>
+  <a class="btn btn-o waA" href="https://wa.me/905306284284" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Yaz</a>
+  <a class="btn btn-g" href="#teklif">Teklif Al</a>
+</div>
+<a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var WA='905306284284';
+  function clean(v,n){return (v||'').replace(/[<>"`]/g,'').trim().slice(0,n)}
+  /* Kişiselleştirme: ?m=Firma+Adı  ?lg=klasör (onizleme/<klasör>/logo.webp)  ?p=05xxxxxxxxx */
+  var q=new URLSearchParams(location.search),m=clean(q.get('m'),40),lg=(q.get('lg')||'').replace(/[^a-z0-9-]/gi,'').slice(0,30),p=(q.get('p')||'').replace(/\D/g,'');
+  if(m){$('#brName').textContent=m;$('#ftName').textContent=m;document.title=m+' — Komple Tadilat · Aydın'}
+  if(lg){var im=$('#brLogo');im.onload=function(){im.hidden=false;$('#brIc').style.display='none'};im.src='onizleme/'+lg+'/logo.webp'}
+  if(/^0?5\d{9}$/.test(p)){
+    p=p.replace(/^0/,'');var intl='+90'+p,pretty='0'+p.slice(0,3)+' '+p.slice(3,6)+' '+p.slice(6,8)+' '+p.slice(8);
+    $$('.telA').forEach(function(a){a.href='tel:'+intl});$$('.telT').forEach(function(t){t.textContent=pretty});
+  }
+  /* header & bar */
+  var hd=$('#hd'),mb=$('#mbar'),ft=document.querySelector('footer');
+  function sc(){hd.classList.toggle('s',scrollY>30)}addEventListener('scroll',sc,{passive:true});sc();
+  /* reveal */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  $$('.rv').forEach(function(el){io.observe(el)});
+  setTimeout(function(){$$('.rv').forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('on')})},1500);
+  /* before / after */
+  var ba=$('#ba'),r=ba.querySelector('input'),af=ba.querySelector('.af'),bar=ba.querySelector('.bar'),kn=ba.querySelector('.knob');
+  function setBA(v){af.style.clipPath='inset(0 0 0 '+v+'%)';af.style.webkitClipPath='inset(0 0 0 '+v+'%)';bar.style.left=v+'%';kn.style.left=v+'%'}
+  r.addEventListener('input',function(){setBA(r.value)});
+  function tp(e){var t=e.touches[0],b=ba.getBoundingClientRect();var v=Math.max(0,Math.min(100,(t.clientX-b.left)/b.width*100));r.value=v;setBA(v)}
+  ba.addEventListener('touchstart',tp,{passive:true});ba.addEventListener('touchmove',tp,{passive:true});
+  /* form options */
+  var ILCE=['Efeler','Nazilli','Söke','Kuşadası','Didim','Germencik','İncirliova','Koçarlı','Köşk','Sultanhisar','Yenipazar','Bozdoğan','Çine','Karacasu','Kuyucak','Buharkent','Karpuzlu'];
+  $('#fIlce').innerHTML=ILCE.map(function(x){return '<option>'+x+'</option>'}).join('');
+  var IS=['Komple tadilat','Mutfak','Banyo','Elektrik','Sıhhi tesisat','Zemin / parke','Boya / alçı','Asma tavan','Dış cephe','Kırım / söküm'];
+  $('#fIs').innerHTML=IS.map(function(x){return '<label class="opt"><input type="checkbox" value="'+x+'"><span>'+x+'</span></label>'}).join('');
+  var SA=['Sabah','Öğleden sonra','Akşam'];
+  $('#fSaat').innerHTML=SA.map(function(x,i){return '<label class="opt"><input type="radio" name="saat" value="'+x+'"'+(i?'':' checked')+'><span>'+x+'</span></label>'}).join('');
+  var d=new Date();d.setDate(d.getDate()+1);var iso=function(x){return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+  $('#fGun').min=iso(d);$('#fGun').value=iso(d);
+  /* photos */
+  var files=[],th=$('#th');
+  function draw(){th.innerHTML='';files.forEach(function(f,i){var u=URL.createObjectURL(f),dv=document.createElement('div');dv.innerHTML='<img alt="Seçilen fotoğraf '+(i+1)+'"><button type="button" aria-label="Fotoğrafı kaldır">×</button>';dv.firstChild.src=u;dv.lastChild.onclick=function(){files.splice(i,1);draw()};th.appendChild(dv)})}
+  $('#fFoto').addEventListener('change',function(e){[].slice.call(e.target.files).forEach(function(f){if(files.length<8&&/^image\//.test(f.type))files.push(f)});e.target.value='';draw()});
+  /* submit */
+  $('#fm').addEventListener('submit',function(e){
+    e.preventDefault();var er=$('#fErr');er.textContent='';
+    var ad=clean($('#fAd').value,60),tel=$('#fTel').value.replace(/\D/g,'');
+    var is=$$('#fIs input:checked').map(function(x){return x.value});
+    if(ad.length<3){er.textContent='Lütfen adınızı yazın.';$('#fAd').focus();return}
+    if(tel.length<10){er.textContent='Lütfen geçerli bir telefon numarası yazın.';$('#fTel').focus();return}
+    if(!is.length){er.textContent='Lütfen en az bir iş seçin.';return}
+    var g=$('#fGun').value,gs=g?g.split('-').reverse().join('.'):'Fark etmez';
+    var saat=(document.querySelector('input[name=saat]:checked')||{}).value||'';
+    var not=clean($('#fNot').value,600);
+    var msg='Merhaba, siteden keşif ve fiyat teklifi istiyorum.\n\nAd soyad: '+ad+'\nTelefon: '+$('#fTel').value.trim()+'\nİlçe: '+$('#fIlce').value+'\nMekân: '+$('#fMek').value+'\nİşler: '+is.join(', ')+'\nKeşif günü: '+gs+(saat?' ('+saat+')':'')+(not?'\nNot: '+not:'')+(files.length?'\n\n'+files.length+' fotoğrafı bu mesajla gönderiyorum.':'');
+    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+    $('#ok').classList.add('on');
+  });
+  /* footer görünürken alt bar ve "örnek çalışma" gizlensin */
+  var b=document.querySelector('.demo-back');
+  new IntersectionObserver(function(e){var on=e[0].isIntersecting;mb.classList.toggle('h',on);b.style.transition='opacity .35s';b.style.opacity=on?'0':'';b.style.pointerEvents=on?'none':'';if(on){b.setAttribute('tabindex','-1');b.setAttribute('aria-hidden','true')}else{b.removeAttribute('tabindex');b.removeAttribute('aria-hidden')}}).observe(ft);
+})();
+</script>
+</body>
+</html>
