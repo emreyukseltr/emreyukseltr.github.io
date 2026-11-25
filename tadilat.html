@@ -69,7 +69,9 @@ nav.links a:hover{color:var(--ink)}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:110px 0 46px;overflow:hidden}
-.hero .bg{position:absolute;inset:0;background:url(media/tadilat/ev.webp) center/cover no-repeat;transform:scale(1.04)}
+.hero .bgw{position:absolute;inset:0;overflow:hidden}.hero .bg{position:absolute;inset:0;background:url(media/tadilat/ev.webp) center/cover no-repeat;transform-origin:50% 58%;animation:pull 7s cubic-bezier(.16,.7,.2,1) .2s both;will-change:transform}
+@keyframes pull{from{transform:scale(2.6)}to{transform:scale(1)}}
+@media (max-width:719px){.hero .bgw{bottom:auto;height:calc(100vw * .776 + 80px)}.hero .bg{background-size:100% auto;background-position:50% 100%}.hero:after{background:linear-gradient(180deg,rgba(11,10,8,.5) 0,rgba(11,10,8,0) 90px,rgba(11,10,8,0) calc(100vw * .6),var(--bg) calc(100vw * .776 + 80px))}}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,8,.55) 0%,rgba(11,10,8,.25) 30%,rgba(11,10,8,.82) 68%,var(--bg) 100%)}
 .hero .wrap{position:relative;z-index:1}
 .hero h1{font-size:clamp(50px,14vw,104px);margin:14px 0 10px}
@@ -185,7 +187,7 @@ footer a{color:var(--gold2)}
   footer{padding-bottom:40px}
   .hero{align-items:center}
 }
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.hero .bg{animation:none}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -219,7 +221,7 @@ footer a{color:var(--gold2)}
 
 <main id="top">
 <section class="hero">
-  <div class="bg" aria-hidden="true"></div>
+  <div class="bgw" aria-hidden="true"><div class="bg"></div></div>
   <div class="wrap">
     <p class="k" style="letter-spacing:.1em;line-height:1.4">Hayallerinizdeki yapılar için güvenilir çözüm</p>
     <h1><span>Komple</span><em class="gold" style="font-style:normal">Tadilat</em></h1>
