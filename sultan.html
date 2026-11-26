@@ -143,6 +143,23 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 footer a{color:var(--ink);font-weight:700}
 .demo-back{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:rgba(251,243,230,.95);color:#241815;font:700 12px/1 var(--sans);padding:12px 15px;border-radius:99px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:opacity .3s}
 .has-bar .demo-back{opacity:0;pointer-events:none}
+.sheet{position:fixed;inset:0;z-index:90;background:rgba(10,6,5,.6);display:flex;align-items:flex-end;justify-content:center}
+.sheet[hidden]{display:none}
+.sh{width:min(520px,100%);max-height:92svh;overflow-y:auto;background:var(--cream);color:#241815;border-radius:22px 22px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom,0px));animation:up .3s var(--ease)}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.shh{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.shh h3{font:400 1.5rem/1.1 var(--slab)}
+.x{width:38px;height:38px;border-radius:50%;border:0;background:#ecdcc6;font-size:22px;line-height:1}
+.osum{margin-top:10px;background:#f3e6d2;border-radius:12px;padding:10px 12px;font-size:14px;color:#5a4336}
+.sh label{display:block;font:800 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#8a6a55;margin:16px 0 8px}
+.sh input,.sh textarea{width:100%;border:1px solid #e3d2bb;border-radius:12px;padding:12px;background:#fff;color:#241815;font:500 16px/1.4 var(--sans);resize:vertical}
+.sh input:focus,.sh textarea:focus{outline:2px solid var(--fire);outline-offset:1px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg button{border:1px solid #e3d2bb;background:#fff;border-radius:12px;padding:12px 8px;font-weight:800;font-size:14px;color:#241815}
+.seg button[aria-pressed="true"]{background:#241815;color:#fff;border-color:#241815}
+.err{color:#b3261e;font-size:14px;font-weight:700;min-height:1.2em;margin-top:10px}
+.sh .btn.wa{width:100%;margin-top:6px;background:#1faa59;box-shadow:none}
+@media (max-width:520px){.sh{border-radius:20px 20px 0 0}}
 </style>
 </head>
 <body>
@@ -216,7 +233,22 @@ footer a{color:var(--ink);font-weight:700}
 
 <footer><div class="wrap"><span>© <span class="bn">Konyalı Sultan Etli Pide</span> · <span class="cy">Yalvaç</span></span><span>Tasarım & geliştirme: <a href="https://eystudios.com.tr">EY Studios</a></span></div></footer>
 
-<div class="bar" id="bar"><span><b id="barN">0 ürün</b> · <span id="barT">0 TL</span></span><a class="btn" id="order" href="#" target="_blank" rel="noopener">WhatsApp'tan sipariş</a></div>
+<div class="bar" id="bar"><span><b id="barN">0 ürün</b> · <span id="barT">0 TL</span></span><button class="btn" id="order" type="button">Siparişi tamamla</button></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT" hidden>
+  <form class="sh" id="of" novalidate>
+    <div class="shh"><h3 id="shT">Siparişi tamamla</h3><button type="button" class="x" id="shX" aria-label="Kapat">×</button></div>
+    <div id="sum" class="osum"></div>
+    <label for="oN">Ad Soyad</label><input id="oN" autocomplete="name" maxlength="60" placeholder="Adınız Soyadınız">
+    <label>Teslimat</label>
+    <div class="seg" id="oD"><button type="button" data-v="Paket servis (adrese)" aria-pressed="true">Paket servis</button><button type="button" data-v="Gel-al" aria-pressed="false">Gel-al</button></div>
+    <div id="adrW"><label for="oA">Adres</label><textarea id="oA" maxlength="200" rows="2" placeholder="Mahalle, sokak, kapı no, tarif"></textarea></div>
+    <label>Ödeme</label>
+    <div class="seg" id="oP"><button type="button" data-v="Nakit" aria-pressed="true">Nakit</button><button type="button" data-v="Kredi kartı (POS)" aria-pressed="false">Kredi kartı (POS)</button></div>
+    <label for="oT">Not</label><textarea id="oT" maxlength="200" rows="2" placeholder="Örn. acısız olsun, zil çalışmıyor"></textarea>
+    <p class="err" id="oE" aria-live="polite"></p>
+    <button class="btn wa" type="submit">WhatsApp'tan siparişi gönder</button>
+  </form>
+</div>
 <a class="demo-back" href="index.html">← EY Studios örnek çalışma</a>
 
 <script>
@@ -243,7 +275,7 @@ footer a{color:var(--ink);font-weight:700}
     ['pide','Pide',[['Kaşarlı Pide','Bol kaşar, tereyağı',170],['Kıymalı Pide','Kıyma, soğan, biber',190],['Kuşbaşılı Kaşarlı Pide','Kuşbaşı ve kaşar',240],['Yumurtalı Kaşarlı Pide','Kaşar ve köy yumurtası',180],['Karışık Pide','Kıyma, kuşbaşı, kaşar, sucuk',260]]],
     ['lahmacun','Lahmacun',[['Lahmacun','İnce hamur, bol yeşillik ve limonla',90],['Acılı Lahmacun','Acı biberli',95]]],
     ['icecek','İçecekler',[['Ayran','Yayık ayranı',30],['Şalgam','Acılı / acısız',35],['Kola','33 cl',45],['Çay','Demlik çay',15]]]];
-  var cur='etli',cart={};
+  var cur='etli',cart={},LINES=[],TOTAL=0;
   var byK={};M.forEach(function(c){c[2].forEach(function(x,i){byK[c[0]+i]=x})});
   function tl(n){return n.toLocaleString('tr-TR')+' TL'}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -253,11 +285,31 @@ footer a{color:var(--ink);font-weight:700}
   function bar(){var n=0,t=0,L=[];for(var k in cart){var x=byK[k];n+=cart[k];t+=cart[k]*x[2];L.push('• '+cart[k]+' × '+x[0])}
     document.getElementById('barN').textContent=n+' ürün';document.getElementById('barT').textContent=tl(t);
     document.getElementById('bar').classList.toggle('on',n>0);document.body.classList.toggle('has-bar',n>0);
-    document.getElementById('order').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Merhaba '+NAME+', sipariş vermek istiyorum:\n'+L.join('\n')+'\nToplam: '+tl(t)+'\nPaket / salonda: ')}
+    LINES=L;TOTAL=t;document.getElementById('sum').textContent=L.join('  ')+'  ·  Toplam: '+tl(t)}
   tabs();list();bar();
   document.getElementById('tabs').addEventListener('click',function(e){var b=e.target.closest('[data-c]');if(!b)return;cur=b.getAttribute('data-c');tabs();list()});
   document.getElementById('list').addEventListener('click',function(e){var a=e.target.closest('[data-a]'),d=e.target.closest('[data-d]');
     if(a){var k=a.getAttribute('data-a');cart[k]=Math.min(20,(cart[k]||0)+1)}else if(d){var j=d.getAttribute('data-d');cart[j]--;if(cart[j]<=0)delete cart[j]}else return;list();bar()});
+
+  /* Sipariş formu: ad soyad, teslimat, adres, ödeme, not */
+  var sheet=document.getElementById('sheet'),dlv='Paket servis (adrese)',pay='Nakit';
+  function seg(id,set){var el=document.getElementById(id);el.addEventListener('click',function(e){var b=e.target.closest('[data-v]');if(!b)return;[].forEach.call(el.children,function(c){c.setAttribute('aria-pressed',c===b)});set(b.getAttribute('data-v'))})}
+  seg('oD',function(v){dlv=v;document.getElementById('adrW').hidden=v!=='Paket servis (adrese)'});
+  seg('oP',function(v){pay=v});
+  function openSheet(){sheet.hidden=false;document.body.style.overflow='hidden';document.getElementById('oE').textContent='';setTimeout(function(){document.getElementById('oN').focus({preventScroll:true})},50)}
+  function closeSheet(){sheet.hidden=true;document.body.style.overflow=''}
+  document.getElementById('order').addEventListener('click',openSheet);
+  document.getElementById('shX').addEventListener('click',closeSheet);
+  sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet()});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&!sheet.hidden)closeSheet()});
+  document.getElementById('of').addEventListener('submit',function(e){e.preventDefault();
+    var n=document.getElementById('oN').value.trim(),a=document.getElementById('oA').value.trim(),nt=document.getElementById('oT').value.trim(),er=document.getElementById('oE');
+    if(!LINES.length){er.textContent='Sepetiniz boş.';return}
+    if(n.length<3){er.textContent='Lütfen adınızı ve soyadınızı yazın.';document.getElementById('oN').focus();return}
+    var pk=dlv==='Paket servis (adrese)';
+    if(pk&&a.length<8){er.textContent='Lütfen teslimat adresini yazın.';document.getElementById('oA').focus();return}
+    var msg='Merhaba '+NAME+', sipariş vermek istiyorum:\n'+LINES.join('\n')+'\nToplam: '+tl(TOTAL)+'\n\nAd Soyad: '+n+'\nTeslimat: '+dlv+(pk?'\nAdres: '+a:'')+'\nÖdeme: '+pay+(nt?'\nNot: '+nt:'');
+    er.textContent='';window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener')});
 
   var top=document.getElementById('top');function sc(){top.classList.toggle('s',scrollY>30)}addEventListener('scroll',sc,{passive:true});sc();
   var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
