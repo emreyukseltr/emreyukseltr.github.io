@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<!-- ey-guard: eski tarayıcı ve bağlantı dalgalanması koruması -->
+<script>
+(function(){
+  /* IntersectionObserver olmayan eski tarayıcılarda her şeyi görünür say; içerik gizli kalmasın */
+  if(typeof window.IntersectionObserver!=='function'){window.IntersectionObserver=function(cb){var self=this;self.observe=function(el){setTimeout(function(){cb([{isIntersecting:true,intersectionRatio:1,target:el,boundingClientRect:el.getBoundingClientRect(),intersectionRect:el.getBoundingClientRect(),rootBounds:null,time:Date.now()}],self)},0)};self.unobserve=self.disconnect=function(){};self.takeRecords=function(){return[]}}}
+  /* Yüklenemeyen görseli 1,5 ve 4 sn sonra tekrar dene (bağlantı anlık koptuysa) */
+  function retry(t){var n=+(t.getAttribute('data-eyr')||0),s=t.getAttribute('src');if(!s||s.indexOf('data:')===0)return;if(n>=2){t.style.opacity='0';return}t.setAttribute('data-eyr',n+1);setTimeout(function(){var u=s.replace(/([?&])eyr=\d+&?/,'$1').replace(/[?&]$/,'');var h=u.indexOf('#');var base=h<0?u:u.slice(0,h),hash=h<0?'':u.slice(h);t.src=base+(base.indexOf('?')<0?'?':'&')+'eyr='+(n+1)+hash;var ss=t.getAttribute('srcset');if(ss)t.setAttribute('srcset',ss)},n?4000:1500)}
+  addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')retry(t);else if(t&&(t.tagName==='VIDEO'||t.tagName==='SOURCE')){var v=t.tagName==='SOURCE'?t.parentNode:t;if(v&&!v.getAttribute('data-eyr')){v.setAttribute('data-eyr','1');setTimeout(function(){try{v.load()}catch(_){}},2000)}}},true);
+  /* Bağlantı geri gelince hâlâ boş kalan görselleri yenile */
+  addEventListener('online',function(){[].forEach.call(document.images,function(i){if(i.complete&&!i.naturalWidth&&i.getAttribute('src')){i.removeAttribute('data-eyr');retry(i)}})});
+  /* Service worker: sayfa açılırken bağlantı giderse tekrar dener, gerekirse kayıttaki kopyayı gösterir */
+  if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});
+})();
+</script>
+<noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
+<!-- /ey-guard -->
+<script>
+try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nude Nail Atelier · Manikür, Kalıcı Oje, Protez Tırnak</title>
+<meta name="description" content="Manikür, kalıcı oje, protez tırnak ve nail art. Şeklini ve rengini seç, randevunu WhatsApp'tan al.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7F1EC">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="media/tirnak/hero.webp">
+<style>
+:root{--bg:#F7F1EC;--paper:#FFFDFB;--blush:#EFD9D2;--rose:#B0656F;--rose2:#8E4A55;--ink:#2B2023;--ink2:#6E5E61;--mute:#9C8C8E;--line:#E9DCD6;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;--r:28px;--pad:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em;overflow-wrap:break-word}
+p,li,span,b,label{overflow-wrap:break-word}
+.wrap{width:min(1180px,100% - 2*var(--pad));margin-inline:auto}
+.k{font:500 12px/1.3 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:500 15px/1 var(--sans);letter-spacing:.02em;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .2s,transform .2s;-webkit-tap-highlight-color:transparent}
+.btn-r{background:var(--ink);color:#FFF8F4}
+.btn-r:hover{background:var(--rose2)}
+.btn-o{border-color:var(--line);color:var(--ink);background:rgba(255,253,251,.7)}
+.btn-o:hover{border-color:var(--ink)}
+/* header */
+.hd{position:sticky;top:0;z-index:50;background:rgba(247,241,236,.86);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+.hd.sc{border-color:var(--line)}
+.hd .wrap{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;flex-direction:column;text-decoration:none;margin-right:auto;min-width:0;line-height:1}
+.logo b{font:500 25px/1 var(--serif);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo small{font:500 10px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+.nav{display:flex;gap:26px}
+.nav a{font-size:14.5px;color:var(--ink2);text-decoration:none}
+.nav a:hover{color:var(--ink)}
+.lang{border:1px solid var(--line);background:transparent;border-radius:999px;color:var(--ink2);font:500 12px/1 var(--sans);padding:9px 11px;cursor:pointer;letter-spacing:.08em}
+.hd .btn{min-height:42px;padding:0 18px;font-size:14px}
+@media(max-width:900px){.nav{display:none}}
+@media(max-width:400px){.hd .btn{padding:0 14px}.logo b{font-size:22px}.hd .wrap{gap:10px}}
+/* hero */
+.hero{padding:40px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(54px,8vw,108px);margin:16px 0 22px}
+.hero h1 em{color:var(--rose);font-style:italic}
+.hero p.lead{color:var(--ink2);font-size:clamp(17px,1.7vw,19.5px);max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.ph{position:relative}
+.ph figure{margin:0;border-radius:240px 240px var(--r) var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--blush);box-shadow:0 40px 80px -40px rgba(43,32,35,.35)}
+.ph img{width:100%;height:100%;object-fit:cover;animation:zm 1.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes zm{from{transform:scale(1.06);opacity:.5}to{transform:none;opacity:1}}
+.badge{position:absolute;left:-22px;bottom:44px;background:var(--paper);border-radius:20px;padding:14px 18px;box-shadow:0 20px 50px -20px rgba(43,32,35,.35);font-size:14px;color:var(--ink2);line-height:1.35}
+.badge b{display:block;font:500 24px/1.1 var(--serif);color:var(--ink)}
+.badge i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5DAE84;margin-right:8px;box-shadow:0 0 0 4px rgba(93,174,132,.18)}
+.in{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(max-width:860px){.hero{padding:22px 0 64px}.hero .wrap{grid-template-columns:1fr;gap:34px}.ph{max-width:460px;width:100%;margin-inline:auto}.badge{left:auto;right:-6px;top:26px;bottom:auto}}
+/* sections */
+section{scroll-margin-top:72px}
+.sec{padding:110px 0}
+.sh{text-align:center;max-width:760px;margin:0 auto 48px}
+.sh h2{font-size:clamp(40px,5.8vw,72px);margin-top:12px}
+.sh p{color:var(--ink2);margin-top:16px;font-size:17.5px}
+@media(max-width:700px){.sec{padding:74px 0}.sh{margin-bottom:32px}}
+/* studio (wow) */
+.studio{background:var(--paper);border-radius:40px;padding:56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;box-shadow:0 30px 80px -50px rgba(43,32,35,.35)}
+.stage{position:relative;aspect-ratio:1/1;border-radius:32px;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF,#F3E7E1 60%,#EADBD3);overflow:hidden}
+.stage svg{position:absolute;inset:0;width:100%;height:100%}
+.stage .lbl{position:absolute;left:20px;bottom:18px;right:20px;display:flex;justify-content:space-between;gap:10px;font:500 13px/1.3 var(--sans);color:var(--ink2)}
+.stage .lbl b{font:500 22px/1 var(--serif);color:var(--ink);font-style:italic}
+.ctl{margin-bottom:24px}
+.ctl>span{display:block;font:500 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink2);font:500 14.5px/1 var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#FFF8F4;border-color:var(--ink)}
+.sw{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.sw button{aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;position:relative;box-shadow:inset 0 -6px 10px rgba(0,0,0,.12),inset 0 4px 8px rgba(255,255,255,.45),0 6px 14px -6px rgba(43,32,35,.35);-webkit-tap-highlight-color:transparent;min-width:40px}
+.sw button[aria-pressed="true"]:after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--ink)}
+.studio .btn{margin-top:6px}
+@media(max-width:900px){.studio{grid-template-columns:1fr;padding:26px 18px;border-radius:30px;gap:26px}}
+@media(max-width:420px){.sw{grid-template-columns:repeat(6,1fr);gap:8px}}
+/* services */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
+.mi{display:flex;align-items:baseline;gap:12px;padding:20px 0;border-bottom:1px solid var(--line)}
+.mi div{min-width:0;flex:none;max-width:72%}
+.mi b{font:500 24px/1.15 var(--serif)}
+.mi small{display:block;color:var(--mute);font-size:14px;margin-top:3px}
+.mi i{flex:1;border-bottom:1px dotted #CDB9B2;transform:translateY(-6px);min-width:12px}
+.mi span{font:500 16px/1 var(--sans);color:var(--rose2);white-space:nowrap}
+@media(max-width:760px){.menu{grid-template-columns:1fr}.mi div{max-width:68%}}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gal figure{margin:0;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--blush)}
+.gal figure:nth-child(2n){transform:translateY(28px)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.gal figure:hover img{transform:scale(1.05)}
+@media(max-width:760px){.gal{grid-template-columns:1fr 1fr}.gal figure:nth-child(2n){transform:translateY(18px)}}
+/* hygiene */
+.hyg{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hyg figure{margin:0;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3}
+.hyg img{width:100%;height:100%;object-fit:cover}
+.hyg h2{font-size:clamp(36px,4.6vw,58px);margin:12px 0 18px}
+.hyg ul{list-style:none;display:grid;gap:14px;margin-top:20px}
+.hyg li{display:flex;gap:14px;color:var(--ink2)}
+.hyg li:before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:var(--blush) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12l4 4 8-8' fill='none' stroke='%238E4A55' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:2px}
+@media(max-width:860px){.hyg{grid-template-columns:1fr;gap:32px}}
+/* booking */
+.book{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:start}
+.book h2{font-size:clamp(38px,5vw,62px);margin:12px 0 16px}
+.book>div>p{color:var(--ink2)}
+.info{list-style:none;margin-top:26px;display:grid;gap:12px;color:var(--ink2)}
+.info a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+form{background:var(--paper);border-radius:var(--r);padding:32px;box-shadow:0 30px 70px -50px rgba(43,32,35,.4)}
+.f{margin-bottom:20px}
+.f>label,.f>span{display:block;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.f input,.f select{width:100%;min-height:52px;border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:12px 16px;font:400 16px/1.3 var(--sans);color:var(--ink)}
+.f input:focus,.f select:focus{outline:none;border-color:var(--rose)}
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.day{border:1px solid var(--line);background:var(--bg);border-radius:16px;padding:9px 2px;text-align:center;cursor:pointer;font:500 12px/1.2 var(--sans);color:var(--ink2);min-height:62px}
+.day b{display:block;font:500 22px/1.15 var(--serif);color:var(--ink)}
+.day[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#E9DCD6}.day[aria-pressed="true"] b{color:#fff}
+.times{display:flex;flex-wrap:wrap;gap:8px}
+.tm{min-height:44px;min-width:76px;border:1px solid var(--line);background:var(--bg);border-radius:999px;font:500 14px/1 var(--sans);color:var(--ink);cursor:pointer}
+.tm[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:#fff}
+.tm:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pick{font:400 14.5px/1.5 var(--sans);color:var(--ink2);background:var(--bg);border-radius:16px;padding:12px 14px;margin-bottom:18px}
+.pick b{color:var(--ink);font-weight:500}
+form .btn{width:100%;background:#1F8F57;color:#fff}
+.msg{min-height:22px;font-size:14px;margin-top:10px;color:#B3261E}.msg.ok{color:#1F7A4A}
+@media(max-width:900px){.book{grid-template-columns:1fr;gap:34px}}
+@media(max-width:520px){form{padding:22px 16px}.two{grid-template-columns:1fr}.days{grid-template-columns:repeat(3,1fr)}}
+footer{border-top:1px solid var(--line);padding:44px 0;color:var(--mute);font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 30px}
+.demo-back{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:rgba(43,32,35,.92);color:#fff;font:500 13px/1 var(--sans);padding:12px 16px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.4);transition:opacity .3s,transform .3s}
+.demo-back.hide{opacity:0;transform:translateY(12px);pointer-events:none}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.gal.rv.on figure:nth-child(2n){transform:translateY(28px)}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.in,.ph img{animation:none}html{scroll-behavior:auto}#fan g{transition:none!important}}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+</style>
+</head>
+<body>
+<header class="hd" id="hd"><div class="wrap">
+  <a class="logo" href="#top"><b class="bn">Nude Nail Atelier</b><small data-i="lg">Nail studio</small></a>
+  <nav class="nav" aria-label="Menü"><a href="#kartela" data-i="n1">Renk kartelası</a><a href="#hizmet" data-i="n2">Hizmetler</a><a href="#galeri" data-i="n3">Galeri</a><a href="#randevu" data-i="n4">İletişim</a></nav>
+  <button class="lang" id="langBtn" type="button" aria-label="Dili değiştir">EN</button>
+  <a class="btn btn-r" href="#randevu" data-i="n5">Randevu</a>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="k in" id="heroK"><span class="cy">Bağdat Caddesi, Kadıköy</span> · <span data-i="h_k">Nail studio</span></div>
+      <h1 class="in" style="animation-delay:.05s"><span data-i="h1a">Ellerinize</span> <em data-i="h1b">sessiz bir zarafet.</em></h1>
+      <p class="lead in" style="animation-delay:.12s" data-i="h_p">Manikür, kalıcı oje, protez tırnak ve nail art. Şeklini ve rengini kartelada seç; randevunu tek dokunuşla WhatsApp'tan al.</p>
+      <div class="cta in" style="animation-delay:.18s"><a class="btn btn-r" href="#kartela" data-i="c1">Rengimi seç</a><a class="btn btn-o" href="#hizmet" data-i="c2">Fiyatlar</a></div>
+    </div>
+    <div class="ph in" style="animation-delay:.1s">
+      <figure><img src="media/tirnak/hero.webp" width="1080" height="1350" alt="Nude tonlarda badem kesim manikürlü eller" fetchpriority="high"></figure>
+      <div class="badge" id="badge"><i></i><span id="bdT">Bugün boş saat var</span><b id="bdB">16:30</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="kartela" style="padding-top:0">
+  <div class="wrap">
+    <div class="sh rv"><div class="k" data-i="w_k">Renk kartelası</div><h2 data-i="w_h">Önce burada dene.</h2><p data-i="w_p">Şekli, rengi ve bitişi seç; kartela anında değişsin. Beğendiğin kombinasyonla randevunu al, masaya oturduğunda ne istediğini bilelim.</p></div>
+    <div class="studio rv">
+      <div class="stage"><svg id="fan" viewBox="0 0 600 600" aria-label="Seçilen tırnak şekli ve rengi" role="img"></svg><div class="lbl"><span><b id="lbC">Pudra</b><br><span id="lbS">Badem · Parlak</span></span><span id="lbP"></span></div></div>
+      <div>
+        <div class="ctl"><span data-i="t1">Şekil</span><div class="seg" id="shapes"></div></div>
+        <div class="ctl"><span data-i="t2">Renk</span><div class="sw" id="sw"></div></div>
+        <div class="ctl"><span data-i="t3">Bitiş</span><div class="seg" id="fins"></div></div>
+        <a class="btn btn-r" href="#randevu" id="useK" data-i="t4">Bu kombinasyonla randevu al</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="hizmet" style="padding-top:0">
+  <div class="wrap">
+    <div class="sh rv"><div class="k" data-i="m_k">Hizmetler</div><h2 data-i="m_h">Süresi ve fiyatıyla.</h2></div>
+    <div class="menu rv" id="menu"></div>
+  </div>
+</section>
+
+<section class="sec" id="galeri" style="padding-top:0">
+  <div class="wrap">
+    <div class="sh rv"><div class="k" data-i="g_k">Galeri</div><h2 data-i="g_h">Stüdyodan son işler.</h2></div>
+    <div class="gal rv">
+      <figure><img src="media/tirnak/g1.webp" width="700" height="875" alt="Siyah kalıcı oje" loading="lazy"></figure>
+      <figure><img src="media/tirnak/g2.webp" width="700" height="875" alt="Lila ve süt beyazı oje" loading="lazy"></figure>
+      <figure><img src="media/tirnak/g4.webp" width="700" height="875" alt="Pembe oje sürülürken" loading="lazy"></figure>
+      <figure><img src="media/tirnak/g3.webp" width="700" height="875" alt="Pembe zemin üzerinde nude badem tırnaklar" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:40px">
+  <div class="wrap hyg">
+    <figure class="rv"><img src="media/tirnak/studyo.webp" width="1200" height="900" alt="Stüdyoda manikür uygulaması" loading="lazy"></figure>
+    <div class="rv">
+      <div class="k" data-i="y_k">Hijyen</div>
+      <h2 data-i="y_h">Güzel olanın önce temiz olması gerekir.</h2>
+      <p data-i="y_p" style="color:var(--ink2)">Her müşteri için aynı özen, aynı kurallar.</p>
+      <ul>
+        <li data-i="y1">Metal aletler her kullanımdan sonra otoklavda sterilize edilir.</li>
+        <li data-i="y2">Törpü ve buffer gibi tek kullanımlıklar sizin için yeni açılır.</li>
+        <li data-i="y3">Masa ve lamba her randevu arasında dezenfekte edilir.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="randevu">
+  <div class="wrap book">
+    <div class="rv">
+      <div class="k" data-i="b_k">Randevu</div>
+      <h2 data-i="b_h">Sana uygun saati seç.</h2>
+      <p data-i="b_p">Talebin WhatsApp'tan stüdyoya düşer; saati onaylayıp sana yazarız.</p>
+      <ul class="info">
+        <li id="adr">Bağdat Cd. No: 318, Kat 2, Kadıköy / İstanbul</li>
+        <li data-i="hrs">Salı – Pazar · 10:00 – 20:00</li>
+        <li><a href="tel:+905306284284">0530 628 42 84</a> · <a id="map" href="#" target="_blank" rel="noopener" data-i="map">Haritada aç</a></li>
+      </ul>
+    </div>
+    <form id="form" class="rv" novalidate>
+      <div class="f"><label for="svc" data-i="f_s">Hizmet</label><select id="svc"></select></div>
+      <div class="pick" id="pick"></div>
+      <div class="f"><span data-i="f_d">Gün</span><div class="days" id="days" role="group" aria-label="Gün"></div></div>
+      <div class="f"><span data-i="f_t">Saat</span><div class="times" id="times" role="group" aria-label="Saat"></div></div>
+      <div class="two"><div class="f"><label for="ad" data-i="f_ad">Ad soyad</label><input id="ad" autocomplete="name"></div><div class="f"><label for="tel" data-i="f_tel">Telefon</label><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="05XX XXX XX XX"></div></div>
+      <button class="btn" type="submit"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg><span data-i="send">WhatsApp ile randevu iste</span></button>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer id="ft"><div class="wrap"><span>© <span id="yr">2026</span> <span class="bn">Nude Nail Atelier</span> · <span data-i="ft">Fiyatlar ve fotoğraflar temsilidir; sitenizde kendi stüdyonuz yer alır.</span></span><span>Tasarım &amp; geliştirme: EY Studios</span></div></footer>
+<a class="demo-back" id="demoBack" href="index.html" data-i="back">← EY Studios örnek çalışma</a>
+
+<!-- Satış önizlemesi: ?m=Stüdyo+Adı&c=Semt,+Şehir -->
+<script>
+(function(){
+'use strict';
+var WA='905306284284';
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var q=new URLSearchParams(location.search),M=(q.get('m')||'').trim().slice(0,40),C=(q.get('c')||'').trim().slice(0,60);
+var NAME=M||'Nude Nail Atelier';
+var EN={lg:'Nail studio',n1:'Colour chart',n2:'Services',n3:'Gallery',n4:'Contact',n5:'Book',h_k:'Nail studio',h1a:'Quiet elegance',h1b:'for your hands.',h_p:'Manicure, gel polish, extensions and nail art. Pick your shape and colour on the chart, then book on WhatsApp in one tap.',c1:'Pick my colour',c2:'Prices',w_k:'Colour chart',w_h:'Try it here first.',w_p:'Choose shape, colour and finish; the chart changes instantly. Book with your favourite combination so we know exactly what you want.',t1:'Shape',t2:'Colour',t3:'Finish',t4:'Book with this combination',m_k:'Services',m_h:'With time and price.',g_k:'Gallery',g_h:'Recent work from the studio.',y_k:'Hygiene',y_h:'Beautiful starts with clean.',y_p:'The same care and the same rules for every client.',y1:'Metal tools are sterilised in an autoclave after every use.',y2:'Single-use files and buffers are opened new for you.',y3:'The desk and lamp are disinfected between appointments.',b_k:'Booking',b_h:'Choose a time that suits you.',b_p:'Your request reaches the studio on WhatsApp; we confirm the time and write back.',hrs:'Tuesday – Sunday · 10:00 – 20:00',map:'Open in maps',f_s:'Service',f_d:'Day',f_t:'Time',f_ad:'Full name',f_tel:'Phone',send:'Request on WhatsApp',ft:'Prices and photos are illustrative; your site shows your own studio.',back:'← EY Studios sample work'};
+var SHAPES=[['badem','Badem','Almond'],['oval','Oval','Oval'],['kare','Kare','Square'],['balerin','Balerin','Coffin'],['stiletto','Stiletto','Stiletto']];
+var FINS=[['parlak','Parlak','Gloss'],['mat','Mat','Matte'],['krom','Krom','Chrome'],['french','French','French'],['sim','Simli','Glitter']];
+var COLS=[['#E3C4B0','Nude Bej','Nude Beige'],['#E8B7B5','Pudra','Powder'],['#B76E79','Gül Kurusu','Dusty Rose'],['#A1162B','Kiraz','Cherry'],['#5E1224','Bordo','Burgundy'],['#F06A5A','Mercan','Coral'],['#B9A3D6','Lila','Lilac'],['#A9C6E8','Bebek Mavisi','Baby Blue'],['#A7B89A','Adaçayı','Sage'],['#F4EFE9','Süt Beyazı','Milk White'],['#1C1A1C','Siyah','Black'],['#D9C08F','Şampanya','Champagne']];
+var SVC=[['Manikür','Manicure','Şekillendirme, kütikül ve nemlendirme','Shaping, cuticle care and hydration',40,450],['Kalıcı oje','Gel polish','Üç haftaya kadar dayanıklı renk','Colour that lasts up to three weeks',60,600],['Protez tırnak (jel)','Gel extensions','Uzatma ve size özel şekillendirme','Lengthening and custom shaping',100,1200],['Dolgu','Infill','Protez tırnak bakımı · 3–4 hafta','Extension maintenance · 3–4 weeks',75,800],['Nail art','Nail art','Tırnak başına; desen, taş, krom','Per nail; patterns, stones, chrome',10,60],['Pedikür','Pedicure','Ayak bakımı, şekillendirme ve masaj','Foot care, shaping and massage',50,600],['Kalıcı oje pedikür','Gel pedicure','Pedikür ve kalıcı oje','Pedicure with gel polish',70,750],['Tırnak güçlendirme','Nail strengthening','Kırılan, incelen tırnaklar için bakım','Care for weak and peeling nails',45,500]];
+var lang='tr';try{var L=localStorage.getItem('ey-lang');if(L&&L!=='tr')lang='en'}catch(e){}
+if(M||C)lang='tr';
+var en=function(){return lang==='en'};var nm=function(a,i){return a[en()?i+1:i]};
+var orig={};$$('[data-i]').forEach(function(el,i){el.setAttribute('data-k',i);orig[i]=el.innerHTML});
+function applyLang(){$$('[data-i]').forEach(function(el){var k=el.getAttribute('data-i');el.innerHTML=en()&&EN[k]?EN[k]:orig[el.getAttribute('data-k')]});document.documentElement.lang=lang;$('#langBtn').textContent=en()?'TR':'EN';renderAll()}
+$('#langBtn').addEventListener('click',function(){lang=en()?'tr':'en';try{localStorage.setItem('ey-lang',lang)}catch(e){}applyLang()});
+$$('.bn').forEach(function(e){e.textContent=NAME});
+if(C){$$('.cy').forEach(function(e){e.textContent=C});$('#adr').textContent=C}
+if(M||C){$('#langBtn').style.display='none';document.title=NAME+' · Nail Studio'}
+$('#map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(NAME+' '+(C||'Bağdat Caddesi Kadıköy'));
+$('#yr').textContent=new Date().getFullYear();
+var tl=function(v){return v.toLocaleString('tr-TR')+' ₺'};
+/* ---- Kartela (SVG) ---- */
+var st={shape:'badem',fin:'parlak',col:1,svc:1,day:0,time:''};
+function shapePath(s){var b='L60,96 Q30,116 0,96 Z';
+ if(s==='oval')return 'M0,42 C0,12 14,0 30,0 C46,0 60,12 60,42 '+b;
+ if(s==='kare')return 'M0,10 Q0,2 8,1 L52,1 Q60,2 60,10 '+b;
+ if(s==='balerin')return 'M2,40 L13,4 Q14,1 18,1 L42,1 Q46,1 47,4 L58,40 '+b;
+ if(s==='stiletto')return 'M0,64 C1,34 24,8 30,-10 C36,8 59,34 60,64 '+b;
+ return 'M0,52 C1,22 20,0 30,-2 C40,0 59,22 60,52 '+b}
+function shade(hex,amt){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;var f=function(c){return Math.max(0,Math.min(255,Math.round(amt<0?c*(1+amt):c+(255-c)*amt)))};return '#'+((1<<24)+(f(r)<<16)+(f(g)<<8)+f(b)).toString(16).slice(1)}
+function drawFan(){var c=COLS[st.col][0],p=shapePath(st.shape),f=st.fin;
+ var defs='<defs><filter id="ds" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#5a3a3a" flood-opacity=".22"/></filter>'+
+ '<linearGradient id="base" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="'+shade(c,-.18)+'"/><stop offset=".45" stop-color="'+c+'"/><stop offset="1" stop-color="'+shade(c,-.24)+'"/></linearGradient>'+
+ '<linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+shade(c,.65)+'"/><stop offset=".3" stop-color="'+shade(c,-.15)+'"/><stop offset=".55" stop-color="'+shade(c,.8)+'"/><stop offset=".8" stop-color="'+shade(c,-.3)+'"/><stop offset="1" stop-color="'+shade(c,.4)+'"/></linearGradient>'+
+ '<linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".3" stop-color="#fff" stop-opacity=".75"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>'+
+ '<pattern id="glt" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="#fff" opacity=".9"/><circle cx="5.5" cy="5" r=".6" fill="'+shade(c,.7)+'"/></pattern>'+
+ '<clipPath id="cp"><path d="'+p+'"/></clipPath></defs>';
+ var fill=f==='krom'?'url(#chrome)':f==='french'?'#EED9CF':'url(#base)';
+ var tip=function(){var o='<path d="'+p+'" fill="'+fill+'"/>';
+  if(f==='french')o+='<g clip-path="url(#cp)"><path d="M-10,-20 L70,-20 L70,'+(st.shape==='kare'?20:26)+' Q30,'+(st.shape==='kare'?30:40)+' -10,'+(st.shape==='kare'?20:26)+' Z" fill="'+(st.col===9?'#FFFFFF':c)+'"/></g>';
+  if(f==='sim')o+='<path d="'+p+'" fill="url(#glt)" opacity=".55"/>';
+  if(f!=='mat')o+='<g clip-path="url(#cp)"><rect x="10" y="-20" width="9" height="140" fill="url(#gl)" opacity="'+(f==='krom'?.9:.8)+'"/></g>';
+  else o+='<path d="'+p+'" fill="#fff" opacity=".06"/>';
+  o+='<path d="M4,92 Q30,110 56,92" fill="none" stroke="'+shade(c,-.35)+'" stroke-opacity=".25" stroke-width="2"/>';return o};
+ var T=[-42,-21,0,21,42],sc=1.38,g='';
+ T.forEach(function(t,i){var by=96+130*0;g+='<g style="transform-origin:300px 520px;transform:rotate('+t+'deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)"><rect x="296" y="'+(150+96*sc-6)+'" width="8" height="'+(520-(150+96*sc-6))+'" rx="4" fill="#E6D7CE"/><g transform="translate('+(300-30*sc)+',150) scale('+sc+')" filter="url(#ds)">'+tip()+'</g></g>'});
+ g+='<circle cx="300" cy="520" r="22" fill="#EBDDD5"/><circle cx="300" cy="520" r="9" fill="#CDB7AC"/>';
+ $('#fan').innerHTML=defs+g;
+ $('#lbC').textContent=nm(COLS[st.col],1);$('#lbS').textContent=nm(SHAPES.filter(function(s){return s[0]===st.shape})[0],1)+' · '+nm(FINS.filter(function(s){return s[0]===st.fin})[0],1);renderPick()}
+function seg(id,arr,key){var g=$(id);g.innerHTML='';arr.forEach(function(a){var b=document.createElement('button');b.type='button';b.textContent=nm(a,1);b.setAttribute('aria-pressed',st[key]===a[0]?'true':'false');b.onclick=function(){st[key]=a[0];seg(id,arr,key);drawFan()};g.appendChild(b)})}
+function swatches(){var g=$('#sw');g.innerHTML='';COLS.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.style.background=c[0];b.setAttribute('aria-label',nm(c,1));b.title=nm(c,1);b.setAttribute('aria-pressed',st.col===i?'true':'false');b.onclick=function(){st.col=i;swatches();drawFan()};g.appendChild(b)})}
+$('#useK').addEventListener('click',function(){if(st.svc===0||st.svc===4||st.svc===5)st.svc=1;renderSvc()});
+/* ---- Hizmetler ---- */
+function renderMenu(){var g=$('#menu');g.innerHTML='';SVC.forEach(function(s){var d=document.createElement('div');d.className='mi';d.innerHTML='<div><b></b><small></small></div><i></i><span>'+(s[0]==='Nail art'?(en()?'from ':'')+tl(s[5])+(en()?'':'’den'):tl(s[5]))+'</span>';d.querySelector('b').textContent=nm(s,0);d.querySelector('small').textContent=nm(s,2)+' · '+s[4]+(en()?' min':' dk');g.appendChild(d)})}
+function renderSvc(){var sel=$('#svc');sel.innerHTML='';SVC.forEach(function(s,i){var o=document.createElement('option');o.value=i;o.textContent=nm(s,0)+' · '+tl(s[5]);if(i===st.svc)o.selected=true;sel.appendChild(o)});renderPick()}
+$('#svc').addEventListener('change',function(){st.svc=+this.value;renderPick()});
+function renderPick(){var s=SVC[st.svc],k=s[0]!=='Manikür'&&s[0]!=='Pedikür'&&s[0]!=='Tırnak güçlendirme';$('#pick').innerHTML=k?(en()?'Chosen look: ':'Seçtiğin görünüm: ')+'<b></b>':(en()?'Duration: ':'Süre: ')+'<b></b>';$('#pick b').textContent=k?nm(COLS[st.col],1)+' · '+nm(SHAPES.filter(function(x){return x[0]===st.shape})[0],1)+' · '+nm(FINS.filter(function(x){return x[0]===st.fin})[0],1):s[4]+(en()?' min':' dk')}
+/* ---- Gün & saat (Pazartesi kapalı) ---- */
+var GK=['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'],GE=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],GN=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],MN=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+var days=[],d=new Date();d.setHours(12,0,0,0);while(days.length<6){if(d.getDay()!==1)days.push(new Date(d));d.setDate(d.getDate()+1)}
+function seed(n){var x=Math.sin(n)*1e4;return x-Math.floor(x)}
+function slots(i){var x=days[i],now=new Date(),today=x.toDateString()===now.toDateString(),o=[];for(var h=10;h<20;h++){['00','30'].forEach(function(m){var t=h*60+ +m;o.push([h+':'+m,seed(x.getDate()*31+t)<.38||(today&&t<=now.getHours()*60+now.getMinutes()+30)])})}return o}
+function renderDays(){var g=$('#days');g.innerHTML='';days.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('aria-pressed',st.day===i?'true':'false');b.innerHTML=(x.toDateString()===new Date().toDateString()?(en()?'Today':'Bugün'):(en()?GE:GK)[x.getDay()])+'<b>'+x.getDate()+'</b>';b.onclick=function(){st.day=i;st.time='';renderDays();renderTimes()};g.appendChild(b)})}
+function renderTimes(){var g=$('#times');g.innerHTML='';slots(st.day).forEach(function(s){var b=document.createElement('button');b.type='button';b.className='tm';b.textContent=s[0];b.disabled=s[1];b.setAttribute('aria-pressed',st.time===s[0]?'true':'false');b.onclick=function(){st.time=s[0];renderTimes()};g.appendChild(b)})}
+function badge(){var n=new Date(),open=n.getDay()!==1&&n.getHours()>=10&&n.getHours()<20,free=open&&days[0].toDateString()===n.toDateString()?slots(0).filter(function(x){return !x[1]})[0]:null;
+ if(free){$('#bdT').textContent=en()?'Free slot today':'Bugün boş saat';$('#bdB').textContent=free[0]}else{var f2=null,di=days[0].toDateString()===n.toDateString()?1:0;f2=slots(di).filter(function(x){return !x[1]})[0];$('#bdT').textContent=en()?'First free slot':'İlk boş saat';$('#bdB').textContent=(di===1||days[0].toDateString()!==n.toDateString()?(en()?GE:GN)[days[di].getDay()]+' ':'')+(f2?f2[0]:'')}}
+$('#form').addEventListener('submit',function(e){e.preventDefault();var m=$('#msg'),ad=$('#ad').value.trim(),tel=$('#tel').value.trim();m.className='msg';
+ if(!st.time){m.textContent=en()?'Please pick a time.':'Lütfen bir saat seç.';return}
+ if(ad.length<2){m.textContent=en()?'Please enter your name.':'Lütfen adını yaz.';$('#ad').focus();return}
+ if(tel.replace(/\D/g,'').length<10){m.textContent=en()?'Please enter a valid phone.':'Lütfen geçerli bir telefon yaz.';$('#tel').focus();return}
+ var s=SVC[st.svc],x=days[st.day],look=COLS[st.col][1]+', '+SHAPES.filter(function(a){return a[0]===st.shape})[0][1]+', '+FINS.filter(function(a){return a[0]===st.fin})[0][1];
+ var t='Merhaba '+NAME+',\nrandevu almak istiyorum.\n\nHizmet: '+s[0]+' ('+tl(s[5])+')\nRenk / şekil: '+look+'\nTarih: '+x.getDate()+' '+MN[x.getMonth()]+' '+GN[x.getDay()]+', '+st.time+'\nAd soyad: '+ad+'\nTelefon: '+tel+(en()?'\n(Müşteri dili: İngilizce)':'');
+ m.className='msg ok';m.textContent=en()?'Opening WhatsApp…':'WhatsApp açılıyor…';window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank','noopener')});
+function renderAll(){seg('#shapes',SHAPES,'shape');seg('#fins',FINS,'fin');swatches();drawFan();renderMenu();renderSvc();renderDays();renderTimes();badge()}
+/* görünme */
+var rv=$$('.rv'),red=matchMedia('(prefers-reduced-motion: reduce)').matches;if('IntersectionObserver' in window&&!red){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});rv.forEach(function(x){io.observe(x)})}else rv.forEach(function(x){x.classList.add('on')});
+setTimeout(function(){rv.forEach(function(x){if(x.getBoundingClientRect().top<innerHeight)x.classList.add('on')})},2500);
+var hd=$('#hd');addEventListener('scroll',function(){hd.classList.toggle('sc',scrollY>8)},{passive:true});
+var db=$('#demoBack');if('IntersectionObserver' in window)new IntersectionObserver(function(es){db.classList.toggle('hide',es[0].isIntersecting)}).observe($('#ft'));
+if(en())applyLang();else renderAll();
+})();
+</script>
+</body>
+</html>

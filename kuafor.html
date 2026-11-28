@@ -133,7 +133,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:95;opa
 .eyebrow{font-size:12px;letter-spacing:.26em;text-transform:uppercase;opacity:.78;margin:0 0 24px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
 .eyebrow::before{content:"";width:38px;height:1px;background:var(--tone);transition:background-color .6s}
 .h1{font:400 clamp(60px,13.2vw,210px)/.9 var(--serif);letter-spacing:-.035em;margin:0}
-.h1 .ln{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.06em}
+.h1 .ln{display:block;overflow:hidden;padding:.04em .04em .24em 0;margin-bottom:-.21em}
 .h1 .ln>span{display:block}
 .h1 em{font-style:italic;color:var(--tone-hi);padding-left:.55em;transition:color .6s}
 .js .h1 .ln>span{transform:translateY(105%);transition:transform 1.4s var(--ease)}
@@ -239,10 +239,10 @@ h1,h2,h3{overflow-wrap:break-word}
 .steps p{margin:0;color:rgba(244,238,230,.7);font-size:15px}
 
 /* ---------- Lookbook ---------- */
-.look{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--pad) * -1);padding:0 var(--pad) 10px;scroll-padding-inline:var(--pad);scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.look{display:flex;gap:18px;overflow-x:auto;overscroll-behavior-x:contain;margin:0 calc(var(--pad) * -1);padding:0 var(--pad) 10px;scroll-padding-inline:var(--pad);scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
 .look::-webkit-scrollbar{display:none}
-.look.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
-.lk{flex:0 0 clamp(250px,27vw,420px);scroll-snap-align:start;margin:0}
+.look.drag{cursor:grabbing;user-select:none}
+.lk{flex:0 0 clamp(250px,27vw,420px);margin:0}
 .lk-v{aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:radial-gradient(110% 70% at 75% 15%,var(--glow,transparent),rgba(14,11,10,0) 62%),radial-gradient(90% 60% at 10% 100%,var(--glow2,transparent),rgba(14,11,10,0) 60%),var(--ink);position:relative;transition:transform .7s var(--ease)}
 .lk:hover .lk-v{transform:scale(.975)}
 .lk-v canvas,.lk-v img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
