@@ -19,7 +19,7 @@
 <noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
 <!-- /ey-guard -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Örnek Kafe — Masadan Sipariş</title>
+<title>Köşe Kahve — Masadan Sipariş</title>
 <meta name="description" content="QR kodu okutun, menüden seçin, siparişiniz doğrudan işletmeye ulaşsın. Ödeme kasada.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#1b1410">
@@ -37,13 +37,15 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--tx);font:400 16px/1.5 "Work Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow-x:hidden;overflow-wrap:anywhere;padding-bottom:120px}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1}
 .wrap{max-width:760px;margin:0 auto;padding:0 18px}
-header{padding:26px 0 8px}
+.cover{position:absolute;top:0;left:0;right:0;height:300px;overflow:hidden;z-index:-1}.cover img{width:100%;height:100%;object-fit:cover;opacity:.55}.cover:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,16,.35),var(--bg) 96%)}
+header{padding:26px 0 8px;position:relative}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{font:700 24px/1.1 Fraunces,Georgia,serif;min-width:0}
 .lang{appearance:none;-webkit-appearance:none;background:var(--bg2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23b9a99a' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 11px center;color:var(--tx);border:1px solid var(--line);border-radius:12px;padding:0 28px 0 12px;height:42px;font:600 14px "Work Sans",sans-serif;flex:none}
 .hero{padding:22px 0 6px}
 .hero h1{font-size:clamp(30px,8vw,44px)}
 .hero p{color:var(--mut);margin-top:8px;max-width:38ch}
+.tbl[hidden]{display:none!important}
 .tbl{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:#33261c;border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:600;color:var(--acc2)}
 .how{display:grid;gap:8px;margin:18px 0 4px;padding:0;list-style:none;counter-reset:s}
 .how li{display:flex;gap:12px;align-items:center;color:var(--mut);font-size:15px}
@@ -56,7 +58,8 @@ nav.cats .in::-webkit-scrollbar{display:none}
 section.cat{padding-top:26px;scroll-margin-top:72px}
 section.cat h2{font-size:26px;margin-bottom:12px}
 .item{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px}
-.item .t{min-width:0}.item b{display:block;font-size:17px;font-weight:600}.item small{color:var(--mut);font-size:14px}.item .p{color:var(--acc2);font-weight:600;margin-top:2px}
+.item .th{width:64px;height:64px;border-radius:14px;object-fit:cover;flex:none;margin:-4px 0 -4px -6px}
+.item .t{min-width:0;flex:1}.item b{display:block;font-size:17px;font-weight:600}.item small{color:var(--mut);font-size:14px}.item .p{color:var(--acc2);font-weight:600;margin-top:2px}
 .qty{display:flex;align-items:center;gap:6px;flex:none}
 .qty button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--acc);background:transparent;color:var(--acc);font:600 22px/1 "Work Sans",sans-serif;cursor:pointer;touch-action:manipulation}
 .qty button.add{background:var(--acc);color:var(--ink)}
@@ -89,9 +92,10 @@ footer{padding:30px 0 20px;color:var(--mut);font-size:14px}footer a{color:var(--
 </head>
 <body>
 <a class="demo-back" href="index.html" data-i="back">← EY Studios örnek çalışma</a>
+<div class="cover" aria-hidden="true"><img src="media/masa/kafe.webp" width="1400" height="788" alt="" fetchpriority="high"></div>
 <div class="wrap">
 <header>
-  <div class="top"><div class="brand" id="nm">Örnek Kafe</div>
+  <div class="top"><div class="brand" id="nm">Köşe Kahve</div>
     <select class="lang" id="lang" aria-label="Language"><option value="tr">TR</option><option value="en">EN</option><option value="de">DE</option></select></div>
   <div class="hero">
     <h1 data-i="h1">Masandan sipariş ver</h1>
@@ -131,7 +135,7 @@ en:{h1:'Order from your table',hs:'Pick from the menu and your order reaches us 
 de:{h1:'Bestellen Sie am Tisch',hs:'Wählen Sie aus der Karte, Ihre Bestellung erreicht uns direkt. Bezahlt wird an der Kasse.',w1:'Artikel wählen',w2:'Bestellung senden, WhatsApp öffnet sich',w3:'An der Kasse zahlen, wir bringen es an den Tisch',note:'Karte und Preise sind Beispiele; das Lokal nennt seine eigene Karte und Preise.',by:'Design & Entwicklung:',back:'← EY Studios Beispielarbeit',cart:'Ihre Bestellung',tot:'Summe',pay:'Bezahlt wird an der Kasse.',tn:'Tischnummer',nt:'Hinweis (ohne Eis, nicht scharf...)',er:'Bitte Tischnummer eingeben.',send:'Bestellung per WhatsApp senden',view:'Bestellung ansehen',empty:'Warenkorb leer',tbl:'Tisch'}
 };
 /* [kategori adı tr/en/de, [ürün tr/en/de, açıklama tr/en/de, örnek fiyat]] */
-var M=[
+var M0,M=[
 {c:['Sıcak içecekler','Hot drinks','Heißgetränke'],i:[
  [['Espresso','Espresso','Espresso'],80],[['Latte','Latte','Latte'],120],[['Cappuccino','Cappuccino','Cappuccino'],120],[['Filtre kahve','Filter coffee','Filterkaffee'],90],[['Çay','Tea','Tee'],40]]},
 {c:['Soğuk içecekler','Cold drinks','Kaltgetränke'],i:[
@@ -141,20 +145,21 @@ var M=[
 {c:['Yiyecekler','Food','Speisen'],i:[
  [['Tost','Toastie','Toast'],150],[['Sandviç','Sandwich','Sandwich'],180],[['Makarna','Pasta','Pasta'],220],[['Mevsim salata','Seasonal salad','Saisonsalat'],190]]}
 ];
-var q=new URLSearchParams(location.search),NAME=(q.get('m')||'').trim().slice(0,40)||'Örnek Kafe',TB=(q.get('masa')||'').replace(/[^0-9A-Za-zÇĞİÖŞÜçğıöşü\- ]/g,'').trim().slice(0,6);
+var q=new URLSearchParams(location.search),NAME=(q.get('m')||'').trim().slice(0,40)||'Köşe Kahve',TB=(q.get('masa')||'').replace(/[^0-9A-Za-zÇĞİÖŞÜçğıöşü\- ]/g,'').trim().slice(0,6);
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)},cur='tr',cart={};
 function d(){return T[cur]}
 function tl(n){return n.toLocaleString('tr-TR')+' TL'}
 $('#nm').textContent=NAME;document.title=NAME+' — Masadan Sipariş';$('#cr').textContent='© '+new Date().getFullYear()+' '+NAME;
 if(TB){$('#tn').value=TB;$('#tblLab').style.display='none'}
 function key(ci,ii){return ci+'_'+ii}
-function render(){
+function render(){if(!M0)M0=M;
   var li=cur==='tr'?0:cur==='en'?1:2,h='',cs='';
-  M.forEach(function(c,ci){
+  var ix=0;M.forEach(function(c,ci){
     cs+='<button class="chip" type="button" data-c="'+ci+'">'+c.c[li]+'</button>';
     h+='<section class="cat" id="c'+ci+'"><h2>'+c.c[li]+'</h2>';
     c.i.forEach(function(it,ii){var k=key(ci,ii),n=cart[k]||0;
-      h+='<div class="item"><div class="t"><b>'+it[0][li]+'</b><div class="p">'+tl(it[1])+'</div></div><div class="qty">'+(n?'<button type="button" data-a="-" data-k="'+k+'" aria-label="-">−</button><span>'+n+'</span><button type="button" data-a="+" data-k="'+k+'" aria-label="+">+</button>':'<button class="add" type="button" data-a="+" data-k="'+k+'" aria-label="+">+</button>')+'</div></div>'});
+      var im=(M===M0&&ix<15)?'<img class="th" src="media/masa/u'+ix+'.webp" alt="" width="64" height="64" loading="lazy">':'';ix++;
+      h+='<div class="item">'+im+'<div class="t"><b>'+it[0][li]+'</b><div class="p">'+tl(it[1])+'</div></div><div class="qty">'+(n?'<button type="button" data-a="-" data-k="'+k+'" aria-label="-">−</button><span>'+n+'</span><button type="button" data-a="+" data-k="'+k+'" aria-label="+">+</button>':'<button class="add" type="button" data-a="+" data-k="'+k+'" aria-label="+">+</button>')+'</div></div>'});
     h+='</section>'});
   $('#menu').innerHTML=h;$('#cats').innerHTML=cs;bar();
 }

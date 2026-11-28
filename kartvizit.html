@@ -387,11 +387,11 @@ footer .cr:hover{color:var(--acc)}
       <span class="loc"><svg class="ico"><use href="#i-pin"/></svg><span id="city">Efeler, Aydın</span></span>
       <span class="pill" id="pillTop"><i></i><span>Kontrol ediliyor</span></span>
     </div>
-    <p class="bio up" style="--i:4" id="bio">Satılık–kiralık konut, arsa ve ticari gayrimenkulde 12 yıllık deneyim. Doğru fiyat, şeffaf süreç; tapuya kadar yanınızdayım.</p>
+    <p class="bio up" style="--i:4" id="bio">Satılık–kiralık konut, arsa ve ticari gayrimenkulde danışmanlık. Net bilgi, şeffaf süreç; tapuya kadar yanınızdayım.</p>
     <div class="stats up" style="--i:5" id="stats">
-      <div><b>12<em>+</em></b><span>yıl deneyim</span></div>
-      <div><b>340<em>+</em></b><span>mutlu müşteri</span></div>
-      <div><b>4,9<em>★</em></b><span>Google puanı</span></div>
+      <div><b>QR</b><span>okut, aç</span></div>
+      <div><b>NFC</b><span>dokun, aç</span></div>
+      <div><b>vCard</b><span>rehbere ekle</span></div>
     </div>
   </section>
 
@@ -428,16 +428,16 @@ footer .cr:hover{color:var(--acc)}
   </section>
 
   <section class="sec" aria-labelledby="h-rev">
-    <div class="sh"><h2 id="h-rev">Yorumlar</h2></div>
+    <div class="sh"><h2 id="h-rev">Google yorumu</h2></div>
     <div class="group">
-      <div class="rev" id="rev">
+      <div class="rev" id="rev" hidden>
         <div class="sc" aria-hidden="true">4,9</div>
         <div>
           <div class="stars" role="img" aria-label="5 üzerinden 4,9 yıldız"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
           <p>128 Google yorumu · örnek</p>
         </div>
       </div>
-      <p class="revnote" id="revNote" hidden>Memnun kaldıysanız Google’da birkaç kelime bırakmanız çok değerli; bir dakikanızı alır.</p>
+      <p class="revnote" id="revNote">Memnun kaldıysanız Google’da birkaç kelime bırakmanız çok değerli; bir dakikanızı alır.</p>
       <div class="pad"><a class="btn btn-g tap" id="revBtn" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pen"/></svg>Google'da yorum yap</a></div>
     </div>
   </section>
@@ -448,9 +448,9 @@ footer .cr:hover{color:var(--acc)}
   </section>
 
   <section class="sec" aria-labelledby="h-iban">
-    <div class="sh"><h2 id="h-iban">Ödeme bilgileri</h2><small>Örnek IBAN</small></div>
+    <div class="sh"><h2 id="h-iban">Ödeme bilgileri</h2><small>IBAN</small></div>
     <div class="bank">
-      <div class="top"><span class="chip" aria-hidden="true"></span><span class="bk" id="bankNm">Örnek Bank</span></div>
+      <div class="top"><span class="chip" aria-hidden="true"></span><span class="bk" id="bankNm">Vadesiz TL Hesabı</span></div>
       <span class="lbl">IBAN</span>
       <div class="ib" id="ibanTx">TR00 0000 0000 0000 0000 0000 00</div>
       <div class="foot">
@@ -709,10 +709,10 @@ var QRGen = (function () {
     email: 'ornek@eystudios.com.tr',
     web: 'eystudios.com.tr',
     photo: '',                      /* isteğe bağlı: 'onizleme/foto.jpg' — boşsa baş harfler */
-    bio: 'Satılık–kiralık konut, arsa ve ticari gayrimenkulde 12 yıllık deneyim. Doğru fiyat, şeffaf süreç; tapuya kadar yanınızdayım.',
+    bio: 'Satılık–kiralık konut, arsa ve ticari gayrimenkulde danışmanlık. Net bilgi, şeffaf süreç; tapuya kadar yanınızdayım.',
     social: { ig: 'https://www.instagram.com/eystudios.tr/', li: '', tt: '', web: 'https://eystudios.com.tr' },  /* boş olan gizlenir */
     review: '',                     /* Google "yorum yaz" linki (search.google.com/local/writereview?placeid=…); boşsa Haritalar araması */
-    bank: 'Örnek Bank',
+    bank: 'Vadesiz TL Hesabı',
     iban: 'TR00 0000 0000 0000 0000 0000 00',
     /* JS getDay sırası: 0 Pazar … 6 Cumartesi. null = kapalı. Saatler Türkiye saatine göre. */
     hours: [null, ['09:00', '19:00'], ['09:00', '19:00'], ['09:00', '19:00'], ['09:00', '19:00'], ['09:00', '19:00'], ['10:00', '16:00']],

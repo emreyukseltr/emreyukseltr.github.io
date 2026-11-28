@@ -68,16 +68,23 @@ h2.disp{font-size:clamp(30px,6.4vw,58px);margin:12px 0 14px}
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:110px 0 60px;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 75% 55%,rgba(229,38,44,.22),transparent 70%),radial-gradient(50% 40% at 20% 10%,rgba(255,255,255,.06),transparent 70%)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;width:100%}
-.hero h1{font-size:clamp(40px,8.6vw,92px);margin:16px 0 18px}
+.hero h1{font-size:clamp(40px,6vw,84px);margin:16px 0 18px}
 .hero h1 em{font-style:normal;color:var(--red)}
 .hero p.lead{font-size:clamp(16px,2.2vw,19px)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;color:var(--mute);font-size:14px}
 .hero-meta b{color:var(--tx)}
-.car-stage{position:relative;aspect-ratio:16/9}
-.car-stage svg{width:100%;height:100%;overflow:visible}
+.car-stage{position:relative;aspect-ratio:4/3.6}
+.car-ph{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(229,38,44,.35)}
+.car-ph img{width:100%;height:100%;object-fit:cover}
+.car-ph .shine{position:absolute;top:-20%;bottom:-20%;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg)}
+.car-tag{position:absolute;left:-14px;bottom:-18px;background:#fff;color:#0A0C0F;border-radius:14px;padding:12px 16px;font-size:13px;line-height:1.3;box-shadow:0 18px 40px -16px rgba(0,0,0,.6)}
+.car-tag b{display:block;font:800 16px/1.1 var(--disp)}
+.ba .side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .floor{position:absolute;left:6%;right:6%;bottom:6%;height:14%;background:radial-gradient(50% 50% at 50% 50%,rgba(229,38,44,.45),transparent 70%);filter:blur(10px)}
 .shine{animation:sweep 4.5s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes sw2{0%{left:-40%}55%,100%{left:130%}}
+.car-ph .shine{animation-name:sw2}
 @keyframes sweep{0%{transform:translateX(-260px)}55%,100%{transform:translateX(760px)}}
 .paused .shine{animation-play-state:paused}
 
@@ -189,7 +196,8 @@ footer{border-top:1px solid var(--line);padding:70px 0 calc(34px + env(safe-area
 
 @media (max-width:960px){
   .hero .wrap{grid-template-columns:1fr}
-  .car-stage{order:-1;max-width:560px;width:100%;margin:0 auto -10px}
+  .car-stage{order:-1;max-width:560px;width:100%;margin:0 auto 18px;aspect-ratio:16/10}
+  .car-tag{left:10px;bottom:-16px}
   .hero{min-height:auto;padding-top:96px}
   .calc{grid-template-columns:minmax(0,1fr)}
   .sum{position:static}
@@ -239,23 +247,9 @@ footer{border-top:1px solid var(--line);padding:70px 0 calc(34px + env(safe-area
       </div>
       <div class="hero-meta"><span><b>2 yıl</b> garantili kaplama</span><span><b>Randevulu</b> çalışma</span><span><b>Ücretsiz</b> boya ölçümü</span></div>
     </div>
-    <div class="car-stage" aria-hidden="true">
-      <div class="floor"></div>
-      <svg viewBox="0 0 520 260">
-        <defs>
-          <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0444A"/><stop offset=".55" stop-color="#B5151B"/><stop offset="1" stop-color="#5E0A0D"/></linearGradient>
-          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5D6B7A"/><stop offset="1" stop-color="#151A20"/></linearGradient>
-          <linearGradient id="sh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-          <clipPath id="carClip"><path d="M30 178c0-22 10-34 34-40l64-14c22-26 52-48 104-50h76c40 0 70 20 98 46l52 8c28 4 36 18 36 40v14c0 8-6 12-14 12H44c-8 0-14-6-14-14z"/></clipPath>
-        </defs>
-        <path d="M30 178c0-22 10-34 34-40l64-14c22-26 52-48 104-50h76c40 0 70 20 98 46l52 8c28 4 36 18 36 40v14c0 8-6 12-14 12H44c-8 0-14-6-14-14z" fill="url(#body)"/>
-        <path d="M150 122c22-24 48-38 84-40h40v42zM288 82h22c32 0 56 16 78 42H288z" fill="url(#glass)"/>
-        <path d="M60 150h400" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
-        <g clip-path="url(#carClip)"><rect class="shine" x="0" y="40" width="120" height="200" fill="url(#sh)" transform="skewX(-20)"/></g>
-        <circle cx="132" cy="206" r="36" fill="#0B0D10"/><circle cx="132" cy="206" r="22" fill="#2A3038" stroke="#8D97A3" stroke-width="3"/>
-        <circle cx="398" cy="206" r="36" fill="#0B0D10"/><circle cx="398" cy="206" r="22" fill="#2A3038" stroke="#8D97A3" stroke-width="3"/>
-        <path d="M470 160h20" stroke="#FFE6A8" stroke-width="6" stroke-linecap="round"/>
-      </svg>
+    <div class="car-stage">
+      <div class="car-ph"><img src="media/oto/hero.webp" width="1400" height="933" alt="Köpüklü yıkama sırasında siyah bir otomobil" fetchpriority="high"><i class="shine" aria-hidden="true"></i></div>
+      <div class="car-tag" aria-hidden="true"><b>Seramik kaplama</b><span>Boya ölçümü ücretsiz</span></div>
     </div>
   </div>
 </section>
@@ -309,12 +303,11 @@ footer{border-top:1px solid var(--line);padding:70px 0 calc(34px + env(safe-area
     <h2 class="disp rv">Öncesi / sonrası</h2>
     <p class="lead rv">Çizgiyi kaydırın: hare, çizik ve matlık gider; boya derin bir parlaklık kazanır.</p>
     <div class="ba rv" id="ba">
-      <div class="side before"><svg viewBox="0 0 520 260" aria-hidden="true"><use href="#carSide" fill="#6E3236"/><path d="M90 150l40-20M150 160l60-24M300 140l50 18M380 150l30-14M210 176l90-10" stroke="#C9B9B0" stroke-opacity=".5" stroke-width="1.4"/><use href="#carSide" fill="#9a8f78" opacity=".22"/></svg><span class="lbl">Öncesi</span></div>
-      <div class="side after"><svg viewBox="0 0 520 260" aria-hidden="true"><use href="#carSide" fill="url(#body)"/><path d="M80 140c80-30 220-36 360-6" stroke="#fff" stroke-opacity=".55" stroke-width="5" fill="none" stroke-linecap="round"/></svg><span class="lbl">Sonrası</span></div>
+      <div class="side before"><img src="media/oto/once.webp" width="1600" height="800" alt="Yıkama öncesi: tozlu ve mat boya" loading="lazy"><span class="lbl">Öncesi</span></div>
+      <div class="side after"><img src="media/oto/sonra.webp" width="1600" height="800" alt="Detaylı bakım sonrası: parlak boya" loading="lazy"><span class="lbl">Sonrası</span></div>
       <div class="bar"></div>
       <input type="range" min="0" max="100" value="50" aria-label="Öncesi ve sonrası karşılaştırma">
     </div>
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="carSide"><path d="M30 178c0-22 10-34 34-40l64-14c22-26 52-48 104-50h76c40 0 70 20 98 46l52 8c28 4 36 18 36 40v14c0 8-6 12-14 12H44c-8 0-14-6-14-14z"/><path d="M150 122c22-24 48-38 84-40h40v42zM288 82h22c32 0 56 16 78 42H288z" fill="#1A2027"/><circle cx="132" cy="206" r="36" fill="#0B0D10"/><circle cx="398" cy="206" r="36" fill="#0B0D10"/><circle cx="132" cy="206" r="22" fill="#2A3038"/><circle cx="398" cy="206" r="22" fill="#2A3038"/></g></defs></svg>
   </div>
 </section>
 
@@ -364,7 +357,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 calc(34px + env(safe-area
     <div class="visit">
       <div class="card rv">
         <h3 style="margin-bottom:10px">Adres</h3>
-        <p data-o="address">Örnek Mah. Sanayi Cd. No: 12, Kadıköy / İstanbul</p>
+        <p data-o="address">Fikirtepe Mah. Dumlupınar Cd. No: 12, Kadıköy / İstanbul</p>
         <div class="vbtns">
           <a class="btn btn-red" id="waBtn" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp'tan yaz</a>
           <a class="btn btn-ghost" id="mapBtn" href="#" target="_blank" rel="noopener">Yol tarifi al</a>
@@ -402,7 +395,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 calc(34px + env(safe-area
   var BIZ = {
     name: 'Nova Detailing',
     area: 'Kadıköy, İstanbul',
-    address: 'Örnek Mah. Sanayi Cd. No: 12, Kadıköy / İstanbul',
+    address: 'Fikirtepe Mah. Dumlupınar Cd. No: 12, Kadıköy / İstanbul',
     wa: '905306284284',
     /* JS getDay sırası: 0 Pazar … 6 Cumartesi. null = kapalı */
     hours: [null, [9, 19], [9, 19], [9, 19], [9, 19], [9, 19], [9, 17]]

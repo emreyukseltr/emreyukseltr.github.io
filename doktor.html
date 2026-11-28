@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 <!-- ey-guard: eski tarayıcı ve bağlantı dalgalanması koruması -->
 <script>
 (function(){
@@ -18,784 +18,463 @@
 </script>
 <noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
 <!-- /ey-guard -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Op. Dr. Mehmet Demir | Lüks Klinik</title>
-    <meta name="description" content="Laparoskopik cerrahi ve estetik çözümlerinde uluslararası standartlar.">
-    <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#030712">
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    
-    <!-- Lenis Smooth Scroll -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
-
-    <style>
-        :root {
-            --bg-color: #030712;
-            --surface: #0a101d;
-            --gold: #cca565;
-            --gold-light: #e6ca94;
-            --white: #f8f9fa;
-            --text-gray: #9ca3af;
-            --font-head: 'Playfair Display', serif;
-            --font-body: 'Outfit', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        html.lenis { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
-
-        body { 
-            font-family: var(--font-body); 
-            background-color: var(--bg-color); 
-            color: var(--white); 
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* --- SİNEMATİK NOISE DOKUSU --- */
-        .noise-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; z-index: 999998; opacity: 0.035;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        /* --- ÖZEL İMLEÇ (CURSOR) --- */
-        .cursor-dot, .cursor-outline {
-            position: fixed; top: 0; left: 0;
-            transform: translate(-50%, -50%); border-radius: 50%;
-            z-index: 9999999; pointer-events: none;
-        }
-        .cursor-dot { width: 6px; height: 6px; background-color: var(--gold); }
-        .cursor-outline {
-            width: 44px; height: 44px; border: 1px solid rgba(204, 165, 101, 0.45);
-            transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease;
-        }
-        body.hovering .cursor-outline {
-            width: 75px; height: 75px; background-color: rgba(204, 165, 101, 0.1);
-            border-color: rgba(204, 165, 101, 0.8); backdrop-filter: blur(2px);
-        }
-        .cursor-dot, .cursor-outline { opacity: 0; }
-        body.has-cursor .cursor-dot, body.has-cursor .cursor-outline { opacity: 1; }
-        body.has-cursor, body.has-cursor * { cursor: none !important; }
-        body.has-cursor input, body.has-cursor textarea { cursor: text !important; }
-        @media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-outline { display: none; } }
-
-        /* --- SİNEMATİK PRELOADER --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: #020408; z-index: 999999;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-        #preloader.hide { transform: translateY(-100%); }
-        .counter { font-family: var(--font-head); font-size: 6.5rem; font-weight: 500; color: var(--gold); line-height: 1; }
-        .loading-text { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 6px; color: var(--text-gray); margin-top: 15px; }
-        .loading-bar-wrap { width: 180px; height: 1px; background: rgba(255,255,255,0.1); margin-top: 35px; position: relative; }
-        .loading-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--gold); transition: width 0.08s linear; }
-
-        /* --- NAVİGASYON --- */
-        nav {
-            position: fixed; top: 0; left: 0; width: 100%;
-            background-color: transparent; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 30px 5%; transition: all 0.5s ease;
-        }
-        nav.scrolled {
-            background-color: rgba(3, 7, 18, 0.94);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            padding: 18px 5%; border-bottom: 1px solid rgba(204,165,101,0.18);
-        }
-        .logo { font-family: var(--font-head); font-size: 1.75rem; font-weight: 500; color: var(--white); text-decoration: none; }
-        .logo span { color: var(--gold); font-style: italic; }
-        .nav-btn {
-            background-color: transparent; color: var(--white);
-            padding: 11px 28px; border: 1px solid rgba(255,255,255,0.22); border-radius: 99px;
-            font-size: 0.82rem; font-weight: 500; text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
-            transition: all 0.3s ease;
-        }
-        .nav-btn:hover { background-color: var(--white); color: var(--bg-color); }
-
-        /* --- HERO SECTION (SOYUT LÜKS KLİNİK IŞIĞI) --- */
-        .hero {
-            height: 100vh; width: 100%; position: relative; overflow: hidden;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            background: radial-gradient(circle at 50% 25%, #0f1d36 0%, #030712 75%);
-        }
-        /* Soyut steril ışık huzmesi */
-        .hero::before {
-            content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
-            width: 70vw; height: 70vw; max-width: 900px; max-height: 900px;
-            background: radial-gradient(circle, rgba(204,165,101,0.12) 0%, rgba(15,29,54,0.05) 50%, transparent 70%);
-            pointer-events: none; z-index: 1; filter: blur(40px);
-        }
-        /* İnce mimari grid dokusu */
-        .hero::after {
-            content: ''; position: absolute; inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none; z-index: 1;
-        }
-        .hero-content { position: relative; z-index: 3; max-width: 1100px; padding: 0 20px; }
-        
-        .title-wrap { overflow: hidden; display: block; line-height: 1.15; }
-        .title-line { 
-            font-family: var(--font-head); font-size: clamp(2.8rem, 6.5vw, 5.2rem); color: var(--white); font-weight: 400; 
-            display: block; transform: translateY(100%); transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .title-line.gold { 
-            color: var(--gold); font-style: italic; font-size: clamp(3.2rem, 7.5vw, 6rem); margin-top: 10px;
-        }
-        body.loaded .title-line { transform: translateY(0); }
-        
-        .hero p {
-            color: var(--text-gray); font-size: 1.15rem; font-weight: 300; margin-top: 35px; margin-bottom: 45px;
-            max-width: 650px; margin-left: auto; margin-right: auto;
-            opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; transition-delay: 0.8s;
-        }
-        body.loaded .hero p { opacity: 1; transform: translateY(0); }
-
-        /* --- TRUST BAR --- */
-        .trust-bar {
-            max-width: 1100px; margin: -60px auto 100px; position: relative; z-index: 10;
-            background: var(--surface); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;
-            display: flex; justify-content: space-around; padding: 45px 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-        }
-        .stat { text-align: center; }
-        .stat-num { font-family: var(--font-head); font-size: 3rem; color: var(--gold); font-weight: 500; line-height: 1; margin-bottom: 10px; }
-        .stat-label { color: var(--text-gray); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; }
-
-        /* --- HAKKINDA BÖLÜMÜ --- */
-        .about { padding: 100px 5% 140px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
-        .about-img-wrap { position: relative; border-radius: 6px; overflow: hidden; height: 600px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); }
-        .about-img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80') center/cover;
-            filter: brightness(0.85) contrast(1.05);
-        }
-        .about-content h2 { font-family: var(--font-head); font-size: clamp(2.5rem, 4.5vw, 3.8rem); color: var(--white); line-height: 1.15; margin-bottom: 30px; font-weight: 400; }
-        .about-content p { font-size: 1.12rem; color: var(--text-gray); margin-bottom: 22px; line-height: 1.8; font-weight: 300; }
-
-        /* --- MARQUEE --- */
-        .marquee-section { padding: 60px 0; overflow: hidden; white-space: nowrap; border-top: 1px solid rgba(204,165,101,0.15); border-bottom: 1px solid rgba(204,165,101,0.15); background: #02040a; }
-        .marquee-content { display: inline-block; font-family: var(--font-head); font-size: 2.8rem; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); animation: scrollText 30s linear infinite; }
-        .marquee-content span { margin: 0 45px; color: var(--gold); -webkit-text-stroke: 0; font-style: italic; }
-        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* --- HİZMETLER --- */
-        .services { padding: 130px 5% 150px; max-width: 1300px; margin: 0 auto; }
-        .section-title { text-align: center; font-family: var(--font-head); font-size: 3.2rem; color: var(--white); margin-bottom: 80px; font-weight: 400; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 35px; }
-        .card { background: var(--surface); padding: 60px 45px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.04); transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); text-align: left; }
-        .card:hover { transform: translateY(-12px); border-color: rgba(204, 165, 101, 0.35); box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-        .card-icon { font-family: var(--font-head); font-size: 3rem; color: var(--gold); font-style: italic; margin-bottom: 25px; line-height: 1; }
-        .card h3 { font-family: var(--font-head); font-size: 1.75rem; color: var(--white); margin-bottom: 18px; font-weight: 400; }
-        .card p { color: var(--text-gray); font-size: 1.05rem; font-weight: 300; line-height: 1.75; }
-
-        /* --- RANDEVU FORMU --- */
-        .booking-section { background-color: #020409; padding: 150px 5%; display: flex; justify-content: center; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
-        .booking-card { background: var(--surface); padding: 85px 75px; width: 100%; max-width: 760px; border-radius: 6px; border: 1px solid rgba(204,165,101,0.2); position: relative; }
-        .booking-card h2 { font-family: var(--font-head); font-size: 2.8rem; color: var(--white); margin-bottom: 15px; text-align: center; font-weight: 400; }
-        .booking-card > p { text-align: center; color: var(--text-gray); margin-bottom: 50px; font-size: 1.05rem; font-weight: 300; }
-        .field { margin-bottom: 35px; }
-        .field label { display: block; font-size: 0.8rem; font-weight: 500; color: var(--text-gray); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        .field input, .field textarea { width: 100%; border: none; border-bottom: 1px solid rgba(255,255,255,0.12); background: transparent; padding: 14px 0; font-family: var(--font-body); font-size: 1.15rem; color: var(--white); outline: none; transition: border-color 0.3s; }
-        .field input:focus, .field textarea:focus { border-bottom-color: var(--gold); }
-        .field textarea { resize: vertical; min-height: 100px; }
-        .submit-btn { width: 100%; background-color: var(--gold); color: #050b14; border: none; padding: 22px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; transition: all 0.3s ease; margin-top: 15px; border-radius: 4px; }
-        .submit-btn:hover { background-color: var(--white); transform: translateY(-2px); }
-        .status-msg { margin-top: 20px; text-align: center; font-size: 1rem; }
-
-        /* --- FOOTER --- */
-        footer { padding: 130px 5% 50px; text-align: center; background: var(--bg-color); overflow: hidden; }
-        .footer-huge-text { font-family: var(--font-head); font-size: clamp(1.8rem, 8vw, 9.5rem); font-weight: 600; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); white-space: nowrap; margin-bottom: 50px; transition: all 0.5s ease; }
-        .footer-huge-text:hover { color: var(--gold); -webkit-text-stroke: 0; }
-        .footer-details { color: var(--text-gray); font-size: 0.95rem; display: flex; flex-direction: column; gap: 10px; font-weight: 300; }
-
-        /* EY Studios Butonu */
-        .ey-demo-back { position: fixed; bottom: 30px; left: 30px; z-index: 9999; background-color: rgba(255,255,255,0.04); backdrop-filter: blur(10px); color: var(--white); font-family: var(--font-body); font-size: 0.85rem; padding: 12px 24px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.12); text-decoration: none; transition: all 0.3s ease; }
-        .ey-demo-back:hover { background-color: var(--white); color: #000; }
-
-        /* Scroll Reveal */
-        .reveal { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 900px) {
-            .trust-bar { flex-direction: column; gap: 35px; margin: -40px 5% 80px; }
-            .about { grid-template-columns: 1fr; gap: 50px; padding: 80px 5%; }
-            .about-img-wrap { height: 420px; }
-            .booking-card { padding: 50px 30px; }
-            nav { padding: 20px 5%; }
-        }
-        @media (max-width: 600px) {
-            nav, nav.scrolled { padding: 14px 5%; gap: 12px; }
-            .logo { font-size: 1.3rem; letter-spacing: .5px; white-space: nowrap; }
-            .nav-btn { padding: 10px 14px; font-size: .68rem; letter-spacing: 1.5px; white-space: nowrap; }
-            .services, .booking-section { padding: 90px 5%; }
-            .section-title { font-size: 2.3rem; margin-bottom: 50px; }
-            .card { padding: 44px 28px; }
-            .booking-card { padding: 44px 22px; }
-            .booking-card h2 { font-size: 2.1rem; }
-            .stat-num { font-size: 2.8rem; }
-            .marquee-content { font-size: 2rem; }
-            footer { padding: 90px 5% 100px; }
-            .ey-demo-back { left: 12px; bottom: 12px; padding: 10px 14px; font-size: .68rem; letter-spacing: 1px; }
-            .submit-btn { padding: 18px 12px; letter-spacing: 2px; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            #preloader { display: none; }
-            .reveal, .title-line, .hero p { opacity: 1 !important; transform: none !important; transition: none !important; }
-            .marquee-content { animation: none; }
-            .card:hover, .stat:hover { transform: none; }
-        }
-    </style>
 <script>
-/* Sayfa yenilenince her zaman en baştan açılsın: tarayıcının kaydırma konumunu hatırlamasını kapat */
 try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
 addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,0);h.style.scrollBehavior=b});
 </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uzm. Dr. Selim Arslan | İç Hastalıkları · Aydın</title>
+<meta name="description" content="İç hastalıkları (dahiliye) muayenesi, check-up, tansiyon, diyabet ve tiroid takibi. Efeler, Aydın. WhatsApp ile randevu.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F6F4EF">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="media/doktor/hekim.webp" fetchpriority="high">
+<style>
+:root{--bg:#F6F4EF;--paper:#FFFFFF;--ink:#14232B;--ink2:#4A5A62;--mute:#7C8A90;--line:#E3DFD6;--acc:#1D6B63;--acc2:#E7F0EE;--warm:#C9A77A;--r:22px;--serif:'Newsreader',Georgia,serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.08;overflow-wrap:break-word;hyphens:auto}
+p,li,span,button,label{overflow-wrap:break-word}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.eyebrow{font:600 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:600 15px/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent}
+.btn-p{background:var(--ink);color:#fff;box-shadow:0 10px 30px -12px rgba(20,35,43,.55)}
+.btn-p:hover{transform:translateY(-1px);background:#0c171d}
+.btn-g{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn-g:hover{border-color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none}
+/* header */
+.hd{position:sticky;top:0;z-index:40;background:rgba(246,244,239,.88);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.hd.sc{border-color:var(--line)}
+.hd .wrap{display:flex;align-items:center;gap:16px;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.mono{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:500 15px/1 var(--serif);letter-spacing:.04em;flex:none}
+.logo b{display:block;font:500 17px/1.15 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo small{display:block;font:500 11.5px/1.3 var(--sans);color:var(--mute);letter-spacing:.02em}
+.logo>span{min-width:0}
+.nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+.nav a.l{font-size:14.5px;color:var(--ink2);text-decoration:none}
+.nav a.l:hover{color:var(--ink)}
+.nav .btn{min-height:42px;padding:0 18px;font-size:14px}
+.lang{border:1px solid var(--line);background:transparent;border-radius:999px;font:600 12px/1 var(--sans);padding:9px 11px;cursor:pointer;color:var(--ink2);letter-spacing:.06em}
+@media(max-width:900px){.nav a.l{display:none}.nav{gap:10px}}
+@media(max-width:520px){.logo b{font-size:15.5px}.lang{padding:8px 9px}.chip.c2{display:none}}
+@media(max-width:400px){.logo small{display:none}.nav .btn{padding:0 14px}.hd .wrap{gap:10px}.mono{width:36px;height:36px}}
+/* hero */
+.hero{padding:48px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero h1{font-size:clamp(40px,6.2vw,76px);margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.hero p.lead{font-size:clamp(17px,1.6vw,19px);color:var(--ink2);max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-size:14px;color:var(--ink2)}
+.status i{width:9px;height:9px;border-radius:50%;background:#2E9D6A;box-shadow:0 0 0 4px rgba(46,157,106,.16);flex:none}
+.status.off i{background:#C0794A;box-shadow:0 0 0 4px rgba(192,121,74,.16)}
+.ph{position:relative}
+.ph .fr{border-radius:200px 200px var(--r) var(--r);overflow:hidden;aspect-ratio:4/5;background:#e6e3dc;box-shadow:0 40px 80px -40px rgba(20,35,43,.45)}
+.ph .fr img{width:100%;height:100%;object-fit:cover;animation:zoom 1.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes zoom{from{transform:scale(1.08);opacity:.4}to{transform:none;opacity:1}}
+.chip{position:absolute;background:var(--paper);border-radius:18px;padding:14px 18px;box-shadow:0 20px 50px -20px rgba(20,35,43,.35);font-size:13.5px;line-height:1.35;color:var(--ink2);max-width:230px}
+.chip b{display:block;font:500 22px/1.1 var(--serif);color:var(--ink);margin-bottom:2px}
+.chip.c1{left:-28px;bottom:56px}.chip.c2{right:-18px;top:64px}
+@media(max-width:900px){.hero{padding:24px 0 56px}.hero .wrap{grid-template-columns:1fr;gap:36px}.ph{max-width:440px;width:100%;margin-inline:auto}.chip.c1{left:-8px;bottom:28px}.chip.c2{right:-8px;top:36px}}
+@media(max-width:380px){.chip{max-width:180px;padding:12px 14px}.chip b{font-size:19px}}
+/* sections */
+section{scroll-margin-top:80px}
+.sec{padding:96px 0}
+.sec-h{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(34px,4.6vw,56px);max-width:15em;margin-top:14px}
+.sec-h p{color:var(--ink2);max-width:28em}
+@media(max-width:700px){.sec{padding:68px 0}.sec-h{margin-bottom:32px}}
+.facts{border-block:1px solid var(--line);background:var(--paper)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.facts div{padding:28px 22px;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0}
+.facts b{display:block;font:500 26px/1.1 var(--serif)}
+.facts span{font-size:14px;color:var(--mute)}
+@media(max-width:800px){.facts .wrap{grid-template-columns:1fr 1fr}.facts div:nth-child(3){border-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}.facts div{padding:22px 16px}}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 32px;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(20,35,43,.35)}
+.card .ic{width:46px;height:46px;border-radius:14px;background:var(--acc2);color:var(--acc);display:grid;place-items:center;margin-bottom:22px}
+.card .ic svg{width:24px;height:24px}
+.card h3{font-size:25px;margin-bottom:10px}
+.card p{color:var(--ink2);font-size:15.5px}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.card{padding:26px 22px}}
+/* planner */
+.plan{background:var(--ink);color:#EAF0EF;border-radius:32px;padding:56px;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;position:relative;overflow:hidden}
+.plan:before{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgba(53,160,146,.35),transparent 65%);pointer-events:none}
+.plan h2{font-size:clamp(34px,4.4vw,52px);color:#fff;margin:14px 0 18px}
+.plan .eyebrow{color:#8FD3C7}
+.plan p{color:#B7C6C6}
+.seg{margin-top:26px}
+.seg>span{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8FA3A6;margin-bottom:10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:46px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#EAF0EF;font:500 15px/1 var(--sans);cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.opt[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.res{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:28px;position:relative;z-index:1}
+.res-top{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.ring{width:74px;height:74px;flex:none;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:6}
+.ring .bg{stroke:rgba(255,255,255,.1)}
+.ring .fg{stroke:#8FD3C7;stroke-linecap:round;transition:stroke-dashoffset .8s cubic-bezier(.2,.7,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font:500 26px/1 var(--serif);color:#fff}
+.res-top h3{font-size:24px;color:#fff}
+.res-top small{color:#8FA3A6;font-size:13.5px}
+.tests{list-style:none;display:grid;gap:8px}
+.tests li{display:flex;gap:14px;align-items:flex-start;padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.05);font-size:15px;color:#DDE6E5;animation:pop .45s cubic-bezier(.2,.7,.2,1) both}
+.tests li i{width:22px;height:22px;flex:none;border-radius:50%;background:#8FD3C7;color:var(--ink);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700;margin-top:1px}
+.tests li small{display:block;color:#8FA3A6;font-size:13px;margin-top:2px}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.note{font-size:13px;color:#8FA3A6;margin-top:16px}
+.plan .btn{margin-top:20px;background:#fff;color:var(--ink);width:100%}
+@media(max-width:900px){.plan{grid-template-columns:1fr;padding:36px 22px;gap:30px;border-radius:26px}.res{padding:20px 16px}}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{border-top:1px solid var(--ink);padding-top:22px}
+.step:before{counter-increment:s;content:"0" counter(s);font:500 15px/1 var(--sans);color:var(--acc);letter-spacing:.06em}
+.step h3{font-size:24px;margin:14px 0 8px}
+.step p{font-size:15px;color:var(--ink2)}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr;gap:30px 18px}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about .img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:#e6e3dc}
+.about .img img{width:100%;height:100%;object-fit:cover}
+.about h2{font-size:clamp(32px,4vw,48px);margin:14px 0 20px}
+.about p{color:var(--ink2);margin-bottom:14px}
+.cv{list-style:none;margin-top:22px;border-top:1px solid var(--line)}
+.cv li{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.cv li b{flex:none;width:92px;font-weight:600;color:var(--acc)}
+@media(max-width:900px){.about{grid-template-columns:1fr;gap:32px}}
+/* faq */
+.faq{max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font:400 clamp(20px,2.2vw,24px)/1.3 var(--serif)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font:300 28px/1 var(--sans);color:var(--acc);transition:transform .3s;flex:none}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{color:var(--ink2);padding:0 0 24px;max-width:44em}
+/* booking */
+.book{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.book h2{font-size:clamp(34px,4.4vw,52px);margin:14px 0 18px}
+.book>div>p{color:var(--ink2)}
+.info{list-style:none;margin-top:30px;display:grid;gap:14px}
+.info li{display:flex;gap:14px;font-size:15px;color:var(--ink2)}
+.info svg{width:20px;height:20px;flex:none;color:var(--acc);margin-top:2px}
+.info a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+form{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:34px}
+.f{margin-bottom:20px}
+.f>label,.f>span{display:block;font-size:13.5px;font-weight:600;margin-bottom:8px}
+.f input,.f select,.f textarea{width:100%;min-height:52px;border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:13px 16px;font:400 16px/1.4 var(--sans);color:var(--ink);transition:border-color .2s}
+.f textarea{min-height:96px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--acc);background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.day{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 4px;text-align:center;cursor:pointer;font:500 12px/1.2 var(--sans);color:var(--ink2);-webkit-tap-highlight-color:transparent;min-height:64px}
+.day b{display:block;font:500 21px/1.15 var(--serif);color:var(--ink)}
+.day[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#c9d4d6}
+.day[aria-pressed="true"] b{color:#fff}
+.slots{display:flex;gap:8px;flex-wrap:wrap}
+.slot{flex:1 1 0;min-width:88px;min-height:46px;border:1px solid var(--line);background:var(--bg);border-radius:12px;font:500 14px/1 var(--sans);color:var(--ink2);cursor:pointer}
+.slot[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+form .btn{width:100%;margin-top:6px;background:#1F8F57;color:#fff;box-shadow:0 12px 30px -14px rgba(31,143,87,.7)}
+.msg{min-height:22px;font-size:14px;margin-top:12px;color:#B3261E}
+.msg.ok{color:var(--acc)}
+.priv{font-size:12.5px;color:var(--mute);margin-top:12px}
+@media(max-width:900px){.book{grid-template-columns:1fr;gap:36px}}
+@media(max-width:520px){form{padding:22px 16px;border-radius:22px}.two{grid-template-columns:1fr}.days{grid-template-columns:repeat(3,1fr)}}
+/* footer */
+footer{background:var(--ink);color:#B7C6C6;padding:64px 0 40px;margin-top:40px}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer h3{font:400 30px/1.1 var(--serif);color:#fff;margin-bottom:12px}
+footer h4{font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#8FA3A6;margin-bottom:14px}
+footer p,footer li{font-size:14.5px;list-style:none;margin-bottom:6px}
+footer a{text-decoration:none;color:#DDE6E5}
+.legal{border-top:1px solid rgba(255,255,255,.1);margin-top:44px;padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#8FA3A6}
+@media(max-width:800px){.ft{grid-template-columns:1fr;gap:28px}}
+.demo-back{position:fixed;left:16px;bottom:16px;z-index:60;background:rgba(20,35,43,.92);color:#fff;font:500 13px/1 var(--sans);padding:12px 16px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.4);transition:opacity .3s,transform .3s}
+.demo-back.hide{opacity:0;transform:translateY(12px);pointer-events:none}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ph .fr img,.tests li{animation:none}html{scroll-behavior:auto}}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+</style>
 </head>
 <body>
-<noscript><style>#preloader{display:none}.reveal,.title-line,.hero p{opacity:1!important;transform:none!important}</style></noscript>
+<header class="hd" id="hd">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Ana sayfa">
+      <span class="mono" id="mono">SA</span>
+      <span><b data-name>Uzm. Dr. Selim Arslan</b><small id="brSmall" data-i18n="br">İç Hastalıkları Uzmanı</small></span>
+    </a>
+    <nav class="nav" aria-label="Menü">
+      <a class="l" href="#hizmetler" data-i18n="n1">Hizmetler</a>
+      <a class="l" href="#checkup" id="navCk" data-i18n="n2">Check-up</a>
+      <a class="l" href="#hekim" data-i18n="n3">Hekim</a>
+      <a class="l" href="#iletisim" data-i18n="n4">İletişim</a>
+      <button class="lang" id="langBtn" type="button" aria-label="Dili değiştir">EN</button>
+      <a class="btn btn-p" href="#randevu" data-i18n="n5">Randevu</a>
+    </nav>
+  </div>
+</header>
 
-<div class="noise-overlay" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-outline" id="cursorOutline" aria-hidden="true"></div>
-
-<!-- PRELOADER SAYAÇ -->
-<div id="preloader">
-    <div class="counter" id="counter">0</div>
-    <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
-    <div class="loading-text" data-i18n="Yükleniyor">Yükleniyor</div>
-</div>
-
-<!-- NAVİGASYON -->
-<nav id="navbar">
-    <a href="#" class="logo hover-target">Dr. Mehmet <span>Demir</span></a>
-    <a href="#randevu" class="nav-btn hover-target" data-i18n="Randevu Al">Randevu Al</a>
-</nav>
-
-<!-- HERO BÖLÜMÜ -->
+<main id="top">
 <section class="hero">
-    <div class="hero-content">
-        <div class="title-wrap"><span class="title-line" data-i18n="Sanat ve Cerrahinin">Sanat ve Cerrahinin</span></div>
-        <div class="title-wrap"><span class="title-line gold" data-i18n="Kusursuz Uyumu">Kusursuz Uyumu</span></div>
-        <p data-i18n="hero-desc">Her detayda mükemmelliği arayanlar için uluslararası standartlarda, bedeninize özel lüks estetik ve cerrahi çözümler.</p>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" id="heroEy" data-i18n="h_ey">İç Hastalıkları (Dahiliye) · Efeler, Aydın</div>
+      <h1 id="heroH"><span data-i18n="h1a">Sağlığınızı</span> <em data-i18n="h1b">bütün olarak</em> <span data-i18n="h1c">ele alan bir muayene.</span></h1>
+      <p class="lead" id="heroP" data-i18n="h_p">Tansiyon, şeker, tiroid ve mide şikâyetlerinden yıllık kontrole kadar; acele etmeden dinleyen, bulguları anlaşılır bir dille açıklayan randevulu muayene.</p>
+      <div class="cta">
+        <a class="btn btn-p" href="#randevu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span data-i18n="c1">Randevu iste</span></a>
+        <a class="btn btn-g" href="#checkup" id="ctaCk" data-i18n="c2">Check-up listemi gör</a>
+      </div>
+      <div class="status" id="status"><i></i><span id="stTxt">Muayenehane saatleri: Hafta içi 09:00–18:00</span></div>
     </div>
+    <div class="ph">
+      <div class="fr"><img id="heroImg" src="media/doktor/hekim.webp" width="1100" height="1376" alt="Uzm. Dr. Selim Arslan, beyaz önlüklü portre" fetchpriority="high"></div>
+      <div class="chip c1"><b data-i18n="ch1b">30 dk</b><span data-i18n="ch1">ortalama muayene süresi</span></div>
+      <div class="chip c2"><b data-i18n="ch2b">Randevulu</b><span data-i18n="ch2">beklemeden, saatinde muayene</span></div>
+    </div>
+  </div>
 </section>
 
-<!-- GÜVEN PANELİ (TRUST BAR) -->
-<div class="trust-bar reveal">
-    <div class="stat">
-        <div class="stat-num">15+</div>
-        <div class="stat-label" data-i18n="Yıl Deneyim">Yıl Deneyim</div>
-    </div>
-    <div class="stat">
-        <div class="stat-num">5000+</div>
-        <div class="stat-label" data-i18n="Başarılı Operasyon">Başarılı Operasyon</div>
-    </div>
-    <div class="stat">
-        <div class="stat-num">%100</div>
-        <div class="stat-label" data-i18n="Hasta Memnuniyeti">Hasta Memnuniyeti</div>
-    </div>
+<div class="facts">
+  <div class="wrap">
+    <div><b data-i18n="f1b">Aynı gün</b><span data-i18n="f1">kan tahlili alımı</span></div>
+    <div><b data-i18n="f2b">Tek dosya</b><span data-i18n="f2">tüm tahlil ve raporlarınız</span></div>
+    <div><b data-i18n="f3b">WhatsApp</b><span data-i18n="f3">ile kolay randevu</span></div>
+    <div><b data-i18n="f4b">Kontrol</b><span data-i18n="f4">sonuçlar birlikte değerlendirilir</span></div>
+  </div>
 </div>
 
-<!-- HAKKINDA / MİMARİ VİTRİN -->
-<section class="about">
-    <div class="about-img-wrap reveal">
-        <div class="about-img"></div>
+<section class="sec" id="hizmetler">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><div class="eyebrow" data-i18n="s_ey">Muayene konuları</div><h2 id="srvH" data-i18n="s_h">Hangi şikâyetlerde bize başvurabilirsiniz?</h2></div>
+      <p data-i18n="s_p">İç hastalıkları; birden fazla organı ilgilendiren, uzun süreli takip gerektiren durumları bir arada değerlendirir.</p>
     </div>
-    <div class="about-content reveal">
-        <h2 data-i18n="Dokunuşun Gücü">Dokunuşun Gücü</h2>
-        <p data-i18n="about-1">Sadece bir cerrahi müdahale değil, bedeninize duyduğumuz saygının bir yansıması. Modern tıbbın en ileri teknolojilerini, estetik bir vizyonla harmanlıyoruz.</p>
-        <p data-i18n="about-2">Deneyim, güven ve kusursuz sonuçların birleştiği bu yolculukta, sizin için en doğru ve en doğal olanı tasarlamak tek önceliğimizdir.</p>
+    <div class="grid" id="srvGrid">
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></div><h3 data-i18n="k1">Tansiyon ve kalp-damar riski</h3><p data-i18n="k1p">Yüksek tansiyonun takibi, ev ölçümlerinin değerlendirilmesi ve risk faktörlerinin birlikte ele alınması.</p></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div><h3 data-i18n="k2">Diyabet ve insülin direnci</h3><p data-i18n="k2p">Şeker ölçümleri, HbA1c takibi, ilaç düzenlemesi ve beslenmeyle ilgili yönlendirme.</p></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 4c0 4 10 4 10 8s-10 4-10 8M17 4c0 4-10 4-10 8s10 4 10 8"/></svg></div><h3 data-i18n="k3">Tiroid hastalıkları</h3><p data-i18n="k3p">Halsizlik, kilo değişimi ve çarpıntı gibi şikâyetlerde tiroid testleri ve ultrason yönlendirmesi.</p></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 3v5a4 4 0 0 0 8 0V3M12 12v3a5 5 0 0 1-5 5H6"/></svg></div><h3 data-i18n="k4">Mide ve sindirim</h3><p data-i18n="k4p">Reflü, hazımsızlık, karın ağrısı ve bağırsak alışkanlığı değişikliklerinde muayene ve tetkik planı.</p></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div><h3 data-i18n="k5">Kolesterol ve metabolizma</h3><p data-i18n="k5p">Kan yağları, karaciğer yağlanması ve kilo yönetiminde düzenli kontrol.</p></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 3h6v4H9zM5 6h14v15H5z"/><path d="M9 13l2 2 4-4"/></svg></div><h3 data-i18n="k6">Yıllık kontrol</h3><p data-i18n="k6p">Yaşınıza ve aile öykünüze göre planlanan tahliller; sonuçlar muayenede tek tek anlatılır.</p></article>
     </div>
+  </div>
 </section>
 
-<!-- MARQUEE ŞERİDİ -->
-<section class="marquee-section">
-    <div class="marquee-content">
-        <span data-i18n="PREMIUM CERRAHİ">PREMIUM CERRAHİ</span> ✦ 
-        <span data-i18n="KUSURSUZ ESTETİK">KUSURSUZ ESTETİK</span> ✦ 
-        <span data-i18n="GÜVENİLİR SONUÇLAR">GÜVENİLİR SONUÇLAR</span> ✦
-        <span data-i18n="PREMIUM CERRAHİ">PREMIUM CERRAHİ</span> ✦ 
-        <span data-i18n="KUSURSUZ ESTETİK">KUSURSUZ ESTETİK</span> ✦ 
-        <span data-i18n="GÜVENİLİR SONUÇLAR">GÜVENİLİR SONUÇLAR</span> ✦
-    </div>
-</section>
-
-<!-- HİZMETLER -->
-<section class="services">
-    <div class="section-title reveal" data-i18n="Uzmanlık Alanlarımız">Uzmanlık Alanlarımız</div>
-    <div class="grid">
-        <div class="card hover-target reveal">
-            <div class="card-icon">I.</div>
-            <h3 data-i18n="Laparoskopik Cerrahi">Laparoskopik Cerrahi</h3>
-            <p data-i18n="srv-1">Minimal invaziv yöntemlerle, iz bırakmayan ve hızlı iyileşme sağlayan kapalı cerrahi çözümler. Maksimum konfor.</p>
+<section class="sec" id="checkup" style="padding-top:0">
+  <div class="wrap">
+    <div class="plan rv">
+      <div>
+        <div class="eyebrow" data-i18n="p_ey">Kişisel kontrol listesi</div>
+        <h2 data-i18n="p_h">Yaşınıza göre hangi kontroller gündemde?</h2>
+        <p data-i18n="p_p">İki seçim yapın; genel tarama önerilerine göre konuşulması faydalı olan kontrolleri görün. Size uygun olanlar muayenede birlikte belirlenir.</p>
+        <div class="seg"><span data-i18n="p_age">Yaş aralığı</span><div class="opts" id="ages" role="group" aria-label="Yaş aralığı"><button class="opt" type="button" data-v="0" aria-pressed="false">18–39</button><button class="opt" type="button" data-v="1" aria-pressed="true">40–49</button><button class="opt" type="button" data-v="2" aria-pressed="false">50–64</button><button class="opt" type="button" data-v="3" aria-pressed="false">65+</button></div></div>
+        <div class="seg"><span data-i18n="p_sex">Cinsiyet</span><div class="opts" id="sexes" role="group" aria-label="Cinsiyet"><button class="opt" type="button" data-v="k" aria-pressed="true" data-i18n="p_k">Kadın</button><button class="opt" type="button" data-v="e" aria-pressed="false" data-i18n="p_e">Erkek</button></div></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="res-top">
+          <div class="ring"><svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="34"/><circle class="fg" id="ringFg" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><b id="ringN">0</b></div>
+          <div><h3 data-i18n="p_rh">Konuşulacak kontroller</h3><small id="resSub">40–49 · Kadın</small></div>
         </div>
-        <div class="card hover-target reveal">
-            <div class="card-icon">II.</div>
-            <h3 data-i18n="Estetik & Rekonstrüktif">Estetik & Rekonstrüktif</h3>
-            <p data-i18n="srv-2">Doğal görünüm ve mükemmel simetriyi hedefleyen, tamamen size özel tasarlanmış premium estetik operasyonlar.</p>
-        </div>
-        <div class="card hover-target reveal">
-            <div class="card-icon">III.</div>
-            <h3 data-i18n="Endoskopik Tarama">Endoskopik Tarama</h3>
-            <p data-i18n="srv-3">En son teknoloji cihazlarla, yüksek hassasiyetli teşhis ve güvenli, ağrısız ileri düzey tarama işlemleri.</p>
-        </div>
+        <ul class="tests" id="tests"></ul>
+        <p class="note" data-i18n="p_note">Bu liste genel bilgilendirme amaçlıdır, tanı veya tedavi önerisi değildir. Şikâyetiniz varsa beklemeden muayene olun.</p>
+        <button class="btn" type="button" id="ckBook" data-i18n="p_btn">Bu listeyle randevu iste</button>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- RANDEVU ALANI -->
-<section class="booking-section" id="randevu">
-    <div class="booking-card reveal">
-        <h2 data-i18n="Randevu Talebi">Randevu Talebi</h2>
-        <p data-i18n="Randevu Alt">Lütfen bilgilerinizi eksiksiz doldurun. Talebiniz doğrudan kliniğimizin WhatsApp hattına iletilecektir.</p>
-        <form id="docForm" novalidate>
-            <div class="field">
-                <label for="ad" data-i18n="Adınız Soyadınız">Adınız Soyadınız</label>
-                <input type="text" id="ad" name="ad" autocomplete="name" placeholder="Ad Soyad" data-i18n-ph="Ad Soyad Placeholder" required class="hover-target">
-            </div>
-            <div class="field">
-                <label for="tel" data-i18n="Telefon Numaranız">Telefon Numaranız</label>
-                <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" placeholder="05XX XXX XX XX" data-i18n-ph="Tel Placeholder" required class="hover-target">
-            </div>
-            <div class="field">
-                <label for="mesaj" data-i18n="Şikayetiniz veya Talebiniz">Şikayetiniz veya Talebiniz</label>
-                <textarea id="mesaj" name="mesaj" placeholder="Kısaca belirtiniz..." data-i18n-ph="Mesaj Placeholder" class="hover-target"></textarea>
-            </div>
-            <button type="submit" class="submit-btn hover-target" data-i18n="WhatsApp ile Gönder">WhatsApp ile Gönder</button>
-            <div class="status-msg" id="stMsg" role="status" aria-live="polite"></div>
-        </form>
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h rv"><div><div class="eyebrow" data-i18n="st_ey">Muayene süreci</div><h2 data-i18n="st_h">İlk görüşmeden takibe, dört adım.</h2></div></div>
+    <div class="steps">
+      <div class="step rv"><h3 data-i18n="st1">Randevu</h3><p data-i18n="st1p">WhatsApp ya da telefonla gün ve saat belirlenir; aç gelmeniz gerekiyorsa önceden söylenir.</p></div>
+      <div class="step rv"><h3 data-i18n="st2">Görüşme ve muayene</h3><p data-i18n="st2p">Şikâyetleriniz, kullandığınız ilaçlar ve aile öykünüz dinlenir; fizik muayene yapılır.</p></div>
+      <div class="step rv"><h3 data-i18n="st3">Tetkik</h3><p data-i18n="st3p">Gerekli görülen tahlil ve görüntülemeler planlanır; nedenleri size açıkça anlatılır.</p></div>
+      <div class="step rv"><h3 data-i18n="st4">Sonuç ve plan</h3><p data-i18n="st4p">Sonuçlar birlikte değerlendirilir, tedavi ve kontrol takvimi yazılı olarak verilir.</p></div>
     </div>
+  </div>
 </section>
 
-<!-- DEV TİPOGRAFİ FOOTER -->
-<footer>
-    <div class="footer-huge-text hover-target">DR. MEHMET DEMİR</div>
-    <div class="footer-details">
-        <p data-i18n="Özel Klinik İletişim">Özel Klinik İletişim</p>
-        <p data-i18n="Çalışma Saatleri">Hafta İçi: 09:00 – 18:00 | Cumartesi: 10:00 – 14:00</p>
-        <p data-i18n="Adres">Lüks Plaza, Kat: 3, Şişli / İstanbul</p>
-        <br>
-        <p data-i18n="Telif">© 2026 Op. Dr. Mehmet Demir. Tüm hakları saklıdır.</p>
+<section class="sec" id="hekim" style="background:var(--paper);border-block:1px solid var(--line)">
+  <div class="wrap about">
+    <div class="img rv"><img id="aboutImg" src="media/doktor/klinik.webp" width="1400" height="953" loading="lazy" alt="Muayenehane bekleme alanı"></div>
+    <div class="rv">
+      <div class="eyebrow" data-i18n="a_ey">Hekim</div>
+      <h2 id="aboutH"><span data-name>Uzm. Dr. Selim Arslan</span></h2>
+      <p id="a1" data-i18n="a1">Muayenede önce dinlemeyi, sonra bulguları sade bir dille anlatmayı önemsiyoruz. Hangi tahlilin neden istendiğini bilerek karar vermenizi istiyoruz.</p>
+      <p id="a2" data-i18n="a2">Kronik hastalıklarda düzenli takip, ilaç uyumu ve yaşam alışkanlıklarını birlikte planlıyor; gerekirse ilgili branşlara yönlendiriyoruz.</p>
+      <ul class="cv" id="cv">
+        <li><b data-i18n="cv1y">Tıp</b><span data-i18n="cv1">Ege Üniversitesi Tıp Fakültesi</span></li>
+        <li><b data-i18n="cv2y">Uzmanlık</b><span data-i18n="cv2">İç Hastalıkları uzmanlık eğitimi</span></li>
+        <li><b data-i18n="cv3y">Üyelik</b><span data-i18n="cv3">Türk İç Hastalıkları Uzmanlık Derneği</span></li>
+      </ul>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="sss">
+  <div class="wrap">
+    <div class="sec-h rv"><div><div class="eyebrow" data-i18n="q_ey">Sık sorulanlar</div><h2 data-i18n="q_h">Muayeneden önce merak edilenler.</h2></div></div>
+    <div class="faq rv">
+      <details><summary data-i18n="q1">Tahlil için aç mı gelmeliyim?</summary><p data-i18n="q1p">Şeker ve kolesterol gibi bazı tahliller için 8–12 saat açlık gerekir. Randevu sırasında size ayrıca hatırlatılır; su içebilirsiniz.</p></details>
+      <details><summary data-i18n="q2">Yanımda neler getirmeliyim?</summary><p data-i18n="q2p">Kimliğiniz, kullandığınız ilaçların listesi ya da kutuları, varsa son bir yıla ait tahlil ve rapor sonuçlarınız.</p></details>
+      <details><summary data-i18n="q3">Tahlil sonuçları ne zaman çıkar?</summary><p data-i18n="q3p">Rutin kan tahlillerinin çoğu aynı gün ya da ertesi gün çıkar; sonuçlar kontrol muayenesinde birlikte değerlendirilir.</p></details>
+      <details><summary data-i18n="q4">Randevumu nasıl değiştirebilirim?</summary><p data-i18n="q4p">WhatsApp hattından yazmanız yeterli; uygun ilk saate birlikte kaydırılır.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="randevu" style="padding-top:0">
+  <div class="wrap book">
+    <div class="rv" id="iletisim">
+      <div class="eyebrow" data-i18n="b_ey">Randevu</div>
+      <h2 data-i18n="b_h">Size uygun saati seçin.</h2>
+      <p data-i18n="b_p">Formu doldurduğunuzda talebiniz WhatsApp üzerinden muayenehaneye iletilir; saat onayı için size dönüş yapılır.</p>
+      <ul class="info">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span id="adr">Hasan Efendi Mah. Gençlik Cad. No: 14, Kat 2, Efeler / Aydın</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="hrs">Hafta içi 09:00–18:00 · Cumartesi 09:00–13:00</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a href="tel:+905306284284">0530 628 42 84</a></li>
+      </ul>
+    </div>
+    <form id="form" class="rv" novalidate>
+      <div class="two">
+        <div class="f"><label for="ad" data-i18n="fm_ad">Ad soyad</label><input id="ad" name="ad" autocomplete="name" required></div>
+        <div class="f"><label for="tel" data-i18n="fm_tel">Telefon</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="05XX XXX XX XX" required></div>
+      </div>
+      <div class="f"><label for="konu" data-i18n="fm_konu">Muayene konusu</label><select id="konu" name="konu"></select></div>
+      <div class="f"><span data-i18n="fm_gun">Gün</span><div class="days" id="days" role="group" aria-label="Gün"></div></div>
+      <div class="f"><span data-i18n="fm_saat">Saat aralığı</span><div class="slots" id="slots" role="group" aria-label="Saat aralığı"><button type="button" class="slot" data-v="09:00–12:00" aria-pressed="false" data-i18n="sl1">Sabah</button><button type="button" class="slot" data-v="12:00–15:00" aria-pressed="false" data-i18n="sl2">Öğle</button><button type="button" class="slot" data-v="15:00–18:00" aria-pressed="false" data-i18n="sl3">Akşamüstü</button></div></div>
+      <div class="f"><label for="not" data-i18n="fm_not">Not (isteğe bağlı)</label><textarea id="not" name="not"></textarea></div>
+      <button class="btn" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg><span data-i18n="fm_btn">WhatsApp ile randevu iste</span></button>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      <p class="priv" data-i18n="fm_priv">Bilgileriniz yalnızca randevu için kullanılır ve bu sitede saklanmaz.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer id="ft">
+  <div class="wrap">
+    <div class="ft">
+      <div><h3 data-name>Uzm. Dr. Selim Arslan</h3><p id="ftBr" data-i18n="br">İç Hastalıkları Uzmanı</p></div>
+      <div><h4 data-i18n="ft_a">Adres</h4><p id="adr2">Hasan Efendi Mah. Gençlik Cad. No: 14, Kat 2, Efeler / Aydın</p></div>
+      <div><h4 data-i18n="ft_c">İletişim</h4><ul><li><a href="tel:+905306284284">0530 628 42 84</a></li><li><a href="#randevu" data-i18n="ft_r">WhatsApp ile randevu</a></li></ul></div>
+    </div>
+    <div class="legal"><span data-i18n="legal">Bu sitedeki bilgiler genel bilgilendirme amaçlıdır; muayene, tanı ve tedavinin yerine geçmez.</span><span>Tasarım &amp; geliştirme: EY Studios</span></div>
+  </div>
 </footer>
 
-<a href="index.html" class="ey-demo-back hover-target" data-i18n="EY Studios Geri">← EY Studios örnek çalışma</a>
+<a class="demo-back" id="demoBack" href="index.html" data-i18n="back">← EY Studios örnek çalışma</a>
 
-<!-- Satış önizlemesi: ?m=Dr.+Ad+Soyad&c=Semt,+Şehir&s=estetik|burun|dis|gastro|cocukcerrahi|pediatri|psikiyatri|cocukpsikiyatri|noroloji (işletme bilgisi repoya girmez, yalnızca linkte durur) -->
+<!-- Satış önizlemesi: ?m=Dr.+Ad+Soyad&c=Adres&s=estetik|burun|dis|gastro|cocukcerrahi|pediatri|psikiyatri|cocukpsikiyatri|noroloji (işletme bilgisi repoya girmez, yalnızca linkte durur) -->
 <script>
-(function () {
-  try {
-    var q = new URLSearchParams(location.search), m = (q.get('m') || '').trim().slice(0, 40), c = (q.get('c') || '').trim().slice(0, 40), s = q.get('s');
-    if (!m) return;
-    var $ = function (sel) { return document.querySelector(sel); };
-    /* Değiştirilen metin Türkçe kalsın: sözlük anahtarını kaldır */
-    function set(el, txt, html) { if (!el) return; el.removeAttribute('data-i18n'); if (html) el.innerHTML = txt; else el.textContent = txt; }
-    var w = m.split(' '), last = w.pop(), esc = function (t) { return t.replace(/[&<>"]/g, function (ch) { return '&#' + ch.charCodeAt(0) + ';'; }); };
-    set($('.logo'), esc(w.join(' ')) + (w.length ? ' ' : '') + '<span>' + esc(last) + '</span>', true);
-    set($('.footer-huge-text'), m.toLocaleUpperCase('tr'));
-    /* Uzun isimlerde üst bardaki randevu düğmesi taşmasın */
-    var fitNav = function () {
-      var n = $('#navbar'), l = $('.logo'), b = $('.nav-btn');
-      if (!n || !l || !b) return;
-      l.style.fontSize = '';
-      var free = n.clientWidth - parseFloat(getComputedStyle(n).paddingLeft) - parseFloat(getComputedStyle(n).paddingRight) - b.offsetWidth - 12;
-      if (l.scrollWidth > free) l.style.fontSize = Math.max(11, parseFloat(getComputedStyle(l).fontSize) * free / l.scrollWidth) + 'px';
-    };
-    addEventListener('load', fitNav); addEventListener('resize', fitNav);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
-    set($('[data-i18n="Telif"]'), '© ' + new Date().getFullYear() + ' ' + m + '. Tüm hakları saklıdır.');
-    if (c) set($('[data-i18n="Adres"]'), c);
-    document.title = m + (s === 'estetik' ? ' | Medikal Estetik' : ' | Klinik');
-    /* Gerçek bir hekimin adıyla iddialı rakamlar gösterilmesin */
-    var st = document.querySelectorAll('.trust-bar .stat');
-    [['1:1', 'Kişiye Özel Planlama'], ['Doğal', 'Sonuç Odaklı Yaklaşım'], [c ? c.split(',').pop().trim() : 'Klinik', 'Randevulu Muayene']].forEach(function (v, i) {
-      if (!st[i]) return; set(st[i].querySelector('.stat-num'), v[0]); set(st[i].querySelector('.stat-label'), v[1]);
-    });
-    if (s === 'burun') {
-      document.title = m + ' | Burun Estetiği & KBB';
-      set($('[data-i18n="Sanat ve Cerrahinin"]'), 'Nefes Alan,');
-      set($('[data-i18n="Kusursuz Uyumu"]'), 'Doğal Bir Burun');
-      set($('[data-i18n="hero-desc"]'), 'Yüz hatlarınızla uyumlu, nefes fonksiyonunu koruyan burun estetiği ve kulak burun boğaz tedavileri.');
-      set($('[data-i18n="Dokunuşun Gücü"]'), 'Estetik ve Fonksiyon');
-      set($('[data-i18n="about-1"]'), 'Burun yalnızca yüzün merkezinde değil, rahat nefes almanın da merkezindedir. Her planlamada görünüm kadar nefes fonksiyonunu da gözetiriz.');
-      set($('[data-i18n="about-2"]'), 'Muayene ve ayrıntılı görüşmenin ardından size uygun yöntem birlikte belirlenir; süreç boyunca her adımda bilgilendirilirsiniz.');
-      var mb = $('.marquee-content');
-      if (mb) { mb.innerHTML = new Array(3).join('<span>BURUN ESTETİĞİ</span> ✦ <span>RAHAT NEFES</span> ✦ <span>DOĞAL GÖRÜNÜM</span> ✦ '); }
-      [['Laparoskopik Cerrahi', 'srv-1', 'Burun Estetiği', 'Yüz oranlarınıza göre planlanan, doğal görünüm hedefleyen rinoplasti.'],
-       ['Estetik & Rekonstrüktif', 'srv-2', 'Septum & Nefes', 'Burun eğriliği, konka büyümesi ve nefes alma güçlüklerinin tedavisi.'],
-       ['Endoskopik Tarama', 'srv-3', 'Kulak Burun Boğaz', 'Sinüzit, geniz eti, horlama ve kulak şikâyetlerinde muayene ve tedavi.']].forEach(function (r) {
-        set($('[data-i18n="' + r[0] + '"]'), r[2]); set($('[data-i18n="' + r[1] + '"]'), r[3]);
-      });
-      return;
-    }
-    var alan = {
-      dis: { t: ' | Ağız ve Diş Sağlığı', h1: 'Sağlıklı Bir Gülüşün', h2: 'Doğal Hali', d: 'Muayene sonrası size özel planlanan, konforlu ve ayrıntılı diş sağlığı ve estetik diş hekimliği uygulamaları.', k: 'Özenli Yaklaşım',
-        a1: 'Her tedavi, ayrıntılı bir muayene ve sizinle yapılan görüşmeyle başlar. Size uygun plan birlikte belirlenir.',
-        a2: 'Süreç boyunca her adımda bilgilendirilir, sorularınıza sade bir dille cevap alırsınız.',
-        mq: ['DİŞ SAĞLIĞI', 'ESTETİK GÜLÜŞ', 'KİŞİYE ÖZEL PLAN'],
-        r: [['Diş Sağlığı ve Dolgu', 'Muayene, diş taşı temizliği, dolgu ve kanal tedavisi gibi koruyucu ve tedavi edici uygulamalar.'],
-            ['Estetik Diş Hekimliği', 'Gülüş tasarımı, diş beyazlatma ve kaplama uygulamaları muayene sonrası birlikte planlanır.'],
-            ['İmplant ve Ortodonti', 'İmplant, şeffaf plak ve tel tedavileri için muayene ve planlama.']] },
-      gastro: { t: ' | Gastroenteroloji', h1: 'Doğru Tanı,', h2: 'Özenli Takip', d: 'Mide, bağırsak ve karaciğer sağlığında muayene, endoskopi ve kolonoskopi ile kişiye özel planlama.', k: 'Sade Bilgilendirme',
-        a1: 'Her işlemden önce ayrıntılı bir görüşme yapılır; hazırlık süreci ve işlem adım adım anlatılır.',
-        a2: 'Sorularınıza sade bir dille cevap alır, takip planınızı birlikte belirlersiniz.',
-        mq: ['ENDOSKOPİ', 'KOLONOSKOPİ', 'KİŞİYE ÖZEL TAKİP'],
-        r: [['Endoskopi', 'Mide ve yemek borusu şikâyetlerinde muayene ve endoskopik inceleme.'],
-            ['Kolonoskopi', 'Kalın bağırsak şikâyetleri ve tarama için muayene ve işlem öncesi bilgilendirme.'],
-            ['Mide, Bağırsak ve Karaciğer', 'Hazımsızlık, reflü, karın ağrısı ve karaciğer sağlığı konularında muayene ve takip.']] }
-      ,
-      cocukcerrahi: { t: ' | Çocuk Cerrahisi', h1: 'Çocuğunuz İçin', h2: 'Özenli Bir Yol', d: 'Bebeklik döneminden ergenliğe çocukların cerrahi hastalıklarında muayene, planlama ve aileyle adım adım ilerleyen bir süreç.', k: 'Aileyle Birlikte',
-        a1: 'Her muayene, çocuğunuzu ve sizi dinlemekle başlar. Tanı ve olası tedavi seçenekleri aileye sade bir dille anlatılır.',
-        a2: 'Ameliyat gerekiyorsa hazırlıktan taburculuğa kadar her adım önceden konuşulur; sorularınıza cevap almadan karar vermezsiniz.',
-        mq: ['ÇOCUK CERRAHİSİ', 'AİLEYLE BİLGİLENDİRME', 'KİŞİYE ÖZEL PLAN'],
-        r: [['Fıtık ve İnmemiş Testis', 'Kasık ve göbek fıtığı, inmemiş testis ve hidrosel için muayene ve planlama.'],
-            ['Sünnet ve Ürolojik Sorunlar', 'Sünnet, idrar yolu ve böbrek sorunlarında değerlendirme ve tedavi planı.'],
-            ['Karın ve Yenidoğan Cerrahisi', 'Apandisit, karın ağrısı ve yenidoğan dönemine özgü cerrahi durumlarda muayene.']] },
-      pediatri: { t: ' | Çocuk Sağlığı ve Hastalıkları', h1: 'Büyürken', h2: 'Her Adımında', d: 'Yenidoğandan ergenliğe çocuğunuzun sağlıklı büyümesi için muayene, aşı takibi ve gelişim izlemi.', k: 'Sakin Bir Muayene',
-        a1: 'Çocuklar için muayene sakin ve acele etmeden yapılır; ebeveynlerin sorularına zaman ayrılır.',
-        a2: 'Büyüme, beslenme ve aşı takibi düzenli kontrollerle izlenir; her ziyarette bir sonraki adım konuşulur.',
-        mq: ['ÇOCUK SAĞLIĞI', 'AŞI TAKİBİ', 'GELİŞİM İZLEMİ'],
-        r: [['Sağlam Çocuk Takibi', 'Düzenli kontroller, büyüme ve gelişim izlemi, beslenme önerileri.'],
-            ['Aşı Takvimi', 'Aşı takviminin planlanması ve aşı öncesi bilgilendirme.'],
-            ['Hastalık Muayenesi', 'Ateş, öksürük, karın ağrısı ve sık görülen çocukluk hastalıklarında muayene.']] },
-      psikiyatri: { t: ' | Psikiyatri', h1: 'Kendinizi Anlatmak İçin', h2: 'Güvenli Bir Alan', d: 'Kaygı, depresyon, uyku ve dikkat sorunları gibi ruh sağlığı konularında değerlendirme ve kişiye özel tedavi planı.', k: 'Gizlilik ve Saygı',
-        a1: 'Görüşmeler sakin bir ortamda, acele etmeden yapılır. Paylaştıklarınız tıbbi gizlilik çerçevesinde korunur.',
-        a2: 'Tanı ve tedavi seçenekleri size açıkça anlatılır; takip planı birlikte belirlenir.',
-        mq: ['PSİKİYATRİ', 'GİZLİLİK', 'KİŞİYE ÖZEL TAKİP'],
-        r: [['Kaygı ve Depresyon', 'Kaygı bozuklukları, panik, depresyon ve duygu durum sorunlarında değerlendirme ve takip.'],
-            ['Uyku ve Dikkat', 'Uyku sorunları, dikkat eksikliği ve odaklanma güçlüklerinde muayene ve tedavi planı.'],
-            ['Stres ve Yaşam Dönemleri', 'İş, ilişki ve kayıp gibi zorlu dönemlerde psikiyatrik destek.']] },
-      cocukpsikiyatri: { t: ' | Çocuk ve Ergen Psikiyatrisi', h1: 'Çocuğunuzu', h2: 'Birlikte Anlayalım', d: 'Okul öncesinden ergenliğe dikkat, davranış, duygu ve gelişim konularında değerlendirme ve aileyle birlikte yürütülen takip.', k: 'Aileyle Birlikte',
-        a1: 'Değerlendirme çocukla ve aileyle yapılan görüşmelerle başlar; gerektiğinde okulla iş birliği planlanır.',
-        a2: 'Tanı ve tedavi seçenekleri aileye sade bir dille anlatılır, takip planı birlikte belirlenir.',
-        mq: ['ÇOCUK VE ERGEN', 'AİLE GÖRÜŞMESİ', 'GELİŞİM TAKİBİ'],
-        r: [['Dikkat ve Davranış', 'Dikkat eksikliği, hareketlilik ve davranış sorunlarında değerlendirme ve takip.'],
-            ['Kaygı ve Duygu Durumu', 'Okul kaygısı, korkular, içe kapanma ve ergenlik dönemi duygu durum sorunları.'],
-            ['Gelişim ve Öğrenme', 'Konuşma, gelişim ve öğrenme güçlüklerinde değerlendirme ve yönlendirme.']] },
-      noroloji: { t: ' | Nöroloji', h1: 'Doğru Tanı,', h2: 'Dikkatli Takip', d: 'Baş ağrısı, baş dönmesi, uyuşma ve hafıza şikâyetleri gibi sinir sistemi hastalıklarında muayene ve kişiye özel takip.', k: 'Sade Bilgilendirme',
-        a1: 'Muayene ayrıntılı bir dinlemeyle başlar; gerekli tetkikler ve sebepleri size açıkça anlatılır.',
-        a2: 'Tanı ve tedavi seçenekleri birlikte konuşulur, düzenli kontrollerle takip edilir.',
-        mq: ['NÖROLOJİ', 'EMG', 'KİŞİYE ÖZEL TAKİP'],
-        r: [['Baş Ağrısı ve Baş Dönmesi', 'Migren, gerilim tipi baş ağrısı ve baş dönmesi şikâyetlerinde muayene ve takip.'],
-            ['Uyuşma ve Kas Güçsüzlüğü', 'El ve ayaklarda uyuşma, karıncalanma ve sinir sıkışmalarında değerlendirme.'],
-            ['Hafıza ve Epilepsi', 'Unutkanlık, epilepsi ve hareket bozukluklarında muayene ve uzun dönem takip.']] }
-    }[s];
-    if (alan) {
-      document.title = m + alan.t;
-      var st2 = document.querySelectorAll('.trust-bar .stat');
-      if (st2[1]) { set(st2[1].querySelector('.stat-num'), 'Özenli'); set(st2[1].querySelector('.stat-label'), 'Sade Bilgilendirme'); }
-      set($('[data-i18n="Sanat ve Cerrahinin"]'), alan.h1);
-      set($('[data-i18n="Kusursuz Uyumu"]'), alan.h2);
-      set($('[data-i18n="hero-desc"]'), alan.d);
-      set($('[data-i18n="Dokunuşun Gücü"]'), alan.k);
-      set($('[data-i18n="about-1"]'), alan.a1);
-      set($('[data-i18n="about-2"]'), alan.a2);
-      var ma = $('.marquee-content');
-      if (ma) { ma.innerHTML = new Array(3).join(alan.mq.map(function (x) { return '<span>' + x + '</span>'; }).join(' ✦ ') + ' ✦ '); }
-      [['Laparoskopik Cerrahi', 'srv-1'], ['Estetik & Rekonstrüktif', 'srv-2'], ['Endoskopik Tarama', 'srv-3']].forEach(function (k, i) {
-        set($('[data-i18n="' + k[0] + '"]'), alan.r[i][0]); set($('[data-i18n="' + k[1] + '"]'), alan.r[i][1]);
-      });
-      return;
-    }
-    if (s !== 'estetik') return;
-    set($('[data-i18n="Sanat ve Cerrahinin"]'), 'Bilim ve Doğallığın');
-    set($('[data-i18n="Kusursuz Uyumu"]'), 'Zarif Dengesi');
-    set($('[data-i18n="hero-desc"]'), 'Yüzünüzün doğal ifadesini koruyan, muayene sonrası size özel planlanan medikal estetik uygulamalar.');
-    set($('[data-i18n="Dokunuşun Gücü"]'), 'Doğal Görünüm');
-    set($('[data-i18n="about-1"]'), 'Amacımız sizi değiştirmek değil; cildinizin ve yüzünüzün en sağlıklı, en dinlenmiş halini ortaya çıkarmak.');
-    set($('[data-i18n="about-2"]'), 'Her uygulamadan önce ayrıntılı bir görüşme yapılır; size uygun olan yöntem birlikte belirlenir.');
-    var mq = $('.marquee-content');
-    if (mq) { mq.innerHTML = new Array(3).join('<span>MEDİKAL ESTETİK</span> ✦ <span>DOĞAL SONUÇLAR</span> ✦ <span>KİŞİYE ÖZEL PLAN</span> ✦ '); }
-    [['Laparoskopik Cerrahi', 'srv-1', 'Cilt Yenileme', 'Babylifting, mezoterapi ve cilt kalitesini artıran uygulamalarla daha parlak, dinlenmiş bir görünüm.'],
-     ['Estetik & Rekonstrüktif', 'srv-2', 'Yüz Şekillendirme', 'Yüz hatlarınızla uyumlu, abartısız ve doğal sonuç hedefleyen dolgu uygulamaları.'],
-     ['Endoskopik Tarama', 'srv-3', 'Saç & Cilt Bakımı', 'PRP ve destekleyici tedavilerle saç ve cilt sağlığına yönelik kişiye özel planlar.']].forEach(function (r) {
-      set($('[data-i18n="' + r[0] + '"]'), r[2]); set($('[data-i18n="' + r[1] + '"]'), r[3]);
-    });
-  } catch (e) {}
-})();
-</script>
+(function(){
+'use strict';
+var WA='905306284284';
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var q=new URLSearchParams(location.search),M=(q.get('m')||'').trim().slice(0,48),C=(q.get('c')||'').trim().slice(0,80),S=q.get('s')||'';
+var NAME='Uzm. Dr. Selim Arslan',BRANCH='İç Hastalıkları Uzmanı';
+var SRV=['Tansiyon ve kalp-damar riski','Diyabet ve insülin direnci','Tiroid hastalıkları','Mide ve sindirim','Kolesterol ve metabolizma','Yıllık kontrol'];
+var EN={br:'Internal Medicine Specialist',n1:'Services',n2:'Check-up',n3:'Doctor',n4:'Contact',n5:'Book',h_ey:'Internal Medicine · Efeler, Aydın',h1a:'A consultation that sees',h1b:'your health',h1c:'as a whole.',h_p:'From blood pressure, diabetes, thyroid and stomach complaints to your yearly check-up: an unhurried, appointment-based consultation that explains findings in plain language.',c1:'Request an appointment',c2:'See my check-up list',ch1b:'30 min',ch1:'average consultation',ch2b:'By appointment',ch2:'seen on time, no waiting',f1b:'Same day',f1:'blood sampling',f2b:'One file',f2:'all your tests and reports',f3b:'WhatsApp',f3:'easy booking',f4b:'Follow-up',f4:'results reviewed together',s_ey:'What we see',s_h:'Which complaints can we help with?',s_p:'Internal medicine looks at conditions that involve several organs and need long-term follow-up, all together.',k1:'Blood pressure & heart risk',k1p:'Hypertension follow-up, review of home readings and risk factors.',k2:'Diabetes & insulin resistance',k2p:'Glucose and HbA1c follow-up, medication adjustment and nutrition guidance.',k3:'Thyroid conditions',k3p:'Thyroid tests and ultrasound referral for fatigue, weight change or palpitations.',k4:'Stomach & digestion',k4p:'Exam and test plan for reflux, indigestion, abdominal pain and bowel changes.',k5:'Cholesterol & metabolism',k5p:'Regular checks for blood lipids, fatty liver and weight management.',k6:'Yearly check-up',k6p:'Tests planned by age and family history; every result explained at the visit.',p_ey:'Personal check list',p_h:'Which checks are due at your age?',p_p:'Make two choices to see the checks worth discussing under general screening guidance. What suits you is decided together at the visit.',p_age:'Age range',p_sex:'Sex',p_k:'Female',p_e:'Male',p_rh:'Checks to discuss',p_note:'This list is general information, not a diagnosis or treatment advice. If you have symptoms, see a doctor without waiting.',p_btn:'Book with this list',st_ey:'How it works',st_h:'From first visit to follow-up, four steps.',st1:'Appointment',st1p:'Pick a day and time via WhatsApp or phone; we tell you in advance if you need to fast.',st2:'Consultation',st2p:'Your complaints, medicines and family history are discussed, followed by a physical exam.',st3:'Tests',st3p:'Any tests or imaging are planned, and the reasons explained clearly.',st4:'Results & plan',st4p:'Results are reviewed together; treatment and follow-up are given in writing.',a_ey:'Doctor',a1:'We listen first, then explain findings plainly, so you know why each test is requested before deciding.',a2:'For chronic conditions we plan regular follow-up, medication and habits together, and refer to other specialties when needed.',cv1y:'Medicine',cv1:'Ege University Faculty of Medicine',cv2y:'Specialty',cv2:'Residency in Internal Medicine',cv3y:'Member',cv3:'Turkish Society of Internal Medicine',q_ey:'FAQ',q_h:'Before your visit.',q1:'Should I fast for blood tests?',q1p:'Some tests such as glucose and cholesterol need 8–12 hours of fasting. We remind you when booking; water is fine.',q2:'What should I bring?',q2p:'Your ID, a list (or boxes) of your medicines, and any test results from the past year.',q3:'When are results ready?',q3p:'Most routine blood tests are ready the same or next day and reviewed at the follow-up visit.',q4:'How do I change my appointment?',q4p:'Just message the WhatsApp line; we move it to the first suitable slot.',b_ey:'Appointment',b_h:'Choose a time that suits you.',b_p:'Your request is sent to the practice via WhatsApp; we get back to you to confirm the time.',hrs:'Weekdays 09:00–18:00 · Saturday 09:00–13:00',fm_ad:'Full name',fm_tel:'Phone',fm_konu:'Reason for visit',fm_gun:'Day',fm_saat:'Time of day',sl1:'Morning',sl2:'Midday',sl3:'Afternoon',fm_not:'Note (optional)',fm_btn:'Request via WhatsApp',fm_priv:'Your details are only used for the appointment and are not stored on this site.',ft_a:'Address',ft_c:'Contact',ft_r:'Book on WhatsApp',legal:'Information on this site is general and does not replace examination, diagnosis or treatment.',back:'← EY Studios sample work'};
+var lang='tr';try{var L=localStorage.getItem('ey-lang');if(L&&L!=='tr')lang='en'}catch(e){}
+var orig={};$$('[data-i18n]').forEach(function(el,i){el.setAttribute('data-k',i);orig[i]=el.innerHTML});
+function tr(k,def){return lang==='en'&&EN[k]?EN[k]:def}
+function applyLang(){$$('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');el.innerHTML=lang==='en'&&EN[k]?EN[k]:orig[el.getAttribute('data-k')]});document.documentElement.lang=lang;$('#langBtn').textContent=lang==='en'?'TR':'EN';renderTests();fillKonu();status()}
+$('#langBtn').addEventListener('click',function(){lang=lang==='en'?'tr':'en';try{localStorage.setItem('ey-lang',lang)}catch(e){}applyLang()});
 
-<!-- 8 DİLLİ SÖZLÜK VE KUSURSUZ MOTOR -->
-<script>
-window.EY_PAGE_DICT = {
-  "doktor": [
-    ["Yükleniyor", "Loading", "Wird geladen", "Cargando", "Laden", "Chargement", "Caricamento", "Загрузка"],
-    ["Randevu Al", "Book Now", "Termin buchen", "Reservar Cita", "Boek Nu", "Prendre RDV", "Prenota Ora", "Записаться"],
-    ["Sanat ve Cerrahinin", "The Perfect Harmony of", "Die perfekte Harmonie von", "La perfecta armonía de", "De perfecte harmonie van", "L'harmonie parfaite de", "La perfetta armonia tra", "Идеальная гармония"],
-    ["Kusursuz Uyumu", "Art and Surgery", "Kunst und Chirurgie", "Arte y Cirugía", "Kunst en Chirurgie", "l'Art et la Chirurgie", "Arte e Chirurgia", "Искусства и Хирургии"],
-    ["hero-desc", "For those seeking perfection in every detail, internationally standardized, luxury aesthetic and surgical solutions tailored to your body.", "Für diejenigen, die in jedem Detail Perfektion suchen: international standardisierte, luxuriöse ästhetische und chirurgische Lösungen, maßgeschneidert für Ihren Körper.", "Para aquellos que buscan la perfección en cada detalle, soluciones estéticas y quirúrgicas de lujo estandarizadas internacionalmente, adaptadas a tu cuerpo.", "Voor degenen die perfectie zoeken in elk detail, internationaal gestandaardiseerde, luxe esthetische en chirurgische oplossingen op maat van uw lichaam.", "Pour ceux qui recherchent la perfection dans les moindres détails, des solutions esthétiques et chirurgicales de luxe aux normes internationales, adaptées à votre corps.", "Per coloro che cercano la perfezione in ogni dettaglio, soluzioni estetiche e chirurgiche di lusso standardizzate a livello internazionale su misura per il tuo corpo.", "Для тех, кто ищет совершенство в каждой детали: роскошные эстетические и хирургические решения по международным стандартам, созданные специально для вашего тела."],
-    ["Yıl Deneyim", "Years Experience", "Jahre Erfahrung", "Años de Experiencia", "Jaar Ervaring", "Ans d'Expérience", "Anni di Esperienza", "Лет опыта"],
-    ["Başarılı Operasyon", "Successful Operations", "Erfolgreiche Operationen", "Operaciones Exitosas", "Succesvolle Operaties", "Opérations Réussies", "Operazioni di Successo", "Успешных операций"],
-    ["Hasta Memnuniyeti", "Patient Satisfaction", "Patientenzufriedenheit", "Satisfacción del Paciente", "Patiënttevredenheid", "Satisfaction des Patients", "Soddisfazione del Paziente", "Удовлетворенность пациентов"],
-    ["Dokunuşun Gücü", "The Power of Touch", "Die Kraft der Berührung", "El Poder del Toque", "De Kracht van Aanraking", "Le Pouvoir du Toucher", "Il Potere del Tocco", "Сила прикосновения"],
-    ["about-1", "Not just a surgical intervention, but a reflection of our respect for your body. We blend the most advanced technologies of modern medicine with an aesthetic vision.", "Nicht nur ein chirurgischer Eingriff, sondern ein Spiegelbild unseres Respekts für Ihren Körper. Wir verbinden die fortschrittlichsten Technologien der modernen Medizin mit einer ästhetischen Vision.", "No solo una intervención quirúrgica, sino un reflejo de nuestro respeto por tu cuerpo. Combinamos las tecnologías más avanzadas de la medicina moderna con una visión estética.", "Niet zomaar een chirurgische ingreep, maar een weerspiegeling van ons respect voor uw lichaam. We combineren de meest geavanceerde technologieën van de moderne geneeskunde met een esthetische visie.", "Pas seulement une intervention chirurgicale, mais le reflet de notre respect pour votre corps. Nous associons les technologies les plus avancées de la médecine moderne à une vision esthétique.", "Non solo un intervento chirurgico, ma un riflesso del nostro rispetto per il tuo corpo. Uniamo le tecnologie più avanzate della medicina moderna con una visione estetica.", "Не просто хирургическое вмешательство, а отражение нашего уважения к вашему телу. Мы сочетаем самые передовые технологии современной медицины с эстетическим видением."],
-    ["about-2", "In this journey where experience, trust, and flawless results combine, designing what is most right and natural for you is our only priority.", "Auf dieser Reise, auf der sich Erfahrung, Vertrauen und makellose Ergebnisse vereinen, ist es unsere einzige Priorität, das für Sie Richtigste und Natürlichste zu entwerfen.", "En este viaje donde la experiencia, la confianza y los resultados impecables se combinan, diseñar lo que es más correcto y natural para ti es nuestra única prioridad.", "In deze reis waar ervaring, vertrouwen en vlekkeloze resultaten samenkomen, is het ontwerpen van wat voor u het meest juist en natuurlijk is onze enige prioriteit.", "Dans ce voyage où l'expérience, la confiance et des résultats impeccables se conjuguent, concevoir ce qui est le plus juste et naturel pour vous est notre seule priorité.", "In questo viaggio in cui si uniscono esperienza, fiducia e risultati impeccabili, progettare ciò che è più giusto e naturale per te è la nostra unica priorità.", "В этом путешествии, где сочетаются опыт, доверие и безупречные результаты, создание того, что является наиболее правильным и естественным для вас, является нашим единственным приоритетом."],
-    ["PREMIUM CERRAHİ", "PREMIUM SURGERY", "PREMIUM CHIRURGIE", "CIRUGÍA PREMIUM", "PREMIUM CHIRURGIE", "CHIRURGIE PREMIUM", "CHIRURGIA PREMIUM", "ПРЕМИУМ ХИРУРГИЯ"],
-    ["KUSURSUZ ESTETİK", "FLAWLESS AESTHETICS", "MAKELLOSE ÄSTHETIK", "ESTÉTICA IMPECABLE", "VLEKKELOZE ESTHETIEK", "ESTHÉTIQUE IMPECCABLE", "ESTETICA IMPECCABILE", "БЕЗУПРЕЧНАЯ ЭСТЕТИКА"],
-    ["GÜVENİLİR SONUÇLAR", "RELIABLE RESULTS", "ZUVERLÄSSIGE ERGEBNISSE", "RESULTADOS CONFIABLES", "BETROUWBARE RESULTATEN", "RÉSULTATS FIABLES", "RISULTATI AFFIDABILI", "НАДЕЖНЫЕ РЕЗУЛЬТАТЫ"],
-    ["Uzmanlık Alanlarımız", "Our Expertise", "Unsere Expertise", "Nuestra Experiencia", "Onze Expertise", "Notre Expertise", "Le Nostre Competenze", "Наши направления"],
-    ["Laparoskopik Cerrahi", "Laparoscopic Surgery", "Laparoskopische Chirurgie", "Cirugía Laparoscópica", "Laparoscopische Chirurgie", "Chirurgie Laparoscopique", "Chirurgia Laparoscopica", "Лапароскопическая хирургия"],
-    ["srv-1", "Closed surgical solutions providing fast recovery and leaving no scars through minimally invasive methods. Maximum comfort.", "Geschlossene chirurgische Lösungen, die durch minimalinvasive Methoden eine schnelle Genesung ermöglichen und keine Narben hinterlassen. Maximaler Komfort.", "Soluciones quirúrgicas cerradas que proporcionan una rápida recuperación y no dejan cicatrices mediante métodos mínimamente invasivos. Máximo confort.", "Gesloten chirurgische oplossingen die zorgen voor een snel herstel en geen littekens achterlaten door middel van minimaal invasieve methoden. Maximaal comfort.", "Solutions chirurgicales fermées offrant une récupération rapide et ne laissant aucune cicatrice grâce à des méthodes mini-invasives. Confort maximal.", "Soluzioni chirurgiche chiuse che garantiscono un rapido recupero e non lasciano cicatrici attraverso metodi minimamente invasivi. Massimo comfort.", "Закрытые хирургические решения, обеспечивающие быстрое восстановление и не оставляющие шрамов благодаря минимально инвазивным методам. Максимальный комфорт."],
-    ["Estetik & Rekonstrüktif", "Aesthetic & Reconstructive", "Ästhetisch & Rekonstruktiv", "Estética y Reconstructiva", "Esthetisch & Reconstructief", "Esthétique & Reconstructrice", "Estetica e Ricostruttiva", "Эстетическая и реконструктивная"],
-    ["srv-2", "Premium aesthetic operations designed specifically for you, aiming for a natural look and perfect symmetry.", "Premium ästhetische Operationen, die speziell für Sie entwickelt wurden und auf ein natürliches Aussehen und perfekte Symmetrie abzielen.", "Operaciones estéticas premium diseñadas específicamente para ti, buscando un aspecto natural y una simetría perfecta.", "Premium esthetische operaties speciaal voor u ontworpen, gericht op een natuurlijke uitstraling en perfecte symmetrie.", "Opérations esthétiques premium conçues spécifiquement pour vous, visant un aspect naturel et une symétrie parfaite.", "Operazioni estetiche premium progettate specificamente per te, mirando a un aspetto naturale e a una perfetta simmetria.", "Премиальные эстетические операции, разработанные специально для вас, направленные на естественный вид и идеальную симметрию."],
-    ["Endoskopik Tarama", "Endoscopic Screening", "Endoskopisches Screening", "Cribado Endoscópico", "Endoscopische Screening", "Dépistage Endoscopique", "Screening Endoscopico", "Эндоскопическое обследование"],
-    ["srv-3", "High-precision diagnosis and safe, painless advanced screening procedures with state-of-the-art devices.", "Hochpräzise Diagnose und sichere, schmerzfreie erweiterte Screening-Verfahren mit modernsten Geräten.", "Diagnóstico de alta precisión y procedimientos avanzados de cribado seguros y sin dolor con dispositivos de última generación.", "Uiterst nauwkeurige diagnose en veilige, pijnloze geavanceerde screeningprocedures met ultramoderne apparatuur.", "Diagnostic de haute précision et procédures de dépistage avancées sûres et indolores avec des appareils de pointe.", "Diagnosi ad alta precisione e procedure di screening avanzate sicure e indolori con dispositivi all'avanguardia.", "Высокоточная диагностика и безопасные, безболезненные передовые процедуры обследования на новейшем оборудовании."],
-    ["Randevu Talebi", "Appointment Request", "Terminanfrage", "Solicitud de Cita", "Afspraak Verzoek", "Demande de RDV", "Richiesta di Appuntamento", "Заявка на прием"],
-    ["Randevu Alt", "Please fill in your details completely. Your request will be forwarded directly to our clinic's WhatsApp line.", "Bitte füllen Sie Ihre Daten vollständig aus. Ihre Anfrage wird direkt an die WhatsApp-Leitung unserer Klinik weitergeleitet.", "Por favor, completa tus datos. Tu solicitud se enviará directamente a la línea de WhatsApp de nuestra clínica.", "Vul uw gegevens volledig in. Uw verzoek wordt direct doorgestuurd naar de WhatsApp-lijn van onze kliniek.", "Veuillez remplir complètement vos coordonnées. Votre demande sera transmise directement à la ligne WhatsApp de notre clinique.", "Si prega di compilare completamente i propri dati. La tua richiesta verrà inoltrata direttamente alla linea WhatsApp della nostra clinica.", "Пожалуйста, полностью заполните свои данные. Ваш запрос будет напрямую перенаправлен на линию WhatsApp нашей клиники."],
-    ["Adınız Soyadınız", "Full Name", "Vor- und Nachname", "Nombre Completo", "Volledige Naam", "Nom et Prénom", "Nome e Cognome", "Имя и фамилия"],
-    ["Ad Soyad Placeholder", "Full Name", "Name", "Nombre", "Naam", "Nom", "Nome", "Имя"],
-    ["Telefon Numaranız", "Phone Number", "Telefonnummer", "Número de Teléfono", "Telefoonnummer", "Numéro de Téléphone", "Numero di Telefono", "Номер телефона"],
-    ["Tel Placeholder", "Your Phone", "Ihre Telefonnummer", "Tu Teléfono", "Uw Telefoon", "Votre Téléphone", "Il Tuo Telefono", "Ваш телефон"],
-    ["Şikayetiniz veya Talebiniz", "Your Complaint or Request", "Ihre Beschwerde oder Anfrage", "Tu Queja o Solicitud", "Uw Klacht of Verzoek", "Votre Plainte ou Demande", "Il Tuo Reclamo o Richiesta", "Ваша жалоба или запрос"],
-    ["Mesaj Placeholder", "Briefly describe...", "Bitte kurz beschreiben...", "Describe brevemente...", "Beschrijf kort...", "Décrivez brièvement...", "Descrivi brevemente...", "Кратко опишите..."],
-    ["WhatsApp ile Gönder", "Send via WhatsApp", "Per WhatsApp senden", "Enviar por WhatsApp", "Verzenden via WhatsApp", "Envoyer via WhatsApp", "Invia tramite WhatsApp", "Отправить через WhatsApp"],
-    ["Özel Klinik İletişim", "Private Clinic Contact", "Privatklinik Kontakt", "Contacto de Clínica Privada", "Privékliniek Contact", "Contact Clinique Privée", "Contatto Clinica Privata", "Контакты частной клиники"],
-    ["Çalışma Saatleri", "Weekdays: 09:00 - 18:00 | Saturday: 10:00 - 14:00", "Wochentags: 09:00 - 18:00 | Samstag: 10:00 - 14:00", "Días laborables: 09:00 - 18:00 | Sábado: 10:00 - 14:00", "Doordeweeks: 09:00 - 18:00 | Zaterdag: 10:00 - 14:00", "En semaine : 09h00 - 18h00 | Samedi : 10h00 - 14h00", "Feriali: 09:00 - 18:00 | Sabato: 10:00 - 14:00", "Будни: 09:00 - 18:00 | Суббота: 10:00 - 14:00"],
-    ["Adres", "Luxury Plaza, 3rd Floor, Sisli / Istanbul", "Luxury Plaza, 3. Stock, Sisli / Istanbul", "Luxury Plaza, 3er Piso, Sisli / Estambul", "Luxury Plaza, 3e Verdieping, Sisli / Istanbul", "Luxury Plaza, 3ème étage, Sisli / Istanbul", "Luxury Plaza, 3° Piano, Sisli / Istanbul", "Лакшери Плаза, 3-й этаж, Шишли / Стамбул"],
-    ["Telif", "© 2026 Op. Dr. Mehmet Demir. All rights reserved.", "© 2026 Op. Dr. Mehmet Demir. Alle Rechte vorbehalten.", "© 2026 Op. Dr. Mehmet Demir. Todos los derechos reservados.", "© 2026 Op. Dr. Mehmet Demir. Alle rechten voorbehouden.", "© 2026 Op. Dr. Mehmet Demir. Tous droits réservés.", "© 2026 Op. Dr. Mehmet Demir. Tutti i diritti riservati.", "© 2026 Оп. Доктор Мехмет Демир. Все права защищены."],
-    ["EY Studios Geri", "← EY Studios sample work", "← EY Studios Beispielarbeit", "← Trabajo de muestra de EY Studios", "← EY Studios voorbeeldwerk", "← Réalisation exemple EY Studios", "← Lavoro di esempio EY Studios", "← Пример работы EY Studios"],
-    ["uyari-1", "Please fill in your name and phone number.", "Bitte füllen Sie Name und Telefonnummer aus.", "Por favor, rellene su nombre y número de teléfono.", "Vul uw naam en telefoonnummer in.", "Veuillez remplir votre nom et votre numéro de téléphone.", "Si prega di compilare nome e numero di telefono.", "Пожалуйста, заполните имя и номер телефона."],
-    ["uyari-2", "WhatsApp is opening...", "WhatsApp wird geöffnet...", "Abriendo WhatsApp...", "WhatsApp wordt geopend...", "Ouverture de WhatsApp...", "Apertura di WhatsApp in corso...", "Открытие WhatsApp..."]
-  ]
+/* --- Satış önizlemesi --- */
+function set(el,t){if(!el)return;el.removeAttribute('data-i18n');el.textContent=t}
+var ALAN={
+  estetik:{t:'Medikal Estetik',h:['Yüzünüzün','doğal','ifadesini koruyan bakım.'],d:'Muayene sonrası size özel planlanan cilt yenileme, dolgu ve saç-cilt bakımı uygulamaları.',a1:'Amacımız sizi değiştirmek değil; cildinizin en sağlıklı, en dinlenmiş halini ortaya çıkarmak.',a2:'Her uygulamadan önce ayrıntılı bir görüşme yapılır; size uygun yöntem birlikte belirlenir.',r:[['Cilt Yenileme','Mezoterapi ve cilt kalitesini destekleyen uygulamalarla daha dinlenmiş bir görünüm.'],['Yüz Şekillendirme','Yüz hatlarınızla uyumlu, abartısız dolgu uygulamaları.'],['Saç ve Cilt Bakımı','PRP ve destekleyici tedavilerle kişiye özel planlar.']]},
+  burun:{t:'Burun Estetiği ve KBB',h:['Rahat nefes alan,','doğal','bir burun.'],d:'Yüz hatlarınızla uyumlu, nefes fonksiyonunu gözeten burun estetiği ve kulak burun boğaz tedavileri.',a1:'Burun yalnızca yüzün merkezinde değil, rahat nefes almanın da merkezindedir. Her planlamada görünüm kadar nefes fonksiyonu da değerlendirilir.',a2:'Muayene ve ayrıntılı görüşmenin ardından size uygun yöntem birlikte belirlenir; her adımda bilgilendirilirsiniz.',r:[['Burun Estetiği','Yüz oranlarınıza göre planlanan, doğal görünüm hedefleyen rinoplasti.'],['Septum ve Nefes','Burun eğriliği, konka büyümesi ve nefes alma güçlüklerinin tedavisi.'],['Kulak Burun Boğaz','Sinüzit, geniz eti, horlama ve kulak şikâyetlerinde muayene ve tedavi.']]},
+  dis:{t:'Ağız ve Diş Sağlığı',h:['Sağlıklı bir gülüşün','doğal','hali.'],d:'Muayene sonrası size özel planlanan, konforlu ve ayrıntılı diş sağlığı ve estetik diş hekimliği uygulamaları.',a1:'Her tedavi, ayrıntılı bir muayene ve sizinle yapılan görüşmeyle başlar. Size uygun plan birlikte belirlenir.',a2:'Süreç boyunca her adımda bilgilendirilir, sorularınıza sade bir dille cevap alırsınız.',r:[['Diş Sağlığı ve Dolgu','Muayene, diş taşı temizliği, dolgu ve kanal tedavisi gibi koruyucu ve tedavi edici uygulamalar.'],['Estetik Diş Hekimliği','Gülüş tasarımı, diş beyazlatma ve kaplama uygulamaları muayene sonrası birlikte planlanır.'],['İmplant ve Ortodonti','İmplant, şeffaf plak ve tel tedavileri için muayene ve planlama.']]},
+  gastro:{t:'Gastroenteroloji',h:['Doğru tanı,','özenli','takip.'],d:'Mide, bağırsak ve karaciğer sağlığında muayene, endoskopi ve kolonoskopi ile kişiye özel planlama.',a1:'Her işlemden önce ayrıntılı bir görüşme yapılır; hazırlık süreci ve işlem adım adım anlatılır.',a2:'Sorularınıza sade bir dille cevap alır, takip planınızı birlikte belirlersiniz.',r:[['Endoskopi','Mide ve yemek borusu şikâyetlerinde muayene ve endoskopik inceleme.'],['Kolonoskopi','Kalın bağırsak şikâyetleri ve tarama için muayene ve işlem öncesi bilgilendirme.'],['Mide, Bağırsak ve Karaciğer','Hazımsızlık, reflü, karın ağrısı ve karaciğer sağlığı konularında muayene ve takip.']]},
+  cocukcerrahi:{t:'Çocuk Cerrahisi',h:['Çocuğunuz için','özenli','bir yol.'],d:'Bebeklik döneminden ergenliğe çocukların cerrahi hastalıklarında muayene, planlama ve aileyle adım adım ilerleyen bir süreç.',a1:'Her muayene, çocuğunuzu ve sizi dinlemekle başlar. Tanı ve olası tedavi seçenekleri aileye sade bir dille anlatılır.',a2:'Ameliyat gerekiyorsa hazırlıktan taburculuğa kadar her adım önceden konuşulur.',r:[['Fıtık ve İnmemiş Testis','Kasık ve göbek fıtığı, inmemiş testis ve hidrosel için muayene ve planlama.'],['Sünnet ve Ürolojik Sorunlar','Sünnet, idrar yolu ve böbrek sorunlarında değerlendirme ve tedavi planı.'],['Karın ve Yenidoğan Cerrahisi','Apandisit, karın ağrısı ve yenidoğan dönemine özgü cerrahi durumlarda muayene.']]},
+  pediatri:{t:'Çocuk Sağlığı ve Hastalıkları',h:['Büyürken','her','adımında.'],d:'Yenidoğandan ergenliğe çocuğunuzun sağlıklı büyümesi için muayene, aşı takibi ve gelişim izlemi.',a1:'Çocuklar için muayene sakin ve acele etmeden yapılır; ebeveynlerin sorularına zaman ayrılır.',a2:'Büyüme, beslenme ve aşı takibi düzenli kontrollerle izlenir; her ziyarette bir sonraki adım konuşulur.',r:[['Sağlam Çocuk Takibi','Düzenli kontroller, büyüme ve gelişim izlemi, beslenme önerileri.'],['Aşı Takvimi','Aşı takviminin planlanması ve aşı öncesi bilgilendirme.'],['Hastalık Muayenesi','Ateş, öksürük, karın ağrısı ve sık görülen çocukluk hastalıklarında muayene.']]},
+  psikiyatri:{t:'Psikiyatri',h:['Kendinizi anlatmak için','güvenli','bir alan.'],d:'Kaygı, depresyon, uyku ve dikkat sorunları gibi ruh sağlığı konularında değerlendirme ve kişiye özel tedavi planı.',a1:'Görüşmeler sakin bir ortamda, acele etmeden yapılır. Paylaştıklarınız tıbbi gizlilik çerçevesinde korunur.',a2:'Tanı ve tedavi seçenekleri size açıkça anlatılır; takip planı birlikte belirlenir.',r:[['Kaygı ve Depresyon','Kaygı bozuklukları, panik, depresyon ve duygu durum sorunlarında değerlendirme ve takip.'],['Uyku ve Dikkat','Uyku sorunları, dikkat eksikliği ve odaklanma güçlüklerinde muayene ve tedavi planı.'],['Stres ve Yaşam Dönemleri','İş, ilişki ve kayıp gibi zorlu dönemlerde psikiyatrik destek.']]},
+  cocukpsikiyatri:{t:'Çocuk ve Ergen Psikiyatrisi',h:['Çocuğunuzu','birlikte','anlayalım.'],d:'Okul öncesinden ergenliğe dikkat, davranış, duygu ve gelişim konularında değerlendirme ve aileyle birlikte yürütülen takip.',a1:'Değerlendirme çocukla ve aileyle yapılan görüşmelerle başlar; gerektiğinde okulla iş birliği planlanır.',a2:'Tanı ve tedavi seçenekleri aileye sade bir dille anlatılır, takip planı birlikte belirlenir.',r:[['Dikkat ve Davranış','Dikkat eksikliği, hareketlilik ve davranış sorunlarında değerlendirme ve takip.'],['Kaygı ve Duygu Durumu','Okul kaygısı, korkular, içe kapanma ve ergenlik dönemi duygu durum sorunları.'],['Gelişim ve Öğrenme','Konuşma, gelişim ve öğrenme güçlüklerinde değerlendirme ve yönlendirme.']]},
+  noroloji:{t:'Nöroloji',h:['Doğru tanı,','dikkatli','takip.'],d:'Baş ağrısı, baş dönmesi, uyuşma ve hafıza şikâyetleri gibi sinir sistemi hastalıklarında muayene ve kişiye özel takip.',a1:'Muayene ayrıntılı bir dinlemeyle başlar; gerekli tetkikler ve sebepleri size açıkça anlatılır.',a2:'Tanı ve tedavi seçenekleri birlikte konuşulur, düzenli kontrollerle takip edilir.',r:[['Baş Ağrısı ve Baş Dönmesi','Migren, gerilim tipi baş ağrısı ve baş dönmesi şikâyetlerinde muayene ve takip.'],['Uyuşma ve Kas Güçsüzlüğü','El ve ayaklarda uyuşma, karıncalanma ve sinir sıkışmalarında değerlendirme.'],['Hafıza ve Epilepsi','Unutkanlık, epilepsi ve hareket bozukluklarında muayene ve uzun dönem takip.']]}
+}[S];
+var personal=!!(M||ALAN);
+if(personal){
+  $('#langBtn').style.display='none';lang='tr';
+  if(M){NAME=M;$$('[data-name]').forEach(function(e){e.textContent=M});
+    var w=M.replace(/^(Prof\.|Doç\.|Op\.|Uzm\.|Dr\.|Dt\.|Psk\.|Dyt\.)\s*/g,'').replace(/^(Dr\.)\s*/,'').split(/\s+/);$('#mono').textContent=((w[0]||'')[0]||'')+((w[w.length-1]||'')[0]||'');
+    var hi=$('#heroImg');hi.src="media/doktor/klinik.webp";hi.alt="Muayenehane bekleme alanı";hi.width=1400;hi.height=953;$('#aboutImg').src='media/doktor/gorusme.webp';}
+  if(C){$('#adr').textContent=C;$('#adr2').textContent=C;set($('#heroEy'),(ALAN?ALAN.t:'İç Hastalıkları')+' · '+C.split(',').pop().trim())}
+  if(ALAN){BRANCH=ALAN.t;set($('#brSmall'),ALAN.t);set($('#ftBr'),ALAN.t);if(!C)set($('#heroEy'),ALAN.t);
+    var h=$('#heroH');h.innerHTML='';[0,1,2].forEach(function(i){var e=document.createElement(i===1?'em':'span');e.textContent=ALAN.h[i];h.appendChild(e);if(i<2)h.appendChild(document.createTextNode(' '))});
+    set($('#heroP'),ALAN.d);set($('#a1'),ALAN.a1);set($('#a2'),ALAN.a2);$('#cv').style.display='none';
+    $('#checkup').remove();$('#navCk').remove();$('#ctaCk').remove();
+    SRV=ALAN.r.map(function(r){return r[0]});
+    var cards=$$('#srvGrid .card');cards.forEach(function(c,i){if(i>2){c.remove();return}set($('h3',c),ALAN.r[i][0]);set($('p',c),ALAN.r[i][1])});
+    $$('.chip').forEach(function(c){c.style.display='none'});
+    $$('[data-i18n="ch1"],[data-i18n="f4"]').forEach(function(){});
+  }
+  document.title=NAME+' | '+BRANCH.replace(' Uzmanı','');
+}
+/* --- Check-up listesi --- */
+var T={
+ ta:['Tansiyon ölçümü','Yılda en az bir kez; ev ölçümleriyle birlikte','Blood pressure','At least yearly, with home readings'],
+ se:['Açlık kan şekeri / HbA1c','Kilo ve aile öyküsüne göre','Fasting glucose / HbA1c','Based on weight and family history'],
+ ko:['Kolesterol (lipid profili)','Risk durumuna göre aralıkla','Cholesterol (lipid panel)','Interval based on risk'],
+ ki:['Boy, kilo ve bel çevresi','Her kontrolde','Height, weight, waist','At every visit'],
+ sm:['Rahim ağzı taraması (smear/HPV)','30–65 yaş arası, aralığı hekimle belirlenir','Cervical screening (smear/HPV)','Ages 30–65, interval agreed with your doctor'],
+ ma:['Meme muayenesi ve mamografi','40 yaştan itibaren, aralığı hekimle belirlenir','Breast exam & mammography','From 40, interval agreed with your doctor'],
+ kb:['Kalın bağırsak taraması','50 yaştan itibaren gaitada gizli kan ya da kolonoskopi','Bowel cancer screening','From 50, stool test or colonoscopy'],
+ ke:['Kemik yoğunluğu ölçümü','Kadınlarda 65 yaştan itibaren ya da risk varsa','Bone density scan','Women from 65 or if at risk'],
+ pr:['Prostat değerlendirmesi','50 yaştan itibaren, artı ve eksileri konuşularak','Prostate discussion','From 50, after weighing pros and cons'],
+ go:['Göz ve işitme kontrolü','İlgili branşa yönlendirme','Eye and hearing check','Referral to the relevant specialty'],
+ as:['Erişkin aşıları','Grip, pnömokok ve tetanoz takvimi','Adult vaccines','Flu, pneumococcal and tetanus schedule'],
+ ti:['Tiroid testleri','Şikâyet ya da risk varsa','Thyroid tests','If you have symptoms or risk']
 };
-
-(function () {
-  var LANGS = ['tr', 'en', 'de', 'es', 'nl', 'fr', 'it', 'ru'];
-  var INFO = { tr: ['tr', 'TR', 'Türkçe'], en: ['gb', 'EN', 'English'], de: ['de', 'DE', 'Deutsch'], es: ['es', 'ES', 'Español'], nl: ['nl', 'NL', 'Nederlands'], fr: ['fr', 'FR', 'Français'], it: ['it', 'IT', 'Italiano'], ru: ['ru', 'RU', 'Русский'] };
-  var cur = 'tr', MAP = {};
-  
-  var key = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
-  var dict = window.EY_PAGE_DICT || {};
-  var rows = dict[key] || dict[Object.keys(dict)[0]];   
-  if (!rows || !rows.length) return;               
-  
-  rows.forEach(function (r) { MAP[r[0]] = r; });
-
-  var T = [];
-  function walk(el) {
-    if (/^(SCRIPT|STYLE|NOSCRIPT|SVG)$/i.test(el.tagName) || el.id === 'eyLang') return;
-    
-    var i18nVal = el.getAttribute('data-i18n');
-    if (i18nVal && MAP[i18nVal]) {
-        T.push({ el: el, row: MAP[i18nVal], orig: el.innerHTML, isI18n: true });
-    }
-
-    var phVal = el.getAttribute('data-i18n-ph');
-    if (phVal && MAP[phVal]) {
-        T.push({ el: el, row: MAP[phVal], orig: el.getAttribute('placeholder'), isPh: true });
-    }
-
-    Array.prototype.forEach.call(el.children, function (n) { walk(n); });
-  }
-  walk(document.body);
-
-  function pick(row, lang, orig) { return lang === 'tr' ? orig : (row[LANGS.indexOf(lang)] || row[1] || orig); }
-  /* Script içindeki mesajlar için: Türkçede null döner, çağıran kendi Türkçe metnini kullanır */
-  window.eyT = function (k) { var r = MAP[k]; return (r && cur !== 'tr') ? (r[LANGS.indexOf(cur)] || r[1]) : null; };
-  
-  function swap(lang) {
-    T.forEach(function (t) {
-      if (t.isPh) { 
-          t.el.setAttribute('placeholder', pick(t.row, lang, t.orig));
-      }
-      else if (t.isI18n) {
-          t.el.innerHTML = pick(t.row, lang, t.orig);
-      }
-    });
-    document.documentElement.lang = lang;
-    cur = lang; setBtn();
-  }
-
-  function apply(lang, instant) {
-    if (lang === cur && !instant) return;
-    try { localStorage.setItem('ey-lang', lang); } catch (e) {}
-    if (instant) { swap(lang); return; }
-    document.body.style.opacity = '0';
-    setTimeout(function () { swap(lang); document.body.style.opacity = ''; }, 160);
-  }
-
-  var css = document.createElement('style');
-  css.textContent = 'body{transition:opacity .16s ease}' +
-    '#eyLang{position:fixed;right:25px;bottom:25px;z-index:9998;font-family:var(--font-body)}' +
-    '#eyLang button{font:500 13px/1 var(--font-body);text-transform:uppercase;letter-spacing:1px;cursor:pointer}' +
-    '#eyBtn{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);color:var(--white);border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:12px 20px;backdrop-filter:blur(10px);box-shadow:0 8px 25px rgba(0,0,0,.4);white-space:nowrap}' +
-    '#eyBtn img,.eyOpt img{width:20px;height:14px;object-fit:cover;flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.1)}' +
-    '#eyDrop{position:absolute;right:0;bottom:calc(100% + 10px);background:#070d18;border:1px solid rgba(204,165,101,0.25);border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.6);min-width:190px;overflow:hidden;display:none;flex-direction:column}' +
-    '#eyDrop.show{display:flex}' +
-    '.eyOpt{display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;background:none;border:0;text-align:left;color:var(--text-gray);white-space:nowrap}' +
-    '.eyOpt:hover,.eyOpt.on{background:rgba(204,165,101,0.12);color:var(--gold)}.eyOpt b{min-width:1.9rem}@media(max-width:600px){#eyLang{right:12px;bottom:12px}#eyBtn{padding:10px 14px}}' +
-    '.eyOpt span{font-weight:400;opacity:.6;text-transform:none}';
-  document.head.appendChild(css);
-  var box = document.createElement('div'); box.id = 'eyLang';
-  var FL = {"tr": "<rect width=\"20\" height=\"14\" fill=\"#E30A17\"/><circle cx=\"7.4\" cy=\"7\" r=\"3.6\" fill=\"#fff\"/><circle cx=\"8.4\" cy=\"7\" r=\"2.9\" fill=\"#E30A17\"/><circle cx=\"12\" cy=\"7\" r=\"1\" fill=\"#fff\"/>", "gb": "<rect width=\"20\" height=\"14\" fill=\"#012169\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#fff\" stroke-width=\"2.6\"/><path d=\"M0 0L20 14M20 0L0 14\" stroke=\"#C8102E\" stroke-width=\"1\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#fff\" stroke-width=\"4.4\"/><path d=\"M10 0V14M0 7H20\" stroke=\"#C8102E\" stroke-width=\"2.4\"/>", "de": "<rect width=\"20\" height=\"4.7\" fill=\"#000\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#D00\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#FFCE00\"/>", "es": "<rect width=\"20\" height=\"14\" fill=\"#AA151B\"/><rect y=\"3.5\" width=\"20\" height=\"7\" fill=\"#F1BF00\"/>", "nl": "<rect width=\"20\" height=\"4.7\" fill=\"#AE1C28\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#21468B\"/>", "fr": "<rect width=\"6.7\" height=\"14\" fill=\"#0055A4\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#EF4135\"/>", "it": "<rect width=\"6.7\" height=\"14\" fill=\"#009246\"/><rect x=\"6.7\" width=\"6.6\" height=\"14\" fill=\"#fff\"/><rect x=\"13.3\" width=\"6.7\" height=\"14\" fill=\"#CE2B37\"/>", "ru": "<rect width=\"20\" height=\"4.7\" fill=\"#fff\"/><rect y=\"4.7\" width=\"20\" height=\"4.7\" fill=\"#0039A6\"/><rect y=\"9.4\" width=\"20\" height=\"4.6\" fill=\"#D52B1E\"/>"};
-  var flag = function (c) { return '<img src="data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14">' + FL[INFO[c][0]] + '</svg>') + '" alt="">'; };
-  box.innerHTML = '<div id="eyDrop">' + LANGS.map(function (c) { return '<button type="button" class="eyOpt hover-target" data-l="' + c + '">' + flag(c) + '<b>' + INFO[c][1] + '</b><span>' + INFO[c][2] + '</span></button>'; }).join('') + '</div><button type="button" id="eyBtn" class="hover-target" aria-haspopup="true"></button>';
-  document.body.appendChild(box);
-  
-  var btn = document.getElementById('eyBtn'), drop = document.getElementById('eyDrop');
-  function setBtn() {
-    btn.innerHTML = flag(cur) + ' ' + INFO[cur][1] + ' ▲'; btn.setAttribute('aria-label', INFO[cur][2]);
-    Array.prototype.forEach.call(drop.children, function (o) { o.classList.toggle('on', o.getAttribute('data-l') === cur); });
-  }
-  function openDrop(o) { drop.classList.toggle('show', o); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); }
-  btn.setAttribute('aria-expanded', 'false');
-  btn.addEventListener('click', function (e) { e.stopPropagation(); openDrop(!drop.classList.contains('show')); });
-  drop.addEventListener('click', function (e) { var o = e.target.closest('.eyOpt'); if (!o) return; openDrop(false); apply(o.getAttribute('data-l')); });
-  document.addEventListener('click', function () { openDrop(false); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drop.classList.contains('show')) { openDrop(false); btn.focus(); } });
-
-  setBtn();
-  var start = null; try { start = localStorage.getItem('ey-lang'); } catch (e) {}
-  if (!start) { var n = (navigator.language || 'tr').slice(0, 2).toLowerCase(); if (INFO[n]) start = n; }
-  if (start && start !== 'tr' && INFO[start]) apply(start, true);
-
-})();
-</script>
-
-<!-- ETKİLEŞİM & RUNTIME JS -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // --- PRELOADER ---
-    var count = 0;
-    var counterElement = document.getElementById('counter');
-    var loadingBar = document.getElementById('loadingBar');
-    var preloader = document.getElementById('preloader');
-    function start() { document.body.classList.add('loaded'); initEngine(); }
-
-    if (reduce) {
-        start();
-    } else {
-        var interval = setInterval(function() {
-            count += Math.floor(Math.random() * 14) + 6;
-            if (count >= 100) {
-                count = 100;
-                clearInterval(interval);
-                setTimeout(function() {
-                    preloader.classList.add('hide');
-                    setTimeout(start, 600);
-                }, 300);
-            }
-            counterElement.textContent = count;
-            loadingBar.style.width = count + "%";
-        }, 55);
-    }
-
-    function initEngine() {
-        // --- İÇERİK BELİRME (Lenis'ten bağımsız: CDN yüklenmese de içerik görünür) ---
-        var reveals = document.querySelectorAll('.reveal');
-        if (reduce || !('IntersectionObserver' in window)) {
-            reveals.forEach(function (r) { r.classList.add('active'); });
-        } else {
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-            reveals.forEach(function (r) { observer.observe(r); });
-        }
-
-        // --- LENIS YUMUŞAK KAYDIRMA (varsa) ---
-        if (reduce || typeof window.Lenis !== 'function') return;
-        try {
-            var lenis = new Lenis({ duration: 1.25, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
-            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-            requestAnimationFrame(raf);
-            document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-                a.addEventListener('click', function (e) {
-                    var id = a.getAttribute('href');
-                    e.preventDefault();
-                    if (id.length < 2) { lenis.scrollTo(0); return; }
-                    var t = document.querySelector(id);
-                    if (t) lenis.scrollTo(t, { offset: -70 });
-                });
-            });
-        } catch (err) { /* Lenis çalışmazsa tarayıcının normal kaydırması kullanılır */ }
-    }
-
-    // --- NAVBAR ---
-    var nav = document.getElementById('navbar');
-    function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 50); }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // --- ÖZEL İMLEÇ (yalnızca fare olan cihazlarda) ---
-    var dot = document.getElementById('cursorDot');
-    var outline = document.getElementById('cursorOutline');
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
-        window.addEventListener('mousemove', function (e) {
-            document.body.classList.add('has-cursor');
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-            outline.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 250, fill: 'forwards' });
-        }, { passive: true });
-        document.addEventListener('mouseover', function (e) {
-            document.body.classList.toggle('hovering', !!(e.target.closest && e.target.closest('a, button, input, textarea, .hover-target')));
-        });
-        document.documentElement.addEventListener('mouseleave', function () { document.body.classList.remove('has-cursor'); });
-    } else {
-        dot.remove(); outline.remove();
-    }
-
-    // --- WHATSAPP FORMU ---
-    var WHATSAPP = '905306284284';
-    var form = document.getElementById('docForm');
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var ad = document.getElementById('ad').value.trim();
-        var tel = document.getElementById('tel').value.trim();
-        var mesaj = document.getElementById('mesaj').value.trim();
-        var stMsg = document.getElementById('stMsg');
-        var t = function (k, fallback) { return (window.eyT && window.eyT(k)) || fallback; };
-
-        if (!ad || tel.replace(/\D/g, '').length < 7) {
-            stMsg.style.color = '#ff6b5e';
-            stMsg.textContent = t('uyari-1', 'Lütfen ad soyad ve telefon alanlarını doldurun.');
-            document.getElementById(ad ? 'tel' : 'ad').focus();
-            return;
-        }
-        stMsg.style.color = '#cca565';
-        stMsg.textContent = t('uyari-2', 'WhatsApp açılıyor...');
-
-        var text = "Merhaba, randevu talep ediyorum.\nAd Soyad: " + ad + "\nTelefon: " + tel + "\nŞikayeti/Talebi: " + (mesaj || "-");
-        // Pencere doğrudan tıklama anında açılmalı; gecikmeli açılış Safari vb. tarafından engellenir.
-        window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-        setTimeout(function () { stMsg.textContent = ''; form.reset(); }, 2500);
-    });
-
-});
-</script>
-
-<script>
-/* Sayfa sonunda footer görünürken "örnek çalışma" düğmesini gizle; footer'daki EY Studios imzasının üstüne binmesin */
-(function () {
-  var b = document.querySelector('.demo-back, .ey-demo-back'), f = document.querySelector('footer');
-  if (!b || !f || !('IntersectionObserver' in window)) return;
-  var tr = getComputedStyle(b).transitionProperty === 'all' ? '' : getComputedStyle(b).transition;
-  b.style.transition = (tr ? tr + ', ' : '') + 'opacity .35s';
-  new IntersectionObserver(function (e) {
-    var on = e[0].isIntersecting;
-    b.style.opacity = on ? '0' : '';
-    b.style.pointerEvents = on ? 'none' : '';
-    if (on) { b.setAttribute('tabindex', '-1'); b.setAttribute('aria-hidden', 'true'); }
-    else { b.removeAttribute('tabindex'); b.removeAttribute('aria-hidden'); }
-  }).observe(f);
+var age=1,sex='k';
+function list(){var a=['ta','ki','se','ko'];if(sex==='k'&&age<=2)a.push('sm');if(sex==='k'&&age>=1)a.push('ma');if(age>=2)a.push('kb');if(age===0)a.push('ti');if(sex==='e'&&age>=2)a.push('pr');if(sex==='k'&&age===3)a.push('ke');if(age>=2)a.push('as');if(age===3)a.push('go');return a}
+var AGES=['18–39','40–49','50–64','65+'];
+function renderTests(){var ul=$('#tests');if(!ul)return;var a=list(),en=lang==='en';ul.innerHTML='';a.forEach(function(k,i){var li=document.createElement('li');li.style.animationDelay=(i*55)+'ms';li.innerHTML='<i>✓</i><span></span>';var sp=li.querySelector('span');sp.textContent=T[k][en?2:0];var sm=document.createElement('small');sm.textContent=T[k][en?3:1];sp.appendChild(sm);ul.appendChild(li)});
+ $('#ringN').textContent=a.length;$('#ringFg').style.strokeDashoffset=(213.6*(1-a.length/9)).toFixed(1);$('#resSub').textContent=AGES[age]+' · '+(sex==='k'?tr('p_k','Kadın'):tr('p_e','Erkek'))}
+function seg(id,cb){var g=$(id);if(!g)return;g.addEventListener('click',function(e){var b=e.target.closest('.opt');if(!b)return;$$('.opt',g).forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false')});cb(b.getAttribute('data-v'));renderTests()})}
+seg('#ages',function(v){age=+v});seg('#sexes',function(v){sex=v});
+var ckb=$('#ckBook');if(ckb)ckb.addEventListener('click',function(){var k=$('#konu');k.value=SRV[SRV.length-1];$('#not').value='Check-up ('+AGES[age]+', '+(sex==='k'?'Kadın':'Erkek')+'): '+list().map(function(x){return T[x][0]}).join(', ');document.getElementById('randevu').scrollIntoView({behavior:'smooth'})});
+/* --- Form --- */
+function fillKonu(){var k=$('#konu'),v=k.value;k.innerHTML='';SRV.concat(['Diğer']).forEach(function(s,i){var o=document.createElement('option');o.value=s;o.textContent=(lang==='en'&&!personal&&EN['k'+(i+1)])?EN['k'+(i+1)]:(s==='Diğer'&&lang==='en'?'Other':s);k.appendChild(o)});if(v)k.value=v}
+var DN=['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'],DE=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MN=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+var days=[],d=new Date();d.setHours(12,0,0,0);while(days.length<6){d.setDate(d.getDate()+1);if(d.getDay()!==0)days.push(new Date(d))}
+var dayV='',slotV='';
+function renderDays(){var g=$('#days');g.innerHTML='';days.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('aria-pressed',dayV===String(i)?'true':'false');b.dataset.v=i;b.innerHTML=(lang==='en'?DE:DN)[x.getDay()]+'<b>'+x.getDate()+'</b>';g.appendChild(b)})}
+$('#days').addEventListener('click',function(e){var b=e.target.closest('.day');if(!b)return;dayV=b.dataset.v;renderDays()});
+$('#slots').addEventListener('click',function(e){var b=e.target.closest('.slot');if(!b)return;slotV=b.dataset.v;$$('.slot').forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false')})});
+$('#form').addEventListener('submit',function(e){e.preventDefault();var ad=$('#ad').value.trim(),tel=$('#tel').value.trim(),m=$('#msg');m.className='msg';
+ if(ad.length<2){m.textContent=lang==='en'?'Please enter your name.':'Lütfen adınızı yazın.';$('#ad').focus();return}
+ if(tel.replace(/\D/g,'').length<10){m.textContent=lang==='en'?'Please enter a valid phone number.':'Lütfen geçerli bir telefon numarası yazın.';$('#tel').focus();return}
+ if(dayV===''){m.textContent=lang==='en'?'Please choose a day.':'Lütfen bir gün seçin.';return}
+ var x=days[+dayV],ds=x.getDate()+' '+MN[x.getMonth()]+' '+['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'][x.getDay()];
+ var t='Merhaba '+NAME+',\nmuayene için randevu talep ediyorum.\n\nAd soyad: '+ad+'\nTelefon: '+tel+'\nKonu: '+$('#konu').value+'\nTercih edilen gün: '+ds+(slotV?'\nSaat aralığı: '+slotV:'')+($('#not').value.trim()?'\nNot: '+$('#not').value.trim():'');
+ m.className='msg ok';m.textContent=lang==='en'?'Opening WhatsApp…':'WhatsApp açılıyor…';window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank','noopener')});
+/* --- Açık / kapalı --- */
+function status(){var n=new Date(),g=n.getDay(),h=n.getHours()+n.getMinutes()/60,open=(g>=1&&g<=5&&h>=9&&h<18)||(g===6&&h>=9&&h<13),el=$('#status');el.classList.toggle('off',!open);
+ $('#stTxt').textContent=lang==='en'?(open?'Open now · '+(g===6?'until 13:00':'until 18:00'):'Closed now · you can still send a request'):(open?'Şu an açık · '+(g===6?'13:00\'e kadar':'18:00\'e kadar'):'Şu an kapalı · randevu talebi bırakabilirsiniz')}
+/* --- Görünme, üst bar, demo linki --- */
+var rv=$$('.rv');if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px'});rv.forEach(function(r){io.observe(r)})}else rv.forEach(function(r){r.classList.add('in')});
+setTimeout(function(){rv.forEach(function(r){if(r.getBoundingClientRect().top<innerHeight)r.classList.add('in')})},2500);
+var hd=$('#hd');addEventListener('scroll',function(){hd.classList.toggle('sc',scrollY>8)},{passive:true});
+var db=$('#demoBack');if('IntersectionObserver' in window)new IntersectionObserver(function(es){db.classList.toggle('hide',es[0].isIntersecting)}).observe($('#ft'));
+renderDays();
+if(lang!=='tr')applyLang();else{renderTests();fillKonu();status()}
 })();
 </script>
 </body>

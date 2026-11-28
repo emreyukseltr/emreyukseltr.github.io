@@ -175,7 +175,7 @@
   .lede { font-size: 1.22rem; color: rgba(255,255,255,.88); margin: 0 0 2rem; max-width: 46ch; }
   .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
 
-  .stage { --s-bg: #050505; --s-ink: #FFFFFF; --s-acc: #C5A059; --s-on: #000; --s-card: #141414; position: relative; perspective: 1500px; min-height: 26rem; display: grid; place-items: center; padding: 1.5rem 0 2.5rem; }
+  .stage { --s-bg: #0E1320; --s-ink: #F3EEE4; --s-acc: #C9A25E; --s-on: #0E1320; --s-card: #1A2132; position: relative; perspective: 1500px; min-height: 26rem; display: grid; place-items: center; padding: 1.5rem 0 2.5rem; }
   .device { position: relative; width: 100%; max-width: 540px; transform-style: preserve-3d; transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 6deg)); transition: transform .25s ease-out; }
   .browser { border-radius: 12px; overflow: hidden; background: var(--surface); box-shadow: 0 40px 80px rgba(4,8,60,.5); aspect-ratio: 16 / 11; display: flex; flex-direction: column; }
   .chrome { display: flex; align-items: center; gap: .4rem; padding: .55rem .8rem; border-bottom: 1px solid var(--line); background: var(--surface); color: var(--ink); flex: none; }
@@ -467,6 +467,52 @@
     .js .story-pin { display: none; }
     .js .story-static { display: block; }
   }
+
+  /* ---- Örnek siteler: tek liste, sektör filtresi ---- */
+  .dfilt { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: none; margin: 0 -1.25rem 1.6rem; padding: 0 1.25rem .3rem; }
+  .dfilt::-webkit-scrollbar { display: none; }
+  .dfilt button { flex: none; min-height: 44px; padding: 0 1.05rem; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 .92rem/1 var(--body); cursor: pointer; }
+  .dfilt button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .dgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1rem; }
+  @media (min-width: 760px) { .dgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.2rem 1.4rem; } }
+  @media (min-width: 1180px) { .dgrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .dcard { display: flex; flex-direction: column; text-decoration: none; color: inherit; min-width: 0; }
+  .dcard.off { display: none; }
+  .dshot { aspect-ratio: 16 / 10; border-radius: calc(var(--radius) + 2px); overflow: hidden; border: 1px solid var(--line); background: var(--surface); transition: transform .35s ease, box-shadow .35s ease; }
+  .dshot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .dcard:hover .dshot, .dcard:focus-visible .dshot { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(12, 16, 32, .16); }
+  .dlab { margin-top: .85rem; font: 600 .74rem/1.3 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  .dcard h3 { font-family: var(--display); font-weight: 700; font-size: 1.12rem; letter-spacing: -0.015em; margin: .25rem 0 .3rem; overflow-wrap: anywhere; }
+  .dcard p { margin: 0; color: var(--muted); font-size: .93rem; line-height: 1.45; }
+  @media (max-width: 520px) { .dcard p { display: none; } .dcard h3 { font-size: 1rem; } .dlab { font-size: .68rem; } }
+  .dnote { margin: 2rem 0 0; color: var(--muted); font-size: .88rem; }
+  /* ---- Yayındaki müşteriler ---- */
+  .live { display: grid; gap: clamp(1.2rem, 3vw, 2rem); }
+  @media (min-width: 980px) { .live { grid-template-columns: 1fr 1fr; } }
+  .lcard { border-radius: 28px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; }
+  .lvis { position: relative; aspect-ratio: 16 / 10.5; padding: 7% 18% 0 7%; overflow: hidden; }
+  .luna .lvis { background: linear-gradient(160deg, #F7E3EC, #E7B9CC); }
+  .musti .lvis { background: radial-gradient(120% 90% at 30% 10%, #3A2F1A, #0B0A08 70%); }
+  .lvis .ld { width: 100%; height: auto; border-radius: 12px 12px 0 0; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .45); }
+  .lvis .lm { position: absolute; right: 6%; bottom: -18%; width: 24%; height: auto; border-radius: 18px; border: 5px solid #111; box-shadow: 0 24px 50px -12px rgba(0, 0, 0, .55); }
+  .ltxt { padding: clamp(1.3rem, 3vw, 2rem); display: flex; flex-direction: column; gap: .5rem; }
+  .lsec { font: 600 .78rem/1.3 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .ltxt h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem); letter-spacing: -0.025em; margin: 0; }
+  .ltxt p { margin: 0; color: var(--muted); }
+  .lgo { align-self: flex-start; margin-top: .4rem; color: var(--accent); font-weight: 600; text-decoration: none; }
+  .lgo:hover { text-decoration: underline; }
+  /* ---- Paketler: net fiyat ---- */
+  .packs.v2 { border-top: 0; gap: 1rem; }
+  .packs.v2 .pack { padding: 1.8rem 1.6rem 1.9rem; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); position: relative; display: flex; flex-direction: column; }
+  .packs.v2 .pack + .pack { padding-left: 1.6rem; border-left: 1px solid var(--line); }
+  .packs.v2 .pack.hot { border: 2px solid var(--accent); box-shadow: 0 24px 50px -24px rgba(43, 61, 245, .45); }
+  .pack .badge { position: absolute; top: -13px; left: 1.4rem; background: var(--accent); color: var(--on-accent, #fff); font: 700 .74rem/1 var(--body); letter-spacing: .04em; padding: .5rem .8rem; border-radius: 99px; }
+  .pack .amt { font-family: var(--display); font-weight: 700; font-size: clamp(2.1rem, 4vw, 2.6rem); letter-spacing: -0.03em; margin: .2rem 0 1.1rem; }
+  .pack .amt small { font: 500 .9rem/1 var(--body); color: var(--muted); letter-spacing: 0; margin-left: .3rem; }
+  .packs.v2 .pack ul { margin-bottom: 1.4rem; }
+  .packs.v2 .pack .btn { margin-top: auto; align-self: stretch; text-align: center; justify-content: center; }
+  .ptrust { display: flex; gap: .7rem; align-items: flex-start; margin: 1.6rem 0 0; padding: 1rem 1.2rem; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); color: var(--ink); font-weight: 500; }
+  .ptrust svg { flex: none; width: 22px; height: 22px; color: var(--accent); margin-top: 1px; }
   /* ---- Öne çıkan işler ---- */
   .vit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.6rem, 3.5vw, 2.6rem) clamp(1.2rem, 3vw, 2.2rem); }
   @media (min-width: 1100px) { .vit { grid-template-columns: repeat(3, minmax(0, 1fr)); } .vcard h3 { font-size: 1.25rem; } }
@@ -547,21 +593,21 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       <div class="stage" id="stage" aria-hidden="true">
         <div class="device" id="device">
           <div class="browser">
-            <div class="chrome"><i></i><i></i><i></i><span id="hUrl">mehmetdemirhukuk.com</span></div>
+            <div class="chrome"><i></i><i></i><i></i><span id="hUrl">defnekayahukuk.com</span></div>
             <div class="site">
-              <div class="s-nav"><b data-k="name">Av. Mehmet Demir</b><span class="s-links"><i></i><i></i><i></i></span></div>
-              <div class="s-big" data-k="big">Güç. İtibar. Kusursuz savunma.</div>
-              <div class="s-sub" data-k="sub">Ceza, ticaret ve uluslararası hukuk.</div>
-              <div class="s-btn" data-k="btn">Danışmanlık al</div>
+              <div class="s-nav"><b data-k="name">Defne &amp; Kaya Hukuk</b><span class="s-links"><i></i><i></i><i></i></span></div>
+              <div class="s-big" data-k="big">Hakkınızı bilin.</div>
+              <div class="s-sub" data-k="sub">Ceza, aile, iş ve gayrimenkul hukuku.</div>
+              <div class="s-btn" data-k="btn">Ön görüşme talebi</div>
               <div class="s-cards"><div></div><div></div><div></div></div>
             </div>
           </div>
           <div class="phone">
             <div class="site">
-              <div class="s-nav"><b data-k="name">Av. Mehmet Demir</b></div>
-              <div class="s-big" data-k="big">Güç. İtibar. Kusursuz savunma.</div>
-              <div class="s-sub" data-k="sub">Ceza, ticaret ve uluslararası hukuk.</div>
-              <div class="s-btn" data-k="btn">Danışmanlık al</div>
+              <div class="s-nav"><b data-k="name">Defne &amp; Kaya Hukuk</b></div>
+              <div class="s-big" data-k="big">Hakkınızı bilin.</div>
+              <div class="s-sub" data-k="sub">Ceza, aile, iş ve gayrimenkul hukuku.</div>
+              <div class="s-btn" data-k="btn">Ön görüşme talebi</div>
               <div class="s-cards"><div></div><div></div><div></div></div>
             </div>
           </div>
@@ -584,7 +630,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
           <button type="button" data-i="11" aria-pressed="false" data-i18n="p12">Davet salonu</button>
           <button type="button" data-i="12" aria-pressed="false" data-i18n="p13">Hafriyat</button>
         </div>
-        <a class="picker-link" id="pLink" href="avukat.html" data-i18n="p_link">Örneği aç: Avukat →</a>
+        <a class="picker-link" id="pLink" href="avukat-super.html" data-i18n="p_link">Örneği aç: Avukat →</a>
       </div>
       </div>
     </div>
@@ -594,10 +640,10 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 <div class="ticker">
   <div class="ticker-track">
     <ul>
-      <li>Avukat</li><li>Doktor</li><li>Diş kliniği</li><li>Diyetisyen</li><li>Psikolog</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Berber</li><li>Tırnak</li><li>Oto bakım</li><li>Kuyumcu</li><li>Davet salonu</li><li>Hafriyat</li><li>Taksi</li>
+      <li>Avukat</li><li>Doktor</li><li>Diş kliniği</li><li>Diyetisyen</li><li>Psikolog</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Berber</li><li>Tırnak</li><li>Oto bakım</li><li>Kuyumcu</li><li>Davet salonu</li><li>Hafriyat</li><li>Taksi</li><li>Mimar</li>
     </ul>
     <ul aria-hidden="true">
-      <li>Avukat</li><li>Doktor</li><li>Diş kliniği</li><li>Diyetisyen</li><li>Psikolog</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Berber</li><li>Tırnak</li><li>Oto bakım</li><li>Kuyumcu</li><li>Davet salonu</li><li>Hafriyat</li><li>Taksi</li>
+      <li>Avukat</li><li>Doktor</li><li>Diş kliniği</li><li>Diyetisyen</li><li>Psikolog</li><li>Restoran</li><li>Kafe</li><li>Kuaför</li><li>Berber</li><li>Tırnak</li><li>Oto bakım</li><li>Kuyumcu</li><li>Davet salonu</li><li>Hafriyat</li><li>Taksi</li><li>Mimar</li>
     </ul>
   </div>
 </div>
@@ -711,228 +757,160 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     </div>
   </section>
 
-  <section class="block" id="vitrin" aria-labelledby="vitrin-baslik">
+  <section class="block" id="calismalar" aria-labelledby="calisma-baslik">
     <div class="wrap">
-      <p class="eyebrow" data-i18n="vit_k">Öne çıkanlar</p>
-      <h2 id="vitrin-baslik" data-i18n="vit_h">Özel tasarım işler.</h2>
-      <p class="sub" data-i18n="vit_s">Hazır örneklerin ötesinde: animasyonlu, çok dilli, tek bir işletme için kurgulanmış sayfalar. Açın, telefonunuzda deneyin.</p>
-      <div class="vit reveal">
-        <a class="vcard" href="dis-klinigi-super.html">
-          <div class="vshot"><img src="media/vitrin/inci.webp" alt="İNCİ Diş Atölyesi ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v1_l">Diş kliniği · 3D film</span></div>
-          <h3>İNCİ Diş Atölyesi</h3>
-          <p data-i18n="v1_d">Kaydırdıkça ilerleyen 3D sahne, 8 dil ve WhatsApp'a düşen randevu formu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-        <a class="vcard" href="avukat-super.html">
-          <div class="vshot"><img src="media/vitrin/avukat.webp" alt="Defne & Kaya Hukuk ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v2_l">Hukuk bürosu</span></div>
+      <p class="eyebrow" data-i18n="cal_k">Örnek siteler</p>
+      <h2 id="calisma-baslik" data-i18n="dm_h">İşletmenize benzeyeni açın, telefonunuzda deneyin.</h2>
+      <p class="sub" data-i18n="dm_s">Her biri gerçek bir işletmenin sitesi gibi çalışır: formlar WhatsApp’a düşer, fiyatlar ve saatler görünür. Size ait olan, işletmenizin adı, fotoğrafları ve renkleriyle hazırlanır.</p>
+      <div class="dfilt" role="group" aria-label="Sektör filtresi">
+        <button type="button" data-f="all" aria-pressed="true" data-i18n="df_all">Tümü</button><button type="button" data-f="saglik" aria-pressed="false" data-i18n="df_saglik">Sağlık</button><button type="button" data-f="ofis" aria-pressed="false" data-i18n="df_ofis">Hukuk ve ofis</button><button type="button" data-f="yeme" aria-pressed="false" data-i18n="df_yeme">Yeme içme</button><button type="button" data-f="guzellik" aria-pressed="false" data-i18n="df_guzellik">Güzellik</button><button type="button" data-f="magaza" aria-pressed="false" data-i18n="df_magaza">Mağaza</button><button type="button" data-f="hizmet" aria-pressed="false" data-i18n="df_hizmet">Hizmet</button><button type="button" data-f="yapi" aria-pressed="false" data-i18n="df_yapi">Yapı</button>
+      </div>
+      <div class="dgrid" id="dgrid">
+        <a class="dcard" href="avukat-super.html" data-g="ofis">
+          <div class="dshot"><img src="media/vitrin/d-avukat.webp" alt="Defne & Kaya Hukuk örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_avukat">Hukuk bürosu</span>
           <h3>Defne &amp; Kaya Hukuk</h3>
-          <p data-i18n="v2_d">Çalışma alanları, ön görüşme süreci ve bilgi notları; meslek kurallarına uygun, sade bir dil.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+          <p data-i18n="dd_avukat">Çalışma alanları, ön görüşme süreci ve bilgi notları; meslek kurallarına uygun dil.</p>
         </a>
-        <a class="vcard" href="kuyumcu-super.html">
-          <div class="vshot"><img src="media/vitrin/kuyumcu.webp" alt="Aurum Kuyumculuk ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v3_l">Kuyumcu</span></div>
+        <a class="dcard" href="doktor.html" data-g="saglik">
+          <div class="dshot"><img src="media/vitrin/d-doktor.webp" alt="Uzm. Dr. Selim Arslan örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_doktor">Doktor · dahiliye</span>
+          <h3>Uzm. Dr. Selim Arslan</h3>
+          <p data-i18n="dd_doktor">Yaşa göre check-up listesi ve gün-saat seçerek WhatsApp randevusu.</p>
+        </a>
+        <a class="dcard" href="dis-klinigi-super.html" data-g="saglik">
+          <div class="dshot"><img src="media/vitrin/d-inci.webp" alt="İNCİ Diş Atölyesi örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_inci">Diş kliniği · 3D</span>
+          <h3>İNCİ Diş Atölyesi</h3>
+          <p data-i18n="dd_inci">Kaydırdıkça ilerleyen 3D sahne, tedavi süreci ve randevu çantası.</p>
+        </a>
+        <a class="dcard" href="diyetisyen.html" data-g="saglik">
+          <div class="dshot"><img src="media/vitrin/d-diyetisyen.webp" alt="kök Beslenme örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_diyetisyen">Diyetisyen</span>
+          <h3>kök Beslenme</h3>
+          <p data-i18n="dd_diyetisyen">Hizmetler, çalışma süreci, beslenme notları ve ön görüşme formu.</p>
+        </a>
+        <a class="dcard" href="psikolog.html" data-g="saglik">
+          <div class="dshot"><img src="media/vitrin/d-psikolog.webp" alt="Psk. Deniz Arslan örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_psikolog">Psikolog</span>
+          <h3>Psk. Deniz Arslan</h3>
+          <p data-i18n="dd_psikolog">Çalışma alanları ve yüz yüze ya da online ön görüşme talebi.</p>
+        </a>
+        <a class="dcard" href="mimar.html" data-g="ofis">
+          <div class="dshot"><img src="media/vitrin/d-mimar.webp" alt="Nehir Mimarlık örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_mimar">Mimar · iç mimar</span>
+          <h3>Nehir Mimarlık</h3>
+          <p data-i18n="dd_mimar">Eskizden mekâna kaydırıcı, seçili projeler ve proje görüşmesi formu.</p>
+        </a>
+        <a class="dcard" href="restoran-ocakbasi.html" data-g="yeme">
+          <div class="dshot"><img src="media/vitrin/d-ocakbasi.webp" alt="Kor Ocakbaşı örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_ocakbasi">Restoran · ocakbaşı</span>
+          <h3>Kor Ocakbaşı</h3>
+          <p data-i18n="dd_ocakbasi">TL fiyatlı menü, sofra hesaplayıcı ve WhatsApp rezervasyonu.</p>
+        </a>
+        <a class="dcard" href="pide.html" data-g="yeme">
+          <div class="dshot"><img src="media/vitrin/d-pide.webp" alt="Etli Ekmek Salonu örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_pide">Pide ve lahmacun</span>
+          <h3>Etli Ekmek Salonu</h3>
+          <p data-i18n="dd_pide">Menü, sepet ve adresle birlikte WhatsApp siparişi.</p>
+        </a>
+        <a class="dcard" href="masa.html?masa=7" data-g="yeme">
+          <div class="dshot"><img src="media/vitrin/d-masa.webp" alt="Köşe Kahve örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_masa">Kafe · QR menü</span>
+          <h3>Köşe Kahve</h3>
+          <p data-i18n="dd_masa">Müşteri QR’ı okutur, siparişi masa numarasıyla WhatsApp’a düşer.</p>
+        </a>
+        <a class="dcard" href="kuafor.html" data-g="guzellik">
+          <div class="dshot"><img src="media/vitrin/d-kuafor.webp" alt="Maison Nova örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_kuafor">Kuaför · berber · tırnak</span>
+          <h3>Maison Nova</h3>
+          <p data-i18n="dd_kuafor">Renk laboratuvarı, hizmet sepeti, uzman ve saat seçerek randevu.</p>
+        </a>
+        <a class="dcard" href="kuyumcu-super.html" data-g="magaza">
+          <div class="dshot"><img src="media/vitrin/d-kuyumcu.webp" alt="Aurum Kuyumculuk örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_kuyumcu">Kuyumcu</span>
           <h3>Aurum Kuyumculuk</h3>
-          <p data-i18n="v3_d">Alyansını tasarla: model, ölçü, ayar ve iç yazı seçilir, talep WhatsApp'tan gelir.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+          <p data-i18n="dd_kuyumcu">Alyansını tasarla ve güncel altın fiyatını tek tıkla sor.</p>
         </a>
-        <a class="vcard" href="hafriyat-super.html">
-          <div class="vshot"><img src="media/vitrin/hafriyat.webp" alt="Nova Hafriyat ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v4_l">Hafriyat · iş makinesi</span></div>
+        <a class="dcard" href="taki.html" data-g="magaza">
+          <div class="dshot"><img src="media/vitrin/d-taki.webp" alt="Mira Takı örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_taki">Takı ve butik</span>
+          <h3>Mira Takı</h3>
+          <p data-i18n="dd_taki">Fotoğraflı katalog, sepet ve WhatsApp’tan sipariş.</p>
+        </a>
+        <a class="dcard" href="oto.html" data-g="hizmet">
+          <div class="dshot"><img src="media/vitrin/d-oto.webp" alt="Nova Detailing örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_oto">Oto yıkama · kaplama</span>
+          <h3>Nova Detailing</h3>
+          <p data-i18n="dd_oto">Araca göre anında fiyat, öncesi/sonrası ve saat seçimi.</p>
+        </a>
+        <a class="dcard" href="taksi.html" data-g="hizmet">
+          <div class="dshot"><img src="media/vitrin/d-taksi.webp" alt="Yıldız Taksi örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_taksi">Taksi · transfer</span>
+          <h3>Yıldız Taksi</h3>
+          <p data-i18n="dd_taksi">Tek dokunuşla arama, konum gönderme ve transfer formu.</p>
+        </a>
+        <a class="dcard" href="davet.html" data-g="hizmet">
+          <div class="dshot"><img src="media/vitrin/d-davet.webp" alt="Maison Lumière örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_davet">Davet salonu</span>
+          <h3>Maison Lumière</h3>
+          <p data-i18n="dd_davet">Paket, kişi sayısı ve tarihe göre anında tahmini teklif.</p>
+        </a>
+        <a class="dcard" href="kargo.html" data-g="hizmet">
+          <div class="dshot"><img src="media/vitrin/d-kargo.webp" alt="Hızlı Kargo örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_kargo">Kargo · kurye</span>
+          <h3>Hızlı Kargo</h3>
+          <p data-i18n="dd_kargo">Gönderi takibi, fiyat sorma ve kapıdan alım talebi.</p>
+        </a>
+        <a class="dcard" href="hafriyat-super.html" data-g="yapi">
+          <div class="dshot"><img src="media/vitrin/hafriyat.webp" alt="Nova Hafriyat örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_hafriyat">Hafriyat · iş makinesi</span>
           <h3>Nova Hafriyat</h3>
-          <p data-i18n="v4_d">Videolu açılış, makine parkı ve tek dokunuşla keşif ve teklif talebi.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+          <p data-i18n="dd_hafriyat">Videolu açılış, makine parkı ve keşif talebi.</p>
         </a>
-        <a class="vcard" href="taksi.html?m=Nova+Taksi&amp;c=Aydın">
-          <div class="vshot"><img src="media/vitrin/taksi.webp" alt="Taksi sitesi ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v5_l">Taksi durağı</span></div>
-          <h3><span data-i18n="v5_t">Taksi ve transfer</span></h3>
-          <p data-i18n="v5_d">5 dil, WhatsApp'tan konum gönderme ve havalimanı transfer formu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        <a class="dcard" href="tadilat.html" data-g="yapi">
+          <div class="dshot"><img src="media/vitrin/d-tadilat.webp" alt="Kaya Yapı örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_tadilat">Tadilat · dekorasyon</span>
+          <h3>Kaya Yapı</h3>
+          <p data-i18n="dd_tadilat">Fotoğraflı teklif formu, keşif günü ve önce/sonra.</p>
         </a>
-        <a class="vcard" href="masa.html?m=Nova+Kafe&amp;masa=7">
-          <div class="vshot"><img src="media/vitrin/masa.webp" alt="QR menü sitesi ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"><span class="vlab" data-i18n="v6_l">Kafe ve restoran</span></div>
-          <h3><span data-i18n="v6_t">QR menü ve masadan sipariş</span></h3>
-          <p data-i18n="v6_d">QR'ı okutan müşteri menüden seçer, sipariş masa numarasıyla WhatsApp'a düşer; ödeme kasada.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
+        <a class="dcard" href="kartvizit.html" data-g="ofis">
+          <div class="dshot"><img src="media/vitrin/d-kartvizit.webp" alt="Dijital kartvizit örnek sitesinin ekran görüntüsü" width="960" height="600" loading="lazy" decoding="async"></div>
+          <span class="dlab" data-i18n="dl_kartvizit">Kartvizit · QR / NFC</span>
+          <h3>Dijital kartvizit</h3>
+          <p data-i18n="dd_kartvizit">Tek dokunuşla açılan, rehbere eklenen dijital kartvizit.</p>
         </a>
       </div>
+      <p class="dnote" data-i18n="dm_n">Örneklerdeki isimler ve fotoğraflar temsilidir; sitenizde kendi işletmenizin bilgileri yer alır.</p>
     </div>
   </section>
 
-  <section class="block" id="calismalar" aria-labelledby="calisma-baslik">
-    <div class="hgal" id="hgal"><div class="hpin">
+  <section class="block" id="musteriler" aria-labelledby="musteri-baslik">
     <div class="wrap">
-      <p class="eyebrow" data-i18n="cal_k">Çalışmalar</p>
-      <h2 id="calisma-baslik" data-i18n="cal_h">Sektörünüze göre hazır örnekler.</h2>
-      <p class="sub" data-i18n="cal_s">Her işletme için sıfırdan başlamıyoruz. Sektörünüze uygun bir örneği açıp, renklerini ve içeriğini işletmenize göre uyarlıyoruz.</p>
-
-      <div class="works">
-
-        <a class="work live reveal" href="avukat.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>mehmetdemirhukuk.com</span></div>
-            <div class="scr" style="--s-bg:#050505;--s-ink:#FFFFFF;--s-acc:#C5A059;--s-on:#000">
-              <div class="n"><span>Av. Mehmet Demir</span><em>Hukuk bürosu</em></div>
-              <div class="big">Güç. İtibar. Kusursuz savunma.</div>
-              <div class="t">Ceza, ticaret ve uluslararası hukuk.</div>
-              <div class="b">Danışmanlık al</div>
-            </div>
+      <p class="eyebrow" data-i18n="mu_k">Müşterilerimiz</p>
+      <h2 id="musteri-baslik" data-i18n="mu_h">Şu an yayında.</h2>
+      <p class="sub" data-i18n="mu_s">Bugün müşterilerine hizmet veren iki işletme. Siteleri kendi alan adlarında açık; telefonunuzdan da gezebilirsiniz.</p>
+      <div class="live">
+        <article class="lcard luna">
+          <div class="lvis" aria-hidden="true"><img class="ld" src="media/musteri/luna-d.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"><img class="lm" src="media/musteri/luna-m.webp" alt="" width="520" height="1126" loading="lazy" decoding="async"></div>
+          <div class="ltxt">
+            <span class="lsec" data-i18n="lu_s">El yapımı takı · Bursa</span>
+            <h3>Luna Bijuteri</h3>
+            <p data-i18n="lu_d">Ürünler fotoğrafları ve fiyatlarıyla listelenir, sipariş ürün adıyla WhatsApp’a gelir. Ürünlerini işletme sahibi kendi panelinden günceller.</p>
+            <a class="lgo" href="https://lunabijuteri.com" target="_blank" rel="noopener">lunabijuteri.com <span aria-hidden="true">↗</span></a>
           </div>
-          <h3 data-i18n="c1_t">Avukat ve hukuk bürosu</h3>
-          <p data-i18n="c1_d">Koyu ve ciddi bir görünüm, alan bazlı hizmet kartları ve ön görüşme formu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="doktor.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>drmehmetdemir.com</span></div>
-            <div class="scr" style="--s-bg:#030712;--s-ink:#F8F9FA;--s-acc:#CCA565;--s-on:#050B14">
-              <div class="n"><span>Dr. Mehmet Demir</span><em>Özel klinik</em></div>
-              <div class="big">Sanat ve cerrahinin kusursuz uyumu.</div>
-              <div class="t">Laparoskopik cerrahi ve estetik.</div>
-              <div class="b">Randevu al</div>
-            </div>
+        </article>
+        <article class="lcard musti">
+          <div class="lvis" aria-hidden="true"><img class="ld" src="media/musteri/musti-d.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"><img class="lm" src="media/musteri/musti-m.webp" alt="" width="520" height="1126" loading="lazy" decoding="async"></div>
+          <div class="ltxt">
+            <span class="lsec" data-i18n="mu2_s">Erkek kuaförü · Aydın</span>
+            <h3>Saloon by Musti</h3>
+            <p data-i18n="mu2_d">Hizmetler, salondan kareler ve online randevu; müşteriler saatini telefondan birkaç dokunuşla ayırtır.</p>
+            <a class="lgo" href="https://saloonbymusti.com" target="_blank" rel="noopener">saloonbymusti.com <span aria-hidden="true">↗</span></a>
           </div>
-          <h3 data-i18n="c2_t">Doktor ve özel klinik</h3>
-          <p data-i18n="c2_d">Lacivert ve altın tonlarında; uzmanlık alanları, güven göstergeleri ve WhatsApp'a düşen randevu formu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="diyetisyen.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>kokbeslenme.com</span></div>
-            <div class="scr" style="--s-bg:#16231A;--s-ink:#EEF1E7;--s-acc:#D9A441;--s-on:#16231A">
-              <div class="n"><span>kök Beslenme</span><em>Danışmanlık</em></div>
-              <div class="big">Beslenmeni kökünden değiştir.</div>
-              <div class="t">Sürdürülebilir, kişiye özel planlar.</div>
-              <div class="b">Ön görüşme talep et</div>
-            </div>
-          </div>
-          <h3 data-i18n="c3_t">Diyetisyen ve danışmanlık</h3>
-          <p data-i18n="c3_d">Koyu orman yeşili ve hardal tonlarıyla, premium hissiyatlı lüks danışmanlık konsepti.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="dis-klinigi.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>lumendis.com</span></div>
-            <div class="scr" style="--s-bg:#0F2A3D;--s-ink:#FFFDF9;--s-acc:#E07A5F;--s-on:#fff">
-              <div class="n"><span>Lumen Diş</span><em>İzmir</em></div>
-              <div class="big">Rahat bir koltuk, sağlıklı bir gülüş.</div>
-              <div class="t">İmplant, şeffaf plak, beyazlatma ve gülüş tasarımı.</div>
-              <div class="b">Randevu al</div>
-            </div>
-          </div>
-          <h3 data-i18n="c4_t">Diş kliniği</h3>
-          <p data-i18n="c4_d">Tedavi listesi, ilk muayene adımları, saatler, sık sorulan sorular ve tek dokunuşla arama.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="restoran.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>alba-firenze.it</span></div>
-            <div class="scr" style="--s-bg:#190C09;--s-ink:#F4E8CF;--s-acc:#F0A92E;--s-on:#190C09">
-              <div class="n"><span>Alba</span><em>Restoran</em></div>
-              <div class="big">Toskana'nın ritmiyle bir sofra.</div>
-              <div class="t">Menü, şef ve WhatsApp rezervasyonu.</div>
-              <div class="b">Rezervasyon</div>
-            </div>
-          </div>
-          <h3 data-i18n="c5_t">Restoran ve kafe</h3>
-          <p data-i18n="c5_d">Kategorilere ayrılmış menü, öne çıkan tabaklar ve WhatsApp'tan rezervasyon formu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="kuafor.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>maisonnova.com</span></div>
-            <div class="scr" style="--s-bg:#0E0B0A;--s-ink:#F4EEE6;--s-acc:#D8B88A;--s-on:#0E0B0A">
-              <div class="n"><span>Maison Nova</span><em>Salon</em></div>
-              <div class="big">Her tel, bir imza.</div>
-              <div class="t">Renk laboratuvarı ve online randevu.</div>
-              <div class="b">Randevu al</div>
-            </div>
-          </div>
-          <h3 data-i18n="c6_t">Kuaför ve güzellik salonu</h3>
-          <p data-i18n="c6_d">Renk laboratuvarı, kampanya ve hediye kartı; uzman ve saat seçerek WhatsApp'tan randevu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-        <a class="work live reveal" href="oto.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>novadetailing.com</span></div>
-            <div class="scr" style="--s-bg:#0A0C0F;--s-ink:#F2F4F7;--s-acc:#E5262C;--s-on:#FFFFFF">
-              <div class="n"><span>Nova Detailing</span><em>Oto bakım</em></div>
-              <div class="big">Aracınız ilk günkü gibi parlasın.</div>
-              <div class="t">Aracını seç, fiyatını anında gör.</div>
-              <div class="b">Fiyatımı hesapla</div>
-            </div>
-          </div>
-          <h3 data-i18n="c7_t">Oto bakım ve seramik kaplama</h3>
-          <p data-i18n="c7_d">Araç tipine göre anında fiyat, ekstra seçimi ve gün-saat seçerek WhatsApp'tan randevu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="taki.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>mirataki.com</span></div>
-            <div class="scr" style="--s-bg:#FBF6F1;--s-ink:#2A1E22;--s-acc:#7C3A4A;--s-on:#FFFFFF">
-              <div class="n"><span>Mira Takı</span><em>El yapımı</em></div>
-              <div class="big">Her parça, bir hikâye.</div>
-              <div class="t">Katalog, sepet ve WhatsApp siparişi.</div>
-              <div class="b">Koleksiyonu gör</div>
-            </div>
-          </div>
-          <h3 data-i18n="c8_t">Takı ve el yapımı ürünler</h3>
-          <p data-i18n="c8_d">Fotoğraflı ürün kataloğu, sepet ve tek dokunuşla WhatsApp'tan sipariş; telefona uygulama gibi eklenir.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="psikolog.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>psikologdenizarslan.com</span></div>
-            <div class="scr" style="--s-bg:#FBF7F1;--s-ink:#2B2833;--s-acc:#E07A62;--s-on:#FFFFFF">
-              <div class="n"><span>Psk. Deniz Arslan</span><em>Danışmanlık</em></div>
-              <div class="big">Kendinizi anlatmak için güvenli bir alan.</div>
-              <div class="t">Çocuk, ergen, yetişkin ve aile.</div>
-              <div class="b">Ön görüşme talep et</div>
-            </div>
-          </div>
-          <h3 data-i18n="c9_t">Psikolog ve terapist</h3>
-          <p data-i18n="c9_d">Çalışma alanları, yaklaşım, yüz yüze ya da online seçimli ön görüşme formu ve gizlilik vurgusu.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="davet.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>maisonlumiere.com</span></div>
-            <div class="scr" style="--s-bg:#F7F3EC;--s-ink:#2C2A26;--s-acc:#B08D57;--s-on:#FFFFFF">
-              <div class="n"><span>Maison Lumière</span><em>Davet</em></div>
-              <div class="big">En özel gününüz, tam hayal ettiğiniz gibi.</div>
-              <div class="t">Nişan, söz, kına ve özel davetler.</div>
-              <div class="b">Tarihimi sor</div>
-            </div>
-          </div>
-          <h3 data-i18n="c10_t">Davet ve organizasyon salonu</h3>
-          <p data-i18n="c10_d">Paketler, kişi sayısı ve tarih seçerek tahmini teklif; talep WhatsApp'tan salona düşer.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
-
-        <a class="work live reveal" href="hafriyat.html">
-          <div class="frame" aria-hidden="true">
-            <div class="chrome"><i></i><i></i><i></i><span>novahafriyat.com</span></div>
-            <div class="scr" style="--s-bg:#111214;--s-ink:#F3F2EE;--s-acc:#F5B301;--s-on:#111111">
-              <div class="n"><span>Nova Hafriyat</span><em>Hafriyat</em></div>
-              <div class="big">Zemini biz hazırlarız, gerisi size kalır.</div>
-              <div class="t">Kazı, yıkım ve iş makinesi kiralama.</div>
-              <div class="b">Teklif al</div>
-            </div>
-          </div>
-          <h3 data-i18n="c11_t">Hafriyat ve iş makinesi</h3>
-          <p data-i18n="c11_d">Makine parkı, hizmetler ve iş türü, makine ve konum seçerek WhatsApp'tan teklif talebi.</p>
-          <span class="tag" data-i18n="c_btn">Örneği aç</span>
-        </a>
+        </article>
       </div>
-      <div class="hbar" aria-hidden="true"><i id="hbarFill"></i></div>
     </div>
-    </div></div>
   </section>
 
   <section class="block" id="projeler" aria-labelledby="proje-baslik">
@@ -967,17 +945,18 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       <h2 id="sektor-baslik" data-i18n="sek_h">Mesleğinize göre web sitesi.</h2>
       <p class="sub" data-i18n="sek_s">Avukat, doktor, diyetisyen, diş hekimi, restoran ya da kuaför için web sitesi yaptırmak istiyorsanız, mesleğinize uygun hazır bir örnekle başlıyorum. İçerik, renk ve logo işletmenize göre uyarlanır.</p>
       <div class="sectors">
-        <article><h3><a href="avukat.html" data-i18n="sek1_t">Avukat web sitesi</a></h3><p data-i18n="sek1_d">Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.</p></article>
+        <article><h3><a href="avukat-super.html" data-i18n="sek1_t">Avukat web sitesi</a></h3><p data-i18n="sek1_d">Çalışma alanlarınızı, iletişim bilgilerinizi ve ön görüşme talebini net gösteren sade bir site.</p></article>
         <article><h3><a href="doktor.html" data-i18n="sek2_t">Doktor web sitesi</a></h3><p data-i18n="sek2_d">Uygulama alanları, muayene saatleri ve randevu bilgileri tek sayfada. Telefondan da rahat okunur.</p></article>
         <article><h3><a href="diyetisyen.html" data-i18n="sek3_t">Diyetisyen web sitesi</a></h3><p data-i18n="sek3_d">Online ve yüz yüze danışmanlığı anlatan, ön görüşme formu olan sıcak bir tanıtım sitesi.</p></article>
-        <article><h3><a href="dis-klinigi.html" data-i18n="sek4_t">Diş hekimi web sitesi</a></h3><p data-i18n="sek4_d">Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.</p></article>
-        <article><h3><a href="restoran.html" data-i18n="sek5_t">Restoran ve kafe web sitesi</a></h3><p data-i18n="sek5_d">Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.</p></article>
+        <article><h3><a href="dis-klinigi-super.html" data-i18n="sek4_t">Diş hekimi web sitesi</a></h3><p data-i18n="sek4_d">Tedavileri, çalışma saatlerini ve konumu gösterir, hastanın tek dokunuşla aramasını sağlar.</p></article>
+        <article><h3><a href="restoran-ocakbasi.html" data-i18n="sek5_t">Restoran ve kafe web sitesi</a></h3><p data-i18n="sek5_d">Menü, çalışma saatleri ve rezervasyon için arama ile WhatsApp düğmeleri.</p></article>
         <article><h3><a href="kuafor.html" data-i18n="sek6_t">Kuaför ve güzellik salonu web sitesi</a></h3><p data-i18n="sek6_d">Hizmet ve fiyat listesi ile WhatsApp üzerinden randevu talebi.</p></article>
         <article><h3><a href="oto.html" data-i18n="sek7_t">Oto yıkama ve kaplama web sitesi</a></h3><p data-i18n="sek7_d">Aracını seçen müşteri fiyatı anında görür, randevusunu WhatsApp'tan gönderir.</p></article>
         <article><h3><a href="taki.html" data-i18n="sek8_t">Takı ve butik web sitesi</a></h3><p data-i18n="sek8_d">Ürünlerinizi fiyatıyla listeler, siparişi ürün adıyla WhatsApp'a düşürür.</p></article>
         <article><h3><a href="psikolog.html" data-i18n="sek9_t">Psikolog web sitesi</a></h3><p data-i18n="sek9_d">Danışanların çalışma alanlarınızı görüp yüz yüze ya da online ön görüşme talep ettiği sıcak bir site.</p></article>
         <article><h3><a href="davet.html" data-i18n="sek10_t">Davet salonu web sitesi</a></h3><p data-i18n="sek10_d">Çiftler ve aileler salonu görür, paketini seçer, tarih için WhatsApp'tan teklif ister.</p></article>
-        <article><h3><a href="hafriyat.html" data-i18n="sek11_t">Hafriyat firması web sitesi</a></h3><p data-i18n="sek11_d">Müteahhit ve ev sahipleri makine parkınızı görür, işini seçip WhatsApp'tan keşif ister.</p></article>
+        <article><h3><a href="hafriyat-super.html" data-i18n="sek11_t">Hafriyat firması web sitesi</a></h3><p data-i18n="sek11_d">Müteahhit ve ev sahipleri makine parkınızı görür, işini seçip WhatsApp'tan keşif ister.</p></article>
+        <article><h3><a href="mimar.html" data-i18n="sek12_t">Mimar ve iç mimar web sitesi</a></h3><p data-i18n="sek12_d">Projelerinizi büyük fotoğraflarla gösterir, müşteri proje türü ve metrekareyle görüşme ister.</p></article>
       </div>
     </div>
   </section>
@@ -988,41 +967,46 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       <h2 id="paket-baslik" data-i18n="pak_h">İhtiyacınıza uygun üç paket.</h2>
       <p class="sub" data-i18n="pak_s">Kapsam net, teklif yazılı. Ne alacağınızı işe başlamadan bilirsiniz.</p>
 
-      <div class="packs">
+      <div class="packs v2">
         <div class="pack reveal">
-          <h3 data-i18n="pk1_t">Tek sayfa</h3>
-          <p class="for" data-i18n="pk1_f">Yeni açılan işler, esnaf ve serbest çalışanlar için.</p>
+          <h3 data-i18n="pk1_t">Tanıtım sayfası</h3>
+          <p class="for" data-i18n="pk1_f">Yeni açılan işler, esnaf ve serbest çalışanlar için tek sayfalık site.</p>
+          <p class="amt">7.500 TL</p>
           <ul data-i18n="pk1_ul">
             <li>Tanıtım, hizmetler ve iletişim tek sayfada</li>
-            <li>Telefon uyumlu tasarım</li>
-            <li>Arama ve WhatsApp düğmeleri</li>
-            <li>Temel arama motoru ayarları</li>
+            <li>Telefona göre tasarım</li>
+            <li>Arama, WhatsApp ve harita düğmeleri</li>
+            <li>Google’da bulunmak için temel ayarlar</li>
           </ul>
-          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
+          <a class="btn line" href="#iletisim" data-i18n="pk_b">Bu paketi konuşalım</a>
         </div>
-        <div class="pack reveal">
-          <h3 data-i18n="pk2_t">Kurumsal site</h3>
-          <p class="for" data-i18n="pk2_f">Klinik, büro ve firmalar için.</p>
+        <div class="pack hot reveal">
+          <span class="badge" data-i18n="pk_hot">En çok tercih edilen</span>
+          <h3 data-i18n="pk2_t">Randevulu site</h3>
+          <p class="for" data-i18n="pk2_f">Klinik, büro, salon ve restoranlar için çok sayfalı site.</p>
+          <p class="amt">15.000 TL</p>
           <ul data-i18n="pk2_ul">
-            <li>5 sayfaya kadar: ana sayfa, hakkımızda, hizmetler, galeri, iletişim</li>
-            <li>İletişim formu ve Google Harita</li>
-            <li>Yerel aramalar için konum bilgileri</li>
-            <li>Kendi alan adınızda yayın</li>
+            <li>Çok sayfa: hizmetler, hakkımızda, galeri, iletişim</li>
+            <li>WhatsApp’a düşen randevu ya da rezervasyon formu</li>
+            <li>Gün, saat ve hizmet seçimi</li>
+            <li>Google Haritalar ve yerel arama ayarları</li>
           </ul>
-          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
+          <a class="btn light" href="#iletisim" data-i18n="pk_b">Bu paketi konuşalım</a>
         </div>
         <div class="pack reveal">
-          <h3 data-i18n="pk3_t">Özel proje</h3>
-          <p class="for" data-i18n="pk3_f">Standart paketlere sığmayan ihtiyaçlar için.</p>
+          <h3 data-i18n="pk3_t">Panelli site</h3>
+          <p class="for" data-i18n="pk3_f">Ürünü, menüsü ya da fiyatları sık değişen işletmeler için.</p>
+          <p class="amt">20.000 TL</p>
           <ul data-i18n="pk3_ul">
-            <li>Telefona kurulan web uygulaması (örnek: <a href="okeybul/">OkeyBul</a>)</li><li>Randevu veya rezervasyon servisi bağlama</li>
-            <li>Ürün ve katalog sayfaları</li>
-            <li>Mevcut sitenin yenilenmesi</li>
-            <li>Kapsam ve süre görüşmede belirlenir</li>
+            <li>Randevulu site paketindeki her şey</li>
+            <li>Ürün, fiyat ve fotoğrafları kendiniz güncelleyeceğiniz panel</li>
+            <li>Telefondan kolay kullanım</li>
+            <li>Katalog, menü ya da ürün sayfaları</li>
           </ul>
-          <p class="price" data-i18n="pk_p">Fiyat için görüşelim</p>
+          <a class="btn line" href="#iletisim" data-i18n="pk_b">Bu paketi konuşalım</a>
         </div>
       </div>
+      <p class="ptrust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="pk_trust">Alan adı (.com / .com.tr) ve ilk yıl barındırma dahil. Alan adı işletmenizin adına kaydedilir.</span></p>
     </div>
   </section>
 
@@ -1149,11 +1133,11 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 
   /* ---- Canlı vitrin ---- */
   var themes = [
-    { url: 'mehmetdemirhukuk.com', name: 'Av. Mehmet Demir', big: 'Güç. İtibar. Kusursuz savunma.', sub: 'Ceza, ticaret ve uluslararası hukuk.', btn: 'Danışmanlık al', bg: '#050505', ink: '#FFFFFF', acc: '#C5A059', on: '#000000', card: '#141414' },
-    { url: 'drmehmetdemir.com', name: 'Dr. Mehmet Demir', big: 'Sanat ve cerrahinin kusursuz uyumu.', sub: 'Laparoskopik cerrahi ve estetik.', btn: 'Randevu al', bg: '#030712', ink: '#F8F9FA', acc: '#CCA565', on: '#050B14', card: '#0F1A2E' },
+    { url: 'defnekayahukuk.com', name: 'Defne & Kaya Hukuk', big: 'Hakkınızı bilin.', sub: 'Ceza, aile, iş ve gayrimenkul hukuku.', btn: 'Ön görüşme talebi', bg: '#0E1320', ink: '#F3EEE4', acc: '#C9A25E', on: '#0E1320', card: '#1A2132' },
+    { url: 'drselimarslan.com', name: 'Uzm. Dr. Selim Arslan', big: 'Sağlığınızı bütün olarak ele alan bir muayene.', sub: 'İç hastalıkları, check-up ve randevu.', btn: 'Randevu iste', bg: '#F6F4EF', ink: '#14232B', acc: '#1D6B63', on: '#FFFFFF', card: '#E7F0EE' },
     { url: 'kokbeslenme.com', name: 'kök Beslenme', big: 'Beslenmeni kökünden değiştir.', sub: 'Sürdürülebilir, kişiye özel planlar.', btn: 'Ön görüşme talep et', bg: '#16231A', ink: '#EEF1E7', acc: '#D9A441', on: '#16231A', card: '#1F3A24' },
-    { url: 'auradental.com', name: 'Aura Dental', big: 'Gülüşün, tasarlandı.', sub: 'İmplant, gülüş tasarımı ve ortodonti.', btn: 'Randevu al', bg: '#EEF3F0', ink: '#09130F', acc: '#0B8F7A', on: '#FFFFFF', card: '#D6E6E0' },
-    { url: 'alba-firenze.it', name: 'Alba', big: "Toskana'nın ritmiyle bir sofra.", sub: 'Menü, şef ve WhatsApp rezervasyonu.', btn: 'Rezervasyon', bg: '#190C09', ink: '#F4E8CF', acc: '#F0A92E', on: '#190C09', card: '#2B1511' },
+    { url: 'incidisatolyesi.com', name: 'İNCİ Diş Atölyesi', big: 'Her gülüş, bir inci.', sub: 'İmplant, gülüş tasarımı ve şeffaf plak.', btn: 'Randevu al', bg: '#F2E8E0', ink: '#211A1C', acc: '#8E4A57', on: '#FFFFFF', card: '#E8DAD0' },
+    { url: 'korocakbasi.com', name: 'Kor Ocakbaşı', big: 'Kömür ateşi, sabırlı usta.', sub: 'TL menü, sofra hesaplayıcı ve rezervasyon.', btn: 'Masa ayırt', bg: '#140E0B', ink: '#F4EADF', acc: '#E8622A', on: '#FFFFFF', card: '#231915' },
     { url: 'maisonnova.com', name: 'Maison Nova', big: 'Her tel, bir imza.', sub: 'Renk laboratuvarı ve online randevu.', btn: 'Randevu al', bg: '#0E0B0A', ink: '#F4EEE6', acc: '#D8B88A', on: '#0E0B0A', card: '#1A1411' },
     { url: 'novabarber.com', name: 'Nova Barber', big: 'Keskin çizgiler, net tarz.', sub: 'Saç, sakal ve VIP bakım.', btn: 'Randevu al', bg: '#0B0A09', ink: '#F4EEE6', acc: '#C9A15A', on: '#0B0A09', card: '#1A1714' },
     { url: 'novanails.com', name: 'Nova Nails', big: 'Her tırnak, küçük bir sanat.', sub: 'Protez, kalıcı oje ve nail art.', btn: 'Randevu al', bg: '#1A0E12', ink: '#FBEFF2', acc: '#E8A0B4', on: '#1A0E12', card: '#2A1820' },
@@ -1167,7 +1151,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   var urlEl = document.getElementById('hUrl');
   var dataEls = stage ? stage.querySelectorAll('[data-k]') : [];
   var cur = 0, typeTimer = null, cycleTimer = null;
-  var pages = ['avukat.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi.html', 'restoran.html', 'kuafor.html', 'kuafor.html?m=Nova+Barber&s=berber', 'kuafor.html?m=Nova+Nails&s=tirnak', 'oto.html', 'taki.html', 'psikolog.html', 'davet.html', 'hafriyat.html'];
+  var pages = ['avukat-super.html', 'doktor.html', 'diyetisyen.html', 'dis-klinigi-super.html', 'restoran-ocakbasi.html', 'kuafor.html', 'kuafor.html?m=Nova+Barber&s=berber', 'kuafor.html?m=Nova+Nails&s=tirnak', 'oto.html', 'taki.html', 'psikolog.html', 'davet.html', 'hafriyat-super.html'];
   var labels = ['Avukat', 'Doktor', 'Diyetisyen', 'Diş kliniği', 'Restoran', 'Kuaför', 'Berber', 'Tırnak', 'Oto bakım', 'Takı', 'Psikolog', 'Davet salonu', 'Hafriyat'];
   var pBtns = document.querySelectorAll('.picker-btns button');
   var pLink = document.getElementById('pLink');
@@ -1783,14 +1767,14 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 
   /* ===== Örnek site ("hologram") metinleri: [başlık, alt metin, düğme] x 6 sektör ===== */
   var DM = {
-    tr: ["Güç. İtibar. Kusursuz savunma.", "Ceza, ticaret ve uluslararası hukuk.", "Danışmanlık al", "Sanat ve cerrahinin kusursuz uyumu.", "Laparoskopik cerrahi ve estetik.", "Randevu al", "Beslenmeni kökünden değiştir.", "Sürdürülebilir, kişiye özel planlar.", "Ön görüşme talep et", "Gülüşün, tasarlandı.", "İmplant, gülüş tasarımı ve ortodonti.", "Randevu al", "Toskana'nın ritmiyle bir sofra.", "Menü, şef ve WhatsApp rezervasyonu.", "Rezervasyon", "Her tel, bir imza.", "Renk laboratuvarı ve online randevu.", "Randevu al"],
-    en: ["Power. Prestige. Flawless defence.", "Criminal, commercial and international law.", "Get a consultation", "The perfect harmony of art and surgery.", "Laparoscopic surgery and aesthetics.", "Book an appointment", "Change your eating from the root.", "Sustainable, personalised plans.", "Request an intro call", "Your smile, designed.", "Implants, smile design and orthodontics.", "Book a visit", "A table at the pace of Tuscany.", "Menu, chef and WhatsApp booking.", "Reserve", "Every strand, a signature.", "Colour lab and online booking.", "Book now"],
-    de: ["Macht. Prestige. Makellose Verteidigung.", "Straf-, Handels- und internationales Recht.", "Beratung anfragen", "Die perfekte Harmonie von Kunst und Chirurgie.", "Laparoskopische Chirurgie und Ästhetik.", "Termin buchen", "Ernährung von Grund auf ändern.", "Nachhaltige, persönliche Pläne.", "Erstgespräch anfragen", "Dein Lächeln, gestaltet.", "Implantate, Smile Design und Kieferorthopädie.", "Termin buchen", "Ein Tisch im Rhythmus der Toskana.", "Menü, Küchenchef und WhatsApp-Reservierung.", "Reservieren", "Jede Strähne, eine Signatur.", "Farblabor und Online-Termin.", "Termin buchen"],
-    es: ["Poder. Prestigio. Defensa impecable.", "Derecho penal, mercantil e internacional.", "Solicitar consulta", "La armonía perfecta entre arte y cirugía.", "Cirugía laparoscópica y estética.", "Pedir cita", "Cambia tu alimentación de raíz.", "Planes sostenibles y personalizados.", "Solicitar primera llamada", "Tu sonrisa, diseñada.", "Implantes, diseño de sonrisa y ortodoncia.", "Reservar cita", "Una mesa al ritmo de la Toscana.", "Menú, chef y reservas por WhatsApp.", "Reservar", "Cada mechón, una firma.", "Laboratorio de color y reserva online.", "Reservar"],
-    nl: ["Macht. Prestige. Vlekkeloze verdediging.", "Straf-, handels- en internationaal recht.", "Consult aanvragen", "De perfecte harmonie van kunst en chirurgie.", "Laparoscopische chirurgie en esthetiek.", "Afspraak maken", "Verander je eten bij de wortel.", "Duurzame, persoonlijke plannen.", "Kennismaking aanvragen", "Jouw glimlach, ontworpen.", "Implantaten, smile design en orthodontie.", "Afspraak maken", "Een tafel in het ritme van Toscane.", "Menu, chef en reserveren via WhatsApp.", "Reserveren", "Elke lok, een handtekening.", "Kleurenlab en online afspraak.", "Afspraak maken"],
-    fr: ["Pouvoir. Prestige. Défense impeccable.", "Droit pénal, commercial et international.", "Demander un rendez-vous", "L'harmonie parfaite de l'art et de la chirurgie.", "Chirurgie laparoscopique et esthétique.", "Prendre rendez-vous", "Changez votre alimentation à la racine.", "Des plans durables et personnalisés.", "Demander un premier appel", "Votre sourire, dessiné.", "Implants, design du sourire et orthodontie.", "Prendre rendez-vous", "Une table au rythme de la Toscane.", "Menu, chef et réservation par WhatsApp.", "Réserver", "Chaque mèche, une signature.", "Labo couleur et réservation en ligne.", "Réserver"],
-    it: ["Potere. Prestigio. Difesa impeccabile.", "Diritto penale, commerciale e internazionale.", "Richiedi una consulenza", "La perfetta armonia tra arte e chirurgia.", "Chirurgia laparoscopica ed estetica.", "Prenota una visita", "Cambia la tua alimentazione alla radice.", "Piani sostenibili e personalizzati.", "Richiedi una prima chiamata", "Il tuo sorriso, progettato.", "Impianti, smile design e ortodonzia.", "Prenota una visita", "Una tavola al ritmo della Toscana.", "Menu, chef e prenotazione su WhatsApp.", "Prenota", "Ogni ciocca, una firma.", "Laboratorio colore e prenotazione online.", "Prenota"],
-    ru: ["Сила. Престиж. Безупречная защита.", "Уголовное, коммерческое и международное право.", "Получить консультацию", "Идеальная гармония искусства и хирургии.", "Лапароскопическая хирургия и эстетика.", "Записаться", "Измените питание у корня.", "Устойчивые индивидуальные планы.", "Запросить первую беседу", "Ваша улыбка, спроектирована.", "Импланты, дизайн улыбки и ортодонтия.", "Записаться", "Стол в ритме Тосканы.", "Меню, шеф и бронь в WhatsApp.", "Забронировать", "Каждая прядь — подпись.", "Цветовая лаборатория и онлайн-запись.", "Записаться"]
+    tr: ["Hakkınızı bilin.", "Ceza, aile, iş ve gayrimenkul hukuku.", "Ön görüşme talebi", "Sağlığınızı bütün olarak ele alan bir muayene.", "İç hastalıkları, check-up ve randevu.", "Randevu iste", "Beslenmeni kökünden değiştir.", "Sürdürülebilir, kişiye özel planlar.", "Ön görüşme talep et", "Her gülüş, bir inci.", "İmplant, gülüş tasarımı ve şeffaf plak.", "Randevu al", "Kömür ateşi, sabırlı usta.", "TL menü, sofra hesaplayıcı ve rezervasyon.", "Masa ayırt", "Her tel, bir imza.", "Renk laboratuvarı ve online randevu.", "Randevu al"],
+    en: ["Know your rights.", "Criminal, family, employment and property law.", "Request a first meeting", "A consultation that sees your health as a whole.", "Internal medicine, check-ups and booking.", "Book a visit", "Change your eating from the root.", "Sustainable, personalised plans.", "Request an intro call", "Every smile, a pearl.", "Implants, smile design and clear aligners.", "Book a visit", "Charcoal fire, a patient master.", "Menu in TL, table builder and booking.", "Book a table", "Every strand, a signature.", "Colour lab and online booking.", "Book now"],
+    de: ["Kennen Sie Ihre Rechte.", "Straf-, Familien-, Arbeits- und Immobilienrecht.", "Erstgespräch anfragen", "Eine Untersuchung, die Ihre Gesundheit als Ganzes sieht.", "Innere Medizin, Check-up und Termine.", "Termin anfragen", "Ernährung von Grund auf ändern.", "Nachhaltige, persönliche Pläne.", "Erstgespräch anfragen", "Jedes Lächeln, eine Perle.", "Implantate, Smile Design und Aligner.", "Termin buchen", "Holzkohlefeuer, ein geduldiger Meister.", "Speisekarte in TL, Tischplaner und Reservierung.", "Tisch reservieren", "Jede Strähne, eine Signatur.", "Farblabor und Online-Termin.", "Termin buchen"],
+    es: ["Conozca sus derechos.", "Derecho penal, de familia, laboral e inmobiliario.", "Solicitar primera reunión", "Una consulta que ve su salud en conjunto.", "Medicina interna, chequeos y citas.", "Pedir cita", "Cambia tu alimentación de raíz.", "Planes sostenibles y personalizados.", "Solicitar primera llamada", "Cada sonrisa, una perla.", "Implantes, diseño de sonrisa y alineadores.", "Reservar cita", "Fuego de carbón, un maestro paciente.", "Menú en TL, planificador de mesa y reservas.", "Reservar mesa", "Cada mechón, una firma.", "Laboratorio de color y reserva online.", "Reservar"],
+    nl: ["Ken uw rechten.", "Straf-, familie-, arbeids- en vastgoedrecht.", "Kennismaking aanvragen", "Een consult dat uw gezondheid als geheel ziet.", "Interne geneeskunde, check-ups en afspraken.", "Afspraak maken", "Verander je eten bij de wortel.", "Duurzame, persoonlijke plannen.", "Kennismaking aanvragen", "Elke glimlach, een parel.", "Implantaten, smile design en aligners.", "Afspraak maken", "Houtskoolvuur, een geduldige meester.", "Menu in TL, tafelplanner en reserveren.", "Tafel reserveren", "Elke lok, een handtekening.", "Kleurenlab en online afspraak.", "Afspraak maken"],
+    fr: ["Connaissez vos droits.", "Droit pénal, de la famille, du travail et immobilier.", "Demander un premier rendez-vous", "Une consultation qui voit votre santé dans son ensemble.", "Médecine interne, bilans et rendez-vous.", "Prendre rendez-vous", "Changez votre alimentation à la racine.", "Des plans durables et personnalisés.", "Demander un premier appel", "Chaque sourire, une perle.", "Implants, design du sourire et aligneurs.", "Prendre rendez-vous", "Feu de charbon, un maître patient.", "Carte en TL, composeur de table et réservation.", "Réserver une table", "Chaque mèche, une signature.", "Labo couleur et réservation en ligne.", "Réserver"],
+    it: ["Conosci i tuoi diritti.", "Diritto penale, di famiglia, del lavoro e immobiliare.", "Richiedi un primo incontro", "Una visita che guarda alla salute nel suo insieme.", "Medicina interna, check-up e prenotazioni.", "Prenota una visita", "Cambia la tua alimentazione alla radice.", "Piani sostenibili e personalizzati.", "Richiedi una prima chiamata", "Ogni sorriso, una perla.", "Impianti, smile design e allineatori.", "Prenota una visita", "Fuoco di carbone, un maestro paziente.", "Menu in TL, compositore del tavolo e prenotazioni.", "Prenota un tavolo", "Ogni ciocca, una firma.", "Laboratorio colore e prenotazione online.", "Prenota"],
+    ru: ["Знайте свои права.", "Уголовное, семейное, трудовое и земельное право.", "Первая встреча", "Приём, который видит здоровье целиком.", "Терапия, чек-ап и запись.", "Записаться", "Измените питание у корня.", "Устойчивые индивидуальные планы.", "Запросить первую беседу", "Каждая улыбка — жемчужина.", "Импланты, дизайн улыбки и элайнеры.", "Записаться", "Угли, терпеливый мастер.", "Меню в лирах, подбор стола и бронь.", "Забронировать стол", "Каждая прядь — подпись.", "Цветовая лаборатория и онлайн-запись.", "Записаться"]
   };
   /* Yeni örnekler: [başlık, alt metin, düğme] — oto, takı, psikolog, berber, tırnak */
   var DM2 = {

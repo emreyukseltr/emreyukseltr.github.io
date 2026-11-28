@@ -286,7 +286,10 @@
     border-radius: 140px 8px 140px 8px;
     position:relative; overflow:hidden;
   }
-  .portrait svg{position:absolute; inset:0; width:100%; height:100%;}
+  .portrait svg,.portrait img{position:absolute; inset:0; width:100%; height:100%;}
+  .portrait img{object-fit:cover}
+  .s-media{position:relative}
+  .s-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .about-body h2{font-size:clamp(1.8rem,3vw,2.3rem); margin-bottom:20px;}
   .about-body p{color:var(--ink-soft); font-size:1.05rem;}
   .about-body p + p{margin-top:16px;}
@@ -338,7 +341,7 @@
   .testi{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .testi-wrap{max-width:760px; margin:0 auto; text-align:center; position:relative; min-height:220px;}
   .testi-wrap::before{
-    content:'"'; position:absolute; top:-64px; left:50%; transform:translateX(-50%);
+    content:''; position:absolute; top:-64px; left:50%; transform:translateX(-50%);
     font-family:'Fraunces',serif; font-size:9rem; color:var(--wine); opacity:0.1; line-height:1; pointer-events:none;
   }
   .t-item{
@@ -475,7 +478,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       <a href="#hakkimda" data-i18n="Hakkımda">Hakkımda</a>
       <a href="#hizmetler" data-i18n="Hizmetler">Hizmetler</a>
       <a href="#surec" data-i18n="Süreç">Süreç</a>
-      <a href="#yorumlar" data-i18n="Yorumlar">Yorumlar</a>
+      <a href="#yorumlar" data-i18n="Beslenme notları">Beslenme notları</a>
       <a href="#iletisim" data-i18n="İletişim">İletişim</a>
     </nav>
     <a href="#iletisim" class="btn btn-primary nav-cta" data-i18n="Ön Görüşme Talep Et">Ön Görüşme Talep Et</a>
@@ -485,7 +488,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     <a href="#hakkimda" data-i18n="Hakkımda">Hakkımda</a>
     <a href="#hizmetler" data-i18n="Hizmetler">Hizmetler</a>
     <a href="#surec" data-i18n="Süreç">Süreç</a>
-    <a href="#yorumlar" data-i18n="Yorumlar">Yorumlar</a>
+    <a href="#yorumlar" data-i18n="Beslenme notları">Beslenme notları</a>
     <a href="#iletisim" data-i18n="İletişim">İletişim</a>
   </div>
 </header>
@@ -496,7 +499,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     <div class="wrap hero-inner">
     <div>
       <div class="heritage fade-up d1">İstanbul · 2016'dan beri özel danışmanlık</div>
-      <span class="hero-eyebrow fade-up d1">Örnek Diyetisyen ile</span>
+      <span class="hero-eyebrow fade-up d1">Dyt. Elif Kaya ile</span>
       <h1 class="fade-up d2">Beslenmeni<br><em>kökünden</em> değiştir.</h1>
       <p class="hero-sub fade-up d3">Diyet listesi değil, gerçek hayatına uyan ve sürmesi kolay bir düzen kuruyoruz. Yasaklar üzerinden değil, seni tanımak üzerinden ilerliyoruz.</p>
       <div class="hero-actions fade-up d4">
@@ -506,7 +509,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       <div class="hero-stats fade-up d4">
         <div class="stat"><b data-target="9" data-suffix=" yıl">0 yıl</b><span>klinik deneyim</span></div>
         <div class="stat"><b data-target="600" data-suffix="+">0+</b><span>tamamlanan danışmanlık</span></div>
-        <div class="stat"><b data-target="89" data-prefix="%" data-suffix="">%0</b><span>hedefine ulaşan danışan</span></div>
+        <div class="stat"><b data-target="45" data-suffix=" dk">0 dk</b><span>ilk görüşme süresi</span></div>
       </div>
     </div>
     <div class="hero-art">
@@ -583,17 +586,11 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   <!-- ABOUT -->
   <section id="hakkimda">
     <div class="wrap about-grid">
-      <div class="portrait">
-        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <rect width="300" height="400" fill="#1F3A24"/>
-          <circle cx="150" cy="160" r="70" fill="#D9A441" opacity="0.9"/>
-          <path d="M60 400c0-70 40-120 90-120s90 50 90 120Z" fill="#16231A"/>
-        </svg>
-      </div>
+      <div class="portrait"><img src="media/diyet/portre.webp" width="800" height="1067" alt="Dyt. Elif Kaya, portre" loading="lazy"></div>
       <div class="about-body">
         <span class="kicker">Hakkımda</span>
-        <h2>Merhaba, ben Örnek Diyetisyen.</h2>
-        <p>9 yıldır klinik diyetisyenlik yapıyorum ve bu süreçte fark ettiğim tek şey var: en iyi plan, sürdürebildiğin plandır. Danışanlarımla kurduğum ilişkiyi bir seferlik reçeteden çok, uzun soluklu bir yol arkadaşlığı olarak görüyorum.</p>
+        <h2>Merhaba, ben Dyt. Elif Kaya.</h2>
+        <p>9 yıldır klinik diyetisyenlik yapıyorum ve bu süreçte fark ettiğim tek şey var: işe yarayan plan, sürdürebildiğin plandır. Danışanlarımla kurduğum ilişkiyi bir seferlik reçeteden çok, uzun soluklu bir yol arkadaşlığı olarak görüyorum.</p>
         <p>Beslenme ve Diyetetik lisansımı tamamladıktan sonra sporcu beslenmesi ve kadın sağlığı alanlarında ileri eğitimler aldım. Şu anda hem yüz yüze hem online danışanlarla, İstanbul merkezli olarak çalışıyorum.</p>
         <div class="creds">
           <div class="cred"><b>Lisans Eğitimi</b>Beslenme ve Diyetetik, Hacettepe Üniversitesi</div>
@@ -615,9 +612,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       </div>
 
       <div class="service-row">
-        <div class="s-media">
-          <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="34" stroke="#D9A441" stroke-width="2.5"/><path d="M50 24v26l18 12" stroke="#F8F5EC" stroke-width="3" stroke-linecap="round"/></svg>
-        </div>
+        <div class="s-media"><img src="media/diyet/s1.webp" width="900" height="675" alt="Sebze ve tahıllı dengeli bir kase" loading="lazy"></div>
         <div class="s-text">
           <span class="s-tag">01 — Kilo Yönetimi</span>
           <h3>Kalıcı ve sürdürülebilir kilo değişimi</h3>
@@ -626,9 +621,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       </div>
 
       <div class="service-row rev">
-        <div class="s-media">
-          <svg viewBox="0 0 100 100" fill="none"><path d="M30 70l14-30 10 18 8-14 8 10" stroke="#D9A441" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="70" cy="34" r="5" fill="#F8F5EC"/></svg>
-        </div>
+        <div class="s-media"><img src="media/diyet/s3.webp" width="900" height="675" alt="Renkli sebze ve baklagiller" loading="lazy"></div>
         <div class="s-text">
           <span class="s-tag">02 — Sporcu Beslenmesi</span>
           <h3>Performans ve toparlanma odaklı planlama</h3>
@@ -637,9 +630,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       </div>
 
       <div class="service-row">
-        <div class="s-media">
-          <svg viewBox="0 0 100 100" fill="none"><path d="M50 20c-16 12-28 26-28 42a28 28 0 0056 0c0-16-12-30-28-42Z" stroke="#D9A441" stroke-width="2.5"/></svg>
-        </div>
+        <div class="s-media"><img src="media/diyet/s2.webp" width="900" height="675" alt="Yumurta, avokado ve tam tahıllı tabak" loading="lazy"></div>
         <div class="s-text">
           <span class="s-tag">03 — Kadın Sağlığı & Hormonal Denge</span>
           <h3>PCOS, gebelik ve menopoz dönemlerine özel yaklaşım</h3>
@@ -648,9 +639,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
       </div>
 
       <div class="service-row rev">
-        <div class="s-media">
-          <svg viewBox="0 0 100 100" fill="none"><rect x="26" y="30" width="48" height="40" rx="3" stroke="#D9A441" stroke-width="2.5"/><path d="M34 44h32M34 54h20" stroke="#F8F5EC" stroke-width="2.5" stroke-linecap="round"/></svg>
-        </div>
+        <div class="s-media"><img src="media/diyet/s4.webp" width="900" height="675" alt="Somon ve sebzeli kase" loading="lazy"></div>
         <div class="s-text">
           <span class="s-tag">04 — Online Takip Programı</span>
           <h3>Uzaktan, haftalık check-in'lerle sürekli destek</h3>
@@ -692,21 +681,21 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   <section class="testi" id="yorumlar">
     <div class="wrap testi-wrap">
       <div class="t-item active">
-        <blockquote>"Artık 'yasak' bir yemek listem yok. Kendi bedenimi dinlemeyi yeniden öğrendim."</blockquote>
-        <cite>— Selin, 34</cite>
+        <blockquote>Tabağın yarısını sebzeyle, dörtte birini proteinle, kalanını tam tahılla doldurmak dengeli bir öğün için iyi bir başlangıçtır.</blockquote>
+        <cite>Beslenme notu · Tabak düzeni</cite>
       </div>
       <div class="t-item">
-        <blockquote>"İlk kez bir planı 6 aydır sürdürebiliyorum. Daha önce hiçbiri bu kadar uzun sürmemişti."</blockquote>
-        <cite>— Barış, 41</cite>
+        <blockquote>Susuzluk bazen açlık gibi hissedilir. Gün boyunca yanında bir şişe su bulundurmak ara öğün isteğini azaltabilir.</blockquote>
+        <cite>Beslenme notu · Su</cite>
       </div>
       <div class="t-item">
-        <blockquote>"Hamileliğim boyunca hem kendim hem bebeğim için doğru besinleri seçtiğimi bilerek çok rahattım."</blockquote>
-        <cite>— Merve, 29</cite>
+        <blockquote>Yavaş yemek, doyduğunu fark etmeni kolaylaştırır. Öğünlerine en az 20 dakika ayırmayı dene.</blockquote>
+        <cite>Beslenme notu · Yavaş yemek</cite>
       </div>
       <div class="t-dots">
-        <button class="active" data-i="0" aria-label="1. yorum"></button>
-        <button data-i="1" aria-label="2. yorum"></button>
-        <button data-i="2" aria-label="3. yorum"></button>
+        <button class="active" data-i="0" aria-label="1. not"></button>
+        <button data-i="1" aria-label="2. not"></button>
+        <button data-i="2" aria-label="3. not"></button>
       </div>
     </div>
   </section>
@@ -801,20 +790,21 @@ window.EY_PAGE_DICT = {
     ["Hakkımda", "About Me", "Über mich", "Sobre mí", "Over mij", "À propos", "Su di me", "Обо мне"],
     ["Hizmetler", "Services", "Dienstleistungen", "Servicios", "Diensten", "Services", "Servizi", "Услуги"],
     ["Süreç", "Process", "Prozess", "Proceso", "Proces", "Processus", "Processo", "Процесс"],
-    ["Yorumlar", "Testimonials", "Bewertungen", "Testimonios", "Beoordelingen", "Témoignages", "Recensioni", "Отзывы"],
+    ["Beslenme notları", "Nutrition notes", "Ernährungstipps", "Notas de nutrición", "Voedingstips", "Notes nutrition", "Note nutrizionali", "Заметки"],
     ["İletişim", "Contact", "Kontakt", "Contacto", "Contact", "Contact", "Contatti", "Контакты"],
     ["Ön Görüşme Talep Et", "Request Consultation", "Erstgespräch anfordern", "Solicitar Consulta", "Consult Aanvragen", "Demander une Consultation", "Richiedi Consulenza", "Запросить консультацию"],
     ["İstanbul · 2016'dan beri özel danışmanlık", "Istanbul · Private consulting since 2016", "Istanbul · Privatberatung seit 2016", "Estambul · Consultoría privada desde 2016", "Istanbul · Privé advies sinds 2016", "Istanbul · Conseil privé depuis 2016", "Istanbul · Consulenza privata dal 2016", "Стамбул · Частные консультации с 2016 года"],
-    ["Örnek Diyetisyen ile", "With Sample Dietitian", "Mit Beispiel-Diätassistent", "Con Dietista de Muestra", "Met Voorbeeld Diëtist", "Avec Diététicien Exemple", "Con Dietista di Esempio", "С Примерным Диетологом"],
+    ["Dyt. Elif Kaya ile", "With Dietitian Elif Kaya", "Mit Ernährungsberaterin Elif Kaya", "Con la dietista Elif Kaya", "Met diëtist Elif Kaya", "Avec la diététicienne Elif Kaya", "Con la dietista Elif Kaya", "С диетологом Элиф Кая"],
     ["Beslenmeni", "Your nutrition", "Deine Ernährung", "Tu nutrición", "Jouw voeding", "Votre nutrition", "La tua nutrizione", "Твое питание"],
     ["kökünden", "fundamentally", "grundlegend", "fundamentalmente", "fundamenteel", "fondamentalement", "fondamentalmente", "в корне"],
     ["değiştir.", "change.", "verändern.", "cambiar.", "veranderen.", "changer.", "cambiare.", "изменить."],
     ["Diyet listesi değil, gerçek hayatına uyan ve sürmesi kolay bir düzen kuruyoruz. Yasaklar üzerinden değil, seni tanımak üzerinden ilerliyoruz.", "We build a routine that fits your real life and is easy to maintain, not a diet list. We proceed by getting to know you, not through prohibitions.", "Wir erstellen keinen Diätplan, sondern eine Routine, die in dein echtes Leben passt und leicht durchzuhalten ist. Wir arbeiten nicht mit Verboten, sondern lernen dich kennen.", "Construimos una rutina que se adapta a tu vida real y es fácil de mantener, no una lista de dietas. Avanzamos conociéndote, no a través de prohibiciones.", "We bouwen een routine die bij je echte leven past en makkelijk vol te houden is, geen dieetlijst. We gaan te werk door jou te leren kennen, niet door verboden.", "Nous construisons une routine adaptée à votre vraie vie et facile à maintenir, pas une liste de régime. Nous avançons en apprenant à vous connaître, pas par des interdictions.", "Costruiamo una routine che si adatta alla tua vita reale ed è facile da mantenere, non una lista di diete. Procediamo conoscendoti, non attraverso divieti.", "Мы создаем режим, который вписывается в вашу реальную жизнь и который легко поддерживать, а не список диет. Мы исходим из знакомства с вами, а не из запретов."],
     ["Süreci İncele", "Review Process", "Prozess ansehen", "Revisar Proceso", "Bekijk Proces", "Voir le Processus", "Rivedi Processo", "Посмотреть процесс"],
     [" yıl", " years", " Jahre", " años", " jaar", " ans", " anni", " лет"],
+    [" dk", " min", " Min.", " min", " min", " min", " min", " мин"],
     ["klinik deneyim", "clinical experience", "klinische Erfahrung", "experiencia clínica", "klinische ervaring", "expérience clinique", "esperienza clinica", "клинический опыт"],
     ["tamamlanan danışmanlık", "completed consultations", "abgeschlossene Beratungen", "consultas completadas", "voltooide consulten", "consultations terminées", "consulenze completate", "завершенных консультаций"],
-    ["hedefine ulaşan danışan", "clients reaching goals", "Klienten, die ihr Ziel erreicht haben", "clientes que alcanzan sus objetivos", "cliënten die hun doel bereiken", "clients atteignant leurs objectifs", "clienti che raggiungono gli obiettivi", "клиентов, достигших цели"],
+    ["ilk görüşme süresi", "first consultation", "Erstgespräch", "primera consulta", "eerste consult", "première consultation", "primo colloquio", "первая консультация"],
     ["\"Kilo verdirmek\" tek başına bir hedef değildir. Asıl mesele, o düzeni yıllarca sürdürebilmek.", "\"Weight loss\" alone is not a goal. The real issue is being able to maintain that routine for years.", "\"Abnehmen\" allein ist kein Ziel. Die eigentliche Herausforderung ist es, diese Routine jahrelang beizubehalten.", "\"Perder peso\" por sí solo no es un objetivo. El verdadero problema es poder mantener esa rutina durante años.", "\"Afvallen\" op zich is geen doel. Het echte probleem is om die routine jarenlang vol te houden.", "\"Perdre du poids\" n'est pas un objectif en soi. Le vrai défi est de pouvoir maintenir cette routine pendant des années.", "\"Perdere peso\" da solo non è un obiettivo. Il vero problema è riuscire a mantenere quella routine per anni.", "\"Похудение\" само по себе не является целью. Главное — это способность поддерживать этот режим годами."],
     ["Çoğu diyet, kısa vadede işe yarayıp uzun vadede seni eski noktana geri götürür. Ben senin yaşam tarzını, çalışma saatlerini, yemek alışkanlıklarını ve gerçekten neyi sevip neyi sevmediğini dinleyerek başlıyorum — sonra bir plan değil, sürdürülebilir bir düzen kuruyoruz.", "Most diets work in the short term and take you back to square one in the long run. I start by listening to your lifestyle, working hours, eating habits, and what you really like and dislike — then we build a sustainable routine, not a plan.", "Die meisten Diäten funktionieren kurzfristig und führen dich langfristig an den Ausgangspunkt zurück. Ich beginne damit, mir deinen Lebensstil, deine Arbeitszeiten, Essgewohnheiten und was du wirklich magst und was nicht, anzuhören – dann bauen wir keinen Plan, sondern eine nachhaltige Routine auf.", "La mayoría de las dietas funcionan a corto plazo y te devuelven al punto de partida a largo plazo. Empiezo escuchando tu estilo de vida, horario de trabajo, hábitos alimenticios y lo que realmente te gusta y lo que no, y luego construimos una rutina sostenible, no un plan.", "De meeste diëten werken op de korte termijn en brengen je op de lange termijn terug bij af. Ik begin met luisteren naar je levensstijl, werktijden, eetgewoonten en wat je echt wel en niet lekker vindt — daarna bouwen we een duurzame routine op, geen plan.", "La plupart des régimes fonctionnent à court terme et vous ramènent à la case départ à long terme. Je commence par écouter votre mode de vie, vos horaires de travail, vos habitudes alimentaires et ce que vous aimez ou n'aimez pas vraiment — ensuite, nous construisons une routine durable, pas un plan.", "La maggior parte delle diete funziona a breve termine e ti riporta al punto di partenza a lungo termine. Inizio ascoltando il tuo stile di vita, gli orari di lavoro, le abitudini alimentari e cosa ti piace e non ti piace davvero: poi costruiamo una routine sostenibile, non un piano.", "Большинство диет работают в краткосрочной перспективе, а в долгосрочной возвращают вас к исходной точке. Я начинаю с того, что слушаю о вашем образе жизни, графике работы, пищевых привычках и о том, что вы действительно любите и не любите — затем мы создаем не план, а устойчивый режим."],
     ["Dinle", "Listen", "Zuhören", "Escuchar", "Luister", "Écouter", "Ascolta", "Слушать"],
@@ -823,8 +813,8 @@ window.EY_PAGE_DICT = {
     ["Kan değerlerin, uyku düzenin ve stres seviyen kadar; hangi öğünü asla vazgeçemeyeceğini de önemsiyorum.", "I care as much about which meal you can never give up as I do about your blood values, sleep patterns, and stress levels.", "Mir ist genauso wichtig, auf welche Mahlzeit du niemals verzichten kannst, wie deine Blutwerte, dein Schlafrhythmus und dein Stresslevel.", "Me importa tanto de qué comida nunca podrías prescindir como de tus valores sanguíneos, patrones de sueño y niveles de estrés.", "Ik geef net zoveel om welke maaltijd je nooit zou kunnen opgeven als om je bloedwaarden, slaappatronen en stressniveaus.", "Je me soucie autant du repas dont vous ne pourriez jamais vous passer que de vos valeurs sanguines, de vos habitudes de sommeil et de votre niveau de stress.", "Mi interessa sapere a quale pasto non rinunceresti mai tanto quanto mi interessano i tuoi esami del sangue, i tuoi ritmi di sonno e i tuoi livelli di stress.", "Для меня так же важно, от какого приема пищи вы никогда не сможете отказаться, как и ваши анализы крови, режим сна и уровень стресса."],
     ["Uygula", "Apply", "Anwenden", "Aplicar", "Toepassen", "Appliquer", "Applica", "Применить"],
     ["Plan kağıt üzerinde değil, mutfağında işe yaramalı. Birlikte test eder, birlikte düzeltiriz.", "The plan shouldn't just work on paper, it needs to work in your kitchen. We test it together, we adjust it together.", "Der Plan soll nicht nur auf dem Papier funktionieren, sondern in deiner Küche. Wir testen es zusammen, wir passen es zusammen an.", "El plan no solo debe funcionar en papel, debe funcionar en tu cocina. Lo probamos juntos, lo ajustamos juntos.", "Het plan moet niet alleen op papier werken, maar ook in je keuken. We testen het samen, we passen het samen aan.", "Le plan ne doit pas seulement fonctionner sur le papier, il doit fonctionner dans votre cuisine. Nous le testons ensemble, nous l'ajustons ensemble.", "Il piano non deve funzionare solo sulla carta, deve funzionare nella tua cucina. Lo testiamo insieme, lo aggiustiamo insieme.", "План должен работать не только на бумаге, но и на вашей кухне. Мы тестируем его вместе, мы корректируем его вместе."],
-    ["Merhaba, ben Örnek Diyetisyen.", "Hello, I'm Sample Dietitian.", "Hallo, ich bin Beispiel-Diätassistent.", "Hola, soy el Dietista de Muestra.", "Hallo, ik ben Voorbeeld Diëtist.", "Bonjour, je suis Diététicien Exemple.", "Ciao, sono Dietista di Esempio.", "Здравствуйте, я Примерный Диетолог."],
-    ["9 yıldır klinik diyetisyenlik yapıyorum ve bu süreçte fark ettiğim tek şey var: en iyi plan, sürdürebildiğin plandır. Danışanlarımla kurduğum ilişkiyi bir seferlik reçeteden çok, uzun soluklu bir yol arkadaşlığı olarak görüyorum.", "I have been a clinical dietitian for 9 years, and the only thing I've realized is: the best plan is the one you can sustain. I see the relationship with my clients not as a one-time prescription, but as a long-term companionship.", "Ich bin seit 9 Jahren klinischer Diätassistent und habe in dieser Zeit nur eines erkannt: Der beste Plan ist der, den man durchhalten kann. Ich betrachte die Beziehung zu meinen Klienten nicht als einmaliges Rezept, sondern als langfristige Begleitschaft.", "Llevo 9 años como dietista clínico y lo único que he comprobado es: el mejor plan es el que puedes mantener. Veo la relación con mis clientes no como una receta puntual, sino como una compañía a largo plazo.", "Ik ben al 9 jaar klinisch diëtist en het enige dat ik heb gerealiseerd is: het beste plan is het plan dat je kunt volhouden. Ik zie de relatie met mijn cliënten niet als een eenmalig recept, maar als een langdurig partnerschap.", "Je suis diététicien clinique depuis 9 ans, et la seule chose dont je me suis rendu compte est : le meilleur plan est celui que vous pouvez maintenir. Je vois la relation avec mes clients non pas comme une prescription ponctuelle, mais comme un compagnonnage à long terme.", "Sono un dietista clinico da 9 anni e l'unica cosa di cui mi sono reso conto è: il piano migliore è quello che riesci a mantenere. Vedo la relazione con i miei clienti non come una prescrizione una tantum, ma come un viaggio a lungo termine insieme.", "Я клинический диетолог уже 9 лет, и единственное, что я понял за это время: лучший план — это тот, который вы можете поддерживать. Я рассматриваю отношения со своими клиентами не как разовый рецепт, а как долгосрочное партнерство."],
+    ["Merhaba, ben Dyt. Elif Kaya.", "Hello, I'm Elif Kaya, dietitian.", "Hallo, ich bin Elif Kaya, Ernährungsberaterin.", "Hola, soy Elif Kaya, dietista.", "Hallo, ik ben Elif Kaya, diëtist.", "Bonjour, je suis Elif Kaya, diététicienne.", "Ciao, sono Elif Kaya, dietista.", "Здравствуйте, я Элиф Кая, диетолог."],
+    ["9 yıldır klinik diyetisyenlik yapıyorum ve bu süreçte fark ettiğim tek şey var: işe yarayan plan, sürdürebildiğin plandır. Danışanlarımla kurduğum ilişkiyi bir seferlik reçeteden çok, uzun soluklu bir yol arkadaşlığı olarak görüyorum.", "I have been a clinical dietitian for 9 years, and the only thing I've realized is: the plan that works is the one you can sustain. I see the relationship with my clients not as a one-time prescription, but as a long-term companionship.", "Ich bin seit 9 Jahren klinischer Diätassistent und habe in dieser Zeit nur eines erkannt: Der beste Plan ist der, den man durchhalten kann. Ich betrachte die Beziehung zu meinen Klienten nicht als einmaliges Rezept, sondern als langfristige Begleitschaft.", "Llevo 9 años como dietista clínico y lo único que he comprobado es: el mejor plan es el que puedes mantener. Veo la relación con mis clientes no como una receta puntual, sino como una compañía a largo plazo.", "Ik ben al 9 jaar klinisch diëtist en het enige dat ik heb gerealiseerd is: het beste plan is het plan dat je kunt volhouden. Ik zie de relatie met mijn cliënten niet als een eenmalig recept, maar als een langdurig partnerschap.", "Je suis diététicien clinique depuis 9 ans, et la seule chose dont je me suis rendu compte est : le meilleur plan est celui que vous pouvez maintenir. Je vois la relation avec mes clients non pas comme une prescription ponctuelle, mais comme un compagnonnage à long terme.", "Sono un dietista clinico da 9 anni e l'unica cosa di cui mi sono reso conto è: il piano migliore è quello che riesci a mantenere. Vedo la relazione con i miei clienti non come una prescrizione una tantum, ma come un viaggio a lungo termine insieme.", "Я клинический диетолог уже 9 лет, и единственное, что я понял за это время: лучший план — это тот, который вы можете поддерживать. Я рассматриваю отношения со своими клиентами не как разовый рецепт, а как долгосрочное партнерство."],
     ["Beslenme ve Diyetetik lisansımı tamamladıktan sonra sporcu beslenmesi ve kadın sağlığı alanlarında ileri eğitimler aldım. Şu anda hem yüz yüze hem online danışanlarla, İstanbul merkezli olarak çalışıyorum.", "After completing my degree in Nutrition and Dietetics, I received advanced training in sports nutrition and women's health. I currently work with both face-to-face and online clients, based in Istanbul.", "Nach meinem Abschluss in Ernährung und Diätetik absolvierte ich Weiterbildungen in Sporternährung und Frauengesundheit. Derzeit arbeite ich mit Klienten vor Ort und online, mit Sitz in Istanbul.", "Tras licenciarme en Nutrición y Dietética, recibí formación avanzada en nutrición deportiva y salud de la mujer. Actualmente trabajo con clientes presenciales y online, con sede en Estambul.", "Na het afronden van mijn studie Voeding en Diëtetiek heb ik geavanceerde trainingen gevolgd in sportvoeding en vrouwengezondheid. Momenteel werk ik met zowel face-to-face als online cliënten, vanuit Istanbul.", "Après avoir obtenu mon diplôme en Nutrition et Diététique, j'ai suivi des formations avancées en nutrition sportive et santé des femmes. Je travaille actuellement avec des clients en présentiel et en ligne, basé à Istanbul.", "Dopo aver completato la laurea in Nutrizione e Dietetica, ho seguito formazioni avanzate in nutrizione sportiva e salute delle donne. Attualmente lavoro con clienti sia di persona che online, con base a Istanbul.", "После окончания учебы по специальности «Питание и диетология» я прошел углубленное обучение в области спортивного питания и женского здоровья. В настоящее время я работаю с клиентами как лично, так и онлайн, базируясь в Стамбуле."],
     ["Lisans Eğitimi", "Bachelor's Degree", "Bachelor-Abschluss", "Licenciatura", "Bachelordiploma", "Licence", "Laurea Triennale", "Степень бакалавра"],
     ["Beslenme ve Diyetetik, Hacettepe Üniversitesi", "Nutrition and Dietetics, Hacettepe University", "Ernährung und Diätetik, Hacettepe Universität", "Nutrición y Dietética, Universidad de Hacettepe", "Voeding en Diëtetiek, Hacettepe Universiteit", "Nutrition et Diététique, Université Hacettepe", "Nutrizione e Dietetica, Università di Hacettepe", "Питание и диетология, Университет Хаджеттепе"],
@@ -855,12 +845,12 @@ window.EY_PAGE_DICT = {
     ["Sağlık geçmişin, alışkanlıkların ve yaşam tarzın üzerinden sana özel ilk planı hazırlıyorum.", "I prepare your first personalized plan based on your health history, habits, and lifestyle.", "Basierend auf deiner Gesundheitsgeschichte, deinen Gewohnheiten und deinem Lebensstil bereite ich deinen ersten maßgeschneiderten Plan vor.", "Preparo tu primer plan personalizado basado en tu historial de salud, hábitos y estilo de vida.", "Ik bereid je eerste gepersonaliseerde plan voor op basis van je gezondheidsgeschiedenis, gewoonten en levensstijl.", "Je prépare votre premier plan personnalisé en fonction de vos antécédents médicaux, de vos habitudes et de votre mode de vie.", "Preparo il tuo primo piano personalizzato in base alla tua storia clinica, alle tue abitudini e al tuo stile di vita.", "Я составляю ваш первый индивидуальный план на основе вашей истории здоровья, привычек и образа жизни."],
     ["Takip & Destek", "Follow-up & Support", "Betreuung & Unterstützung", "Seguimiento y Apoyo", "Opvolging & Ondersteuning", "Suivi & Assistance", "Follow-up e Supporto", "Сопровождение и поддержка"],
     ["Düzenli görüşmeler ve mesaj desteğiyle süreç boyunca planı birlikte güncelliyoruz.", "We update the plan together throughout the process with regular meetings and message support.", "Wir aktualisieren den Plan gemeinsam im Laufe des Prozesses mit regelmäßigen Treffen und Nachrichten-Support.", "Actualizamos el plan juntos a lo largo del proceso con reuniones periódicas y soporte por mensajes.", "We werken het plan gedurende het proces samen bij met regelmatige overleggen en berichtenondersteuning.", "Nous mettons à jour le plan ensemble tout au long du processus avec des réunions régulières et une assistance par message.", "Aggiorniamo insieme il piano durante l'intero processo con incontri regolari e supporto tramite messaggi.", "Мы вместе обновляем план на протяжении всего процесса благодаря регулярным встречам и поддержке в сообщениях."],
-    ["\"Artık 'yasak' bir yemek listem yok. Kendi bedenimi dinlemeyi yeniden öğrendim.\"", "\"I no longer have a 'forbidden' food list. I relearned how to listen to my own body.\"", "\"Ich habe keine 'verbotene' Lebensmittelliste mehr. Ich habe wieder gelernt, auf meinen eigenen Körper zu hören.\"", "\"Ya no tengo una lista de alimentos 'prohibidos'. Volví a aprender a escuchar a mi propio cuerpo.\"", "\"Ik heb geen 'verboden' voedsellijst meer. Ik heb opnieuw geleerd om naar mijn eigen lichaam te luisteren.\"", "\"Je n'ai plus de liste d'aliments 'interdits'. J'ai réappris à écouter mon propre corps.\"", "\"Non ho più una lista di cibi 'proibiti'. Ho imparato di nuovo ad ascoltare il mio corpo.\"", "\"У меня больше нет списка 'запрещенных' продуктов. Я заново научилась слушать свое тело.\""],
-    ["— Selin, 34", "— Selin, 34", "— Selin, 34", "— Selin, 34", "— Selin, 34", "— Selin, 34", "— Selin, 34", "— Селин, 34"],
-    ["\"İlk kez bir planı 6 aydır sürdürebiliyorum. Daha önce hiçbiri bu kadar uzun sürmemişti.\"", "\"For the first time, I've been able to sustain a plan for 6 months. None of them had lasted this long before.\"", "\"Zum ersten Mal konnte ich einen Plan 6 Monate lang durchhalten. Keiner hatte vorher so lange gehalten.\"", "\"Por primera vez, he podido mantener un plan durante 6 meses. Ninguno había durado tanto antes.\"", "\"Voor het eerst heb ik een plan 6 maanden kunnen volhouden. Geen van hen had het eerder zo lang volgehouden.\"", "\"Pour la première fois, j'ai pu maintenir un plan pendant 6 mois. Aucun n'avait duré aussi longtemps auparavant.\"", "\"Per la prima volta sono riuscito a mantenere un piano per 6 mesi. Nessuno era durato così a lungo prima.\"", "\"Впервые я смогла придерживаться плана 6 месяцев. До этого ни один не длился так долго.\""],
-    ["— Barış, 41", "— Barış, 41", "— Barış, 41", "— Barış, 41", "— Barış, 41", "— Barış, 41", "— Barış, 41", "— Барыш, 41"],
-    ["\"Hamileliğim boyunca hem kendim hem bebeğim için doğru besinleri seçtiğimi bilerek çok rahattım.\"", "\"Throughout my pregnancy, I was very comfortable knowing that I was choosing the right nutrients for both myself and my baby.\"", "\"Während meiner gesamten Schwangerschaft war ich sehr beruhigt zu wissen, dass ich die richtigen Nährstoffe für mich und mein Baby wähle.\"", "\"Durante todo mi embarazo, estuve muy tranquila sabiendo que elegía los nutrientes adecuados tanto para mí como para mi bebé.\"", "\"Tijdens mijn zwangerschap voelde ik me erg op mijn gemak in de wetenschap dat ik de juiste voedingsstoffen voor mezelf en mijn baby koos.\"", "\"Tout au long de ma grossesse, j'étais très rassurée de savoir que je choisissais les bons nutriments pour moi et pour mon bébé.\"", "\"Durante tutta la gravidanza mi sono sentita molto tranquilla sapendo di scegliere i nutrienti giusti per me e per il mio bambino.\"", "\"На протяжении всей беременности я была очень спокойна, зная, что выбираю правильные питательные вещества и для себя, и для ребенка.\""],
-    ["— Merve, 29", "— Merve, 29", "— Merve, 29", "— Merve, 29", "— Merve, 29", "— Merve, 29", "— Merve, 29", "— Мерве, 29"],
+    ["Tabağın yarısını sebzeyle, dörtte birini proteinle, kalanını tam tahılla doldurmak dengeli bir öğün için iyi bir başlangıçtır.", "Filling half the plate with vegetables, a quarter with protein and the rest with whole grains is a good start to a balanced meal.", "Den Teller zur Hälfte mit Gemüse, zu einem Viertel mit Eiweiß und den Rest mit Vollkorn zu füllen, ist ein guter Anfang.", "Llenar medio plato con verduras, un cuarto con proteína y el resto con cereales integrales es un buen comienzo.", "Een half bord groente, een kwart eiwit en de rest volkoren is een goed begin voor een evenwichtige maaltijd.", "Remplir la moitié de l'assiette de légumes, un quart de protéines et le reste de céréales complètes est un bon début.", "Riempire metà piatto di verdure, un quarto di proteine e il resto di cereali integrali è un buon inizio.", "Половина тарелки — овощи, четверть — белок, остальное — цельные злаки: хорошее начало сбалансированного приёма пищи."],
+    ["Beslenme notu · Tabak düzeni", "Nutrition note · Plate balance", "Ernährungstipp · Tellerbalance", "Nota de nutrición · Equilibrio del plato", "Voedingstip · Bordbalans", "Note nutrition · Équilibre de l'assiette", "Nota nutrizionale · Equilibrio del piatto", "Заметка · Баланс тарелки"],
+    ["Susuzluk bazen açlık gibi hissedilir. Gün boyunca yanında bir şişe su bulundurmak ara öğün isteğini azaltabilir.", "Thirst can sometimes feel like hunger. Keeping a bottle of water with you can reduce snack cravings.", "Durst fühlt sich manchmal wie Hunger an. Eine Wasserflasche griffbereit kann Heißhunger mindern.", "La sed a veces se siente como hambre. Llevar agua contigo puede reducir los antojos.", "Dorst voelt soms als honger. Een fles water bij de hand kan snaaitrek verminderen.", "La soif ressemble parfois à la faim. Garder une bouteille d'eau sur soi peut réduire les grignotages.", "La sete a volte sembra fame. Tenere con sé una bottiglia d'acqua può ridurre la voglia di spuntini.", "Жажду иногда принимают за голод. Бутылка воды под рукой помогает реже перекусывать."],
+    ["Beslenme notu · Su", "Nutrition note · Water", "Ernährungstipp · Wasser", "Nota de nutrición · Agua", "Voedingstip · Water", "Note nutrition · Eau", "Nota nutrizionale · Acqua", "Заметка · Вода"],
+    ["Yavaş yemek, doyduğunu fark etmeni kolaylaştırır. Öğünlerine en az 20 dakika ayırmayı dene.", "Eating slowly makes it easier to notice you are full. Try giving each meal at least 20 minutes.", "Langsames Essen hilft, Sättigung zu bemerken. Nimm dir für jede Mahlzeit mindestens 20 Minuten.", "Comer despacio ayuda a notar la saciedad. Dedica al menos 20 minutos a cada comida.", "Langzaam eten helpt je verzadiging op te merken. Neem minstens 20 minuten per maaltijd.", "Manger lentement aide à sentir la satiété. Accordez au moins 20 minutes à chaque repas.", "Mangiare lentamente aiuta a sentire la sazietà. Dedica almeno 20 minuti a ogni pasto.", "Медленная еда помогает почувствовать насыщение. Уделяйте приёму пищи не меньше 20 минут."],
+    ["Beslenme notu · Yavaş yemek", "Nutrition note · Eating slowly", "Ernährungstipp · Langsam essen", "Nota de nutrición · Comer despacio", "Voedingstip · Langzaam eten", "Note nutrition · Manger lentement", "Nota nutrizionale · Mangiare lentamente", "Заметка · Есть медленно"],
     ["Ön görüşmeni ayarlayalım.", "Let's set up your consultation.", "Lass uns dein Erstgespräch vereinbaren.", "Vamos a programar tu consulta.", "Laten we je consult inplannen.", "Fixons votre consultation.", "Fissiamo la tua consulenza.", "Давайте назначим консультацию."],
     ["Formu doldur, taleplerin doğrudan WhatsApp'ıma düşsün. 24 saat içinde dönüş yapıyorum.", "Fill out the form, and your requests will drop directly into my WhatsApp. I respond within 24 hours.", "Fülle das Formular aus und deine Anfragen landen direkt in meinem WhatsApp. Ich melde mich innerhalb von 24 Stunden.", "Rellena el formulario y tus solicitudes llegarán directamente a mi WhatsApp. Respondo en 24 horas.", "Vul het formulier in en je verzoeken komen direct in mijn WhatsApp terecht. Ik reageer binnen 24 uur.", "Remplissez le formulaire et vos demandes arriveront directement sur mon WhatsApp. Je réponds sous 24 heures.", "Compila il modulo e le tue richieste arriveranno direttamente sul mio WhatsApp. Rispondo entro 24 ore.", "Заполните форму, и ваши заявки попадут прямо в мой WhatsApp. Я отвечаю в течение 24 часов."],
     ["E-POSTA", "EMAIL", "E-MAIL", "EMAIL", "E-MAIL", "E-MAIL", "EMAIL", "ЭЛ. ПОЧТА"],

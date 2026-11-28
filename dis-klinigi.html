@@ -115,7 +115,7 @@ section{padding:90px 0}
 /* hekim */
 .doc{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
 .mono{aspect-ratio:4/5;border-radius:28px;background:linear-gradient(160deg,var(--sky2),#bcd6ea 60%,var(--sky));display:grid;place-items:center;position:relative;overflow:hidden}
-.mono span{font:italic 400 clamp(5rem,16vw,9rem)/1 var(--serif);color:var(--navy);opacity:.9}
+.mono{margin:0}.mono img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .mono small{position:absolute;left:18px;bottom:16px;right:18px;background:rgba(255,253,249,.9);border-radius:14px;padding:10px 14px;font:600 13px/1.4 var(--sans);color:var(--mut)}
 .doc ul{list-style:none;margin-top:22px;display:grid;gap:10px}
 .doc li{display:flex;gap:12px;color:var(--mut)}
@@ -213,12 +213,12 @@ footer a{color:var(--navy);font-weight:700}
 
 <section id="hekim" style="padding-top:0">
   <div class="wrap doc">
-    <div class="mono rv"><span class="ini">L</span><small>Hekim fotoğrafınız buraya gelecek</small></div>
+    <figure class="mono rv"><img id="docImg" src="media/dis/hekim.webp" width="900" height="1125" alt="Diş hekimi, klinikte portre" loading="lazy"><span class="ini" hidden>L</span><small id="docCap">Dt. Deniz Aral · Diş hekimi</small></figure>
     <div>
       <div class="k rv">Hekim</div>
       <h2 class="rv bn">Lumen Diş Kliniği</h2>
       <p class="lead rv">Her hastayı dinleyerek başlıyoruz. Tedaviyi acele etmeden, her adımı anlatarak ve sizin onayınızla yapıyoruz.</p>
-      <ul class="rv"><li><b>Eğitim</b><span>Üniversite ve uzmanlık bilgileri</span></li><li><b>Çalışma alanları</b><span>Genel diş hekimliği, estetik, implant</span></li><li><b>Konum</b><span class="cy">İzmir</span></li></ul>
+      <ul class="rv"><li><b>Eğitim</b><span id="edu">Ege Üniversitesi Diş Hekimliği Fakültesi</span></li><li><b>Çalışma alanları</b><span>Genel diş hekimliği, estetik, implant</span></li><li><b>Konum</b><span class="cy">İzmir</span></li></ul>
     </div>
   </div>
 </section>
@@ -281,6 +281,7 @@ footer a{color:var(--navy);font-weight:700}
   document.title=NAME+' — '+CITY;
   var ini=NAME.split(/\s+/).filter(function(w){return w&&!/^(dt|dr|uzm|prof|doç|diş|hekimi|kliniği|klinik|dental|clinic|ağız|ve|sağlığı|polikliniği|merkezi)\.?$/i.test(w)}).map(function(w){return w[0].toLocaleUpperCase('tr')}).slice(0,2).join('');
   document.querySelector('.ini').textContent=ini||'LD';
+  if(M){var di=document.getElementById('docImg');di.src='media/dis/klinik.webp';di.alt='Klinikte tedavi odası';document.getElementById('docCap').textContent='Tedavi odamız';document.getElementById('edu').textContent='Diş hekimliği fakültesi ve uzmanlık bilgileri';}
   document.getElementById('map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(NAME+' '+CITY);
   var hi='Merhaba, '+NAME+' web sitesinden yazıyorum.';
   document.querySelectorAll('.wal').forEach(function(a){a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(hi)});

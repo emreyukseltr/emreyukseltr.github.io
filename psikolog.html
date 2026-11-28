@@ -112,7 +112,9 @@ section{padding:clamp(64px,10vw,112px) 0}
 
 /* Hakkımda */
 .about{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:center}
-.ph{aspect-ratio:4/5;border-radius:28px;background:linear-gradient(160deg,#EBD3C3,#D9E4D4);display:grid;place-items:center;font:600 72px/1 var(--serif);color:rgba(43,40,51,.35);position:relative;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.quote.pq{padding:0;background:none}.quote.pq img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block;border-radius:28px}.quote.pq::after{display:none}
+.ph{margin:0;aspect-ratio:4/5;border-radius:28px;background:linear-gradient(160deg,#EBD3C3,#D9E4D4);display:grid;place-items:center;font:600 72px/1 var(--serif);color:rgba(43,40,51,.35);position:relative;overflow:hidden}
 .ph small{position:absolute;bottom:14px;left:0;right:0;text-align:center;font:700 12px/1 var(--sans);letter-spacing:.06em;color:rgba(43,40,51,.5)}
 .creds{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
 .creds div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;font-size:15px}
@@ -236,7 +238,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
       <p class="lead" id="apP">Çocuklar duygularını çoğu zaman kelimelerle değil oyunla anlatır. Oyun terapisinde oyuncaklar, çizimler ve hikâyeler aracılığıyla çocuğun iç dünyasını anlamaya, ona güvenli bir ifade alanı açmaya çalışırız.</p>
       <ul class="ticks" id="ticks"><li>Yaşa ve ihtiyaca uygun, bilimsel temelli yöntemler</li><li>Ebeveynlerle düzenli bilgilendirme görüşmeleri</li><li>Gizlilik ve etik ilkelere bağlılık</li></ul>
     </div>
-    <blockquote class="quote rv"><p>“Bir saatlik oyunda, bir yıllık sohbetten daha fazlasını öğrenebilirsiniz.”</p><cite>Platon'a atfedilir</cite></blockquote>
+    <figure class="quote pq rv" style="margin:0"><img src="media/psikolog/seans.webp" width="1000" height="667" alt="Sakin bir görüşme odasında iki kişi sohbet ediyor" loading="lazy"></figure>
   </div>
 </section>
 
@@ -254,7 +256,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
 
 <section style="padding-top:0">
   <div class="wrap about">
-    <div class="ph rv" aria-hidden="true"><span id="ini">DA</span><small>Fotoğrafınız burada yer alır</small></div>
+    <figure class="ph rv"><img id="proImg" src="media/psikolog/portre.webp" width="900" height="1125" alt="Psikolog, ofisinde portre" loading="lazy"><span id="ini" hidden>DA</span></figure>
     <div class="rv">
       <p class="kick">Hakkımda</p>
       <h2 class="serif">Merhaba, ben <em data-o="first">Deniz.</em></h2>
@@ -320,7 +322,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     <div class="visit">
       <div class="card rv">
         <h3>Adres</h3>
-        <p data-o="address" style="margin:6px 0 18px;color:var(--ink2)">Örnek Mah. Huzur Sk. No: 5, Kadıköy / İstanbul</p>
+        <p data-o="address" style="margin:6px 0 18px;color:var(--ink2)">Caferağa Mah. Moda Cd. No: 54, Kadıköy / İstanbul</p>
         <div style="display:grid;gap:10px">
           <a class="btn btn-c" id="waBtn" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp'tan yaz</a>
           <a class="btn btn-o" id="mapBtn" href="#" target="_blank" rel="noopener">Yol tarifi al</a>
@@ -359,7 +361,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     name: 'Psk. Deniz Arslan',
     role: 'Psikolojik Danışmanlık',
     area: 'Kadıköy, İstanbul',
-    address: 'Örnek Mah. Huzur Sk. No: 5, Kadıköy / İstanbul',
+    address: 'Caferağa Mah. Moda Cd. No: 54, Kadıköy / İstanbul',
     wa: '905306284284',
     /* JS getDay sırası: 0 Pazar … 6 Cumartesi. null = kapalı */
     hours: [null, [10, 19], [10, 19], [10, 19], [10, 19], [10, 19], [10, 15]]
@@ -367,7 +369,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
   var play = false, ergo = false, fizyo = false;
   try {
     var q = new URLSearchParams(location.search), qm = (q.get('m') || '').trim().slice(0, 40), qc = (q.get('c') || '').trim().slice(0, 40);
-    if (qm) PRO.name = qm;
+    if (qm) { PRO.name = qm; document.addEventListener('DOMContentLoaded', function () { var im = document.getElementById('proImg'); if (im) { im.src = 'media/psikolog/oda.webp'; im.alt = 'Danışmanlık odası'; } }); }
     if (qc) { PRO.area = qc; PRO.address = qc; }
     play = q.get('s') === 'oyun';
     ergo = q.get('s') === 'ergo';
@@ -428,7 +430,7 @@ footer{background:var(--ink);color:var(--bg);padding:64px 0 calc(34px + env(safe
     $('#apH').innerHTML = 'Oyunla öğrenilen <em>beceriler.</em>';
     $('#apP').textContent = 'Ergoterapide amaç, kişinin evde, okulda ve sosyal hayatta yapmak istediği ya da yapması gereken işleri daha kolay ve bağımsız yapabilmesidir. Çocuklarla çalışmalar çoğunlukla oyun temelli ilerler.';
     $('#ticks').innerHTML = '<li>Değerlendirmeyle başlayan, kişiye özel plan</li><li>Ailelerle düzenli bilgilendirme ve ev programı</li><li>Gerektiğinde okul ve diğer uzmanlarla iş birliği</li>';
-    var qt = document.querySelector('.quote'); if (qt) qt.innerHTML = '<p>“Küçük bir beceri, günlük hayatta büyük bir özgürlüktür.”</p>';
+    var qt = document.querySelector('.quote'); if (qt) { qt.classList.remove('pq'); qt.style.margin = ''; } if (qt) qt.innerHTML = '<p>“Küçük bir beceri, günlük hayatta büyük bir özgürlüktür.”</p>';
     var hk = document.querySelector('#hakkimda .lead, .about .lead'); if (hk) hk.textContent = 'Ergoterapi eğitimimin ardından çocuklar ve aileleriyle çalışmaya odaklandım. Her çocuğun kendi hızında ilerlediğine inanıyor, aileleri sürecin bir parçası olarak görüyorum.';
     var cr = document.querySelector('.creds'); if (cr) cr.innerHTML = '<div><b>Ergoterapi</b>Lisans eğitimi</div><div><b>Duyu Bütünleme</b>Eğitim programı</div><div><b>Gelişimsel Destek</b>Çocuk ve aile</div><div><b>Rehabilitasyon</b>Yetişkin</div>';
     var sm = document.querySelectorAll('details');

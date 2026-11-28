@@ -493,7 +493,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
       <p class="lead rv">Teklif taleplerini 7/24 alıyor, mesai içinde aynı gün dönüyoruz.</p>
     </div>
     <div class="visit rv">
-      <div class="vc"><h3>Adres</h3><p data-o="address">Örnek Mah. Sanayi Cd. No: 10, Efeler / Aydın</p><a class="btn btn-o" id="mapBtn" href="#" target="_blank" rel="noopener">Yol tarifi al</a></div>
+      <div class="vc"><h3>Adres</h3><p data-o="address">Mimar Sinan Mah. Sanayi Cd. No: 10, Efeler / Aydın</p><a class="btn btn-o" id="mapBtn" href="#" target="_blank" rel="noopener">Yol tarifi al</a></div>
       <div class="vc"><h3>Çalışma saatleri</h3><p>Pazartesi – Cumartesi<br>07:00 – 19:00<br><span style="color:var(--mute)">Pazar: acil işler için WhatsApp'tan yazın</span></p></div>
       <div class="vc"><h3>WhatsApp</h3><p>Fotoğraf gönderin, aynı gün dönelim.</p><a class="btn btn-y" id="waBtn" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp'tan yaz</a></div>
     </div>
@@ -526,7 +526,7 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(34px + env(safe-area
      FİRMA BİLGİLERİ — yeni bir firma için bu bloğu düzenleyin.
      Satış önizlemesi: ?m=Firma+Adı&c=İlçe,+Şehir (bilgi repoya girmez, yalnızca linkte durur)
      ===================================================================== */
-  var BIZ = { name: 'Nova Hafriyat', area: 'Efeler, Aydın', address: 'Örnek Mah. Sanayi Cd. No: 10, Efeler / Aydın', wa: '905306284284' };
+  var BIZ = { name: 'Nova Hafriyat', area: 'Efeler, Aydın', address: 'Mimar Sinan Mah. Sanayi Cd. No: 10, Efeler / Aydın', wa: '905306284284' };
   try {
     var clean = function (v, n) { v = (v || '').replace(/\s+/g, ' ').trim(); var a = Array.from(v); if (a.length <= n) return v; v = a.slice(0, n).join(''); var k = v.lastIndexOf(' '); return (k > n * .6 ? v.slice(0, k) : v).trim(); };
     var q = new URLSearchParams(location.search), qm = clean(q.get('m'), 48), qc = clean(q.get('c'), 48).split(',').map(function (x) { return x.trim(); }).filter(Boolean).join(', ');

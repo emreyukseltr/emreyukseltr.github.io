@@ -187,6 +187,7 @@ footer{background:var(--dark);color:var(--bg);padding:70px 0 calc(34px + env(saf
   .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .cta .btn{flex:1 1 100%}
   .gal .w2{grid-column:span 2}
+  .gal .dk{grid-column:auto}
   .hdr .btn{padding:0 14px}
   .brand{font-size:21px}
 }
@@ -284,14 +285,14 @@ footer{background:var(--dark);color:var(--bg);padding:70px 0 calc(34px + env(saf
     <p class="kick rv">Galeri</p>
     <h2 class="serif rv">Salonumuzdan <em>kareler.</em></h2>
     <div class="gal rv">
-      <div class="w2 h2" style="background:linear-gradient(160deg,#E9DCC6,#C9B48F)"><span>Ana salon</span></div>
-      <div style="background:linear-gradient(160deg,#DDE4D6,#9DAE95)"><span>Nişan masası</span></div>
-      <div style="background:linear-gradient(160deg,#F1E1DA,#D3A99A)"><span>Kına köşesi</span></div>
-      <div class="w2" style="background:linear-gradient(160deg,#EDE6DA,#B9AC97)"><span>Gala düzeni</span></div>
-      <div style="background:linear-gradient(160deg,#E7E1EE,#B5A8C6)"><span>Fotoğraf köşesi</span></div>
-      <div style="background:linear-gradient(160deg,#F3EAD5,#D9BE86)"><span>Pasta masası</span></div>
+      <div class="w2 h2" style="background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),url(media/davet/salon.webp) center/cover" role="img" aria-label="Ana salon"><span>Ana salon</span></div>
+      <div style="background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),url(media/davet/nisan.webp) center/cover" role="img" aria-label="Nişan masası"><span>Nişan masası</span></div>
+      <div style="background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),url(media/davet/kina.webp) center/cover" role="img" aria-label="Kına köşesi"><span>Kına köşesi</span></div>
+      <div class="w2" style="background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),url(media/davet/gala.webp) center/cover" role="img" aria-label="Gala düzeni"><span>Gala düzeni</span></div>
+      <div class="w2 dk" style="background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),url(media/davet/foto.webp) center/cover" role="img" aria-label="Fotoğraf köşesi"><span>Fotoğraf köşesi</span></div>
+      <div class="w2 dk" style="background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),url(media/davet/pasta.webp) center/cover" role="img" aria-label="Pasta masası"><span>Pasta masası</span></div>
     </div>
-    <p class="gnote">Bu bir örnek sitedir; galeride salonunuzun gerçek fotoğrafları ve videoları yer alır.</p>
+    <p class="gnote">Fotoğraflar temsilidir; sitenizde salonunuzun kendi fotoğrafları ve videoları yer alır.</p>
   </div>
 </section>
 
@@ -358,7 +359,7 @@ footer{background:var(--dark);color:var(--bg);padding:70px 0 calc(34px + env(saf
     <div class="visit">
       <div class="vc rv">
         <h3>Adres</h3>
-        <p data-o="address">Örnek Mah. Davet Sk. No: 1, Beylikdüzü / İstanbul</p>
+        <p data-o="address">Yakuplu Mah. Sahil Yolu Cd. No: 7, Beylikdüzü / İstanbul</p>
         <div class="vbt">
           <a class="btn btn-d" id="waBtn" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp'tan yaz</a>
           <a class="btn btn-o" id="mapBtn" href="#" target="_blank" rel="noopener">Yol tarifi al</a>
@@ -393,7 +394,7 @@ footer{background:var(--dark);color:var(--bg);padding:70px 0 calc(34px + env(saf
      SALON BİLGİLERİ — yeni bir işletme için bu bloğu düzenleyin.
      Satış önizlemesi: ?m=Salon+Adı&c=Semt,+Şehir (bilgi repoya girmez, yalnızca linkte durur)
      ===================================================================== */
-  var BIZ = { name: 'Maison Lumière', area: 'Beylikdüzü, İstanbul', address: 'Örnek Mah. Davet Sk. No: 1, Beylikdüzü / İstanbul', wa: '905306284284' };
+  var BIZ = { name: 'Maison Lumière', area: 'Beylikdüzü, İstanbul', address: 'Yakuplu Mah. Sahil Yolu Cd. No: 7, Beylikdüzü / İstanbul', wa: '905306284284' };
   try {
     var q = new URLSearchParams(location.search), qm = (q.get('m') || '').trim().slice(0, 40), qc = (q.get('c') || '').trim().slice(0, 40);
     if (qm) BIZ.name = qm;

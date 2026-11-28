@@ -334,7 +334,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
     <div class="visit">
       <div class="card rv">
         <h3>Adres</h3>
-        <p data-o="address">Örnek Mah. Sanayi Cd. No: 10, Efeler / Aydın</p>
+        <p data-o="address">Mimar Sinan Mah. Sanayi Cd. No: 10, Efeler / Aydın</p>
         <div class="vbt">
           <a class="btn btn-y" id="waBtn" href="https://wa.me/905306284284" target="_blank" rel="noopener">WhatsApp'tan yaz</a>
           <a class="btn btn-o" id="mapBtn" href="#" target="_blank" rel="noopener">Yol tarifi al</a>
@@ -371,7 +371,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 calc(34px + env(safe-area
      ===================================================================== */
   /* Sondaj modu: ?s=sondaj (su kuyusu sondaj firmaları için satış önizlemesi) */
   var SND = /[?&]s=sondaj\b/.test(location.search);
-  var BIZ = { name: SND ? 'Nova Sondaj' : 'Nova Hafriyat', area: 'Efeler, Aydın', address: 'Örnek Mah. Sanayi Cd. No: 10, Efeler / Aydın', wa: '905306284284' };
+  var BIZ = { name: SND ? 'Nova Sondaj' : 'Nova Hafriyat', area: 'Efeler, Aydın', address: 'Mimar Sinan Mah. Sanayi Cd. No: 10, Efeler / Aydın', wa: '905306284284' };
   try {
     var q = new URLSearchParams(location.search), qm = (q.get('m') || '').trim().slice(0, 40), qc = (q.get('c') || '').trim().slice(0, 40);
     if (qm) BIZ.name = qm;

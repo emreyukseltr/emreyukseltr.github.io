@@ -18,6 +18,7 @@
 </script>
 <noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
 <!-- /ey-guard -->
+<script>try{if(localStorage.getItem("ey-pre-kuafor"))document.documentElement.classList.add("pre-seen")}catch(e){}</script><style>.pre-seen #pre{display:none!important}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maison Nova — Saç & Güzellik Atölyesi</title>
 <meta name="description" content="Kesimden renge, tırnaktan cilde: hizmetinizi seçin, süreyi ve fiyatı görün, randevunuzu WhatsApp'tan tek dokunuşla oluşturun.">
@@ -62,7 +63,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:95;opa
 
 /* ---------- Açılış ---------- */
 #pre{display:none}
-.js #pre{position:fixed;inset:0;z-index:200;background:var(--ink);color:var(--ivory);display:grid;place-items:center;transition:transform 1.1s var(--ease),visibility 0s 1.2s}
+.js #pre{position:fixed;inset:0;z-index:200;background:var(--ink);color:var(--ivory);display:grid;place-items:center;transition:transform .7s var(--ease),visibility 0s .75s}
 .ready #pre{transform:translateY(-100%);visibility:hidden}
 .pre-in{display:grid;justify-items:center;gap:18px}
 .pre-mark{width:92px;height:92px}
@@ -119,6 +120,15 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:95;opa
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;background:radial-gradient(120% 90% at 82% 18%,#2a1e18 0%,var(--ink) 58%);color:var(--ivory);display:flex;flex-direction:column;justify-content:flex-end;padding:130px var(--pad) 76px;overflow:hidden;isolation:isolate}
 #silk{position:absolute;inset:0;width:100%;height:100%;z-index:-2;touch-action:pan-y}
+.hero-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.6;filter:saturate(.8) contrast(1.05)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(14,11,10,.55) 0%,rgba(14,11,10,.35) 35%,rgba(14,11,10,.92) 100%),radial-gradient(120% 90% at 82% 18%,rgba(42,30,24,.35),rgba(14,11,10,.7) 60%);pointer-events:none}
+.salon-ph{border-radius:28px;overflow:hidden;aspect-ratio:16/8;margin-bottom:44px}
+.salon-ph img{width:100%;height:100%;object-fit:cover}
+.salon-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 40px}
+.salon-g div{border-top:1px solid var(--line-d);padding-top:22px}
+.salon-g h3{font:400 26px/1.15 var(--serif);margin:0 0 10px}
+.salon-g p{margin:0;color:rgba(244,238,230,.7);font-size:15px}
+@media(max-width:760px){.salon-ph{aspect-ratio:4/3.4;border-radius:20px;margin-bottom:30px}.salon-g{grid-template-columns:1fr}}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(rgba(14,11,10,0),rgba(14,11,10,.88));z-index:-1;pointer-events:none}
 .eyebrow{font-size:12px;letter-spacing:.26em;text-transform:uppercase;opacity:.78;margin:0 0 24px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
 .eyebrow::before{content:"";width:38px;height:1px;background:var(--tone);transition:background-color .6s}
@@ -132,7 +142,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:95;opa
 .hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;margin-top:36px}
 .lede{max-width:46ch;margin:0;color:rgba(244,238,230,.8);font-size:17px}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.js .hero .fade{opacity:0;transform:translateY(18px);transition:opacity 1s .55s,transform 1s .55s var(--ease)}
+.js .hero .fade{opacity:0;transform:translateY(18px);transition:opacity .8s .2s,transform .8s .2s var(--ease)}
 .ready .hero .fade{opacity:1;transform:none}
 .hero-meta{display:flex;gap:10px 26px;flex-wrap:wrap;align-items:center;margin-top:46px;padding-top:18px;border-top:1px solid var(--line-d);font-size:13px;color:rgba(244,238,230,.68)}
 .hero-meta .stars{color:var(--tone-hi);letter-spacing:.14em;margin-right:6px;transition:color .6s}
@@ -548,6 +558,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
 
 <main id="icerik">
   <section class="hero" id="top" aria-labelledby="h1">
+    <img class="hero-ph" src="media/kuafor/salon.webp" alt="" width="1600" height="1067" fetchpriority="high">
     <canvas id="silk" aria-hidden="true"></canvas>
     <p class="eyebrow fade"><span data-salon="area">Nişantaşı, İstanbul</span><span class="dot" aria-hidden="true">·</span><span data-i="hEy">Saç & Güzellik Atölyesi</span></p>
     <h1 class="h1" id="h1"><span class="ln"><span data-i="h1a">Her tel,</span></span><span class="ln"><span><em data-i="h1b">bir imza.</em></span></span></h1>
@@ -560,7 +571,6 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     </div>
     <div class="hero-meta fade">
       <button class="avail" id="avail" type="button"><i aria-hidden="true"></i><span></span></button>
-      <span><span class="stars" aria-hidden="true">★★★★★</span><span data-i="rating">Google'da 4.9 · 320+ yorum</span></span>
       <span data-i="hrsS">Pzt–Cmt · 10:00–20:00</span>
       <span class="sc" aria-hidden="true"><span data-i="scroll">Kaydırın</span><i></i></span>
     </div>
@@ -647,16 +657,18 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     <div class="team-g" id="team"></div>
   </section>
 
-  <section class="sec dark" aria-labelledby="revH">
+  <section class="sec dark" id="salon" aria-labelledby="revH">
     <div class="sec-head" data-r>
-      <p class="kick"><span class="idx">(06)</span><span id="revH" data-i="revK">Yorumlar</span></p>
+      <p class="kick"><span class="idx">(06)</span><span data-i="revK">Salon</span></p>
+      <h2 id="revH" data-i="salH">Sakin bir salon, <em>özenli bir ritüel.</em></h2>
     </div>
-    <div class="quotes" id="quotes" aria-live="polite" data-r></div>
-    <div class="rev-meta" data-r>
-      <span class="stars" aria-hidden="true">★★★★★</span>
-      <span data-i="rating">Google'da 4.9 · 320+ yorum</span>
-      <div class="dots" id="qdots"></div>
+    <div class="salon-ph" data-r><img src="media/kuafor/salon2.webp" alt="Salonun içi: aynalar ve koltuklar" width="1600" height="1200" loading="lazy"></div>
+    <div class="salon-g" data-r>
+      <div><h3 data-i="sal1">Ferah ve sakin</h3><p data-i="sal1p">Randevulu çalıştığımız için salon hiçbir zaman kalabalık olmaz; size ayrılan saat yalnızca sizindir.</p></div>
+      <div><h3 data-i="sal2">Hijyen önce gelir</h3><p data-i="sal2p">Her müşteri için tek kullanımlık havlu, sterilize edilmiş aletler ve temizlenmiş çalışma alanı.</p></div>
+      <div><h3 data-i="sal3">Kolay ulaşım</h3><p data-i="sal3p">Salonun karşısındaki otoparkta 2 saat ücretsiz park; toplu taşımaya yürüme mesafesinde.</p></div>
     </div>
+    <div hidden><div id="quotes"></div><div id="qdots"></div></div>
   </section>
 
   <section class="sec dark" id="hediye" aria-labelledby="giftH" style="padding-top:0">
@@ -746,7 +758,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     </div>
     <div class="ct-g">
       <div data-r>
-        <address class="addr" data-salon="address">Teşvikiye Mah. Örnek Sk. No: 8<br>Şişli / İstanbul</address>
+        <address class="addr" data-salon="address">Teşvikiye Mah. Ihlamur Sk. No: 8<br>Şişli / İstanbul</address>
         <div class="ct-btns">
           <a class="btn ink" id="mapBtn" target="_blank" rel="noopener" href="#"><span data-i="dir">Yol tarifi</span><span class="arr" aria-hidden="true">↗</span></a>
           <a class="btn ghost" data-salon="tel" href="tel:+905306284284" data-i="call">Ara</a>
@@ -800,7 +812,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   var SALON = {
     name: 'Maison Nova',
     area: 'Nişantaşı, İstanbul',
-    address: 'Teşvikiye Mah. Örnek Sk. No: 8<br>Şişli / İstanbul',
+    address: 'Teşvikiye Mah. Ihlamur Sk. No: 8<br>Şişli / İstanbul',
     mapsQuery: 'Teşvikiye Şişli İstanbul',
     phone: '+90 530 628 42 84',
     wa: '905306284284',
@@ -824,7 +836,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     { hex: '#C8C0AE', tr: 'Küllü Sarı', en: 'Ash Blonde', dtr: 'Soğuk alt ton, yumuşak ve sofistike.', den: 'Cool undertones with a soft, refined finish.' },
     { hex: '#D8B88A', tr: 'Şampanya', en: 'Champagne', dtr: 'Işıltılı, sıcak ve zamansız.', den: 'Luminous, warm and timeless.' },
     { hex: '#C8924F', tr: 'Bal Köpüğü', en: 'Honey Glow', dtr: 'Balyajın en sevilen tonu; yüzü anında aydınlatır.', den: 'Our most-loved balayage shade — instantly brightening.' },
-    { hex: '#A86B3C', tr: 'Karamel', en: 'Caramel', dtr: 'Esmer ve buğday tenle kusursuz uyum.', den: 'Made for olive and warm skin tones.' },
+    { hex: '#A86B3C', tr: 'Karamel', en: 'Caramel', dtr: 'Esmer ve buğday tenle çok uyumlu.', den: 'Made for olive and warm skin tones.' },
     { hex: '#B5532C', tr: 'Bakır', en: 'Copper', dtr: 'Canlı, cesur ve göz alıcı.', den: 'Vivid, daring and impossible to miss.' },
     { hex: '#7A2436', tr: 'Kızıl Şarap', en: 'Burgundy', dtr: 'Derin, asil bir koyuluk.', den: 'Deep, regal and rich.' },
     { hex: '#4E3124', tr: 'Çikolata', en: 'Chocolate', dtr: 'Doğal görünen, zengin bir kahve.', den: 'A rich brunette that still reads natural.' }
@@ -851,7 +863,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     { id: 'highlights', c: 'color', m: 150, p: 4200, tr: 'Röfle', en: 'Highlights', dtr: 'Folyo ile ince ve ışıltılı açma.', den: 'Fine foil highlights for brightness and depth.' },
     { id: 'gloss', c: 'color', m: 45, p: 1300, tr: 'Ton tazeleme', en: 'Gloss & tone', dtr: 'Rengi canlandıran, parlaklık veren ara bakım.', den: 'Refreshes colour and boosts shine between visits.' },
     { id: 'mani', c: 'nails', m: 40, p: 600, tr: 'Manikür', en: 'Manicure', dtr: 'Şekillendirme, kütikül bakımı ve nemlendirme.', den: 'Shaping, cuticle care and hydration.' },
-    { id: 'gel', c: 'nails', m: 60, p: 850, pop: 1, tr: 'Kalıcı oje', en: 'Gel polish', dtr: 'Üç haftaya kadar parlak ve kusursuz.', den: 'Up to three weeks of flawless shine.' },
+    { id: 'gel', c: 'nails', m: 60, p: 850, pop: 1, tr: 'Kalıcı oje', en: 'Gel polish', dtr: 'Üç haftaya kadar parlak ve dayanıklı.', den: 'Up to three weeks of lasting shine.' },
     { id: 'ext', c: 'nails', m: 90, p: 1600, tr: 'Protez tırnak', en: 'Nail extensions', dtr: 'Jel ile uzatma ve size özel şekillendirme.', den: 'Gel extensions, shaped to suit you.' },
     { id: 'pedi', c: 'nails', m: 50, p: 750, tr: 'Pedikür', en: 'Pedicure', dtr: 'Ayak bakımı, şekillendirme ve masaj.', den: 'Foot care, shaping and massage.' },
     { id: 'facial', c: 'skin', m: 60, p: 1500, tr: 'Klasik cilt bakımı', en: 'Signature facial', dtr: 'Derin temizlik, peeling ve maske.', den: 'Deep cleanse, exfoliation and mask.' },
@@ -860,7 +872,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     { id: 'lash', c: 'skin', m: 60, p: 1200, tr: 'Kirpik lifting', en: 'Lash lift', dtr: 'Kıvrımlı, uzun görünen doğal kirpikler.', den: 'Naturally curled, longer-looking lashes.' },
     { id: 'bride', c: 'bridal', m: 240, p: 15000, tr: 'Gelin saçı & makyajı', en: 'Bridal hair & make-up', dtr: 'Prova dahil; düğün günü salonda ya da mekânda.', den: 'Trial included; in the salon or at your venue.' },
     { id: 'updo', c: 'bridal', m: 75, p: 2200, tr: 'Özel gün topuzu', en: 'Event updo', dtr: 'Nişan, mezuniyet ve davetler için.', den: 'For engagements, graduations and galas.' },
-    { id: 'mua', c: 'bridal', m: 60, p: 2500, tr: 'Profesyonel makyaj', en: 'Professional make-up', dtr: 'Fotoğrafta da kusursuz görünen makyaj.', den: 'Make-up that looks flawless on camera too.' }
+    { id: 'mua', c: 'bridal', m: 60, p: 2500, tr: 'Profesyonel makyaj', en: 'Professional make-up', dtr: 'Fotoğrafta da doğal görünen makyaj.', den: 'Make-up that looks natural on camera too.' }
   ];
 
   /* Bu ayın kampanyası: hizmetler birlikte seçilince toplam 'price' olur */
@@ -881,19 +893,17 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   ];
 
   var LOOKS = [
-    { tone: 3, by: 'Ece', m: 180, img: '', tr: 'Bal köpüğü balyaj', en: 'Honey balayage' },
-    { tone: 1, by: 'Ece', m: 150, img: '', tr: 'Küllü sarı röfle', en: 'Ash blonde highlights' },
-    { tone: 5, by: 'Ece', m: 120, img: '', tr: 'Bakır parlaklık', en: 'Copper gloss' },
-    { tone: 7, by: 'Mert', m: 60, img: '', tr: 'Keskin bob kesim', en: 'Sharp bob' },
-    { tone: 2, by: 'Selin', m: 75, img: '', tr: 'Gelin topuzu', en: 'Bridal updo' },
-    { tone: 6, by: 'Selin', m: 60, img: '', tr: 'Bordo kalıcı oje', en: 'Burgundy gel nails' }
+    { tone: 3, by: 'Ece', m: 180, img: 'media/kuafor/look1.webp', tr: 'Bal köpüğü balyaj', en: 'Honey balayage' },
+    { tone: 2, by: 'Ece', m: 60, img: 'media/kuafor/look2.webp', tr: 'Doğal dalga', en: 'Soft natural waves' },
+    { tone: 4, by: 'Mert', m: 45, img: 'media/kuafor/look3.webp', tr: 'Maşa ile şekillendirme', en: 'Tong-curled styling' },
+    { tone: 7, by: 'Mert', m: 50, img: 'media/kuafor/look4.webp', tr: 'Keskin fade kesim', en: 'Sharp skin fade' },
+    { tone: 2, by: 'Selin', m: 75, img: 'media/kuafor/look5.webp', tr: 'Özel gün topuzu', en: 'Event updo' },
+    { tone: 7, by: 'Selin', m: 60, img: 'media/kuafor/look6.webp', tr: 'Siyah kalıcı oje', en: 'Black gel nails' },
+    { tone: 0, by: 'Ece', m: 45, img: 'media/kuafor/look7.webp', tr: 'Bağ onarıcı bakım', en: 'Bond repair ritual' },
+    { tone: 1, by: 'Selin', m: 60, img: 'media/kuafor/look8.webp', tr: 'Lila & süt beyazı oje', en: 'Lilac & milk-white nails' }
   ];
 
-  var REVIEWS = [
-    { who: 'Zeynep A.', tr: 'Balyajım tam hayal ettiğim gibi oldu; üç ay sonra bile ilk günkü gibi duruyor.', en: 'My balayage turned out exactly as I imagined — three months on, it still looks brand new.' },
-    { who: 'Elif K.', tr: 'Randevu almak iki dakikamı aldı, salonda ise iki saat boyunca şımartıldım.', en: 'Booking took two minutes; then I was pampered for two hours.' },
-    { who: 'Merve T.', tr: 'Gelin saçım ve makyajım bütün gece kusursuz kaldı. Herkes nerede yaptırdığımı sordu.', en: 'My bridal hair and make-up stayed perfect all night. Everyone asked where I had it done.' }
-  ];
+  var REVIEWS = [];
 
   var T = {
     skip: ['İçeriğe geç', 'Skip to content'],
@@ -921,7 +931,14 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     lookH: ['Bu sezon <em>salonumuzdan.</em>', 'This season, <em>from our chairs.</em>'],
     teamK: ['Ekip', 'The team'], teamH: ['Usta <em>ellerde.</em>', 'In expert <em>hands.</em>'],
     yrs: ['yıl deneyim', 'years of experience'], withPro: ['{n} ile randevu', 'Book with {n}'],
-    revK: ['Yorumlar', 'Reviews'],
+    revK: ['Salon', 'The salon'],
+    salH: ['Sakin bir salon, <em>özenli bir ritüel.</em>', 'A calm salon, <em>a careful ritual.</em>'],
+    sal1: ['Ferah ve sakin', 'Calm and spacious'],
+    sal1p: ['Randevulu çalıştığımız için salon hiçbir zaman kalabalık olmaz; size ayrılan saat yalnızca sizindir.', 'We work by appointment, so the salon is never crowded; your slot is yours alone.'],
+    sal2: ['Hijyen önce gelir', 'Hygiene first'],
+    sal2p: ['Her müşteri için tek kullanımlık havlu, sterilize edilmiş aletler ve temizlenmiş çalışma alanı.', 'Single-use towels, sterilised tools and a freshly cleaned station for every guest.'],
+    sal3: ['Kolay ulaşım', 'Easy to reach'],
+    sal3p: ['Salonun karşısındaki otoparkta 2 saat ücretsiz park; toplu taşımaya yürüme mesafesinde.', 'Two hours of free parking opposite the salon; public transport within walking distance.'],
     bookK: ['Randevu', 'Booking'], bookH: ['Yerinizi <em>ayırtalım.</em>', 'Let us <em>save your seat.</em>'],
     bookS: ["Dört kısa adımda talebinizi oluşturun; onay mesajı WhatsApp'tan gelir.", 'Four short steps — your confirmation arrives on WhatsApp.'],
     s1: ['Hizmetler', 'Services'], s2: ['Uzman', 'Stylist'], s3: ['Gün & saat', 'Day & time'], s4: ['Bilgileriniz', 'Your details'],
@@ -1028,7 +1045,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         teamH: "In besten <em>Händen.</em>",
         yrs: "Jahre Erfahrung",
         withPro: "Termin bei {n}",
-        revK: "Kundenstimmen",
+
         bookK: "Buchung",
         bookH: "Wir halten Ihnen <em>einen Platz frei.</em>",
         bookS: "Vier kurze Schritte – Ihre Bestätigung erhalten Sie per WhatsApp.",
@@ -1199,7 +1216,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         teamH: "In vakkundige <em>handen.</em>",
         yrs: "jaar ervaring",
         withPro: "Boek bij {n}",
-        revK: "Ervaringen",
+
         bookK: "Afspraak",
         bookH: "We houden <em>een plekje voor je vrij.</em>",
         bookS: "In vier korte stappen geregeld – de bevestiging krijg je via WhatsApp.",
@@ -1370,7 +1387,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         teamH: "Entre des mains <em>expertes.</em>",
         yrs: "ans d’expérience",
         withPro: "Réserver avec {n}",
-        revK: "Avis clients",
+
         bookK: "Réservation",
         bookH: "Votre fauteuil <em>vous attend.</em>",
         bookS: "Quatre étapes rapides, puis votre confirmation arrive sur WhatsApp.",
@@ -1541,7 +1558,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         teamH: "In mani <em>esperte.</em>",
         yrs: "anni di esperienza",
         withPro: "Prenota con {n}",
-        revK: "Recensioni",
+
         bookK: "Prenotazione",
         bookH: "Il tuo posto <em>ti aspetta.</em>",
         bookS: "Quattro semplici passaggi: la conferma ti arriva su WhatsApp.",
@@ -1712,7 +1729,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         teamH: "En manos <em>expertas.</em>",
         yrs: "años de experiencia",
         withPro: "Reservar con {n}",
-        revK: "Opiniones",
+
         bookK: "Reserva",
         bookH: "Te guardamos <em>el sitio.</em>",
         bookS: "Cuatro pasos rápidos y la confirmación te llega por WhatsApp.",
@@ -1883,7 +1900,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
         teamH: "В надёжных <em>руках.</em>",
         yrs: "лет опыта",
         withPro: "Записаться к {n}",
-        revK: "Отзывы",
+
         bookK: "Онлайн-запись",
         bookH: "Ваше кресло <em>уже ждёт.</em>",
         bookS: "Четыре коротких шага — и подтверждение придёт в WhatsApp.",
@@ -2073,7 +2090,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     [
       { id: 'ext', c: 'hair', m: 120, p: 1600, pop: 1, tr: 'Protez tırnak', en: 'Nail extensions', dtr: 'Jel ile uzatma ve size özel şekillendirme.', den: 'Gel extensions shaped just for you.' },
       { id: 'refill', c: 'hair', m: 90, p: 1100, tr: 'Protez dolgu', en: 'Extension refill', dtr: 'Uzayan bölgelerin dolgusu ve yeniden şekillendirme.', den: 'Refill of grown-out areas and reshaping.' },
-      { id: 'gel', c: 'hair', m: 60, p: 850, pop: 1, tr: 'Kalıcı oje', en: 'Gel polish', dtr: 'Üç haftaya kadar parlak ve kusursuz.', den: 'Up to three weeks of flawless shine.' },
+      { id: 'gel', c: 'hair', m: 60, p: 850, pop: 1, tr: 'Kalıcı oje', en: 'Gel polish', dtr: 'Üç haftaya kadar parlak ve dayanıklı.', den: 'Up to three weeks of lasting shine.' },
       { id: 'build', c: 'hair', m: 75, p: 1000, tr: 'Jel güçlendirme', en: 'Builder gel overlay', dtr: 'Doğal tırnağı güçlendiren şeffaf ya da renkli jel.', den: 'Clear or coloured gel that strengthens natural nails.' },
       { id: 'cat', c: 'art', m: 30, p: 400, pop: 1, tr: 'Cat eye', en: 'Cat eye', dtr: 'Mıknatısla hareket eden derin ışıltı.', den: 'Magnetic, deep, shifting shine.' },
       { id: 'design', c: 'art', m: 45, p: 600, tr: 'Kişiye özel tasarım', en: 'Custom design', dtr: 'Çizim, taş, krom ve 3D detaylarla size özel nail art.', den: 'Hand-painted art with stones, chrome and 3D details.' },
@@ -2129,7 +2146,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
     [{ who: 'Ayşe K.', tr: 'Ortam çok temiz ve rahat, ekip her seansta ilgileniyor.', en: 'Very clean and calm place; the team cares every session.' },
      { who: 'Derya T.', tr: 'Randevuyu siteden aldım, telefonla uğraşmadım.', en: 'Booked on the site, no phone calls needed.' },
      { who: 'Gül M.', tr: 'Paket seçeneklerini ve fiyatları önceden görmek çok iyi oldu.', en: 'Great to see packages and prices upfront.' }].forEach(function (o) { REVIEWS.push(o); });
-    var IT = { hEy: ['Vücut Bakım Merkezi', 'Body Care Studio'], h1a: ['Kendinize ayırdığınız', 'Time you give'], h1b: ['en iyi yarım saat.', 'to yourself.'],
+    var IT = { hEy: ['Vücut Bakım Merkezi', 'Body Care Studio'], h1a: ['Kendinize ayırdığınız', 'Time you give'], h1b: ['en keyifli yarım saat.', 'to yourself.'],
       lede: ['Vacu Activ, Rollshape ve bölgesel bakım uygulamaları: hizmetinizi ya da paketinizi seçin, süreyi ve fiyatı görün, randevunuzu tek dokunuşla oluşturun.', 'Vacu Activ, Rollshape and targeted care: pick a service or package, see time and price, book in one tap.'],
       e1d: ['İlk görüşmede beklentinizi konuşur, size uygun programı birlikte belirleriz.', 'We start by talking about your goals and choosing a programme together.'],
       e2d: ['Hijyenik ortamda, her seans öncesi temizlenen cihazlarla uygulama.', 'Hygienic studio, devices cleaned before every session.'],
@@ -2686,7 +2703,7 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   /* Yorumlar döngüsü */
   function restartQuotes() {
     clearInterval(qTimer);
-    if (!reduce) qTimer = setInterval(function () { if (!document.hidden) showQuote((qi + 1) % REVIEWS.length); }, 6500);
+    if (!reduce && REVIEWS.length) qTimer = setInterval(function () { if (!document.hidden) showQuote((qi + 1) % REVIEWS.length); }, 6500);
   }
 
   /* ---------- Gönderim: WhatsApp mesajı (salona Türkçe gider) ---------- */
@@ -2801,15 +2818,16 @@ addEventListener('pageshow',function(){var h=document.documentElement,b=h.style.
   restartQuotes();
   setInterval(function () { renderHours(); renderAvail(); }, 60000);
 
-  /* Açılış ekranı: yazı tipleri hazır olunca (en geç 2,5 sn) */
+  /* Açılış ekranı: yazı tipleri hazır olunca (en geç 1,1 sn); ikinci ziyarette hiç gösterilmez */
   var shown = false;
   function ready() { if (shown) return; shown = true; root.classList.add('ready'); setTimeout(function () { var p = $('#pre'); if (p) p.remove(); }, 1400); }
-  if (reduce) ready();
+  var seenB = false; try { seenB = !!localStorage.getItem('ey-pre-kuafor'); localStorage.setItem('ey-pre-kuafor', '1'); } catch (e) {}
+  if (reduce || seenB) ready();
   else {
-    var minT = new Promise(function (r) { setTimeout(r, 1100); });
+    var minT = new Promise(function (r) { setTimeout(r, 500); });
     var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
     Promise.all([minT, fonts]).then(ready);
-    setTimeout(ready, 2500);
+    setTimeout(ready, 1100);
   }
 })();
 </script>

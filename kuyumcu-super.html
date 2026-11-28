@@ -16,7 +16,8 @@
   if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});
 })();
 </script>
-<noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}</style></noscript>
+<noscript><style>.rv,.reveal{opacity:1!important;transform:none!important;filter:none!important}#pre,#intro,.preloader{display:none!important}.ey-skip{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);font:600 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:opacity .3s,transform .3s}.ey-skip.hide{opacity:0;transform:translateY(10px);pointer-events:none}
+</style></noscript>
 <!-- /ey-guard -->
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
@@ -99,7 +100,7 @@ main{position:relative;z-index:1}
 .nogl .hint{display:none}
 
 /* ---------- bölümler (sabitlenen anlatı) ---------- */
-.ch{position:relative;height:170vh}
+.ch{position:relative;height:125vh}
 .ch-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:flex-end;padding:0 16px calc(92px + env(safe-area-inset-bottom,0px))}
 .ch-pin::before{content:"";position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(to top,rgba(11,10,9,.94),rgba(11,10,9,.7) 48%,rgba(11,10,9,0));pointer-events:none}
 .ch-txt{position:relative;max-width:34rem;will-change:opacity,transform}
@@ -109,7 +110,7 @@ main{position:relative;z-index:1}
 .specs b{color:var(--iv);font-weight:600}
 
 /* ---------- koleksiyonlar ---------- */
-.kol{position:relative;height:430vh}
+.kol{position:relative;height:300vh}
 .kol-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:84px 0 calc(84px + env(safe-area-inset-bottom,0px))}
 .kol-head{padding:0 16px;max-width:40rem}
 .kol h2{font-size:clamp(34px,9.4vw,76px);margin-bottom:14px}
@@ -176,6 +177,7 @@ details.hlp p{font-size:13.5px;color:var(--iv2);padding-bottom:14px}
 .wrap{max-width:1180px;margin:0 auto}
 .sec .lead{color:var(--iv2);max-width:34rem}
 .gold{margin-top:30px;border:1px solid var(--ln);border-radius:22px;background:linear-gradient(160deg,#17130f,#0e0c0a 60%);padding:22px 18px;max-width:760px}
+.gq-top{display:flex;gap:18px;align-items:flex-start;margin-bottom:20px}.coin{width:58px;height:58px;flex:none;filter:drop-shadow(0 8px 18px rgba(201,163,94,.35));animation:coin 6s ease-in-out infinite}@keyframes coin{50%{transform:rotateY(180deg)}}.gq-top h3{font:400 clamp(26px,6vw,36px)/1.1 var(--serif)}.gq-top h3 em{color:var(--ch)}.gq-sub{color:var(--iv2);margin-top:8px;font-size:15px}.gq-chips{display:flex;flex-wrap:wrap;gap:8px}.gq{min-height:44px;padding:0 16px;border-radius:99px;border:1px solid var(--ln);background:transparent;color:var(--iv2);font:500 14px/1 var(--sans);cursor:pointer;transition:all .2s}.gq[aria-pressed="true"]{background:var(--ch);border-color:var(--ch);color:var(--ink)}.gold-f .btn{gap:8px}@media (prefers-reduced-motion:reduce){.coin{animation:none}}
 .gold-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:12px}
 .gold-h h3{font:400 30px/1.1 var(--serif)}
 .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:99px;border:1px dashed rgba(220,195,148,.55);font:600 10.5px/1.35 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ch)}
@@ -392,26 +394,21 @@ footer{position:relative;z-index:1;background:var(--ink);border-top:1px solid va
   <section class="sec" id="altin" aria-labelledby="alth">
     <div class="wrap">
       <span class="kick">Piyasa</span>
-      <h2 id="alth" class="rv">Bugünkü <em>altın</em></h2>
+      <h2 id="alth" class="rv">Altın <em>fiyatı</em></h2>
       <p class="lead rv">Altın fiyatı gün içinde değişir. En güncel alış ve satış için bizi ara ya da yaz; tartıyı ve işçiliği ayrı ayrı söyleyelim.</p>
       <div class="gold rv">
-        <div class="gold-h"><h3>Bugünkü altın</h3><span class="badge">Örnek gösterim — güncel fiyat için arayın</span></div>
-        <table class="gt">
-          <thead><tr><th scope="col">Ürün</th><th scope="col">Alış</th><th scope="col">Satış</th></tr></thead>
-          <tbody>
-            <tr><td>Gram altın<small>24 ayar</small></td><td>— ₺</td><td>— ₺</td></tr>
-            <tr><td>Bilezik<small>22 ayar · gram</small></td><td>— ₺</td><td>— ₺</td></tr>
-            <tr><td>Çeyrek altın</td><td>— ₺</td><td>— ₺</td></tr>
-            <tr><td>Yarım altın</td><td>— ₺</td><td>— ₺</td></tr>
-            <tr><td>Tam altın</td><td>— ₺</td><td>— ₺</td></tr>
-            <tr><td>Ata lira<small>Cumhuriyet</small></td><td>— ₺</td><td>— ₺</td></tr>
-          </tbody>
-        </table>
-        <p class="fine">Bu kart örnek gösterimdir; burada canlı fiyat yer almaz. Güncel fiyat için arayın.</p>
-        <div class="gold-f">
-          <a class="btn btn-p" id="waGold" href="https://wa.me/905306284284" target="_blank" rel="noopener">Güncel fiyatı sor</a>
-          <a class="btn btn-g" href="tel:+905306284284">Hemen ara</a>
+        <div class="gq-top">
+          <svg class="coin" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e2b0"/><stop offset=".5" stop-color="#c9a35e"/><stop offset="1" stop-color="#7a5a26"/></linearGradient></defs><circle cx="32" cy="32" r="29" fill="url(#cg)"/><circle cx="32" cy="32" r="22" fill="none" stroke="#fff3d6" stroke-opacity=".55" stroke-width="1.4"/><path d="M32 19l3.6 8.2 8.9.8-6.7 5.9 2 8.7L32 38l-7.8 4.6 2-8.7-6.7-5.9 8.9-.8z" fill="#fff3d6" fill-opacity=".7"/></svg>
+          <div><h3>Güncel altın fiyatını <em>tek tıkla sor.</em></h3><p class="gq-sub">Fiyat gün içinde değişir; size anlık alış ve satışı, tartı ve işçilikle birlikte yazalım.</p></div>
         </div>
+        <div class="gq-chips" id="gqChips" role="group" aria-label="Hangi ürünün fiyatını soruyorsunuz?">
+          <button type="button" class="gq" aria-pressed="true">Gram altın</button><button type="button" class="gq" aria-pressed="true">Çeyrek</button><button type="button" class="gq" aria-pressed="false">Yarım</button><button type="button" class="gq" aria-pressed="false">Tam</button><button type="button" class="gq" aria-pressed="false">22 ayar bilezik</button><button type="button" class="gq" aria-pressed="false">Ata lira</button>
+        </div>
+        <div class="gold-f">
+          <a class="btn btn-p" id="waGold" href="https://wa.me/905306284284" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>WhatsApp'tan sor</a>
+          <a class="btn btn-g" href="tel:+905306284284"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Hemen ara</a>
+        </div>
+        <p class="fine">Genellikle birkaç dakika içinde yanıt veriyoruz · Hafta içi 10:00–20:00</p>
       </div>
     </div>
   </section>
@@ -507,7 +504,8 @@ footer{position:relative;z-index:1;background:var(--ink);border-top:1px solid va
   D.title = BIZ.name + ' — Alyans, Tektaş & Altın · ' + BIZ.city;
   $('#yr').textContent = new Date().getFullYear();
   $('#waHero').href = wa(hi + 'web sitenizden yazıyorum. Alyans ve takılarınız hakkında bilgi almak istiyorum.');
-  $('#waGold').href = wa(hi + 'bugünkü altın fiyatlarını (gram, çeyrek, bilezik) öğrenebilir miyim?');
+  function gq() { var sel = [].slice.call(document.querySelectorAll('#gqChips .gq[aria-pressed="true"]')).map(function (b) { return b.textContent.toLocaleLowerCase('tr'); }); $('#waGold').href = wa(hi + 'güncel ' + (sel.length ? sel.join(', ') : 'altın') + ' alış ve satış fiyatını öğrenebilir miyim?'); }
+  gq(); var gqc = document.getElementById('gqChips'); if (gqc) gqc.addEventListener('click', function (e) { var b = e.target.closest('.gq'); if (!b) return; b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); gq(); });
   $('#waVisit').href = wa(hi + 'mağazanızı ziyaret etmek istiyorum. Uygun bir saat önerebilir misiniz?');
   $('#mapBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(BIZ.name + ' ' + BIZ.address);
   $$('.kc a[data-msg]').forEach(function (a) { a.href = wa(hi + a.getAttribute('data-msg')); a.target = '_blank'; a.rel = 'noopener'; });
@@ -1165,5 +1163,7 @@ footer{position:relative;z-index:1;background:var(--ink);border-top:1px solid va
   }
 })();
 </script>
+<a class="ey-skip hide" id="eySkip" href="#tasarla">Tasarıma geç ↓</a>
+<script>(function(){var b=document.getElementById('eySkip'),t=document.getElementById('tasarla'),s=document.getElementById('hero');if(!b||!t)return;function u(){var y=scrollY,e=t.getBoundingClientRect().top+y-innerHeight*.6;b.classList.toggle('hide',!(y>40&&y<e))}addEventListener('scroll',u,{passive:true});u();b.addEventListener('click',function(ev){ev.preventDefault();var h=document.documentElement,o=h.style.scrollBehavior;h.style.scrollBehavior='auto';scrollTo(0,t.getBoundingClientRect().top+scrollY-10);h.style.scrollBehavior=o})})();</script>
 </body>
 </html>
